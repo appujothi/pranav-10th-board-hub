@@ -73,6 +73,103 @@
     "boardStart": "2027-02-15"
   },
   "dailyGoalMinutes": 270,
+  "dailyTarget": {
+    "date": "2026-10-27",
+    "headline": "🎯 Target of the Day: Sprint to 95-100%",
+    "setBy": "Mama (Super Admin)",
+    "focusTasks": [
+      {
+        "id": "dt-1",
+        "title": "School Homework: Maths Quadratic Equations Ex 4.2",
+        "track": "school",
+        "subject": "Mathematics",
+        "completed": true,
+        "priority": "high"
+      },
+      {
+        "id": "dt-2",
+        "title": "Tuition Prep: Science Chemical Reactions Test Paper",
+        "track": "tuition",
+        "subject": "Science",
+        "completed": false,
+        "priority": "high"
+      },
+      {
+        "id": "dt-3",
+        "title": "Board Path (Self-Study): Tamil இயல் 1 செய்யுள் & மனப்பாடப் பாடல்",
+        "track": "board_prep",
+        "subject": "Tamil",
+        "completed": false,
+        "priority": "medium"
+      }
+    ]
+  },
+  "calendarEvents": [
+    {
+      "id": "cal-1",
+      "date": "2026-10-28",
+      "time": "09:30 AM",
+      "title": "School Unit Test: Social Science (Nationalism in India)",
+      "track": "school",
+      "type": "test",
+      "subject": "Social Science",
+      "status": "pending",
+      "priority": "high"
+    },
+    {
+      "id": "cal-2",
+      "date": "2026-10-28",
+      "time": "05:00 PM",
+      "title": "Tuition Homework: Mathematics 15 Word Problems on Speed & Work",
+      "track": "tuition",
+      "type": "homework",
+      "subject": "Mathematics",
+      "status": "pending",
+      "priority": "high"
+    },
+    {
+      "id": "cal-3",
+      "date": "2026-10-29",
+      "time": "06:00 PM",
+      "title": "Tuition Grand Test: Science Chapter 1 & 2 (80 Marks Format)",
+      "track": "tuition",
+      "type": "test",
+      "subject": "Science",
+      "status": "pending",
+      "priority": "high"
+    },
+    {
+      "id": "cal-4",
+      "date": "2026-10-30",
+      "time": "08:00 AM",
+      "title": "School Project Submission: AI Project Cycle (Code 417)",
+      "track": "school",
+      "type": "homework",
+      "subject": "Artificial Intelligence",
+      "status": "pending",
+      "priority": "medium"
+    },
+    {
+      "id": "cal-5",
+      "date": "2026-11-16",
+      "time": "09:00 AM",
+      "title": "Term Revision 1 Board Prep Exam (All Subjects)",
+      "track": "board_prep",
+      "type": "test",
+      "subject": "All Subjects",
+      "status": "pending",
+      "priority": "high"
+    }
+  ],
+  "voiceRequests": [
+    {
+      "id": "vr-1",
+      "timestamp": "2026-10-27T12:00:00.000Z",
+      "transcriptTamil": "இன்னைக்கு மேக்ஸ் ஹோம்வர்க் முடிச்சிட்டேன்",
+      "action": "Completed Maths Homework",
+      "status": "applied"
+    }
+  ],
   "familyNotes": [
     {
       "id": "fn-rev1",

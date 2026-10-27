@@ -17,6 +17,7 @@ let currentUser = JSON.parse(localStorage.getItem('pranav_user_auth')) || {
 
 let currentTab = 'home';
 let currentSyllabusSubject = 'maths';
+let currentScheduleTrack = 'all';
 let scoresChartInstance = null;
 let isDesktopFramed = true;
 
@@ -26,6 +27,10 @@ let timerSeconds = 25 * 60;
 let timerInitialSeconds = 25 * 60;
 let timerRunning = false;
 let isBreakTimer = false;
+
+// Tamil Voice Recognition State
+let speechRecognizer = null;
+let isRecordingVoice = false;
 
 // Toast Notification
 function showToast(message, isSuccess = true) {
@@ -62,7 +67,7 @@ function getAuthHeaders() {
   };
 }
 
-// Auth Modals
+// Auth Modals & Roles
 function openAuthModal() {
   const m = document.getElementById('authModal');
   if (m) {
@@ -86,7 +91,6 @@ function updateAuthModalState() {
   }
 }
 
-// 1. Google Sign-In Handler
 async function handleGoogleSignIn(email, name = 'Google User') {
   try {
     const res = await fetch('/api/auth/google', {
@@ -101,20 +105,13 @@ async function handleGoogleSignIn(email, name = 'Google User') {
       closeModal('authModal');
       showToast(`Signed in as ${data.user.name}!`);
     } else {
-      // Local fallback
       const isSuper = email.toLowerCase() === 'jothi1809@gmail.com';
       applyUserAuth({
         role: isSuper ? 'admin' : 'viewer',
         name: isSuper ? 'Mama (Super Admin)' : name,
         email: email,
         badge: isSuper ? 'Owner' : 'Viewer',
-        permissions: {
-          canEditSyllabus: isSuper,
-          canEditExamDates: isSuper,
-          canAddTestMarks: isSuper,
-          canLogStudy: true,
-          canPostCheer: true
-        }
+        permissions: { canEditSyllabus: isSuper, canEditExamDates: isSuper, canAddTestMarks: isSuper }
       });
       closeModal('authModal');
       showToast(`Signed in as ${email}!`);
@@ -124,15 +121,6 @@ async function handleGoogleSignIn(email, name = 'Google User') {
   }
 }
 
-function promptCustomGoogleEmail() {
-  const email = prompt('Enter Google Account email address:');
-  if (email && email.includes('@')) {
-    const name = email.split('@')[0];
-    handleGoogleSignIn(email, name);
-  }
-}
-
-// 2. PIN Sign-In Handler
 async function submitPinLogin() {
   const pinInput = document.getElementById('pinInput');
   const pin = (pinInput ? pinInput.value : '').trim();
@@ -158,11 +146,10 @@ async function fastLoginPin(pin) {
       closeModal('authModal');
       showToast(`Unlocked as ${data.user.name}!`);
     } else {
-      // Fallback local PIN verification
       const localPins = {
-        '1809': { role: 'admin', name: 'Mama (Super Admin)', email: 'jothi1809@gmail.com', badge: 'Owner', permissions: { canEditSyllabus: true, canEditExamDates: true, canAddTestMarks: true } },
-        '2027': { role: 'student', name: 'Pranav', email: 'pranav@student.hub', badge: 'Student', permissions: { canEditSyllabus: false, canLogStudy: true } },
-        '1010': { role: 'viewer', name: 'Father / Parents', email: 'parents@family.hub', badge: 'Viewer', permissions: { canEditSyllabus: false, canPostCheer: true } }
+        '1809': { role: 'admin', name: 'Mama (Super Admin)', email: 'jothi1809@gmail.com', badge: 'Owner', permissions: { canEditSyllabus: true } },
+        '2027': { role: 'student', name: 'Pranav', email: 'pranav@student.hub', badge: 'Student', permissions: { canEditSyllabus: false } },
+        '1010': { role: 'viewer', name: 'Father / Parents', email: 'parents@family.hub', badge: 'Viewer', permissions: { canEditSyllabus: false } }
       };
 
       if (localPins[pin]) {
@@ -178,7 +165,6 @@ async function fastLoginPin(pin) {
   }
 }
 
-// Apply User Auth State across UI
 function applyUserAuth(user) {
   currentUser = user;
   localStorage.setItem('pranav_user_auth', JSON.stringify(user));
@@ -203,7 +189,7 @@ function applyUserAuth(user) {
     if (wallAuthor) wallAuthor.value = 'Mama';
   } else if (user.role === 'student') {
     if (title) title.textContent = 'Pranav (Student)';
-    if (sub) sub.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-blue-500 inline-block"></span> Study Focus Mode Active';
+    if (sub) sub.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-blue-500 inline-block"></span> Student Mode Active';
     if (shieldIcon) shieldIcon.className = 'fa-solid fa-user-graduate text-blue-600';
     if (islandRole) islandRole.textContent = 'Pranav';
     if (homeRoleTag) homeRoleTag.textContent = '🧑‍🎓 Student Mode';
@@ -211,7 +197,6 @@ function applyUserAuth(user) {
     if (cheerLimitBadge) cheerLimitBadge.textContent = 'Student Mode';
     if (wallAuthor) wallAuthor.value = 'Pranav';
   } else {
-    // Viewer / Father
     if (title) title.textContent = user.name || 'Father (Viewer)';
     if (sub) sub.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-amber-500 inline-block"></span> Read-Only • 3 Cheers Daily Limit';
     if (shieldIcon) shieldIcon.className = 'fa-solid fa-user-lock text-amber-600';
@@ -225,7 +210,6 @@ function applyUserAuth(user) {
   renderAll();
 }
 
-// Protected Actions Guard
 function handleProtectedAction(actionType, ...args) {
   if (currentUser.role !== 'admin') {
     showToast('🔒 Access Restricted: Only Mama (jothi1809@gmail.com) has permission to edit this!', false);
@@ -241,43 +225,138 @@ function handleProtectedAction(actionType, ...args) {
   }
 }
 
-// Admin Usage Limits Modal
-function openAdminLimitsModal() {
-  if (currentUser.role !== 'admin') {
-    showToast('🔒 Only Mama can manage member usage limits', false);
-    openAuthModal();
-    return;
-  }
-  openModal('adminLimitsModal');
+// ================= TAMIL VOICE ASSISTANT =================
+function openVoiceModal() {
+  const m = document.getElementById('voiceModal');
+  if (m) m.classList.remove('hidden');
 }
 
-async function saveUsageLimits() {
-  const maxCheers = document.getElementById('limitFatherCheers').value;
-  const maxViews = document.getElementById('limitFatherViews').value;
+function closeVoiceModal() {
+  stopVoiceRecording();
+  const m = document.getElementById('voiceModal');
+  if (m) m.classList.add('hidden');
+}
+
+function toggleVoiceRecording() {
+  if (isRecordingVoice) {
+    stopVoiceRecording();
+  } else {
+    startVoiceRecording();
+  }
+}
+
+function startVoiceRecording() {
+  const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const statusText = document.getElementById('voiceStatusText');
+  const btn = document.getElementById('voiceRecordBtn');
+  const liveTranscript = document.getElementById('voiceLiveTranscript');
+
+  if (!SpeechRec) {
+    if (statusText) statusText.textContent = 'உலாவியில் மைக் ஆதரவு இல்லை. கீழே உள்ள விரைவு பொத்தான்களைப் பயன்படுத்தவும்.';
+    return;
+  }
 
   try {
-    const res = await fetch('/api/admin/limits', {
+    speechRecognizer = new SpeechRec();
+    speechRecognizer.lang = 'ta-IN'; // Tamil (India)
+    speechRecognizer.continuous = false;
+    speechRecognizer.interimResults = true;
+
+    speechRecognizer.onstart = () => {
+      isRecordingVoice = true;
+      if (btn) btn.className = 'w-20 h-20 rounded-full bg-rose-500 text-white text-2xl flex items-center justify-center shadow-voice pulse-ring transition';
+      if (statusText) statusText.innerHTML = '<span class="text-rose-600 animate-pulse">● கேட்கிறது... தமிழில் பேசவும்</span>';
+      if (liveTranscript) liveTranscript.textContent = 'கேட்கிறது...';
+    };
+
+    speechRecognizer.onresult = (event) => {
+      let interim = '';
+      for (let i = event.resultIndex; i < event.results.length; ++i) {
+        if (event.results[i].isFinal) {
+          const finalTranscript = event.results[i][0].transcript;
+          if (liveTranscript) liveTranscript.textContent = `"${finalTranscript}"`;
+          handleTamilVoiceInput(finalTranscript);
+        } else {
+          interim += event.results[i][0].transcript;
+          if (liveTranscript) liveTranscript.textContent = `"${interim}"`;
+        }
+      }
+    };
+
+    speechRecognizer.onerror = (event) => {
+      console.log('Voice recognition error:', event.error);
+      stopVoiceRecording();
+    };
+
+    speechRecognizer.onend = () => {
+      stopVoiceRecording();
+    };
+
+    speechRecognizer.start();
+  } catch (e) {
+    console.error('Speech start exception:', e);
+  }
+}
+
+function stopVoiceRecording() {
+  isRecordingVoice = false;
+  if (speechRecognizer) {
+    try { speechRecognizer.stop(); } catch(e){}
+    speechRecognizer = null;
+  }
+  const btn = document.getElementById('voiceRecordBtn');
+  const statusText = document.getElementById('voiceStatusText');
+  if (btn) btn.className = 'w-20 h-20 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-500 text-white text-2xl flex items-center justify-center shadow-voice transition';
+  if (statusText) statusText.textContent = 'மைக் தொட்டு தமிழில் பேசவும்...';
+}
+
+async function simulateTamilVoice(phrase) {
+  const liveTranscript = document.getElementById('voiceLiveTranscript');
+  if (liveTranscript) liveTranscript.textContent = `"${phrase}"`;
+  await handleTamilVoiceInput(phrase);
+}
+
+async function handleTamilVoiceInput(transcript) {
+  showToast(`🎤 குரல் பதிவு பெறப்பட்டது: "${transcript}"`);
+
+  try {
+    const res = await fetch('/api/voice-request', {
       method: 'POST',
       headers: getAuthHeaders(),
-      body: JSON.stringify({ targetUser: 'father', maxDailyCheers: maxCheers, maxDailyViews: maxViews })
+      body: JSON.stringify({ transcript })
     });
 
     if (res.ok) {
-      closeModal('adminLimitsModal');
-      showToast('Usage rules updated for Father/Members!');
+      if (window.confetti) confetti();
+      speakTamilFeedback('சரி பிரணவ், உங்களது பதிவு ஏற்றுக்கொள்ளப்பட்டது!');
+      setTimeout(() => {
+        closeVoiceModal();
+        renderAll();
+      }, 1400);
       await fetchData();
     }
-  } catch (e) {
-    closeModal('adminLimitsModal');
-    showToast('Saved locally!');
+  } catch (err) {
+    showToast('குரல் பதிவு சேமிக்கப்பட்டது!');
+    closeVoiceModal();
   }
 }
 
-// Tab Navigation
+function speakTamilFeedback(text) {
+  if ('speechSynthesis' in window) {
+    try {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'ta-IN';
+      utterance.rate = 1.0;
+      window.speechSynthesis.speak(utterance);
+    } catch(e){}
+  }
+}
+
+// ================= TAB NAVIGATION =================
 function switchTab(tabId) {
   currentTab = tabId;
 
-  const views = ['home', 'syllabus', 'timer', 'family', 'formulas', 'scores'];
+  const views = ['home', 'schedule', 'syllabus', 'timer', 'family', 'formulas', 'scores'];
   views.forEach(v => {
     const el = document.getElementById(`view-${v}`);
     if (el) {
@@ -286,7 +365,7 @@ function switchTab(tabId) {
     }
   });
 
-  ['home', 'syllabus', 'timer', 'family'].forEach(b => {
+  ['home', 'schedule', 'syllabus', 'timer', 'family'].forEach(b => {
     const btn = document.getElementById(`nav-btn-${b}`);
     if (btn) {
       if (b === tabId || (tabId === 'scores' && b === 'family') || (tabId === 'formulas' && b === 'syllabus')) {
@@ -300,8 +379,9 @@ function switchTab(tabId) {
   const scroller = document.getElementById('main-scroll-content');
   if (scroller) scroller.scrollTop = 0;
 
-  if (tabId === 'scores') renderScoresChart();
+  if (tabId === 'schedule') renderScheduleView();
   if (tabId === 'syllabus') renderSyllabusView();
+  if (tabId === 'scores') renderScoresChart();
   if (tabId === 'formulas') renderFormulasView();
 }
 
@@ -310,7 +390,7 @@ function openSubjectDetail(subKey) {
   switchTab('syllabus');
 }
 
-// Fetch Data
+// ================= FETCH DATA =================
 async function fetchData() {
   try {
     const res = await fetch('/api/data', { headers: getAuthHeaders() });
@@ -326,16 +406,228 @@ async function fetchData() {
   }
 }
 
-// Render All Components
+// ================= RENDER ALL =================
 function renderAll() {
   if (!appState) return;
   localStorage.setItem('pranav_offline_data', JSON.stringify(appState));
 
   renderHeroCountdown();
+  renderDailyTargetCard();
+  renderScheduleView();
   renderSubjectGridStats();
   renderSyllabusView();
   renderFamilyWall();
   renderScoresList();
+}
+
+// Daily Target Card (Home View)
+function renderDailyTargetCard() {
+  const container = document.getElementById('home-daily-tasks-list');
+  const setByLabel = document.getElementById('target-setby-label');
+  if (!container || !appState.dailyTarget) return;
+
+  if (setByLabel) setByLabel.textContent = appState.dailyTarget.setBy || 'Mama';
+
+  container.innerHTML = '';
+  const tasks = appState.dailyTarget.focusTasks || [];
+
+  tasks.forEach(task => {
+    const row = document.createElement('div');
+    row.className = 'flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200/80 text-xs shadow-sm';
+
+    const trackBadge = task.track === 'school' 
+      ? '<span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">School</span>'
+      : task.track === 'tuition'
+      ? '<span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-purple-50 text-purple-700 border border-purple-200">Tuition</span>'
+      : '<span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">90-100% Path</span>';
+
+    row.innerHTML = `
+      <div class="flex items-center gap-2 flex-1 pr-2">
+        <button onclick="toggleDailyTask('${task.id}')" class="w-5 h-5 rounded-md flex items-center justify-center border transition ${task.completed ? 'bg-emerald-600 border-emerald-600 text-white' : 'border-slate-300 text-transparent hover:border-emerald-500'}">
+          <i class="fa-solid fa-check text-[10px]"></i>
+        </button>
+        <span class="${task.completed ? 'line-through text-slate-400' : 'font-semibold text-slate-800'}">${task.title}</span>
+      </div>
+      <div>${trackBadge}</div>
+    `;
+
+    container.appendChild(row);
+  });
+}
+
+async function toggleDailyTask(id) {
+  try {
+    const res = await fetch('/api/daily-target/toggle', {
+      method: 'POST',
+      headers: getAuthHeaders(),
+      body: JSON.stringify({ id })
+    });
+    if (res.ok) {
+      if (window.confetti) confetti({ particleCount: 30, spread: 45 });
+      await fetchData();
+    }
+  } catch(e) {
+    // Local fallback
+    if (appState.dailyTarget && appState.dailyTarget.focusTasks) {
+      const t = appState.dailyTarget.focusTasks.find(item => item.id === id);
+      if (t) t.completed = !t.completed;
+      renderDailyTargetCard();
+    }
+  }
+}
+
+function openTargetModal() {
+  if (currentUser.role !== 'admin') {
+    showToast('🔒 Only Mama can set or modify the master Target of the Day!', false);
+    openAuthModal();
+    return;
+  }
+  openModal('targetModal');
+}
+
+async function submitDailyTarget(e) {
+  e.preventDefault();
+  const title = document.getElementById('targetTaskTitle').value;
+  const track = document.getElementById('targetTaskTrack').value;
+  const subject = document.getElementById('targetTaskSubject').value;
+
+  try {
+    const res = await fetch('/api/daily-target', {
+      method: 'POST',
+      headers: getAuthHeaders(),
+      body: JSON.stringify({ title, track, subject })
+    });
+
+    if (res.ok) {
+      closeModal('targetModal');
+      document.getElementById('targetTaskTitle').value = '';
+      showToast('Daily Target updated by Mama!');
+      await fetchData();
+    }
+  } catch(e) {
+    showToast('Updated locally!');
+  }
+}
+
+// ================= MASTER SCHEDULE & CALENDAR VIEW =================
+function renderScheduleView() {
+  const container = document.getElementById('schedule-events-container');
+  if (!container || !appState.calendarEvents) return;
+
+  container.innerHTML = '';
+  const events = appState.calendarEvents || [];
+
+  const filtered = currentScheduleTrack === 'all' 
+    ? events 
+    : events.filter(e => e.track === currentScheduleTrack);
+
+  if (filtered.length === 0) {
+    container.innerHTML = '<div class="text-center py-10 text-xs text-slate-400">No scheduled events in this track.</div>';
+    return;
+  }
+
+  filtered.forEach(ev => {
+    const card = document.createElement('div');
+    card.className = `p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-card space-y-2 transition ${ev.status === 'completed' ? 'opacity-70 bg-slate-50' : ''}`;
+
+    const trackLabel = ev.track === 'school' 
+      ? '<span class="text-[9px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">🏫 School Track</span>'
+      : ev.track === 'tuition'
+      ? '<span class="text-[9px] font-bold px-2 py-0.5 rounded-full bg-purple-50 text-purple-700 border border-purple-200">🎓 Tuition Track</span>'
+      : '<span class="text-[9px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">🎯 90-100% Board Mission</span>';
+
+    const typeLabel = ev.type === 'test' 
+      ? '<span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-rose-50 text-rose-700">Exam / Test</span>'
+      : '<span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-amber-50 text-amber-700">Homework</span>';
+
+    card.innerHTML = `
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-1.5">
+          ${trackLabel}
+          ${typeLabel}
+        </div>
+        <span class="text-[10px] font-semibold text-slate-500">${ev.date} • ${ev.time}</span>
+      </div>
+
+      <div class="flex items-start justify-between gap-3 pt-1">
+        <div class="space-y-0.5">
+          <h4 class="text-xs font-bold text-slate-900 ${ev.status === 'completed' ? 'line-through text-slate-400' : ''}">${ev.title}</h4>
+          <span class="text-[10px] text-slate-400">${ev.subject}</span>
+        </div>
+        <button onclick="toggleScheduleEvent('${ev.id}')" class="px-2.5 py-1 rounded-full text-[10px] font-bold flex items-center gap-1 transition ${ev.status === 'completed' ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}">
+          <i class="fa-solid ${ev.status === 'completed' ? 'fa-circle-check text-emerald-600' : 'fa-circle text-slate-400'} text-[10px]"></i>
+          <span>${ev.status === 'completed' ? 'Done' : 'Mark Done'}</span>
+        </button>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+function filterScheduleTrack(track) {
+  currentScheduleTrack = track;
+  ['all', 'school', 'tuition', 'board_prep'].forEach(t => {
+    const btn = document.getElementById(`track-btn-${t}`);
+    if (btn) {
+      if (t === track) {
+        btn.className = 'track-pill px-3 py-1 rounded-full text-xs font-bold bg-emerald-600 text-white shadow-sm shrink-0';
+      } else {
+        btn.className = 'track-pill px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 shrink-0';
+      }
+    }
+  });
+  renderScheduleView();
+}
+
+async function toggleScheduleEvent(id) {
+  try {
+    const res = await fetch('/api/calendar/event/toggle', {
+      method: 'POST',
+      headers: getAuthHeaders(),
+      body: JSON.stringify({ id })
+    });
+    if (res.ok) {
+      if (window.confetti) confetti();
+      await fetchData();
+    }
+  } catch(e) {
+    const ev = (appState.calendarEvents || []).find(e => e.id === id);
+    if (ev) ev.status = ev.status === 'completed' ? 'pending' : 'completed';
+    renderScheduleView();
+  }
+}
+
+function openAddEventModal() {
+  const d = document.getElementById('eventDateInput');
+  if (d) d.value = new Date().toISOString().slice(0, 10);
+  openModal('addEventModal');
+}
+
+async function submitCalendarEvent(e) {
+  e.preventDefault();
+  const title = document.getElementById('eventTitleInput').value;
+  const track = document.getElementById('eventTrackSelect').value;
+  const type = document.getElementById('eventTypeSelect').value;
+  const date = document.getElementById('eventDateInput').value;
+  const time = document.getElementById('eventTimeInput').value;
+
+  try {
+    const res = await fetch('/api/calendar/event', {
+      method: 'POST',
+      headers: getAuthHeaders(),
+      body: JSON.stringify({ title, track, type, date, time })
+    });
+
+    if (res.ok) {
+      closeModal('addEventModal');
+      document.getElementById('eventTitleInput').value = '';
+      showToast('Event added to Schedule!');
+      await fetchData();
+    }
+  } catch(e) {
+    showToast('Saved locally!');
+  }
 }
 
 // Hero Countdown
@@ -347,11 +639,8 @@ function renderHeroCountdown() {
   const now = new Date();
   const diffDays = Math.ceil((targetDate - now) / (1000 * 60 * 60 * 24));
 
-  if (diffDays > 0) {
-    heroDays.textContent = `${diffDays} Days`;
-  } else {
-    heroDays.textContent = 'Today!';
-  }
+  if (diffDays > 0) heroDays.textContent = `${diffDays} Days`;
+  else heroDays.textContent = 'Today!';
 }
 
 // Subject Grid Percentages on Home
@@ -445,7 +734,6 @@ function getStatusBadge(status) {
   }
 }
 
-// Cycle Chapter Status (Super Admin Protected)
 async function cycleChapterDirect(subjectKey, chapterId) {
   const currentSub = appState.subjects[subjectKey];
   const ch = currentSub ? currentSub.chapters.find(c => c.id === chapterId) : null;
@@ -468,14 +756,10 @@ async function cycleChapterDirect(subjectKey, chapterId) {
       }
       showToast(`Updated to ${nextStatus.replace('_', ' ').toUpperCase()}`);
       await fetchData();
-    } else {
-      const err = await res.json();
-      showToast(err.error || 'Permission Denied', false);
     }
   } catch (err) {
     ch.status = nextStatus;
     renderAll();
-    showToast(`Updated to ${nextStatus.toUpperCase()}`);
   }
 }
 
@@ -504,7 +788,7 @@ async function submitQuickLog(e) {
   }
 }
 
-// Family Wall (Rate limited for Father/Viewers)
+// Family Wall
 function renderFamilyWall() {
   const container = document.getElementById('family-wall-feed');
   const homeCheer = document.getElementById('home-cheer-text');
@@ -577,7 +861,6 @@ function renderFormulasView() {
       <div class="bg-slate-50 p-2.5 rounded-xl text-[11px] text-slate-700 font-mono space-y-1">
         <div>• Formula: x = [-b ± √(b² - 4ac)] / 2a</div>
         <div>• Discriminant: D = b² - 4ac</div>
-        <div>• D > 0 (2 distinct roots) | D = 0 (equal roots)</div>
         <div>• AP nth term: an = a + (n-1)d</div>
         <div>• AP sum: Sn = n/2 [2a + (n-1)d]</div>
       </div>
@@ -591,25 +874,12 @@ function renderFormulasView() {
         <div>• Mirror: 1/f = 1/v + 1/u &emsp; (m = -v/u)</div>
         <div>• Lens: 1/f = 1/v - 1/u &emsp; (m = v/u)</div>
         <div>• Ohm's Law: V = IR</div>
-        <div>• Heating Law: H = I²Rt</div>
-      </div>
-    </div>
-
-    <div class="bg-white border border-slate-200 rounded-2xl p-4 space-y-2 shadow-card">
-      <h4 class="font-bold text-amber-700 text-xs flex items-center gap-1.5">
-        🌍 Social Science: Important Dates
-      </h4>
-      <div class="bg-slate-50 p-2.5 rounded-xl text-[11px] text-slate-700 space-y-1">
-        <div>• <strong>1919:</strong> Rowlatt Act & Jallianwala Bagh (13 April)</div>
-        <div>• <strong>1920–22:</strong> Non-Cooperation Movement</div>
-        <div>• <strong>1930:</strong> Dandi March & Civil Disobedience</div>
-        <div>• <strong>1931:</strong> Gandhi-Irwin Pact</div>
       </div>
     </div>
   `;
 }
 
-// Scorecard & Chart (Super Admin Protected)
+// Scorecard & Chart
 function renderScoresList() {
   const container = document.getElementById('scores-table-container');
   if (!container || !appState.tests) return;
@@ -662,38 +932,6 @@ function renderScoresChart() {
       }
     }
   });
-}
-
-async function submitTestScore(e) {
-  e.preventDefault();
-  if (currentUser.role !== 'admin') {
-    showToast('🔒 Only Mama can record exam marks!', false);
-    return;
-  }
-
-  const title = document.getElementById('modalTestTitle').value;
-  const subject = document.getElementById('modalTestSubject').value;
-  const marksObtained = document.getElementById('modalMarksObtained').value;
-  const totalMarks = document.getElementById('modalTotalMarks').value;
-
-  try {
-    const res = await fetch('/api/test', {
-      method: 'POST',
-      headers: getAuthHeaders(),
-      body: JSON.stringify({ title, subject, marksObtained, totalMarks, date: new Date().toISOString().slice(0, 10) })
-    });
-
-    if (res.ok) {
-      closeModal('addTestModal');
-      showToast('Exam score recorded!');
-      await fetchData();
-    } else {
-      const err = await res.json();
-      showToast(err.error || 'Failed to save marks', false);
-    }
-  } catch (err) {
-    showToast('Saved locally!');
-  }
 }
 
 // Pomodoro Timer Logic

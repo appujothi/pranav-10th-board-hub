@@ -73,7 +73,56 @@ module.exports = (req, res) => {
 
   // Get Data
   if (url.includes('/api/data')) {
-    return res.status(200).json(data);
+    // Calendar Event
+  if (url.includes('/api/calendar/event/toggle') && req.method === 'POST') {
+    const ev = (data.calendarEvents || []).find(e => e.id === (req.body && req.body.id));
+    if (ev) ev.status = ev.status === 'completed' ? 'pending' : 'completed';
+    return res.status(200).json({ success: true, event: ev });
+  }
+
+  if (url.includes('/api/calendar/event') && req.method === 'POST') {
+    const newEvent = { id: 'cal-' + Date.now(), ...(req.body || {}), status: 'pending' };
+    if (!data.calendarEvents) data.calendarEvents = [];
+    data.calendarEvents.push(newEvent);
+    return res.status(200).json({ success: true, event: newEvent });
+  }
+
+  // Daily Target (Super Admin Protected)
+  if (url.includes('/api/daily-target/toggle') && req.method === 'POST') {
+    if (data.dailyTarget && data.dailyTarget.focusTasks) {
+      const t = data.dailyTarget.focusTasks.find(item => item.id === (req.body && req.body.id));
+      if (t) t.completed = !t.completed;
+    }
+    return res.status(200).json({ success: true });
+  }
+
+  if (url.includes('/api/daily-target') && req.method === 'POST') {
+    if (!isSuperAdmin(req, data)) {
+      return res.status(403).json({ error: 'Permission Denied: Only Mama can set the daily target' });
+    }
+    const newTask = { id: 'dt-' + Date.now(), ...(req.body || {}), completed: false };
+    if (!data.dailyTarget) data.dailyTarget = { focusTasks: [] };
+    if (!data.dailyTarget.focusTasks) data.dailyTarget.focusTasks = [];
+    data.dailyTarget.focusTasks.push(newTask);
+    return res.status(200).json({ success: true, target: data.dailyTarget });
+  }
+
+  // Tamil Voice Request
+  if (url.includes('/api/voice-request') && req.method === 'POST') {
+    const transcript = (req.body && req.body.transcript || '').trim();
+    const voiceEntry = {
+      id: 'vr-' + Date.now(),
+      timestamp: new Date().toISOString(),
+      transcriptTamil: transcript,
+      action: 'Processed Tamil voice request',
+      status: 'applied'
+    };
+    if (!data.voiceRequests) data.voiceRequests = [];
+    data.voiceRequests.unshift(voiceEntry);
+    return res.status(200).json({ success: true, voiceEntry });
+  }
+
+  return res.status(200).json(data);
   }
 
   // Edit Syllabus (Admin Only)
@@ -122,6 +171,55 @@ module.exports = (req, res) => {
     if (!data.tests) data.tests = [];
     data.tests.unshift(newTest);
     return res.status(200).json({ success: true, test: newTest });
+  }
+
+  // Calendar Event
+  if (url.includes('/api/calendar/event/toggle') && req.method === 'POST') {
+    const ev = (data.calendarEvents || []).find(e => e.id === (req.body && req.body.id));
+    if (ev) ev.status = ev.status === 'completed' ? 'pending' : 'completed';
+    return res.status(200).json({ success: true, event: ev });
+  }
+
+  if (url.includes('/api/calendar/event') && req.method === 'POST') {
+    const newEvent = { id: 'cal-' + Date.now(), ...(req.body || {}), status: 'pending' };
+    if (!data.calendarEvents) data.calendarEvents = [];
+    data.calendarEvents.push(newEvent);
+    return res.status(200).json({ success: true, event: newEvent });
+  }
+
+  // Daily Target (Super Admin Protected)
+  if (url.includes('/api/daily-target/toggle') && req.method === 'POST') {
+    if (data.dailyTarget && data.dailyTarget.focusTasks) {
+      const t = data.dailyTarget.focusTasks.find(item => item.id === (req.body && req.body.id));
+      if (t) t.completed = !t.completed;
+    }
+    return res.status(200).json({ success: true });
+  }
+
+  if (url.includes('/api/daily-target') && req.method === 'POST') {
+    if (!isSuperAdmin(req, data)) {
+      return res.status(403).json({ error: 'Permission Denied: Only Mama can set the daily target' });
+    }
+    const newTask = { id: 'dt-' + Date.now(), ...(req.body || {}), completed: false };
+    if (!data.dailyTarget) data.dailyTarget = { focusTasks: [] };
+    if (!data.dailyTarget.focusTasks) data.dailyTarget.focusTasks = [];
+    data.dailyTarget.focusTasks.push(newTask);
+    return res.status(200).json({ success: true, target: data.dailyTarget });
+  }
+
+  // Tamil Voice Request
+  if (url.includes('/api/voice-request') && req.method === 'POST') {
+    const transcript = (req.body && req.body.transcript || '').trim();
+    const voiceEntry = {
+      id: 'vr-' + Date.now(),
+      timestamp: new Date().toISOString(),
+      transcriptTamil: transcript,
+      action: 'Processed Tamil voice request',
+      status: 'applied'
+    };
+    if (!data.voiceRequests) data.voiceRequests = [];
+    data.voiceRequests.unshift(voiceEntry);
+    return res.status(200).json({ success: true, voiceEntry });
   }
 
   return res.status(200).json(data);

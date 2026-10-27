@@ -291,6 +291,155 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // API 9: Add Calendar Event (School / Tuition / Board Prep)
+  if (pathname === '/api/calendar/event' && req.method === 'POST') {
+    parseBody(req, (err, body) => {
+      if (err || !body.title || !body.track) {
+        return sendJSON(res, 400, { error: 'Title and track (school/tuition/board_prep) required' });
+      }
+      const data = readData();
+      const newEvent = {
+        id: 'cal-' + Date.now(),
+        date: body.date || new Date().toISOString().slice(0, 10),
+        time: body.time || '10:00 AM',
+        title: body.title,
+        track: body.track, // 'school', 'tuition', 'board_prep'
+        type: body.type || 'homework', // 'test', 'homework', 'revision'
+        subject: body.subject || 'General',
+        status: 'pending',
+        priority: body.priority || 'high'
+      };
+      if (!data.calendarEvents) data.calendarEvents = [];
+      data.calendarEvents.push(newEvent);
+      saveData(data);
+      return sendJSON(res, 200, { success: true, event: newEvent });
+    });
+    return;
+  }
+
+  // API 10: Toggle Calendar Event Status
+  if (pathname === '/api/calendar/event/toggle' && req.method === 'POST') {
+    parseBody(req, (err, body) => {
+      const data = readData();
+      const ev = (data.calendarEvents || []).find(e => e.id === body.id);
+      if (ev) {
+        ev.status = ev.status === 'completed' ? 'pending' : 'completed';
+        saveData(data);
+        return sendJSON(res, 200, { success: true, event: ev });
+      }
+      return sendJSON(res, 404, { error: 'Event not found' });
+    });
+    return;
+  }
+
+  // API 11: Set / Modify Daily Target (PROTECTED: Mama / Super Admin Only)
+  if (pathname === '/api/daily-target' && req.method === 'POST') {
+    const data = readData();
+    if (!isSuperAdmin(req, data)) {
+      return sendJSON(res, 403, {
+        error: 'Permission Denied: Only Mama (jothi1809@gmail.com) can modify the master Daily Target!'
+      });
+    }
+
+    parseBody(req, (err, body) => {
+      if (!body.title) return sendJSON(res, 400, { error: 'Title required' });
+      const newTask = {
+        id: 'dt-' + Date.now(),
+        title: body.title,
+        track: body.track || 'board_prep',
+        subject: body.subject || 'Core',
+        completed: false,
+        priority: body.priority || 'high'
+      };
+      if (!data.dailyTarget) data.dailyTarget = { date: new Date().toISOString().slice(0, 10), focusTasks: [] };
+      if (!data.dailyTarget.focusTasks) data.dailyTarget.focusTasks = [];
+      data.dailyTarget.focusTasks.push(newTask);
+      saveData(data);
+      return sendJSON(res, 200, { success: true, target: data.dailyTarget });
+    });
+    return;
+  }
+
+  // API 12: Toggle Daily Target Task
+  if (pathname === '/api/daily-target/toggle' && req.method === 'POST') {
+    parseBody(req, (err, body) => {
+      const data = readData();
+      if (data.dailyTarget && data.dailyTarget.focusTasks) {
+        const t = data.dailyTarget.focusTasks.find(item => item.id === body.id);
+        if (t) {
+          t.completed = !t.completed;
+          saveData(data);
+          return sendJSON(res, 200, { success: true, task: t });
+        }
+      }
+      return sendJSON(res, 404, { error: 'Task not found' });
+    });
+    return;
+  }
+
+  // API 13: Handle Tamil Voice Request
+  if (pathname === '/api/voice-request' && req.method === 'POST') {
+    parseBody(req, (err, body) => {
+      const transcript = (body.transcript || '').trim();
+      if (!transcript) return sendJSON(res, 400, { error: 'Transcript required' });
+      const data = readData();
+
+      // Intelligent Tamil Intent Analysis
+      let actionTaken = 'Recorded voice request';
+      const lower = transcript.toLowerCase();
+
+      // Check if it's homework completion
+      if (lower.includes('முடிஞ்சது') || lower.includes('முடிச்சிட்டேன்') || lower.includes('முடித்துவிட்டேன்') || lower.includes('done') || lower.includes('completed')) {
+        actionTaken = 'Marked relevant study task as completed';
+        if (data.dailyTarget && data.dailyTarget.focusTasks) {
+          const pending = data.dailyTarget.focusTasks.find(t => !t.completed);
+          if (pending) pending.completed = true;
+        }
+      } 
+      // Check if it's a study doubt
+      else if (lower.includes('டவுட்') || lower.includes('சந்தேகம்') || lower.includes('கேள்வி') || lower.includes('doubt')) {
+        actionTaken = 'Logged study doubt for Mama & Teachers';
+        if (!data.familyNotes) data.familyNotes = [];
+        data.familyNotes.unshift({
+          id: 'fn-doubt-' + Date.now(),
+          author: 'Pranav (Voice)',
+          badge: 'Study Doubt',
+          text: `❓ தமிழ் குரல் வழி கேள்வி: "${transcript}"`,
+          timestamp: new Date().toISOString(),
+          likes: 0
+        });
+      } 
+      // Otherwise add as task
+      else {
+        actionTaken = 'Added to daily checklist';
+        if (!data.dailyTarget) data.dailyTarget = { date: new Date().toISOString().slice(0, 10), focusTasks: [] };
+        if (!data.dailyTarget.focusTasks) data.dailyTarget.focusTasks = [];
+        data.dailyTarget.focusTasks.push({
+          id: 'dt-voice-' + Date.now(),
+          title: `🎤 [குரல் வழி]: ${transcript}`,
+          track: 'school',
+          subject: 'Voice Request',
+          completed: false,
+          priority: 'high'
+        });
+      }
+
+      const voiceEntry = {
+        id: 'vr-' + Date.now(),
+        timestamp: new Date().toISOString(),
+        transcriptTamil: transcript,
+        action: actionTaken,
+        status: 'applied'
+      };
+      if (!data.voiceRequests) data.voiceRequests = [];
+      data.voiceRequests.unshift(voiceEntry);
+      saveData(data);
+
+      return sendJSON(res, 200, { success: true, action: actionTaken, voiceEntry });
+    });
+    return;
+  }
+
   // Static file serving
   let reqPath = pathname === '/' ? '/index.html' : pathname;
   let safePath = path.normalize(path.join(PUBLIC_DIR, reqPath));
