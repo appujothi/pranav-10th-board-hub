@@ -47,14 +47,16 @@ function showToast(message, isSuccess = true) {
 
 // Toggle Desktop Frame Mode
 function toggleDesktopMode() {
-  isDesktopFramed = !isDesktopFramed;
+  const isMobile = document.body.classList.toggle('mobile-frame-mode');
   const btn = document.getElementById('viewModeBtn');
-  if (isDesktopFramed) {
-    document.body.classList.add('desktop-framed');
-    if (btn) btn.innerHTML = '📱 Mobile Frame';
+  if (isMobile) {
+    if (btn) btn.innerHTML = '<i class="fa-solid fa-desktop text-[10px]"></i> 🖥️ Desktop View';
+    localStorage.setItem('pranav_view_mode', 'mobile');
+    showToast('Switched to Mobile Preview Frame');
   } else {
-    document.body.classList.remove('desktop-framed');
-    if (btn) btn.innerHTML = '🖥️ Full Width';
+    if (btn) btn.innerHTML = '<i class="fa-solid fa-mobile-screen text-[10px]"></i> 📱 Mobile View';
+    localStorage.setItem('pranav_view_mode', 'desktop');
+    showToast('Switched to Full Widescreen Desktop Portal!');
   }
 }
 
@@ -205,6 +207,11 @@ function applyUserAuth(user) {
     if (syllabusHint) syllabusHint.textContent = '🔒 Read Only (Changes Restricted)';
     if (cheerLimitBadge) cheerLimitBadge.textContent = '3/3 Cheers Left';
     if (wallAuthor) wallAuthor.value = 'Dad';
+  }
+
+  const deskUserName = document.getElementById('desk-user-name');
+  if (deskUserName) {
+    deskUserName.textContent = user.role === 'admin' ? 'Mama (PIN: 9677)' : (user.name || 'User');
   }
 
   renderAll();
@@ -366,12 +373,21 @@ function switchTab(tabId) {
   });
 
   ['home', 'schedule', 'syllabus', 'timer', 'family'].forEach(b => {
+    const isAct = b === tabId || (tabId === 'scores' && b === 'family') || (tabId === 'formulas' && b === 'syllabus') || (tabId === 'written' && b === 'syllabus') || (tabId === 'testpapers' && b === 'schedule');
     const btn = document.getElementById(`nav-btn-${b}`);
     if (btn) {
-      if (b === tabId || (tabId === 'scores' && b === 'family') || (tabId === 'formulas' && b === 'syllabus') || (tabId === 'written' && b === 'syllabus') || (tabId === 'testpapers' && b === 'schedule')) {
+      if (isAct) {
         btn.className = 'nav-item flex flex-col items-center relative text-emerald-600 font-bold active-nav-dot';
       } else {
         btn.className = 'nav-item flex flex-col items-center relative text-slate-400 hover:text-slate-700 transition';
+      }
+    }
+    const dBtn = document.getElementById(`desk-nav-${b}`);
+    if (dBtn) {
+      if (isAct) {
+        dBtn.className = 'desk-nav-btn px-4 py-2 rounded-xl text-white bg-emerald-600 transition flex items-center gap-1.5 shadow-sm font-bold';
+      } else {
+        dBtn.className = 'desk-nav-btn px-4 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-700/50 transition flex items-center gap-1.5 font-bold';
       }
     }
   });
@@ -1698,6 +1714,17 @@ function openModal(id) {
 
 // Initialize on Load
 window.addEventListener('DOMContentLoaded', () => {
+  // Initialize View Mode (Default to Full Widescreen Desktop on PC)
+  const savedMode = localStorage.getItem('pranav_view_mode');
+  const btn = document.getElementById('viewModeBtn');
+  if (savedMode === 'mobile') {
+    document.body.classList.add('mobile-frame-mode');
+    if (btn) btn.innerHTML = '<i class="fa-solid fa-desktop text-[10px]"></i> 🖥️ Desktop View';
+  } else {
+    document.body.classList.remove('mobile-frame-mode');
+    if (btn) btn.innerHTML = '<i class="fa-solid fa-mobile-screen text-[10px]"></i> 📱 Mobile View';
+  }
+
   applyUserAuth(currentUser);
   fetchData();
   updateTimerDisplay();

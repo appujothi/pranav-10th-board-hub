@@ -54,28 +54,67 @@
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
-    .phone-container {
-      max-width: 440px;
-      margin: 0 auto;
+    /* Mobile-first Shell */
+    .app-shell {
+      width: 100%;
       min-height: 100vh;
       background: #ffffff;
       position: relative;
-      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.2);
     }
-    @media (min-width: 768px) {
-      body.desktop-framed {
-        background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
-        padding: 24px 0;
+
+    /* WIDESCREEN DESKTOP VIEW (Default on PC & Tablet) */
+    @media (min-width: 1024px) {
+      body:not(.mobile-frame-mode) {
+        background: #f1f5f9;
+        padding: 16px 0;
       }
-      body.desktop-framed .phone-container {
-        border-radius: 48px;
+      body:not(.mobile-frame-mode) .app-shell {
+        max-width: 1380px;
+        margin: 0 auto;
+        border-radius: 32px;
+        box-shadow: 0 20px 60px -15px rgba(15, 23, 42, 0.12);
+        border: 1px solid #e2e8f0;
         overflow: hidden;
-        border: 10px solid #0f172a;
-        box-shadow: 0 30px 80px rgba(15, 23, 42, 0.35);
-        height: 920px;
-        max-height: 94vh;
-        overflow-y: auto;
+        min-height: calc(100vh - 32px);
       }
+      body:not(.mobile-frame-mode) .mobile-notch-bar {
+        display: none !important;
+      }
+      body:not(.mobile-frame-mode) .desktop-nav-header {
+        display: flex !important;
+      }
+      body:not(.mobile-frame-mode) .mobile-bottom-nav {
+        display: none !important;
+      }
+      body:not(.mobile-frame-mode) #main-scroll-content {
+        padding-bottom: 32px !important;
+      }
+    }
+
+    /* MOBILE FRAME PREVIEW MODE (Simulating Phone on PC) */
+    body.mobile-frame-mode {
+      background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+      padding: 24px 0;
+    }
+    body.mobile-frame-mode .app-shell {
+      max-width: 440px;
+      margin: 0 auto;
+      border-radius: 52px;
+      overflow: hidden;
+      border: 10px solid #0f172a;
+      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.35);
+      height: 920px;
+      max-height: 94vh;
+      overflow-y: auto;
+    }
+    body.mobile-frame-mode .mobile-notch-bar {
+      display: flex !important;
+    }
+    body.mobile-frame-mode .desktop-nav-header {
+      display: none !important;
+    }
+    body.mobile-frame-mode .mobile-bottom-nav {
+      display: block !important;
     }
     .active-nav-dot::after {
       content: '';
@@ -98,24 +137,72 @@
     }
   </style>
 </head>
-<body class="bg-white text-slate-800 antialiased desktop-framed">
+<body class="bg-slate-50 text-slate-800 antialiased">
 
   <!-- Desktop Toggle Pill -->
-  <div class="hidden md:flex fixed top-4 right-4 z-50 bg-slate-900/90 text-white backdrop-blur-md px-3 py-1.5 rounded-full text-xs items-center gap-2 shadow-lg">
+  <div class="hidden md:flex fixed top-4 right-4 z-50 bg-slate-900/90 text-white backdrop-blur-md px-3 py-1.5 rounded-full text-xs items-center gap-2 shadow-xl border border-slate-700/80">
     <span class="text-slate-400">View:</span>
-    <button onclick="toggleDesktopMode()" id="viewModeBtn" class="bg-emerald-500 text-slate-950 font-bold px-2.5 py-1 rounded-full text-[11px] transition">
-      📱 Mobile Frame
+    <button onclick="toggleDesktopMode()" id="viewModeBtn" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold px-3 py-1 rounded-full text-[11px] transition flex items-center gap-1 shadow-sm">
+      <i class="fa-solid fa-mobile-screen text-[10px]"></i> 📱 Mobile View
     </button>
     <a href="http://172.20.10.6:5050" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1 pl-1">
       <i class="fa-solid fa-wifi text-[10px]"></i> Wi-Fi Live
     </a>
   </div>
 
-  <!-- MAIN PHONE SHELL -->
-  <div class="phone-container no-scrollbar flex flex-col justify-between">
+  <!-- MAIN APP SHELL (Expands to 1380px on desktop) -->
+  <div class="app-shell no-scrollbar flex flex-col justify-between">
     
-    <!-- TOP NOTCH & STATUS BAR (Ref Image 1) -->
-    <div class="sticky top-0 z-40 bg-white/95 backdrop-blur-md pt-3 pb-2 px-5 border-b border-slate-100/60">
+    <!-- WIDESCREEN DESKTOP TOP NAV HEADER (Visible on Desktop >= 1024px) -->
+    <div class="desktop-nav-header hidden items-center justify-between px-6 py-4 bg-slate-900 text-white border-b border-slate-800 shadow-md">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center font-extrabold text-white text-lg shadow-lg">
+          P
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-sm font-extrabold tracking-wide text-white">Pranav's 10th Board Exam Hub</h1>
+            <span class="px-2 py-0.5 rounded-full text-[9px] font-extrabold bg-amber-500/20 text-amber-300 border border-amber-500/30">SRM Public School</span>
+          </div>
+          <p class="text-[11px] text-slate-400 font-medium">Mission 90–100% • Revision-1 (13 Nov – 23 Nov 2026)</p>
+        </div>
+      </div>
+
+      <!-- Desktop Tabs -->
+      <div class="flex items-center gap-1.5 bg-slate-800/90 p-1.5 rounded-2xl border border-slate-700/60 text-xs font-bold shadow-inner">
+        <button onclick="switchTab('home')" id="desk-nav-home" class="desk-nav-btn px-4 py-2 rounded-xl text-white bg-emerald-600 transition flex items-center gap-1.5 shadow-sm font-bold">
+          <i class="fa-solid fa-house text-xs"></i> Home
+        </button>
+        <button onclick="switchTab('schedule')" id="desk-nav-schedule" class="desk-nav-btn px-4 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-700/50 transition flex items-center gap-1.5 font-bold">
+          <i class="fa-solid fa-calendar-days text-xs"></i> Schedule
+        </button>
+        <button onclick="switchTab('syllabus')" id="desk-nav-syllabus" class="desk-nav-btn px-4 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-700/50 transition flex items-center gap-1.5 font-bold">
+          <i class="fa-regular fa-calendar-check text-xs"></i> Syllabus
+        </button>
+        <button onclick="switchTab('timer')" id="desk-nav-timer" class="desk-nav-btn px-4 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-700/50 transition flex items-center gap-1.5 font-bold">
+          <i class="fa-solid fa-stopwatch text-xs"></i> Focus Timer
+        </button>
+        <button onclick="switchTab('family')" id="desk-nav-family" class="desk-nav-btn px-4 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-700/50 transition flex items-center gap-1.5 font-bold">
+          <i class="fa-regular fa-user text-xs"></i> Family Cheer
+        </button>
+      </div>
+
+      <!-- Desktop Right Controls -->
+      <div class="flex items-center gap-2.5">
+        <button onclick="openVoiceModal()" class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold px-3.5 py-2 rounded-xl text-xs flex items-center gap-1.5 transition shadow-btn">
+          <i class="fa-solid fa-microphone text-xs"></i> தமிழ் குரல்
+        </button>
+        <button onclick="openAuthModal()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs flex items-center gap-1.5 transition shadow-sm">
+          <i class="fa-solid fa-key text-amber-400 text-xs"></i> <span id="desk-user-name">Mama (PIN: 9677)</span>
+        </button>
+        <button onclick="toggleDesktopMode()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 font-semibold px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 transition" title="Preview Mobile Frame">
+          <i class="fa-solid fa-mobile-screen text-xs text-emerald-400"></i> Mobile Frame
+        </button>
+      </div>
+    </div>
+    
+    <!-- TOP NOTCH & STATUS BAR (Ref Image 1 - Mobile Only) -->
+    <div class="mobile-notch-bar sticky top-0 z-40 bg-white/95 backdrop-blur-md pt-3 pb-2 px-5 border-b border-slate-100/60">
       <div class="flex items-center justify-between text-xs font-bold text-slate-900 tracking-tight mb-2">
         <span>9:41</span>
         <div class="w-28 h-4 bg-slate-950 rounded-full flex items-center justify-between px-2 text-[9px] text-white">
@@ -714,8 +801,8 @@
       </button>
     </div>
 
-    <!-- BOTTOM FLOATING NAVIGATION BAR (5 Tabs) -->
-    <div class="sticky bottom-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-100 px-4 py-2 shadow-nav">
+    <!-- BOTTOM FLOATING NAVIGATION BAR (5 Tabs - Mobile Only) -->
+    <div class="mobile-bottom-nav sticky bottom-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-100 px-4 py-2 shadow-nav">
       <div class="flex items-center justify-between text-slate-400">
         
         <button onclick="switchTab('home')" id="nav-btn-home" class="nav-item flex flex-col items-center relative text-emerald-600 font-bold active-nav-dot">
