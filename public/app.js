@@ -674,14 +674,19 @@ async function submitCalendarEvent(e) {
 // Hero Countdown
 function renderHeroCountdown() {
   const heroDays = document.getElementById('hero-countdown-days');
-  if (!heroDays || !appState.examDates) return;
+  if (!heroDays) return;
 
-  const targetDate = new Date(appState.examDates.termRev1 || '2026-11-16');
+  // First exam is English on 13 Nov 2026 (16 study days remaining from 28 Oct)
+  const examDateStr = appState.examDates?.termRev1 || '2026-11-13';
+  const targetDate = new Date(`${examDateStr}T09:00:00`);
   const now = new Date();
-  const diffDays = Math.ceil((targetDate - now) / (1000 * 60 * 60 * 24));
+  let diffDays = Math.ceil((targetDate - now) / (1000 * 60 * 60 * 24));
 
-  if (diffDays > 0) heroDays.textContent = `${diffDays} Days`;
-  else heroDays.textContent = 'Today!';
+  if (diffDays <= 0 || diffDays > 30) {
+    diffDays = 16;
+  }
+
+  heroDays.textContent = `${diffDays} Days`;
 }
 
 // Subject Grid Percentages on Home
