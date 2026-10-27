@@ -10,17 +10,17 @@
         "email": "parents@family.hub",
         "badge": "Viewer"
       },
-      "9677": {
-        "role": "admin",
-        "name": "Mama (Super Admin)",
-        "email": "jothi1809@gmail.com",
-        "badge": "Owner"
-      },
       "2027": {
         "role": "student",
         "name": "Pranav",
         "email": "pranav@student.hub",
         "badge": "Student"
+      },
+      "9677": {
+        "role": "admin",
+        "name": "Mama (Super Admin)",
+        "email": "jothi1809@gmail.com",
+        "badge": "Owner"
       }
     },
     "rolePermissions": {
@@ -1045,5 +1045,240 @@
         }
       ]
     }
-  }
+  },
+  "mamaRatings": {
+    "m1": 80,
+    "m2": 75,
+    "m3": 55,
+    "m4": 65,
+    "m6": 40,
+    "s1": 85,
+    "s2": 70,
+    "s5": 75,
+    "s9": 50,
+    "s11": 60,
+    "sst1": 70,
+    "sst2": 80,
+    "sst13": 90,
+    "tam1": 85,
+    "ai6": 90
+  },
+  "topicExplanations": [
+    {
+      "id": "exp-m1",
+      "subject": "Mathematics",
+      "chapterId": "m1",
+      "chapterName": "Real Numbers",
+      "topic": "Fundamental Theorem of Arithmetic & Irrational Numbers",
+      "tanglishExplanation": "Real numbers-ல ரெண்டே முக்கியமான concept தான் இருக்கு. முதல் விஷயம்: Fundamental Theorem of Arithmetic. எந்த ஒரு composite number-ஐயும் prime numbers-ஓட product-ஆ unique-ஆ எழுத முடியும். Example: 12-ஐ 2² × 3 என்று பிரிக்கலாம்.\n\nரெண்டாவது முக்கியமான 3-mark question: Prove √5 is irrational. இதை நிரூபிக்க 'Proof by Contradiction' method பயன்படுத்தணும். முதல்ல √5 = a/b (a, b co-prime) என்று assume பண்ணிட்டு, இரண்டு பக்கமும் square பண்ணா 5b² = a² வரும். அப்படின்னா 5 divides a. அடுத்து a = 5c என்று substitute பண்ணா, 5 divides b-யும் வரும். Co-prime-ஆ இருக்கிற ரெண்டு நம்பருக்கும் பொதுவான factor 5 வர முடியாது. So, our assumption is WRONG. Hence √5 is irrational!",
+      "englishExamTerms": [
+        "Fundamental Theorem of Arithmetic",
+        "Composite numbers expressed as product of primes",
+        "Proof by contradiction",
+        "Co-prime integers (HCF = 1)",
+        "Squaring both sides",
+        "Contradiction arises because of incorrect assumption"
+      ],
+      "sampleQuestion": "Prove that 3 + 2√5 is an irrational number, given that √5 is irrational. (CBSE 3 Marks)"
+    },
+    {
+      "id": "exp-m4",
+      "subject": "Mathematics",
+      "chapterId": "m4",
+      "chapterName": "Quadratic Equations",
+      "topic": "Quadratic Formula & Nature of Roots",
+      "tanglishExplanation": "Quadratic equation standard form: ax² + bx + c = 0. Factorisation பண்ண கஷ்டமா இருந்தா, யோசிக்காம Quadratic Formula-வை போடுங்க:\nx = [-b ± √(b² - 4ac)] / (2a).\n\nஇதுல b² - 4ac-க்கு பேரு தான் 'Discriminant' (D). இந்த D-யை வச்சு Roots-ஓட தன்மையை (Nature of Roots) 1-mark மற்றும் 3-mark-ல கேட்பாங்க:\nCase 1: D > 0 (Positive) வந்தால், two distinct real roots (ரெண்டு வெவ்வேறு உண்மையான விடைகள் கிடைக்கும்).\nCase 2: D = 0 வந்தால், two equal real roots (ரெண்டு சமமான விடைகள் கிடைக்கும்: x = -b / 2a).\nCase 3: D < 0 (Negative) வந்தால், no real roots (மெய்மூலம் கிடையாது).",
+      "englishExamTerms": [
+        "Standard form: ax² + bx + c = 0 (a ≠ 0)",
+        "Discriminant D = b² - 4ac",
+        "Two distinct real roots (D > 0)",
+        "Two equal real roots (D = 0)",
+        "No real roots (D < 0)",
+        "Quadratic Formula: x = (-b ± √D) / 2a"
+      ],
+      "sampleQuestion": "Find the value of k for which the quadratic equation 2x² + kx + 3 = 0 has two equal roots. (CBSE 2 Marks)"
+    },
+    {
+      "id": "exp-m6",
+      "subject": "Mathematics",
+      "chapterId": "m6",
+      "chapterName": "Triangles",
+      "topic": "Basic Proportionality Theorem (BPT / Thales Theorem)",
+      "tanglishExplanation": "Class 10-ல 5-mark கேரண்டி தியரம் எதுனா BPT தான்! இதோட statement என்னன்னா: ஒரு triangle-ல ஒரு side-க்கு parallel-ஆ ஒரு line வரைஞ்சா, அந்த line மற்ற ரெண்டு sides-ஐயும் same ratio-ல divide பண்ணும்.\n\nநிரூபிக்கும் முறை:\n△ABC-ல DE ∥ BC. நாம நிரூபிக்க வேண்டியது AD / DB = AE / EC.\nBE மற்றும் CD-யை join பண்ணுங்க. Altitude EN மற்றும் DM வரைங்க.\nArea of triangle formula = 1/2 × base × height.\nArea(△ADE) / Area(△BDE) = AD / DB (ஏன்னா height EN பொதுவானது).\nஅதேபோல Area(△ADE) / Area(△CDE) = AE / EC.\nஒரே base DE-ல இருக்கிற இரண்டு முக்கோணங்களின் Area சமம்! அதனால் AD / DB = AE / EC. ஹென்ஸ் ப்ரூவ்ட்!",
+      "englishExamTerms": [
+        "Basic Proportionality Theorem (Thales Theorem)",
+        "Line drawn parallel to one side divides other two sides in same ratio",
+        "Given, To Prove, Construction, Proof",
+        "Area of triangle = 1/2 × base × height",
+        "Triangles on the same base and between same parallels have equal area"
+      ],
+      "sampleQuestion": "State and prove Basic Proportionality Theorem. (CBSE 5 Marks Sure-Shot)"
+    },
+    {
+      "id": "exp-s1",
+      "subject": "Science",
+      "chapterId": "s1",
+      "chapterName": "Chemical Reactions and Equations",
+      "topic": "Balancing Equations & 4 Types of Reactions",
+      "tanglishExplanation": "Chemical equation-ஐ ஏன் balance பண்ணனும்? Law of Conservation of Mass-படி mass create-ம் ஆகாது destroy-ம் ஆகாது. So, Reactants side-ல இருக்கிற ஒவ்வொரு element-ன் atoms count-ம், Products side-ல இருக்கிற atoms count-ம் strictly equal-ஆ இருக்கணும்!\n\n4 முக்கிய Reaction Types:\n1. Combination: ரெண்டு அல்லது மூணு சேர்ந்து ஒரே ஒரு product உருவாகும் (A + B → AB). சுட்ட சுண்ணாம்பு CaO + H₂O → Ca(OH)₂ + Heat (Exothermic reaction).\n2. Decomposition: ஒரு compound வெப்பம் பட்டு ரெண்டா உடையும். FeSO₄ (Green) சூடுபடுத்தினா Fe₂O₃ (Reddish brown) + SO₂ + SO₃ ஆகும்.\n3. Displacement: More reactive element வந்து less reactive element-ஐ விரட்டும். Iron nail-ஐ Copper sulphate solution (Blue)-ல போட்டா, FeSO₄ (Green) உருவாகி copper படிந்திடும்!\n4. Double Displacement: Ions exchange ஆகும். BaCl₂ + Na₂SO₄ → BaSO₄ (White precipitate) + 2NaCl.",
+      "englishExamTerms": [
+        "Law of Conservation of Mass",
+        "Balanced Chemical Equation",
+        "Combination reaction & Exothermic reaction",
+        "Thermal decomposition",
+        "Displacement reaction & Reactivity series",
+        "Double displacement & Precipitation reaction (Insoluble solid)"
+      ],
+      "sampleQuestion": "Why is respiration considered an exothermic reaction? Write the balanced chemical equation. (CBSE 3 Marks)"
+    },
+    {
+      "id": "exp-s11",
+      "subject": "Science",
+      "chapterId": "s11",
+      "chapterName": "Electricity",
+      "topic": "Ohm's Law, Resistance in Series and Parallel",
+      "tanglishExplanation": "Electricity-ஐ ரொம்ப சுலபமா புரிஞ்சுக்கலாம்: Wire-ல் flow ஆகுற electron-களுக்கு பேரு தான் Electric Current (I), Unit = Ampere. தண்ணி வேகமா பாயுற அழுத்தம் தான் Potential Difference அல்லது Voltage (V), Unit = Volt. கரண்ட் போறதை தடுக்கிற தடை தான் Resistance (R), Unit = Ohm (Ω).\n\nOhm's Law: Temperature மாறாம இருக்கும்போது, Potential Difference (V) is directly proportional to Current (I). Formula: V = I × R.\n\nResistors Connection:\n1. Series (ஒன்றன்பின் ஒன்றாக): Current (I) ஒரே அளவா இருக்கும். Total Resistance: Rs = R₁ + R₂ + R₃.\n2. Parallel (பக்கவாட்டில்): Voltage (V) ஒரே அளவா இருக்கும். 1/Rp = 1/R₁ + 1/R₂ + 1/R₃. நம்ம வீட்டு domestic circuit-ல parallel தான் பயன்படுத்துவோம்!",
+      "englishExamTerms": [
+        "Electric Current (I = Q/t, Unit: Ampere)",
+        "Potential Difference (V = W/Q, Unit: Volt)",
+        "Ohm's Law (V = IR)",
+        "Resistors in Series: Rs = R1 + R2 + R3",
+        "Resistors in Parallel: 1/Rp = 1/R1 + 1/R2 + 1/R3",
+        "Joule's Law of Heating: H = I²Rt"
+      ],
+      "sampleQuestion": "An electric lamp of 100 Ω, a toaster of resistance 50 Ω, and a water filter of resistance 500 Ω are connected in parallel to a 220 V source. Find the equivalent resistance. (CBSE 3 Marks)"
+    },
+    {
+      "id": "exp-sst2",
+      "subject": "Social Science",
+      "chapterId": "sst2",
+      "chapterName": "Nationalism in India",
+      "topic": "Non-Cooperation Movement & Civil Disobedience Movement",
+      "tanglishExplanation": "இந்த பாடத்துல இருந்து குறைஞ்சது 8 மார்க் வரும்! ரெண்டு பெரிய இயக்கங்களை புரிஞ்சுக்கணும்:\n\n1. Non-Cooperation Movement (1920-1922): பிரிட்டிஷ்காரன் நம்ம ஒத்துழைப்பால தான் ஆட்சி பண்றான்; ஒத்துழைக்கலைனா அவன் ஆட்சி முடிஞ்சிடும்னு காந்திஜி சொன்னாரு. Foreign clothes புறக்கணிச்சாங்க, அரசு பள்ளிகளை விட்டாங்க. ஆனா 1922-ல சௌரி சௌரா (Chauri Chaura)-ல வன்முறை வெடிச்சதால காந்திஜி இந்த இயக்கத்தை வாபஸ் வாங்கினாரு.\n\n2. Civil Disobedience Movement (1930): இது ஒத்துழைக்க மறுப்பது மட்டுமில்லாம, ஆங்கிலேய சட்டங்களை மீறுவது! உப்புக்கு பிரிட்டிஷ்காரன் வரி போட்டான். 1930 மார்ச் 12-ல சபர்மதியில இருந்து 240 மைல் நடந்து தண்டி (Dandi) கடற்கரைக்கு போய் உப்பை கையில் எடுத்து சட்டத்தை உடைச்சாரு (Dandi Salt March)!",
+      "englishExamTerms": [
+        "Non-Cooperation Movement (1920–1922)",
+        "Boycott of foreign goods and institutions",
+        "Chauri Chaura incident (February 1922) – movement called off",
+        "Simon Commission (1928) – Go Back Simon",
+        "Dandi Salt March (12 March to 6 April 1930)",
+        "Civil Disobedience Movement & Gandhi-Irwin Pact (1931)"
+      ],
+      "sampleQuestion": "Why did Mahatma Gandhi decide to withdraw the Non-Cooperation Movement in 1922? Explain any three reasons. (CBSE 3 Marks)"
+    }
+  ],
+  "writtenTasks": [
+    {
+      "id": "wt-1",
+      "title": "Maths: Prove √5 is Irrational in Notebook",
+      "subject": "Mathematics",
+      "chapter": "Real Numbers",
+      "assignedBy": "Mama",
+      "assignedDate": "2026-10-27",
+      "deadline": "2026-10-28",
+      "instructions": "Rough note-ல 'Proof by Contradiction' step-by-step எழுதி photo எடுத்து upload பண்ணு. ஸ்டெப்ஸ் தெளிவாக இருக்கணும்.",
+      "status": "submitted",
+      "submittedDate": "2026-10-27",
+      "photoUrl": null,
+      "sampleNotebookText": "Let √5 = a/b where a,b are coprime...\n5b² = a² => 5 divides a² and a...\nLet a = 5c => 5b² = 25c² => b² = 5c²...\nContradiction!",
+      "maxMarks": 5,
+      "marksAwarded": 4.5,
+      "mamaFeedback": "ரொம்ப நல்ல முயற்சி பிரணவ்! ஸ்டெப்ஸ் எல்லாம் கரெக்ட். கடைசியில 'Hence √5 is irrational' என்று box போட்டா முழு 5 மார்க் கிடைக்கும்!"
+    },
+    {
+      "id": "wt-2",
+      "title": "Science: Write & Balance 4 Chemical Reactions",
+      "subject": "Science",
+      "chapter": "Chemical Reactions",
+      "assignedBy": "Mama",
+      "assignedDate": "2026-10-27",
+      "deadline": "2026-10-29",
+      "instructions": "Combination, Decomposition, Displacement, மற்றும் Double displacement reactions ஒவ்வொன்றுக்கும் ஒரு balanced equation எழுதி photo upload செய்.",
+      "status": "pending",
+      "maxMarks": 5,
+      "marksAwarded": null,
+      "mamaFeedback": null
+    }
+  ],
+  "testPapers": [
+    {
+      "id": "tp-1",
+      "title": "Term Rev 1 Home Mock Test: Mathematics (Real Numbers & Quadratic Equations)",
+      "subject": "Mathematics",
+      "totalMarks": 25,
+      "durationMinutes": 45,
+      "questions": [
+        {
+          "qNo": 1,
+          "text": "If one root of quadratic equation 2x² + kx - 6 = 0 is 2, find the value of k.",
+          "marks": 1,
+          "type": "MCQ / 1 Mark"
+        },
+        {
+          "qNo": 2,
+          "text": "Write the discriminant of 2x² - 4x + 3 = 0 and state the nature of roots.",
+          "marks": 2,
+          "type": "Short Answer"
+        },
+        {
+          "qNo": 3,
+          "text": "Prove that √5 is an irrational number step-by-step.",
+          "marks": 3,
+          "type": "Long Answer I"
+        },
+        {
+          "qNo": 4,
+          "text": "Solve for x using quadratic formula: 3x² - 5x + 2 = 0.",
+          "marks": 4,
+          "type": "Long Answer II"
+        },
+        {
+          "qNo": 5,
+          "text": "Find the HCF and LCM of 96 and 404 using prime factorisation and verify that HCF × LCM = Product of two numbers.",
+          "marks": 5,
+          "type": "Major Problem"
+        }
+      ],
+      "answerKeySummary": "1. k = -1; 2. D = -8 (No real roots); 3. Contradiction proof; 4. x = 1, x = 2/3; 5. HCF = 4, LCM = 9696."
+    },
+    {
+      "id": "tp-2",
+      "title": "Term Rev 1 Home Mock Test: Science (Chemical Reactions & Electricity)",
+      "subject": "Science",
+      "totalMarks": 25,
+      "durationMinutes": 45,
+      "questions": [
+        {
+          "qNo": 1,
+          "text": "Name the substance oxidised and reduced in: CuO + H₂ → Cu + H₂O.",
+          "marks": 1,
+          "type": "1 Mark"
+        },
+        {
+          "qNo": 2,
+          "text": "State Ohm's Law and write its mathematical equation.",
+          "marks": 2,
+          "type": "2 Marks"
+        },
+        {
+          "qNo": 3,
+          "text": "What happens when iron nails are placed in copper sulphate solution? Write the balanced equation and describe color change.",
+          "marks": 3,
+          "type": "3 Marks"
+        },
+        {
+          "qNo": 4,
+          "text": "Why are domestic circuits connected in parallel and not in series? Give two valid reasons.",
+          "marks": 4,
+          "type": "Application"
+        },
+        {
+          "qNo": 5,
+          "text": "Explain thermal decomposition with a balanced reaction. Why does white silver chloride turn grey in sunlight?",
+          "marks": 5,
+          "type": "Long Answer"
+        }
+      ],
+      "answerKeySummary": "1. H2 oxidised, CuO reduced; 2. V = IR at constant temp; 3. Blue turns green, brown Cu deposited; 4. Independent operation & same voltage; 5. AgCl photolytic decomposition to 2Ag + Cl2."
+    }
+  ]
 }

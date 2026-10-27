@@ -122,6 +122,46 @@ module.exports = (req, res) => {
     return res.status(200).json({ success: true, voiceEntry });
   }
 
+  // API: Mama Mastery Rating
+  if (url.includes('/api/mama/rating') && req.method === 'POST') {
+    if (!isSuperAdmin(req, data)) {
+      return res.status(403).json({ error: 'Super Admin access required' });
+    }
+    const { chapterId, rating } = req.body || {};
+    if (!data.mamaRatings) data.mamaRatings = {};
+    if (chapterId) data.mamaRatings[chapterId] = parseInt(rating, 10);
+    return res.status(200).json({ success: true, mamaRatings: data.mamaRatings });
+  }
+
+  // API: Written Task Submit
+  if (url.includes('/api/written-task/submit') && req.method === 'POST') {
+    const { id, photoUrl, notes } = req.body || {};
+    const task = (data.writtenTasks || []).find(t => t.id === id);
+    if (task) {
+      task.status = 'submitted';
+      if (photoUrl) task.photoUrl = photoUrl;
+      if (notes) task.studentNotes = notes;
+      return res.status(200).json({ success: true, task });
+    }
+    return res.status(404).json({ error: 'Task not found' });
+  }
+
+  // API: Written Task Review
+  if (url.includes('/api/written-task/review') && req.method === 'POST') {
+    if (!isSuperAdmin(req, data)) {
+      return res.status(403).json({ error: 'Super Admin access required' });
+    }
+    const { id, marksAwarded, feedback } = req.body || {};
+    const task = (data.writtenTasks || []).find(t => t.id === id);
+    if (task) {
+      task.status = 'reviewed';
+      task.marksAwarded = parseFloat(marksAwarded);
+      task.mamaFeedback = feedback || 'Well done!';
+      return res.status(200).json({ success: true, task });
+    }
+    return res.status(404).json({ error: 'Task not found' });
+  }
+
   return res.status(200).json(data);
   }
 
@@ -220,6 +260,46 @@ module.exports = (req, res) => {
     if (!data.voiceRequests) data.voiceRequests = [];
     data.voiceRequests.unshift(voiceEntry);
     return res.status(200).json({ success: true, voiceEntry });
+  }
+
+  // API: Mama Mastery Rating
+  if (url.includes('/api/mama/rating') && req.method === 'POST') {
+    if (!isSuperAdmin(req, data)) {
+      return res.status(403).json({ error: 'Super Admin access required' });
+    }
+    const { chapterId, rating } = req.body || {};
+    if (!data.mamaRatings) data.mamaRatings = {};
+    if (chapterId) data.mamaRatings[chapterId] = parseInt(rating, 10);
+    return res.status(200).json({ success: true, mamaRatings: data.mamaRatings });
+  }
+
+  // API: Written Task Submit
+  if (url.includes('/api/written-task/submit') && req.method === 'POST') {
+    const { id, photoUrl, notes } = req.body || {};
+    const task = (data.writtenTasks || []).find(t => t.id === id);
+    if (task) {
+      task.status = 'submitted';
+      if (photoUrl) task.photoUrl = photoUrl;
+      if (notes) task.studentNotes = notes;
+      return res.status(200).json({ success: true, task });
+    }
+    return res.status(404).json({ error: 'Task not found' });
+  }
+
+  // API: Written Task Review
+  if (url.includes('/api/written-task/review') && req.method === 'POST') {
+    if (!isSuperAdmin(req, data)) {
+      return res.status(403).json({ error: 'Super Admin access required' });
+    }
+    const { id, marksAwarded, feedback } = req.body || {};
+    const task = (data.writtenTasks || []).find(t => t.id === id);
+    if (task) {
+      task.status = 'reviewed';
+      task.marksAwarded = parseFloat(marksAwarded);
+      task.mamaFeedback = feedback || 'Well done!';
+      return res.status(200).json({ success: true, task });
+    }
+    return res.status(404).json({ error: 'Task not found' });
   }
 
   return res.status(200).json(data);

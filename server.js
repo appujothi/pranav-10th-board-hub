@@ -377,7 +377,100 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // API 13: Handle Tamil Voice Request
+  // API 14: Mama Mastery Confirmation Rating (Super Admin Only)
+  if (pathname === '/api/mama/rating' && req.method === 'POST') {
+    const data = readData();
+    if (!isSuperAdmin(req, data)) {
+      return sendJSON(res, 403, { error: 'Only Mama can set confirmed mastery ratings' });
+    }
+
+    parseBody(req, (err, body) => {
+      if (!body.chapterId || body.rating === undefined) {
+        return sendJSON(res, 400, { error: 'chapterId and rating required' });
+      }
+      if (!data.mamaRatings) data.mamaRatings = {};
+      data.mamaRatings[body.chapterId] = parseInt(body.rating, 10);
+      saveData(data);
+      return sendJSON(res, 200, { success: true, mamaRatings: data.mamaRatings });
+    });
+    return;
+  }
+
+  // API 15: Assign Written Notebook Task (Super Admin Only)
+  if (pathname === '/api/written-task/assign' && req.method === 'POST') {
+    const data = readData();
+    if (!isSuperAdmin(req, data)) {
+      return sendJSON(res, 403, { error: 'Only Mama can assign written tasks' });
+    }
+
+    parseBody(req, (err, body) => {
+      if (!body.title || !body.subject) {
+        return sendJSON(res, 400, { error: 'Title and subject required' });
+      }
+      const newTask = {
+        id: 'wt-' + Date.now(),
+        title: body.title,
+        subject: body.subject,
+        chapter: body.chapter || 'Important Topic',
+        assignedBy: 'Mama',
+        assignedDate: new Date().toISOString().slice(0, 10),
+        deadline: body.deadline || new Date(Date.now() + 86400000).toISOString().slice(0, 10),
+        instructions: body.instructions || 'Rough note-ல் எழுதி போட்டோ எடுத்து அப்லோட் செய்.',
+        status: 'pending',
+        maxMarks: parseInt(body.maxMarks || 5, 10),
+        marksAwarded: null,
+        mamaFeedback: null
+      };
+      if (!data.writtenTasks) data.writtenTasks = [];
+      data.writtenTasks.unshift(newTask);
+      saveData(data);
+      return sendJSON(res, 200, { success: true, task: newTask });
+    });
+    return;
+  }
+
+  // API 16: Submit Written Task Photo (Pranav or Student)
+  if (pathname === '/api/written-task/submit' && req.method === 'POST') {
+    parseBody(req, (err, body) => {
+      if (!body.id) return sendJSON(res, 400, { error: 'Task ID required' });
+      const data = readData();
+      const task = (data.writtenTasks || []).find(t => t.id === body.id);
+      if (task) {
+        task.status = 'submitted';
+        task.submittedDate = new Date().toISOString().slice(0, 10);
+        if (body.photoUrl) task.photoUrl = body.photoUrl;
+        if (body.notes) task.studentNotes = body.notes;
+        saveData(data);
+        return sendJSON(res, 200, { success: true, task });
+      }
+      return sendJSON(res, 404, { error: 'Task not found' });
+    });
+    return;
+  }
+
+  // API 17: Review Written Task & Award Marks (Super Admin Mama Only)
+  if (pathname === '/api/written-task/review' && req.method === 'POST') {
+    const data = readData();
+    if (!isSuperAdmin(req, data)) {
+      return sendJSON(res, 403, { error: 'Only Mama can review and award marks' });
+    }
+
+    parseBody(req, (err, body) => {
+      if (!body.id || body.marksAwarded === undefined) {
+        return sendJSON(res, 400, { error: 'id and marksAwarded required' });
+      }
+      const task = (data.writtenTasks || []).find(t => t.id === body.id);
+      if (task) {
+        task.status = 'reviewed';
+        task.marksAwarded = parseFloat(body.marksAwarded);
+        task.mamaFeedback = body.feedback || 'Good job!';
+        saveData(data);
+        return sendJSON(res, 200, { success: true, task });
+      }
+      return sendJSON(res, 404, { error: 'Task not found' });
+    });
+    return;
+  }
   if (pathname === '/api/voice-request' && req.method === 'POST') {
     parseBody(req, (err, body) => {
       const transcript = (body.transcript || '').trim();

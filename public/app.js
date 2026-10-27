@@ -356,7 +356,7 @@ function speakTamilFeedback(text) {
 function switchTab(tabId) {
   currentTab = tabId;
 
-  const views = ['home', 'schedule', 'syllabus', 'timer', 'family', 'formulas', 'scores'];
+  const views = ['home', 'schedule', 'syllabus', 'timer', 'family', 'formulas', 'scores', 'written', 'testpapers'];
   views.forEach(v => {
     const el = document.getElementById(`view-${v}`);
     if (el) {
@@ -368,7 +368,7 @@ function switchTab(tabId) {
   ['home', 'schedule', 'syllabus', 'timer', 'family'].forEach(b => {
     const btn = document.getElementById(`nav-btn-${b}`);
     if (btn) {
-      if (b === tabId || (tabId === 'scores' && b === 'family') || (tabId === 'formulas' && b === 'syllabus')) {
+      if (b === tabId || (tabId === 'scores' && b === 'family') || (tabId === 'formulas' && b === 'syllabus') || (tabId === 'written' && b === 'syllabus') || (tabId === 'testpapers' && b === 'schedule')) {
         btn.className = 'nav-item flex flex-col items-center relative text-emerald-600 font-bold active-nav-dot';
       } else {
         btn.className = 'nav-item flex flex-col items-center relative text-slate-400 hover:text-slate-700 transition';
@@ -383,6 +383,8 @@ function switchTab(tabId) {
   if (tabId === 'syllabus') renderSyllabusView();
   if (tabId === 'scores') renderScoresChart();
   if (tabId === 'formulas') renderFormulasView();
+  if (tabId === 'written') renderWrittenTasksFeed();
+  if (tabId === 'testpapers') renderTestPapersFeed();
 }
 
 function openSubjectDetail(subKey) {
@@ -416,6 +418,8 @@ function renderAll() {
   renderScheduleView();
   renderSubjectGridStats();
   renderSyllabusView();
+  renderWrittenTasksFeed();
+  renderTestPapersFeed();
   renderFamilyWall();
   renderScoresList();
 }
@@ -698,6 +702,9 @@ function renderSyllabusView() {
 
     const badge = getStatusBadge(ch.status);
     const isAdmin = currentUser.role === 'admin';
+    const mamaRating = (appState.mamaRatings && appState.mamaRatings[ch.id]) !== undefined 
+      ? appState.mamaRatings[ch.id] 
+      : (ch.status === 'mastered' ? 90 : ch.status === 'revised' ? 70 : ch.status === 'in_progress' ? 45 : 0);
 
     card.innerHTML = `
       <div class="flex items-start justify-between gap-2">
@@ -709,6 +716,24 @@ function renderSyllabusView() {
           ${ch.notes ? `<p class="text-[11px] text-slate-500 leading-snug">${ch.notes}</p>` : ''}
         </div>
       </div>
+
+      <!-- Mama Confirmed Rating Row -->
+      <div class="p-2 rounded-xl bg-slate-50 border border-slate-200/80 text-[11px] flex items-center justify-between gap-2">
+        <div class="flex items-center gap-1.5">
+          <span class="text-xs">👑</span>
+          <span class="font-bold text-slate-800">மாமாவின் மதிப்பீடு (Mama's Score):</span>
+          <span id="mama-rating-val-${ch.id}" class="font-extrabold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">${mamaRating}%</span>
+        </div>
+        ${isAdmin ? `
+          <div class="flex items-center gap-1">
+            <input type="range" min="0" max="100" step="5" value="${mamaRating}" 
+              onchange="saveMamaRating('${ch.id}', this.value)" 
+              oninput="document.getElementById('mama-rating-val-${ch.id}').textContent = this.value + '%'" 
+              class="w-20 accent-emerald-600 cursor-pointer" title="Adjust Mama's Confirmed Percentage">
+          </div>
+        ` : ''}
+      </div>
+
       <div class="flex items-center justify-between pt-1 border-t border-slate-100 text-xs">
         <span class="text-[10px] text-slate-400 font-medium">${isAdmin ? 'Click to advance status:' : '🔒 Protected (Mama Only)'}</span>
         <button onclick="handleProtectedAction('chapter', '${currentSyllabusSubject}', '${ch.id}')" class="px-2.5 py-1 rounded-full text-[10px] font-bold flex items-center gap-1 transition ${badge.class}">
@@ -719,6 +744,23 @@ function renderSyllabusView() {
 
     listContainer.appendChild(card);
   });
+}
+
+async function saveMamaRating(chapterId, rating) {
+  try {
+    const res = await fetch('/api/mama/rating', {
+      method: 'POST',
+      headers: getAuthHeaders(),
+      body: JSON.stringify({ chapterId, rating })
+    });
+    if (res.ok) {
+      showToast(`மாமாவின் மதிப்பீடு ${rating}% என பதிவு செய்யப்பட்டது!`);
+      if (!appState.mamaRatings) appState.mamaRatings = {};
+      appState.mamaRatings[chapterId] = parseInt(rating, 10);
+    }
+  } catch(e) {
+    showToast('Saved locally!');
+  }
 }
 
 function getStatusBadge(status) {
@@ -915,35 +957,316 @@ function speakConceptTamil(text) {
   showToast('🔊 Explaining in Tamil...');
 }
 
-// Formulas View
+// ================= WRITTEN TASKS & NOTEBOOK REVIEW =================
+let activeUploadTaskId = null;
+let activeReviewTaskId = null;
+let currentUploadedBase64 = null;
+
+function renderWrittenTasksFeed() {
+  const container = document.getElementById('written-tasks-feed');
+  if (!container || !appState || !appState.writtenTasks) return;
+
+  container.innerHTML = '';
+  const isAdmin = currentUser.role === 'admin';
+
+  appState.writtenTasks.forEach(t => {
+    const card = document.createElement('div');
+    card.className = 'bg-white border border-slate-200 rounded-2xl p-4 space-y-2.5 shadow-card';
+
+    let statusBadge = '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">⏳ Writing Pending</span>';
+    if (t.status === 'submitted') {
+      statusBadge = '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">📸 Submitted • Pending Review</span>';
+    } else if (t.status === 'reviewed') {
+      statusBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">✓ Reviewed: ${t.marksAwarded}/${t.maxMarks} Marks</span>`;
+    }
+
+    card.innerHTML = `
+      <div class="flex items-center justify-between">
+        <span class="text-[9px] font-bold px-2 py-0.5 rounded-md bg-slate-100 text-slate-600">${t.subject} • ${t.chapter}</span>
+        ${statusBadge}
+      </div>
+
+      <div class="space-y-1">
+        <h4 class="text-xs font-bold text-slate-900">${t.title}</h4>
+        <p class="text-[11px] text-slate-600 leading-snug">${t.instructions}</p>
+      </div>
+
+      ${t.mamaFeedback ? `
+        <div class="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-[11px] space-y-0.5">
+          <strong class="block font-bold">💬 மாமாவின் மதிப்பாய்வு (Mama's Review):</strong>
+          <p>${t.mamaFeedback}</p>
+        </div>
+      ` : ''}
+
+      <div class="flex items-center justify-between pt-1 border-t border-slate-100 text-xs">
+        <span class="text-[10px] text-slate-400">Due: ${t.deadline}</span>
+        <div class="flex gap-2">
+          ${t.status === 'pending' ? `
+            <button onclick="openUploadPhotoModal('${t.id}')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-[10px] px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1 transition">
+              <i class="fa-solid fa-camera text-[9px]"></i> Upload Notebook Page
+            </button>
+          ` : t.status === 'submitted' && isAdmin ? `
+            <button onclick="openReviewTaskModal('${t.id}')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[10px] px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1 transition">
+              <i class="fa-solid fa-pen-nib text-[9px]"></i> Grade & Review (Mama)
+            </button>
+          ` : t.status === 'reviewed' ? `
+            <span class="text-[10px] text-emerald-600 font-bold flex items-center gap-1">
+              <i class="fa-solid fa-circle-check"></i> Score Verified
+            </span>
+          ` : `
+            <span class="text-[10px] text-blue-600 font-medium">Under Mama Review</span>
+          `}
+        </div>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+function openUploadPhotoModal(taskId) {
+  activeUploadTaskId = taskId;
+  currentUploadedBase64 = null;
+  const task = (appState.writtenTasks || []).find(t => t.id === taskId);
+  const title = document.getElementById('uploadTaskTitle');
+  const preview = document.getElementById('photoPreviewContainer');
+  const fileInput = document.getElementById('notebookPhotoInput');
+
+  if (title && task) title.textContent = task.title;
+  if (preview) preview.classList.add('hidden');
+  if (fileInput) fileInput.value = '';
+
+  openModal('uploadPhotoModal');
+}
+
+function previewNotebookPhoto(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    currentUploadedBase64 = e.target.result;
+    const previewContainer = document.getElementById('photoPreviewContainer');
+    const previewImg = document.getElementById('photoPreviewImg');
+    if (previewImg && previewContainer) {
+      previewImg.src = currentUploadedBase64;
+      previewContainer.classList.remove('hidden');
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
+async function confirmSubmitPhoto() {
+  if (!activeUploadTaskId) return;
+  const notes = document.getElementById('photoStudentNotes').value;
+
+  try {
+    const res = await fetch('/api/written-task/submit', {
+      method: 'POST',
+      headers: getAuthHeaders(),
+      body: JSON.stringify({ id: activeUploadTaskId, photoUrl: currentUploadedBase64, notes })
+    });
+
+    if (res.ok) {
+      closeModal('uploadPhotoModal');
+      showToast('Notebook page submitted for Mama to review!');
+      if (window.confetti) confetti();
+      await fetchData();
+    }
+  } catch (e) {
+    closeModal('uploadPhotoModal');
+    showToast('Uploaded successfully!');
+  }
+}
+
+function openAssignTaskModal() {
+  if (currentUser.role !== 'admin') {
+    showToast('🔒 Only Mama can assign written tasks!', false);
+    openAuthModal();
+    return;
+  }
+  openModal('assignTaskModal');
+}
+
+async function confirmAssignTask(e) {
+  e.preventDefault();
+  const title = document.getElementById('assignTitle').value;
+  const subject = document.getElementById('assignSubject').value;
+  const maxMarks = document.getElementById('assignMarks').value;
+  const instructions = document.getElementById('assignInstructions').value;
+
+  try {
+    const res = await fetch('/api/written-task/assign', {
+      method: 'POST',
+      headers: getAuthHeaders(),
+      body: JSON.stringify({ title, subject, maxMarks, instructions })
+    });
+
+    if (res.ok) {
+      closeModal('assignTaskModal');
+      document.getElementById('assignTitle').value = '';
+      showToast('Writing task assigned to Pranav!');
+      await fetchData();
+    }
+  } catch (e) {
+    showToast('Assigned locally!');
+  }
+}
+
+function openReviewTaskModal(taskId) {
+  if (currentUser.role !== 'admin') {
+    showToast('🔒 Only Mama can review submissions!', false);
+    return;
+  }
+
+  activeReviewTaskId = taskId;
+  const task = (appState.writtenTasks || []).find(t => t.id === taskId);
+  if (!task) return;
+
+  const title = document.getElementById('reviewTaskTitle');
+  const notes = document.getElementById('reviewStudentNotes');
+  const photoBox = document.getElementById('reviewPhotoBox');
+  const photoImg = document.getElementById('reviewPhotoImg');
+  const maxInput = document.getElementById('reviewMaxMarksInput');
+
+  if (title) title.textContent = task.title;
+  if (notes) notes.textContent = `Student Notes: ${task.studentNotes || 'No notes'}`;
+  if (maxInput) maxInput.value = `/ ${task.maxMarks || 5}`;
+
+  if (photoImg && photoBox) {
+    if (task.photoUrl) {
+      photoImg.src = task.photoUrl;
+      photoBox.classList.remove('hidden');
+    } else {
+      photoImg.src = '';
+      photoBox.classList.add('hidden');
+    }
+  }
+
+  openModal('reviewTaskModal');
+}
+
+async function confirmReviewTask() {
+  if (!activeReviewTaskId) return;
+  const marks = document.getElementById('reviewMarksInput').value;
+  const feedback = document.getElementById('reviewFeedbackInput').value;
+
+  try {
+    const res = await fetch('/api/written-task/review', {
+      method: 'POST',
+      headers: getAuthHeaders(),
+      body: JSON.stringify({ id: activeReviewTaskId, marksAwarded: marks, feedback })
+    });
+
+    if (res.ok) {
+      closeModal('reviewTaskModal');
+      showToast('Review & Marks saved! Pranav can see them now.');
+      if (window.confetti) confetti();
+      await fetchData();
+    }
+  } catch (e) {
+    showToast('Graded locally!');
+  }
+}
+
+// ================= HOME MOCK TEST PAPERS =================
+function renderTestPapersFeed() {
+  const container = document.getElementById('test-papers-feed');
+  if (!container || !appState || !appState.testPapers) return;
+
+  container.innerHTML = '';
+  appState.testPapers.forEach(tp => {
+    const card = document.createElement('div');
+    card.className = 'bg-white border border-slate-200 rounded-2xl p-4 space-y-3 shadow-card';
+
+    card.innerHTML = `
+      <div class="flex items-center justify-between">
+        <span class="text-[9px] font-bold px-2 py-0.5 rounded-full bg-purple-100 text-purple-800">${tp.subject}</span>
+        <span class="text-[10px] font-semibold text-slate-500">⏱️ ${tp.durationMinutes} Mins • Total ${tp.totalMarks} Marks</span>
+      </div>
+
+      <h4 class="text-xs font-bold text-slate-900">${tp.title}</h4>
+
+      <div class="space-y-2 pt-1 border-t border-slate-100">
+        <strong class="text-[10px] text-slate-500 uppercase tracking-wider block font-bold">Questions (Sample Paper):</strong>
+        <div class="space-y-1.5 font-medium text-[11px] text-slate-800">
+          ${tp.questions.map(q => `
+            <div class="p-2 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start justify-between gap-2">
+              <span><strong>Q${q.qNo}.</strong> ${q.text}</span>
+              <span class="shrink-0 text-[10px] font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">${q.marks}M</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <div class="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-[11px] space-y-1">
+        <strong class="block font-bold">✓ ஆன்சர் கீ & ஸ்டெப் மார்க்கிங் (Answer Key Summary):</strong>
+        <p class="font-mono text-[10px]">${tp.answerKeySummary}</p>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+// ================= TANGLISH AUDIO LESSON PLAYER =================
 function renderFormulasView() {
-  const c = document.getElementById('formula-cards-container');
-  if (!c) return;
+  const container = document.getElementById('formula-cards-container');
+  if (!container || !appState || !appState.topicExplanations) return;
 
-  c.innerHTML = `
-    <div class="bg-white border border-slate-200 rounded-2xl p-4 space-y-2 shadow-card">
-      <h4 class="font-bold text-emerald-700 text-xs flex items-center gap-1.5">
-        📐 Maths: Quadratic Equations & AP
-      </h4>
-      <div class="bg-slate-50 p-2.5 rounded-xl text-[11px] text-slate-700 font-mono space-y-1">
-        <div>• Formula: x = [-b ± √(b² - 4ac)] / 2a</div>
-        <div>• Discriminant: D = b² - 4ac</div>
-        <div>• AP nth term: an = a + (n-1)d</div>
-        <div>• AP sum: Sn = n/2 [2a + (n-1)d]</div>
-      </div>
-    </div>
+  container.innerHTML = '';
 
-    <div class="bg-white border border-slate-200 rounded-2xl p-4 space-y-2 shadow-card">
-      <h4 class="font-bold text-cyan-700 text-xs flex items-center gap-1.5">
-        🔬 Science: Light & Electricity
-      </h4>
-      <div class="bg-slate-50 p-2.5 rounded-xl text-[11px] text-slate-700 font-mono space-y-1">
-        <div>• Mirror: 1/f = 1/v + 1/u &emsp; (m = -v/u)</div>
-        <div>• Lens: 1/f = 1/v - 1/u &emsp; (m = v/u)</div>
-        <div>• Ohm's Law: V = IR</div>
+  appState.topicExplanations.forEach(exp => {
+    const card = document.createElement('div');
+    card.className = 'bg-white border border-slate-200 rounded-2xl p-4 space-y-3 shadow-card';
+
+    card.innerHTML = `
+      <div class="flex items-center justify-between">
+        <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-100 text-amber-800">${exp.subject}</span>
+        <button onclick="playTanglishAudio('${exp.id}')" id="audio-btn-${exp.id}" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[10px] px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm transition">
+          <i class="fa-solid fa-volume-high text-[10px]"></i> <span>ஒலி விளக்கம் (Listen)</span>
+        </button>
       </div>
-    </div>
-  `;
+
+      <div>
+        <h4 class="text-xs font-bold text-slate-900">${exp.topic}</h4>
+        <span class="text-[10px] text-slate-500">${exp.chapterName}</span>
+      </div>
+
+      <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 text-[11px] leading-relaxed">
+        <strong class="text-amber-800 block font-semibold mb-1">💡 எளிய தமிழ் விளக்கம் (Tanglish Explanation):</strong>
+        <p class="whitespace-pre-line">${exp.tanglishExplanation}</p>
+      </div>
+
+      <div class="space-y-1">
+        <strong class="text-[10px] text-slate-500 uppercase tracking-wider block font-bold">தேர்வில் எழுத வேண்டிய English Terms:</strong>
+        <div class="flex flex-wrap gap-1">
+          ${exp.englishExamTerms.map(term => `<span class="px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-200 font-semibold text-[10px]">${term}</span>`).join('')}
+        </div>
+      </div>
+
+      <div class="p-2 rounded-lg bg-purple-50 border border-purple-200 text-purple-900 text-[10px] font-semibold">
+        📝 <strong>Previous Board Exam Question:</strong> ${exp.sampleQuestion}
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+function playTanglishAudio(id) {
+  const exp = (appState.topicExplanations || []).find(e => e.id === id);
+  if (!exp) return;
+
+  const btn = document.getElementById(`audio-btn-${id}`);
+  if (btn) btn.innerHTML = '<i class="fa-solid fa-spinner animate-spin text-[10px]"></i> <span>ஒலி கேட்கிறது...</span>';
+
+  speakTamilFeedback(exp.tanglishExplanation);
+  showToast(`🔊 ${exp.topic} - ஒலி விளக்கம் இயங்குகிறது`);
+
+  setTimeout(() => {
+    if (btn) btn.innerHTML = '<i class="fa-solid fa-volume-high text-[10px]"></i> <span>ஒலி விளக்கம் (Listen)</span>';
+  }, 8000);
 }
 
 // Scorecard & Chart
