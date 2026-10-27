@@ -712,6 +712,7 @@ function renderSyllabusView() {
           <div class="flex items-center gap-1.5 flex-wrap">
             <h4 class="text-xs font-bold text-slate-900">${ch.name}</h4>
             <span class="text-[9px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 font-semibold">${ch.branch || ch.unit || 'Core'}</span>
+            ${ch.isRevision1 ? `<span class="text-[9px] px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-500 to-rose-500 text-white font-extrabold shadow-sm flex items-center gap-1"><i class="fa-solid fa-fire text-[8px]"></i> SRM Rev-1</span>` : ''}
           </div>
           ${ch.notes ? `<p class="text-[11px] text-slate-500 leading-snug">${ch.notes}</p>` : ''}
         </div>
@@ -1558,6 +1559,130 @@ function handleGlobalSearch(query) {
   if (matches === 0) {
     listContainer.innerHTML = `<div class="text-center py-10 text-xs text-slate-400">No chapters matching "${query}"</div>`;
   }
+}
+
+// ================= SRM PUBLIC SCHOOL REVISION-1 PORTIONS =================
+const srmPortionsData = {
+  english: {
+    name: 'English',
+    examDate: '13/11/2026 (Friday)',
+    sections: [
+      { title: '📖 Prose', items: ['Mijbil the Otter', 'Madam Rides the Bus', 'The Sermon at Benares', 'The Proposal (Play)'] },
+      { title: '🎭 Poem', items: ['Amanda!', 'The Trees', 'Fog', 'The Tale of Custard the Dragon', 'For Anne Gregory'] },
+      { title: '📚 Supplementary', items: ['The Making of a Scientist', 'The Necklace', 'Bholi', 'The Book that Saved the Earth'] },
+      { title: '✏️ Grammar', items: ['Determiners', 'Tenses', 'Modals', 'Subject - verb concord', 'Reported speech (Commands, Statements, Questions)'] },
+      { title: '📝 Writing', items: ['Formal Letters (Complaint, Placing order, Inquiry, Letter to Editor)'] }
+    ]
+  },
+  science: {
+    name: 'Science',
+    examDate: '16/11/2026 (Monday)',
+    sections: [
+      { title: '🧬 Biology', items: ['Chapter 6: Control and Coordination', 'Chapter 8: Heredity', 'Chapter 13: Our Environment'] },
+      { title: '🧪 Chemistry', items: ['Chapter 2: Acids, Bases and Salts', 'Chapter 4: Carbon and its compounds'] },
+      { title: '⚡ Physics', items: ['Chapter 11: The Human Eye and the Colourful World', 'Chapter 12: Magnetic Effects of Electric Current'] }
+    ]
+  },
+  social: {
+    name: 'Social Studies',
+    examDate: '18/11/2026 (Wednesday)',
+    sections: [
+      { title: '📜 History', items: ['1. Making of the Global World', '2. Print Culture and the Modern World'] },
+      { title: '🏛️ Political Science', items: ['1. Gender, Religion & Caste', '2. Political Parties', '3. Outcomes of Democracy'] },
+      { title: '🌾 Geography', items: ['1. Agriculture', '2. Minerals and Energy Resources', '3. Manufacturing Industries'] },
+      { title: '💰 Economics', items: ['1. Money and Credit', '2. Globalisation and the Indian Economy'] },
+      { title: '🗺️ Map Work', items: ['Nationalism in India (Centers)', 'Major areas of Rice & Wheat', 'Producer states: Sugarcane, Tea, Coffee, Rubber, Cotton, Jute', 'Mines, Oil fields, Power plants, Ports & Airports'] }
+    ]
+  },
+  maths: {
+    name: 'Mathematics',
+    examDate: '21/11/2026 (Saturday)',
+    sections: [
+      {
+        title: '📐 Core Mathematics Chapters',
+        items: [
+          'Chapter 2: Polynomials',
+          'Chapter 3: Pair of Linear Equations in Two Variables',
+          'Chapter 6: Triangles (BPT Theorem Proof guaranteed)',
+          'Chapter 9: Some Applications of Trigonometry (Heights & Distances)',
+          'Chapter 11: Areas Related to Circles',
+          'Chapter 13: Statistics (Mean, Median, Mode step methods)',
+          'Chapter 14: Probability (Sure-shot 4 marks)'
+        ]
+      }
+    ]
+  },
+  tamil: {
+    name: 'Tamil (L2)',
+    examDate: '23/11/2026 (Monday)',
+    sections: [
+      {
+        title: '📖 இயல் 5, 6, 7 முழுவதும் (Complete Units 5, 6, 7)',
+        items: [
+          'இயல் 5: மணற்கேணி (மொழிபெயர்ப்புக் கல்வி, நீதி வெண்பா, திருவிளையாடற் புராணம், வினா-விடை வகைகள், பொருள்கோள்)',
+          'இயல் 6: நிகழ்கலை (பாய்ச்சல், முத்துக்குமாரசுவாமி பிள்ளைத்தமிழ், கம்பராமாயணம், அகப்பொருள் இலக்கணம்)',
+          'இயல் 7: விதைநெல் (சிற்றகல் ஒளி, ஏர் புதிதா, மெய்க்கீர்த்தி, சிலப்பதிகாரம், புறப்பொருள் வெண்பாமாலை, அணி இலக்கணம்)'
+        ]
+      }
+    ]
+  }
+};
+
+let activeSrmSub = 'english';
+
+function openSrmPortionModal() {
+  showSrmSubjectPortion('english');
+  openModal('srmPortionModal');
+}
+
+function showSrmSubjectPortion(subKey) {
+  activeSrmSub = subKey;
+  const data = srmPortionsData[subKey];
+  const container = document.getElementById('srmPortionContent');
+  if (!container || !data) return;
+
+  // Update tabs
+  document.querySelectorAll('.srm-tab-btn').forEach(btn => {
+    btn.className = 'srm-tab-btn px-3 py-1.5 rounded-full font-bold shrink-0 bg-slate-100 text-slate-600 hover:bg-slate-200';
+  });
+  const activeBtn = document.getElementById(`srm-tab-btn-${subKey}`);
+  if (activeBtn) {
+    activeBtn.className = 'srm-tab-btn px-3 py-1.5 rounded-full font-bold shrink-0 bg-blue-600 text-white shadow-sm';
+  }
+
+  let html = `
+    <div class="p-3 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl flex items-center justify-between">
+      <div>
+        <span class="text-[10px] uppercase font-bold text-blue-600 tracking-wider">Exam Date</span>
+        <strong class="block text-sm font-extrabold text-blue-950">${data.examDate}</strong>
+      </div>
+      <span class="px-2.5 py-1 rounded-full text-[10px] font-extrabold bg-blue-200 text-blue-800">
+        Class X • SRM Revision-1
+      </span>
+    </div>
+    <div class="space-y-2.5 pt-1">
+  `;
+
+  data.sections.forEach(sec => {
+    html += `
+      <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/90 space-y-1.5">
+        <h4 class="font-extrabold text-slate-800 text-xs flex items-center gap-1.5">
+          ${sec.title}
+        </h4>
+        <ul class="space-y-1 text-[11px] text-slate-600 pl-1">
+          ${sec.items.map(item => `
+            <li class="flex items-start gap-1.5">
+              <i class="fa-solid fa-circle-check text-emerald-600 text-[10px] mt-0.5"></i>
+              <span class="leading-snug">${item}</span>
+            </li>
+          `).join('')}
+        </ul>
+      </div>
+    `;
+  });
+
+  html += '</div>';
+  container.innerHTML = html;
 }
 
 // Modal Helpers

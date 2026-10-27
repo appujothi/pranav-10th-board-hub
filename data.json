@@ -67,10 +67,46 @@
     }
   },
   "examDates": {
-    "termRev1": "2026-11-16",
+    "termRev1": "2026-11-13",
     "preBoard1": "2026-12-10",
     "preBoard2": "2027-01-08",
-    "boardStart": "2027-02-15"
+    "boardStart": "2027-02-15",
+    "srmRevision1": {
+      "school": "SRM Public School (Nandhivaram, Guduvanchery, Chennai - 603202)",
+      "grade": "Grade X",
+      "timeTable": [
+        {
+          "date": "2026-11-13",
+          "day": "Friday",
+          "subject": "English",
+          "code": "ENG"
+        },
+        {
+          "date": "2026-11-16",
+          "day": "Monday",
+          "subject": "Science",
+          "code": "SCI"
+        },
+        {
+          "date": "2026-11-18",
+          "day": "Wednesday",
+          "subject": "Social Studies",
+          "code": "SST"
+        },
+        {
+          "date": "2026-11-21",
+          "day": "Saturday",
+          "subject": "Mathematics",
+          "code": "MATH"
+        },
+        {
+          "date": "2026-11-23",
+          "day": "Monday",
+          "subject": "II Language (Tamil)",
+          "code": "TAM"
+        }
+      ]
+    }
   },
   "dailyGoalMinutes": 270,
   "dailyTarget": {
@@ -113,6 +149,51 @@
     ]
   },
   "calendarEvents": [
+    {
+      "id": "cal-srm-1",
+      "date": "2026-11-13",
+      "title": "📝 SRM Rev-1: English Board Pattern Exam",
+      "track": "school",
+      "subject": "English",
+      "status": "pending",
+      "priority": "critical"
+    },
+    {
+      "id": "cal-srm-2",
+      "date": "2026-11-16",
+      "title": "🧪 SRM Rev-1: Science (Bio, Chem, Phys)",
+      "track": "school",
+      "subject": "Science",
+      "status": "pending",
+      "priority": "critical"
+    },
+    {
+      "id": "cal-srm-3",
+      "date": "2026-11-18",
+      "title": "🌍 SRM Rev-1: Social Studies (Hist, Geo, Pol, Eco)",
+      "track": "school",
+      "subject": "Social Science",
+      "status": "pending",
+      "priority": "critical"
+    },
+    {
+      "id": "cal-srm-4",
+      "date": "2026-11-21",
+      "title": "📐 SRM Rev-1: Mathematics (7 Chapters)",
+      "track": "school",
+      "subject": "Mathematics",
+      "status": "pending",
+      "priority": "critical"
+    },
+    {
+      "id": "cal-srm-5",
+      "date": "2026-11-23",
+      "title": "📖 SRM Rev-1: Tamil (இயல் 5, 6, 7)",
+      "track": "school",
+      "subject": "Tamil",
+      "status": "pending",
+      "priority": "critical"
+    },
     {
       "id": "cal-1",
       "date": "2026-10-28",
@@ -383,98 +464,119 @@
           "name": "Real Numbers",
           "unit": "Number Systems",
           "status": "revised",
-          "notes": "Euclid lemma removed; focus on irrationality proof and fundamental theorem"
+          "notes": "Euclid lemma removed; focus on irrationality proof and fundamental theorem",
+          "isRevision1": false
         },
         {
           "id": "m2",
           "name": "Polynomials",
           "unit": "Algebra",
           "status": "revised",
-          "notes": "Zeros relationship and quadratic polynomial formulation"
+          "notes": "Zeros relationship and quadratic polynomial formulation",
+          "isRevision1": true,
+          "revisionPriority": "SRM Rev-1 Exam Portion"
         },
         {
           "id": "m3",
           "name": "Pair of Linear Equations in Two Variables",
           "unit": "Algebra",
           "status": "in_progress",
-          "notes": "Substitution & Elimination methods, consistency conditions"
+          "notes": "Substitution & Elimination methods, consistency conditions",
+          "isRevision1": true,
+          "revisionPriority": "SRM Rev-1 Exam Portion"
         },
         {
           "id": "m4",
           "name": "Quadratic Equations",
           "unit": "Algebra",
           "status": "in_progress",
-          "notes": "Factorisation & Quadratic Formula, Nature of roots (D > 0, D = 0, D < 0)"
+          "notes": "Factorisation & Quadratic Formula, Nature of roots (D > 0, D = 0, D < 0)",
+          "isRevision1": false
         },
         {
           "id": "m5",
           "name": "Arithmetic Progressions",
           "unit": "Algebra",
           "status": "not_started",
-          "notes": "nth term formula an = a + (n-1)d and Sn formula"
+          "notes": "nth term formula an = a + (n-1)d and Sn formula",
+          "isRevision1": false
         },
         {
           "id": "m6",
           "name": "Triangles",
           "unit": "Geometry",
           "status": "in_progress",
-          "notes": "Basic Proportionality Theorem (BPT) with proof, Similarity criteria (AAA, SSS, SAS)"
+          "notes": "Basic Proportionality Theorem (BPT) with proof, Similarity criteria (AAA, SSS, SAS)",
+          "isRevision1": true,
+          "revisionPriority": "SRM Rev-1 Exam Portion"
         },
         {
           "id": "m7",
           "name": "Coordinate Geometry",
           "unit": "Coordinate Geometry",
           "status": "revised",
-          "notes": "Distance formula, Section formula"
+          "notes": "Distance formula, Section formula",
+          "isRevision1": false
         },
         {
           "id": "m8",
           "name": "Introduction to Trigonometry",
           "unit": "Trigonometry",
           "status": "in_progress",
-          "notes": "T-ratios, values at 0, 30, 45, 60, 90, sin^2 A + cos^2 A = 1"
+          "notes": "T-ratios, values at 0, 30, 45, 60, 90, sin^2 A + cos^2 A = 1",
+          "isRevision1": false
         },
         {
           "id": "m9",
           "name": "Some Applications of Trigonometry",
           "unit": "Trigonometry",
           "status": "not_started",
-          "notes": "Heights and Distances, Angle of elevation & depression (30°, 45°, 60° only)"
+          "notes": "Heights and Distances, Angle of elevation & depression (30°, 45°, 60° only)",
+          "isRevision1": true,
+          "revisionPriority": "SRM Rev-1 Exam Portion"
         },
         {
           "id": "m10",
           "name": "Circles",
           "unit": "Geometry",
           "status": "not_started",
-          "notes": "Tangent perpendicular to radius, Lengths of tangents from external point are equal"
+          "notes": "Tangent perpendicular to radius, Lengths of tangents from external point are equal",
+          "isRevision1": false
         },
         {
           "id": "m11",
           "name": "Areas Related to Circles",
           "unit": "Mensuration",
           "status": "not_started",
-          "notes": "Area of sector and segment of circle"
+          "notes": "Area of sector and segment of circle",
+          "isRevision1": true,
+          "revisionPriority": "SRM Rev-1 Exam Portion"
         },
         {
           "id": "m12",
           "name": "Surface Areas and Volumes",
           "unit": "Mensuration",
           "status": "not_started",
-          "notes": "Combinations of solids: cube, cuboid, sphere, hemisphere, cylinder, cone"
+          "notes": "Combinations of solids: cube, cuboid, sphere, hemisphere, cylinder, cone",
+          "isRevision1": false
         },
         {
           "id": "m13",
           "name": "Statistics",
           "unit": "Statistics & Probability",
           "status": "not_started",
-          "notes": "Mean (Direct & Assumed Mean), Median, Mode of grouped data, Empirical formula"
+          "notes": "Mean (Direct & Assumed Mean), Median, Mode of grouped data, Empirical formula",
+          "isRevision1": true,
+          "revisionPriority": "SRM Rev-1 Exam Portion"
         },
         {
           "id": "m14",
           "name": "Probability",
           "unit": "Statistics & Probability",
           "status": "revised",
-          "notes": "Classical definition, complementary events, card & dice problems"
+          "notes": "Classical definition, complementary events, card & dice problems",
+          "isRevision1": true,
+          "revisionPriority": "SRM Rev-1 Exam Portion"
         }
       ]
     },
@@ -488,91 +590,111 @@
           "name": "Chemical Reactions and Equations",
           "branch": "Chemistry",
           "status": "mastered",
-          "notes": "Balancing equations, types of reactions, oxidation-reduction, corrosion"
+          "notes": "Balancing equations, types of reactions, oxidation-reduction, corrosion",
+          "isRevision1": false
         },
         {
           "id": "s2",
           "name": "Acids, Bases and Salts",
           "branch": "Chemistry",
           "status": "revised",
-          "notes": "pH scale, neutralization, Bleaching powder, Baking soda, Washing soda, POP"
+          "notes": "pH scale, neutralization, Bleaching powder, Baking soda, Washing soda, POP",
+          "isRevision1": true,
+          "revisionPriority": "SRM Rev-1 Exam Portion"
         },
         {
           "id": "s3",
           "name": "Metals and Non-metals",
           "branch": "Chemistry",
           "status": "in_progress",
-          "notes": "Reactivity series, ionic bond properties, extraction of metals, roasting/calcination"
+          "notes": "Reactivity series, ionic bond properties, extraction of metals, roasting/calcination",
+          "isRevision1": false
         },
         {
           "id": "s4",
           "name": "Carbon and its Compounds",
           "branch": "Chemistry",
           "status": "not_started",
-          "notes": "Covalent bonding, homologous series, functional groups, soap & micelle action"
+          "notes": "Covalent bonding, homologous series, functional groups, soap & micelle action",
+          "isRevision1": true,
+          "revisionPriority": "SRM Rev-1 Exam Portion"
         },
         {
           "id": "s5",
           "name": "Life Processes",
           "branch": "Biology",
           "status": "revised",
-          "notes": "Nutrition, Respiration, Circulation (Heart), Excretion (Nephron diagram)"
+          "notes": "Nutrition, Respiration, Circulation (Heart), Excretion (Nephron diagram)",
+          "isRevision1": false
         },
         {
           "id": "s6",
           "name": "Control and Coordination",
           "branch": "Biology",
           "status": "in_progress",
-          "notes": "Neuron structure, reflex arc, human brain, plant hormones (auxin, gibberellin, ABA)"
+          "notes": "Neuron structure, reflex arc, human brain, plant hormones (auxin, gibberellin, ABA)",
+          "isRevision1": true,
+          "revisionPriority": "SRM Rev-1 Exam Portion"
         },
         {
           "id": "s7",
           "name": "How do Organisms Reproduce?",
           "branch": "Biology",
           "status": "not_started",
-          "notes": "Asexual reproduction methods, flower structure, male and female reproductive systems"
+          "notes": "Asexual reproduction methods, flower structure, male and female reproductive systems",
+          "isRevision1": false
         },
         {
           "id": "s8",
           "name": "Heredity",
           "branch": "Biology",
           "status": "not_started",
-          "notes": "Mendel's monohybrid & dihybrid crosses, sex determination in humans"
+          "notes": "Mendel's monohybrid & dihybrid crosses, sex determination in humans",
+          "isRevision1": true,
+          "revisionPriority": "SRM Rev-1 Exam Portion"
         },
         {
           "id": "s9",
           "name": "Light – Reflection and Refraction",
           "branch": "Physics",
           "status": "in_progress",
-          "notes": "Mirror formula, Lens formula, Magnification, Refractive index, Snell's law"
+          "notes": "Mirror formula, Lens formula, Magnification, Refractive index, Snell's law",
+          "isRevision1": false
         },
         {
           "id": "s10",
           "name": "The Human Eye and the Colourful World",
           "branch": "Physics",
           "status": "not_started",
-          "notes": "Myopia, Hypermetropia, Atmospheric refraction, Dispersion by prism, Tyndall effect"
+          "notes": "Myopia, Hypermetropia, Atmospheric refraction, Dispersion by prism, Tyndall effect",
+          "isRevision1": true,
+          "revisionPriority": "SRM Rev-1 Exam Portion"
         },
         {
           "id": "s11",
           "name": "Electricity",
           "branch": "Physics",
           "status": "in_progress",
-          "notes": "Ohm's Law, Resistance in series & parallel, Factors affecting resistance, Joule's law"
+          "notes": "Ohm's Law, Resistance in series & parallel, Factors affecting resistance, Joule's law",
+          "isRevision1": false
         },
         {
           "id": "s12",
           "name": "Magnetic Effects of Electric Current",
           "branch": "Physics",
           "status": "not_started",
-          "notes": "Right-hand thumb rule, Solenoid, Fleming's left-hand rule, Domestic electric circuits"
+          "notes": "Right-hand thumb rule, Solenoid, Fleming's left-hand rule, Domestic electric circuits",
+          "isRevision1": true,
+          "revisionPriority": "SRM Rev-1 Exam Portion"
         },
         {
           "id": "s13",
           "name": "Our Environment",
           "branch": "Biology",
           "status": "mastered",
-          "notes": "Ecosystem, 10% energy law, Biological magnification, Ozone depletion"
+          "notes": "Ecosystem, 10% energy law, Biological magnification, Ozone depletion",
+          "isRevision1": true,
+          "revisionPriority": "SRM Rev-1 Exam Portion"
         }
       ]
     },
@@ -586,147 +708,178 @@
           "name": "The Rise of Nationalism in Europe",
           "branch": "History",
           "status": "revised",
-          "notes": "French revolution symbols, Mazzini, Unification of Germany & Italy, Balkan issue"
+          "notes": "French revolution symbols, Mazzini, Unification of Germany & Italy, Balkan issue",
+          "isRevision1": false
         },
         {
           "id": "sst2",
           "name": "Nationalism in India",
           "branch": "History",
           "status": "revised",
-          "notes": "Non-Cooperation Movement, Civil Disobedience, Simon Commission, Dandi March, Map work"
+          "notes": "Non-Cooperation Movement, Civil Disobedience, Simon Commission, Dandi March, Map work",
+          "isRevision1": false
         },
         {
           "id": "sst3",
           "name": "The Making of a Global World",
           "branch": "History",
           "status": "not_started",
-          "notes": "Pre-modern world, Silk routes, Rinderpest plague (Sub-topics 1 to 1.3)"
+          "notes": "Pre-modern world, Silk routes, Rinderpest plague (Sub-topics 1 to 1.3)",
+          "isRevision1": true,
+          "revisionPriority": "SRM Rev-1 Exam Portion"
         },
         {
           "id": "sst4",
           "name": "The Age of Industrialisation",
           "branch": "History",
           "status": "not_started",
-          "notes": "Proto-industrialisation, factories emergence, life of workers"
+          "notes": "Proto-industrialisation, factories emergence, life of workers",
+          "isRevision1": false
         },
         {
           "id": "sst5",
           "name": "Print Culture and the Modern World",
           "branch": "History",
           "status": "not_started",
-          "notes": "First printed books, Gutenberg press, print revolution, impact on India"
+          "notes": "First printed books, Gutenberg press, print revolution, impact on India",
+          "isRevision1": true,
+          "revisionPriority": "SRM Rev-1 Exam Portion"
         },
         {
           "id": "sst6",
           "name": "Resources and Development",
           "branch": "Geography",
           "status": "revised",
-          "notes": "Classification of resources, resource planning, soil types and conservation"
+          "notes": "Classification of resources, resource planning, soil types and conservation",
+          "isRevision1": false
         },
         {
           "id": "sst7",
           "name": "Forest and Wildlife Resources",
           "branch": "Geography",
           "status": "not_started",
-          "notes": "Flora and fauna categories, sacred groves, Chipko movement, Project Tiger"
+          "notes": "Flora and fauna categories, sacred groves, Chipko movement, Project Tiger",
+          "isRevision1": false
         },
         {
           "id": "sst8",
           "name": "Water Resources",
           "branch": "Geography",
           "status": "not_started",
-          "notes": "Multi-purpose projects and major dams (Bhakra, Hirakud, Tehri, Sardar Sarovar)"
+          "notes": "Multi-purpose projects and major dams (Bhakra, Hirakud, Tehri, Sardar Sarovar)",
+          "isRevision1": false
         },
         {
           "id": "sst9",
           "name": "Agriculture",
           "branch": "Geography",
           "status": "in_progress",
-          "notes": "Farming types, cropping patterns (Rabi, Kharif, Zaid), Rice/Wheat conditions"
+          "notes": "Farming types, cropping patterns (Rabi, Kharif, Zaid), Rice/Wheat conditions",
+          "isRevision1": true,
+          "revisionPriority": "SRM Rev-1 Exam Portion"
         },
         {
           "id": "sst10",
           "name": "Minerals and Energy Resources",
           "branch": "Geography",
           "status": "not_started",
-          "notes": "Metallic & non-metallic minerals, conventional and non-conventional energy, map items"
+          "notes": "Metallic & non-metallic minerals, conventional and non-conventional energy, map items",
+          "isRevision1": true,
+          "revisionPriority": "SRM Rev-1 Exam Portion"
         },
         {
           "id": "sst11",
           "name": "Manufacturing Industries",
           "branch": "Geography",
           "status": "not_started",
-          "notes": "Importance of manufacturing, Cotton, Iron and steel, Automobile, IT hubs"
+          "notes": "Importance of manufacturing, Cotton, Iron and steel, Automobile, IT hubs",
+          "isRevision1": true,
+          "revisionPriority": "SRM Rev-1 Exam Portion"
         },
         {
           "id": "sst12",
           "name": "Lifelines of National Economy",
           "branch": "Geography",
           "status": "not_started",
-          "notes": "Roadways golden quadrilateral, Major sea ports and international airports map"
+          "notes": "Roadways golden quadrilateral, Major sea ports and international airports map",
+          "isRevision1": false
         },
         {
           "id": "sst13",
           "name": "Power Sharing",
           "branch": "Civics",
           "status": "mastered",
-          "notes": "Belgium vs Sri Lanka case studies, Forms of power sharing (horizontal & vertical)"
+          "notes": "Belgium vs Sri Lanka case studies, Forms of power sharing (horizontal & vertical)",
+          "isRevision1": false
         },
         {
           "id": "sst14",
           "name": "Federalism",
           "branch": "Civics",
           "status": "revised",
-          "notes": "Key features of federalism, Union/State/Concurrent lists, Decentralisation in India"
+          "notes": "Key features of federalism, Union/State/Concurrent lists, Decentralisation in India",
+          "isRevision1": false
         },
         {
           "id": "sst15",
           "name": "Gender, Religion and Caste",
           "branch": "Civics",
           "status": "in_progress",
-          "notes": "Feminist movements, Communalism vs secular state, Caste in politics"
+          "notes": "Feminist movements, Communalism vs secular state, Caste in politics",
+          "isRevision1": true,
+          "revisionPriority": "SRM Rev-1 Exam Portion"
         },
         {
           "id": "sst16",
           "name": "Political Parties",
           "branch": "Civics",
           "status": "not_started",
-          "notes": "Functions of political parties, National vs State parties, Challenges faced, Reforms"
+          "notes": "Functions of political parties, National vs State parties, Challenges faced, Reforms",
+          "isRevision1": true,
+          "revisionPriority": "SRM Rev-1 Exam Portion"
         },
         {
           "id": "sst17",
           "name": "Outcomes of Democracy",
           "branch": "Civics",
           "status": "not_started",
-          "notes": "Accountable, responsive, legitimate government, Economic growth vs equality"
+          "notes": "Accountable, responsive, legitimate government, Economic growth vs equality",
+          "isRevision1": true,
+          "revisionPriority": "SRM Rev-1 Exam Portion"
         },
         {
           "id": "sst18",
           "name": "Development",
           "branch": "Economics",
           "status": "mastered",
-          "notes": "National income, Per capita income, Human Development Index (HDI), Sustainability"
+          "notes": "National income, Per capita income, Human Development Index (HDI), Sustainability",
+          "isRevision1": false
         },
         {
           "id": "sst19",
           "name": "Sectors of the Indian Economy",
           "branch": "Economics",
           "status": "revised",
-          "notes": "Primary, Secondary, Tertiary sectors, Disguised unemployment, MGNREGA 2005"
+          "notes": "Primary, Secondary, Tertiary sectors, Disguised unemployment, MGNREGA 2005",
+          "isRevision1": false
         },
         {
           "id": "sst20",
           "name": "Money and Credit",
           "branch": "Economics",
           "status": "in_progress",
-          "notes": "Barter system, RBI role, Formal vs Informal credit, Self Help Groups (SHGs)"
+          "notes": "Barter system, RBI role, Formal vs Informal credit, Self Help Groups (SHGs)",
+          "isRevision1": true,
+          "revisionPriority": "SRM Rev-1 Exam Portion"
         },
         {
           "id": "sst21",
           "name": "Globalisation and the Indian Economy",
           "branch": "Economics",
           "status": "not_started",
-          "notes": "MNCs, Foreign trade, Liberalisation, WTO, SEZs, Fair globalisation"
+          "notes": "MNCs, Foreign trade, Liberalisation, WTO, SEZs, Fair globalisation",
+          "isRevision1": true,
+          "revisionPriority": "SRM Rev-1 Exam Portion"
         }
       ]
     },
@@ -1471,5 +1624,44 @@
       ],
       "answerKeySummary": "1. H2 oxidised, CuO reduced; 2. V = IR at constant temp; 3. Blue turns green, brown Cu deposited; 4. Independent operation & same voltage; 5. AgCl photolytic decomposition to 2Ag + Cl2."
     }
-  ]
+  ],
+  "srmEnglishPortion": {
+    "prose": [
+      "Mijbil the Otter",
+      "Madam Rides the Bus",
+      "The Sermon at Benares",
+      "The Proposal (Play)"
+    ],
+    "poem": [
+      "Amanda!",
+      "The Trees",
+      "Fog",
+      "The Tale of Custard the Dragon",
+      "For Anne Gregory"
+    ],
+    "supplementary": [
+      "The Making of a Scientist",
+      "The Necklace",
+      "Bholi",
+      "The Book that Saved the Earth"
+    ],
+    "grammar": [
+      "Determiners",
+      "Tenses",
+      "Modals",
+      "Subject - verb concord",
+      "Reported speech (Commands, Statements, Questions)"
+    ],
+    "writing": [
+      "Formal Letters (Complaint, Placing order, Inquiry, Letter to Editor)"
+    ]
+  },
+  "srmTamilPortion": {
+    "units": "இயல் 5, 6, 7 முழுவதும் (Complete Units 5, 6, 7)",
+    "chapters": [
+      "இயல் 5: மணற்கேணி (மொழிபெயர்ப்புக் கல்வி, நீதி வெண்பா, திருவிளையாடற் புராணம், வினா-விடை வகைகள், பொருள்கோள்)",
+      "இயல் 6: நிகழ்கலை (பாய்ச்சல், முத்துக்குமாரசுவாமி பிள்ளைத்தமிழ், கம்பராமாயணம், அகப்பொருள் இலக்கணம்)",
+      "இயல் 7: விதைநெல் (சிற்றகல் ஒளி, ஏர் புதிதா, மெய்க்கீர்த்தி, சிலப்பதிகாரம், புறப்பொருள் வெண்பாமாலை)"
+    ]
+  }
 }

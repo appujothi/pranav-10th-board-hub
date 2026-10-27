@@ -260,6 +260,53 @@
           </div>
         </div>
 
+        <!-- SRM PUBLIC SCHOOL REVISION-1 TIMETABLE & PORTION CARD -->
+        <div class="rounded-3xl bg-slate-900 border border-slate-800 p-4 text-white shadow-xl space-y-3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-sm border border-amber-500/30">
+                🏫
+              </span>
+              <div>
+                <h4 class="text-xs font-extrabold text-white tracking-wide">SRM PUBLIC SCHOOL</h4>
+                <p class="text-[9px] text-slate-400 font-medium">Class X Revision-1 Official Schedule (2026-27)</p>
+              </div>
+            </div>
+            <span class="px-2.5 py-0.5 rounded-full text-[9px] font-extrabold bg-rose-500/20 text-rose-300 border border-rose-500/30">
+              Starts 13 Nov
+            </span>
+          </div>
+
+          <!-- Schedule Grid -->
+          <div class="grid grid-cols-5 gap-1.5 text-center text-[10px]">
+            <div class="p-2 rounded-xl bg-slate-800/80 border border-slate-700/60 space-y-0.5">
+              <span class="block text-[8px] font-bold text-slate-400">13 Nov (Fri)</span>
+              <strong class="block text-slate-200 font-extrabold text-[11px]">English</strong>
+            </div>
+            <div class="p-2 rounded-xl bg-slate-800/80 border border-slate-700/60 space-y-0.5">
+              <span class="block text-[8px] font-bold text-slate-400">16 Nov (Mon)</span>
+              <strong class="block text-emerald-400 font-extrabold text-[11px]">Science</strong>
+            </div>
+            <div class="p-2 rounded-xl bg-slate-800/80 border border-slate-700/60 space-y-0.5">
+              <span class="block text-[8px] font-bold text-slate-400">18 Nov (Wed)</span>
+              <strong class="block text-blue-400 font-extrabold text-[11px]">SST</strong>
+            </div>
+            <div class="p-2 rounded-xl bg-slate-800/80 border border-slate-700/60 space-y-0.5">
+              <span class="block text-[8px] font-bold text-slate-400">21 Nov (Sat)</span>
+              <strong class="block text-purple-400 font-extrabold text-[11px]">Maths</strong>
+            </div>
+            <div class="p-2 rounded-xl bg-slate-800/80 border border-slate-700/60 space-y-0.5">
+              <span class="block text-[8px] font-bold text-slate-400">23 Nov (Mon)</span>
+              <strong class="block text-amber-400 font-extrabold text-[11px]">Tamil</strong>
+            </div>
+          </div>
+
+          <!-- Portion Details Button -->
+          <button onclick="openSrmPortionModal()" class="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-extrabold py-2 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 transition shadow-md">
+            <i class="fa-solid fa-file-invoice text-xs"></i> 📑 SRM Revision-1 பாடத்திட்டம் (Portion Sheet) பார்க்க
+          </button>
+        </div>
+
         <!-- EASY LEARN & 50% -> 90% SCORE BOOSTER BANNER -->
         <div class="rounded-3xl bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 p-4 text-white shadow-lg space-y-2.5">
           <div class="flex items-center justify-between">
@@ -1173,6 +1220,45 @@
 
         <button onclick="closeModal('aiCorrectionModal')" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-xl transition">
           Close Report
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SRM PUBLIC SCHOOL REVISION-1 PORTION SHEET MODAL ================= -->
+  <div id="srmPortionModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl w-full max-w-md p-6 space-y-4 shadow-2xl max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div class="flex items-center gap-2">
+          <span class="text-xl">🏫</span>
+          <div>
+            <h3 class="text-sm font-extrabold text-slate-900 leading-tight">SRM PUBLIC SCHOOL</h3>
+            <p class="text-[10px] text-slate-500 font-medium">Revision-1 Official Portion Sheet (Grade X • 2026-27)</p>
+          </div>
+        </div>
+        <button onclick="closeModal('srmPortionModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <!-- Subject Switcher Pills -->
+      <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1 text-xs">
+        <button onclick="showSrmSubjectPortion('english')" id="srm-tab-btn-english" class="srm-tab-btn px-3 py-1.5 rounded-full font-bold shrink-0 bg-blue-600 text-white shadow-sm">English</button>
+        <button onclick="showSrmSubjectPortion('science')" id="srm-tab-btn-science" class="srm-tab-btn px-3 py-1.5 rounded-full font-bold shrink-0 bg-slate-100 text-slate-600 hover:bg-slate-200">Science</button>
+        <button onclick="showSrmSubjectPortion('social')" id="srm-tab-btn-social" class="srm-tab-btn px-3 py-1.5 rounded-full font-bold shrink-0 bg-slate-100 text-slate-600 hover:bg-slate-200">Social Science</button>
+        <button onclick="showSrmSubjectPortion('maths')" id="srm-tab-btn-maths" class="srm-tab-btn px-3 py-1.5 rounded-full font-bold shrink-0 bg-slate-100 text-slate-600 hover:bg-slate-200">Mathematics</button>
+        <button onclick="showSrmSubjectPortion('tamil')" id="srm-tab-btn-tamil" class="srm-tab-btn px-3 py-1.5 rounded-full font-bold shrink-0 bg-slate-100 text-slate-600 hover:bg-slate-200">Tamil</button>
+      </div>
+
+      <!-- Content Container -->
+      <div id="srmPortionContent" class="space-y-3 text-xs">
+        <!-- Rendered by app.js -->
+      </div>
+
+      <div class="pt-2 border-t border-slate-100 flex gap-2">
+        <button onclick="closeModal('srmPortionModal'); switchTab('syllabus');" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center gap-1.5 shadow-md">
+          <i class="fa-solid fa-list-check"></i> Go to Revision-1 Syllabus
+        </button>
+        <button onclick="closeModal('srmPortionModal')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-4 py-2.5 rounded-xl text-xs transition">
+          Close
         </button>
       </div>
     </div>
