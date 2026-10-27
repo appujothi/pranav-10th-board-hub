@@ -567,10 +567,10 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // API 19: Smart Schedule Splitter Mode Switch (Deep Dive vs Daily Mix)
+  // API 19: Smart Schedule Splitter Mode Switch (Pair Rotation vs Deep Dive)
   if (pathname === '/api/schedule/split-mode' && req.method === 'POST') {
     parseBody(req, (err, body) => {
-      const mode = body.mode === 'deep_dive' ? 'deep_dive' : 'daily_mix';
+      const mode = (body.mode === 'deep_dive') ? 'deep_dive' : 'pair_rotation';
       const data = readData();
       if (!data.revisionSplitter) data.revisionSplitter = { modes: {} };
       data.revisionSplitter.activeMode = mode;
@@ -581,24 +581,36 @@ const server = http.createServer((req, res) => {
 
       if (todaySchedule) {
         if (!data.dailyTarget) data.dailyTarget = { date: today, focusTasks: [] };
-        if (mode === 'daily_mix') {
-          data.dailyTarget.focusTasks = [
-            { id: 'dt-1', title: `📐 Maths: ${todaySchedule.maths}`, track: 'board', subject: 'Mathematics', completed: false, priority: 'critical' },
-            { id: 'dt-2', title: `🔬 Science: ${todaySchedule.science}`, track: 'board', subject: 'Science', completed: false, priority: 'high' },
-            { id: 'dt-3', title: `📖 Language: ${todaySchedule.language}`, track: 'school', subject: 'Language', completed: false, priority: 'high' },
-            { id: 'dt-4', title: `📝 Evening: ${todaySchedule.test}`, track: 'tuition', subject: 'Assessment', completed: false, priority: 'critical' }
-          ];
+        if (mode === 'pair_rotation') {
+          if (todaySchedule.day === 0) {
+            data.dailyTarget.headline = '🎯 Day 0: Understanding the Module & System Setup';
+            data.dailyTarget.focusTasks = [
+              { id: 'dt-mod-1', title: '🏫 SRM Revision-1 Exam Timetable (Nov 13-23) மற்றும் பாடத்திட்டத்தைப் பார்க்கவும்', track: 'school', subject: 'Orientation', completed: true, priority: 'high' },
+              { id: 'dt-mod-2', title: '🔄 புதிய 2-சப்ஜெக்ட் தினசரி சுழற்சி முறை & இரவு 8:30 PM மினி தேர்வு முறையை அறியவும்', track: 'board', subject: 'Routine', completed: true, priority: 'critical' },
+              { id: 'dt-mod-3', title: '🎧 தமிழ் ஆடியோ விளக்கம் (Audio Hub) மற்றும் 🤖 AI Doubt Solver-ஐ சோதித்துப் பார்க்கவும்', track: 'board', subject: 'Study Tools', completed: false, priority: 'high' },
+              { id: 'dt-mod-4', title: '🔥 நாளைக்கான (Day 1: Science + Tamil) சிலபஸ் மற்றும் மாதிரி வினாக்களை (Sample Questions) பார்வையிடவும்', track: 'tuition', subject: 'Preview', completed: false, priority: 'critical' }
+            ];
+          } else {
+            data.dailyTarget.headline = `🎯 Day ${todaySchedule.day}: ${todaySchedule.title}`;
+            data.dailyTarget.focusTasks = [
+              { id: 'dt-1', title: `🔬 ${todaySchedule.sub1?.name}: ${todaySchedule.sub1?.topics}`, track: 'board', subject: todaySchedule.subjects?.[0] || 'Subject 1', completed: false, priority: 'critical' },
+              { id: 'dt-2', title: `📖 ${todaySchedule.sub2?.name}: ${todaySchedule.sub2?.topics}`, track: 'school', subject: todaySchedule.subjects?.[1] || 'Subject 2', completed: false, priority: 'high' },
+              { id: 'dt-3', title: `✍️ Sample Questions: 6 பயிற்சி வினாக்களுக்கு விடையளித்துப் பழகவும்`, track: 'tuition', subject: 'Practice', completed: false, priority: 'high' },
+              { id: 'dt-4', title: `🌙 Night Test (8:30 PM): ${todaySchedule.nightTest?.title || '30-Mark Test'}`, track: 'tuition', subject: 'Assessment', completed: false, priority: 'critical' }
+            ];
+          }
         } else {
+          data.dailyTarget.headline = `🎯 Deep Dive: ${todaySchedule.title}`;
           data.dailyTarget.focusTasks = [
             { id: 'dt-1', title: `🎯 Deep Focus: ${todaySchedule.focus}`, track: 'board', subject: todaySchedule.focus.split(' ')[0], completed: false, priority: 'critical' },
-            { id: 'dt-2', title: `✍️ Target: ${todaySchedule.target}`, track: 'school', subject: 'Writing Practice', completed: false, priority: 'high' },
-            { id: 'dt-3', title: `📄 Evening: ${todaySchedule.test}`, track: 'tuition', subject: 'Assessment', completed: false, priority: 'critical' }
+            { id: 'dt-2', title: `✍️ Target: ${todaySchedule.target}`, track: 'school', subject: 'Study', completed: false, priority: 'high' },
+            { id: 'dt-3', title: `📄 Evening: ${todaySchedule.nightTest?.title || todaySchedule.test || 'Daily Assessment'}`, track: 'tuition', subject: 'Assessment', completed: false, priority: 'critical' }
           ];
         }
       }
 
       saveData(data);
-      return sendJSON(res, 200, { success: true, activeMode: mode, dailyTarget: data.dailyTarget });
+      return sendJSON(res, 200, { success: true, activeMode: mode, dailyTarget: data.dailyTarget, revisionSplitter: data.revisionSplitter });
     });
     return;
   }

@@ -293,12 +293,12 @@ module.exports = (req, res) => {
     return res.status(200).json({ success: true, doubt: doubtEntry });
   }
 
-  // 14. Smart Revision Splitter Mode Switch
+  // 14. Smart Revision Splitter Mode Switch (Pair Rotation vs Deep Dive)
   if (url.includes('/schedule/split-mode') && req.method === 'POST') {
-    const mode = (req.body && req.body.mode === 'deep_dive') ? 'deep_dive' : 'daily_mix';
+    const mode = (req.body && req.body.mode === 'deep_dive') ? 'deep_dive' : 'pair_rotation';
     if (!data.revisionSplitter) data.revisionSplitter = { modes: {} };
     data.revisionSplitter.activeMode = mode;
-    return res.status(200).json({ success: true, activeMode: mode });
+    return res.status(200).json({ success: true, activeMode: mode, dailyTarget: data.dailyTarget, revisionSplitter: data.revisionSplitter });
   }
 
   // Default: Return complete data object

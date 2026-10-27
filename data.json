@@ -111,38 +111,38 @@
   "dailyGoalMinutes": 270,
   "dailyTarget": {
     "date": "2026-10-27",
-    "headline": "🎯 Target of the Day: Sprint to 95-100%",
+    "headline": "🎯 Day 0: Understanding the Module & System Setup",
     "setBy": "Mama (Super Admin)",
     "focusTasks": [
       {
-        "id": "dt-1",
-        "title": "📐 Maths: Polynomials (Zeroes & coefficients)",
+        "id": "dt-mod-1",
+        "title": "🏫 SRM Revision-1 Exam Timetable (Nov 13-23) மற்றும் பாடத்திட்டத்தைப் பார்க்கவும்",
+        "track": "school",
+        "subject": "Orientation",
+        "completed": true,
+        "priority": "high"
+      },
+      {
+        "id": "dt-mod-2",
+        "title": "🔄 புதிய 2-சப்ஜெக்ட் தினசரி சுழற்சி முறை & இரவு 8:30 PM மினி தேர்வு முறையை அறியவும்",
         "track": "board",
-        "subject": "Mathematics",
-        "completed": false,
+        "subject": "Routine",
+        "completed": true,
         "priority": "critical"
       },
       {
-        "id": "dt-2",
-        "title": "🔬 Science: Acids, Bases & Salts (pH & indicator)",
+        "id": "dt-mod-3",
+        "title": "🎧 தமிழ் ஆடியோ விளக்கம் (Audio Hub) மற்றும் 🤖 AI Doubt Solver-ஐ சோதித்துப் பார்க்கவும்",
         "track": "board",
-        "subject": "Science",
+        "subject": "Study Tools",
         "completed": false,
         "priority": "high"
       },
       {
-        "id": "dt-3",
-        "title": "📖 Language: English: Formal Letters format",
-        "track": "school",
-        "subject": "Language",
-        "completed": false,
-        "priority": "high"
-      },
-      {
-        "id": "dt-4",
-        "title": "📝 Evening: Daily 20-min Quiz",
+        "id": "dt-mod-4",
+        "title": "🔥 நாளைக்கான (Day 1: Science + Tamil) சிலபஸ் மற்றும் மாதிரி வினாக்களை (Sample Questions) பார்வையிடவும்",
         "track": "tuition",
-        "subject": "Assessment",
+        "subject": "Preview",
         "completed": false,
         "priority": "critical"
       }
@@ -1317,6 +1317,41 @@
         "Civil Disobedience Movement & Gandhi-Irwin Pact (1931)"
       ],
       "sampleQuestion": "Why did Mahatma Gandhi decide to withdraw the Non-Cooperation Movement in 1922? Explain any three reasons. (CBSE 3 Marks)"
+    },
+    {
+      "id": "exp-s2",
+      "subject": "Science",
+      "chapterId": "s2",
+      "chapterName": "Acids, Bases and Salts",
+      "topic": "pH Scale, Chlor-alkali Process & Plaster of Paris",
+      "tanglishExplanation": "Science Chapter 2 Acids, Bases and Salts-ல போர்டு எக்ஸாம்ல அடிக்கடி வர்ற மூணு முக்கியமான கான்செப்ட்ஸ் இதோ:\n\n1. pH Scale: pH என்பது potential of Hydrogen. 7 என்பது Neutral. 7-க்குக் கீழே போனால் Acidic nature அதிகமாகும் (H+ ion concentration அதிகம்). 7-க்கு மேலே போனால் Basic nature அதிகமாகும் (OH- ion concentration அதிகம்). நம்ம வாயில pH 5.5-க்குக் கீழே போனா பற்கள் சொத்தையாகும் (Tooth decay).\n\n2. Chlor-alkali Process: Concentrated Sodium Chloride solution (Brine)-ல electricity pass பண்ணும்போது, நமக்கு Sodium Hydroxide (NaOH), Chlorine gas (anode-ல்), மற்றும் Hydrogen gas (cathode-ல்) கிடைக்கும். Equation: 2NaCl + 2H2O -> 2NaOH + Cl2 + H2.\n\n3. Plaster of Paris (POP): Gypsum-ஐ 373 Kelvin-ல் கவனமாக heat பண்ணும்போது CaSO4 . 1/2 H2O (POP) கிடைக்கும். இதில தண்ணீர் சேர்த்தால் மீண்டும் கடினமான Gypsum ஆகிவிடும். அதனால் தான் இத moisture-proof container-ல வைக்கிறோம்!",
+      "englishExamTerms": [
+        "pH scale (0 to 14)",
+        "H+ ion concentration",
+        "Neutral, Acidic, Alkaline",
+        "Chlor-alkali process",
+        "Brine solution (aqueous NaCl)",
+        "Anode: Chlorine gas, Cathode: Hydrogen gas",
+        "Calcium sulphate hemihydrate (Plaster of Paris)",
+        "Gypsum (CaSO4 . 2H2O)"
+      ],
+      "sampleQuestion": "Explain the Chlor-alkali process with balanced equation. Why is Plaster of Paris stored in moisture-proof containers? (CBSE 5 Marks)"
+    },
+    {
+      "id": "exp-tam5",
+      "subject": "Tamil",
+      "chapterId": "tam5",
+      "chapterName": "இயல் 5: மணற்கேணி",
+      "topic": "மொழிபெயர்ப்புக் கல்வி, நீதி வெண்பா, வினா-விடை வகைகள் & பொருள்கோள்",
+      "tanglishExplanation": "பத்தாம் வகுப்பு தமிழ் இயல் 5 மணற்கேணி-ல மிக முக்கியமான 4 பகுதிகள் இருக்கு:\n\n1. மொழிபெயர்ப்புக் கல்வி: \"சென்றிடுவீர் எட்டுத்திக்கும் - கலைச் செல்வங்கள் யாவும் கொணர்ந்திங்கு சேர்ப்பீர்\" என்று பாரதியார் கூறுகிறார். மொழிபெயர்ப்பு என்பது மொழிகளுக்கு இடையே பாலமாக அமைகிறது. உலக அறிவை நாம் பெறவும், தமிழ் வளத்தை உலகம் அறியவும் மொழிபெயர்ப்பு அவசியமாகிறது.\n\n2. நீதி வெண்பா (செய்குதம்பிப் பாவலர்): \"அருளைப் பெருக்கி அறிவைத் திருத்தி... மருளை அகற்றி மதிக்கும் தெருளை... உயிருக்கு அரிய துணையாய் இன்பம் சேர்க்கும் கல்வியே போற்றி!\" கல்வி அறியாமையை நீக்கி உயிருக்கு வழிகாட்டும் நண்பன்.\n\n3. வினா & விடை வகைகள்: வினா 6 வகைப்படும் (அறிவினா, அறியாவினா, ஐயவினா, கொளல்வினா, கொடைவினா, ஏவல்வினா). விடை 8 வகைப்படும் (சுட்டு, நேர், எதிர், ஏவல், வினாவெதிர் வினாதல், உற்றது உரைத்தல், உறுவது கூறல், இனமொழி).\n\n4. பொருள்கோள்: செய்யுளில் சொற்களைப் பொருளுக்கு ஏற்றவாறு சேர்த்துப் பொருள் கொள்ளும் முறை பொருள்கோள் எனப்படும் (ஆற்றுநீர்ப் பொருள்கோள், நிரல்நிறைப் பொருள்கோள் போன்றவை).",
+      "englishExamTerms": [
+        "Translation Studies (மொழிபெயர்ப்புக் கல்வி)",
+        "Neethi Venba by Seikuthambi Pavalar",
+        "6 Types of Questions (வினா வகைகள்)",
+        "8 Types of Answers (விடை வகைகள்)",
+        "Porulkol (பொருள்கோள் முறை)"
+      ],
+      "sampleQuestion": "வினா மற்றும் விடை வகைகளை சான்றுகளுடன் விளக்குக. (தமிழ் 5 மதிப்பெண் வினா)"
     }
   ],
   "writtenTasks": [
@@ -1665,281 +1700,1052 @@
     ]
   },
   "revisionSplitter": {
-    "activeMode": "daily_mix",
-    "totalDays": 17,
+    "activeMode": "pair_rotation",
     "startDate": "2026-10-27",
     "firstExamDate": "2026-11-13",
+    "totalDays": 16,
+    "today": {
+      "date": "2026-10-27",
+      "dayIndex": 0,
+      "status": "Orientation & Module Understanding",
+      "message": "இன்று ஆப் மற்றும் 2-சப்ஜெக்ட் சுழற்சி படிப்பு முறையை முழுமையாகப் புரிந்து கொள்ளும் நாள். இரவு தேர்வு இல்லை."
+    },
+    "tomorrow": {
+      "date": "2026-10-28",
+      "dayIndex": 1,
+      "pair": "Science + Tamil",
+      "sub1Name": "Science (Acids, Bases & Salts)",
+      "sub2Name": "Tamil (இயல் 5: மணற்கேணி)",
+      "nightTestTiming": "8:30 PM - 9:15 PM",
+      "nightTestMarks": 30,
+      "warning": "⚠️ Note: இந்த Sample Questions பயிற்சிக்கு மட்டுமே! இரவு டெஸ்ட்டில் இதே கேள்விகள் வராது, உன் புரிதலை சோதிக்க Twist செய்து கேட்கப்படும்!"
+    },
     "modes": {
-      "deep_dive": {
-        "name": "🎯 Deep Dive (ஒரு நாளைக்கு 1-2 பாடங்கள் முழு வீச்சில்)",
-        "description": "ஒவ்வொரு பாடத்தையும் 2-3 நாட்கள் தொடர்ச்சியாகப் படித்து ஆழமாக முடிக்கும் முறை.",
+      "pair_rotation": {
+        "name": "🔄 Option A: 2 Subjects / Day (Pair-Rotation - Recommended)",
+        "shortName": "Pair Rotation (2 Subjects)",
+        "description": "ரெண்டு ரெண்டு பாடங்களாக சுழற்சி முறையில் படிக்கும் முறை. தினமும் காலை/மாலையில் இரண்டு பாடங்கள், இரவில் 30 நிமிட மாதிரித் தேர்வு.",
         "schedule": [
           {
-            "day": 1,
+            "day": 0,
             "date": "2026-10-27",
-            "focus": "Maths (Polynomials & Linear Equations)",
-            "target": "Solve 10 textbook problems + 3 graphs",
-            "test": "15-min MCQ check"
+            "isToday": true,
+            "title": "Day 0: Understanding the Module & System Setup (படிப்பு முறை அறிமுகம்)",
+            "focus": "Orientation & Module Familiarization",
+            "subjects": [
+              "System Onboarding",
+              "Module Familiarization"
+            ],
+            "description": "இன்று ஆப் மற்றும் புதிய 2-சப்ஜெக்ட் சுழற்சி படிப்பு முறையை முழுமையாகப் புரிந்து கொள்ளும் நாள். இரவு தேர்வு இல்லை.",
+            "tasks": [
+              "SRM Revision-1 அதிகாரப்பூர்வ தேர்வு அட்டவணையை (Nov 13-23) பார்க்கவும்.",
+              "நாளைக்கான (Day 1) அறிவியல் & தமிழ் பாடங்களின் சிலபஸ் மற்றும் Sample Questions படிக்கவும்.",
+              "🎧 தமிழ் ஆடியோ விளக்கம் மற்றும் 🤖 AI டவுட் சால்வர் இயங்குவதை பரிசோதிக்கவும்."
+            ],
+            "sampleQuestions": [],
+            "nightTest": {
+              "hasTest": false,
+              "title": "இன்று இரவு தேர்வு இல்லை (Relax & Prepare for Day 1)",
+              "timing": "No Exam Tonight",
+              "marks": 0,
+              "description": "நாளை காலை முதல் முழு வீச்சில் இரண்டு பாடங்கள் சுழற்சி முறை தொடங்கும்."
+            }
+          },
+          {
+            "day": 1,
+            "date": "2026-10-28",
+            "isTomorrow": true,
+            "title": "Day 1: Science (Acids, Bases & Salts) + Tamil (இயல் 5: மணற்கேணி)",
+            "subjects": [
+              "Science",
+              "Tamil"
+            ],
+            "sub1": {
+              "name": "Science (Chemistry)",
+              "chapter": "Ch 2: Acids, Bases and Salts",
+              "topics": "pH scale, Chlor-alkali process, Plaster of Paris, Bleaching powder, Acid/Base chemical reactions with metals",
+              "audioLessonId": "sci-ch2",
+              "sampleQuestions": [
+                {
+                  "q": "What gas is released when dilute HCl reacts with Zinc granules? Write the balanced chemical equation and describe how to test this gas.",
+                  "sampleAns": "Hydrogen gas ($H_2$) is evolved. $Zn + 2HCl \\rightarrow ZnCl_2 + H_2\\uparrow$. Test: Bring a burning splinter near the mouth of the test tube; it burns with a pop sound.",
+                  "marks": 3
+                },
+                {
+                  "q": "A solution turns blue litmus red. What is its expected pH range? Why does tooth decay start when the pH of mouth is lower than 5.5?",
+                  "sampleAns": "pH < 7 (acidic). Tooth enamel is made of calcium hydroxyapatite. When pH falls below 5.5, the acid produced by bacteria reacting with food particles corrodes the enamel.",
+                  "marks": 3
+                },
+                {
+                  "q": "Write the chemical name, formula and two uses of Plaster of Paris. Why is it stored in moisture-proof containers?",
+                  "sampleAns": "Calcium sulphate hemihydrate ($CaSO_4 \\cdot \\frac{1}{2}H_2O$). Uses: 1. Making casts for broken bones. 2. Making toys/statues. It absorbs moisture to become hard Gypsum ($CaSO_4 \\cdot 2H_2O$).",
+                  "marks": 3
+                }
+              ]
+            },
+            "sub2": {
+              "name": "Tamil (இரண்டாம் மொழி)",
+              "chapter": "இயல் 5: மணற்கேணி",
+              "topics": "மொழிபெயர்ப்புக் கல்வி, நீதி வெண்பா (செய்குதம்பிப் பாவலர்), திருவிளையாடற் புராணம், வினா-விடை வகைகள் & பொருள்கோள்",
+              "audioLessonId": "tam-u5",
+              "sampleQuestions": [
+                {
+                  "q": "மொழிபெயர்ப்பு குறித்து பாரதியார் மற்றும் பாரதிதாசன் கூறிய கருத்துக்களை தொகுத்து எழுதுக.",
+                  "sampleAns": "பாரதி: \"சென்றிடுவீர் எட்டுத் திக்கும் - கலைச் செல்வங்கள் யாவும் கொணர்ந்திங்கு சேர்ப்பீர்\". பாரதிதாசன்: \"பிறநாட்டு நல்லறிஞர் சாத்திரங்கள் தமிழ் மொழியிற் பெயர்த்தல் வேண்டும்\".",
+                  "marks": 3
+                },
+                {
+                  "q": "வினா எத்தனை வகைப்படும்? விடை எத்தனை வகைப்படும்? சான்றுகளுடன் விளக்குக.",
+                  "sampleAns": "வினா 6 வகைப்படும் (அறிவினா, அறியாவினா, ஐயவினா, கொளல்வினா, கொடைவினா, ஏவல்வினா). விடை 8 வகைப்படும் (சுட்டு, நேர், எதிர்மறை, ஏவல், வினாவெதிர் வினாதல், உற்றது உரைத்தல், உறுவது கூறல், இனமொழி).",
+                  "marks": 3
+                },
+                {
+                  "q": "'அருளைப் பெருக்கி அறிவைத் திருத்தி' - இப்பாடல் அடிகளில் குறிப்பிடப்படும் கல்வியின் சிறப்பினை விளக்குக.",
+                  "sampleAns": "செய்குதம்பிப் பாவலர் இயற்றிய நீதி வெண்பா: கல்வி மனிதனின் அறியாமையைப் போக்கி, உள்ளத்தில் அருளை வளர்த்து, உயிருக்கு நல்வழிகாட்டி துணையாக நிற்கிறது.",
+                  "marks": 3
+                }
+              ]
+            },
+            "mamaRule": "⚠️ Note to Pranav: இந்த Sample Questions நீ பயிற்சி செய்வதற்கு மட்டுமே! இரவு 8:30 PM தேர்வில் இதே கேள்விகள் அப்படியே வராது — உன் அண்டர்ஸ்டாண்டிங்கை சோதிக்க எண்களும் வரிகளும் Twist செய்து புதிய கேள்விகள் கேட்கப்படும்!",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 1 Night Assessment: Science + Tamil Mini Test",
+              "timing": "8:30 PM – 9:15 PM (45 Mins)",
+              "totalMarks": 30,
+              "breakup": "15 Marks Science + 15 Marks Tamil",
+              "mode": "Written on Notebook & Photo Upload for Mama Review + AI instant check",
+              "instructions": "Rough நோட்டில் சுயமாக எழுத வேண்டும். தேர்வு முடிந்தவுடன் போட்டோ எடுத்து அப்லோட் செய்."
+            }
           },
           {
             "day": 2,
-            "date": "2026-10-28",
-            "focus": "Maths (Triangles BPT Theorem)",
-            "target": "Practice BPT Proof 3 times in rough note",
-            "test": "BPT Proof Written Test"
+            "date": "2026-10-29",
+            "title": "Day 2: Mathematics (Polynomials & Linear Equations) + English (Mijbil & Letters)",
+            "subjects": [
+              "Mathematics",
+              "English"
+            ],
+            "sub1": {
+              "name": "Mathematics",
+              "chapter": "Ch 2: Polynomials & Ch 3: Linear Equations",
+              "topics": "Relationship between zeroes & coefficients, Graphical representation, Substitution/Elimination methods, Consistent/Inconsistent conditions",
+              "sampleQuestions": [
+                {
+                  "q": "Find the zeroes of $p(x) = x^2 + 7x + 10$ and verify the relationship with coefficients.",
+                  "marks": 3
+                },
+                {
+                  "q": "Solve for x and y: $2x + 3y = 11$ and $2x - 4y = -24$. Hence find m for which $y = mx + 3$.",
+                  "marks": 3
+                }
+              ]
+            },
+            "sub2": {
+              "name": "English",
+              "chapter": "Prose: Mijbil the Otter & Formal Writing",
+              "topics": "Mijbil pet behaviour, London flight incident, Formal Letter to Editor on road safety",
+              "sampleQuestions": [
+                {
+                  "q": "Why was the otter named Maxwell's otter? Describe Mijbil's reaction to water.",
+                  "marks": 3
+                },
+                {
+                  "q": "Write a formal letter to the Editor complaining about irregular bus service in your locality.",
+                  "marks": 5
+                }
+              ]
+            },
+            "mamaRule": "⚠️ Note: இரவு டெஸ்ட்டில் எண்கள் மற்றும் சூழல் மாற்றப்பட்ட புதிய கணக்குகள் கேட்கப்படும்!",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 2 Night Assessment: Maths + English",
+              "timing": "8:30 PM – 9:15 PM (45 Mins)",
+              "totalMarks": 30,
+              "breakup": "15 Marks Maths + 15 Marks English"
+            }
           },
           {
             "day": 3,
-            "date": "2026-10-29",
-            "focus": "Science (Acids, Bases & Salts)",
-            "target": "pH scale, Chlor-alkali & Plaster of Paris",
-            "test": "Reactions written quiz"
+            "date": "2026-10-30",
+            "title": "Day 3: Social Science (Global World & Money) + Science (Control & Coordination)",
+            "subjects": [
+              "Social Science",
+              "Science"
+            ],
+            "sub1": {
+              "name": "Social Science",
+              "chapter": "History: Making of Global World & Economics: Money and Credit",
+              "topics": "Silk routes, Rinderpest plague in Africa, Formal vs Informal sources of credit, Role of SHGs",
+              "sampleQuestions": [
+                {
+                  "q": "Explain how the Rinderpest cattle plague helped Europeans conquer Africa.",
+                  "marks": 3
+                },
+                {
+                  "q": "Why do banks ask for collateral before giving loans? Differentiate formal and informal credit.",
+                  "marks": 3
+                }
+              ]
+            },
+            "sub2": {
+              "name": "Science (Biology)",
+              "chapter": "Ch 6: Control and Coordination",
+              "topics": "Neuron structure & reflex arc, Human brain (Forebrain, Midbrain, Hindbrain), Plant hormones (Auxin, Gibberellin, Cytokinin, ABA)",
+              "sampleQuestions": [
+                {
+                  "q": "Draw neat labeled diagram of a Neuron and explain synaptic transmission.",
+                  "marks": 4
+                },
+                {
+                  "q": "Name the plant hormone responsible for: (a) cell division (b) wilting of leaves (c) shoot phototropism.",
+                  "marks": 3
+                }
+              ]
+            },
+            "mamaRule": "⚠️ Note: இரவு டெஸ்ட்டில் கேஸ்-ஸ்டடி வடிவில் புதிய வினாக்கள் கேட்கப்படும்!",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 3 Night Assessment: SST + Science",
+              "timing": "8:30 PM – 9:15 PM (45 Mins)",
+              "totalMarks": 30,
+              "breakup": "15 Marks SST + 15 Marks Science"
+            }
           },
           {
             "day": 4,
-            "date": "2026-10-30",
-            "focus": "Science (Carbon and its Compounds)",
-            "target": "Covalent bonding, homologous series, functional groups",
-            "test": "Structures practice"
+            "date": "2026-10-31",
+            "title": "Day 4: Mathematics (Triangles - BPT Theorem) + Tamil (இயல் 6: நிகழ்கலை)",
+            "subjects": [
+              "Mathematics",
+              "Tamil"
+            ],
+            "sub1": {
+              "name": "Mathematics",
+              "chapter": "Ch 6: Triangles",
+              "topics": "Basic Proportionality Theorem (Thales Theorem Proof), Criteria for similarity (AAA, SSS, SAS), Application problems",
+              "sampleQuestions": [
+                {
+                  "q": "State and prove Basic Proportionality Theorem (BPT / Thales Theorem).",
+                  "marks": 5
+                },
+                {
+                  "q": "In $\\triangle ABC$, $DE \\parallel BC$ intersecting $AB$ at $D$ and $AC$ at $E$. If $AD=x, DB=x-2, AE=x+2, EC=x-1$, find x.",
+                  "marks": 3
+                }
+              ]
+            },
+            "sub2": {
+              "name": "Tamil",
+              "chapter": "இயல் 6: நிகழ்கலை",
+              "topics": "பாய்ச்சல் சிறுகதை, முத்துக்குமாரசுவாமி பிள்ளைத்தமிழ் (செங்கீரைப் பருவம்), கம்பராமாயணம், அகப்பொருள் இலக்கணம்",
+              "sampleQuestions": [
+                {
+                  "q": "நிகழ்கலைகள் மனிதர்களின் வாழ்வியலோடு எவ்வாறு பின்னிப் பிணைந்துள்ளன? விளக்குக.",
+                  "marks": 3
+                },
+                {
+                  "q": "முத்துக்குமாரசுவாமி பிள்ளைத்தமிழில் குமரகுருபரர் செங்கீரைப் பருவத்தில் இறைவனை எவ்வாறு பாடுகிறார்?",
+                  "marks": 3
+                }
+              ]
+            },
+            "mamaRule": "⚠️ Note: BPT தேற்றத்தின் நிரூபணமும் புதிய முக்கோணக் கணக்கும் சோதிக்கப்படும்!",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 4 Night Assessment: Maths + Tamil",
+              "timing": "8:30 PM – 9:15 PM (45 Mins)",
+              "totalMarks": 30,
+              "breakup": "15 Marks Maths + 15 Marks Tamil"
+            }
           },
           {
             "day": 5,
-            "date": "2026-10-31",
-            "focus": "Science (Magnetic Effects & Human Eye)",
-            "target": "Right hand thumb rule, Fleming left hand rule, eye defects",
-            "test": "Diagrams test"
+            "date": "2026-11-01",
+            "title": "Day 5: Science (Carbon and its Compounds) + English (Madam Rides & Grammar)",
+            "subjects": [
+              "Science",
+              "English"
+            ],
+            "sub1": {
+              "name": "Science (Chemistry)",
+              "chapter": "Ch 4: Carbon and its Compounds",
+              "topics": "Covalent bonding, Catenation & Tetravalency, Homologous series, Saturated vs Unsaturated hydrocarbons, Soap and Micelle formation",
+              "sampleQuestions": [
+                {
+                  "q": "Why is carbon versatile? Explain Catenation and Tetravalency with examples.",
+                  "marks": 3
+                },
+                {
+                  "q": "Explain the cleansing action of soap with micelle diagram. Why soap does not work in hard water?",
+                  "marks": 4
+                }
+              ]
+            },
+            "sub2": {
+              "name": "English",
+              "chapter": "Prose: Madam Rides the Bus & Grammar",
+              "topics": "Valli's meticulous planning for the bus ride, The dead cow incident, Subject-Verb Concord & Modals",
+              "sampleQuestions": [
+                {
+                  "q": "How did Valli save money for her first bus ride? What does this show about her character?",
+                  "marks": 3
+                },
+                {
+                  "q": "Fill in with correct modals/concord: (a) Either he or I ___ responsible. (b) You ___ obey traffic rules.",
+                  "marks": 3
+                }
+              ]
+            },
+            "mamaRule": "⚠️ Note: Soap micelle & Valli character twist questions will appear in tonight's test!",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 5 Night Assessment: Science + English",
+              "timing": "8:30 PM – 9:15 PM (45 Mins)",
+              "totalMarks": 30,
+              "breakup": "15 Marks Science + 15 Marks English"
+            }
           },
           {
             "day": 6,
-            "date": "2026-11-01",
-            "focus": "Science (Bio: Control & Coord, Heredity, Environment)",
-            "target": "Neuron diagram, reflex arc, Mendel monohybrid cross",
-            "test": "Bio 20-mark quiz"
+            "date": "2026-11-02",
+            "title": "Day 6: Social Science (Print Culture & Political Parties) + Maths (Heights & Distances)",
+            "subjects": [
+              "Social Science",
+              "Mathematics"
+            ],
+            "sub1": {
+              "name": "Social Science",
+              "chapter": "Print Culture & Political Parties",
+              "topics": "Gutenberg press, Vernacular Press Act, Functions of Political Parties, National vs Regional parties",
+              "sampleQuestions": [
+                {
+                  "q": "How did print culture help the French Revolution ideas spread?",
+                  "marks": 3
+                },
+                {
+                  "q": "What are the main functions of a political party? Why can modern democracy not exist without parties?",
+                  "marks": 3
+                }
+              ]
+            },
+            "sub2": {
+              "name": "Mathematics",
+              "chapter": "Ch 9: Some Applications of Trigonometry",
+              "topics": "Angle of elevation, Angle of depression, Height of tower/lighthouse word problems (30°, 45°, 60°)",
+              "sampleQuestions": [
+                {
+                  "q": "From a point on ground, the angle of elevation of bottom and top of a transmission tower fixed on 20m building are 45° and 60°. Find height of tower.",
+                  "marks": 4
+                },
+                {
+                  "q": "A 1.5m tall boy looks at a 30m building. Angle increases from 30° to 60° as he walks. Find distance walked.",
+                  "marks": 4
+                }
+              ]
+            },
+            "mamaRule": "⚠️ Note: Trigonometry word problem with new measurements in night test!",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 6 Night Assessment: SST + Maths",
+              "timing": "8:30 PM – 9:15 PM (45 Mins)",
+              "totalMarks": 30,
+              "breakup": "15 Marks SST + 15 Marks Maths"
+            }
           },
           {
             "day": 7,
-            "date": "2026-11-02",
-            "focus": "Maths (Trig Applications & Areas of Circles)",
-            "target": "Heights and distances (angle of elevation/depression)",
-            "test": "Trig 5 problems"
+            "date": "2026-11-03",
+            "title": "Day 7: Science (Human Eye & Colourful World) + Tamil (இயல் 7: விதைநெல்)",
+            "subjects": [
+              "Science",
+              "Tamil"
+            ],
+            "sub1": {
+              "name": "Science (Physics)",
+              "chapter": "Ch 11: The Human Eye and the Colourful World",
+              "topics": "Myopia & Hypermetropia (causes, ray diagram, correction), Dispersion of light through prism, Atmospheric refraction (twinkling of stars, advance sunrise), Tyndall effect",
+              "sampleQuestions": [
+                {
+                  "q": "A person cannot see objects beyond 1.2m distinctly. Name the defect and power of corrective lens.",
+                  "marks": 3
+                },
+                {
+                  "q": "Why do stars twinkle but planets do not? Why does the sun appear reddish early morning?",
+                  "marks": 3
+                }
+              ]
+            },
+            "sub2": {
+              "name": "Tamil",
+              "chapter": "இயல் 7: விதைநெல்",
+              "topics": "சிற்றகல் ஒளி (ம.பொ.சி), ஏர் புதிதா, மெய்க்கீர்த்தி, சிலப்பதிகாரம் (வழக்குரை காதை), புறப்பொருள் வெண்பாமாலை",
+              "sampleQuestions": [
+                {
+                  "q": "ம.பொ.சியின் எல்லைப் போராட்டக் கருத்துக்களை சுருக்கித் தருக.",
+                  "marks": 3
+                },
+                {
+                  "q": "சிலப்பதிகாரத்தில் கண்ணகி பாண்டிய மன்னனிடம் வழக்குரைத்த காட்சியை விவரிக்க.",
+                  "marks": 4
+                }
+              ]
+            },
+            "mamaRule": "⚠️ Note: Eye defect numerical ray diagram & Silappathikaram essay twist!",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 7 Night Assessment: Science + Tamil",
+              "timing": "8:30 PM – 9:15 PM (45 Mins)",
+              "totalMarks": 30,
+              "breakup": "15 Marks Science + 15 Marks Tamil"
+            }
           },
           {
             "day": 8,
-            "date": "2026-11-03",
-            "focus": "Maths (Statistics & Probability)",
-            "target": "Mean (Step-deviation), Median, Mode formulas",
-            "test": "Stats 25-mark test"
+            "date": "2026-11-04",
+            "title": "Day 8: Mathematics (Areas Related to Circles) + Social Science (Agriculture & Minerals)",
+            "subjects": [
+              "Mathematics",
+              "Social Science"
+            ],
+            "sub1": {
+              "name": "Mathematics",
+              "chapter": "Ch 12: Areas Related to Circles",
+              "topics": "Area of sector and segment of circle, Combination of plane figures",
+              "sampleQuestions": [
+                {
+                  "q": "Find area of sector of circle of radius 6 cm if angle of sector is 60° (use $\\pi = 22/7$).",
+                  "marks": 3
+                },
+                {
+                  "q": "A chord of circle of radius 15 cm subtends angle 60° at centre. Find area of minor and major segments.",
+                  "marks": 4
+                }
+              ]
+            },
+            "sub2": {
+              "name": "Social Science",
+              "chapter": "Geography: Agriculture & Minerals",
+              "topics": "Kharif, Rabi, Zaid cropping seasons; Rice, Wheat, Tea conditions; Conventional vs Non-conventional minerals",
+              "sampleQuestions": [
+                {
+                  "q": "Differentiate between Rabi and Kharif cropping seasons with two examples each.",
+                  "marks": 3
+                },
+                {
+                  "q": "Why is solar energy called the energy of future in India? Give three reasons.",
+                  "marks": 3
+                }
+              ]
+            },
+            "mamaRule": "⚠️ Note: Circle segment area with fresh combinations in night test!",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 8 Night Assessment: Maths + SST",
+              "timing": "8:30 PM – 9:15 PM (45 Mins)",
+              "totalMarks": 30,
+              "breakup": "15 Marks Maths + 15 Marks SST"
+            }
           },
           {
             "day": 9,
-            "date": "2026-11-04",
-            "focus": "SST (History: Global World & Print Culture)",
-            "target": "Gutenberg press, Martin Luther, Vernacular press act",
-            "test": "3-mark answers"
+            "date": "2026-11-05",
+            "title": "Day 9: Science (Magnetic Effects of Current) + English (Sermon at Benares & Poetry)",
+            "subjects": [
+              "Science",
+              "English"
+            ],
+            "sub1": {
+              "name": "Science (Physics)",
+              "chapter": "Ch 12: Magnetic Effects of Electric Current",
+              "topics": "Magnetic field lines, Right-hand thumb rule, Fleming's Left-Hand rule, Solenoid, Domestic electric circuits, Earth wire & Fuse",
+              "sampleQuestions": [
+                {
+                  "q": "State Fleming's Left-Hand Rule and Right-Hand Thumb Rule. Mention their applications.",
+                  "marks": 3
+                },
+                {
+                  "q": "What is the function of an earth wire? Why is earthing of metallic appliances necessary?",
+                  "marks": 3
+                }
+              ]
+            },
+            "sub2": {
+              "name": "English",
+              "chapter": "Prose: The Sermon at Benares & Poems",
+              "topics": "Kisa Gotami and the mustard seeds lesson, Amanda! theme, Fog & Custard the Dragon, Reported Speech",
+              "sampleQuestions": [
+                {
+                  "q": "How did Buddha make Kisa Gotami understand the inevitability of death?",
+                  "marks": 3
+                },
+                {
+                  "q": "Convert into indirect speech: The teacher said to the students, \"Why are you late today?\"",
+                  "marks": 2
+                }
+              ]
+            },
+            "mamaRule": "⚠️ Note: Solenoid magnetic lines & Kisa Gotami character values in night test!",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 9 Night Assessment: Science + English",
+              "timing": "8:30 PM – 9:15 PM (45 Mins)",
+              "totalMarks": 30,
+              "breakup": "15 Marks Science + 15 Marks English"
+            }
           },
           {
             "day": 10,
-            "date": "2026-11-05",
-            "focus": "SST (Civics: Gender & Political Parties, Outcomes)",
-            "target": "Functions of political parties, national vs regional",
-            "test": "Civics test"
+            "date": "2026-11-06",
+            "title": "Day 10: Social Science (Manufacturing & Globalisation) + Tamil (இயல் 5, 6, 7 இலக்கணம்)",
+            "subjects": [
+              "Social Science",
+              "Tamil"
+            ],
+            "sub1": {
+              "name": "Social Science",
+              "chapter": "Manufacturing Industries & Globalisation",
+              "topics": "Location of industries (Iron & Steel, Cotton textile), MNCs, Liberalisation, WTO, Fair globalisation",
+              "sampleQuestions": [
+                {
+                  "q": "Why is the iron and steel industry called the basic industry? Where are most plants located?",
+                  "marks": 3
+                },
+                {
+                  "q": "What is globalisation? What steps has India taken to attract foreign investment?",
+                  "marks": 3
+                }
+              ]
+            },
+            "sub2": {
+              "name": "Tamil",
+              "chapter": "இயல் 5, 6, 7 இலக்கணம் & வினாவிடை",
+              "topics": "வினா விடை வகைகள், பொருள்கோள், அகப்பொருள் & புறப்பொருள் திணைகள், அணி இலக்கணம் (தற்குறிப்பேற்றம், வேற்றுமை)",
+              "sampleQuestions": [
+                {
+                  "q": "பொருள்கோள் என்றால் என்ன? அதன் வகைகளை சான்றுடன் பட்டியலிடுக.",
+                  "marks": 4
+                },
+                {
+                  "q": "தற்குறிப்பேற்ற அணியை எடுத்துக்காட்டுடன் விளக்குக.",
+                  "marks": 3
+                }
+              ]
+            },
+            "mamaRule": "⚠️ Note: MNC impact on small producers & Tamil Ilakkanam proof drills!",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 10 Night Assessment: SST + Tamil",
+              "timing": "8:30 PM – 9:15 PM (45 Mins)",
+              "totalMarks": 30,
+              "breakup": "15 Marks SST + 15 Marks Tamil"
+            }
           },
           {
             "day": 11,
-            "date": "2026-11-06",
-            "focus": "SST (Geography: Agriculture, Minerals & Manufacturing)",
-            "target": "Kharif/Rabi, Iron ore, Coal mines & cotton textile",
-            "test": "Map test"
+            "date": "2026-11-07",
+            "title": "Day 11: Mathematics (Statistics & Probability) + Science (Heredity & Environment)",
+            "subjects": [
+              "Mathematics",
+              "Science"
+            ],
+            "sub1": {
+              "name": "Mathematics",
+              "chapter": "Ch 13: Statistics & Ch 14: Probability",
+              "topics": "Mean by direct and assumed mean method, Mode of grouped data, Median formula, Probability of cards, dice, coins",
+              "sampleQuestions": [
+                {
+                  "q": "Find mode of following grouped frequency data (table provided).",
+                  "marks": 3
+                },
+                {
+                  "q": "A card is drawn from pack of 52. Find probability of: (a) King of red colour (b) a face card (c) spade.",
+                  "marks": 3
+                }
+              ]
+            },
+            "sub2": {
+              "name": "Science (Biology)",
+              "chapter": "Ch 8: Heredity & Ch 13: Our Environment",
+              "topics": "Mendel's Monohybrid & Dihybrid cross, Sex determination in humans (XX/XY), Food chain & 10% law, Biological magnification, Ozone depletion",
+              "sampleQuestions": [
+                {
+                  "q": "Explain sex determination in human beings with flowchart. Why is mother never responsible for sex of child?",
+                  "marks": 3
+                },
+                {
+                  "q": "State 10% law of energy transfer. Why are herbivores called primary consumers?",
+                  "marks": 3
+                }
+              ]
+            },
+            "mamaRule": "⚠️ Note: Statistics Mode calculation & 10% energy pyramid in night test!",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 11 Night Assessment: Maths + Science",
+              "timing": "8:30 PM – 9:15 PM (45 Mins)",
+              "totalMarks": 30,
+              "breakup": "15 Marks Maths + 15 Marks Science"
+            }
           },
           {
             "day": 12,
-            "date": "2026-11-07",
-            "focus": "SST (Economics: Money & Credit, Globalisation)",
-            "target": "Formal vs Informal credit, SHGs, MNCs role",
-            "test": "Eco case study"
+            "date": "2026-11-08",
+            "title": "Day 12: English (The Proposal, Stories & Writing) + SST (Democracy & Map Work)",
+            "subjects": [
+              "English",
+              "Social Science"
+            ],
+            "sub1": {
+              "name": "English",
+              "chapter": "The Proposal (Play) & Supplementary (Bholi, The Necklace)",
+              "topics": "Lomov and Natalya quarrel over Oxen meadows & dogs, Matilda Loisel's greed, Bholi's teacher role, Letter of Inquiry",
+              "sampleQuestions": [
+                {
+                  "q": "How does Anton Chekhov portray 19th-century Russian landowning families in 'The Proposal'?",
+                  "marks": 4
+                },
+                {
+                  "q": "What transformed Bholi from a dumb cow to a fearless confident young woman?",
+                  "marks": 3
+                }
+              ]
+            },
+            "sub2": {
+              "name": "Social Science",
+              "chapter": "Civics: Outcomes of Democracy & Map Work",
+              "topics": "Accountable, responsive & legitimate government, Economic growth vs inequality, Revision-1 India Map marking",
+              "sampleQuestions": [
+                {
+                  "q": "How does democracy produce an accountable, responsive and legitimate government?",
+                  "marks": 3
+                },
+                {
+                  "q": "Identify & label on India Outline Map: (a) Bhakra Nangal Dam (b) Salem Iron & Steel Plant (c) Tuticorin Port.",
+                  "marks": 3
+                }
+              ]
+            },
+            "mamaRule": "⚠️ Note: Map work & Bholi character evaluation twist in night test!",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 12 Night Assessment: English + SST",
+              "timing": "8:30 PM – 9:15 PM (45 Mins)",
+              "totalMarks": 30,
+              "breakup": "15 Marks English + 15 Marks SST"
+            }
           },
           {
             "day": 13,
-            "date": "2026-11-08",
-            "focus": "Tamil (இயல் 5: மணற்கேணி)",
-            "target": "மொழிபெயர்ப்புக் கல்வி, நீதி வெண்பா, வினா-விடை வகைகள்",
-            "test": "இலக்கணம் தேர்வு"
+            "date": "2026-11-09",
+            "title": "Day 13: 🧪 Science Grand Revision Test (Full Bio + Chem + Phys Portions)",
+            "subjects": [
+              "Science (Full Portion Revision)"
+            ],
+            "sub1": {
+              "name": "Science (Full Revision-1 Portion)",
+              "chapter": "All 7 Chapters in SRM Rev-1 Syllabus",
+              "topics": "Chemistry (Ch 2, 4), Biology (Ch 6, 8, 13), Physics (Ch 11, 12) Comprehensive Rapid Drills",
+              "sampleQuestions": [
+                {
+                  "q": "Grand Revision: Draw ray diagrams for concave mirror and convex lens when object is at F and between F & 2F.",
+                  "marks": 5
+                },
+                {
+                  "q": "Write balanced equations for Chlor-alkali process, reaction of ethanoic acid with sodium carbonate.",
+                  "marks": 5
+                }
+              ]
+            },
+            "sub2": {
+              "name": "Science Formula & Diagram Sprint",
+              "chapter": "Formulas & Diagrams",
+              "topics": "Neuron, Reflex arc, Human Eye defects, Electric solenoid, Soap micelle",
+              "sampleQuestions": [
+                {
+                  "q": "Draw neat labeled diagram of human eye and label cornea, iris, pupil, retina.",
+                  "marks": 4
+                }
+              ]
+            },
+            "mamaRule": "⚠️ Note: முழு அறிவியல் பாடங்களின் 40-மார்க் மாதிரித் தேர்வு!",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 13 Grand Assessment: Full Science Simulation",
+              "timing": "8:00 PM – 9:15 PM (75 Mins)",
+              "totalMarks": 40,
+              "breakup": "Physics 15M + Chemistry 15M + Biology 10M"
+            }
           },
           {
             "day": 14,
-            "date": "2026-11-09",
-            "focus": "Tamil (இயல் 6 & 7: நிகழ்கலை & விதைநெல்)",
-            "target": "பிள்ளைத்தமிழ், கம்பராமாயணம், அணி இலக்கணம்",
-            "test": "செய்யுள் & அணி தேர்வு"
+            "date": "2026-11-10",
+            "title": "Day 14: 🌍 Social Studies Grand Revision Test (Hist + Geo + Pol + Eco)",
+            "subjects": [
+              "Social Science (Full Portion Revision)"
+            ],
+            "sub1": {
+              "name": "Social Studies (Full Revision-1 Portion)",
+              "chapter": "History, Geography, Political Science, Economics",
+              "topics": "Global World, Print Culture, Agriculture, Minerals, Manufacturing, Political Parties, Outcomes, Money, Globalisation",
+              "sampleQuestions": [
+                {
+                  "q": "Grand Revision: Trace the transition from manuscript era to print revolution in Europe.",
+                  "marks": 5
+                },
+                {
+                  "q": "Why is credit crucial for economic development? Give positive and negative impacts.",
+                  "marks": 5
+                }
+              ]
+            },
+            "sub2": {
+              "name": "SST Map & Case-Based Drills",
+              "chapter": "Maps & Case Studies",
+              "topics": "CBSE 2027 Pattern Case Questions on Self Help Groups and Agriculture in India",
+              "sampleQuestions": [
+                {
+                  "q": "Case-based analysis of SHGs in rural economy with 3 sub-questions.",
+                  "marks": 4
+                }
+              ]
+            },
+            "mamaRule": "⚠️ Note: 40-மார்க் முழு சமூக அறிவியல் மாதிரித் தேர்வு!",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 14 Grand Assessment: Full SST Simulation",
+              "timing": "8:00 PM – 9:15 PM (75 Mins)",
+              "totalMarks": 40,
+              "breakup": "History 10M + Geography 10M + Civics 10M + Economics 10M"
+            }
           },
           {
             "day": 15,
-            "date": "2026-11-10",
-            "focus": "English (Prose 4 chapters & Poems 5)",
-            "target": "Mijbil, Madam rides bus, Sermon at Benares, Proposal",
-            "test": "Character sketches"
+            "date": "2026-11-11",
+            "title": "Day 15: 📐 Mathematics Grand Formula & Proof Marathon (7 Chapters)",
+            "subjects": [
+              "Mathematics (Full Portion Revision)"
+            ],
+            "sub1": {
+              "name": "Mathematics",
+              "chapter": "All 7 Revision-1 Chapters",
+              "topics": "BPT Proof, Section Formula, Trigonometric heights, Circle segments, Mode/Median, Quadratic/Polynomials",
+              "sampleQuestions": [
+                {
+                  "q": "BPT Theorem Proof writing without seeing in 7 minutes.",
+                  "marks": 5
+                },
+                {
+                  "q": "Trigonometry double angle / elevation of balloon/plane problem.",
+                  "marks": 5
+                }
+              ]
+            },
+            "sub2": {
+              "name": "Speed Calculation Drill",
+              "chapter": "Statistics & Circles",
+              "topics": "Formula verification test - 20 formulas written in 10 minutes",
+              "sampleQuestions": [
+                {
+                  "q": "Write the formulas for Mode of grouped data and Area of segment of circle.",
+                  "marks": 2
+                }
+              ]
+            },
+            "mamaRule": "⚠️ Note: கணக்குகள் எழுதிப் பார்க்கும் வேகமும் துல்லியமும் மட்டுமே பரிசோதிக்கப்படும்!",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 15 Grand Assessment: Mathematics 40-Mark Board Paper",
+              "timing": "8:00 PM – 9:15 PM (75 Mins)",
+              "totalMarks": 40,
+              "breakup": "Section A (MCQs 10M) + Section B & C (Proofs & Numerical 30M)"
+            }
           },
           {
             "day": 16,
-            "date": "2026-11-11",
-            "focus": "English (Supplementary 4 chapters & Grammar)",
-            "target": "Bholi, Necklace, Scientist + Tenses, Modals, Concord",
-            "test": "Grammar practice"
-          },
-          {
-            "day": 17,
             "date": "2026-11-12",
-            "focus": "English Final Mock Test & Formal Letters",
-            "target": "Letter to Editor, Complaint letter + Full 80-mark mock paper",
-            "test": "Full English Mock"
+            "title": "Day 16: 📖 English Board Exam Eve Simulation (First Exam Tomorrow - Nov 13!)",
+            "subjects": [
+              "English Language & Literature"
+            ],
+            "sub1": {
+              "name": "English (Exam Eve Readiness)",
+              "chapter": "Full Revision-1 Portion",
+              "topics": "Reading Comprehension (Discursive & Factual), Formal Letters, Grammar, Literature Prose, Poetry, Supplementary",
+              "sampleQuestions": [
+                {
+                  "q": "Final Drill: Write a formal Letter to the Editor regarding cyber awareness among school students.",
+                  "marks": 5
+                },
+                {
+                  "q": "Compare and contrast Lomov and Chubukov in 'The Proposal'. How do pride and triviality dominate them?",
+                  "marks": 5
+                }
+              ]
+            },
+            "sub2": {
+              "name": "Grammar & Quote Flashcards",
+              "chapter": "Reported Speech, Concord, Poem Quotes",
+              "topics": "Amanda, Fog, The Trees, Custard character quotes for 6-mark answers",
+              "sampleQuestions": [
+                {
+                  "q": "Explain symbolism of Fog in Carl Sandburg's poem.",
+                  "marks": 3
+                }
+              ]
+            },
+            "mamaRule": "⚠️ Note: நாளை காலை English SRM Revision-1 முதல் தேர்வு! இன்று இரவு Relaxed 30-Mark Final Confidence Test!",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 16 Exam Eve Assessment: English 30-Mark Confidence Booster",
+              "timing": "8:00 PM – 8:45 PM (45 Mins)",
+              "totalMarks": 30,
+              "breakup": "Reading (10M) + Writing & Grammar (10M) + Literature (10M)",
+              "instructions": "சீக்கிரம் தூங்கி காலையில் உற்சாகத்துடன் பள்ளிக்குச் செல்ல வேண்டும்!"
+            }
           }
         ]
       },
-      "daily_mix": {
-        "name": "⚖️ Daily Balanced Mix (தினமும் 3 பாடங்கள் + இரவு 30 நிமிட மினி தேர்வு)",
-        "description": "ஒரே பாடத்தால் சலிப்படையாமல், தினமும் கணிதம் + அறிவியல்/சமூக அறிவியல் + மொழிப் பாடம் படிக்கும் சுறுசுறுப்பான முறை.",
-        "dailyRoutine": {
-          "slot1": "காலை 06:00 - 07:30: கணிதம் (Maths 1 Chapter Concept + 5 Proofs)",
-          "slot2": "மாலை 05:00 - 06:30: அறிவியல் / சமூக அறிவியல் (Science/SST Concept + Diagrams)",
-          "slot3": "இரவு 07:00 - 08:00: தமிழ் / ஆங்கிலம் (Language Grammar & Writing)",
-          "slot4": "இரவு 08:30 - 09:15: இன்றைய பாடங்களுக்கான 25-மார்க் இரவு மாதிரித் தேர்வு (Daily Assessment)"
-        },
+      "deep_dive": {
+        "name": "🎯 Option B: Deep Dive Focus (1 Subject / Day)",
+        "shortName": "Deep Dive (1 Subject)",
+        "description": "ஒவ்வொரு நாளும் ஒரு பிரதான பாடத்தை எடுத்து ஆழமாக முழு சிலபஸையும் முடிக்கும் முறை.",
         "schedule": [
           {
-            "day": 1,
+            "day": 0,
             "date": "2026-10-27",
-            "maths": "Polynomials (Zeroes & coefficients)",
-            "science": "Acids, Bases & Salts (pH & indicator)",
-            "language": "English: Formal Letters format",
-            "test": "Daily 20-min Quiz"
+            "isToday": true,
+            "title": "Day 0: Understanding the Module & System Setup",
+            "focus": "Orientation & Module Familiarization",
+            "target": "Explore the App, check 🎧 Audio lessons, 🤖 AI Doubt Solver & Exam Timetable",
+            "test": "No test tonight - Module Orientation"
+          },
+          {
+            "day": 1,
+            "date": "2026-10-28",
+            "isTomorrow": true,
+            "title": "Day 1: Science Deep Dive (Acids, Bases & Salts)",
+            "focus": "Science (Chemistry)",
+            "target": "NCERT in-text reactions, Chlor-alkali process, pH curve & Plaster of Paris equations",
+            "sampleQuestions": [
+              {
+                "q": "What gas is released when dilute HCl reacts with Zinc granules? Write the balanced chemical equation and describe how to test this gas.",
+                "sampleAns": "Hydrogen gas ($H_2$) is evolved. $Zn + 2HCl \\rightarrow ZnCl_2 + H_2\\uparrow$. Test: Bring a burning splinter near the mouth of the test tube; it burns with a pop sound.",
+                "marks": 3
+              },
+              {
+                "q": "A solution turns blue litmus red. What is its expected pH range? Why does tooth decay start when the pH of mouth is lower than 5.5?",
+                "sampleAns": "pH < 7 (acidic). Tooth enamel is made of calcium hydroxyapatite. When pH falls below 5.5, the acid produced by bacteria reacting with food particles corrodes the enamel.",
+                "marks": 3
+              },
+              {
+                "q": "Write the chemical name, formula and two uses of Plaster of Paris. Why is it stored in moisture-proof containers?",
+                "sampleAns": "Calcium sulphate hemihydrate ($CaSO_4 \\cdot \\frac{1}{2}H_2O$). Uses: 1. Making casts for broken bones. 2. Making toys/statues. It absorbs moisture to become hard Gypsum ($CaSO_4 \\cdot 2H_2O$).",
+                "marks": 3
+              }
+            ],
+            "mamaRule": "⚠️ Note to Pranav: இந்த Sample Questions நீ பயிற்சி செய்வதற்கு மட்டுமே! இரவு 8:30 PM தேர்வில் இதே கேள்விகள் அப்படியே வராது — உன் அண்டர்ஸ்டாண்டிங்கை சோதிக்க எண்களும் வரிகளும் Twist செய்து புதிய கேள்விகள் கேட்கப்படும்!",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 1 Deep Dive Test: Acids, Bases & Salts (30 Marks)",
+              "timing": "8:30 PM - 9:15 PM",
+              "totalMarks": 30,
+              "mode": "Written notebook test"
+            }
           },
           {
             "day": 2,
-            "date": "2026-10-28",
-            "maths": "Linear Equations (Elimination method)",
-            "science": "Acids & Bases (Chlor-alkali, Bleaching powder)",
-            "language": "Tamil: இயல் 5 நீதி வெண்பா",
-            "test": "Daily 20-min Quiz"
+            "date": "2026-10-29",
+            "title": "Day 2: Science Deep Dive (Carbon & Compounds)",
+            "focus": "Science (Chemistry)",
+            "target": "Covalent bonding, homologous series, soap micelle & IUPAC nomenclature",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 2 Deep Dive: Carbon Compounds (30M)",
+              "timing": "8:30 PM - 9:15 PM",
+              "totalMarks": 30
+            }
           },
           {
             "day": 3,
-            "date": "2026-10-29",
-            "maths": "Triangles (BPT Thales Theorem proof)",
-            "science": "Carbon: Covalent bonding & homologous series",
-            "language": "English: Mijbil the Otter & Poems",
-            "test": "BPT Proof Test"
+            "date": "2026-10-30",
+            "title": "Day 3: Mathematics Deep Dive (Polynomials & Linear Equations)",
+            "focus": "Mathematics",
+            "target": "Zeroes & coefficients verification, 10 word problems on substitution/elimination",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 3 Deep Dive: Maths Polynomials & Equations (30M)",
+              "timing": "8:30 PM - 9:15 PM",
+              "totalMarks": 30
+            }
           },
           {
             "day": 4,
-            "date": "2026-10-30",
-            "maths": "Triangles (Similarity criteria & riders)",
-            "science": "Carbon: Functional groups & IUPAC names",
-            "language": "Tamil: வினா-விடை வகைகள் & பொருள்கோள்",
-            "test": "Daily 20-min Quiz"
+            "date": "2026-10-31",
+            "title": "Day 4: Mathematics Deep Dive (Triangles & BPT Theorem)",
+            "focus": "Mathematics",
+            "target": "BPT Proof 3 times, similarity criteria proofs & 8 textbook riders",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 4 Deep Dive: Triangles Proofs (30M)",
+              "timing": "8:30 PM - 9:15 PM",
+              "totalMarks": 30
+            }
           },
           {
             "day": 5,
-            "date": "2026-10-31",
-            "maths": "Trig Applications (Heights & Distances)",
-            "science": "Magnetic Effects (Right hand thumb rule)",
-            "language": "English: Madam rides the bus & Grammar",
-            "test": "Trig & Mag Test"
+            "date": "2026-11-01",
+            "title": "Day 5: Social Science Deep Dive (Making of Global World & Print Culture)",
+            "focus": "Social Science (History)",
+            "target": "Silk routes, Great Depression, Gutenberg press & Print revolution impacts",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 5 Deep Dive: History (30M)",
+              "timing": "8:30 PM - 9:15 PM",
+              "totalMarks": 30
+            }
           },
           {
             "day": 6,
-            "date": "2026-11-01",
-            "maths": "Trig Applications (2 angles problems)",
-            "science": "Magnetic Effects (Fleming left hand rule)",
-            "language": "SST: Making of Global World",
-            "test": "Daily 20-min Quiz"
+            "date": "2026-11-02",
+            "title": "Day 6: Social Science Deep Dive (Money and Credit & Globalisation)",
+            "focus": "Social Science (Economics)",
+            "target": "Formal/Informal credit, SHGs functioning, MNC operations & WTO rules",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 6 Deep Dive: Economics (30M)",
+              "timing": "8:30 PM - 9:15 PM",
+              "totalMarks": 30
+            }
           },
           {
             "day": 7,
-            "date": "2026-11-02",
-            "maths": "Areas Related to Circles (Sector & Segment)",
-            "science": "Human Eye (Myopia, Hypermetropia defects)",
-            "language": "Tamil: இயல் 6 பிள்ளைத்தமிழ்",
-            "test": "Circle & Eye Test"
+            "date": "2026-11-03",
+            "title": "Day 7: Tamil Deep Dive (இயல் 5 முழுமையாக)",
+            "focus": "Tamil (இரண்டாம் மொழி)",
+            "target": "மொழிபெயர்ப்புக் கல்வி, நீதி வெண்பா, திருவிளையாடற் புராணம், வினா விடை & பொருள்கோள்",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 7 Deep Dive: தமிழ் இயல் 5 தேர்வு (30M)",
+              "timing": "8:30 PM - 9:15 PM",
+              "totalMarks": 30
+            }
           },
           {
             "day": 8,
-            "date": "2026-11-03",
-            "maths": "Statistics (Mean by direct & step-deviation)",
-            "science": "Bio: Control & Coord (Brain & reflex arc)",
-            "language": "SST: Print Culture & Modern World",
-            "test": "Stats & Bio Test"
+            "date": "2026-11-04",
+            "title": "Day 8: English Deep Dive (Prose & Formal Writing)",
+            "focus": "English Language & Literature",
+            "target": "Mijbil, Madam Rides, Sermon at Benares + Letter to Editor & Complaint format",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 8 Deep Dive: English Prose & Letters (30M)",
+              "timing": "8:30 PM - 9:15 PM",
+              "totalMarks": 30
+            }
           },
           {
             "day": 9,
-            "date": "2026-11-04",
-            "maths": "Statistics (Median & Mode formulas)",
-            "science": "Bio: Heredity (Mendel 3:1 ratio)",
-            "language": "English: Sermon at Benares & The Proposal",
-            "test": "Stats & Heredity Test"
+            "date": "2026-11-05",
+            "title": "Day 9: Science Deep Dive (The Human Eye & Magnetic Effects)",
+            "focus": "Science (Physics)",
+            "target": "Defects of vision ray diagrams, Fleming's left hand rule, Solenoid & Earthing",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 9 Deep Dive: Physics (30M)",
+              "timing": "8:30 PM - 9:15 PM",
+              "totalMarks": 30
+            }
           },
           {
             "day": 10,
-            "date": "2026-11-05",
-            "maths": "Probability (Cards, dice, coin problems)",
-            "science": "Bio: Our Environment (10% law, Ozone layer)",
-            "language": "SST: Political Parties & Gender",
-            "test": "Prob & Env Test"
+            "date": "2026-11-06",
+            "title": "Day 10: Mathematics Deep Dive (Trig Applications & Circle Areas)",
+            "focus": "Mathematics",
+            "target": "Heights and distances word problems & combinations of circle segments",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 10 Deep Dive: Maths Applications (30M)",
+              "timing": "8:30 PM - 9:15 PM",
+              "totalMarks": 30
+            }
           },
           {
             "day": 11,
-            "date": "2026-11-06",
-            "maths": "Maths Full Revision 1-4 chapters",
-            "science": "Science Chemistry Complete Review",
-            "language": "Tamil: இயல் 7 விதைநெல் & அணி",
-            "test": "Combined 40-mark Test"
+            "date": "2026-11-07",
+            "title": "Day 11: Social Science Deep Dive (Political Parties & Agriculture)",
+            "focus": "Social Science (Civics & Geography)",
+            "target": "National/Regional parties, Challenges to parties, Kharif/Rabi crops & Minerals",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 11 Deep Dive: Civics & Geo (30M)",
+              "timing": "8:30 PM - 9:15 PM",
+              "totalMarks": 30
+            }
           },
           {
             "day": 12,
-            "date": "2026-11-07",
-            "maths": "Maths Full Revision 6, 9, 11, 13",
-            "science": "Science Physics & Bio Complete Review",
-            "language": "SST: Agriculture & Minerals Map work",
-            "test": "Combined 40-mark Test"
+            "date": "2026-11-08",
+            "title": "Day 12: Tamil Deep Dive (இயல் 6 & 7 செய்யுள் மற்றும் இலக்கணம்)",
+            "focus": "Tamil (இரண்டாம் மொழி)",
+            "target": "முத்துக்குமாரசுவாமி பிள்ளைத்தமிழ், சிலப்பதிகாரம், அகப்பொருள் & புறப்பொருள்",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 12 Deep Dive: தமிழ் இயல் 6 & 7 (30M)",
+              "timing": "8:30 PM - 9:15 PM",
+              "totalMarks": 30
+            }
           },
           {
             "day": 13,
-            "date": "2026-11-08",
-            "maths": "Maths CBSE Sample Paper Drill",
-            "science": "Science CBSE Sample Paper Drill",
-            "language": "SST: Money & Credit, Globalisation",
-            "test": "Sample Paper Drill"
+            "date": "2026-11-09",
+            "title": "Day 13: English Deep Dive (The Proposal, Stories & Grammar)",
+            "focus": "English Language & Literature",
+            "target": "The Proposal drama, Bholi, The Necklace + Reported speech & Concord",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 13 Deep Dive: English Play & Grammar (30M)",
+              "timing": "8:30 PM - 9:15 PM",
+              "totalMarks": 30
+            }
           },
           {
             "day": 14,
-            "date": "2026-11-09",
-            "maths": "Maths Formula Speed Run",
-            "science": "Science Diagrams & Equations Speed Run",
-            "language": "Tamil: இயல் 5, 6, 7 முழு மாதிரித் தேர்வு",
-            "test": "Tamil Model Exam"
+            "date": "2026-11-10",
+            "title": "Day 14: Mathematics Deep Dive (Statistics & Probability)",
+            "focus": "Mathematics",
+            "target": "Mean, Mode, Median grouped data + card/dice probability calculations",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 14 Deep Dive: Statistics & Probability (30M)",
+              "timing": "8:30 PM - 9:15 PM",
+              "totalMarks": 30
+            }
           },
           {
             "day": 15,
-            "date": "2026-11-10",
-            "maths": "Light revision on doubts",
-            "science": "SST Map complete drill",
-            "language": "English: Complete Supplementary Review",
-            "test": "English Literature"
+            "date": "2026-11-11",
+            "title": "Day 15: Science Deep Dive (Bio: Control, Heredity & Environment)",
+            "focus": "Science (Biology)",
+            "target": "Neuron diagram, reflex arc, human brain, sex determination & 10% food chain law",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 15 Deep Dive: Biology Comprehensive (30M)",
+              "timing": "8:30 PM - 9:15 PM",
+              "totalMarks": 30
+            }
           },
           {
             "day": 16,
-            "date": "2026-11-11",
-            "maths": "Light revision",
-            "science": "All formulas recap",
-            "language": "English: Complete Grammar & Formal Letters",
-            "test": "English Grammar"
-          },
-          {
-            "day": 17,
             "date": "2026-11-12",
-            "maths": "Rest & confidence",
-            "science": "Quick glance",
-            "language": "English: Final 80-mark School Standard Mock",
-            "test": "Final English Mock"
+            "title": "Day 16: English Exam Eve Simulation (First Exam Tomorrow!)",
+            "focus": "English Language & Literature",
+            "target": "Full English syllabus rapid review, letter formats, story character analysis",
+            "nightTest": {
+              "hasTest": true,
+              "title": "Day 16 English Final Confidence Booster (30M)",
+              "timing": "8:00 PM - 8:45 PM",
+              "totalMarks": 30
+            }
           }
         ]
       }

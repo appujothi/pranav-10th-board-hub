@@ -1763,26 +1763,141 @@ function renderDiagnosticTracker() {
   `;
 }
 
-// ================= SMART REVISION SPLITTER (SCHEDULE VIEW) =================
+// ================= SMART REVISION SPLITTER (DAILY 2-SUBJECT & DEEP DIVE) =================
+function toggleTomorrowSampleQuestions() {
+  const content = document.getElementById('tomorrow-samples-content');
+  const chevron = document.getElementById('tomorrow-samples-chevron');
+  if (!content) return;
+  const isHidden = content.classList.contains('hidden');
+  if (isHidden) {
+    content.classList.remove('hidden');
+    if (chevron) chevron.classList.add('rotate-180');
+  } else {
+    content.classList.add('hidden');
+    if (chevron) chevron.classList.remove('rotate-180');
+  }
+}
+
+function toggleAns(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.classList.toggle('hidden');
+}
+
+function toggleFull16DaySchedule() {
+  const container = document.getElementById('full-16day-schedule-container');
+  const chevronText = document.getElementById('full-16day-chevron-text');
+  if (!container) return;
+  const isHidden = container.classList.contains('hidden');
+  if (isHidden) {
+    container.classList.remove('hidden');
+    if (chevronText) chevronText.innerHTML = '<span>மறைக்க</span> <i class="fa-solid fa-chevron-up text-[9px]"></i>';
+    renderFull16DaySchedule();
+  } else {
+    container.classList.add('hidden');
+    if (chevronText) chevronText.innerHTML = '<span>விரிவாகப் பார்க்க</span> <i class="fa-solid fa-chevron-down text-[9px]"></i>';
+  }
+}
+
+function renderFull16DaySchedule() {
+  const container = document.getElementById('full-16day-schedule-container');
+  if (!container || !appState || !appState.revisionSplitter) return;
+  const rs = appState.revisionSplitter;
+  const activeMode = rs.activeMode || 'pair_rotation';
+  const modeData = rs.modes ? (rs.modes[activeMode] || rs.modes['pair_rotation']) : null;
+  if (!modeData || !modeData.schedule) return;
+
+  container.innerHTML = '';
+  modeData.schedule.forEach(s => {
+    const card = document.createElement('div');
+    card.className = `p-3 rounded-xl border text-xs space-y-1.5 ${s.day === 0 ? 'bg-slate-800/80 border-slate-700 text-slate-300' : (s.day === 1 ? 'bg-amber-950/30 border-amber-500/50 text-white ring-1 ring-amber-500/30' : 'bg-slate-900/90 border-slate-700/80 text-white')}`;
+
+    if (activeMode === 'pair_rotation') {
+      const nightTestInfo = s.nightTest ? (s.nightTest.hasTest ? `🌙 ${s.nightTest.title || 'Night Test'} • ${s.nightTest.timing || '8:30 PM'}` : '🌙 ' + s.nightTest.title) : '';
+      card.innerHTML = `
+        <div class="flex items-center justify-between border-b border-slate-700/60 pb-1">
+          <div class="flex items-center gap-1.5">
+            <span class="font-extrabold ${s.day === 1 ? 'text-amber-400' : 'text-emerald-400'} text-[11px]">Day ${s.day} • ${s.date}</span>
+            ${s.day === 0 ? '<span class="text-[9px] bg-slate-700 px-1.5 py-0.2 rounded font-bold">Orientation</span>' : ''}
+            ${s.day === 1 ? '<span class="text-[9px] bg-amber-500/30 text-amber-300 px-1.5 py-0.2 rounded font-bold">Tomorrow</span>' : ''}
+          </div>
+          <span class="text-[9px] font-bold px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">${nightTestInfo}</span>
+        </div>
+        ${s.sub1 ? `
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-0.5 text-[10px]">
+            <div class="bg-slate-800/60 p-2 rounded-lg">
+              <strong class="text-emerald-400 block">${s.sub1.name}:</strong>
+              <span class="text-slate-300">${s.sub1.topics || s.sub1.chapter}</span>
+            </div>
+            ${s.sub2 ? `
+            <div class="bg-slate-800/60 p-2 rounded-lg">
+              <strong class="text-purple-400 block">${s.sub2.name}:</strong>
+              <span class="text-slate-300">${s.sub2.topics || s.sub2.chapter}</span>
+            </div>` : ''}
+          </div>
+        ` : `<p class="text-[11px] text-slate-300">${s.description || s.focus || ''}</p>`}
+      `;
+    } else {
+      card.innerHTML = `
+        <div class="flex items-center justify-between border-b border-slate-700/60 pb-1">
+          <span class="font-extrabold text-amber-400 text-[11px]">Day ${s.day} • ${s.date}</span>
+          <span class="text-[9px] font-bold px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">🌙 ${s.nightTest?.title || s.test || 'Daily Test'}</span>
+        </div>
+        <p class="text-[11px] text-slate-200"><strong class="text-emerald-400">Deep Focus:</strong> ${s.focus || s.title}</p>
+        <p class="text-[10px] text-slate-400">${s.target || ''}</p>
+      `;
+    }
+    container.appendChild(card);
+  });
+}
+
 function renderRevisionSplitter() {
   const container = document.getElementById('revision-splitter-feed');
   const descEl = document.getElementById('split-mode-desc');
-  if (!container || !appState || !appState.revisionSplitter) return;
+  if (!appState || !appState.revisionSplitter) return;
 
   const rs = appState.revisionSplitter;
-  const activeMode = rs.activeMode || 'daily_mix';
-  const modeData = rs.modes ? rs.modes[activeMode] : null;
+  const activeMode = rs.activeMode || 'pair_rotation';
+  const modeData = rs.modes ? (rs.modes[activeMode] || rs.modes['pair_rotation']) : null;
 
-  // Update Buttons
-  const btnMix = document.getElementById('split-mode-btn-daily_mix');
-  const btnDeep = document.getElementById('split-mode-btn-deep_dive');
-  if (btnMix && btnDeep) {
-    if (activeMode === 'daily_mix') {
-      btnMix.className = 'py-2 px-3 rounded-xl font-bold transition flex items-center justify-center gap-1.5 bg-emerald-600 text-white shadow-sm';
-      btnDeep.className = 'py-2 px-3 rounded-xl font-bold transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-white';
+  // Update Active Mode Labels & Highlights on Home Card
+  const modeLabel = document.getElementById('active-mode-label');
+  const modeExpl = document.getElementById('mode-explanation-text');
+  const btnPairHome = document.getElementById('mode-btn-pair');
+  const btnDeepHome = document.getElementById('mode-btn-deep');
+  
+  if (modeLabel) {
+    modeLabel.textContent = activeMode === 'pair_rotation' 
+      ? '🔄 Option A: 2 Subjects / Day (Recommended)' 
+      : '🎯 Option B: 1 Subject Focus (Deep Dive)';
+  }
+
+  if (modeExpl && modeData) {
+    modeExpl.innerHTML = activeMode === 'pair_rotation'
+      ? '💡 <strong>பரிந்துரை:</strong> தினமும் 2 பாடங்கள் சுழற்சி முறை (Science + Tamil, Maths + English, SST + Science) — இரவில் 30 மதிப்பெண் மாதிரித் தேர்வு!'
+      : '💡 <strong>ஆழமான முறை:</strong> தினமும் 1 பாடத்தை முழுமையாக முடிக்கும் முறை — இரவில் அந்த பாடத்திற்கான முழு மாதிரித் தேர்வு!';
+  }
+
+  if (btnPairHome && btnDeepHome) {
+    if (activeMode === 'pair_rotation') {
+      btnPairHome.className = 'py-2 px-2.5 rounded-xl font-bold transition flex items-center justify-center gap-1.5 bg-emerald-600 text-white shadow-sm text-center';
+      btnDeepHome.className = 'py-2 px-2.5 rounded-xl font-bold transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-white text-center';
     } else {
-      btnDeep.className = 'py-2 px-3 rounded-xl font-bold transition flex items-center justify-center gap-1.5 bg-emerald-600 text-white shadow-sm';
-      btnMix.className = 'py-2 px-3 rounded-xl font-bold transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-white';
+      btnDeepHome.className = 'py-2 px-2.5 rounded-xl font-bold transition flex items-center justify-center gap-1.5 bg-emerald-600 text-white shadow-sm text-center';
+      btnPairHome.className = 'py-2 px-2.5 rounded-xl font-bold transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-white text-center';
+    }
+  }
+
+  // Update Schedule View Buttons
+  const btnPairSched = document.getElementById('split-mode-btn-pair_rotation') || document.getElementById('split-mode-btn-daily_mix');
+  const btnDeepSched = document.getElementById('split-mode-btn-deep_dive');
+  if (btnPairSched && btnDeepSched) {
+    if (activeMode === 'pair_rotation') {
+      btnPairSched.className = 'py-2 px-3 rounded-xl font-bold transition flex items-center justify-center gap-1.5 bg-emerald-600 text-white shadow-sm';
+      btnDeepSched.className = 'py-2 px-3 rounded-xl font-bold transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-white';
+    } else {
+      btnDeepSched.className = 'py-2 px-3 rounded-xl font-bold transition flex items-center justify-center gap-1.5 bg-emerald-600 text-white shadow-sm';
+      btnPairSched.className = 'py-2 px-3 rounded-xl font-bold transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-white';
     }
   }
 
@@ -1790,34 +1905,42 @@ function renderRevisionSplitter() {
     descEl.textContent = modeData.description;
   }
 
-  if (!modeData || !modeData.schedule) return;
+  // Render Full 16-Day schedule if container is open
+  const full16Container = document.getElementById('full-16day-schedule-container');
+  if (full16Container && !full16Container.classList.contains('hidden')) {
+    renderFull16DaySchedule();
+  }
 
+  // Render Schedule View Feed
+  if (!container || !modeData || !modeData.schedule) return;
   container.innerHTML = '';
   modeData.schedule.forEach(s => {
     const row = document.createElement('div');
     row.className = 'p-2.5 rounded-xl bg-slate-800/90 border border-slate-700/80 text-xs text-white space-y-1';
 
     let contentHtml = '';
-    if (activeMode === 'daily_mix') {
+    if (activeMode === 'pair_rotation') {
+      const nightTestInfo = s.nightTest ? (s.nightTest.hasTest ? `🌙 ${s.nightTest.title || 'Night Test'} • ${s.nightTest.timing || '8:30 PM'}` : '🌙 ' + s.nightTest.title) : '';
       contentHtml = `
         <div class="flex items-center justify-between border-b border-slate-700/60 pb-1">
-          <span class="font-extrabold text-amber-400 text-[11px]">Day ${s.day} • ${s.date}</span>
-          <span class="text-[9px] font-bold px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">🌙 ${s.test}</span>
+          <span class="font-extrabold ${s.day === 1 ? 'text-amber-400' : 'text-emerald-400'} text-[11px]">Day ${s.day} • ${s.date}</span>
+          <span class="text-[9px] font-bold px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">${nightTestInfo}</span>
         </div>
-        <div class="grid grid-cols-3 gap-1 pt-0.5 text-[10px]">
-          <span class="text-slate-300"><strong class="text-emerald-400">Math:</strong> ${s.maths}</span>
-          <span class="text-slate-300"><strong class="text-blue-400">Sci:</strong> ${s.science}</span>
-          <span class="text-slate-300"><strong class="text-purple-400">Lang:</strong> ${s.language}</span>
-        </div>
+        ${s.sub1 ? `
+          <div class="grid grid-cols-2 gap-1 pt-0.5 text-[10px]">
+            <span class="text-slate-300"><strong class="text-emerald-400">${s.sub1.name.split(' ')[0]}:</strong> ${s.sub1.chapter}</span>
+            ${s.sub2 ? `<span class="text-slate-300"><strong class="text-purple-400">${s.sub2.name.split(' ')[0]}:</strong> ${s.sub2.chapter}</span>` : ''}
+          </div>
+        ` : `<p class="text-[10px] text-slate-300">${s.description || s.focus || ''}</p>`}
       `;
     } else {
       contentHtml = `
         <div class="flex items-center justify-between border-b border-slate-700/60 pb-1">
           <span class="font-extrabold text-amber-400 text-[11px]">Day ${s.day} • ${s.date}</span>
-          <span class="text-[9px] font-bold px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">🌙 ${s.test}</span>
+          <span class="text-[9px] font-bold px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">🌙 ${s.nightTest?.title || s.test || 'Daily Test'}</span>
         </div>
-        <p class="text-[11px] text-slate-200"><strong class="text-emerald-400">Focus:</strong> ${s.focus}</p>
-        <p class="text-[10px] text-slate-400">Target: ${s.target}</p>
+        <p class="text-[11px] text-slate-200"><strong class="text-emerald-400">Focus:</strong> ${s.focus || s.title}</p>
+        <p class="text-[10px] text-slate-400">Target: ${s.target || ''}</p>
       `;
     }
 
@@ -1835,7 +1958,7 @@ async function switchRevisionSplitterMode(mode) {
     });
     if (res.ok) {
       if (appState.revisionSplitter) appState.revisionSplitter.activeMode = mode;
-      showToast(`Switched to ${mode === 'daily_mix' ? 'Daily Balanced Mix' : 'Deep Dive'} Mode!`);
+      showToast(`Switched to ${mode === 'pair_rotation' ? 'Option A: 2 Subjects / Day' : 'Option B: Deep Dive Focus'} Mode!`);
       await fetchData();
     }
   } catch (e) {

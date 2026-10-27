@@ -401,6 +401,249 @@
           </button>
         </div>
 
+        <!-- 16-DAY REVISION-1 MISSION: DAILY TASKS & NIGHT TESTS (HERO CARD ON HOME) -->
+        <div id="home-revision-mission-card" class="rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-950/80 border border-emerald-900/60 text-white p-4.5 space-y-4 shadow-xl">
+          
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-sm border border-emerald-500/30">
+                🎯
+              </span>
+              <div>
+                <h4 class="text-xs font-extrabold text-white">16-Day Revision-1 Mission Planner</h4>
+                <p class="text-[9px] text-slate-300">Daily 2-Subject Tasks • Sample Questions • 8:30 PM Night Tests</p>
+              </div>
+            </div>
+            <span class="text-[9px] font-extrabold px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
+              16 Days to Go
+            </span>
+          </div>
+
+          <!-- TWO SELECTABLE MODES: Option A (Pair Rotation) vs Option B (Deep Dive) -->
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between text-[10px] font-bold text-slate-400">
+              <span class="uppercase tracking-wider">Select Revision Plan:</span>
+              <span class="text-emerald-400 font-semibold" id="active-mode-label">🔄 Option A: 2 Subjects / Day</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 p-1 bg-slate-800/90 rounded-2xl border border-slate-700/80 text-xs">
+              <button onclick="switchRevisionSplitterMode('pair_rotation')" id="mode-btn-pair" class="py-2 px-2 rounded-xl font-bold transition flex items-center justify-center gap-1.5 bg-emerald-600 text-white shadow-sm text-center">
+                <i class="fa-solid fa-arrows-rotate text-xs"></i>
+                <span class="text-[11px] leading-tight">Option A: 2 Subjects / Day</span>
+              </button>
+              <button onclick="switchRevisionSplitterMode('deep_dive')" id="mode-btn-deep" class="py-2 px-2 rounded-xl font-bold transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-white text-center">
+                <i class="fa-solid fa-bullseye text-xs"></i>
+                <span class="text-[11px] leading-tight">Option B: 1 Subject Focus</span>
+              </button>
+            </div>
+            <p id="mode-explanation-text" class="text-[10px] text-slate-300 leading-snug px-1 pt-0.5">
+              💡 <strong>பரிந்துரை:</strong> தினமும் 2 பாடங்கள் சுழற்சி முறை (Science + Tamil, Maths + English, SST + Science) — இரவில் 30 மதிப்பெண் மாதிரித் தேர்வு!
+            </p>
+          </div>
+
+          <!-- TODAY STATUS BANNER: Day 0 (Oct 27) -->
+          <div class="rounded-2xl bg-slate-800/80 border border-slate-700 p-3 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-extrabold text-emerald-400 bg-emerald-500/20 px-2.5 py-0.5 rounded-full border border-emerald-500/30 flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                TODAY: 27 Oct 2026
+              </span>
+              <span class="text-[9px] text-slate-400 font-bold">Day 0 / 16</span>
+            </div>
+            <h5 class="text-xs font-bold text-white">Day 0: Understanding the Module & System Setup</h5>
+            <p class="text-[11px] text-slate-300 leading-snug">
+              இன்று ஆப் மற்றும் 2-சப்ஜெக்ட் சுழற்சி படிப்பு முறையை முழுமையாகப் புரிந்து கொள்ளும் நாள். <strong>இன்று இரவு தேர்வு இல்லை.</strong> நாளைக்கான பாடங்கள் மற்றும் Sample Questions-ஐ கீழே படித்து தயாராகுங்கள்!
+            </p>
+          </div>
+
+          <!-- TOMORROW'S MISSION SPOTLIGHT CARD (Day 1: 28 Oct 2026) -->
+          <div id="tomorrow-mission-box" class="rounded-2xl bg-gradient-to-r from-amber-950/40 via-slate-800/90 to-emerald-950/40 border border-amber-500/40 p-3.5 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-extrabold text-amber-300 bg-amber-500/20 px-2.5 py-0.5 rounded-full border border-amber-500/30 flex items-center gap-1">
+                <i class="fa-solid fa-fire text-amber-400"></i> TOMORROW'S TASK (28 Oct)
+              </span>
+              <span class="text-[10px] font-bold text-amber-300 bg-amber-900/40 px-2 py-0.5 rounded-md">Day 1</span>
+            </div>
+
+            <!-- Subject 1 & Subject 2 Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              <!-- Sub 1 -->
+              <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-700/80 space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <span class="font-extrabold text-emerald-400 text-xs">🔬 Science (Chemistry)</span>
+                  <span class="text-[9px] bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded">Part 1</span>
+                </div>
+                <h6 class="font-bold text-white text-[11px]">Ch 2: Acids, Bases and Salts</h6>
+                <p class="text-[10px] text-slate-300 leading-snug">
+                  pH scale, Chlor-alkali process, Plaster of Paris, Bleaching powder & Acid-Metal reactions.
+                </p>
+                <div class="pt-1 flex items-center gap-1.5">
+                  <button onclick="playTanglishAudio('exp-s2')" class="text-[9px] bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-2.5 py-1 rounded-lg flex items-center gap-1">
+                    <i class="fa-solid fa-volume-high text-[8px]"></i> 🎧 Listen Tanglish Audio
+                  </button>
+                </div>
+              </div>
+
+              <!-- Sub 2 -->
+              <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-700/80 space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <span class="font-extrabold text-purple-400 text-xs">📖 Tamil (இரண்டாம் மொழி)</span>
+                  <span class="text-[9px] bg-purple-500/20 text-purple-300 px-1.5 py-0.5 rounded">Part 2</span>
+                </div>
+                <h6 class="font-bold text-white text-[11px]">இயல் 5: மணற்கேணி</h6>
+                <p class="text-[10px] text-slate-300 leading-snug">
+                  மொழிபெயர்ப்புக் கல்வி, நீதி வெண்பா (செய்குதம்பிப் பாவலர்), வினா-விடை வகைகள் & பொருள்கோள்.
+                </p>
+                <div class="pt-1 flex items-center gap-1.5">
+                  <button onclick="playTanglishAudio('exp-tam5')" class="text-[9px] bg-purple-600 hover:bg-purple-700 text-white font-bold px-2.5 py-1 rounded-lg flex items-center gap-1">
+                    <i class="fa-solid fa-volume-high text-[8px]"></i> 🎧 தமிழ் விளக்கம் கேள்
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- MAMA QUALITY RULE WARNING ALERT -->
+            <div class="p-2.5 rounded-xl bg-rose-950/60 border border-rose-500/50 text-[10px] text-rose-200 leading-snug space-y-1">
+              <div class="flex items-center gap-1.5 font-extrabold text-rose-300">
+                <i class="fa-solid fa-triangle-exclamation text-rose-400"></i>
+                <span>Mama's Quality Rule (முக்கிய அறிவிப்பு):</span>
+              </div>
+              <p>
+                கீழே கொடுக்கப்பட்டுள்ள <strong>Sample Practice Questions</strong> உன் சுய பயிற்சிக்காக மட்டுமே! இரவு 8:30 PM மாதிரித் தேர்வில் <em>இதே கேள்விகள் அப்படியே வராது</em> — உன் உண்மையான புரிதலை சோதிக்க எண்களும் வார்த்தைகளும் <strong>Twist செய்து புதிய கேள்விகளாகக் கேட்கப்படும்!</strong>
+              </p>
+            </div>
+
+            <!-- SAMPLE PRACTICE QUESTIONS ACCORDION -->
+            <div class="border border-slate-700 rounded-xl overflow-hidden bg-slate-900/80">
+              <button onclick="toggleTomorrowSampleQuestions()" class="w-full p-2.5 flex items-center justify-between text-left text-xs font-bold text-amber-300 hover:bg-slate-800/80 transition">
+                <span class="flex items-center gap-1.5">
+                  <i class="fa-solid fa-clipboard-question text-amber-400"></i>
+                  <span>நாளைக்கான மாதிரி வினாக்கள் (6 Sample Practice Questions & Solutions)</span>
+                </span>
+                <i id="tomorrow-samples-chevron" class="fa-solid fa-chevron-down text-[10px] text-amber-400 transition-transform"></i>
+              </button>
+
+              <div id="tomorrow-samples-content" class="hidden p-3 space-y-3 text-[11px] border-t border-slate-800 text-slate-300 bg-slate-950/60">
+                <div class="space-y-2">
+                  <span class="font-extrabold text-emerald-400 block border-b border-slate-800 pb-0.5">🔬 Science Practice Questions (3 Marks each):</span>
+                  
+                  <div class="p-2 rounded-lg bg-slate-900/80 border border-slate-800 space-y-1">
+                    <p class="font-bold text-white">Q1. What gas is released when dilute HCl reacts with Zinc granules? Write the balanced chemical equation and test for this gas.</p>
+                    <button onclick="toggleAns('ans-s1')" class="text-[9px] font-bold text-amber-400 hover:underline">👁️ View Sample Answer & Key</button>
+                    <p id="ans-s1" class="hidden text-[10px] text-emerald-300 bg-emerald-950/40 p-1.5 rounded border border-emerald-900/60 mt-1">
+                      <strong>Answer:</strong> Hydrogen gas ($H_2$) is released.<br>
+                      <strong>Equation:</strong> $Zn(s) + 2HCl(aq) \rightarrow ZnCl_2(aq) + H_2(g)\uparrow$<br>
+                      <strong>Test:</strong> Bring a burning matchstick/splinter near mouth of tube; burns with 'POP' sound.
+                    </p>
+                  </div>
+
+                  <div class="p-2 rounded-lg bg-slate-900/80 border border-slate-800 space-y-1">
+                    <p class="font-bold text-white">Q2. A solution turns blue litmus red. What is its pH range? Why does tooth decay start when mouth pH is below 5.5?</p>
+                    <button onclick="toggleAns('ans-s2')" class="text-[9px] font-bold text-amber-400 hover:underline">👁️ View Sample Answer & Key</button>
+                    <p id="ans-s2" class="hidden text-[10px] text-emerald-300 bg-emerald-950/40 p-1.5 rounded border border-emerald-900/60 mt-1">
+                      <strong>Answer:</strong> pH is less than 7 (acidic). Tooth enamel is calcium hydroxyapatite. Below pH 5.5, bacteria produce acids from sugar/food debris which corrodes the enamel.
+                    </p>
+                  </div>
+
+                  <div class="p-2 rounded-lg bg-slate-900/80 border border-slate-800 space-y-1">
+                    <p class="font-bold text-white">Q3. Give chemical name, formula and two uses of Plaster of Paris. Why is it stored in moisture-proof containers?</p>
+                    <button onclick="toggleAns('ans-s3')" class="text-[9px] font-bold text-amber-400 hover:underline">👁️ View Sample Answer & Key</button>
+                    <p id="ans-s3" class="hidden text-[10px] text-emerald-300 bg-emerald-950/40 p-1.5 rounded border border-emerald-900/60 mt-1">
+                      <strong>Answer:</strong> Calcium sulphate hemihydrate ($CaSO_4 \cdot \frac{1}{2}H_2O$).<br>
+                      <strong>Uses:</strong> 1. Setting fractured bones. 2. Making toys & casts.<br>
+                      <strong>Storage:</strong> Absorbs water to set into hard solid Gypsum ($CaSO_4 \cdot 2H_2O$).
+                    </p>
+                  </div>
+                </div>
+
+                <div class="space-y-2 pt-2 border-t border-slate-800">
+                  <span class="font-extrabold text-purple-400 block border-b border-slate-800 pb-0.5">📖 Tamil Practice Questions (3 Marks each):</span>
+                  
+                  <div class="p-2 rounded-lg bg-slate-900/80 border border-slate-800 space-y-1">
+                    <p class="font-bold text-white">Q1. மொழிபெயர்ப்பு குறித்து பாரதியார் மற்றும் பாரதிதாசன் கூறிய கருத்துக்களை தொகுத்து எழுதுக.</p>
+                    <button onclick="toggleAns('ans-t1')" class="text-[9px] font-bold text-amber-400 hover:underline">👁️ View Sample Answer & Key</button>
+                    <p id="ans-t1" class="hidden text-[10px] text-purple-300 bg-purple-950/40 p-1.5 rounded border border-purple-900/60 mt-1">
+                      <strong>விடை:</strong> பாரதியார்: "சென்றிடுவீர் எட்டுத்திக்கும் - கலைச் செல்வங்கள் யாவும் கொணர்ந்திங்கு சேர்ப்பீர்". பாரதிதாசன்: "பிறநாட்டு நல்லறிஞர் சாத்திரங்கள் தமிழ் மொழியிற் பெயர்த்தல் வேண்டும்".
+                    </p>
+                  </div>
+
+                  <div class="p-2 rounded-lg bg-slate-900/80 border border-slate-800 space-y-1">
+                    <p class="font-bold text-white">Q2. வினா எத்தனை வகைப்படும்? விடை எத்தனை வகைப்படும்? சான்றுகளுடன் விளக்குக.</p>
+                    <button onclick="toggleAns('ans-t2')" class="text-[9px] font-bold text-amber-400 hover:underline">👁️ View Sample Answer & Key</button>
+                    <p id="ans-t2" class="hidden text-[10px] text-purple-300 bg-purple-950/40 p-1.5 rounded border border-purple-900/60 mt-1">
+                      <strong>விடை:</strong> வினா 6 வகைப்படும் (அறிவினா, அறியாவினா, ஐயவினா, கொளல்வினா, கொடைவினா, ஏவல்வினா). விடை 8 வகைப்படும் (சுட்டு, நேர், எதிர், ஏவல், வினாவெதிர் வினாதல், உற்றது உரைத்தல், உறுவது கூறல், இனமொழி).
+                    </p>
+                  </div>
+
+                  <div class="p-2 rounded-lg bg-slate-900/80 border border-slate-800 space-y-1">
+                    <p class="font-bold text-white">Q3. 'அருளைப் பெருக்கி அறிவைத் திருத்தி' - இப்பாடல் அடிகளில் குறிப்பிடப்படும் கல்வியின் சிறப்பினை விளக்குக.</p>
+                    <button onclick="toggleAns('ans-t3')" class="text-[9px] font-bold text-amber-400 hover:underline">👁️ View Sample Answer & Key</button>
+                    <p id="ans-t3" class="hidden text-[10px] text-purple-300 bg-purple-950/40 p-1.5 rounded border border-purple-900/60 mt-1">
+                      <strong>விடை:</strong> செய்குதம்பிப் பாவலர் நீதி வெண்பா: கல்வி மனிதனிடம் உள்ள அறியாமையைப் போக்கி, அருளைப் பெருக்கி, நல்வழியில் செலுத்தி உயிருக்கு உற்ற துணையாய் இன்பம் சேர்க்கிறது.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TOMORROW NIGHT TEST BLUEPRINT -->
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-700 space-y-1.5 text-xs">
+              <div class="flex items-center justify-between">
+                <span class="font-extrabold text-rose-400 flex items-center gap-1.5">
+                  <i class="fa-solid fa-moon text-rose-400"></i>
+                  <span>Day 1 Night Assessment (நாளை இரவுத் தேர்வு)</span>
+                </span>
+                <span class="text-[9px] bg-rose-500/20 text-rose-300 font-extrabold px-2 py-0.5 rounded-full border border-rose-500/30">
+                  30 Marks • 45 Mins
+                </span>
+              </div>
+              <p class="text-[11px] text-slate-300">
+                <strong>நேரம்:</strong> இரவு 8:30 PM முதல் 9:15 PM வரை • <strong>பிரிவு:</strong> அறிவியல் 15 மதிப்பெண் + தமிழ் 15 மதிப்பெண்.
+              </p>
+              <p class="text-[10px] text-slate-400">
+                Rough நோட்டில் எழுதி உடனே போட்டோ எடுத்து அப்லோட் செய்ய வேண்டும். AI முதல்கட்ட திருத்தமும், மாமாவின் இறுதி சரிபார்ப்பும் வழங்கப்படும்!
+              </p>
+            </div>
+
+            <!-- STUDY TOOLKIT (Task vs Study Separation) -->
+            <div class="pt-1 border-t border-slate-700/80 flex flex-wrap items-center justify-between gap-2 text-xs">
+              <span class="text-[10px] font-bold text-slate-400 flex items-center gap-1">
+                <i class="fa-solid fa-graduation-cap text-emerald-400"></i>
+                <span>சந்தேகங்கள் உள்ளதா? படிக்கும் உதவிகள்:</span>
+              </span>
+              <div class="flex items-center gap-1.5">
+                <button onclick="openDoubtSolverModal()" class="text-[10px] font-bold bg-purple-600 hover:bg-purple-700 text-white px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm transition">
+                  <i class="fa-solid fa-robot"></i> AI Doubt Solver
+                </button>
+                <button onclick="switchTab('formulas')" class="text-[10px] font-bold bg-emerald-600 hover:bg-emerald-700 text-white px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm transition">
+                  <i class="fa-solid fa-headphones"></i> Audio Hub
+                </button>
+                <button onclick="openAssignTaskModal()" class="text-[10px] font-bold bg-blue-600 hover:bg-blue-700 text-white px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm transition">
+                  <i class="fa-solid fa-upload"></i> Upload Solution
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- FULL 16-DAY SCHEDULE EXPANDER -->
+          <div class="pt-1 border-t border-slate-800">
+            <button onclick="toggleFull16DaySchedule()" class="w-full py-2 px-3 rounded-xl bg-slate-800/80 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-bold flex items-center justify-between transition">
+              <span class="flex items-center gap-1.5">
+                <i class="fa-solid fa-calendar-week text-emerald-400"></i>
+                <span>📅 16 நாட்கள் முழு ரிவிஷன் அட்டவணை (Oct 28 – Nov 12)</span>
+              </span>
+              <span id="full-16day-chevron-text" class="text-[10px] text-slate-400 flex items-center gap-1">
+                <span>விரிவாகப் பார்க்க</span> <i class="fa-solid fa-chevron-down text-[9px]"></i>
+              </span>
+            </button>
+
+            <div id="full-16day-schedule-container" class="hidden mt-3 space-y-2 max-h-96 overflow-y-auto custom-scroll pr-1">
+              <!-- Rendered dynamically by app.js -->
+            </div>
+          </div>
+
+        </div>
+
         <!-- AI TEXTBOOK DOUBT SOLVER BANNER -->
         <div class="rounded-3xl bg-gradient-to-r from-purple-900 via-indigo-900 to-slate-900 p-4 text-white shadow-xl space-y-3 border border-purple-800/80">
           <div class="flex items-center justify-between">
@@ -670,11 +913,11 @@
 
           <!-- Mode Switcher Buttons -->
           <div class="grid grid-cols-2 gap-2 p-1 bg-slate-800/80 rounded-2xl border border-slate-700/60 text-xs">
-            <button onclick="switchRevisionSplitterMode('daily_mix')" id="split-mode-btn-daily_mix" class="py-2 px-3 rounded-xl font-bold transition flex items-center justify-center gap-1.5 bg-emerald-600 text-white shadow-sm">
-              <span>⚖️ Daily Balanced Mix</span>
+            <button onclick="switchRevisionSplitterMode('pair_rotation')" id="split-mode-btn-pair_rotation" class="py-2 px-3 rounded-xl font-bold transition flex items-center justify-center gap-1.5 bg-emerald-600 text-white shadow-sm">
+              <span>🔄 Option A: 2 Subjects / Day</span>
             </button>
             <button onclick="switchRevisionSplitterMode('deep_dive')" id="split-mode-btn-deep_dive" class="py-2 px-3 rounded-xl font-bold transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-white">
-              <span>🎯 Deep Dive</span>
+              <span>🎯 Option B: Deep Dive Focus</span>
             </button>
           </div>
 
