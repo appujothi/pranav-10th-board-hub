@@ -394,6 +394,55 @@
           </button>
         </div>
 
+        <!-- AI TEXTBOOK DOUBT SOLVER BANNER -->
+        <div class="rounded-3xl bg-gradient-to-r from-purple-900 via-indigo-900 to-slate-900 p-4 text-white shadow-xl space-y-3 border border-purple-800/80">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-8 h-8 rounded-xl bg-purple-500/20 text-purple-300 flex items-center justify-center font-bold text-sm border border-purple-500/30">
+                🤖
+              </span>
+              <div>
+                <h4 class="text-xs font-extrabold text-white">AI Textbook Doubt Solver</h4>
+                <p class="text-[10px] text-purple-200">பேஜ் அல்லது டாபிக் சந்தேகம் கேளு • Tanglish ஆடியோ விளக்கம்</p>
+              </div>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-purple-500/30 text-purple-200 border border-purple-500/40">
+              NCERT AI
+            </span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button onclick="openDoubtSolverModal()" class="flex-1 bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-extrabold py-2 px-3 rounded-xl text-xs flex items-center justify-center gap-2 transition shadow-md">
+              <i class="fa-solid fa-circle-question text-xs"></i> <span>பாடப் புத்தகத்தில் சந்தேகம் கேள் (Ask Doubt)</span>
+            </button>
+            <button onclick="openDoubtSolverModal(); setTimeout(startDoubtVoiceInput, 300);" class="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 transition">
+              <i class="fa-solid fa-microphone text-xs text-amber-300"></i> குரல் வழி
+            </button>
+          </div>
+        </div>
+
+        <!-- 3-DAY DIAGNOSTIC WEAKNESS TRACKER -->
+        <div class="rounded-3xl bg-white border border-slate-200 p-4 space-y-3 shadow-card">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-8 h-8 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center font-bold text-sm">
+                🎯
+              </span>
+              <div>
+                <h4 class="text-xs font-extrabold text-slate-900">3-Day Diagnostic Weakness Detector</h4>
+                <p class="text-[10px] text-slate-500">பிரணவ் எந்தக் குறிப்பிட்ட இடங்களில் மார்க் இழக்கிறான்?</p>
+              </div>
+            </div>
+            <span class="text-[9px] bg-rose-100 text-rose-800 font-extrabold px-2.5 py-0.5 rounded-full">
+              Live Diagnostic
+            </span>
+          </div>
+
+          <div id="diagnostic-tracker-feed" class="space-y-2 text-xs">
+            <!-- Rendered by app.js -->
+          </div>
+        </div>
+
         <!-- EASY LEARN & 50% -> 90% SCORE BOOSTER BANNER -->
         <div class="rounded-3xl bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 p-4 text-white shadow-lg space-y-2.5">
           <div class="flex items-center justify-between">
@@ -598,6 +647,38 @@
           <button onclick="openAddEventModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-[11px] font-bold px-3 py-1.5 rounded-full shadow-btn flex items-center gap-1">
             <i class="fa-solid fa-plus text-[10px]"></i> Add Event
           </button>
+        </div>
+
+        <!-- 17-DAY SMART REVISION SPLITTER CARD -->
+        <div class="rounded-3xl bg-slate-900 text-white p-4 space-y-3 shadow-xl border border-slate-800">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-extrabold text-amber-400 uppercase tracking-wider">Smart Revision Splitter</span>
+              <h4 class="text-sm font-extrabold text-white mt-0.5">17-Day SRM Revision-1 Auto-Scheduler</h4>
+            </div>
+            <span class="text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2.5 py-0.5 rounded-full">
+              17 Days (27 Oct – 12 Nov)
+            </span>
+          </div>
+
+          <!-- Mode Switcher Buttons -->
+          <div class="grid grid-cols-2 gap-2 p-1 bg-slate-800/80 rounded-2xl border border-slate-700/60 text-xs">
+            <button onclick="switchRevisionSplitterMode('daily_mix')" id="split-mode-btn-daily_mix" class="py-2 px-3 rounded-xl font-bold transition flex items-center justify-center gap-1.5 bg-emerald-600 text-white shadow-sm">
+              <span>⚖️ Daily Balanced Mix</span>
+            </button>
+            <button onclick="switchRevisionSplitterMode('deep_dive')" id="split-mode-btn-deep_dive" class="py-2 px-3 rounded-xl font-bold transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-white">
+              <span>🎯 Deep Dive</span>
+            </button>
+          </div>
+
+          <p id="split-mode-desc" class="text-[11px] text-slate-300 leading-snug">
+            ஒரே பாடத்தால் சலிப்படையாமல், தினமும் கணிதம் + அறிவியல் + மொழிப் பாடம் படிக்கும் சுறுசுறுப்பான முறை.
+          </p>
+
+          <!-- Daily Breakdown Feed -->
+          <div id="revision-splitter-feed" class="space-y-2 max-h-72 overflow-y-auto custom-scroll pr-1">
+            <!-- Rendered by app.js -->
+          </div>
         </div>
 
         <!-- Multi-Track Filter Pills -->
@@ -1114,6 +1195,93 @@
       <!-- Scrollable Cards Feed -->
       <div class="p-4 space-y-3.5 overflow-y-auto custom-scroll flex-1 text-xs" id="easylearn-cards-feed">
         <!-- Rendered by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= AI TEXTBOOK DOUBT SOLVER MODAL ================= -->
+  <div id="doubtSolverModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl w-full max-w-lg p-6 space-y-4 shadow-2xl max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div class="flex items-center gap-2">
+          <span class="w-8 h-8 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center text-sm font-bold">
+            🤖
+          </span>
+          <div>
+            <h3 class="text-sm font-extrabold text-slate-900 leading-tight">AI Textbook Doubt Solver</h3>
+            <p class="text-[10px] text-slate-500 font-medium">பேஜ் / டாபிக் சந்தேகம் கேளு • Tanglish ஆடியோ விளக்கம்</p>
+          </div>
+        </div>
+        <button onclick="closeModal('doubtSolverModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <!-- Doubt Input Form -->
+      <form onsubmit="submitAiDoubt(event)" class="space-y-3 text-xs">
+        <div class="grid grid-cols-3 gap-2">
+          <div>
+            <label class="block text-slate-600 font-bold mb-1">Subject:</label>
+            <select id="doubtSubject" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 font-medium">
+              <option value="Science">Science</option>
+              <option value="Mathematics">Mathematics</option>
+              <option value="Social Science">Social Science</option>
+              <option value="English">English</option>
+              <option value="Tamil">Tamil</option>
+            </select>
+          </div>
+          <div class="col-span-2">
+            <label class="block text-slate-600 font-bold mb-1">Chapter / Unit:</label>
+            <input type="text" id="doubtChapter" placeholder="e.g. Acids, Bases & Salts or Triangles" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 font-medium" required>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <div class="w-28">
+            <label class="block text-slate-600 font-bold mb-1">Page No:</label>
+            <input type="text" id="doubtPageNo" placeholder="e.g. Page 22" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 font-medium">
+          </div>
+          <div class="flex-1">
+            <label class="block text-slate-600 font-bold mb-1">Ask by Voice:</label>
+            <button type="button" onclick="startDoubtVoiceInput()" id="doubtMicBtn" class="w-full bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 font-bold py-2 rounded-xl flex items-center justify-center gap-1.5 transition">
+              <i class="fa-solid fa-microphone text-xs"></i> <span>🎤 தமிழில் பேசு (Speak Doubt)</span>
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-slate-600 font-bold mb-1">Your Question / Doubt:</label>
+          <textarea id="doubtTextarea" rows="3" placeholder="e.g. Chlor-alkali process-ல anode and cathode-ல என்ன கேஸ் வரும்? அதை எப்படி ஈசியா ஞாபகம் வச்சுக்கிறது?" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 font-medium text-slate-800" required></textarea>
+        </div>
+
+        <button type="submit" id="doubtSubmitBtn" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-extrabold py-2.5 rounded-xl shadow-btn transition flex items-center justify-center gap-1.5">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> AI விளக்கம் பெறு (Get Tanglish Explanation)
+        </button>
+      </form>
+
+      <!-- Instant Response Card -->
+      <div id="doubtAnswerBox" class="hidden p-4 rounded-2xl bg-purple-50/80 border border-purple-200 text-purple-950 space-y-3 shadow-sm">
+        <div class="flex items-center justify-between">
+          <span class="text-[10px] font-extrabold uppercase tracking-wider text-purple-700 flex items-center gap-1">
+            <i class="fa-solid fa-robot"></i> AI Tanglish விளக்கம்
+          </span>
+          <button type="button" onclick="playCurrentDoubtAudio()" id="doubtPlayAudioBtn" class="bg-purple-600 hover:bg-purple-700 text-white font-bold text-[10px] px-3 py-1 rounded-full flex items-center gap-1 transition shadow-sm">
+            <i class="fa-solid fa-volume-high"></i> 🔊 குரல் வழியே கேள் (Play Audio)
+          </button>
+        </div>
+        <div id="doubtAnswerContent" class="text-xs text-slate-800 whitespace-pre-line leading-relaxed font-medium"></div>
+        <div id="doubtKeywordsBox" class="pt-2 border-t border-purple-200/60">
+          <span class="text-[10px] font-bold text-purple-900 block mb-1">CBSE Exam Keywords to write in paper:</span>
+          <div id="doubtKeywordsPills" class="flex flex-wrap gap-1"></div>
+        </div>
+      </div>
+
+      <!-- Recent Doubts Feed -->
+      <div class="pt-2 space-y-2">
+        <h4 class="font-extrabold text-slate-800 text-xs flex items-center gap-1.5">
+          <i class="fa-solid fa-clock-rotate-left text-slate-500"></i> முந்தைய சந்தேகங்கள் (Previous Doubts)
+        </h4>
+        <div id="previousDoubtsFeed" class="space-y-2">
+          <!-- Rendered by app.js -->
+        </div>
       </div>
     </div>
   </div>

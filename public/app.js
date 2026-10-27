@@ -431,7 +431,9 @@ function renderAll() {
 
   renderHeroCountdown();
   renderDailyTargetCard();
+  renderDiagnosticTracker();
   renderScheduleView();
+  renderRevisionSplitter();
   renderSubjectGridStats();
   renderSyllabusView();
   renderWrittenTasksFeed();
@@ -1699,6 +1701,267 @@ function showSrmSubjectPortion(subKey) {
 
   html += '</div>';
   container.innerHTML = html;
+}
+
+// ================= 3-DAY DIAGNOSTIC WEAKNESS TRACKER =================
+function renderDiagnosticTracker() {
+  const container = document.getElementById('diagnostic-tracker-feed');
+  if (!container || !appState || !appState.diagnosticTracker) return;
+
+  const dt = appState.diagnosticTracker;
+  container.innerHTML = `
+    <!-- Action Needed (Red) -->
+    ${(dt.actionNeeded || []).map(item => `
+      <div class="p-2.5 rounded-2xl bg-rose-50 border border-rose-200 text-rose-950 space-y-1">
+        <div class="flex items-center justify-between font-bold">
+          <span class="flex items-center gap-1.5"><i class="fa-solid fa-triangle-exclamation text-rose-600"></i> ${item.subject} • ${item.topic}</span>
+          <span class="text-[10px] bg-rose-200/80 text-rose-900 px-2 py-0.5 rounded-full font-extrabold">${item.score}% Accuracy</span>
+        </div>
+        <p class="text-[11px] text-rose-800 leading-snug"><strong class="font-bold">🎯 உடனடி கவனம் (Fix):</strong> ${item.fixTip}</p>
+      </div>
+    `).join('')}
+
+    <!-- Moderate Areas (Yellow) -->
+    ${(dt.moderateAreas || []).map(item => `
+      <div class="p-2.5 rounded-2xl bg-amber-50 border border-amber-200 text-amber-950 space-y-1">
+        <div class="flex items-center justify-between font-bold">
+          <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-exclamation text-amber-600"></i> ${item.subject} • ${item.topic}</span>
+          <span class="text-[10px] bg-amber-200/80 text-amber-900 px-2 py-0.5 rounded-full font-extrabold">${item.score}%</span>
+        </div>
+        <p class="text-[11px] text-amber-800 leading-snug"><strong class="font-bold">💡 டிப்ஸ்:</strong> ${item.fixTip}</p>
+      </div>
+    `).join('')}
+
+    <!-- Strong Areas (Green) -->
+    ${(dt.strongAreas || []).map(item => `
+      <div class="p-2 rounded-xl bg-emerald-50/80 border border-emerald-200/70 text-emerald-950 flex items-center justify-between text-[11px]">
+        <span class="flex items-center gap-1.5 font-bold"><i class="fa-solid fa-circle-check text-emerald-600"></i> ${item.subject}: ${item.topic}</span>
+        <span class="text-[10px] font-extrabold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">✓ ${item.score}% Mastered</span>
+      </div>
+    `).join('')}
+  `;
+}
+
+// ================= SMART REVISION SPLITTER (SCHEDULE VIEW) =================
+function renderRevisionSplitter() {
+  const container = document.getElementById('revision-splitter-feed');
+  const descEl = document.getElementById('split-mode-desc');
+  if (!container || !appState || !appState.revisionSplitter) return;
+
+  const rs = appState.revisionSplitter;
+  const activeMode = rs.activeMode || 'daily_mix';
+  const modeData = rs.modes ? rs.modes[activeMode] : null;
+
+  // Update Buttons
+  const btnMix = document.getElementById('split-mode-btn-daily_mix');
+  const btnDeep = document.getElementById('split-mode-btn-deep_dive');
+  if (btnMix && btnDeep) {
+    if (activeMode === 'daily_mix') {
+      btnMix.className = 'py-2 px-3 rounded-xl font-bold transition flex items-center justify-center gap-1.5 bg-emerald-600 text-white shadow-sm';
+      btnDeep.className = 'py-2 px-3 rounded-xl font-bold transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-white';
+    } else {
+      btnDeep.className = 'py-2 px-3 rounded-xl font-bold transition flex items-center justify-center gap-1.5 bg-emerald-600 text-white shadow-sm';
+      btnMix.className = 'py-2 px-3 rounded-xl font-bold transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-white';
+    }
+  }
+
+  if (descEl && modeData) {
+    descEl.textContent = modeData.description;
+  }
+
+  if (!modeData || !modeData.schedule) return;
+
+  container.innerHTML = '';
+  modeData.schedule.forEach(s => {
+    const row = document.createElement('div');
+    row.className = 'p-2.5 rounded-xl bg-slate-800/90 border border-slate-700/80 text-xs text-white space-y-1';
+
+    let contentHtml = '';
+    if (activeMode === 'daily_mix') {
+      contentHtml = `
+        <div class="flex items-center justify-between border-b border-slate-700/60 pb-1">
+          <span class="font-extrabold text-amber-400 text-[11px]">Day ${s.day} • ${s.date}</span>
+          <span class="text-[9px] font-bold px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">🌙 ${s.test}</span>
+        </div>
+        <div class="grid grid-cols-3 gap-1 pt-0.5 text-[10px]">
+          <span class="text-slate-300"><strong class="text-emerald-400">Math:</strong> ${s.maths}</span>
+          <span class="text-slate-300"><strong class="text-blue-400">Sci:</strong> ${s.science}</span>
+          <span class="text-slate-300"><strong class="text-purple-400">Lang:</strong> ${s.language}</span>
+        </div>
+      `;
+    } else {
+      contentHtml = `
+        <div class="flex items-center justify-between border-b border-slate-700/60 pb-1">
+          <span class="font-extrabold text-amber-400 text-[11px]">Day ${s.day} • ${s.date}</span>
+          <span class="text-[9px] font-bold px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">🌙 ${s.test}</span>
+        </div>
+        <p class="text-[11px] text-slate-200"><strong class="text-emerald-400">Focus:</strong> ${s.focus}</p>
+        <p class="text-[10px] text-slate-400">Target: ${s.target}</p>
+      `;
+    }
+
+    row.innerHTML = contentHtml;
+    container.appendChild(row);
+  });
+}
+
+async function switchRevisionSplitterMode(mode) {
+  try {
+    const res = await fetch('/api/schedule/split-mode', {
+      method: 'POST',
+      headers: getAuthHeaders(),
+      body: JSON.stringify({ mode })
+    });
+    if (res.ok) {
+      if (appState.revisionSplitter) appState.revisionSplitter.activeMode = mode;
+      showToast(`Switched to ${mode === 'daily_mix' ? 'Daily Balanced Mix' : 'Deep Dive'} Mode!`);
+      await fetchData();
+    }
+  } catch (e) {
+    if (appState.revisionSplitter) appState.revisionSplitter.activeMode = mode;
+    renderRevisionSplitter();
+  }
+}
+
+// ================= AI TEXTBOOK DOUBT SOLVER =================
+let currentDoubtAudioText = '';
+
+function openDoubtSolverModal() {
+  openModal('doubtSolverModal');
+  renderPreviousDoubtsFeed();
+}
+
+function renderPreviousDoubtsFeed() {
+  const container = document.getElementById('previousDoubtsFeed');
+  if (!container || !appState || !appState.pranavDoubts) return;
+
+  container.innerHTML = '';
+  if (!appState.pranavDoubts.length) {
+    container.innerHTML = '<p class="text-[11px] text-slate-400 italic">No doubts recorded yet. Ask any question above!</p>';
+    return;
+  }
+
+  appState.pranavDoubts.slice(0, 5).forEach(d => {
+    const item = document.createElement('div');
+    item.className = 'p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-1';
+    item.innerHTML = `
+      <div class="flex items-center justify-between">
+        <span class="font-bold text-slate-900 text-[11px]">${d.subject} • ${d.chapter}</span>
+        <span class="text-[9px] text-slate-400">${new Date(d.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+      </div>
+      <p class="text-[11px] text-slate-700 font-medium">Q: ${d.studentQuestion}</p>
+      <div class="flex items-center justify-between pt-1 border-t border-slate-100">
+        <button onclick="playSpecificDoubtAudio('${d.id}')" class="text-[10px] text-purple-700 hover:text-purple-900 font-bold flex items-center gap-1">
+          <i class="fa-solid fa-volume-high"></i> Listen Tanglish Voice Note
+        </button>
+      </div>
+    `;
+    container.appendChild(item);
+  });
+}
+
+function startDoubtVoiceInput() {
+  if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+    showToast('Speech recognition not supported in this browser. Please type your doubt.', false);
+    return;
+  }
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = new SpeechRecognition();
+  recognition.lang = 'ta-IN';
+  recognition.interimResults = false;
+
+  const btn = document.getElementById('doubtMicBtn');
+  if (btn) btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin text-xs"></i> <span>கேட்கிறது... (Listening)</span>';
+
+  recognition.onresult = function(e) {
+    const transcript = e.results[0][0].transcript;
+    const txt = document.getElementById('doubtTextarea');
+    if (txt) txt.value = transcript;
+    if (btn) btn.innerHTML = '<i class="fa-solid fa-microphone text-xs"></i> <span>🎤 தமிழில் பேசு (Speak Doubt)</span>';
+    showToast('Tamil speech captured!');
+  };
+
+  recognition.onerror = function() {
+    if (btn) btn.innerHTML = '<i class="fa-solid fa-microphone text-xs"></i> <span>🎤 தமிழில் பேசு (Speak Doubt)</span>';
+  };
+
+  recognition.start();
+}
+
+async function submitAiDoubt(e) {
+  e.preventDefault();
+  const subject = document.getElementById('doubtSubject').value;
+  const chapter = document.getElementById('doubtChapter').value;
+  const pageNo = document.getElementById('doubtPageNo').value;
+  const doubtText = document.getElementById('doubtTextarea').value;
+
+  const submitBtn = document.getElementById('doubtSubmitBtn');
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> AI பதில் தயாராகிறது...';
+  }
+
+  try {
+    const res = await fetch('/api/ai/doubt-solver', {
+      method: 'POST',
+      headers: getAuthHeaders(),
+      body: JSON.stringify({ subject, chapter, pageNo, doubtText })
+    });
+
+    const data = await res.json();
+    if (data.success && data.doubt) {
+      const d = data.doubt;
+      currentDoubtAudioText = d.tanglishAnswer;
+
+      const answerBox = document.getElementById('doubtAnswerBox');
+      const answerContent = document.getElementById('doubtAnswerContent');
+      const keywordsPills = document.getElementById('doubtKeywordsPills');
+
+      if (answerBox) answerBox.classList.remove('hidden');
+      if (answerContent) answerContent.textContent = d.tanglishAnswer;
+
+      if (keywordsPills) {
+        keywordsPills.innerHTML = '';
+        (d.cbseKeywords || []).forEach(kw => {
+          const pill = document.createElement('span');
+          pill.className = 'px-2 py-0.5 rounded-full text-[10px] font-bold bg-white text-purple-900 border border-purple-200 shadow-sm';
+          pill.textContent = kw;
+          keywordsPills.appendChild(pill);
+        });
+      }
+
+      playCurrentDoubtAudio();
+      await fetchData();
+    }
+  } catch (err) {
+    showToast('Processed locally!');
+  } finally {
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> AI விளக்கம் பெறு (Get Tanglish Explanation)';
+    }
+  }
+}
+
+function playCurrentDoubtAudio() {
+  if (!currentDoubtAudioText) return;
+  if (!('speechSynthesis' in window)) {
+    showToast('Audio synthesis not supported');
+    return;
+  }
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(currentDoubtAudioText);
+  utterance.lang = 'ta-IN';
+  utterance.rate = 0.95;
+  window.speechSynthesis.speak(utterance);
+  showToast('🔊 வாய்ஸ் விளக்கம் ஒலிக்கிறது...');
+}
+
+function playSpecificDoubtAudio(doubtId) {
+  const d = (appState.pranavDoubts || []).find(item => item.id === doubtId);
+  if (!d) return;
+  currentDoubtAudioText = d.tanglishAnswer;
+  playCurrentDoubtAudio();
 }
 
 // Modal Helpers

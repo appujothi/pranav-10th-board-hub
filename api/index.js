@@ -252,6 +252,55 @@ module.exports = (req, res) => {
     return res.status(404).json({ error: 'Task not found' });
   }
 
+  // 13. AI Textbook Doubt Solver
+  if (url.includes('/ai/doubt-solver') && req.method === 'POST') {
+    const { subject, chapter, pageNo, doubtText } = req.body || {};
+    if (!doubtText) return res.status(400).json({ error: 'Doubt text required' });
+
+    let explanation = `ரொம்ப சிம்பிளா புரிஞ்சுக்கலாம் பிரணவ்!\n\n📌 கேள்வி: "${doubtText}"\n`;
+    let keywords = [];
+    const lower = (doubtText || '').toLowerCase();
+
+    if (lower.includes('bpt') || lower.includes('thales') || lower.includes('triangle')) {
+      explanation += `Triangles BPT Theorem (Basic Proportionality Theorem): ஒரு முக்கோணத்தின் ஒரு பக்கத்திற்கு இணையாக ஒரு கோடு வரைந்தால், அது மற்ற இரண்டு பக்கங்களையும் ஒரே விகிதத்தில் பிரிக்கும்.\n\nரூல்: If DE || BC, then AD/DB = AE/EC.`;
+      keywords = ['Basic Proportionality Theorem (BPT)', 'DE || BC', 'AD/DB = AE/EC', 'Area ratio method', 'Thales Theorem'];
+    } else if (lower.includes('chlor') || lower.includes('alkali') || lower.includes('brine')) {
+      explanation += `Chlor-alkali process: உப்பு நீரை (Brine = NaCl + H₂O) மின்னாற்பகுப்பு செய்யும்போது 3 முக்கிய பொருட்கள் கிடைக்கின்றன:\n1. Chlorine (Cl₂) -> Anode வழியே வெளியேறும்.\n2. Hydrogen (H₂) -> Cathode வழியே வெளியேறும்.\n3. Sodium Hydroxide (NaOH) -> Solution-ல் தங்கும்.`;
+      keywords = ['Brine (Aqueous NaCl)', 'Electrolysis', 'Anode (Cl₂ gas)', 'Cathode (H₂ gas)', 'Alkali (NaOH)'];
+    } else if (lower.includes('ohm') || lower.includes('resistance')) {
+      explanation += `Ohm's Law: வெப்பநிலை மாறாமல் இருக்கும்போது (At constant temperature), மின்னோட்டம் (I) மின்னழுத்த வேறுபாட்டிற்கு (V) நேர்விகிதத்தில் இருக்கும். ஃபார்முலா: V = IR.`;
+      keywords = ['At constant temperature', 'V ∝ I => V = IR', 'Resistance R (Ohm Ω)', 'Straight line V-I graph'];
+    } else {
+      explanation += `NCERT Textbook கருத்துப்படி:\nஇந்தக் கேள்விக்கான விடையை எழுதும்போது முதலில் முக்கிய விதியை (Principle) எழுதி, கணித சமன்பாடு/ரசாயன சமன்பாட்டை எழுதி, முக்கிய ஆங்கிலக் கலைச்சொற்களை அடிக்கோடிட வேண்டும்.`;
+      keywords = ['NCERT Definition', 'Formula / Equation', 'CBSE Standard Keywords', 'Final Highlighted Conclusion'];
+    }
+
+    const doubtEntry = {
+      id: 'd-' + Date.now(),
+      timestamp: new Date().toISOString(),
+      subject: subject || 'Science',
+      chapter: chapter || 'NCERT Textbook',
+      pageNo: pageNo || 'NCERT Page',
+      studentQuestion: doubtText,
+      tanglishAnswer: explanation,
+      cbseKeywords: keywords,
+      audioPlayable: true
+    };
+
+    if (!data.pranavDoubts) data.pranavDoubts = [];
+    data.pranavDoubts.unshift(doubtEntry);
+
+    return res.status(200).json({ success: true, doubt: doubtEntry });
+  }
+
+  // 14. Smart Revision Splitter Mode Switch
+  if (url.includes('/schedule/split-mode') && req.method === 'POST') {
+    const mode = (req.body && req.body.mode === 'deep_dive') ? 'deep_dive' : 'daily_mix';
+    if (!data.revisionSplitter) data.revisionSplitter = { modes: {} };
+    data.revisionSplitter.activeMode = mode;
+    return res.status(200).json({ success: true, activeMode: mode });
+  }
+
   // Default: Return complete data object
   return res.status(200).json(data);
 };

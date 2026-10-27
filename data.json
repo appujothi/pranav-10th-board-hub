@@ -1663,5 +1663,338 @@
       "இயல் 6: நிகழ்கலை (பாய்ச்சல், முத்துக்குமாரசுவாமி பிள்ளைத்தமிழ், கம்பராமாயணம், அகப்பொருள் இலக்கணம்)",
       "இயல் 7: விதைநெல் (சிற்றகல் ஒளி, ஏர் புதிதா, மெய்க்கீர்த்தி, சிலப்பதிகாரம், புறப்பொருள் வெண்பாமாலை)"
     ]
+  },
+  "revisionSplitter": {
+    "activeMode": "daily_mix",
+    "totalDays": 17,
+    "startDate": "2026-10-27",
+    "firstExamDate": "2026-11-13",
+    "modes": {
+      "deep_dive": {
+        "name": "🎯 Deep Dive (ஒரு நாளைக்கு 1-2 பாடங்கள் முழு வீச்சில்)",
+        "description": "ஒவ்வொரு பாடத்தையும் 2-3 நாட்கள் தொடர்ச்சியாகப் படித்து ஆழமாக முடிக்கும் முறை.",
+        "schedule": [
+          {
+            "day": 1,
+            "date": "2026-10-27",
+            "focus": "Maths (Polynomials & Linear Equations)",
+            "target": "Solve 10 textbook problems + 3 graphs",
+            "test": "15-min MCQ check"
+          },
+          {
+            "day": 2,
+            "date": "2026-10-28",
+            "focus": "Maths (Triangles BPT Theorem)",
+            "target": "Practice BPT Proof 3 times in rough note",
+            "test": "BPT Proof Written Test"
+          },
+          {
+            "day": 3,
+            "date": "2026-10-29",
+            "focus": "Science (Acids, Bases & Salts)",
+            "target": "pH scale, Chlor-alkali & Plaster of Paris",
+            "test": "Reactions written quiz"
+          },
+          {
+            "day": 4,
+            "date": "2026-10-30",
+            "focus": "Science (Carbon and its Compounds)",
+            "target": "Covalent bonding, homologous series, functional groups",
+            "test": "Structures practice"
+          },
+          {
+            "day": 5,
+            "date": "2026-10-31",
+            "focus": "Science (Magnetic Effects & Human Eye)",
+            "target": "Right hand thumb rule, Fleming left hand rule, eye defects",
+            "test": "Diagrams test"
+          },
+          {
+            "day": 6,
+            "date": "2026-11-01",
+            "focus": "Science (Bio: Control & Coord, Heredity, Environment)",
+            "target": "Neuron diagram, reflex arc, Mendel monohybrid cross",
+            "test": "Bio 20-mark quiz"
+          },
+          {
+            "day": 7,
+            "date": "2026-11-02",
+            "focus": "Maths (Trig Applications & Areas of Circles)",
+            "target": "Heights and distances (angle of elevation/depression)",
+            "test": "Trig 5 problems"
+          },
+          {
+            "day": 8,
+            "date": "2026-11-03",
+            "focus": "Maths (Statistics & Probability)",
+            "target": "Mean (Step-deviation), Median, Mode formulas",
+            "test": "Stats 25-mark test"
+          },
+          {
+            "day": 9,
+            "date": "2026-11-04",
+            "focus": "SST (History: Global World & Print Culture)",
+            "target": "Gutenberg press, Martin Luther, Vernacular press act",
+            "test": "3-mark answers"
+          },
+          {
+            "day": 10,
+            "date": "2026-11-05",
+            "focus": "SST (Civics: Gender & Political Parties, Outcomes)",
+            "target": "Functions of political parties, national vs regional",
+            "test": "Civics test"
+          },
+          {
+            "day": 11,
+            "date": "2026-11-06",
+            "focus": "SST (Geography: Agriculture, Minerals & Manufacturing)",
+            "target": "Kharif/Rabi, Iron ore, Coal mines & cotton textile",
+            "test": "Map test"
+          },
+          {
+            "day": 12,
+            "date": "2026-11-07",
+            "focus": "SST (Economics: Money & Credit, Globalisation)",
+            "target": "Formal vs Informal credit, SHGs, MNCs role",
+            "test": "Eco case study"
+          },
+          {
+            "day": 13,
+            "date": "2026-11-08",
+            "focus": "Tamil (இயல் 5: மணற்கேணி)",
+            "target": "மொழிபெயர்ப்புக் கல்வி, நீதி வெண்பா, வினா-விடை வகைகள்",
+            "test": "இலக்கணம் தேர்வு"
+          },
+          {
+            "day": 14,
+            "date": "2026-11-09",
+            "focus": "Tamil (இயல் 6 & 7: நிகழ்கலை & விதைநெல்)",
+            "target": "பிள்ளைத்தமிழ், கம்பராமாயணம், அணி இலக்கணம்",
+            "test": "செய்யுள் & அணி தேர்வு"
+          },
+          {
+            "day": 15,
+            "date": "2026-11-10",
+            "focus": "English (Prose 4 chapters & Poems 5)",
+            "target": "Mijbil, Madam rides bus, Sermon at Benares, Proposal",
+            "test": "Character sketches"
+          },
+          {
+            "day": 16,
+            "date": "2026-11-11",
+            "focus": "English (Supplementary 4 chapters & Grammar)",
+            "target": "Bholi, Necklace, Scientist + Tenses, Modals, Concord",
+            "test": "Grammar practice"
+          },
+          {
+            "day": 17,
+            "date": "2026-11-12",
+            "focus": "English Final Mock Test & Formal Letters",
+            "target": "Letter to Editor, Complaint letter + Full 80-mark mock paper",
+            "test": "Full English Mock"
+          }
+        ]
+      },
+      "daily_mix": {
+        "name": "⚖️ Daily Balanced Mix (தினமும் 3 பாடங்கள் + இரவு 30 நிமிட மினி தேர்வு)",
+        "description": "ஒரே பாடத்தால் சலிப்படையாமல், தினமும் கணிதம் + அறிவியல்/சமூக அறிவியல் + மொழிப் பாடம் படிக்கும் சுறுசுறுப்பான முறை.",
+        "dailyRoutine": {
+          "slot1": "காலை 06:00 - 07:30: கணிதம் (Maths 1 Chapter Concept + 5 Proofs)",
+          "slot2": "மாலை 05:00 - 06:30: அறிவியல் / சமூக அறிவியல் (Science/SST Concept + Diagrams)",
+          "slot3": "இரவு 07:00 - 08:00: தமிழ் / ஆங்கிலம் (Language Grammar & Writing)",
+          "slot4": "இரவு 08:30 - 09:15: இன்றைய பாடங்களுக்கான 25-மார்க் இரவு மாதிரித் தேர்வு (Daily Assessment)"
+        },
+        "schedule": [
+          {
+            "day": 1,
+            "date": "2026-10-27",
+            "maths": "Polynomials (Zeroes & coefficients)",
+            "science": "Acids, Bases & Salts (pH & indicator)",
+            "language": "English: Formal Letters format",
+            "test": "Daily 20-min Quiz"
+          },
+          {
+            "day": 2,
+            "date": "2026-10-28",
+            "maths": "Linear Equations (Elimination method)",
+            "science": "Acids & Bases (Chlor-alkali, Bleaching powder)",
+            "language": "Tamil: இயல் 5 நீதி வெண்பா",
+            "test": "Daily 20-min Quiz"
+          },
+          {
+            "day": 3,
+            "date": "2026-10-29",
+            "maths": "Triangles (BPT Thales Theorem proof)",
+            "science": "Carbon: Covalent bonding & homologous series",
+            "language": "English: Mijbil the Otter & Poems",
+            "test": "BPT Proof Test"
+          },
+          {
+            "day": 4,
+            "date": "2026-10-30",
+            "maths": "Triangles (Similarity criteria & riders)",
+            "science": "Carbon: Functional groups & IUPAC names",
+            "language": "Tamil: வினா-விடை வகைகள் & பொருள்கோள்",
+            "test": "Daily 20-min Quiz"
+          },
+          {
+            "day": 5,
+            "date": "2026-10-31",
+            "maths": "Trig Applications (Heights & Distances)",
+            "science": "Magnetic Effects (Right hand thumb rule)",
+            "language": "English: Madam rides the bus & Grammar",
+            "test": "Trig & Mag Test"
+          },
+          {
+            "day": 6,
+            "date": "2026-11-01",
+            "maths": "Trig Applications (2 angles problems)",
+            "science": "Magnetic Effects (Fleming left hand rule)",
+            "language": "SST: Making of Global World",
+            "test": "Daily 20-min Quiz"
+          },
+          {
+            "day": 7,
+            "date": "2026-11-02",
+            "maths": "Areas Related to Circles (Sector & Segment)",
+            "science": "Human Eye (Myopia, Hypermetropia defects)",
+            "language": "Tamil: இயல் 6 பிள்ளைத்தமிழ்",
+            "test": "Circle & Eye Test"
+          },
+          {
+            "day": 8,
+            "date": "2026-11-03",
+            "maths": "Statistics (Mean by direct & step-deviation)",
+            "science": "Bio: Control & Coord (Brain & reflex arc)",
+            "language": "SST: Print Culture & Modern World",
+            "test": "Stats & Bio Test"
+          },
+          {
+            "day": 9,
+            "date": "2026-11-04",
+            "maths": "Statistics (Median & Mode formulas)",
+            "science": "Bio: Heredity (Mendel 3:1 ratio)",
+            "language": "English: Sermon at Benares & The Proposal",
+            "test": "Stats & Heredity Test"
+          },
+          {
+            "day": 10,
+            "date": "2026-11-05",
+            "maths": "Probability (Cards, dice, coin problems)",
+            "science": "Bio: Our Environment (10% law, Ozone layer)",
+            "language": "SST: Political Parties & Gender",
+            "test": "Prob & Env Test"
+          },
+          {
+            "day": 11,
+            "date": "2026-11-06",
+            "maths": "Maths Full Revision 1-4 chapters",
+            "science": "Science Chemistry Complete Review",
+            "language": "Tamil: இயல் 7 விதைநெல் & அணி",
+            "test": "Combined 40-mark Test"
+          },
+          {
+            "day": 12,
+            "date": "2026-11-07",
+            "maths": "Maths Full Revision 6, 9, 11, 13",
+            "science": "Science Physics & Bio Complete Review",
+            "language": "SST: Agriculture & Minerals Map work",
+            "test": "Combined 40-mark Test"
+          },
+          {
+            "day": 13,
+            "date": "2026-11-08",
+            "maths": "Maths CBSE Sample Paper Drill",
+            "science": "Science CBSE Sample Paper Drill",
+            "language": "SST: Money & Credit, Globalisation",
+            "test": "Sample Paper Drill"
+          },
+          {
+            "day": 14,
+            "date": "2026-11-09",
+            "maths": "Maths Formula Speed Run",
+            "science": "Science Diagrams & Equations Speed Run",
+            "language": "Tamil: இயல் 5, 6, 7 முழு மாதிரித் தேர்வு",
+            "test": "Tamil Model Exam"
+          },
+          {
+            "day": 15,
+            "date": "2026-11-10",
+            "maths": "Light revision on doubts",
+            "science": "SST Map complete drill",
+            "language": "English: Complete Supplementary Review",
+            "test": "English Literature"
+          },
+          {
+            "day": 16,
+            "date": "2026-11-11",
+            "maths": "Light revision",
+            "science": "All formulas recap",
+            "language": "English: Complete Grammar & Formal Letters",
+            "test": "English Grammar"
+          },
+          {
+            "day": 17,
+            "date": "2026-11-12",
+            "maths": "Rest & confidence",
+            "science": "Quick glance",
+            "language": "English: Final 80-mark School Standard Mock",
+            "test": "Final English Mock"
+          }
+        ]
+      }
+    }
+  },
+  "pranavDoubts": [
+    {
+      "id": "d-1",
+      "timestamp": "2026-10-27T18:00:00.000Z",
+      "subject": "Science",
+      "chapter": "Acids, Bases and Salts",
+      "pageNo": 22,
+      "topic": "Chlor-alkali process",
+      "studentQuestion": "Chlor-alkali process-ல ஆனோடு, கேதோடுல என்ன கேஸ் வரும்? அதை எப்படி ஈசியா நியாபகம் வச்சுக்கிறது?",
+      "tanglishAnswer": "ரொம்ப சிம்பிள் பிரணவ்! Chlor-alkali process-ல உப்புத் தண்ணீரை (Brine = NaCl + H₂O) கரண்ட் பாஸ் பண்ணும்போது 3 முக்கியமான பொருட்கள் கிடைக்கும்: \n1. Chlorine gas (Cl₂) -> Anode (+ve)-ல வெளியேறும். (Trick: Anode-A, Cl₂-Acidic/Clean).\n2. Hydrogen gas (H₂) -> Cathode (-ve)-ல வெளியேறும். (Trick: Cathode-C, H₂-Cool Fuel).\n3. Sodium hydroxide (NaOH) -> Solution-ல தங்கும்.\n\nCBSE Exam Keywords: Brine solution, Electrolysis, Anode (Chlorine gas), Cathode (Hydrogen gas), Alkaline (NaOH).",
+      "audioPlayable": true
+    }
+  ],
+  "diagnosticTracker": {
+    "lastUpdated": "2026-10-27",
+    "strongAreas": [
+      {
+        "subject": "Mathematics",
+        "topic": "Real Numbers - Proof by Contradiction",
+        "score": 90,
+        "status": "Mastered"
+      },
+      {
+        "subject": "Science",
+        "topic": "Chemical Reactions - Types of Reactions",
+        "score": 85,
+        "status": "Mastered"
+      }
+    ],
+    "moderateAreas": [
+      {
+        "subject": "Mathematics",
+        "topic": "Quadratic Equations - Sign conventions in (-b)",
+        "score": 75,
+        "fixTip": "Formula x = [-(-b) ± √D]/2a எழுதும்போது மைனஸ் குறியை கவனிக்கவும்."
+      },
+      {
+        "subject": "Science",
+        "topic": "Chemical Equations - State symbols (s, l, g, aq)",
+        "score": 70,
+        "fixTip": "BaSO₄ precipitate-க்கு (↓) அம்பு குறி போட வேண்டும்."
+      }
+    ],
+    "actionNeeded": [
+      {
+        "subject": "Mathematics",
+        "topic": "Triangles - BPT Theorem statement exact wording",
+        "score": 55,
+        "fixTip": "If a line is drawn parallel to one side of a triangle to intersect other two sides in distinct points, then other two sides are divided in the same ratio - இந்த ஸ்டேட்மென்ட்டை மனப்பாடம் செய்து நோட்டில் எழுதவும்."
+      }
+    ]
   }
 }

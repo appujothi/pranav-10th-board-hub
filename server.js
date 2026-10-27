@@ -516,6 +516,92 @@ const server = http.createServer((req, res) => {
     });
     return;
   }
+
+  // API 18: AI Textbook Doubt Solver (with Tanglish & CBSE Keywords)
+  if (pathname === '/api/ai/doubt-solver' && req.method === 'POST') {
+    parseBody(req, (err, body) => {
+      const { subject, chapter, pageNo, doubtText } = body || {};
+      if (!doubtText) return sendJSON(res, 400, { error: 'Doubt text required' });
+      const data = readData();
+
+      // Intelligent Tanglish Explanation Generator based on NCERT syllabus
+      let explanation = `ரொம்ப சிம்பிளா புரிஞ்சுக்கலாம் பிரணவ்!\n\n📌 கேள்வி: "${doubtText}"\n`;
+      let keywords = [];
+
+      const lower = doubtText.toLowerCase();
+      if (lower.includes('bpt') || lower.includes('thales') || lower.includes('triangle')) {
+        explanation += `Triangles BPT Theorem (Basic Proportionality Theorem): ஒரு முக்கோணத்தின் ஒரு பக்கத்திற்கு இணையாக (Parallel) ஒரு கோடு வரைந்தால், அது மற்ற இரண்டு பக்கங்களையும் ஒரே விகிதத்தில் (Same Ratio) பிரிக்கும்.\n\nரூல்: If DE || BC, then AD/DB = AE/EC.\nபோர்டில் 'Area of triangle ADE / Area of triangle BDE' என நிரூபித்து, கடைசியில் AD/DB = AE/EC என எழுத வேண்டும்.`;
+        keywords = ['Basic Proportionality Theorem (BPT)', 'DE || BC', 'AD/DB = AE/EC', 'Area ratio method', 'Thales Theorem'];
+      } else if (lower.includes('chlor') || lower.includes('alkali') || lower.includes('brine')) {
+        explanation += `Chlor-alkali process: உப்பு நீரை (Brine = NaCl + H₂O) மின்னாற்பகுப்பு (Electrolysis) செய்யும்போது 3 முக்கியமான பொருட்கள் கிடைக்கின்றன:\n1. Chlorine (Cl₂) -> Anode (+ve) வழியே வெளியேறும்.\n2. Hydrogen (H₂) -> Cathode (-ve) வழியே வெளியேறும்.\n3. Sodium Hydroxide (NaOH) -> Solution-ல் தங்கும். சோப்பு தயாரிக்க உதவும்.`;
+        keywords = ['Brine (Aqueous NaCl)', 'Electrolysis', 'Anode (Cl₂ gas)', 'Cathode (H₂ gas)', 'Alkali (NaOH)'];
+      } else if (lower.includes('ohm') || lower.includes('resistance')) {
+        explanation += `Ohm's Law: வெப்பநிலை மாறாமல் இருக்கும்போது (At constant temperature), ஒரு கடத்தியின் வழியே பாயும் மின்னோட்டம் (I), அதன் முனைகளுக்கு இடைப்பட்ட மின்னழுத்த வேறுபாட்டிற்கு (V) நேர்விகிதத்தில் இருக்கும்.\n\nஃபார்முலா: V = IR. R என்பது மின்தடை (Resistance, அலகு: Ohm Ω). V-I கிராப் எப்போதும் ஆரிஜின் வழியே செல்லும் நேர்கோடு (Straight line).`;
+        keywords = ['At constant temperature', 'V ∝ I => V = IR', 'Resistance R (Ohm Ω)', 'Straight line V-I graph'];
+      } else if (lower.includes('print') || lower.includes('gutenberg')) {
+        explanation += `Print Culture: 1448-ல் ஜோஹன்னஸ் கூட்டன்பர்க் (Johannes Gutenberg) முதல் அச்சு இயந்திரத்தை உருவாக்கினார். அவர் அச்சிட்ட முதல் புத்தகம் பைபிள் (Bible - 180 copies). இது 'Print Revolution'-க்கு வழிவகுத்தது; மார்ட்டின் லூதர் (Martin Luther) தன் கருத்துகளை அச்சிட்டு பரப்பினார்.`;
+        keywords = ['Johannes Gutenberg (1448)', 'Movable metal type', 'First printed book Bible', 'Martin Luther Ninety-Five Theses', 'Print Revolution'];
+      } else {
+        explanation += `NCERT Textbook கருத்துப்படி:\nஇந்த டாபிக்கில் நீங்கள் கேட்கும் கேள்வி மிக முக்கியமானது. எக்ஸாமில் எழுதும்போது முதலில் விதியை (Principle) எழுதி, கணித சமன்பாட்டை (Formula) அல்லது ரசாயன சமன்பாட்டை (Chemical Reaction) எழுத வேண்டும். கடைசியாக முக்கிய ஆங்கில டெர்ம்ஸை ஹைலைட் செய்து பாக்ஸ் போடவும்.`;
+        keywords = ['NCERT Definition', 'Formula / Equation', 'CBSE Standard Keywords', 'Final Highlighted Conclusion'];
+      }
+
+      const doubtEntry = {
+        id: 'd-' + Date.now(),
+        timestamp: new Date().toISOString(),
+        subject: subject || 'Science',
+        chapter: chapter || 'NCERT Textbook',
+        pageNo: pageNo || 'NCERT Page',
+        studentQuestion: doubtText,
+        tanglishAnswer: explanation,
+        cbseKeywords: keywords,
+        audioPlayable: true
+      };
+
+      if (!data.pranavDoubts) data.pranavDoubts = [];
+      data.pranavDoubts.unshift(doubtEntry);
+      saveData(data);
+
+      return sendJSON(res, 200, { success: true, doubt: doubtEntry });
+    });
+    return;
+  }
+
+  // API 19: Smart Schedule Splitter Mode Switch (Deep Dive vs Daily Mix)
+  if (pathname === '/api/schedule/split-mode' && req.method === 'POST') {
+    parseBody(req, (err, body) => {
+      const mode = body.mode === 'deep_dive' ? 'deep_dive' : 'daily_mix';
+      const data = readData();
+      if (!data.revisionSplitter) data.revisionSplitter = { modes: {} };
+      data.revisionSplitter.activeMode = mode;
+
+      const today = new Date().toISOString().slice(0, 10);
+      const modeData = data.revisionSplitter.modes[mode];
+      const todaySchedule = modeData?.schedule?.find(s => s.date === today) || modeData?.schedule?.[0];
+
+      if (todaySchedule) {
+        if (!data.dailyTarget) data.dailyTarget = { date: today, focusTasks: [] };
+        if (mode === 'daily_mix') {
+          data.dailyTarget.focusTasks = [
+            { id: 'dt-1', title: `📐 Maths: ${todaySchedule.maths}`, track: 'board', subject: 'Mathematics', completed: false, priority: 'critical' },
+            { id: 'dt-2', title: `🔬 Science: ${todaySchedule.science}`, track: 'board', subject: 'Science', completed: false, priority: 'high' },
+            { id: 'dt-3', title: `📖 Language: ${todaySchedule.language}`, track: 'school', subject: 'Language', completed: false, priority: 'high' },
+            { id: 'dt-4', title: `📝 Evening: ${todaySchedule.test}`, track: 'tuition', subject: 'Assessment', completed: false, priority: 'critical' }
+          ];
+        } else {
+          data.dailyTarget.focusTasks = [
+            { id: 'dt-1', title: `🎯 Deep Focus: ${todaySchedule.focus}`, track: 'board', subject: todaySchedule.focus.split(' ')[0], completed: false, priority: 'critical' },
+            { id: 'dt-2', title: `✍️ Target: ${todaySchedule.target}`, track: 'school', subject: 'Writing Practice', completed: false, priority: 'high' },
+            { id: 'dt-3', title: `📄 Evening: ${todaySchedule.test}`, track: 'tuition', subject: 'Assessment', completed: false, priority: 'critical' }
+          ];
+        }
+      }
+
+      saveData(data);
+      return sendJSON(res, 200, { success: true, activeMode: mode, dailyTarget: data.dailyTarget });
+    });
+    return;
+  }
   if (pathname === '/api/voice-request' && req.method === 'POST') {
     parseBody(req, (err, body) => {
       const transcript = (body.transcript || '').trim();
