@@ -60,6 +60,25 @@ function toggleDesktopMode() {
   }
 }
 
+// UI Language Switcher (Default: English, Optional: Tamil)
+let currentUiLang = localStorage.getItem('pranav_ui_lang') || 'en';
+
+function toggleUiLanguage() {
+  currentUiLang = currentUiLang === 'en' ? 'ta' : 'en';
+  localStorage.setItem('pranav_ui_lang', currentUiLang);
+  applyUiLanguage(currentUiLang);
+  showToast(currentUiLang === 'en' ? 'UI Language set to English' : 'UI மொழி தமிழில் மாற்றப்பட்டது');
+}
+
+function applyUiLanguage(lang) {
+  const deskLabel = document.getElementById('deskLangLabel');
+  const mobBtn = document.getElementById('mobLangToggleBtn');
+  if (deskLabel) deskLabel.textContent = lang === 'en' ? '🌐 English' : '🌐 தமிழ்';
+  if (mobBtn) mobBtn.textContent = lang === 'en' ? '🌐 EN' : '🌐 தமிழ்';
+
+  renderAll();
+}
+
 // Helper: Get Auth Headers for API Requests
 function getAuthHeaders() {
   return {
@@ -1709,6 +1728,8 @@ function renderDiagnosticTracker() {
   if (!container || !appState || !appState.diagnosticTracker) return;
 
   const dt = appState.diagnosticTracker;
+  const isEn = currentUiLang === 'en';
+
   container.innerHTML = `
     <!-- Action Needed (Red) -->
     ${(dt.actionNeeded || []).map(item => `
@@ -1717,7 +1738,7 @@ function renderDiagnosticTracker() {
           <span class="flex items-center gap-1.5"><i class="fa-solid fa-triangle-exclamation text-rose-600"></i> ${item.subject} • ${item.topic}</span>
           <span class="text-[10px] bg-rose-200/80 text-rose-900 px-2 py-0.5 rounded-full font-extrabold">${item.score}% Accuracy</span>
         </div>
-        <p class="text-[11px] text-rose-800 leading-snug"><strong class="font-bold">🎯 உடனடி கவனம் (Fix):</strong> ${item.fixTip}</p>
+        <p class="text-[11px] text-rose-800 leading-snug"><strong class="font-bold">${isEn ? '🎯 Immediate Focus (Fix):' : '🎯 உடனடி கவனம்:'}</strong> ${item.fixTip}</p>
       </div>
     `).join('')}
 
@@ -1728,7 +1749,7 @@ function renderDiagnosticTracker() {
           <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-exclamation text-amber-600"></i> ${item.subject} • ${item.topic}</span>
           <span class="text-[10px] bg-amber-200/80 text-amber-900 px-2 py-0.5 rounded-full font-extrabold">${item.score}%</span>
         </div>
-        <p class="text-[11px] text-amber-800 leading-snug"><strong class="font-bold">💡 டிப்ஸ்:</strong> ${item.fixTip}</p>
+        <p class="text-[11px] text-amber-800 leading-snug"><strong class="font-bold">${isEn ? '💡 Exam Tip:' : '💡 டிப்ஸ்:'}</strong> ${item.fixTip}</p>
       </div>
     `).join('')}
 
@@ -1736,7 +1757,7 @@ function renderDiagnosticTracker() {
     ${(dt.strongAreas || []).map(item => `
       <div class="p-2 rounded-xl bg-emerald-50/80 border border-emerald-200/70 text-emerald-950 flex items-center justify-between text-[11px]">
         <span class="flex items-center gap-1.5 font-bold"><i class="fa-solid fa-circle-check text-emerald-600"></i> ${item.subject}: ${item.topic}</span>
-        <span class="text-[10px] font-extrabold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">✓ ${item.score}% Mastered</span>
+        <span class="text-[10px] font-extrabold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">✓ ${item.score}% ${isEn ? 'Mastered' : 'தேர்ச்சி'}</span>
       </div>
     `).join('')}
   `;
@@ -1989,6 +2010,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   applyUserAuth(currentUser);
+  applyUiLanguage(currentUiLang);
   fetchData();
   updateTimerDisplay();
   setInterval(fetchData, 5000);

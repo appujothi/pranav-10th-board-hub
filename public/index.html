@@ -189,8 +189,11 @@
 
       <!-- Desktop Right Controls -->
       <div class="flex items-center gap-2.5">
-        <button onclick="openVoiceModal()" class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold px-3.5 py-2 rounded-xl text-xs flex items-center gap-1.5 transition shadow-btn">
-          <i class="fa-solid fa-microphone text-xs"></i> தமிழ் குரல்
+        <button onclick="toggleUiLanguage()" id="deskLangToggleBtn" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 transition" title="Toggle UI Language (English / Tamil)">
+          <i class="fa-solid fa-language text-emerald-400 text-xs"></i> <span id="deskLangLabel">🌐 English</span>
+        </button>
+        <button onclick="openVoiceModal()" class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold px-3.5 py-2 rounded-xl text-xs flex items-center gap-1.5 transition shadow-btn" title="Tamil Voice Assistant">
+          <i class="fa-solid fa-microphone text-xs"></i> Voice Assistant
         </button>
         <button onclick="openAuthModal()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs flex items-center gap-1.5 transition shadow-sm">
           <i class="fa-solid fa-key text-amber-400 text-xs"></i> <span id="desk-user-name">Mama (PIN: 9677)</span>
@@ -234,9 +237,13 @@
           </div>
         </div>
 
-        <div class="flex items-center space-x-2">
+        <div class="flex items-center space-x-1.5">
+          <!-- Language Toggle Button (Mobile) -->
+          <button onclick="toggleUiLanguage()" id="mobLangToggleBtn" class="px-2 py-1 rounded-full text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200">
+            🌐 EN
+          </button>
           <!-- Voice Button Shortcut -->
-          <button onclick="openVoiceModal()" class="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-btn hover:bg-emerald-600 transition" title="தமிழ் குரல் வழி பதிவு">
+          <button onclick="openVoiceModal()" class="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-btn hover:bg-emerald-600 transition" title="Tamil Voice Assistant">
             <i class="fa-solid fa-microphone text-xs"></i>
           </button>
           <!-- Auth Key -->
@@ -246,6 +253,9 @@
           <!-- Notification Bell -->
           <button onclick="switchTab('family')" class="relative w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-50 transition">
             <i class="fa-regular fa-bell text-xs"></i>
+            <span id="header-notif-dot" class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-emerald-500 ring-2 ring-white"></span>
+          </button>
+        </div>
             <span id="header-notif-dot" class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-emerald-500 ring-2 ring-white"></span>
           </button>
         </div>
@@ -335,7 +345,7 @@
                 <i class="fa-solid fa-bolt text-emerald-600"></i> Start Study
               </button>
               <button onclick="openVoiceModal()" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold text-xs px-4 py-2.5 rounded-full backdrop-blur-sm transition flex items-center gap-1.5">
-                <i class="fa-solid fa-microphone text-xs"></i> தமிழ் குரல்
+                <i class="fa-solid fa-microphone text-xs"></i> Voice Assistant
               </button>
             </div>
           </div>
@@ -390,7 +400,7 @@
 
           <!-- Portion Details Button -->
           <button onclick="openSrmPortionModal()" class="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-extrabold py-2 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 transition shadow-md">
-            <i class="fa-solid fa-file-invoice text-xs"></i> 📑 SRM Revision-1 பாடத்திட்டம் (Portion Sheet) பார்க்க
+            <i class="fa-solid fa-file-invoice text-xs"></i> 📑 View SRM Revision-1 Portion Sheet
           </button>
         </div>
 
@@ -403,7 +413,7 @@
               </span>
               <div>
                 <h4 class="text-xs font-extrabold text-white">AI Textbook Doubt Solver</h4>
-                <p class="text-[10px] text-purple-200">பேஜ் அல்லது டாபிக் சந்தேகம் கேளு • Tanglish ஆடியோ விளக்கம்</p>
+                <p class="text-[10px] text-purple-200">Ask any page / topic doubt • Instant Tanglish audio explanation</p>
               </div>
             </div>
             <span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-purple-500/30 text-purple-200 border border-purple-500/40">
@@ -413,10 +423,10 @@
 
           <div class="flex items-center gap-2">
             <button onclick="openDoubtSolverModal()" class="flex-1 bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-extrabold py-2 px-3 rounded-xl text-xs flex items-center justify-center gap-2 transition shadow-md">
-              <i class="fa-solid fa-circle-question text-xs"></i> <span>பாடப் புத்தகத்தில் சந்தேகம் கேள் (Ask Doubt)</span>
+              <i class="fa-solid fa-circle-question text-xs"></i> <span>Ask Textbook Doubt (Voice / Text)</span>
             </button>
             <button onclick="openDoubtSolverModal(); setTimeout(startDoubtVoiceInput, 300);" class="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 transition">
-              <i class="fa-solid fa-microphone text-xs text-amber-300"></i> குரல் வழி
+              <i class="fa-solid fa-microphone text-xs text-amber-300"></i> Voice
             </button>
           </div>
         </div>
@@ -430,9 +440,18 @@
               </span>
               <div>
                 <h4 class="text-xs font-extrabold text-slate-900">3-Day Diagnostic Weakness Detector</h4>
-                <p class="text-[10px] text-slate-500">பிரணவ் எந்தக் குறிப்பிட்ட இடங்களில் மார்க் இழக்கிறான்?</p>
+                <p class="text-[10px] text-slate-500">Identify concept gaps where Pranav loses marks</p>
               </div>
             </div>
+            <span class="text-[9px] bg-rose-100 text-rose-800 font-extrabold px-2.5 py-0.5 rounded-full">
+              Live Diagnostic
+            </span>
+          </div>
+
+          <div id="diagnostic-tracker-feed" class="space-y-2 text-xs">
+            <!-- Rendered by app.js -->
+          </div>
+        </div>
             <span class="text-[9px] bg-rose-100 text-rose-800 font-extrabold px-2.5 py-0.5 rounded-full">
               Live Diagnostic
             </span>

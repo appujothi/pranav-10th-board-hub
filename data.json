@@ -116,35 +116,35 @@
     "focusTasks": [
       {
         "id": "dt-1",
-        "title": "School Homework: Maths Quadratic Equations Ex 4.2",
-        "track": "school",
+        "title": "📐 Maths: Polynomials (Zeroes & coefficients)",
+        "track": "board",
         "subject": "Mathematics",
         "completed": false,
-        "priority": "high"
+        "priority": "critical"
       },
       {
         "id": "dt-2",
-        "title": "Tuition Prep: Science Chemical Reactions Test Paper",
-        "track": "tuition",
+        "title": "🔬 Science: Acids, Bases & Salts (pH & indicator)",
+        "track": "board",
         "subject": "Science",
         "completed": false,
         "priority": "high"
       },
       {
         "id": "dt-3",
-        "title": "Board Path (Self-Study): Tamil இயல் 1 செய்யுள் & மனப்பாடப் பாடல்",
-        "track": "board_prep",
-        "subject": "Tamil",
-        "completed": false,
-        "priority": "medium"
-      },
-      {
-        "id": "dt-voice-1793085822868",
-        "title": "🎤 [குரல் வழி]: ????????? ?????? ????????? ??????????????",
+        "title": "📖 Language: English: Formal Letters format",
         "track": "school",
-        "subject": "Voice Request",
+        "subject": "Language",
         "completed": false,
         "priority": "high"
+      },
+      {
+        "id": "dt-4",
+        "title": "📝 Evening: Daily 20-min Quiz",
+        "track": "tuition",
+        "subject": "Assessment",
+        "completed": false,
+        "priority": "critical"
       }
     ]
   },
@@ -1946,6 +1946,23 @@
     }
   },
   "pranavDoubts": [
+    {
+      "id": "d-1793107578714",
+      "timestamp": "2026-10-27T13:26:18.714Z",
+      "subject": "Science",
+      "chapter": "Acids, Bases and Salts",
+      "pageNo": 22,
+      "studentQuestion": "What happens at anode and cathode in Chlor-alkali process?",
+      "tanglishAnswer": "ரொம்ப சிம்பிளா புரிஞ்சுக்கலாம் பிரணவ்!\n\n📌 கேள்வி: \"What happens at anode and cathode in Chlor-alkali process?\"\nChlor-alkali process: உப்பு நீரை (Brine = NaCl + H₂O) மின்னாற்பகுப்பு (Electrolysis) செய்யும்போது 3 முக்கியமான பொருட்கள் கிடைக்கின்றன:\n1. Chlorine (Cl₂) -> Anode (+ve) வழியே வெளியேறும்.\n2. Hydrogen (H₂) -> Cathode (-ve) வழியே வெளியேறும்.\n3. Sodium Hydroxide (NaOH) -> Solution-ல் தங்கும். சோப்பு தயாரிக்க உதவும்.",
+      "cbseKeywords": [
+        "Brine (Aqueous NaCl)",
+        "Electrolysis",
+        "Anode (Cl₂ gas)",
+        "Cathode (H₂ gas)",
+        "Alkali (NaOH)"
+      ],
+      "audioPlayable": true
+    },
     {
       "id": "d-1",
       "timestamp": "2026-10-27T18:00:00.000Z",
