@@ -660,8 +660,8 @@
             <button onclick="openDoubtSolverModal()" class="flex-1 bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-extrabold py-2 px-3 rounded-xl text-xs flex items-center justify-center gap-2 transition shadow-md">
               <i class="fa-solid fa-circle-question text-xs"></i> <span>Ask Textbook Doubt (Voice / Text)</span>
             </button>
-            <button onclick="openDoubtSolverModal(); setTimeout(startDoubtVoiceInput, 300);" class="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 transition">
-              <i class="fa-solid fa-microphone text-xs text-amber-300"></i> Voice
+            <button onclick="openDoubtSolverAndVoice()" class="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 transition shadow-sm">
+              <i class="fa-solid fa-microphone text-xs text-amber-300"></i> Voice Doubt
             </button>
           </div>
         </div>
@@ -1445,6 +1445,99 @@
     </div>
   </div>
 
+    <!-- ================= AUDIO PLAYER & TANGLISH EXPLANATION MODAL ================= -->
+  <div id="audioPlayerModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl w-full max-w-lg max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
+      
+      <!-- Player Header -->
+      <div class="p-4 bg-gradient-to-r from-emerald-600 via-teal-600 to-indigo-700 text-white flex items-center justify-between shrink-0">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-lg shadow-inner">
+            🎧
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <span id="playerSubjectBadge" class="text-[9px] font-extrabold uppercase bg-white/25 px-2 py-0.5 rounded-full text-white">Subject</span>
+              <span id="playerChapterBadge" class="text-[10px] text-emerald-100 font-bold">Chapter</span>
+            </div>
+            <h3 id="playerTopicTitle" class="text-sm font-extrabold text-white mt-0.5 leading-snug">Topic Audio Explanation</h3>
+          </div>
+        </div>
+        <button onclick="stopAudioPlayer(); closeModal('audioPlayerModal');" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+
+      <!-- Controls & Soundwave Equalizer -->
+      <div class="p-4 bg-slate-900 text-white flex items-center justify-between border-b border-slate-800 shrink-0">
+        <div class="flex items-center gap-3">
+          <button onclick="toggleAudioPlayback()" id="playerPlayPauseBtn" class="w-12 h-12 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:scale-105 text-white flex items-center justify-center text-lg shadow-lg transition active:scale-95">
+            <i class="fa-solid fa-play" id="playerPlayIcon"></i>
+          </button>
+          <button onclick="replayAudio()" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center text-xs transition" title="Replay from start">
+            <i class="fa-solid fa-rotate-left"></i>
+          </button>
+          <button onclick="stopAudioPlayer()" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-slate-700 text-rose-400 flex items-center justify-center text-xs transition" title="Stop">
+            <i class="fa-solid fa-stop"></i>
+          </button>
+          <div class="space-y-0.5">
+            <div class="flex items-center gap-1.5">
+              <span id="playerStatusText" class="text-xs font-bold text-emerald-400">Ready to Play</span>
+              <span id="playerVoiceBadge" class="text-[9px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded-full border border-slate-700">Audio Ready</span>
+            </div>
+            <p class="text-[10px] text-slate-400">Listen & read along at the same time</p>
+          </div>
+        </div>
+
+        <!-- Equalizer Soundwave Bars -->
+        <div id="playerEqualizer" class="flex items-end gap-1 h-6">
+          <span class="w-1 bg-emerald-400 rounded-full h-2 transition-all duration-300"></span>
+          <span class="w-1 bg-teal-400 rounded-full h-4 transition-all duration-300"></span>
+          <span class="w-1 bg-emerald-300 rounded-full h-6 transition-all duration-300"></span>
+          <span class="w-1 bg-emerald-400 rounded-full h-3 transition-all duration-300"></span>
+          <span class="w-1 bg-teal-300 rounded-full h-5 transition-all duration-300"></span>
+        </div>
+      </div>
+
+      <!-- Read-Along Text Body -->
+      <div class="p-5 overflow-y-auto space-y-4 custom-scroll flex-1 bg-slate-50">
+        <div>
+          <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block mb-1">
+            📖 தமிழ் ஒலி விளக்கம் (Read-Along Tanglish Transcript):
+          </span>
+          <div id="playerTranscriptContent" class="text-xs text-slate-800 bg-white border border-slate-200/80 rounded-2xl p-4 leading-relaxed font-medium whitespace-pre-line shadow-sm">
+            Transcript will load here...
+          </div>
+        </div>
+
+        <!-- CBSE Exam Keywords Box -->
+        <div id="playerKeywordsContainer" class="p-3 bg-blue-50/70 border border-blue-200 rounded-2xl space-y-1.5">
+          <span class="text-[10px] font-extrabold text-blue-900 block uppercase tracking-wider">
+            🔑 CBSE Exam Keywords to write in Answer Sheet:
+          </span>
+          <div id="playerKeywordsPills" class="flex flex-wrap gap-1"></div>
+        </div>
+
+        <!-- Previous Board Question Box -->
+        <div id="playerSampleQContainer" class="p-3 bg-purple-50/70 border border-purple-200 rounded-2xl space-y-1">
+          <span class="text-[10px] font-extrabold text-purple-900 block uppercase tracking-wider">
+            📝 Previous Board Exam Question:
+          </span>
+          <p id="playerSampleQText" class="text-[11px] font-semibold text-purple-950"></p>
+        </div>
+      </div>
+
+      <!-- Player Footer -->
+      <div class="p-3 bg-white border-t border-slate-200 flex items-center justify-between text-xs shrink-0">
+        <span class="text-[10px] text-slate-500">Need to clarify something else?</span>
+        <button onclick="closeModal('audioPlayerModal'); openDoubtSolverModal();" class="text-purple-700 hover:text-purple-900 font-bold text-xs flex items-center gap-1">
+          <i class="fa-solid fa-circle-question"></i> Ask AI Doubt Solver &rarr;
+        </button>
+      </div>
+
+    </div>
+  </div>
+
   <!-- ================= AI TEXTBOOK DOUBT SOLVER MODAL ================= -->
   <div id="doubtSolverModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
     <div class="bg-white rounded-3xl w-full max-w-lg p-6 space-y-4 shadow-2xl max-h-[90vh] overflow-y-auto">
@@ -1494,8 +1587,30 @@
         </div>
 
         <div>
-          <label class="block text-slate-600 font-bold mb-1">Your Question / Doubt:</label>
-          <textarea id="doubtTextarea" rows="3" placeholder="e.g. Chlor-alkali process-ல anode and cathode-ல என்ன கேஸ் வரும்? அதை எப்படி ஈசியா ஞாபகம் வச்சுக்கிறது?" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 font-medium text-slate-800" required></textarea>
+          <div class="flex items-center justify-between mb-1">
+            <label class="block text-slate-600 font-bold">Your Question / Doubt:</label>
+            <span class="text-[10px] text-purple-700 font-semibold">Speak or Type or Click Sample:</span>
+          </div>
+          <textarea id="doubtTextarea" rows="3" placeholder="e.g. Chlor-alkali process-ல anode and cathode-ல என்ன கேஸ் வரும்? அதை எப்படி ஈசியா ஞாபகம் வச்சுக்கிறது?" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 font-medium text-slate-800 focus:outline-none focus:border-purple-500" required></textarea>
+        </div>
+
+        <!-- Quick 1-Click Suggestion Chips -->
+        <div class="space-y-1">
+          <span class="text-[10px] font-bold text-slate-500 block">💡 உடனடி மாதிரி வினாக்கள் (Click to Auto-Fill):</span>
+          <div class="flex flex-wrap gap-1.5 text-[10px]">
+            <button type="button" onclick="fillQuickDoubt('Science', 'Acids, Bases and Salts', 'Chlor-alkali process-ல் anode மற்றும் cathode-ல் என்ன வாயுக்கள் வெளியேறும்?')" class="bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 px-2.5 py-1 rounded-lg font-medium transition flex items-center gap-1">
+              🔬 Chlor-alkali process
+            </button>
+            <button type="button" onclick="fillQuickDoubt('Science', 'Acids, Bases and Salts', 'Plaster of Paris எப்படி தயாரிக்கப்படுகிறது? அதன் பயன்கள் யாவை?')" class="bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 px-2.5 py-1 rounded-lg font-medium transition flex items-center gap-1">
+              🔬 Plaster of Paris
+            </button>
+            <button type="button" onclick="fillQuickDoubt('Tamil', 'இயல் 5: மணற்கேணி', 'வினா மற்றும் விடை வகைகளை சான்றுகளுடன் விளக்குக.')" class="bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 px-2.5 py-1 rounded-lg font-medium transition flex items-center gap-1">
+              📖 தமிழ் வினா-விடை வகைகள்
+            </button>
+            <button type="button" onclick="fillQuickDoubt('Mathematics', 'Triangles', 'Basic Proportionality Theorem (Thales theorem) proof-ஐ எளிமையாக விளக்கு.')" class="bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 px-2.5 py-1 rounded-lg font-medium transition flex items-center gap-1">
+              📐 BPT Theorem Proof
+            </button>
+          </div>
         </div>
 
         <button type="submit" id="doubtSubmitBtn" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-extrabold py-2.5 rounded-xl shadow-btn transition flex items-center justify-center gap-1.5">

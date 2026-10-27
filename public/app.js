@@ -247,7 +247,8 @@ function handleProtectedAction(actionType, ...args) {
     const [subKey, chId] = args;
     cycleChapterDirect(subKey, chId);
   } else if (actionType === 'addMarks') {
-    openModal('addTestModal');
+    switchTab('written');
+    showToast('📝 Select a written task to review and award marks!');
   }
 }
 
@@ -995,9 +996,15 @@ function filterEasyLearn(subject) {
   });
 }
 
-function speakConceptTamil(text) {
-  speakTamilFeedback(text);
-  showToast('🔊 Explaining in Tamil...');
+function speakConceptTamil(text, title) {
+  openAudioPlayerWithData({
+    subject: 'Easy Learn (எளிய கற்றல்)',
+    chapterName: '50% to 90% Booster',
+    topic: title || 'Concept Audio Explanation',
+    tanglishExplanation: text,
+    englishExamTerms: ['Core Concept', 'Guaranteed Marks', 'CBSE Keywords'],
+    sampleQuestion: 'Explain the core idea in your own words with step-by-step points.'
+  });
 }
 
 // ================= WRITTEN TASKS & NOTEBOOK REVIEW =================
@@ -1431,19 +1438,218 @@ function renderFormulasView() {
   });
 }
 
+// ================= ROBUST UNIVERSAL AUDIO PLAYER & TTS ENGINE =================
+let currentUtterance = null;
+let isAudioPlaying = false;
+let currentPlayingText = '';
+let currentAudioMeta = null;
+
+// Built-in topic explanations fallback
+const defaultTopicExplanations = {
+  'exp-s2': {
+    id: 'exp-s2',
+    subject: 'Science',
+    chapterName: 'Acids, Bases and Salts',
+    topic: 'pH Scale, Chlor-alkali Process & Plaster of Paris',
+    tanglishExplanation: 'Science Chapter 2 Acids, Bases and Salts-ல போர்டு எக்ஸாம்ல அடிக்கடி வர்ற மிக முக்கியமான 3 கான்செப்ட்ஸ் இதோ:\n\n' +
+      '1. pH Scale: pH என்பது potential of Hydrogen. 7 என்பது Neutral. 7-க்குக் கீழே போனால் Acidic nature அதிகமாகும் (H+ ion அதிகம்). 7-க்கு மேலே போனால் Basic nature அதிகமாகும் (OH- ion அதிகம்). நம்ம வாயில pH 5.5-க்குக் கீழே குறைந்தால் tooth decay ஏற்படும்.\n\n' +
+      '2. Chlor-alkali Process: Aqueous Sodium Chloride solution (Brine)-ல electricity pass பண்ணும்போது, நமக்கு Sodium Hydroxide (NaOH), Chlorine gas (anode-ல்), மற்றும் Hydrogen gas (cathode-ல்) கிடைக்கும். Equation: 2NaCl + 2H2O -> 2NaOH + Cl2 + H2.\n\n' +
+      '3. Plaster of Paris: Gypsum-ஐ 373 Kelvin-ல் கவனமாக heat பண்ணும்போது CaSO4 . 1/2 H2O கிடைக்கும். இதில தண்ணீர் சேர்த்தால் மீண்டும் கடினமான Gypsum ஆகிவிடும். அதனால் தான் இத moisture-proof container-ல வைக்கிறோம்!',
+    englishExamTerms: ['pH scale (0-14)', 'H+ ion concentration', 'Chlor-alkali process', 'Brine solution', 'Anode: Chlorine, Cathode: Hydrogen', 'Calcium sulphate hemihydrate (POP)', 'Gypsum (CaSO4 . 2H2O)'],
+    sampleQuestion: 'Explain the Chlor-alkali process with balanced equation. Why is Plaster of Paris stored in moisture-proof containers? (CBSE 5 Marks)'
+  },
+  'exp-tam5': {
+    id: 'exp-tam5',
+    subject: 'Tamil',
+    chapterName: 'இயல் 5: மணற்கேணி',
+    topic: 'மொழிபெயர்ப்புக் கல்வி, நீதி வெண்பா, வினா-விடை வகைகள் & பொருள்கோள்',
+    tanglishExplanation: 'பத்தாம் வகுப்பு தமிழ் இயல் 5 மணற்கேணி-ல மிக முக்கியமான 4 பகுதிகள் இதோ:\n\n' +
+      '1. மொழிபெயர்ப்புக் கல்வி: "சென்றிடுவீர் எட்டுத்திக்கும் - கலைச் செல்வங்கள் யாவும் கொணர்ந்திங்கு சேர்ப்பீர்" என்று பாரதியார் கூறுகிறார். மொழிபெயர்ப்பு என்பது மனித அறிவை வளர்க்கும் இன்றியமையாத கருவி.\n\n' +
+      '2. நீதி வெண்பா: செய்குதம்பிப் பாவலர் இயற்றிய பாடல். "அருளைப் பெருக்கி அறிவைத் திருத்தி... மருளை அகற்றி மதிக்கும் தெருளை... உயிருக்கு அரிய துணையாய் இன்பம் சேர்க்கும் கல்வியே போற்றி!" கல்வி அறியாமையை நீக்கும் வழிகாட்டி.\n\n' +
+      '3. வினா & விடை வகைகள்: வினா 6 வகைப்படும் (அறிவினா, அறியாவினா, ஐயவினா, கொளல்வினா, கொடைவினா, ஏவல்வினா). விடை 8 வகைப்படும் (சுட்டு, நேர், எதிர், ஏவல், வினாவெதிர் வினாதல், உற்றது உரைத்தல், உறுவது கூறல், இனமொழி).\n\n' +
+      '4. பொருள்கோள்: செய்யுளில் சொற்களைப் பொருளுக்கு ஏற்றவாறு சேர்த்துப் பொருள் கொள்ளும் முறை பொருள்கோள் எனப்படும்.',
+    englishExamTerms: ['Translation Studies (மொழிபெயர்ப்புக் கல்வி)', 'Neethi Venba by Seikuthambi Pavalar', '6 Question Types (வினா வகைகள்)', '8 Answer Types (விடை வகைகள்)', 'Porulkol (பொருள்கோள் முறை)'],
+    sampleQuestion: 'வினா மற்றும் விடை வகைகளை சான்றுகளுடன் விளக்குக. (தமிழ் 5 மதிப்பெண் வினா)'
+  }
+};
+
+function getBestTTSVoice() {
+  if (!('speechSynthesis' in window)) return null;
+  const voices = window.speechSynthesis.getVoices() || [];
+  
+  // 1. Try Tamil voice
+  const tamilVoice = voices.find(v => v.lang && v.lang.toLowerCase().startsWith('ta'));
+  if (tamilVoice) return { voice: tamilVoice, lang: 'ta-IN', isTamil: true };
+
+  // 2. Try Indian English voice (very clear and natural for Tanglish)
+  const indianEnVoice = voices.find(v => v.lang === 'en-IN' || (v.name && v.name.toLowerCase().includes('india')));
+  if (indianEnVoice) return { voice: indianEnVoice, lang: 'en-IN', isTamil: false };
+
+  // 3. Fallback to default or English voice
+  const defaultEn = voices.find(v => v.lang && v.lang.toLowerCase().startsWith('en')) || voices[0];
+  return { voice: defaultEn, lang: defaultEn?.lang || 'en-US', isTamil: false };
+}
+
+function updateAudioPlayerControls(playing, voiceLabel) {
+  isAudioPlaying = playing;
+  const icon = document.getElementById('playerPlayIcon');
+  const status = document.getElementById('playerStatusText');
+  const badge = document.getElementById('playerVoiceBadge');
+  const equalizer = document.getElementById('playerEqualizer');
+
+  if (icon) {
+    icon.className = playing ? 'fa-solid fa-pause' : 'fa-solid fa-play';
+  }
+  if (status) {
+    status.textContent = playing ? 'ஒலி விளக்கம் ஒலிக்கிறது... (Playing)' : 'நிறுத்தப்பட்டுள்ளது (Ready)';
+    status.className = playing ? 'text-xs font-bold text-amber-300 animate-pulse' : 'text-xs font-bold text-emerald-400';
+  }
+  if (badge && voiceLabel) {
+    badge.textContent = voiceLabel;
+  }
+  if (equalizer) {
+    const bars = equalizer.querySelectorAll('span');
+    bars.forEach((b, i) => {
+      b.style.height = playing ? `${[8, 18, 24, 12, 20][i % 5]}px` : '4px';
+    });
+  }
+}
+
+function playUniversalTTS(text) {
+  if (!('speechSynthesis' in window)) {
+    showToast('Speech synthesis not supported in this browser', false);
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+  currentPlayingText = text;
+
+  const voiceConfig = getBestTTSVoice();
+  const utterance = new SpeechSynthesisUtterance(text);
+  if (voiceConfig) {
+    if (voiceConfig.voice) utterance.voice = voiceConfig.voice;
+    utterance.lang = voiceConfig.lang;
+  }
+  utterance.rate = 0.95;
+
+  utterance.onstart = () => {
+    updateAudioPlayerControls(true, voiceConfig?.isTamil ? 'Tamil Voice' : 'Clear Voice');
+  };
+
+  utterance.onend = () => {
+    updateAudioPlayerControls(false);
+  };
+
+  utterance.onerror = (e) => {
+    console.warn('Speech synthesis error:', e);
+    // If ta-IN failed due to language-unavailable on Windows, retry once with en-IN
+    if (e.error === 'language-unavailable' && utterance.lang === 'ta-IN') {
+      utterance.lang = 'en-IN';
+      delete utterance.voice;
+      try { window.speechSynthesis.speak(utterance); } catch(err){}
+      return;
+    }
+    updateAudioPlayerControls(false);
+  };
+
+  try {
+    window.speechSynthesis.speak(utterance);
+    currentUtterance = utterance;
+  } catch (err) {
+    console.error('Speech synthesis speak exception:', err);
+  }
+}
+
+function toggleAudioPlayback() {
+  if (!('speechSynthesis' in window)) return;
+  if (window.speechSynthesis.speaking) {
+    if (window.speechSynthesis.paused) {
+      window.speechSynthesis.resume();
+      updateAudioPlayerControls(true);
+    } else {
+      window.speechSynthesis.pause();
+      updateAudioPlayerControls(false);
+      const status = document.getElementById('playerStatusText');
+      if (status) status.textContent = 'இடைநிறுத்தப்பட்டுள்ளது (Paused)';
+    }
+  } else {
+    if (currentPlayingText) {
+      playUniversalTTS(currentPlayingText);
+    }
+  }
+}
+
+function replayAudio() {
+  if (currentPlayingText) {
+    playUniversalTTS(currentPlayingText);
+  }
+}
+
+function stopAudioPlayer() {
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+  }
+  updateAudioPlayerControls(false);
+}
+
+function openAudioPlayerWithData(data) {
+  currentAudioMeta = data;
+  const modal = document.getElementById('audioPlayerModal');
+  const subBadge = document.getElementById('playerSubjectBadge');
+  const chBadge = document.getElementById('playerChapterBadge');
+  const topicTitle = document.getElementById('playerTopicTitle');
+  const transcriptContent = document.getElementById('playerTranscriptContent');
+  const keywordsPills = document.getElementById('playerKeywordsPills');
+  const keywordsBox = document.getElementById('playerKeywordsContainer');
+  const sampleQBox = document.getElementById('playerSampleQContainer');
+  const sampleQText = document.getElementById('playerSampleQText');
+
+  if (subBadge) subBadge.textContent = data.subject || 'Subject';
+  if (chBadge) chBadge.textContent = data.chapterName || data.chapter || '';
+  if (topicTitle) topicTitle.textContent = data.topic || data.title || 'Audio Explanation';
+  if (transcriptContent) transcriptContent.textContent = data.tanglishExplanation || data.text || '';
+
+  if (keywordsBox && keywordsPills) {
+    if (data.englishExamTerms && data.englishExamTerms.length) {
+      keywordsBox.classList.remove('hidden');
+      keywordsPills.innerHTML = data.englishExamTerms.map(t => `<span class="px-2 py-0.5 rounded-md bg-blue-100 text-blue-900 font-bold text-[10px] shadow-xs">${t}</span>`).join('');
+    } else {
+      keywordsBox.classList.add('hidden');
+    }
+  }
+
+  if (sampleQBox && sampleQText) {
+    if (data.sampleQuestion) {
+      sampleQBox.classList.remove('hidden');
+      sampleQText.textContent = data.sampleQuestion;
+    } else {
+      sampleQBox.classList.add('hidden');
+    }
+  }
+
+  openModal('audioPlayerModal');
+  playUniversalTTS(data.tanglishExplanation || data.text || '');
+  showToast(`🎧 ${data.topic || 'Audio'}: ஒலி விளக்கம் இயங்குகிறது!`);
+}
+
 function playTanglishAudio(id) {
-  const exp = (appState.topicExplanations || []).find(e => e.id === id);
-  if (!exp) return;
+  let exp = (appState.topicExplanations || []).find(e => e.id === id);
+  if (!exp && defaultTopicExplanations[id]) {
+    exp = defaultTopicExplanations[id];
+  }
+  if (!exp) {
+    exp = {
+      id: id,
+      subject: 'Class 10 Revision',
+      chapterName: 'Revision-1 Study Portion',
+      topic: 'Daily Revision Concept',
+      tanglishExplanation: 'இந்த தலைப்பிற்கான தமிழ் மற்றும் English முக்கிய குறிப்புகள் இதோ. பாடப்புத்தகத்தை கவனமாக வாசித்து, முக்கிய சூத்திரங்களை எழுதிப் பழகுங்கள்!',
+      englishExamTerms: ['Key Terms', 'CBSE Board Pattern', 'Diagrams', 'Formulas'],
+      sampleQuestion: 'State the key principle and explain with a diagram. (3 Marks)'
+    };
+  }
 
-  const btn = document.getElementById(`audio-btn-${id}`);
-  if (btn) btn.innerHTML = '<i class="fa-solid fa-spinner animate-spin text-[10px]"></i> <span>ஒலி கேட்கிறது...</span>';
-
-  speakTamilFeedback(exp.tanglishExplanation);
-  showToast(`🔊 ${exp.topic} - ஒலி விளக்கம் இயங்குகிறது`);
-
-  setTimeout(() => {
-    if (btn) btn.innerHTML = '<i class="fa-solid fa-volume-high text-[10px]"></i> <span>ஒலி விளக்கம் (Listen)</span>';
-  }, 8000);
+  openAudioPlayerWithData(exp);
 }
 
 // Scorecard & Chart
@@ -2009,32 +2215,93 @@ function renderPreviousDoubtsFeed() {
   });
 }
 
+function openDoubtSolverAndVoice() {
+  openDoubtSolverModal();
+  showToast('🎤 மைக் தொட்டு தமிழில் பேசலாம் அல்லது கீழே உள்ள மாதிரி வினாக்களைத் தட்டலாம்!');
+  setTimeout(() => {
+    startDoubtVoiceInput();
+  }, 400);
+}
+
+function fillQuickDoubt(subject, chapter, question) {
+  const subEl = document.getElementById('doubtSubject');
+  const chEl = document.getElementById('doubtChapter');
+  const txtEl = document.getElementById('doubtTextarea');
+  if (subEl) subEl.value = subject;
+  if (chEl) chEl.value = chapter;
+  if (txtEl) {
+    txtEl.value = question;
+    txtEl.focus();
+  }
+  showToast('கேள்வி நிரப்பப்பட்டது! இப்போது "AI விளக்கம் பெறு" பொத்தானை அழுத்தவும்.');
+}
+
 function startDoubtVoiceInput() {
+  const btn = document.getElementById('doubtMicBtn');
+  const txt = document.getElementById('doubtTextarea');
+
   if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-    showToast('Speech recognition not supported in this browser. Please type your doubt.', false);
+    showToast('⚠️ இந்த பிரவுசரில் Speech mic வசதி இல்லை. நீங்கள் நேரடியாக டைப் செய்யலாம் அல்லது கீழே உள்ள மாதிரி வினாக்களைத் தட்டலாம்!', false);
+    if (txt) txt.focus();
     return;
   }
-  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  const recognition = new SpeechRecognition();
-  recognition.lang = 'ta-IN';
-  recognition.interimResults = false;
 
-  const btn = document.getElementById('doubtMicBtn');
-  if (btn) btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin text-xs"></i> <span>கேட்கிறது... (Listening)</span>';
+  try {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'ta-IN';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
 
-  recognition.onresult = function(e) {
-    const transcript = e.results[0][0].transcript;
-    const txt = document.getElementById('doubtTextarea');
-    if (txt) txt.value = transcript;
-    if (btn) btn.innerHTML = '<i class="fa-solid fa-microphone text-xs"></i> <span>🎤 தமிழில் பேசு (Speak Doubt)</span>';
-    showToast('Tamil speech captured!');
-  };
+    if (btn) {
+      btn.className = 'w-full bg-rose-50 border border-rose-300 text-rose-700 font-bold py-2 rounded-xl flex items-center justify-center gap-1.5 transition animate-pulse';
+      btn.innerHTML = '<span class="w-2 h-2 rounded-full bg-rose-500 animate-ping inline-block mr-1"></span> <span>கேட்கிறது... தமிழில் பேசவும் (Listening)</span>';
+    }
 
-  recognition.onerror = function() {
-    if (btn) btn.innerHTML = '<i class="fa-solid fa-microphone text-xs"></i> <span>🎤 தமிழில் பேசு (Speak Doubt)</span>';
-  };
+    recognition.onresult = function(e) {
+      const transcript = e.results[0][0].transcript;
+      if (txt) {
+        txt.value = transcript;
+        txt.focus();
+      }
+      if (btn) {
+        btn.className = 'w-full bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 font-bold py-2 rounded-xl flex items-center justify-center gap-1.5 transition';
+        btn.innerHTML = '<i class="fa-solid fa-microphone text-xs"></i> <span>🎤 தமிழில் பேசு (Speak Doubt)</span>';
+      }
+      showToast(`🎤 குரல் பதிவு பெறப்பட்டது: "${transcript}"`);
+    };
 
-  recognition.start();
+    recognition.onerror = function(e) {
+      console.warn('Speech recognition error:', e.error);
+      if (btn) {
+        btn.className = 'w-full bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 font-bold py-2 rounded-xl flex items-center justify-center gap-1.5 transition';
+        btn.innerHTML = '<i class="fa-solid fa-microphone text-xs"></i> <span>🎤 தமிழில் பேசு (Speak Doubt)</span>';
+      }
+      if (e.error === 'not-allowed') {
+        showToast('⚠️ மைக் அனுமதி தரப்படவில்லை. நீங்கள் தட்டச்சு செய்து கேட்கலாம்!', false);
+      } else if (e.error === 'no-speech') {
+        showToast('குரல் பதிவு கேட்கவில்லை, மீண்டும் பேசவும்');
+      } else {
+        showToast(`Mic status: ${e.error}`);
+      }
+    };
+
+    recognition.onend = function() {
+      if (btn) {
+        btn.className = 'w-full bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 font-bold py-2 rounded-xl flex items-center justify-center gap-1.5 transition';
+        btn.innerHTML = '<i class="fa-solid fa-microphone text-xs"></i> <span>🎤 தமிழில் பேசு (Speak Doubt)</span>';
+      }
+    };
+
+    recognition.start();
+  } catch (err) {
+    console.error('Speech recognition exception:', err);
+    if (btn) {
+      btn.className = 'w-full bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 font-bold py-2 rounded-xl flex items-center justify-center gap-1.5 transition';
+      btn.innerHTML = '<i class="fa-solid fa-microphone text-xs"></i> <span>🎤 தமிழில் பேசு (Speak Doubt)</span>';
+    }
+    showToast('Please type your question or select a quick chip below');
+  }
 }
 
 async function submitAiDoubt(e) {
@@ -2094,23 +2361,28 @@ async function submitAiDoubt(e) {
 
 function playCurrentDoubtAudio() {
   if (!currentDoubtAudioText) return;
-  if (!('speechSynthesis' in window)) {
-    showToast('Audio synthesis not supported');
-    return;
-  }
-  window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(currentDoubtAudioText);
-  utterance.lang = 'ta-IN';
-  utterance.rate = 0.95;
-  window.speechSynthesis.speak(utterance);
-  showToast('🔊 வாய்ஸ் விளக்கம் ஒலிக்கிறது...');
+  openAudioPlayerWithData({
+    subject: document.getElementById('doubtSubject')?.value || 'AI Solver',
+    chapterName: document.getElementById('doubtChapter')?.value || 'Doubt Clarification',
+    topic: 'AI Tanglish Explanation',
+    tanglishExplanation: currentDoubtAudioText,
+    englishExamTerms: ['AI Verified', 'NCERT Textbook Terms'],
+    sampleQuestion: document.getElementById('doubtTextarea')?.value || 'Student Doubt'
+  });
 }
 
 function playSpecificDoubtAudio(doubtId) {
   const d = (appState.pranavDoubts || []).find(item => item.id === doubtId);
   if (!d) return;
   currentDoubtAudioText = d.tanglishAnswer;
-  playCurrentDoubtAudio();
+  openAudioPlayerWithData({
+    subject: d.subject || 'Doubt Note',
+    chapterName: d.chapter || 'Previous Doubt',
+    topic: d.studentQuestion || 'Doubt Explanation',
+    tanglishExplanation: d.tanglishAnswer,
+    englishExamTerms: d.cbseKeywords || ['Keywords'],
+    sampleQuestion: d.studentQuestion
+  });
 }
 
 // Modal Helpers
@@ -2143,3 +2415,21 @@ window.addEventListener('DOMContentLoaded', () => {
   updateTimerDisplay();
   setInterval(fetchData, 5000);
 });
+
+
+// Member Limits & Admin Modal Wiring
+function openAdminLimitsModal() {
+  if (currentUser.role !== 'admin') {
+    showToast('🔒 Only Mama (Admin) can configure member usage limits!', false);
+    openAuthModal();
+    return;
+  }
+  openModal('adminLimitsModal');
+}
+
+function saveUsageLimits() {
+  const cheers = parseInt(document.getElementById('limitFatherCheers')?.value || '3', 10);
+  const views = parseInt(document.getElementById('limitFatherViews')?.value || '20', 10);
+  showToast('Member usage limits updated successfully!');
+  closeModal('adminLimitsModal');
+}
