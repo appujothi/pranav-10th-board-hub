@@ -260,6 +260,34 @@
           </div>
         </div>
 
+        <!-- EASY LEARN & 50% -> 90% SCORE BOOSTER BANNER -->
+        <div class="rounded-3xl bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 p-4 text-white shadow-lg space-y-2.5">
+          <div class="flex items-center justify-between">
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-white text-orange-950 uppercase tracking-wide">
+              🌟 50% to 90% Score Booster
+            </span>
+            <span class="text-[10px] bg-black/20 px-2 py-0.5 rounded-full font-bold">எளிய கற்றல்</span>
+          </div>
+
+          <div>
+            <h4 class="text-sm font-extrabold leading-tight">Sure-Shot 30 Marks per Subject</h4>
+            <p class="text-[11px] text-amber-100 mt-0.5 leading-snug">
+              பாடங்களை மிக சுலபமாக கதைகளாகவும் தமிழ் விளக்கத்துடனும் கற்கலாம்!
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 pt-1 text-[11px] font-bold">
+            <button onclick="openEasyLearnModal('Mathematics')" class="bg-white/20 hover:bg-white/30 border border-white/40 py-1.5 px-2.5 rounded-xl text-left flex items-center justify-between transition">
+              <span>📐 Maths Sure-Shots</span>
+              <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </button>
+            <button onclick="openEasyLearnModal('Science')" class="bg-white/20 hover:bg-white/30 border border-white/40 py-1.5 px-2.5 rounded-xl text-left flex items-center justify-between transition">
+              <span>🔬 Science Easy Stories</span>
+              <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </button>
+          </div>
+        </div>
+
         <!-- POPULAR SERVICES -> SUBJECTS GRID (4 cols x 2 rows) -->
         <div>
           <div class="flex items-center justify-between mb-3">
@@ -888,6 +916,36 @@
         <button onclick="saveUsageLimits()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 rounded-xl text-xs transition shadow-btn">
           Save Usage Rules
         </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= EASY LEARN & SURE-SHOT MARKS MODAL ================= -->
+  <div id="easyLearnModal" class="fixed inset-0 bg-slate-950/75 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl w-full max-w-md max-h-[88vh] flex flex-col shadow-2xl overflow-hidden">
+      <!-- Modal Header -->
+      <div class="p-4 bg-gradient-to-r from-amber-500 to-orange-600 text-white flex items-center justify-between shrink-0">
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="text-lg">🌟</span>
+            <h3 class="text-sm font-extrabold">Easy Learn Hub (எளிய கற்றல்)</h3>
+          </div>
+          <p class="text-[10px] text-amber-100">Sure-Shot Guaranteed Marks for 50% to 90%+ Leap</p>
+        </div>
+        <button onclick="closeModal('easyLearnModal')" class="text-white/80 hover:text-white"><i class="fa-solid fa-xmark text-sm"></i></button>
+      </div>
+
+      <!-- Subject Tabs -->
+      <div class="flex space-x-1.5 p-3 bg-slate-50 border-b border-slate-200 overflow-x-auto no-scrollbar shrink-0 text-xs font-bold" id="easylearn-filter-tabs">
+        <button onclick="filterEasyLearn('All')" id="el-tab-All" class="px-3 py-1 rounded-full bg-orange-600 text-white shrink-0">All Topics</button>
+        <button onclick="filterEasyLearn('Mathematics')" id="el-tab-Mathematics" class="px-3 py-1 rounded-full bg-slate-200 text-slate-700 shrink-0">📐 Maths</button>
+        <button onclick="filterEasyLearn('Science')" id="el-tab-Science" class="px-3 py-1 rounded-full bg-slate-200 text-slate-700 shrink-0">🔬 Science</button>
+        <button onclick="filterEasyLearn('Social Science')" id="el-tab-Social Science" class="px-3 py-1 rounded-full bg-slate-200 text-slate-700 shrink-0">🌍 Social Science</button>
+      </div>
+
+      <!-- Scrollable Cards Feed -->
+      <div class="p-4 space-y-3.5 overflow-y-auto custom-scroll flex-1 text-xs" id="easylearn-cards-feed">
+        <!-- Rendered by app.js -->
       </div>
     </div>
   </div>

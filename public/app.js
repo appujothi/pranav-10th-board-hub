@@ -848,6 +848,73 @@ async function submitFamilyWallNote(e) {
   }
 }
 
+// ================= EASY LEARN & SURE-SHOT MARKS =================
+let currentEasyLearnFilter = 'All';
+
+function openEasyLearnModal(subject = 'All') {
+  currentEasyLearnFilter = subject;
+  openModal('easyLearnModal');
+  filterEasyLearn(subject);
+}
+
+function filterEasyLearn(subject) {
+  currentEasyLearnFilter = subject;
+  ['All', 'Mathematics', 'Science', 'Social Science'].forEach(s => {
+    const btn = document.getElementById(`el-tab-${s}`);
+    if (btn) {
+      if (s === subject) {
+        btn.className = 'px-3 py-1 rounded-full bg-orange-600 text-white shrink-0';
+      } else {
+        btn.className = 'px-3 py-1 rounded-full bg-slate-200 text-slate-700 hover:bg-slate-300 shrink-0';
+      }
+    }
+  });
+
+  const feed = document.getElementById('easylearn-cards-feed');
+  if (!feed || !appState || !appState.easyLearnConcepts) return;
+
+  const list = currentEasyLearnFilter === 'All'
+    ? appState.easyLearnConcepts
+    : appState.easyLearnConcepts.filter(c => c.subject === currentEasyLearnFilter);
+
+  feed.innerHTML = '';
+  list.forEach(c => {
+    const card = document.createElement('div');
+    card.className = 'bg-slate-50 border border-slate-200 rounded-2xl p-3.5 space-y-2.5 shadow-sm';
+    card.innerHTML = `
+      <div class="flex items-center justify-between">
+        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-300">${c.marks}</span>
+        <button onclick="speakConceptTamil('${c.title}. ${c.analogy}')" class="text-xs text-orange-600 hover:text-orange-700 font-bold flex items-center gap-1">
+          <i class="fa-solid fa-volume-high text-xs"></i> <span>Listen in Tamil</span>
+        </button>
+      </div>
+      <div>
+        <h4 class="text-xs font-bold text-slate-900">${c.title}</h4>
+        <span class="text-[10px] text-slate-500">${c.subject} • ${c.topic}</span>
+      </div>
+      <div class="p-2.5 rounded-xl bg-amber-50/80 border border-amber-200 text-slate-800 text-[11px] leading-relaxed">
+        <strong class="text-amber-900 block font-semibold mb-0.5">💡 எளிய கதை விளக்கம் (Easy Story Analogy):</strong>
+        <p class="whitespace-pre-line">${c.analogy}</p>
+      </div>
+      <div class="space-y-1">
+        <strong class="text-[10px] text-slate-500 uppercase tracking-wider block font-bold">4-Step Exam Master Checklist:</strong>
+        <ul class="text-[11px] text-slate-700 space-y-1 list-none font-mono">
+          ${c.simpleSteps.map(s => `<li class="p-1 rounded bg-white border border-slate-200/80">• ${s}</li>`).join('')}
+        </ul>
+      </div>
+      <div class="p-2 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-[10px] font-semibold">
+        ✨ <strong>Examiner Pro-Tip:</strong> ${c.proTip}
+      </div>
+    `;
+    feed.appendChild(card);
+  });
+}
+
+function speakConceptTamil(text) {
+  speakTamilFeedback(text);
+  showToast('🔊 Explaining in Tamil...');
+}
+
 // Formulas View
 function renderFormulasView() {
   const c = document.getElementById('formula-cards-container');
