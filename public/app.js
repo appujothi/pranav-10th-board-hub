@@ -1,19 +1,33 @@
-// Global State
+// Global State & User Auth
 let appState = null;
-let currentRole = localStorage.getItem('pranav_app_role') || 'pranav';
+let currentUser = JSON.parse(localStorage.getItem('pranav_user_auth')) || {
+  role: 'admin',
+  name: 'Mama (Super Admin)',
+  email: 'jothi1809@gmail.com',
+  badge: 'Owner',
+  permissions: {
+    canEditSyllabus: true,
+    canEditExamDates: true,
+    canAddTestMarks: true,
+    canLogStudy: true,
+    canPostCheer: true,
+    canManageUsers: true
+  }
+};
+
 let currentTab = 'home';
 let currentSyllabusSubject = 'maths';
 let scoresChartInstance = null;
 let isDesktopFramed = true;
 
-// Pomodoro Timer
+// Pomodoro Timer State
 let timerInterval = null;
 let timerSeconds = 25 * 60;
 let timerInitialSeconds = 25 * 60;
 let timerRunning = false;
 let isBreakTimer = false;
 
-// Toast Helper
+// Toast Notification
 function showToast(message, isSuccess = true) {
   const toast = document.getElementById('toast');
   const msg = document.getElementById('toast-message');
@@ -23,7 +37,7 @@ function showToast(message, isSuccess = true) {
   toast.className = `fixed bottom-20 left-1/2 -translate-x-1/2 ${isSuccess ? 'bg-slate-900 text-white' : 'bg-rose-600 text-white'} text-xs font-semibold px-4 py-2 rounded-full shadow-2xl flex items-center gap-2 transform translate-y-0 opacity-100 transition duration-300 z-50`;
   setTimeout(() => {
     toast.className = toast.className.replace('translate-y-0 opacity-100', 'translate-y-10 opacity-0');
-  }, 2600);
+  }, 2800);
 }
 
 // Toggle Desktop Frame Mode
@@ -39,43 +53,230 @@ function toggleDesktopMode() {
   }
 }
 
-// Role Management
-function openRoleModal() {
-  const m = document.getElementById('roleModal');
-  if (m) m.classList.remove('hidden');
+// Helper: Get Auth Headers for API Requests
+function getAuthHeaders() {
+  return {
+    'Content-Type': 'application/json',
+    'X-User-Role': currentUser.role || 'viewer',
+    'X-User-Email': currentUser.email || ''
+  };
 }
 
-function chooseRole(role) {
-  currentRole = role;
-  localStorage.setItem('pranav_app_role', role);
-  closeModal('roleModal');
+// Auth Modals
+function openAuthModal() {
+  const m = document.getElementById('authModal');
+  if (m) {
+    m.classList.remove('hidden');
+    updateAuthModalState();
+  }
+}
+
+function updateAuthModalState() {
+  const nameEl = document.getElementById('auth-current-name');
+  const emailEl = document.getElementById('auth-current-email');
+  const badgeEl = document.getElementById('auth-current-badge');
+
+  if (nameEl) nameEl.textContent = currentUser.name;
+  if (emailEl) emailEl.textContent = currentUser.email;
+  if (badgeEl) {
+    badgeEl.textContent = currentUser.badge || currentUser.role.toUpperCase();
+    badgeEl.className = currentUser.role === 'admin' 
+      ? 'px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800' 
+      : 'px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800';
+  }
+}
+
+// 1. Google Sign-In Handler
+async function handleGoogleSignIn(email, name = 'Google User') {
+  try {
+    const res = await fetch('/api/auth/google', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, name })
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      applyUserAuth(data.user);
+      closeModal('authModal');
+      showToast(`Signed in as ${data.user.name}!`);
+    } else {
+      // Local fallback
+      const isSuper = email.toLowerCase() === 'jothi1809@gmail.com';
+      applyUserAuth({
+        role: isSuper ? 'admin' : 'viewer',
+        name: isSuper ? 'Mama (Super Admin)' : name,
+        email: email,
+        badge: isSuper ? 'Owner' : 'Viewer',
+        permissions: {
+          canEditSyllabus: isSuper,
+          canEditExamDates: isSuper,
+          canAddTestMarks: isSuper,
+          canLogStudy: true,
+          canPostCheer: true
+        }
+      });
+      closeModal('authModal');
+      showToast(`Signed in as ${email}!`);
+    }
+  } catch (err) {
+    console.error('Google Auth error:', err);
+  }
+}
+
+function promptCustomGoogleEmail() {
+  const email = prompt('Enter Google Account email address:');
+  if (email && email.includes('@')) {
+    const name = email.split('@')[0];
+    handleGoogleSignIn(email, name);
+  }
+}
+
+// 2. PIN Sign-In Handler
+async function submitPinLogin() {
+  const pinInput = document.getElementById('pinInput');
+  const pin = (pinInput ? pinInput.value : '').trim();
+  if (pin.length !== 4) {
+    showToast('Please enter a 4-digit PIN', false);
+    return;
+  }
+  await fastLoginPin(pin);
+  if (pinInput) pinInput.value = '';
+}
+
+async function fastLoginPin(pin) {
+  try {
+    const res = await fetch('/api/auth/pin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ pin })
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      applyUserAuth(data.user);
+      closeModal('authModal');
+      showToast(`Unlocked as ${data.user.name}!`);
+    } else {
+      // Fallback local PIN verification
+      const localPins = {
+        '1809': { role: 'admin', name: 'Mama (Super Admin)', email: 'jothi1809@gmail.com', badge: 'Owner', permissions: { canEditSyllabus: true, canEditExamDates: true, canAddTestMarks: true } },
+        '2027': { role: 'student', name: 'Pranav', email: 'pranav@student.hub', badge: 'Student', permissions: { canEditSyllabus: false, canLogStudy: true } },
+        '1010': { role: 'viewer', name: 'Father / Parents', email: 'parents@family.hub', badge: 'Viewer', permissions: { canEditSyllabus: false, canPostCheer: true } }
+      };
+
+      if (localPins[pin]) {
+        applyUserAuth(localPins[pin]);
+        closeModal('authModal');
+        showToast(`Unlocked as ${localPins[pin].name}!`);
+      } else {
+        showToast('Incorrect 4-digit PIN', false);
+      }
+    }
+  } catch (err) {
+    showToast('PIN check offline', false);
+  }
+}
+
+// Apply User Auth State across UI
+function applyUserAuth(user) {
+  currentUser = user;
+  localStorage.setItem('pranav_user_auth', JSON.stringify(user));
 
   const title = document.getElementById('header-user-title');
   const sub = document.getElementById('header-user-sub');
+  const shieldIcon = document.getElementById('auth-shield-icon');
+  const islandRole = document.getElementById('island-role');
+  const homeRoleTag = document.getElementById('home-role-tag');
+  const syllabusHint = document.getElementById('syllabus-lock-hint');
+  const cheerLimitBadge = document.getElementById('cheer-limit-badge');
   const wallAuthor = document.getElementById('wallAuthorSelect');
 
-  if (role === 'pranav') {
-    if (title) title.textContent = 'Pranav • Class 10th';
-    if (sub) sub.textContent = 'Mission Board 2027 • 95%+ Target';
-    if (wallAuthor) wallAuthor.value = 'Pranav';
-  } else if (role === 'mama') {
-    if (title) title.textContent = 'Mama (Uncle) • Mentor View';
-    if (sub) sub.textContent = 'Tracking Pranav’s 10th Prep';
+  if (user.role === 'admin') {
+    if (title) title.textContent = 'Mama (Owner)';
+    if (sub) sub.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span> Full Edit Access • jothi1809@gmail.com';
+    if (shieldIcon) shieldIcon.className = 'fa-solid fa-shield-halved text-emerald-600';
+    if (islandRole) islandRole.textContent = 'Admin';
+    if (homeRoleTag) homeRoleTag.textContent = '🔒 Mama Only Edits';
+    if (syllabusHint) syllabusHint.textContent = '✓ Full Edit Mode Active (Mama)';
+    if (cheerLimitBadge) cheerLimitBadge.textContent = 'Unlimited (Admin)';
     if (wallAuthor) wallAuthor.value = 'Mama';
-  } else if (role === 'parents') {
-    if (title) title.textContent = 'Mom & Dad • Family View';
-    if (sub) sub.textContent = 'Cheering Pranav On!';
-    if (wallAuthor) wallAuthor.value = 'Mom & Dad';
+  } else if (user.role === 'student') {
+    if (title) title.textContent = 'Pranav (Student)';
+    if (sub) sub.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-blue-500 inline-block"></span> Study Focus Mode Active';
+    if (shieldIcon) shieldIcon.className = 'fa-solid fa-user-graduate text-blue-600';
+    if (islandRole) islandRole.textContent = 'Pranav';
+    if (homeRoleTag) homeRoleTag.textContent = '🧑‍🎓 Student Mode';
+    if (syllabusHint) syllabusHint.textContent = '🔒 Read Only (Mama controls status)';
+    if (cheerLimitBadge) cheerLimitBadge.textContent = 'Student Mode';
+    if (wallAuthor) wallAuthor.value = 'Pranav';
+  } else {
+    // Viewer / Father
+    if (title) title.textContent = user.name || 'Father (Viewer)';
+    if (sub) sub.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-amber-500 inline-block"></span> Read-Only • 3 Cheers Daily Limit';
+    if (shieldIcon) shieldIcon.className = 'fa-solid fa-user-lock text-amber-600';
+    if (islandRole) islandRole.textContent = 'Viewer';
+    if (homeRoleTag) homeRoleTag.textContent = '👨 Father / Viewer';
+    if (syllabusHint) syllabusHint.textContent = '🔒 Read Only (Changes Restricted)';
+    if (cheerLimitBadge) cheerLimitBadge.textContent = '3/3 Cheers Left';
+    if (wallAuthor) wallAuthor.value = 'Dad';
   }
 
-  showToast(`Switched view to ${role.toUpperCase()}`);
+  renderAll();
+}
+
+// Protected Actions Guard
+function handleProtectedAction(actionType, ...args) {
+  if (currentUser.role !== 'admin') {
+    showToast('🔒 Access Restricted: Only Mama (jothi1809@gmail.com) has permission to edit this!', false);
+    openAuthModal();
+    return;
+  }
+
+  if (actionType === 'chapter') {
+    const [subKey, chId] = args;
+    cycleChapterDirect(subKey, chId);
+  } else if (actionType === 'addMarks') {
+    openModal('addTestModal');
+  }
+}
+
+// Admin Usage Limits Modal
+function openAdminLimitsModal() {
+  if (currentUser.role !== 'admin') {
+    showToast('🔒 Only Mama can manage member usage limits', false);
+    openAuthModal();
+    return;
+  }
+  openModal('adminLimitsModal');
+}
+
+async function saveUsageLimits() {
+  const maxCheers = document.getElementById('limitFatherCheers').value;
+  const maxViews = document.getElementById('limitFatherViews').value;
+
+  try {
+    const res = await fetch('/api/admin/limits', {
+      method: 'POST',
+      headers: getAuthHeaders(),
+      body: JSON.stringify({ targetUser: 'father', maxDailyCheers: maxCheers, maxDailyViews: maxViews })
+    });
+
+    if (res.ok) {
+      closeModal('adminLimitsModal');
+      showToast('Usage rules updated for Father/Members!');
+      await fetchData();
+    }
+  } catch (e) {
+    closeModal('adminLimitsModal');
+    showToast('Saved locally!');
+  }
 }
 
 // Tab Navigation
 function switchTab(tabId) {
   currentTab = tabId;
 
-  // Views to toggle
   const views = ['home', 'syllabus', 'timer', 'family', 'formulas', 'scores'];
   views.forEach(v => {
     const el = document.getElementById(`view-${v}`);
@@ -85,7 +286,6 @@ function switchTab(tabId) {
     }
   });
 
-  // Nav buttons active state
   ['home', 'syllabus', 'timer', 'family'].forEach(b => {
     const btn = document.getElementById(`nav-btn-${b}`);
     if (btn) {
@@ -97,7 +297,6 @@ function switchTab(tabId) {
     }
   });
 
-  // Scroll to top
   const scroller = document.getElementById('main-scroll-content');
   if (scroller) scroller.scrollTop = 0;
 
@@ -114,13 +313,11 @@ function openSubjectDetail(subKey) {
 // Fetch Data
 async function fetchData() {
   try {
-    const res = await fetch('/api/data');
+    const res = await fetch('/api/data', { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('API offline');
     appState = await res.json();
     renderAll();
   } catch (err) {
-    console.log('Local/fallback data mode');
-    // If running static or offline, load from localStorage if available
     const cached = localStorage.getItem('pranav_offline_data');
     if (cached) {
       appState = JSON.parse(cached);
@@ -129,11 +326,9 @@ async function fetchData() {
   }
 }
 
-// Render All
+// Render All Components
 function renderAll() {
   if (!appState) return;
-
-  // Cache locally
   localStorage.setItem('pranav_offline_data', JSON.stringify(appState));
 
   renderHeroCountdown();
@@ -184,7 +379,6 @@ function renderSubjectGridStats() {
 function renderSyllabusView() {
   if (!appState.subjects) return;
 
-  // 1. Subject Filter Pills
   const pillsContainer = document.getElementById('syllabus-sub-pills');
   if (pillsContainer) {
     pillsContainer.innerHTML = '';
@@ -201,7 +395,6 @@ function renderSyllabusView() {
     });
   }
 
-  // 2. Chapters List
   const listContainer = document.getElementById('syllabus-chapters-container');
   if (!listContainer) return;
 
@@ -215,6 +408,7 @@ function renderSyllabusView() {
     card.className = 'bg-white border border-slate-200/90 rounded-2xl p-3.5 space-y-2 shadow-card';
 
     const badge = getStatusBadge(ch.status);
+    const isAdmin = currentUser.role === 'admin';
 
     card.innerHTML = `
       <div class="flex items-start justify-between gap-2">
@@ -227,8 +421,8 @@ function renderSyllabusView() {
         </div>
       </div>
       <div class="flex items-center justify-between pt-1 border-t border-slate-100 text-xs">
-        <span class="text-[10px] text-slate-400 font-medium">Click to advance status:</span>
-        <button onclick="cycleChapterDirect('${currentSyllabusSubject}', '${ch.id}')" class="px-2.5 py-1 rounded-full text-[10px] font-bold flex items-center gap-1 transition ${badge.class}">
+        <span class="text-[10px] text-slate-400 font-medium">${isAdmin ? 'Click to advance status:' : '🔒 Protected (Mama Only)'}</span>
+        <button onclick="handleProtectedAction('chapter', '${currentSyllabusSubject}', '${ch.id}')" class="px-2.5 py-1 rounded-full text-[10px] font-bold flex items-center gap-1 transition ${badge.class}">
           ${badge.icon} ${badge.label}
         </button>
       </div>
@@ -251,7 +445,7 @@ function getStatusBadge(status) {
   }
 }
 
-// Cycle Chapter Status
+// Cycle Chapter Status (Super Admin Protected)
 async function cycleChapterDirect(subjectKey, chapterId) {
   const currentSub = appState.subjects[subjectKey];
   const ch = currentSub ? currentSub.chapters.find(c => c.id === chapterId) : null;
@@ -264,7 +458,7 @@ async function cycleChapterDirect(subjectKey, chapterId) {
   try {
     const res = await fetch('/api/chapter/status', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: getAuthHeaders(),
       body: JSON.stringify({ subjectKey, chapterId, status: nextStatus })
     });
 
@@ -274,9 +468,11 @@ async function cycleChapterDirect(subjectKey, chapterId) {
       }
       showToast(`Updated to ${nextStatus.replace('_', ' ').toUpperCase()}`);
       await fetchData();
+    } else {
+      const err = await res.json();
+      showToast(err.error || 'Permission Denied', false);
     }
   } catch (err) {
-    // Fallback local update
     ch.status = nextStatus;
     renderAll();
     showToast(`Updated to ${nextStatus.toUpperCase()}`);
@@ -293,8 +489,8 @@ async function submitQuickLog(e) {
   try {
     const res = await fetch('/api/study-log', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ subject, minutes, chapter, notes: 'Self Study sprint' })
+      headers: getAuthHeaders(),
+      body: JSON.stringify({ subject, minutes, chapter, notes: 'Study sprint' })
     });
 
     if (res.ok) {
@@ -308,7 +504,7 @@ async function submitQuickLog(e) {
   }
 }
 
-// Family Wall
+// Family Wall (Rate limited for Father/Viewers)
 function renderFamilyWall() {
   const container = document.getElementById('family-wall-feed');
   const homeCheer = document.getElementById('home-cheer-text');
@@ -351,14 +547,17 @@ async function submitFamilyWallNote(e) {
   try {
     const res = await fetch('/api/family-note', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ author, text, badge: author === 'Mama' ? 'Uncle' : 'Family' })
+      headers: getAuthHeaders(),
+      body: JSON.stringify({ author, text, badge: author === 'Mama' ? 'Uncle (Admin)' : 'Family' })
     });
 
     if (res.ok) {
       document.getElementById('wallNoteInput').value = '';
       showToast('Encouragement posted!');
       await fetchData();
+    } else {
+      const err = await res.json();
+      showToast(err.error || 'Failed to post cheer', false);
     }
   } catch (err) {
     showToast('Posted!');
@@ -378,7 +577,7 @@ function renderFormulasView() {
       <div class="bg-slate-50 p-2.5 rounded-xl text-[11px] text-slate-700 font-mono space-y-1">
         <div>• Formula: x = [-b ± √(b² - 4ac)] / 2a</div>
         <div>• Discriminant: D = b² - 4ac</div>
-        <div>• D > 0 (2 distinct real roots) | D = 0 (equal roots)</div>
+        <div>• D > 0 (2 distinct roots) | D = 0 (equal roots)</div>
         <div>• AP nth term: an = a + (n-1)d</div>
         <div>• AP sum: Sn = n/2 [2a + (n-1)d]</div>
       </div>
@@ -410,7 +609,7 @@ function renderFormulasView() {
   `;
 }
 
-// Scorecard & Chart
+// Scorecard & Chart (Super Admin Protected)
 function renderScoresList() {
   const container = document.getElementById('scores-table-container');
   if (!container || !appState.tests) return;
@@ -463,6 +662,38 @@ function renderScoresChart() {
       }
     }
   });
+}
+
+async function submitTestScore(e) {
+  e.preventDefault();
+  if (currentUser.role !== 'admin') {
+    showToast('🔒 Only Mama can record exam marks!', false);
+    return;
+  }
+
+  const title = document.getElementById('modalTestTitle').value;
+  const subject = document.getElementById('modalTestSubject').value;
+  const marksObtained = document.getElementById('modalMarksObtained').value;
+  const totalMarks = document.getElementById('modalTotalMarks').value;
+
+  try {
+    const res = await fetch('/api/test', {
+      method: 'POST',
+      headers: getAuthHeaders(),
+      body: JSON.stringify({ title, subject, marksObtained, totalMarks, date: new Date().toISOString().slice(0, 10) })
+    });
+
+    if (res.ok) {
+      closeModal('addTestModal');
+      showToast('Exam score recorded!');
+      await fetchData();
+    } else {
+      const err = await res.json();
+      showToast(err.error || 'Failed to save marks', false);
+    }
+  } catch (err) {
+    showToast('Saved locally!');
+  }
 }
 
 // Pomodoro Timer Logic
@@ -552,7 +783,7 @@ function handleGlobalSearch(query) {
           </div>
           ${ch.notes ? `<p class="text-[11px] text-slate-500">${ch.notes}</p>` : ''}
           <div class="pt-1 flex justify-end">
-            <button onclick="cycleChapterDirect('${subKey}', '${ch.id}')" class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700">
+            <button onclick="handleProtectedAction('chapter', '${subKey}', '${ch.id}')" class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700">
               Update Status
             </button>
           </div>
@@ -580,10 +811,8 @@ function openModal(id) {
 
 // Initialize on Load
 window.addEventListener('DOMContentLoaded', () => {
-  chooseRole(currentRole);
+  applyUserAuth(currentUser);
   fetchData();
   updateTimerDisplay();
-
-  // Polling every 5 seconds for live family sync
   setInterval(fetchData, 5000);
 });

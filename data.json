@@ -1,4 +1,71 @@
 {
+  "authConfig": {
+    "superAdmins": [
+      "jothi1809@gmail.com"
+    ],
+    "pins": {
+      "1809": {
+        "role": "admin",
+        "name": "Mama (Super Admin)",
+        "email": "jothi1809@gmail.com",
+        "badge": "Owner"
+      },
+      "2027": {
+        "role": "student",
+        "name": "Pranav",
+        "email": "pranav@student.hub",
+        "badge": "Student"
+      },
+      "1010": {
+        "role": "viewer",
+        "name": "Parents / Father",
+        "email": "parents@family.hub",
+        "badge": "Viewer"
+      }
+    },
+    "rolePermissions": {
+      "admin": {
+        "canEditSyllabus": true,
+        "canEditExamDates": true,
+        "canAddTestMarks": true,
+        "canLogStudy": true,
+        "canPostCheer": true,
+        "canManageUsers": true,
+        "dailyActionLimit": -1
+      },
+      "student": {
+        "canEditSyllabus": false,
+        "canEditExamDates": false,
+        "canAddTestMarks": false,
+        "canLogStudy": true,
+        "canPostCheer": true,
+        "canManageUsers": false,
+        "dailyActionLimit": 50
+      },
+      "viewer": {
+        "canEditSyllabus": false,
+        "canEditExamDates": false,
+        "canAddTestMarks": false,
+        "canLogStudy": false,
+        "canPostCheer": true,
+        "canManageUsers": false,
+        "dailyActionLimit": 5
+      }
+    },
+    "usageLimits": {
+      "father": {
+        "userId": "usr-father",
+        "name": "Father",
+        "role": "viewer",
+        "dailyViews": 0,
+        "maxDailyViews": 20,
+        "dailyCheers": 0,
+        "maxDailyCheers": 3,
+        "editPermission": false,
+        "status": "active"
+      }
+    }
+  },
   "examDates": {
     "termRev1": "2026-11-16",
     "preBoard1": "2026-12-10",
