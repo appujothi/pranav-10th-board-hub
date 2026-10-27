@@ -419,25 +419,20 @@
             </span>
           </div>
 
-          <!-- TWO SELECTABLE MODES: Option A (Pair Rotation) vs Option B (Deep Dive) -->
-          <div class="space-y-1.5">
-            <div class="flex items-center justify-between text-[10px] font-bold text-slate-400">
-              <span class="uppercase tracking-wider">Select Revision Plan:</span>
-              <span class="text-emerald-400 font-semibold" id="active-mode-label">🔄 Option A: 2 Subjects / Day</span>
+          <!-- OFFICIAL REVISION ROUTINE: 2 SUBJECTS PER DAY (PAIR ROTATION) -->
+          <div class="p-3 rounded-2xl bg-emerald-950/60 border border-emerald-600/50 flex items-center justify-between gap-3 shadow-inner">
+            <div class="flex items-center gap-2.5">
+              <span class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-300 font-extrabold flex items-center justify-center text-sm border border-emerald-500/30">
+                🔄
+              </span>
+              <div>
+                <span class="text-[9px] font-extrabold text-emerald-400 uppercase tracking-wider block">Official Routine</span>
+                <h5 class="text-xs font-extrabold text-white">2 Subjects Per Day (சுழற்சி முறை)</h5>
+              </div>
             </div>
-            <div class="grid grid-cols-2 gap-2 p-1 bg-slate-800/90 rounded-2xl border border-slate-700/80 text-xs">
-              <button onclick="switchRevisionSplitterMode('pair_rotation')" id="mode-btn-pair" class="py-2 px-2 rounded-xl font-bold transition flex items-center justify-center gap-1.5 bg-emerald-600 text-white shadow-sm text-center">
-                <i class="fa-solid fa-arrows-rotate text-xs"></i>
-                <span class="text-[11px] leading-tight">Option A: 2 Subjects / Day</span>
-              </button>
-              <button onclick="switchRevisionSplitterMode('deep_dive')" id="mode-btn-deep" class="py-2 px-2 rounded-xl font-bold transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-white text-center">
-                <i class="fa-solid fa-bullseye text-xs"></i>
-                <span class="text-[11px] leading-tight">Option B: 1 Subject Focus</span>
-              </button>
-            </div>
-            <p id="mode-explanation-text" class="text-[10px] text-slate-300 leading-snug px-1 pt-0.5">
-              💡 <strong>பரிந்துரை:</strong> தினமும் 2 பாடங்கள் சுழற்சி முறை (Science + Tamil, Maths + English, SST + Science) — இரவில் 30 மதிப்பெண் மாதிரித் தேர்வு!
-            </p>
+            <span class="text-[10px] font-bold bg-emerald-500/20 text-emerald-200 border border-emerald-500/40 px-3 py-1 rounded-full">
+              Night Test: 30 Marks
+            </span>
           </div>
 
           <!-- TODAY STATUS BANNER: Day 0 (Oct 27) -->
@@ -911,18 +906,19 @@
             </span>
           </div>
 
-          <!-- Mode Switcher Buttons -->
-          <div class="grid grid-cols-2 gap-2 p-1 bg-slate-800/80 rounded-2xl border border-slate-700/60 text-xs">
-            <button onclick="switchRevisionSplitterMode('pair_rotation')" id="split-mode-btn-pair_rotation" class="py-2 px-3 rounded-xl font-bold transition flex items-center justify-center gap-1.5 bg-emerald-600 text-white shadow-sm">
-              <span>🔄 Option A: 2 Subjects / Day</span>
-            </button>
-            <button onclick="switchRevisionSplitterMode('deep_dive')" id="split-mode-btn-deep_dive" class="py-2 px-3 rounded-xl font-bold transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-white">
-              <span>🎯 Option B: Deep Dive Focus</span>
-            </button>
+          <!-- Official Fixed System Pill -->
+          <div class="p-3 rounded-2xl bg-slate-800/90 border border-slate-700/80 flex items-center justify-between text-xs">
+            <span class="font-extrabold text-emerald-400 flex items-center gap-1.5">
+              <i class="fa-solid fa-arrows-rotate"></i>
+              <span>Official System: 2 Subjects Per Day</span>
+            </span>
+            <span class="text-[10px] text-slate-300 bg-slate-700/60 px-2.5 py-0.5 rounded-full font-bold">
+              16-Day Pair Rotation
+            </span>
           </div>
 
           <p id="split-mode-desc" class="text-[11px] text-slate-300 leading-snug">
-            ஒரே பாடத்தால் சலிப்படையாமல், தினமும் கணிதம் + அறிவியல் + மொழிப் பாடம் படிக்கும் சுறுசுறுப்பான முறை.
+            ஒரே பாடத்தால் சலிப்படையாமல், தினமும் 2 பாடங்கள் சுழற்சி முறையில் (Science + Tamil, Maths + English, SST + Science...) படித்து, இரவு 8:30 மணிக்கு 30 மதிப்பெண் மாதிரித் தேர்வு எழுதும் முறை.
           </p>
 
           <!-- Daily Breakdown Feed -->
