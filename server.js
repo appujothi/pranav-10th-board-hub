@@ -150,7 +150,22 @@ const server = http.createServer((req, res) => {
   if (pathname === '/api/data' && req.method === 'GET') {
     const data = readData();
     if (!data) return sendJSON(res, 500, { error: 'Failed to read data' });
+    if (!isSuperAdmin(req, data)) {
+      const sanitized = { ...data };
+      delete sanitized.mamaSecretNightTests;
+      return sendJSON(res, 200, sanitized);
+    }
     return sendJSON(res, 200, data);
+  }
+
+  // API 3B: Mama's Secret Night Test Vault (Admin Only - PIN 9677)
+  if (pathname === '/api/mama/night-tests' && req.method === 'GET') {
+    const data = readData();
+    if (!data) return sendJSON(res, 500, { error: 'Failed to read data' });
+    if (!isSuperAdmin(req, data)) {
+      return sendJSON(res, 403, { error: 'Permission Denied: Only Mama (PIN: 9677) can view Secret Night Test papers!' });
+    }
+    return sendJSON(res, 200, { success: true, tests: data.mamaSecretNightTests || [] });
   }
 
   // API 4: Update Chapter Status (PROTECTED: Super Admin Only)

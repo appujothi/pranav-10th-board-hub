@@ -60,6 +60,140 @@ function toggleDesktopMode() {
   }
 }
 
+// ================= BILINGUAL TRANSLATION DICTIONARY =================
+const UI_I18N = {
+  en: {
+    // Nav tabs
+    nav_home: 'Home',
+    nav_schedule: 'Schedule',
+    nav_syllabus: 'Syllabus',
+    nav_timer: 'Focus Timer',
+    nav_family: 'Family Cheer',
+    nav_secret_vault: '🔐 Secret Vault',
+    nav_vault_short: 'Vault',
+
+    // Official Routine
+    official_routine: 'Official Routine',
+    routine_title: '2 Subjects Per Day (Pair Rotation)',
+    night_test_pill: 'Night Test: 30 Marks',
+
+    // Today status
+    today_tag: 'TODAY: 27 Oct 2026',
+    day_zero_badge: 'Day 0 / 16',
+    today_head: 'Day 0: System Orientation & Module Understanding',
+    today_desc: 'Today is dedicated to mastering the app workflow and the 2-subject daily rotation method. <strong>No night test tonight.</strong> Review tomorrow portions and practice sample questions below to prepare!',
+
+    // Tomorrow task
+    tomorrow_task_badge: "TOMORROW'S TASK (28 Oct)",
+    sub1_label: '🔬 Science (Chemistry)',
+    sub1_ch: 'Ch 2: Acids, Bases and Salts',
+    sub1_topics: 'pH scale, Chlor-alkali process, Plaster of Paris, Bleaching powder & Acid-Metal reactions.',
+    listen_audio: '🎧 Listen Concept Audio',
+
+    sub2_label: '📖 Tamil (Language-II)',
+    sub2_ch: 'Unit 5: Manarkeni (இயல் 5)',
+    sub2_topics: 'Translation Education, Neethi Venba (Seikuthambi Pavalar), Question-Answer types & Porulkol.',
+    listen_audio_tam: '🎧 Listen Tamil Audio',
+
+    // Mama Rule
+    mama_rule_title: "Mama's Quality Rule (Important Notice):",
+    mama_rule_desc: 'The <strong>Sample Practice Questions</strong> below are for your self-study only! Tonight\'s 8:30 PM written test will <em>NOT have these exact same questions</em> — numbers and question framing will be <strong>twisted and application-oriented to test your true conceptual mastery!</strong>',
+    sample_practice_title: "Tomorrow's Sample Practice Questions (6 Questions & Solutions)",
+
+    // Night Test Blueprint
+    night_test_head: 'Day 1 Night Assessment (Tomorrow Night)',
+    night_test_time: '<strong>Timing:</strong> 8:30 PM – 9:15 PM • <strong>Portions:</strong> Science 15 Marks + Tamil 15 Marks.',
+    night_test_instructions: 'Write on rough notebook with full steps. Submit immediately for AI initial review and Mama\'s confirmed grading!',
+    mama_vault_action_btn: "🔐 Mama: Open 16-Day Secret Night Test Vault (PIN: 9677)",
+    mama_vault_security_note: '🔒 Hidden from Pranav until 8:30 PM. Only Mama can preview questions and answer keys.',
+
+    // Study Toolkit
+    study_toolkit_title: 'Study Helpers & Doubts:',
+    full_schedule_btn: '📅 16-Day Full Revision Schedule (Oct 28 – Nov 12)',
+    view_schedule_label: 'View Details',
+
+    // Syllabus
+    syllabus_title: 'Syllabus & Chapter Tracker',
+    syllabus_lock_hint: '🔒 Protected: Only Mama can update mastery status',
+
+    // Vault Modal
+    vault_modal_title: "Mama's Secret Night Test Vault",
+    vault_modal_subtitle: '16-Day Night Assessment Papers (Oct 28 – Nov 12) • 30 Marks Each',
+    vault_gate_title: 'Confidential Test Papers Protected',
+    vault_gate_desc: 'Pranav must not see the test questions in advance. Enter Mama\'s Super Admin PIN to unlock.',
+    unlock_btn: 'Unlock',
+    select_night_test: 'Select Night Test Day:',
+    vault_mode_label: 'Mode:',
+    copy_paper_btn: '📋 Copy Paper to Clipboard',
+    print_paper_btn: '🖨️ Print Test Paper'
+  },
+  ta: {
+    // Nav tabs
+    nav_home: 'முகப்பு',
+    nav_schedule: 'அட்டவணை',
+    nav_syllabus: 'பாடத்திட்டம்',
+    nav_timer: 'கவன டைமர்',
+    nav_family: 'குடும்ப வாழ்த்து',
+    nav_secret_vault: '🔐 ரகசிய பெட்டகம்',
+    nav_vault_short: 'பெட்டகம்',
+
+    // Official Routine
+    official_routine: 'அதிகாரப்பூர்வ முறை',
+    routine_title: '2 பாடங்கள் / நாள் (சுழற்சி முறை)',
+    night_test_pill: 'இரவுத் தேர்வு: 30 மதிப்பெண்',
+
+    // Today status
+    today_tag: 'இன்று: 27 அக்டோபர் 2026',
+    day_zero_badge: 'நாள் 0 / 16',
+    today_head: 'நாள் 0: ஆப் & படிப்பு முறை அறிமுகம்',
+    today_desc: 'இன்று ஆப் மற்றும் 2-சப்ஜெக்ட் சுழற்சி படிப்பு முறையை முழுமையாகப் புரிந்து கொள்ளும் நாள். <strong>இன்று இரவு தேர்வு இல்லை.</strong> நாளைக்கான பாடங்கள் மற்றும் மாதிரி வினாக்களை கீழே படித்து தயாராகுங்கள்!',
+
+    // Tomorrow task
+    tomorrow_task_badge: 'நாளைக்கான பணி (28 அக்டோபர்)',
+    sub1_label: '🔬 அறிவியல் (வேதியியல்)',
+    sub1_ch: 'அத்தியாயம் 2: அமிலங்கள், காரங்கள் மற்றும் உப்புகள்',
+    sub1_topics: 'pH அளவீடு, குளோரோ-கார முறை, பிளாஸ்டர் ஆஃப் பாரிஸ், சலவைத்தூள் & அமில-உலோக வினைகள்.',
+    listen_audio: '🎧 ஒலி விளக்கம் கேள்',
+
+    sub2_label: '📖 தமிழ் (இரண்டாம் மொழி)',
+    sub2_ch: 'இயல் 5: மணற்கேணி',
+    sub2_topics: 'மொழிபெயர்ப்புக் கல்வி, நீதி வெண்பா (செய்குதம்பிப் பாவலர்), வினா-விடை வகைகள் & பொருள்கோள்.',
+    listen_audio_tam: '🎧 தமிழ் விளக்கம் கேள்',
+
+    // Mama Rule
+    mama_rule_title: 'மாமாவின் தர விதி (முக்கிய அறிவிப்பு):',
+    mama_rule_desc: 'கீழே கொடுக்கப்பட்டுள்ள மாதிரி வினாக்கள் உன் சுய பயிற்சிக்காக மட்டுமே! இரவு 8:30 PM மாதிரித் தேர்வில் <em>இதே கேள்விகள் அப்படியே வராது</em> — உன் உண்மையான புரிதலை சோதிக்க எண்களும் வார்த்தைகளும் <strong>Twist செய்து புதிய கேள்விகளாகக் கேட்கப்படும்!</strong>',
+    sample_practice_title: 'நாளைக்கான மாதிரி வினாக்கள் (6 மாதிரி வினாக்கள் & விடைகள்)',
+
+    // Night Test Blueprint
+    night_test_head: 'நாள் 1 இரவுத் தேர்வு (நாளை இரவு)',
+    night_test_time: '<strong>நேரம்:</strong> இரவு 8:30 PM முதல் 9:15 PM வரை • <strong>பிரிவு:</strong> அறிவியல் 15 மதிப்பெண் + தமிழ் 15 மதிப்பெண்.',
+    night_test_instructions: 'Rough நோட்டில் சுயமாக எழுத வேண்டும். தேர்வு முடிந்தவுடன் போட்டோ எடுத்து அப்லோட் செய். AI முதல்கட்ட திருத்தமும் மாமாவின் இறுதி சரிபார்ப்பும் வழங்கப்படும்!',
+    mama_vault_action_btn: '🔐 மாமா: 16-நாள் ரகசிய தேர்வு பெட்டகம் (PIN: 9677)',
+    mama_vault_security_note: '🔒 பிரணவுக்கு இரவு 8:30 வரை வினாக்கள் தெரியாது. மாமாவிற்கு மட்டுமே முழு வினாத்தாளும் விடைக் குறிப்பும் தெரியும்.',
+
+    // Study Toolkit
+    study_toolkit_title: 'படிக்கும் உதவிகள் & சந்தேகங்கள்:',
+    full_schedule_btn: '📅 16 நாட்கள் முழு ரிவிஷன் அட்டவணை (Oct 28 – Nov 12)',
+    view_schedule_label: 'விரிவாகப் பார்க்க',
+
+    // Syllabus
+    syllabus_title: 'பாடத்திட்டம் & அத்தியாயங்கள்',
+    syllabus_lock_hint: '🔒 பாதுகாக்கப்பட்டது: மாமா மட்டுமே நிலையை மாற்ற முடியும்',
+
+    // Vault Modal
+    vault_modal_title: 'மாமாவின் ரகசிய இரவு தேர்வு பெட்டகம்',
+    vault_modal_subtitle: '16-நாள் இரவு மாதிரி தேர்வுத்தாள்கள் (Oct 28 – Nov 12) • தலா 30 மதிப்பெண்',
+    vault_gate_title: 'ரகசிய தேர்வுத்தாள்கள் பூட்டப்பட்டுள்ளன',
+    vault_gate_desc: 'பிரணவ் முன்கூட்டியே கேள்விகளைப் பார்க்க முடியாது. திறக்க மாமாவின் Super Admin PIN-ஐ உள்ளிடவும்.',
+    unlock_btn: 'திறக்கவும்',
+    select_night_test: 'தேர்வு நாளைத் தேர்ந்தெடுக்கவும்:',
+    vault_mode_label: 'பார்வை முறை:',
+    copy_paper_btn: '📋 வினாத்தாளை நகலெடு (Copy)',
+    print_paper_btn: '🖨️ வினாத்தாளை அச்சிடு (Print)'
+  }
+};
+
 // UI Language Switcher (Default: English, Optional: Tamil)
 let currentUiLang = localStorage.getItem('pranav_ui_lang') || 'en';
 
@@ -71,10 +205,24 @@ function toggleUiLanguage() {
 }
 
 function applyUiLanguage(lang) {
+  currentUiLang = lang || 'en';
+  const dict = UI_I18N[currentUiLang] || UI_I18N.en;
+
   const deskLabel = document.getElementById('deskLangLabel');
   const mobBtn = document.getElementById('mobLangToggleBtn');
-  if (deskLabel) deskLabel.textContent = lang === 'en' ? '🌐 English' : '🌐 தமிழ்';
-  if (mobBtn) mobBtn.textContent = lang === 'en' ? '🌐 EN' : '🌐 தமிழ்';
+  if (deskLabel) deskLabel.textContent = currentUiLang === 'en' ? '🌐 English' : '🌐 தமிழ்';
+  if (mobBtn) mobBtn.textContent = currentUiLang === 'en' ? '🌐 EN' : '🌐 தமிழ்';
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key]) {
+      if (dict[key].includes('<')) {
+        el.innerHTML = dict[key];
+      } else {
+        el.textContent = dict[key];
+      }
+    }
+  });
 
   renderAll();
 }
@@ -154,6 +302,12 @@ async function submitPinLogin() {
 }
 
 async function fastLoginPin(pin) {
+  const localPins = {
+    '9677': { role: 'admin', name: 'Mama (Super Admin)', email: 'jothi1809@gmail.com', badge: 'Owner', permissions: { canEditSyllabus: true, canEditExamDates: true, canAddTestMarks: true, canLogStudy: true, canPostCheer: true, canManageUsers: true } },
+    '2027': { role: 'student', name: 'Pranav', email: 'pranav@student.hub', badge: 'Student', permissions: { canEditSyllabus: false, canEditExamDates: false, canAddTestMarks: false, canLogStudy: true, canPostCheer: false, canManageUsers: false } },
+    '1010': { role: 'viewer', name: 'Father / Parents', email: 'parents@family.hub', badge: 'Viewer', permissions: { canEditSyllabus: false, canEditExamDates: false, canAddTestMarks: false, canLogStudy: false, canPostCheer: true, canManageUsers: false } }
+  };
+
   try {
     const res = await fetch('/api/auth/pin', {
       method: 'POST',
@@ -161,28 +315,25 @@ async function fastLoginPin(pin) {
       body: JSON.stringify({ pin })
     });
 
-    if (res.ok) {
+    if (res.ok && res.headers.get('content-type')?.includes('application/json')) {
       const data = await res.json();
-      applyUserAuth(data.user);
-      closeModal('authModal');
-      showToast(`Unlocked as ${data.user.name}!`);
-    } else {
-      const localPins = {
-        '9677': { role: 'admin', name: 'Mama (Super Admin)', email: 'jothi1809@gmail.com', badge: 'Owner', permissions: { canEditSyllabus: true } },
-        '2027': { role: 'student', name: 'Pranav', email: 'pranav@student.hub', badge: 'Student', permissions: { canEditSyllabus: false } },
-        '1010': { role: 'viewer', name: 'Father / Parents', email: 'parents@family.hub', badge: 'Viewer', permissions: { canEditSyllabus: false } }
-      };
-
-      if (localPins[pin]) {
-        applyUserAuth(localPins[pin]);
+      if (data.user) {
+        applyUserAuth(data.user);
         closeModal('authModal');
-        showToast(`Unlocked as ${localPins[pin].name}!`);
-      } else {
-        showToast('Incorrect 4-digit PIN', false);
+        showToast(`Unlocked as ${data.user.name}!`);
+        return;
       }
     }
   } catch (err) {
-    showToast('PIN check offline', false);
+    console.warn('API pin check warning, falling back to localPins:', err);
+  }
+
+  if (localPins[pin]) {
+    applyUserAuth(localPins[pin]);
+    closeModal('authModal');
+    showToast(`Unlocked as ${localPins[pin].name}!`);
+  } else {
+    showToast('Incorrect 4-digit PIN', false);
   }
 }
 
@@ -431,15 +582,28 @@ function openSubjectDetail(subKey) {
 // ================= FETCH DATA =================
 async function fetchData() {
   try {
-    const res = await fetch('/api/data', { headers: getAuthHeaders() });
-    if (!res.ok) throw new Error('API offline');
-    appState = await res.json();
-    renderAll();
+    let res = await fetch('/api/data', { headers: getAuthHeaders() });
+    let isJson = res.headers.get('content-type')?.includes('application/json');
+    if (!res.ok || !isJson) {
+      // Fallback directly to static public data.json
+      res = await fetch('/data.json');
+      isJson = res.headers.get('content-type')?.includes('application/json');
+    }
+    if (res.ok && isJson) {
+      appState = await res.json();
+      renderAll();
+      return;
+    }
+    throw new Error('API offline');
   } catch (err) {
     const cached = localStorage.getItem('pranav_offline_data');
     if (cached) {
-      appState = JSON.parse(cached);
-      renderAll();
+      try {
+        appState = JSON.parse(cached);
+        renderAll();
+      } catch (e) {
+        console.error('Cached data parse error:', e);
+      }
     }
   }
 }
@@ -711,9 +875,53 @@ function renderSubjectGridStats() {
   });
 }
 
-// Syllabus View
+// ================= ENRICHED SYLLABUS VIEW =================
+let currentSyllabusBranchFilter = 'all';
+let currentChapterSearch = '';
+
+function filterSyllabusChapters(val) {
+  currentChapterSearch = (val || '').toLowerCase().trim();
+  renderSyllabusChaptersList();
+}
+
+function setSyllabusBranchFilter(branch) {
+  currentSyllabusBranchFilter = branch;
+  renderSyllabusBranchPills();
+  renderSyllabusChaptersList();
+}
+
+function renderSyllabusBranchPills() {
+  const container = document.getElementById('syllabus-branch-pills');
+  if (!container || !appState.subjects) return;
+
+  const currentSub = appState.subjects[currentSyllabusSubject];
+  if (!currentSub || !currentSub.chapters) return;
+
+  // Extract unique branches / units
+  const branches = ['all', ...new Set(currentSub.chapters.map(c => c.branch || c.unit || 'Core'))];
+
+  container.innerHTML = '';
+  branches.forEach(b => {
+    const isSel = b === currentSyllabusBranchFilter;
+    const btn = document.createElement('button');
+    btn.className = `px-2.5 py-1 rounded-full text-[11px] font-bold shrink-0 transition ${
+      isSel 
+        ? 'bg-emerald-600 text-white shadow-sm' 
+        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+    }`;
+    btn.textContent = b === 'all' ? 'All Units' : b;
+    btn.onclick = () => setSyllabusBranchFilter(b);
+    container.appendChild(btn);
+  });
+}
+
 function renderSyllabusView() {
-  if (!appState.subjects) return;
+  if (!appState || !appState.subjects) return;
+
+  currentSyllabusSubject = currentSyllabusSubject || 'science';
+  if (!appState.subjects[currentSyllabusSubject]) {
+    currentSyllabusSubject = Object.keys(appState.subjects)[0] || 'science';
+  }
 
   const pillsContainer = document.getElementById('syllabus-sub-pills');
   if (pillsContainer) {
@@ -721,73 +929,208 @@ function renderSyllabusView() {
     Object.entries(appState.subjects).forEach(([key, sub]) => {
       const isSelected = key === currentSyllabusSubject;
       const btn = document.createElement('button');
-      btn.className = `px-3 py-1.5 rounded-full text-xs font-bold shrink-0 transition ${isSelected ? 'bg-emerald-600 text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`;
-      btn.innerHTML = `${sub.icon} ${sub.title.split(' ')[0]}`;
+      btn.className = `px-3.5 py-1.5 rounded-full text-xs font-bold shrink-0 transition flex items-center gap-1.5 ${
+        isSelected ? 'bg-emerald-600 text-white shadow-sm font-extrabold' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+      }`;
+      btn.innerHTML = `<span>${sub.icon}</span> <span>${sub.title.split(' ')[0]}</span>`;
       btn.onclick = () => {
         currentSyllabusSubject = key;
+        currentSyllabusBranchFilter = 'all';
         renderSyllabusView();
       };
       pillsContainer.appendChild(btn);
     });
   }
 
-  const listContainer = document.getElementById('syllabus-chapters-container');
-  if (!listContainer) return;
-
   const currentSub = appState.subjects[currentSyllabusSubject];
   if (!currentSub) return;
 
+  // Subject Stats & Progress Banner
+  let totalCh = currentSub.chapters.length;
+  let masteredCh = currentSub.chapters.filter(c => c.status === 'mastered').length;
+  let rev1Ch = currentSub.chapters.filter(c => c.isRevision1).length;
+  let points = 0;
+  currentSub.chapters.forEach(ch => {
+    if (ch.status === 'mastered') points += 1;
+    else if (ch.status === 'revised') points += 0.75;
+    else if (ch.status === 'in_progress') points += 0.4;
+  });
+  const pct = totalCh > 0 ? Math.round((points / totalCh) * 100) : 0;
+
+  const masteryPill = document.getElementById('syllabus-mastery-pill');
+  if (masteryPill) masteryPill.textContent = `${pct}% Mastered`;
+
+  const banner = document.getElementById('syllabus-subject-banner');
+  if (banner) {
+    banner.innerHTML = `
+      <div class="flex items-center justify-between gap-3">
+        <div class="flex items-center gap-2.5">
+          <span class="text-2xl">${currentSub.icon}</span>
+          <div>
+            <h4 class="text-sm font-extrabold text-white">${currentSub.title}</h4>
+            <span class="text-[10px] text-slate-300 font-medium">Code: ${currentSub.code || 'CBSE-10'} &bull; SRM Revision 1</span>
+          </div>
+        </div>
+        <div class="text-right">
+          <span class="text-lg font-black text-emerald-400">${pct}%</span>
+          <span class="block text-[9px] text-slate-400 font-bold uppercase">Completion</span>
+        </div>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="w-full h-2 rounded-full bg-slate-700/80 overflow-hidden">
+        <div class="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full transition-all duration-500" style="width: ${pct}%"></div>
+      </div>
+
+      <!-- Quick Summary Pills -->
+      <div class="flex items-center justify-between gap-2 pt-1 text-[10px] text-slate-300 font-semibold flex-wrap">
+        <span class="bg-slate-800/80 px-2.5 py-1 rounded-lg border border-slate-700">📚 <strong>${totalCh}</strong> Total Chapters</span>
+        <span class="bg-slate-800/80 px-2.5 py-1 rounded-lg border border-slate-700">✅ <strong>${masteredCh}</strong> Mastered</span>
+        <span class="bg-amber-900/40 text-amber-300 px-2.5 py-1 rounded-lg border border-amber-600/40 font-bold">🔥 <strong>${rev1Ch}</strong> SRM Rev-1 Focus</span>
+        <button onclick="switchTab('formulas')" class="bg-emerald-600 hover:bg-emerald-700 text-white px-2.5 py-1 rounded-lg font-bold flex items-center gap-1 transition">
+          <i class="fa-solid fa-headphones text-[9px]"></i> Audio Hub
+        </button>
+      </div>
+    `;
+  }
+
+  renderSyllabusBranchPills();
+  renderSyllabusChaptersList();
+}
+
+function renderSyllabusChaptersList() {
+  const listContainer = document.getElementById('syllabus-chapters-container');
+  if (!listContainer || !appState.subjects) return;
+
+  const currentSub = appState.subjects[currentSyllabusSubject];
+  if (!currentSub || !currentSub.chapters) return;
+
   listContainer.innerHTML = '';
 
-  currentSub.chapters.forEach(ch => {
+  const filtered = currentSub.chapters.filter(ch => {
+    const branchMatch = currentSyllabusBranchFilter === 'all' || (ch.branch || ch.unit || 'Core') === currentSyllabusBranchFilter;
+    const searchMatch = !currentChapterSearch || 
+      ch.name.toLowerCase().includes(currentChapterSearch) || 
+      (ch.notes && ch.notes.toLowerCase().includes(currentChapterSearch)) ||
+      (ch.keyConcepts && ch.keyConcepts.some(c => c.toLowerCase().includes(currentChapterSearch)));
+    return branchMatch && searchMatch;
+  });
+
+  if (filtered.length === 0) {
+    listContainer.innerHTML = '<div class="p-6 text-center text-xs text-slate-400 bg-white border border-slate-200 rounded-2xl">No chapters match your filter or search.</div>';
+    return;
+  }
+
+  const isAdmin = currentUser.role === 'admin';
+
+  filtered.forEach(ch => {
     const card = document.createElement('div');
-    card.className = 'bg-white border border-slate-200/90 rounded-2xl p-3.5 space-y-2 shadow-card';
+    card.className = 'bg-white border border-slate-200/90 rounded-2xl p-4 space-y-3 shadow-card hover:border-slate-300 transition';
 
     const badge = getStatusBadge(ch.status);
-    const isAdmin = currentUser.role === 'admin';
     const mamaRating = (appState.mamaRatings && appState.mamaRatings[ch.id]) !== undefined 
       ? appState.mamaRatings[ch.id] 
       : (ch.status === 'mastered' ? 90 : ch.status === 'revised' ? 70 : ch.status === 'in_progress' ? 45 : 0);
 
     card.innerHTML = `
+      <!-- Chapter Header -->
       <div class="flex items-start justify-between gap-2">
-        <div class="space-y-0.5">
+        <div class="space-y-1">
           <div class="flex items-center gap-1.5 flex-wrap">
-            <h4 class="text-xs font-bold text-slate-900">${ch.name}</h4>
-            <span class="text-[9px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 font-semibold">${ch.branch || ch.unit || 'Core'}</span>
+            <h4 class="text-xs sm:text-sm font-extrabold text-slate-900">${ch.name}</h4>
+            <span class="text-[9px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-bold">${ch.branch || ch.unit || 'Core'}</span>
             ${ch.isRevision1 ? `<span class="text-[9px] px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-500 to-rose-500 text-white font-extrabold shadow-sm flex items-center gap-1"><i class="fa-solid fa-fire text-[8px]"></i> SRM Rev-1</span>` : ''}
           </div>
+          ${ch.examWeightage ? `<span class="inline-block text-[10px] font-extrabold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">${ch.examWeightage}</span>` : ''}
           ${ch.notes ? `<p class="text-[11px] text-slate-500 leading-snug">${ch.notes}</p>` : ''}
         </div>
       </div>
 
-      <!-- Mama Confirmed Rating Row -->
-      <div class="p-2 rounded-xl bg-slate-50 border border-slate-200/80 text-[11px] flex items-center justify-between gap-2">
-        <div class="flex items-center gap-1.5">
-          <span class="text-xs">👑</span>
-          <span class="font-bold text-slate-800">மாமாவின் மதிப்பீடு (Mama's Score):</span>
-          <span id="mama-rating-val-${ch.id}" class="font-extrabold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">${mamaRating}%</span>
-        </div>
-        ${isAdmin ? `
-          <div class="flex items-center gap-1">
-            <input type="range" min="0" max="100" step="5" value="${mamaRating}" 
-              onchange="saveMamaRating('${ch.id}', this.value)" 
-              oninput="document.getElementById('mama-rating-val-${ch.id}').textContent = this.value + '%'" 
-              class="w-20 accent-emerald-600 cursor-pointer" title="Adjust Mama's Confirmed Percentage">
+      <!-- Key Concepts Accordion -->
+      ${ch.keyConcepts && ch.keyConcepts.length > 0 ? `
+        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80 space-y-2 text-xs">
+          <div class="flex items-center justify-between">
+            <span class="font-extrabold text-slate-800 flex items-center gap-1.5">
+              <i class="fa-solid fa-lightbulb text-amber-500"></i> Key NCERT Concepts:
+            </span>
           </div>
-        ` : ''}
-      </div>
+          <ul class="text-[11px] text-slate-600 space-y-1 list-disc list-inside">
+            ${ch.keyConcepts.map(c => `<li>${c}</li>`).join('')}
+          </ul>
+          ${ch.formulas ? `
+            <div class="pt-1.5 border-t border-slate-200/80 text-[11px] text-slate-700 font-mono">
+              <strong class="text-slate-900 font-sans">Formula/Rule:</strong> ${ch.formulas}
+            </div>
+          ` : ''}
+        </div>
+      ` : ''}
 
-      <div class="flex items-center justify-between pt-1 border-t border-slate-100 text-xs">
-        <span class="text-[10px] text-slate-400 font-medium">${isAdmin ? 'Click to advance status:' : '🔒 Protected (Mama Only)'}</span>
-        <button onclick="handleProtectedAction('chapter', '${currentSyllabusSubject}', '${ch.id}')" class="px-2.5 py-1 rounded-full text-[10px] font-bold flex items-center gap-1 transition ${badge.class}">
-          ${badge.icon} ${badge.label}
+      <!-- Sample Questions & Solutions Accordion -->
+      ${ch.sampleQuestions && ch.sampleQuestions.length > 0 ? `
+        <div class="border border-slate-200 rounded-xl overflow-hidden text-xs">
+          <button onclick="toggleChapterSampleQuestions('ch-sample-${ch.id}')" class="w-full p-2.5 bg-slate-50 hover:bg-slate-100 flex items-center justify-between text-left font-bold text-slate-800 transition">
+            <span class="flex items-center gap-1.5">
+              <i class="fa-solid fa-clipboard-question text-purple-600"></i>
+              <span>High-Yield Board Questions (${ch.sampleQuestions.length} Questions)</span>
+            </span>
+            <i id="ch-chevron-${ch.id}" class="fa-solid fa-chevron-down text-[10px] text-slate-500 transition-transform"></i>
+          </button>
+          <div id="ch-sample-${ch.id}" class="hidden p-3 bg-white space-y-2.5 border-t border-slate-200 text-[11px]">
+            ${ch.sampleQuestions.map((q, qIdx) => `
+              <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
+                <p class="font-bold text-slate-900">Q${qIdx + 1}: ${q.q}</p>
+                <div class="text-emerald-800 bg-emerald-50/60 p-2 rounded border border-emerald-100 leading-snug">
+                  <strong>Answer:</strong> ${q.a}
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      ` : ''}
+
+      <!-- Action Bar: Audio Explainer, Mama Score & Status -->
+      <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100 text-xs">
+        <button onclick="playTanglishAudio('exp-${ch.id}')" class="px-3 py-1.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 font-bold text-[11px] flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-volume-high text-[10px]"></i> 🎧 Concept Audio
         </button>
+
+        <div class="flex items-center gap-2">
+          <!-- Mama Rating Score -->
+          <div class="flex items-center gap-1 text-[11px]">
+            <span class="text-xs">👑</span>
+            <span class="font-bold text-slate-700">Mama:</span>
+            <span id="mama-rating-val-${ch.id}" class="font-extrabold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">${mamaRating}%</span>
+            ${isAdmin ? `
+              <input type="range" min="0" max="100" step="5" value="${mamaRating}" 
+                onchange="saveMamaRating('${ch.id}', this.value)" 
+                oninput="document.getElementById('mama-rating-val-${ch.id}').textContent = this.value + '%'" 
+                class="w-16 accent-emerald-600 cursor-pointer ml-1" title="Adjust Mama's Confirmed Percentage">
+            ` : ''}
+          </div>
+
+          <!-- Status Advance Button -->
+          <button onclick="handleProtectedAction('chapter', '${currentSyllabusSubject}', '${ch.id}')" class="px-2.5 py-1 rounded-full text-[10px] font-bold flex items-center gap-1 transition ${badge.class}">
+            ${badge.icon} ${badge.label}
+          </button>
+        </div>
       </div>
     `;
 
     listContainer.appendChild(card);
   });
+}
+
+function toggleChapterSampleQuestions(id) {
+  const el = document.getElementById(id);
+  const chKey = id.replace('ch-sample-', '');
+  const chevron = document.getElementById(`ch-chevron-${chKey}`);
+  if (el) {
+    el.classList.toggle('hidden');
+    if (chevron) {
+      if (el.classList.contains('hidden')) chevron.classList.remove('rotate-180');
+      else chevron.classList.add('rotate-180');
+    }
+  }
 }
 
 async function saveMamaRating(chapterId, rating) {
@@ -2432,4 +2775,339 @@ function saveUsageLimits() {
   const views = parseInt(document.getElementById('limitFatherViews')?.value || '20', 10);
   showToast('Member usage limits updated successfully!');
   closeModal('adminLimitsModal');
+}
+
+// ================= MAMA'S SECRET NIGHT TEST VAULT CONTROLLER =================
+let currentVaultDayIndex = 1;
+let currentVaultMode = 'questions_only';
+let mamaSecretVaultUnlocked = false;
+
+function openMamaSecretVaultModal() {
+  const modal = document.getElementById('mamaSecretVaultModal');
+  const gate = document.getElementById('mamaVaultPinGate');
+  const content = document.getElementById('mamaVaultUnlockedContent');
+  if (!modal || !gate || !content) return;
+
+  const isMama = (currentUser && currentUser.role === 'admin') || mamaSecretVaultUnlocked;
+  if (isMama) {
+    gate.classList.add('hidden');
+    content.classList.remove('hidden');
+    renderMamaSecretVault();
+  } else {
+    gate.classList.remove('hidden');
+    content.classList.add('hidden');
+    const pinInput = document.getElementById('vaultPinInput');
+    if (pinInput) {
+      pinInput.value = '';
+      setTimeout(() => pinInput.focus(), 100);
+    }
+  }
+
+  modal.classList.remove('hidden');
+}
+
+function verifyMamaVaultPin() {
+  const pinInput = document.getElementById('vaultPinInput');
+  const pin = (pinInput ? pinInput.value : '').trim();
+
+  if (pin === '9677') {
+    mamaSecretVaultUnlocked = true;
+    document.getElementById('mamaVaultPinGate').classList.add('hidden');
+    document.getElementById('mamaVaultUnlockedContent').classList.remove('hidden');
+    showToast('🔓 Mama Secret Vault Unlocked!');
+    renderMamaSecretVault();
+  } else {
+    showToast('❌ Incorrect Mama PIN (9677 required)', false);
+    if (pinInput) pinInput.value = '';
+  }
+}
+
+function setMamaVaultMode(mode) {
+  currentVaultMode = mode;
+  const btnQ = document.getElementById('vaultModeBtnQ');
+  const btnKey = document.getElementById('vaultModeBtnKey');
+
+  if (btnQ && btnKey) {
+    if (mode === 'questions_only') {
+      btnQ.className = 'px-2.5 py-1 rounded text-[11px] font-bold bg-amber-500 text-slate-950 shadow-sm transition';
+      btnKey.className = 'px-2.5 py-1 rounded text-[11px] font-bold text-slate-400 hover:text-white transition';
+    } else {
+      btnKey.className = 'px-2.5 py-1 rounded text-[11px] font-bold bg-amber-500 text-slate-950 shadow-sm transition';
+      btnQ.className = 'px-2.5 py-1 rounded text-[11px] font-bold text-slate-400 hover:text-white transition';
+    }
+  }
+
+  renderMamaSecretVaultPaper();
+}
+
+function selectMamaVaultDay(day) {
+  currentVaultDayIndex = day;
+  renderMamaSecretVault();
+}
+
+function renderMamaSecretVault() {
+  const tests = (appState && appState.mamaSecretNightTests) || [];
+  if (!tests || tests.length === 0) {
+    // If not in state, try to fetch from /api/mama/night-tests
+    fetch('/api/mama/night-tests', { headers: getAuthHeaders() })
+      .then(r => r.json())
+      .then(d => {
+        if (d.tests && d.tests.length > 0) {
+          if (!appState) appState = {};
+          appState.mamaSecretNightTests = d.tests;
+          renderMamaSecretVault();
+        }
+      })
+      .catch(e => console.warn('Secret tests fetch fallback', e));
+  }
+
+  // Render Day Pills (Days 1 to 16)
+  const pillsContainer = document.getElementById('mamaVaultDayPills');
+  if (pillsContainer && tests.length > 0) {
+    pillsContainer.innerHTML = '';
+    tests.forEach(t => {
+      const isSel = t.day === currentVaultDayIndex;
+      const btn = document.createElement('button');
+      btn.className = `px-3 py-1.5 rounded-full text-xs font-extrabold shrink-0 transition flex items-center gap-1 ${
+        isSel 
+          ? 'bg-amber-500 text-slate-950 shadow-md font-black scale-105' 
+          : 'bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white'
+      }`;
+      btn.innerHTML = `Day ${t.day} <span class="text-[9px] opacity-80">(${t.date.slice(5)})</span>`;
+      btn.onclick = () => selectMamaVaultDay(t.day);
+      pillsContainer.appendChild(btn);
+    });
+  }
+
+  renderMamaSecretVaultPaper();
+}
+
+function renderMamaSecretVaultPaper() {
+  const body = document.getElementById('mamaVaultPaperBody');
+  if (!body) return;
+
+  const tests = (appState && appState.mamaSecretNightTests) || [];
+  const test = tests.find(t => t.day === currentVaultDayIndex) || tests[0];
+  if (!test) {
+    body.innerHTML = '<p class="text-slate-400 text-center py-6">Loading test paper or none available...</p>';
+    return;
+  }
+
+  const isKey = currentVaultMode === 'full_key';
+
+  let html = `
+    <!-- Paper Header Banner -->
+    <div class="p-4 rounded-xl bg-slate-900 border border-amber-500/40 space-y-1.5 text-center shadow-inner">
+      <span class="text-[10px] font-extrabold text-amber-400 uppercase tracking-widest block">SRM PUBLIC SCHOOL • REVISION-1 NIGHT ASSESSMENT</span>
+      <h3 class="text-sm sm:text-base font-extrabold text-white">${test.title}</h3>
+      <div class="flex items-center justify-center gap-3 text-[11px] text-slate-300 font-semibold pt-1 flex-wrap">
+        <span class="bg-slate-800 px-2 py-0.5 rounded border border-slate-700">📅 ${test.date}</span>
+        <span class="bg-slate-800 px-2 py-0.5 rounded border border-slate-700">⏰ ${test.timing}</span>
+        <span class="text-amber-400 bg-amber-950/60 border border-amber-600/40 px-2 py-0.5 rounded font-black">🎯 Total: ${test.totalMarks} Marks</span>
+      </div>
+      <p class="text-[10px] text-slate-400 italic pt-1">${test.instructions}</p>
+    </div>
+  `;
+
+  // Render Sub 1 Section
+  if (test.scienceSection) {
+    html += `
+      <div class="space-y-3 pt-2">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-1.5">
+          <h4 class="text-xs font-extrabold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+            <span>🔬 SECTION A: ${test.sub1Name}</span>
+          </h4>
+          <span class="text-[10px] font-black bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded border border-emerald-500/30">
+            ${test.scienceSection.marks} Marks
+          </span>
+        </div>
+        <div class="space-y-2.5">
+          ${(test.scienceSection.questions || []).map(q => `
+            <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 space-y-2">
+              <div class="flex items-start justify-between gap-2">
+                <span class="font-bold text-white text-xs leading-snug"><span class="text-amber-400 font-extrabold">${q.qNum}.</span> ${q.question}</span>
+                <span class="shrink-0 text-[10px] font-black text-slate-400 bg-slate-800 px-2 py-0.5 rounded">[${q.marks} Mark${q.marks > 1 ? 's' : ''}]</span>
+              </div>
+              ${isKey ? `
+                <div class="p-2.5 rounded-lg bg-emerald-950/40 border border-emerald-900/60 text-[11px] space-y-1.5 text-emerald-200">
+                  <div class="font-semibold"><span class="text-emerald-400 font-bold">🔑 Answer / Solution:</span> ${q.answer.replace(/\n/g, '<br>')}</div>
+                  ${q.rubric ? `<div class="text-[10px] text-emerald-400/80 italic border-t border-emerald-900/50 pt-1"><strong>Mama Rubric:</strong> ${q.rubric}</div>` : ''}
+                </div>
+              ` : ''}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  // Render Sub 2 Section
+  if (test.tamilSection) {
+    html += `
+      <div class="space-y-3 pt-3">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-1.5">
+          <h4 class="text-xs font-extrabold text-purple-400 uppercase tracking-wider flex items-center gap-1.5">
+            <span>📖 SECTION B: ${test.sub2Name}</span>
+          </h4>
+          <span class="text-[10px] font-black bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded border border-purple-500/30">
+            ${test.tamilSection.marks} Marks
+          </span>
+        </div>
+        <div class="space-y-2.5">
+          ${(test.tamilSection.questions || []).map(q => `
+            <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 space-y-2">
+              <div class="flex items-start justify-between gap-2">
+                <span class="font-bold text-white text-xs leading-snug"><span class="text-purple-400 font-extrabold">${q.qNum}.</span> ${q.question}</span>
+                <span class="shrink-0 text-[10px] font-black text-slate-400 bg-slate-800 px-2 py-0.5 rounded">[${q.marks} Mark${q.marks > 1 ? 's' : ''}]</span>
+              </div>
+              ${isKey ? `
+                <div class="p-2.5 rounded-lg bg-purple-950/40 border border-purple-900/60 text-[11px] space-y-1.5 text-purple-200">
+                  <div class="font-semibold"><span class="text-purple-400 font-bold">🔑 Answer / Solution:</span> ${q.answer.replace(/\n/g, '<br>')}</div>
+                  ${q.rubric ? `<div class="text-[10px] text-purple-400/80 italic border-t border-purple-900/50 pt-1"><strong>Mama Rubric:</strong> ${q.rubric}</div>` : ''}
+                </div>
+              ` : ''}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  body.innerHTML = html;
+}
+
+function copyMamaVaultPaper() {
+  const tests = (appState && appState.mamaSecretNightTests) || [];
+  const test = tests.find(t => t.day === currentVaultDayIndex) || tests[0];
+  if (!test) return;
+
+  const isKey = currentVaultMode === 'full_key';
+  let text = `=========================================\n`;
+  text += `SRM PUBLIC SCHOOL • REVISION-1 ASSESSMENT\n`;
+  text += `${test.title}\n`;
+  text += `Date: ${test.date} | Time: ${test.timing} | Total: ${test.totalMarks} Marks\n`;
+  text += `=========================================\n\n`;
+
+  if (test.scienceSection) {
+    text += `--- ${test.sub1Name} (${test.scienceSection.marks} Marks) ---\n\n`;
+    (test.scienceSection.questions || []).forEach(q => {
+      text += `${q.qNum}. [${q.marks} Marks] ${q.question}\n`;
+      if (isKey) {
+        text += `   [ANS]: ${q.answer}\n`;
+        if (q.rubric) text += `   [RUBRIC]: ${q.rubric}\n`;
+      }
+      text += `\n`;
+    });
+  }
+
+  if (test.tamilSection) {
+    text += `--- ${test.sub2Name} (${test.tamilSection.marks} Marks) ---\n\n`;
+    (test.tamilSection.questions || []).forEach(q => {
+      text += `${q.qNum}. [${q.marks} Marks] ${q.question}\n`;
+      if (isKey) {
+        text += `   [ANS]: ${q.answer}\n`;
+        if (q.rubric) text += `   [RUBRIC]: ${q.rubric}\n`;
+      }
+      text += `\n`;
+    });
+  }
+
+  navigator.clipboard.writeText(text).then(() => {
+    showToast(`Day ${test.day} Paper copied to clipboard!`);
+  }).catch(() => {
+    showToast('Copied text!');
+  });
+}
+
+function printMamaVaultPaper() {
+  const tests = (appState && appState.mamaSecretNightTests) || [];
+  const test = tests.find(t => t.day === currentVaultDayIndex) || tests[0];
+  if (!test) return;
+
+  const isKey = currentVaultMode === 'full_key';
+  const printWindow = window.open('', '_blank');
+  if (!printWindow) {
+    showToast('Please allow popups to print test paper', false);
+    return;
+  }
+
+  let content = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>Print: ${test.title}</title>
+        <style>
+          body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding: 25px; color: #111; line-height: 1.5; font-size: 13px; }
+          .header { text-align: center; border-bottom: 2px solid #222; padding-bottom: 12px; margin-bottom: 16px; }
+          .title { font-size: 16px; font-weight: bold; margin: 4px 0; }
+          .meta { font-size: 12px; font-weight: bold; color: #475569; }
+          .section { margin-top: 18px; font-size: 13px; font-weight: bold; text-transform: uppercase; border-bottom: 1px solid #ccc; padding-bottom: 4px; }
+          .q-box { margin: 10px 0; padding: 6px 0; border-bottom: 1px dashed #e2e8f0; }
+          .q-head { font-size: 12px; font-weight: bold; display: flex; justify-content: space-between; }
+          .ans-box { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px; margin-top: 6px; font-size: 11px; color: #0f172a; }
+          .rubric { font-style: italic; color: #047857; margin-top: 4px; }
+          @media print {
+            body { padding: 0; }
+          }
+        </style>
+      </head>
+      <body>
+        <div class="header">
+          <div style="font-size: 11px; font-weight: bold; letter-spacing: 1px; color: #475569;">SRM PUBLIC SCHOOL • GRADE 10 REVISION-1</div>
+          <div class="title">${test.title}</div>
+          <div class="meta">Date: ${test.date} &bull; Time: ${test.timing} &bull; Max Marks: ${test.totalMarks}</div>
+          <div style="font-size: 10px; margin-top: 4px; color: #64748b;">${test.instructions}</div>
+        </div>
+  `;
+
+  if (test.scienceSection) {
+    content += `<div class="section">SECTION A: ${test.sub1Name} (${test.scienceSection.marks} Marks)</div>`;
+    (test.scienceSection.questions || []).forEach(q => {
+      content += `
+        <div class="q-box">
+          <div class="q-head">
+            <span><strong>${q.qNum}.</strong> ${q.question}</span>
+            <span>[${q.marks}M]</span>
+          </div>
+          ${isKey ? `
+            <div class="ans-box">
+              <strong>Answer:</strong> ${q.answer.replace(/\n/g, '<br>')}
+              ${q.rubric ? `<div class="rubric"><strong>Grading Rubric:</strong> ${q.rubric}</div>` : ''}
+            </div>
+          ` : ''}
+        </div>
+      `;
+    });
+  }
+
+  if (test.tamilSection) {
+    content += `<div class="section">SECTION B: ${test.sub2Name} (${test.tamilSection.marks} Marks)</div>`;
+    (test.tamilSection.questions || []).forEach(q => {
+      content += `
+        <div class="q-box">
+          <div class="q-head">
+            <span><strong>${q.qNum}.</strong> ${q.question}</span>
+            <span>[${q.marks}M]</span>
+          </div>
+          ${isKey ? `
+            <div class="ans-box">
+              <strong>விடை / Answer:</strong> ${q.answer.replace(/\n/g, '<br>')}
+              ${q.rubric ? `<div class="rubric"><strong>Grading Rubric:</strong> ${q.rubric}</div>` : ''}
+            </div>
+          ` : ''}
+        </div>
+      `;
+    });
+  }
+
+  content += `
+        <script>
+          window.onload = function() { window.print(); };
+        </script>
+      </body>
+    </html>
+  `;
+
+  printWindow.document.write(content);
+  printWindow.document.close();
 }

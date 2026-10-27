@@ -9,7 +9,11 @@ function getData() {
       const raw = fs.readFileSync(path.join(__dirname, '../data.json'), 'utf8');
       cachedData = JSON.parse(raw);
     } catch (e) {
-      cachedData = { examDates: { termRev1: "2026-11-16", boardStart: "2027-02-15" }, subjects: {} };
+      try {
+        cachedData = require('../data.json');
+      } catch (err) {
+        cachedData = { examDates: { termRev1: "2026-11-13", boardStart: "2027-02-15" }, subjects: {} };
+      }
     }
   }
   return cachedData;
@@ -301,6 +305,19 @@ module.exports = (req, res) => {
     return res.status(200).json({ success: true, activeMode: mode, dailyTarget: data.dailyTarget, revisionSplitter: data.revisionSplitter });
   }
 
-  // Default: Return complete data object
+  // 15. Mama's Secret 16-Day Night Test Vault (Admin Only - PIN 9677)
+  if (url.includes('/mama/night-tests')) {
+    if (!isSuperAdmin(req, data)) {
+      return res.status(403).json({ error: 'Permission Denied: Only Mama (PIN: 9677) can view Secret Night Test papers!' });
+    }
+    return res.status(200).json({ success: true, tests: data.mamaSecretNightTests || [] });
+  }
+
+  // Default: Return data object (Strip secret tests if student/viewer)
+  if (!isSuperAdmin(req, data)) {
+    const sanitized = { ...data };
+    delete sanitized.mamaSecretNightTests;
+    return res.status(200).json(sanitized);
+  }
   return res.status(200).json(data);
 };
