@@ -606,6 +606,19 @@ const server = http.createServer((req, res) => {
   });
 });
 
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.log(`=======================================================`);
+    console.log(`ℹ️  Server is already running on http://localhost:${PORT}!`);
+    console.log(`📱 You can access it immediately at http://localhost:${PORT}`);
+    console.log(`=======================================================`);
+    process.exit(0);
+  } else {
+    console.error('Server error:', err);
+    process.exit(1);
+  }
+});
+
 server.listen(PORT, '0.0.0.0', () => {
   console.log(`=======================================================`);
   console.log(`🚀 Pranav's 10th Board Exam Hub with RBAC & Auth running!`);
