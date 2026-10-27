@@ -473,6 +473,6 @@ server.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Pranav's 10th Board Exam Hub with RBAC & Auth running!`);
   console.log(`📱 Local PC:       http://localhost:${PORT}`);
   console.log(`🌐 Family Wi-Fi:   http://172.20.10.6:${PORT}`);
-  console.log(`🔐 Super Admin:    jothi1809@gmail.com (PIN: 1809)`);
+  console.log(`🔐 Super Admin:    jothi1809@gmail.com (PIN: 9677)`);
   console.log(`=======================================================`);
 });

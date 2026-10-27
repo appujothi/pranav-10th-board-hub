@@ -21,7 +21,7 @@
 
 * **🦸‍♂️ Mama (Super Admin / Owner):**
   * **Google Login:** `jothi1809@gmail.com` (1-click Super Admin)
-  * **Quick PIN:** `1809`
+  * **Quick PIN:** `9677`
   * **Permissions:** Full edit access to syllabus, exam dates, test scores, target of the day, and member rules.
 
 * **🧑‍🎓 Pranav (Student):**

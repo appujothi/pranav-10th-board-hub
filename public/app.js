@@ -147,7 +147,7 @@ async function fastLoginPin(pin) {
       showToast(`Unlocked as ${data.user.name}!`);
     } else {
       const localPins = {
-        '1809': { role: 'admin', name: 'Mama (Super Admin)', email: 'jothi1809@gmail.com', badge: 'Owner', permissions: { canEditSyllabus: true } },
+        '9677': { role: 'admin', name: 'Mama (Super Admin)', email: 'jothi1809@gmail.com', badge: 'Owner', permissions: { canEditSyllabus: true } },
         '2027': { role: 'student', name: 'Pranav', email: 'pranav@student.hub', badge: 'Student', permissions: { canEditSyllabus: false } },
         '1010': { role: 'viewer', name: 'Father / Parents', email: 'parents@family.hub', badge: 'Viewer', permissions: { canEditSyllabus: false } }
       };
