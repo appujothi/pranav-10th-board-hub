@@ -1,0 +1,12 @@
+{
+  "name": "pranav-10th-board-hub",
+  "version": "1.0.0",
+  "description": "Pranav's 10th CBSE Board Exam Hub - Family Portal",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["cbse", "class-10", "exam-prep"],
+  "author": "Pranav & Family",
+  "license": "MIT"
+}

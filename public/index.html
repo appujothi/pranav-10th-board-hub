@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Pranav's 10th Board Exam Hub</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            appgreen: {
+              50: '#f0fdf4',
+              100: '#e8f8ee',
+              200: '#c8f0d8',
+              500: '#15803d',
+              600: '#16a34a',
+              700: '#115e59',
+              800: '#14532d',
+              900: '#0f3822',
+              dark: '#0e2f1f'
+            }
+          },
+          boxShadow: {
+            'card': '0 2px 10px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02)',
+            'nav': '0 -4px 20px rgba(0, 0, 0, 0.05)',
+            'btn': '0 4px 12px rgba(22, 163, 74, 0.25)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    * {
+      -webkit-tap-highlight-color: transparent;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    /* Smooth phone mockup wrapper */
+    .phone-container {
+      max-width: 440px;
+      margin: 0 auto;
+      min-height: 100vh;
+      background: #ffffff;
+      position: relative;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.2);
+    }
+    @media (min-width: 768px) {
+      body.desktop-framed {
+        background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+        padding: 24px 0;
+      }
+      body.desktop-framed .phone-container {
+        border-radius: 48px;
+        overflow: hidden;
+        border: 10px solid #0f172a;
+        box-shadow: 0 30px 80px rgba(15, 23, 42, 0.35);
+        height: 920px;
+        max-height: 94vh;
+        overflow-y: auto;
+      }
+    }
+    .active-nav-dot::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 4px;
+      background-color: #16a34a;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body class="bg-white text-slate-800 antialiased desktop-framed">
+
+  <!-- Desktop Toggle Pill (Visible only on desktop screens) -->
+  <div class="hidden md:flex fixed top-4 right-4 z-50 bg-slate-900/90 text-white backdrop-blur-md px-3 py-1.5 rounded-full text-xs items-center gap-2 shadow-lg">
+    <span class="text-slate-400">View:</span>
+    <button onclick="toggleDesktopMode()" id="viewModeBtn" class="bg-emerald-500 text-slate-950 font-bold px-2.5 py-1 rounded-full text-[11px] transition">
+      📱 Mobile Frame
+    </button>
+    <a href="http://172.20.10.6:5050" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1 pl-1">
+      <i class="fa-solid fa-wifi text-[10px]"></i> Wi-Fi Live
+    </a>
+  </div>
+
+  <!-- MAIN PHONE SHELL -->
+  <div class="phone-container no-scrollbar flex flex-col justify-between">
+    
+    <!-- TOP NOTCH & STATUS BAR (iOS Style from Ref Image 1) -->
+    <div class="sticky top-0 z-40 bg-white/95 backdrop-blur-md pt-3 pb-2 px-5">
+      <div class="flex items-center justify-between text-xs font-bold text-slate-900 tracking-tight mb-2">
+        <span>9:41</span>
+        <!-- Dynamic Island pill -->
+        <div class="w-24 h-4 bg-slate-950 rounded-full flex items-center justify-end pr-2 space-x-1">
+          <div class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></div>
+        </div>
+        <div class="flex items-center space-x-1.5 text-slate-900">
+          <i class="fa-solid fa-signal text-[10px]"></i>
+          <i class="fa-solid fa-wifi text-[10px]"></i>
+          <i class="fa-solid fa-battery-full text-xs"></i>
+        </div>
+      </div>
+
+      <!-- HEADER BAR (Location, Dropdown, Notifications, Target) -->
+      <div class="flex items-center justify-between pt-1">
+        <div class="flex items-center space-x-2">
+          <div class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm shadow-sm">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div>
+            <div class="flex items-center space-x-1 cursor-pointer" onclick="openRoleModal()">
+              <h2 id="header-user-title" class="text-sm font-bold text-slate-900 leading-none">Pranav • Class 10th</h2>
+              <i class="fa-solid fa-chevron-down text-[10px] text-slate-500"></i>
+            </div>
+            <p id="header-user-sub" class="text-[11px] text-slate-500 font-medium mt-0.5">Mission Board 2027 • 95%+ Target</p>
+          </div>
+        </div>
+
+        <div class="flex items-center space-x-2">
+          <!-- Notification Bell -->
+          <button onclick="switchTab('family')" class="relative w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-50 transition">
+            <i class="fa-regular fa-bell text-sm"></i>
+            <span id="header-notif-dot" class="absolute top-2 right-2 w-2 h-2 rounded-full bg-emerald-500 ring-2 ring-white"></span>
+          </button>
+          <!-- Score / Target Icon -->
+          <button onclick="switchTab('scores')" class="w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-50 transition">
+            <i class="fa-solid fa-trophy text-amber-500 text-sm"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- SEARCH BAR (Direct from Ref Image 1) -->
+      <div class="mt-3.5 relative">
+        <div class="flex items-center bg-slate-50 border border-slate-200/80 rounded-2xl px-3.5 py-2.5 space-x-2.5 shadow-sm">
+          <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i>
+          <input type="text" id="globalSearchInput" oninput="handleGlobalSearch(this.value)" placeholder="Search chapters, formulas, concepts..." class="bg-transparent text-xs text-slate-800 placeholder-slate-400 w-full focus:outline-none font-medium">
+          <button onclick="openFilterModal()" class="text-slate-500 hover:text-slate-800 transition pl-1">
+            <i class="fa-solid fa-sliders text-sm"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCROLLABLE BODY CONTENT -->
+    <div id="main-scroll-content" class="flex-1 overflow-y-auto px-5 pb-24 pt-2 space-y-6 custom-scroll">
+      
+      <!-- ================= VIEW 1: HOME (Exact layout of Ref Image 1) ================= -->
+      <div id="view-home" class="space-y-6">
+
+        <!-- HERO CAROUSEL BANNER (Ref Image 1: "AC not cooling? We'll fix it fast.") -->
+        <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#103b2b] via-[#164e37] to-[#1e6145] p-5 text-white shadow-lg">
+          <!-- Background decorative glow -->
+          <div class="absolute -right-8 -top-8 w-40 h-40 bg-emerald-400/10 rounded-full blur-2xl"></div>
+          
+          <div class="relative z-10 space-y-2">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-white/20 text-emerald-200 tracking-wide uppercase">
+              🚨 Term Rev 1 Exam: 16 Nov 2026
+            </span>
+            
+            <h3 class="text-xl font-extrabold tracking-tight leading-tight text-white pt-1">
+              Term Rev 1 in <span id="hero-countdown-days" class="text-amber-300">20 Days</span>?<br>
+              We'll crack it fast.
+            </h3>
+
+            <div class="space-y-1 pt-1 text-[11px] text-emerald-100 font-medium">
+              <div class="flex items-center gap-1.5">
+                <i class="fa-solid fa-bolt text-amber-300 text-xs"></i>
+                <span>Daily 4.5h Sprint Plan for Pranav</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <i class="fa-solid fa-shield-halved text-emerald-300 text-xs"></i>
+                <span>Full NCERT & PYQ Coverage • Live Family Synced</span>
+              </div>
+            </div>
+
+            <!-- Action Buttons (Ref Image 1: "Instant Service" & "Schedule Service") -->
+            <div class="flex items-center gap-2.5 pt-3">
+              <button onclick="switchTab('timer')" class="bg-white hover:bg-slate-100 text-[#103b2b] font-bold text-xs px-4 py-2.5 rounded-full shadow-md flex items-center gap-1.5 transition">
+                <i class="fa-solid fa-bolt text-emerald-600"></i> Start Study
+              </button>
+              <button onclick="switchTab('syllabus')" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold text-xs px-4 py-2.5 rounded-full backdrop-blur-sm transition flex items-center gap-1.5">
+                <i class="fa-regular fa-calendar text-xs"></i> Exam Portion
+              </button>
+            </div>
+          </div>
+
+          <!-- Carousel Dots (Ref Image 1) -->
+          <div class="flex items-center justify-center space-x-1.5 pt-4">
+            <span class="w-4 h-1.5 bg-emerald-400 rounded-full"></span>
+            <span class="w-1.5 h-1.5 bg-white/40 rounded-full"></span>
+            <span class="w-1.5 h-1.5 bg-white/40 rounded-full"></span>
+          </div>
+        </div>
+
+        <!-- POPULAR SERVICES -> SUBJECTS GRID (4 cols x 2 rows, exact match of Ref Image 1) -->
+        <div>
+          <div class="flex items-center justify-between mb-3.5">
+            <h3 class="text-sm font-bold text-slate-900 tracking-tight">Syllabus & Subjects</h3>
+            <button onclick="switchTab('syllabus')" class="text-xs font-semibold text-slate-500 hover:text-emerald-600 flex items-center gap-1">
+              See all <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            </button>
+          </div>
+
+          <!-- 8-Card Grid -->
+          <div class="grid grid-cols-4 gap-2.5">
+            
+            <!-- 1. Maths -->
+            <div onclick="openSubjectDetail('maths')" class="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-[#f0fbf4] border border-emerald-100/70 hover:border-emerald-300 transition cursor-pointer text-center group">
+              <div class="w-11 h-11 rounded-xl bg-white text-emerald-600 flex items-center justify-center text-lg shadow-sm mb-1.5 group-hover:scale-105 transition">
+                📐
+              </div>
+              <span class="text-[11px] font-bold text-slate-800 leading-tight">Maths</span>
+              <span id="grid-pct-maths" class="text-[9px] text-emerald-600 font-semibold mt-0.5">0%</span>
+            </div>
+
+            <!-- 2. Science -->
+            <div onclick="openSubjectDetail('science')" class="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-[#f0fbf4] border border-emerald-100/70 hover:border-emerald-300 transition cursor-pointer text-center group">
+              <div class="w-11 h-11 rounded-xl bg-white text-emerald-600 flex items-center justify-center text-lg shadow-sm mb-1.5 group-hover:scale-105 transition">
+                🔬
+              </div>
+              <span class="text-[11px] font-bold text-slate-800 leading-tight">Science</span>
+              <span id="grid-pct-science" class="text-[9px] text-emerald-600 font-semibold mt-0.5">0%</span>
+            </div>
+
+            <!-- 3. Social Science -->
+            <div onclick="openSubjectDetail('social_science')" class="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-[#f0fbf4] border border-emerald-100/70 hover:border-emerald-300 transition cursor-pointer text-center group">
+              <div class="w-11 h-11 rounded-xl bg-white text-emerald-600 flex items-center justify-center text-lg shadow-sm mb-1.5 group-hover:scale-105 transition">
+                🌍
+              </div>
+              <span class="text-[11px] font-bold text-slate-800 leading-tight">Social Sc.</span>
+              <span id="grid-pct-social_science" class="text-[9px] text-emerald-600 font-semibold mt-0.5">0%</span>
+            </div>
+
+            <!-- 4. English -->
+            <div onclick="openSubjectDetail('english')" class="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-[#f0fbf4] border border-emerald-100/70 hover:border-emerald-300 transition cursor-pointer text-center group">
+              <div class="w-11 h-11 rounded-xl bg-white text-emerald-600 flex items-center justify-center text-lg shadow-sm mb-1.5 group-hover:scale-105 transition">
+                📖
+              </div>
+              <span class="text-[11px] font-bold text-slate-800 leading-tight">English</span>
+              <span id="grid-pct-english" class="text-[9px] text-emerald-600 font-semibold mt-0.5">0%</span>
+            </div>
+
+            <!-- 5. Tamil -->
+            <div onclick="openSubjectDetail('tamil')" class="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-[#f0fbf4] border border-emerald-100/70 hover:border-emerald-300 transition cursor-pointer text-center group">
+              <div class="w-11 h-11 rounded-xl bg-white text-emerald-600 flex items-center justify-center text-lg shadow-sm mb-1.5 group-hover:scale-105 transition">
+                ✍️
+              </div>
+              <span class="text-[11px] font-bold text-slate-800 leading-tight">Tamil</span>
+              <span id="grid-pct-tamil" class="text-[9px] text-emerald-600 font-semibold mt-0.5">0%</span>
+            </div>
+
+            <!-- 6. AI 417 -->
+            <div onclick="openSubjectDetail('ai')" class="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-[#f0fbf4] border border-emerald-100/70 hover:border-emerald-300 transition cursor-pointer text-center group">
+              <div class="w-11 h-11 rounded-xl bg-white text-emerald-600 flex items-center justify-center text-lg shadow-sm mb-1.5 group-hover:scale-105 transition">
+                🤖
+              </div>
+              <span class="text-[11px] font-bold text-slate-800 leading-tight">AI (417)</span>
+              <span id="grid-pct-ai" class="text-[9px] text-emerald-600 font-semibold mt-0.5">0%</span>
+            </div>
+
+            <!-- 7. Focus Timer -->
+            <div onclick="switchTab('timer')" class="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-[#f0fbf4] border border-emerald-100/70 hover:border-emerald-300 transition cursor-pointer text-center group">
+              <div class="w-11 h-11 rounded-xl bg-white text-emerald-600 flex items-center justify-center text-lg shadow-sm mb-1.5 group-hover:scale-105 transition">
+                ⏱️
+              </div>
+              <span class="text-[11px] font-bold text-slate-800 leading-tight">Timer</span>
+              <span class="text-[9px] text-emerald-600 font-semibold mt-0.5">Focus</span>
+            </div>
+
+            <!-- 8. More / High-Yield Vault -->
+            <div onclick="switchTab('formulas')" class="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-[#f0fbf4] border border-emerald-100/70 hover:border-emerald-300 transition cursor-pointer text-center group">
+              <div class="w-11 h-11 rounded-xl bg-white text-emerald-600 flex items-center justify-center text-lg shadow-sm mb-1.5 group-hover:scale-105 transition">
+                ⚡
+              </div>
+              <span class="text-[11px] font-bold text-slate-800 leading-tight">Vault</span>
+              <span class="text-[9px] text-emerald-600 font-semibold mt-0.5">Formulas</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- RECOMMENDED FOR YOU -> HIGH-YIELD CHAPTERS CAROUSEL (Ref Image 1: Horizontal Cards) -->
+        <div>
+          <div class="flex items-center justify-between mb-3.5">
+            <h3 class="text-sm font-bold text-slate-900 tracking-tight">Recommended for Term Rev 1</h3>
+            <button onclick="switchTab('syllabus')" class="text-xs font-semibold text-slate-500 hover:text-emerald-600 flex items-center gap-1">
+              View all <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            </button>
+          </div>
+
+          <!-- Horizontal scrolling container -->
+          <div class="flex space-x-3.5 overflow-x-auto no-scrollbar pb-1 -mx-5 px-5">
+            
+            <!-- Card 1: Quadratic Equations -->
+            <div class="min-w-[220px] max-w-[220px] bg-white border border-slate-200/90 rounded-2xl overflow-hidden shadow-card flex flex-col justify-between shrink-0">
+              <div class="relative h-24 bg-gradient-to-tr from-emerald-800 to-teal-700 p-3 flex flex-col justify-between text-white">
+                <span class="bg-white/90 text-emerald-900 text-[10px] font-bold px-2 py-0.5 rounded-md self-start shadow-sm">
+                  ★ High Weightage
+                </span>
+                <div class="text-xs font-bold">Mathematics • Algebra</div>
+              </div>
+              <div class="p-3 space-y-2">
+                <h4 class="text-xs font-bold text-slate-900 truncate">Quadratic Equations</h4>
+                <div class="flex items-center text-[10px] text-slate-500 space-x-2">
+                  <span class="flex items-center text-amber-500 font-bold"><i class="fa-solid fa-star text-[9px] mr-0.5"></i> 4.9 (PYQ)</span>
+                  <span>•</span>
+                  <span>⏱️ 2.5 hrs</span>
+                </div>
+                <div class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 text-[9px] font-semibold">
+                  <i class="fa-solid fa-circle-check text-[9px]"></i> NCERT Exemplar
+                </div>
+                <div class="flex items-center justify-between pt-1">
+                  <div>
+                    <span class="text-xs font-bold text-slate-900">14 Qs</span>
+                    <span class="text-[10px] text-slate-400 line-through ml-1">25 Qs</span>
+                  </div>
+                  <button onclick="cycleChapterDirect('maths', 'm4')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] px-3 py-1.5 rounded-full shadow-sm transition">
+                    Study
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: Chemical Reactions -->
+            <div class="min-w-[220px] max-w-[220px] bg-white border border-slate-200/90 rounded-2xl overflow-hidden shadow-card flex flex-col justify-between shrink-0">
+              <div class="relative h-24 bg-gradient-to-tr from-cyan-800 to-blue-700 p-3 flex flex-col justify-between text-white">
+                <span class="bg-white/90 text-cyan-900 text-[10px] font-bold px-2 py-0.5 rounded-md self-start shadow-sm">
+                  Bestseller
+                </span>
+                <div class="text-xs font-bold">Science • Chemistry</div>
+              </div>
+              <div class="p-3 space-y-2">
+                <h4 class="text-xs font-bold text-slate-900 truncate">Chemical Reactions & Eq.</h4>
+                <div class="flex items-center text-[10px] text-slate-500 space-x-2">
+                  <span class="flex items-center text-amber-500 font-bold"><i class="fa-solid fa-star text-[9px] mr-0.5"></i> 5.0 (Sure Shot)</span>
+                  <span>•</span>
+                  <span>⏱️ 60 mins</span>
+                </div>
+                <div class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 text-[9px] font-semibold">
+                  <i class="fa-solid fa-circle-check text-[9px]"></i> Balanced Eqns
+                </div>
+                <div class="flex items-center justify-between pt-1">
+                  <div>
+                    <span class="text-xs font-bold text-slate-900">Done</span>
+                  </div>
+                  <button onclick="cycleChapterDirect('science', 's1')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] px-3 py-1.5 rounded-full shadow-sm transition">
+                    Revise
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3: Nationalism in India -->
+            <div class="min-w-[220px] max-w-[220px] bg-white border border-slate-200/90 rounded-2xl overflow-hidden shadow-card flex flex-col justify-between shrink-0">
+              <div class="relative h-24 bg-gradient-to-tr from-amber-700 to-orange-600 p-3 flex flex-col justify-between text-white">
+                <span class="bg-white/90 text-amber-950 text-[10px] font-bold px-2 py-0.5 rounded-md self-start shadow-sm">
+                  Must Master
+                </span>
+                <div class="text-xs font-bold">Social Science • History</div>
+              </div>
+              <div class="p-3 space-y-2">
+                <h4 class="text-xs font-bold text-slate-900 truncate">Nationalism in India</h4>
+                <div class="flex items-center text-[10px] text-slate-500 space-x-2">
+                  <span class="flex items-center text-amber-500 font-bold"><i class="fa-solid fa-star text-[9px] mr-0.5"></i> 4.8 (Core)</span>
+                  <span>•</span>
+                  <span>⏱️ 1.5 hrs</span>
+                </div>
+                <div class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 text-[9px] font-semibold">
+                  <i class="fa-solid fa-circle-check text-[9px]"></i> Map Work Ready
+                </div>
+                <div class="flex items-center justify-between pt-1">
+                  <div>
+                    <span class="text-xs font-bold text-slate-900">Map + Dates</span>
+                  </div>
+                  <button onclick="cycleChapterDirect('social_science', 'sst2')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] px-3 py-1.5 rounded-full shadow-sm transition">
+                    Open
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- TRUST BADGES ROW (Exact match of Ref Image 1: 4 feature pills) -->
+        <div class="grid grid-cols-4 gap-2 pt-1 border-t border-slate-100">
+          <div class="flex flex-col items-center text-center p-2 rounded-xl bg-slate-50">
+            <i class="fa-solid fa-shield-halved text-emerald-600 text-base mb-1"></i>
+            <span class="text-[10px] font-bold text-slate-800 leading-tight">Verified</span>
+            <span class="text-[9px] text-slate-400">NCERT 2026</span>
+          </div>
+
+          <div class="flex flex-col items-center text-center p-2 rounded-xl bg-slate-50">
+            <i class="fa-solid fa-clock text-emerald-600 text-base mb-1"></i>
+            <span class="text-[10px] font-bold text-slate-800 leading-tight">4.5h Daily</span>
+            <span class="text-[9px] text-slate-400">Target Time</span>
+          </div>
+
+          <div class="flex flex-col items-center text-center p-2 rounded-xl bg-slate-50">
+            <i class="fa-solid fa-trophy text-emerald-600 text-base mb-1"></i>
+            <span class="text-[10px] font-bold text-slate-800 leading-tight">95%+ Goal</span>
+            <span class="text-[9px] text-slate-400">Board 2027</span>
+          </div>
+
+          <div class="flex flex-col items-center text-center p-2 rounded-xl bg-slate-50">
+            <i class="fa-solid fa-users text-emerald-600 text-base mb-1"></i>
+            <span class="text-[10px] font-bold text-slate-800 leading-tight">Family Synced</span>
+            <span class="text-[9px] text-slate-400">Live Updates</span>
+          </div>
+        </div>
+
+        <!-- RECENT FAMILY CHEER NOTE PREVIEW -->
+        <div id="home-cheer-banner" class="bg-gradient-to-r from-rose-50 to-pink-50 border border-rose-100 rounded-2xl p-3.5 flex items-start gap-3">
+          <div class="w-8 h-8 rounded-full bg-rose-500 text-white font-bold flex items-center justify-center shrink-0 text-xs">
+            M
+          </div>
+          <div class="flex-1 space-y-0.5">
+            <div class="flex items-center justify-between text-[11px]">
+              <span class="font-bold text-rose-800">Mama's Note for Pranav</span>
+              <span class="text-[10px] text-rose-400">Term Rev 1</span>
+            </div>
+            <p id="home-cheer-text" class="text-xs text-rose-900 leading-snug">
+              "🎯 Mission Term Rev 1 is ON (16/11/2026)! We have 20 days. Let's conquer each chapter step by step!"
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ================= VIEW 2: SYLLABUS EXPLORER ================= -->
+      <div id="view-syllabus" class="hidden space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-sm font-bold text-slate-900">Syllabus Tracker</h3>
+          <span id="syllabus-mastery-pill" class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">
+            0% Mastered
+          </span>
+        </div>
+
+        <!-- Horizontal Subject Filter Pills -->
+        <div class="flex space-x-2 overflow-x-auto no-scrollbar -mx-5 px-5 pb-1" id="syllabus-sub-pills">
+          <!-- Rendered by app.js -->
+        </div>
+
+        <!-- Chapters List -->
+        <div id="syllabus-chapters-container" class="space-y-2.5">
+          <!-- Rendered by app.js -->
+        </div>
+      </div>
+
+      <!-- ================= VIEW 3: FOCUS TIMER & STUDY LOG ================= -->
+      <div id="view-timer" class="hidden space-y-5">
+        
+        <!-- Timer Card -->
+        <div class="rounded-3xl bg-gradient-to-b from-slate-900 to-slate-950 text-white p-6 text-center space-y-4 shadow-xl">
+          <div class="flex items-center justify-between text-xs text-slate-400">
+            <span class="font-bold uppercase tracking-wider text-emerald-400">Deep Work Pomodoro</span>
+            <span id="timer-badge" class="bg-emerald-950 text-emerald-300 border border-emerald-800 text-[10px] px-2 py-0.5 rounded-full">Study Mode</span>
+          </div>
+
+          <div class="w-48 h-48 mx-auto rounded-full border-4 border-emerald-500/30 flex flex-col items-center justify-center relative">
+            <span id="timer-countdown" class="text-5xl font-extrabold font-mono tracking-tight text-white">25:00</span>
+            <span id="timer-sub-status" class="text-xs text-emerald-400 font-medium mt-1">Ready to Conquer</span>
+          </div>
+
+          <!-- Presets -->
+          <div class="flex justify-center gap-2">
+            <button onclick="setTimerDuration(25)" class="px-3 py-1 bg-slate-800 text-xs font-bold rounded-lg text-slate-200">25m</button>
+            <button onclick="setTimerDuration(45)" class="px-3 py-1 bg-slate-800 text-xs font-bold rounded-lg text-slate-200">45m</button>
+            <button onclick="setTimerDuration(60)" class="px-3 py-1 bg-slate-800 text-xs font-bold rounded-lg text-slate-200">60m</button>
+            <button onclick="setTimerDuration(5, true)" class="px-3 py-1 bg-indigo-950 border border-indigo-800 text-xs font-bold rounded-lg text-indigo-300">5m Break</button>
+          </div>
+
+          <div class="flex justify-center gap-3 pt-2">
+            <button id="timer-main-btn" onclick="toggleTimer()" class="w-32 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold py-2.5 rounded-full text-xs shadow-btn flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-play"></i> Start Focus
+            </button>
+            <button onclick="resetTimer()" class="w-10 h-10 bg-slate-800 text-slate-300 rounded-full flex items-center justify-center">
+              <i class="fa-solid fa-rotate-left text-xs"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Log Study Session -->
+        <div class="bg-white border border-slate-200 rounded-2xl p-4 space-y-3 shadow-card">
+          <h4 class="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+            <i class="fa-solid fa-pen-nib text-emerald-600"></i> Log What You Studied
+          </h4>
+          <form onsubmit="submitQuickLog(event)" class="space-y-2.5 text-xs">
+            <div class="grid grid-cols-2 gap-2">
+              <select id="quickLogSubject" class="bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 font-medium">
+                <option value="Mathematics">📐 Mathematics</option>
+                <option value="Science">🔬 Science</option>
+                <option value="Social Science">🌍 Social Science</option>
+                <option value="English">📖 English</option>
+                <option value="Tamil">✍️ Tamil</option>
+                <option value="Artificial Intelligence">🤖 AI 417</option>
+              </select>
+              <input type="number" id="quickLogMins" value="45" min="5" max="300" placeholder="Mins" class="bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 font-medium" required>
+            </div>
+            <input type="text" id="quickLogChapter" placeholder="Chapter name or topics covered..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 font-medium" required>
+            <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 rounded-xl transition shadow-btn">
+              Save Study Session
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- ================= VIEW 4: FAMILY WALL & MARKS ================= -->
+      <div id="view-family" class="hidden space-y-5">
+        
+        <!-- Post Cheer -->
+        <div class="bg-gradient-to-r from-pink-50 to-rose-50 border border-rose-100 rounded-2xl p-4 space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-bold text-rose-900 flex items-center gap-1.5">
+              <i class="fa-solid fa-heart text-rose-500"></i> Post to Family Cheer Wall
+            </h4>
+            <span class="text-[10px] text-rose-500 font-semibold">Mama • Parents • Pranav</span>
+          </div>
+
+          <form onsubmit="submitFamilyWallNote(event)" class="space-y-2 text-xs">
+            <div class="flex gap-2">
+              <select id="wallAuthorSelect" class="bg-white border border-rose-200 rounded-xl px-2.5 py-1.5 font-bold text-rose-900">
+                <option value="Mama">🦸‍♂️ Mama</option>
+                <option value="Mom & Dad">👨‍👩‍👦 Mom & Dad</option>
+                <option value="Mom">👩 Mom</option>
+                <option value="Dad">👨 Dad</option>
+                <option value="Pranav">🧑‍🎓 Pranav</option>
+              </select>
+              <input type="text" id="wallNoteInput" placeholder="Write encouragement, reminders, or tips..." class="flex-1 bg-white border border-rose-200 rounded-xl px-3 py-1.5" required>
+            </div>
+            <button type="submit" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold py-2 rounded-xl transition shadow">
+              Send Encouragement
+            </button>
+          </form>
+        </div>
+
+        <!-- Feed of Family Notes -->
+        <div class="space-y-2.5" id="family-wall-feed">
+          <!-- Rendered in app.js -->
+        </div>
+
+      </div>
+
+      <!-- ================= VIEW 5: FORMULA VAULT ================= -->
+      <div id="view-formulas" class="hidden space-y-4 text-xs">
+        <h3 class="text-sm font-bold text-slate-900 flex items-center gap-1.5">
+          <i class="fa-solid fa-bolt text-amber-500"></i> High-Yield Formulas & Cheat Sheets
+        </h3>
+        <div class="space-y-3" id="formula-cards-container">
+          <!-- Populated in app.js -->
+        </div>
+      </div>
+
+      <!-- ================= VIEW 6: SCORECARD ================= -->
+      <div id="view-scores" class="hidden space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-sm font-bold text-slate-900">Scorecard & Exam Tracker</h3>
+          <button onclick="openModal('addTestModal')" class="bg-emerald-600 text-white text-[11px] font-bold px-3 py-1.5 rounded-full shadow-btn">
+            + Add Marks
+          </button>
+        </div>
+        <div class="h-48 bg-white border border-slate-200 rounded-2xl p-3 shadow-card">
+          <canvas id="scoresBarChart"></canvas>
+        </div>
+        <div class="space-y-2" id="scores-table-container">
+          <!-- Populated in app.js -->
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BOTTOM FLOATING NAVIGATION BAR (Exact layout of Ref Image 1: Home, Bookings, Support, Account) -->
+    <div class="sticky bottom-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-100 px-6 py-2.5 shadow-nav">
+      <div class="flex items-center justify-between text-slate-400">
+        
+        <!-- Tab 1: Home -->
+        <button onclick="switchTab('home')" id="nav-btn-home" class="nav-item flex flex-col items-center relative text-emerald-600 font-bold active-nav-dot">
+          <i class="fa-solid fa-house text-lg"></i>
+          <span class="text-[10px] mt-0.5">Home</span>
+        </button>
+
+        <!-- Tab 2: Syllabus / Bookings -->
+        <button onclick="switchTab('syllabus')" id="nav-btn-syllabus" class="nav-item flex flex-col items-center relative hover:text-slate-700 transition">
+          <i class="fa-regular fa-calendar-check text-lg"></i>
+          <span class="text-[10px] mt-0.5">Syllabus</span>
+        </button>
+
+        <!-- Tab 3: Focus Timer / Support -->
+        <button onclick="switchTab('timer')" id="nav-btn-timer" class="nav-item flex flex-col items-center relative hover:text-slate-700 transition">
+          <i class="fa-solid fa-stopwatch text-lg"></i>
+          <span class="text-[10px] mt-0.5">Focus</span>
+        </button>
+
+        <!-- Tab 4: Family / Account -->
+        <button onclick="switchTab('family')" id="nav-btn-family" class="nav-item flex flex-col items-center relative hover:text-slate-700 transition">
+          <i class="fa-regular fa-user text-lg"></i>
+          <span class="text-[10px] mt-0.5">Family</span>
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Role Selection Modal -->
+  <div id="roleModal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl w-full max-w-xs p-5 space-y-3 shadow-2xl">
+      <h3 class="text-sm font-bold text-slate-900 text-center">Switch User View</h3>
+      <div class="space-y-2">
+        <button onclick="chooseRole('pranav')" class="w-full text-left p-3 rounded-2xl border border-slate-200 hover:border-emerald-500 flex items-center justify-between text-xs font-bold text-slate-800 transition">
+          <span>🧑‍🎓 Pranav (Student)</span>
+          <i class="fa-solid fa-chevron-right text-slate-400"></i>
+        </button>
+        <button onclick="chooseRole('mama')" class="w-full text-left p-3 rounded-2xl border border-slate-200 hover:border-emerald-500 flex items-center justify-between text-xs font-bold text-slate-800 transition">
+          <span>🦸‍♂️ Mama (Uncle)</span>
+          <i class="fa-solid fa-chevron-right text-slate-400"></i>
+        </button>
+        <button onclick="chooseRole('parents')" class="w-full text-left p-3 rounded-2xl border border-slate-200 hover:border-emerald-500 flex items-center justify-between text-xs font-bold text-slate-800 transition">
+          <span>👨‍👩‍👦 Mom & Dad (Parents)</span>
+          <i class="fa-solid fa-chevron-right text-slate-400"></i>
+        </button>
+      </div>
+      <button onclick="closeModal('roleModal')" class="w-full text-center text-xs text-slate-500 font-semibold pt-1">
+        Close
+      </button>
+    </div>
+  </div>
+
+  <!-- Add Test Marks Modal -->
+  <div id="addTestModal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl w-full max-w-sm p-5 space-y-3 shadow-2xl">
+      <div class="flex items-center justify-between">
+        <h3 class="text-sm font-bold text-slate-900">Record Test Marks</h3>
+        <button onclick="closeModal('addTestModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form onsubmit="submitTestScore(event)" class="space-y-2 text-xs">
+        <input type="text" id="modalTestTitle" placeholder="Exam Title (e.g., Pre-Board 1)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2" required>
+        <select id="modalTestSubject" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2">
+          <option value="Mathematics">Mathematics</option>
+          <option value="Science">Science</option>
+          <option value="Social Science">Social Science</option>
+          <option value="English">English</option>
+          <option value="Tamil">Tamil</option>
+          <option value="Artificial Intelligence">Artificial Intelligence</option>
+        </select>
+        <div class="grid grid-cols-2 gap-2">
+          <input type="number" step="0.5" id="modalMarksObtained" placeholder="Marks Obtained" class="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2" required>
+          <input type="number" id="modalTotalMarks" placeholder="Total Marks" value="80" class="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2" required>
+        </div>
+        <button type="submit" class="w-full bg-emerald-600 text-white font-bold py-2 rounded-xl shadow-btn">Save Marks</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-20 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs font-semibold px-4 py-2 rounded-full shadow-2xl flex items-center gap-2 transform translate-y-10 opacity-0 transition duration-300 z-50">
+    <i class="fa-solid fa-circle-check text-emerald-400"></i>
+    <span id="toast-message">Success</span>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

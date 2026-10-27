@@ -1,0 +1,230 @@
+{
+  "examDates": {
+    "termRev1": "2026-11-16",
+    "preBoard1": "2026-12-10",
+    "preBoard2": "2027-01-08",
+    "boardStart": "2027-02-15"
+  },
+  "dailyGoalMinutes": 270,
+  "familyNotes": [
+    {
+      "id": "fn-rev1",
+      "author": "Mama",
+      "badge": "Uncle",
+      "text": "🎯 Mission Term Rev 1 is ON (16/11/2026)! We have 20 days. Once portions are confirmed, we'll sprint through each topic and secure top marks!",
+      "timestamp": "2026-10-27T12:06:00.000Z",
+      "likes": 5
+    },
+    {
+      "id": "fn-1",
+      "author": "Mama",
+      "badge": "Uncle",
+      "text": "Pranav, we believe in you! Consistency every day beats last-minute rush. Let's conquer each chapter step by step. Proud of your focus!",
+      "timestamp": "2026-10-27T12:00:00.000Z",
+      "likes": 3
+    },
+    {
+      "id": "fn-2",
+      "author": "Mom & Dad",
+      "badge": "Parents",
+      "text": "Eat healthy, take short breaks, and give your 100%. We are right behind you every step of the way! All the very best!",
+      "timestamp": "2026-10-27T12:05:00.000Z",
+      "likes": 2
+    }
+  ],
+  "studyLogs": [
+    {
+      "id": "log-1",
+      "date": "2026-10-27",
+      "subject": "Mathematics",
+      "chapter": "Real Numbers & Polynomials",
+      "minutes": 90,
+      "notes": "Revised Fundamental Theorem of Arithmetic and zeros of polynomials. Practiced 10 questions.",
+      "mood": "🔥 High Focus"
+    }
+  ],
+  "tests": [
+    {
+      "id": "t-1",
+      "title": "Quarterly Examination",
+      "date": "2026-09-20",
+      "subject": "Mathematics",
+      "marksObtained": 71,
+      "totalMarks": 80
+    },
+    {
+      "id": "t-2",
+      "title": "Quarterly Examination",
+      "date": "2026-09-22",
+      "subject": "Science",
+      "marksObtained": 73,
+      "totalMarks": 80
+    },
+    {
+      "id": "t-3",
+      "title": "Quarterly Examination",
+      "date": "2026-09-24",
+      "subject": "Social Science",
+      "marksObtained": 70,
+      "totalMarks": 80
+    },
+    {
+      "id": "t-4",
+      "title": "Quarterly Examination",
+      "date": "2026-09-26",
+      "subject": "English",
+      "marksObtained": 74,
+      "totalMarks": 80
+    },
+    {
+      "id": "t-5",
+      "title": "Quarterly Examination",
+      "date": "2026-09-28",
+      "subject": "Tamil",
+      "marksObtained": 88,
+      "totalMarks": 100
+    },
+    {
+      "id": "t-6",
+      "title": "Quarterly Examination",
+      "date": "2026-09-30",
+      "subject": "Artificial Intelligence",
+      "marksObtained": 46,
+      "totalMarks": 50
+    }
+  ],
+  "subjects": {
+    "maths": {
+      "title": "Mathematics",
+      "icon": "📐",
+      "code": "041",
+      "chapters": [
+        { "id": "m1", "name": "Real Numbers", "unit": "Number Systems", "status": "revised", "notes": "Euclid lemma removed; focus on irrationality proof and fundamental theorem" },
+        { "id": "m2", "name": "Polynomials", "unit": "Algebra", "status": "revised", "notes": "Zeros relationship and quadratic polynomial formulation" },
+        { "id": "m3", "name": "Pair of Linear Equations in Two Variables", "unit": "Algebra", "status": "in_progress", "notes": "Substitution & Elimination methods, consistency conditions" },
+        { "id": "m4", "name": "Quadratic Equations", "unit": "Algebra", "status": "in_progress", "notes": "Factorisation & Quadratic Formula, Nature of roots (D > 0, D = 0, D < 0)" },
+        { "id": "m5", "name": "Arithmetic Progressions", "unit": "Algebra", "status": "not_started", "notes": "nth term formula an = a + (n-1)d and Sn formula" },
+        { "id": "m6", "name": "Triangles", "unit": "Geometry", "status": "in_progress", "notes": "Basic Proportionality Theorem (BPT) with proof, Similarity criteria (AAA, SSS, SAS)" },
+        { "id": "m7", "name": "Coordinate Geometry", "unit": "Coordinate Geometry", "status": "revised", "notes": "Distance formula, Section formula" },
+        { "id": "m8", "name": "Introduction to Trigonometry", "unit": "Trigonometry", "status": "in_progress", "notes": "T-ratios, values at 0, 30, 45, 60, 90, sin^2 A + cos^2 A = 1" },
+        { "id": "m9", "name": "Some Applications of Trigonometry", "unit": "Trigonometry", "status": "not_started", "notes": "Heights and Distances, Angle of elevation & depression (30°, 45°, 60° only)" },
+        { "id": "m10", "name": "Circles", "unit": "Geometry", "status": "not_started", "notes": "Tangent perpendicular to radius, Lengths of tangents from external point are equal" },
+        { "id": "m11", "name": "Areas Related to Circles", "unit": "Mensuration", "status": "not_started", "notes": "Area of sector and segment of circle" },
+        { "id": "m12", "name": "Surface Areas and Volumes", "unit": "Mensuration", "status": "not_started", "notes": "Combinations of solids: cube, cuboid, sphere, hemisphere, cylinder, cone" },
+        { "id": "m13", "name": "Statistics", "unit": "Statistics & Probability", "status": "not_started", "notes": "Mean (Direct & Assumed Mean), Median, Mode of grouped data, Empirical formula" },
+        { "id": "m14", "name": "Probability", "unit": "Statistics & Probability", "status": "revised", "notes": "Classical definition, complementary events, card & dice problems" }
+      ]
+    },
+    "science": {
+      "title": "Science",
+      "icon": "🔬",
+      "code": "086",
+      "chapters": [
+        { "id": "s1", "name": "Chemical Reactions and Equations", "branch": "Chemistry", "status": "mastered", "notes": "Balancing equations, types of reactions, oxidation-reduction, corrosion" },
+        { "id": "s2", "name": "Acids, Bases and Salts", "branch": "Chemistry", "status": "revised", "notes": "pH scale, neutralization, Bleaching powder, Baking soda, Washing soda, POP" },
+        { "id": "s3", "name": "Metals and Non-metals", "branch": "Chemistry", "status": "in_progress", "notes": "Reactivity series, ionic bond properties, extraction of metals, roasting/calcination" },
+        { "id": "s4", "name": "Carbon and its Compounds", "branch": "Chemistry", "status": "not_started", "notes": "Covalent bonding, homologous series, functional groups, soap & micelle action" },
+        { "id": "s5", "name": "Life Processes", "branch": "Biology", "status": "revised", "notes": "Nutrition, Respiration, Circulation (Heart), Excretion (Nephron diagram)" },
+        { "id": "s6", "name": "Control and Coordination", "branch": "Biology", "status": "in_progress", "notes": "Neuron structure, reflex arc, human brain, plant hormones (auxin, gibberellin, ABA)" },
+        { "id": "s7", "name": "How do Organisms Reproduce?", "branch": "Biology", "status": "not_started", "notes": "Asexual reproduction methods, flower structure, male and female reproductive systems" },
+        { "id": "s8", "name": "Heredity", "branch": "Biology", "status": "not_started", "notes": "Mendel's monohybrid & dihybrid crosses, sex determination in humans" },
+        { "id": "s9", "name": "Light – Reflection and Refraction", "branch": "Physics", "status": "in_progress", "notes": "Mirror formula, Lens formula, Magnification, Refractive index, Snell's law" },
+        { "id": "s10", "name": "The Human Eye and the Colourful World", "branch": "Physics", "status": "not_started", "notes": "Myopia, Hypermetropia, Atmospheric refraction, Dispersion by prism, Tyndall effect" },
+        { "id": "s11", "name": "Electricity", "branch": "Physics", "status": "in_progress", "notes": "Ohm's Law, Resistance in series & parallel, Factors affecting resistance, Joule's law" },
+        { "id": "s12", "name": "Magnetic Effects of Electric Current", "branch": "Physics", "status": "not_started", "notes": "Right-hand thumb rule, Solenoid, Fleming's left-hand rule, Domestic electric circuits" },
+        { "id": "s13", "name": "Our Environment", "branch": "Biology", "status": "mastered", "notes": "Ecosystem, 10% energy law, Biological magnification, Ozone depletion" }
+      ]
+    },
+    "social_science": {
+      "title": "Social Science",
+      "icon": "🌍",
+      "code": "087",
+      "chapters": [
+        { "id": "sst1", "name": "The Rise of Nationalism in Europe", "branch": "History", "status": "revised", "notes": "French revolution symbols, Mazzini, Unification of Germany & Italy, Balkan issue" },
+        { "id": "sst2", "name": "Nationalism in India", "branch": "History", "status": "revised", "notes": "Non-Cooperation Movement, Civil Disobedience, Simon Commission, Dandi March, Map work" },
+        { "id": "sst3", "name": "The Making of a Global World", "branch": "History", "status": "not_started", "notes": "Pre-modern world, Silk routes, Rinderpest plague (Sub-topics 1 to 1.3)" },
+        { "id": "sst4", "name": "The Age of Industrialisation", "branch": "History", "status": "not_started", "notes": "Proto-industrialisation, factories emergence, life of workers" },
+        { "id": "sst5", "name": "Print Culture and the Modern World", "branch": "History", "status": "not_started", "notes": "First printed books, Gutenberg press, print revolution, impact on India" },
+        { "id": "sst6", "name": "Resources and Development", "branch": "Geography", "status": "revised", "notes": "Classification of resources, resource planning, soil types and conservation" },
+        { "id": "sst7", "name": "Forest and Wildlife Resources", "branch": "Geography", "status": "not_started", "notes": "Flora and fauna categories, sacred groves, Chipko movement, Project Tiger" },
+        { "id": "sst8", "name": "Water Resources", "branch": "Geography", "status": "not_started", "notes": "Multi-purpose projects and major dams (Bhakra, Hirakud, Tehri, Sardar Sarovar)" },
+        { "id": "sst9", "name": "Agriculture", "branch": "Geography", "status": "in_progress", "notes": "Farming types, cropping patterns (Rabi, Kharif, Zaid), Rice/Wheat conditions" },
+        { "id": "sst10", "name": "Minerals and Energy Resources", "branch": "Geography", "status": "not_started", "notes": "Metallic & non-metallic minerals, conventional and non-conventional energy, map items" },
+        { "id": "sst11", "name": "Manufacturing Industries", "branch": "Geography", "status": "not_started", "notes": "Importance of manufacturing, Cotton, Iron and steel, Automobile, IT hubs" },
+        { "id": "sst12", "name": "Lifelines of National Economy", "branch": "Geography", "status": "not_started", "notes": "Roadways golden quadrilateral, Major sea ports and international airports map" },
+        { "id": "sst13", "name": "Power Sharing", "branch": "Civics", "status": "mastered", "notes": "Belgium vs Sri Lanka case studies, Forms of power sharing (horizontal & vertical)" },
+        { "id": "sst14", "name": "Federalism", "branch": "Civics", "status": "revised", "notes": "Key features of federalism, Union/State/Concurrent lists, Decentralisation in India" },
+        { "id": "sst15", "name": "Gender, Religion and Caste", "branch": "Civics", "status": "in_progress", "notes": "Feminist movements, Communalism vs secular state, Caste in politics" },
+        { "id": "sst16", "name": "Political Parties", "branch": "Civics", "status": "not_started", "notes": "Functions of political parties, National vs State parties, Challenges faced, Reforms" },
+        { "id": "sst17", "name": "Outcomes of Democracy", "branch": "Civics", "status": "not_started", "notes": "Accountable, responsive, legitimate government, Economic growth vs equality" },
+        { "id": "sst18", "name": "Development", "branch": "Economics", "status": "mastered", "notes": "National income, Per capita income, Human Development Index (HDI), Sustainability" },
+        { "id": "sst19", "name": "Sectors of the Indian Economy", "branch": "Economics", "status": "revised", "notes": "Primary, Secondary, Tertiary sectors, Disguised unemployment, MGNREGA 2005" },
+        { "id": "sst20", "name": "Money and Credit", "branch": "Economics", "status": "in_progress", "notes": "Barter system, RBI role, Formal vs Informal credit, Self Help Groups (SHGs)" },
+        { "id": "sst21", "name": "Globalisation and the Indian Economy", "branch": "Economics", "status": "not_started", "notes": "MNCs, Foreign trade, Liberalisation, WTO, SEZs, Fair globalisation" }
+      ]
+    },
+    "english": {
+      "title": "English Language & Literature",
+      "icon": "📖",
+      "code": "184",
+      "chapters": [
+        { "id": "eng1", "name": "A Letter to God & Dust of Snow / Fire and Ice", "unit": "First Flight", "status": "mastered", "notes": "Lencho's unshakeable faith, Robert Frost's nature allegories" },
+        { "id": "eng2", "name": "Nelson Mandela: Long Walk to Freedom & A Tiger in the Zoo", "unit": "First Flight", "status": "revised", "notes": "Apartheid, courage, caged vs wild tiger contrast" },
+        { "id": "eng3", "name": "Two Stories about Flying & How to Tell Wild Animals", "unit": "First Flight", "status": "revised", "notes": "Seagull's first flight, Black Aeroplane mystery" },
+        { "id": "eng4", "name": "From the Diary of Anne Frank & The Ball Poem", "unit": "First Flight", "status": "revised", "notes": "Kitty the diary, dealing with loss and growing up" },
+        { "id": "eng5", "name": "Glimpses of India (Baker/Coorg/Tea) & Amanda!", "unit": "First Flight", "status": "in_progress", "notes": "Goan culture, Coorg coffee, Assam tea gardens; Amanda's yearning for freedom" },
+        { "id": "eng6", "name": "Mijbil the Otter & Fog", "unit": "First Flight", "status": "not_started", "notes": "Bond between Maxwell and Mijbil, Carl Sandburg metaphor" },
+        { "id": "eng7", "name": "Madam Rides the Bus & The Tale of Custard the Dragon", "unit": "First Flight", "status": "not_started", "notes": "Valli's first bus ride experience, true bravery ballad" },
+        { "id": "eng8", "name": "The Sermon at Benares & For Anne Gregory", "unit": "First Flight", "status": "not_started", "notes": "Gautama Buddha teachings on grief, spiritual beauty vs physical" },
+        { "id": "eng9", "name": "The Proposal (Play)", "unit": "First Flight", "status": "not_started", "notes": "Anton Chekhov one-act play, Lomov and Natalya feud" },
+        { "id": "eng10", "name": "A Triumph of Surgery", "unit": "Footprints", "status": "mastered", "notes": "Tricki the pampered dog, James Herriot common sense remedy" },
+        { "id": "eng11", "name": "The Thief's Story", "unit": "Footprints", "status": "revised", "notes": "Hari Singh and Anil, power of trust and education" },
+        { "id": "eng12", "name": "The Midnight Visitor", "unit": "Footprints", "status": "revised", "notes": "Ausable outsmarting Max using intellect" },
+        { "id": "eng13", "name": "A Question of Trust", "unit": "Footprints", "status": "not_started", "notes": "Horace Danby, honor among thieves twist" },
+        { "id": "eng14", "name": "Footprints without Feet", "unit": "Footprints", "status": "not_started", "notes": "Griffin the invisible scientist and misadventures" },
+        { "id": "eng15", "name": "The Making of a Scientist", "unit": "Footprints", "status": "not_started", "notes": "Richard Ebright's journey, curiosity and scientific method" },
+        { "id": "eng16", "name": "The Necklace", "unit": "Footprints", "status": "not_started", "notes": "Matilda's vanity, false necklace debt tragedy" },
+        { "id": "eng17", "name": "Bholi", "unit": "Footprints", "status": "not_started", "notes": "Bholi's transformation through education and teacher support" },
+        { "id": "eng18", "name": "The Book That Saved the Earth", "unit": "Footprints", "status": "not_started", "notes": "Martian invasion comedy, nursery rhymes interpretation" },
+        { "id": "eng19", "name": "Writing Skills: Formal Letters & Analytical Paragraphs", "unit": "Grammar & Writing", "status": "in_progress", "notes": "Format of Letter to Editor, Complaints; Analytical Paragraph data trend interpretation" },
+        { "id": "eng20", "name": "Grammar: Tenses, Modals, Concord, Reported Speech", "unit": "Grammar & Writing", "status": "in_progress", "notes": "Editing, error correction, dialogue conversion" }
+      ]
+    },
+    "tamil": {
+      "title": "Tamil (தமிழ்)",
+      "icon": "✍️",
+      "code": "006",
+      "chapters": [
+        { "id": "tam1", "name": "இயல் 1: அமுதூற்று (அன்னை மொழியே, உரைநடையின் அணிநலன்கள்)", "unit": "இயல் 1", "status": "mastered", "notes": "பாவலேறூ பெருஞ்சித்திரனார், எழில்முதல்வன் உரைநடை" },
+        { "id": "tam2", "name": "இயல் 2: உயிர்வளி (காற்றே வா, முல்லைப்பாட்டு, புயலிலே ஒரு தோணி)", "unit": "இயல் 2", "status": "revised", "notes": "பாரதியார் பாடல், நப்பூதனார், ப. சிங்காரம்" },
+        { "id": "tam3", "name": "இயல் 3: கூட்டாஞ்சோறு (விருந்தோம்பல், காசி காண்டம், திருக்குறள்)", "unit": "இயல் 3", "status": "revised", "notes": "விருந்தோம்பல் பண்பு, அதிவீரராம பாண்டியர்" },
+        { "id": "tam4", "name": "இயல் 4: நான்காம் தமிழ் (செயற்கை நுண்ணறிவு, பெருமாள் திருமொழி)", "unit": "இயல் 4", "status": "in_progress", "notes": "AI நவீனப் பயன்பாடு, குலசேகர ஆழ்வார்" },
+        { "id": "tam5", "name": "இயல் 5: மணற்கேணி (மொழிபெயர்ப்புக் கல்வி, நீதி வெண்பா, திருவிளையாடற் புராணம்)", "unit": "இயல் 5", "status": "in_progress", "notes": "பரஞ்சோதி முனிவர், செய்குத்தம்பி பாவலர்" },
+        { "id": "tam6", "name": "இயல் 6: நிலா முற்றம் (நிகழ்கலை, பூத்தொடுத்தல், முத்துக்குமாரசுவாமி பிள்ளைத்தமிழ்)", "unit": "இயல் 6", "status": "not_started", "notes": "குமரகுருபரர், நாட்டுப்புற நிகழ்கலைகள்" },
+        { "id": "tam7", "name": "இயல் 7: விதைநெல் (சிற்றகல் ஒளி, ஏர் புதிதா?, சிலப்பதிகாரம், மங்கையராய்ப் பிறப்பதற்கே)", "unit": "இயல் 7", "status": "not_started", "notes": "ம.பொ.சி., கூ.ப.ரா., இளங்கோவடிகள்" },
+        { "id": "tam8", "name": "இயல் 8: எல்லை விரிவாக்கம் (ஞானம், காலக்கணிதம், இராமானுசர்)", "unit": "இயல் 8", "status": "not_started", "notes": "கண்ணதாசன் காலக்கணிதம், தீசோ வேணுகோபாலன்" },
+        { "id": "tam9", "name": "இயல் 9: அன்பின் மொழி (சித்தாளு, தேம்பாவணி, ஒருவன் இருக்கிறான், திருக்குறள்)", "unit": "இயல் 9", "status": "not_started", "notes": "வீரமாமுனிவர் தேம்பாவணி, கு. அழகிரிசாமி" },
+        { "id": "tam10", "name": "இலக்கணம் (தொழிற்பெயர், தொகைநிலைத் தொடர்கள், அணி இலக்கணம்)", "unit": "இலக்கணம் & மொழித்திறன்", "status": "revised", "notes": "உவமை, தற்குறிப்பேற்ற, வேற்றுமை, தீவக அணிகள்" }
+      ]
+    },
+    "ai": {
+      "title": "Artificial Intelligence",
+      "icon": "🤖",
+      "code": "417",
+      "chapters": [
+        { "id": "ai1", "name": "Part A: Communication Skills - II", "unit": "Employability", "status": "revised", "notes": "Communication cycle, verbal & non-verbal, active listening" },
+        { "id": "ai2", "name": "Part A: Self-Management Skills - II", "unit": "Employability", "status": "revised", "notes": "Stress management, self-motivation, goal setting (SMART goals)" },
+        { "id": "ai3", "name": "Part A: ICT Skills - II", "unit": "Employability", "status": "mastered", "notes": "Operating systems, file management, computer maintenance and security" },
+        { "id": "ai4", "name": "Part A: Entrepreneurial Skills - II", "unit": "Employability", "status": "revised", "notes": "Entrepreneur characteristics, role in economic growth" },
+        { "id": "ai5", "name": "Part A: Green Skills - II", "unit": "Employability", "status": "mastered", "notes": "Sustainable development goals (SDGs), green economy" },
+        { "id": "ai6", "name": "Part B: Introduction to Artificial Intelligence", "unit": "Subject Skills", "status": "mastered", "notes": "AI vs ML vs DL, AI domains (Data, CV, NLP), Ethics in AI" },
+        { "id": "ai7", "name": "Part B: AI Project Cycle", "unit": "Subject Skills", "status": "revised", "notes": "5 stages: Problem Scoping (4Ws canvas), Data Acquisition, Data Exploration, Modelling (Rule-based vs Learning-based), Evaluation" },
+        { "id": "ai8", "name": "Part B: Advance Python", "unit": "Subject Skills", "status": "in_progress", "notes": "Jupyter Notebook, lists, tuples, dictionaries, packages (NumPy, Matplotlib)" },
+        { "id": "ai9", "name": "Part B: Data Science", "unit": "Subject Skills", "status": "in_progress", "notes": "Applications of Data Science, Data collection, K-Nearest Neighbors (KNN)" },
+        { "id": "ai10", "name": "Part B: Computer Vision (CV)", "unit": "Subject Skills", "status": "not_started", "notes": "Pixels, RGB vs Grayscale, Image classification, Object detection, Convolutional Neural Networks (CNN) concept" },
+        { "id": "ai11", "name": "Part B: Natural Language Processing (NLP)", "unit": "Subject Skills", "status": "not_started", "notes": "Text normalisation, tokenisation, stemming, lemmatisation, stopwords, Bag of Words (BoW), TF-IDF" },
+        { "id": "ai12", "name": "Part B: Evaluation", "unit": "Subject Skills", "status": "not_started", "notes": "Confusion Matrix: TP, TN, FP, FN, Accuracy, Precision, Recall, F1 Score calculations" }
+      ]
+    }
+  }
+}
