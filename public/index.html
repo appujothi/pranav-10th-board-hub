@@ -1086,6 +1086,21 @@
           <img id="reviewPhotoImg" src="" alt="Submitted Notebook" class="object-contain max-h-56 w-full">
         </div>
 
+        <!-- AI Pre-Correction Box in Mama Review -->
+        <div id="reviewAiCorrectionBox" class="p-3 bg-purple-50 border border-purple-200 rounded-2xl space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-bold text-purple-900 flex items-center gap-1">
+              <i class="fa-solid fa-robot text-purple-600"></i> 🤖 AI Textbook Pre-Correction
+            </span>
+            <span id="reviewAiScoreBadge" class="text-[11px] font-extrabold text-purple-700 bg-purple-200 px-2 py-0.5 rounded-full">4.5 / 5 Marks</span>
+          </div>
+          <p id="reviewAiTextbookRef" class="text-[10px] text-purple-800 font-medium">NCERT Class 10 Textbook</p>
+          <div id="reviewAiFeedbackSnippet" class="text-[11px] text-purple-950 bg-white/70 p-2 rounded-xl border border-purple-100 line-clamp-3"></div>
+          <button type="button" onclick="applyAiCorrectionToMamaReview()" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-1.5 rounded-xl text-[11px] flex items-center justify-center gap-1 transition shadow-sm">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> ✨ AI மதிப்பீடு & ஃபீட்பேக்கை ஏற்றுக்கொள்
+          </button>
+        </div>
+
         <div class="grid grid-cols-2 gap-2">
           <div>
             <label class="block text-slate-600 font-bold mb-0.5">Marks Awarded:</label>
@@ -1104,6 +1119,60 @@
 
         <button onclick="confirmReviewTask()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl shadow-btn transition">
           Confirm Grade & Send to Pranav
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= AI TEXTBOOK CORRECTION DETAILS MODAL ================= -->
+  <div id="aiCorrectionModal" class="fixed inset-0 bg-slate-950/75 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl w-full max-w-sm p-6 space-y-4 shadow-2xl max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between">
+        <h3 class="text-sm font-bold text-slate-900 flex items-center gap-1.5">
+          🤖 AI Textbook Pre-Correction Report
+        </h3>
+        <button onclick="closeModal('aiCorrectionModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <div class="p-3 bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-200 rounded-2xl flex items-center justify-between">
+          <div>
+            <span class="text-[10px] uppercase font-bold tracking-wider text-purple-600 block">AI Pre-Correction</span>
+            <strong id="aiModalScore" class="text-xl font-extrabold text-purple-900">4.5 / 5.0</strong>
+          </div>
+          <span id="aiModalStatusBadge" class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-purple-200 text-purple-800 flex items-center gap-1">
+            <i class="fa-solid fa-clock"></i> Pending Mama Sign-off
+          </span>
+        </div>
+
+        <div class="p-3 bg-blue-50 border border-blue-200 rounded-2xl space-y-1">
+          <span class="text-[10px] font-bold text-blue-800 uppercase flex items-center gap-1">
+            <i class="fa-solid fa-book-open"></i> NCERT Textbook Reference
+          </span>
+          <p id="aiModalTextbookRef" class="text-[11px] font-semibold text-blue-900 leading-snug"></p>
+        </div>
+
+        <div class="space-y-1.5">
+          <h4 class="text-[11px] font-bold text-slate-700 flex items-center gap-1">
+            <i class="fa-solid fa-list-check text-emerald-600"></i> NCERT Textbook Steps Verified:
+          </h4>
+          <div id="aiModalCriteriaList" class="space-y-1"></div>
+        </div>
+
+        <div class="p-3 bg-amber-50 border border-amber-200 rounded-2xl space-y-1">
+          <span class="text-[10px] font-bold text-amber-800 uppercase flex items-center gap-1">
+            <i class="fa-solid fa-triangle-exclamation"></i> 100% மார்க் பெற NCERT டிப்ஸ்:
+          </span>
+          <ul id="aiModalMissingList" class="text-[11px] text-amber-900 list-disc list-inside space-y-0.5"></ul>
+        </div>
+
+        <div class="p-3 bg-slate-50 border border-slate-200 rounded-2xl space-y-1">
+          <span class="text-[10px] font-bold text-slate-600 uppercase">💬 AI Advice (Tanglish):</span>
+          <p id="aiModalFeedback" class="text-[11px] text-slate-800 leading-snug whitespace-pre-line"></p>
+        </div>
+
+        <button onclick="closeModal('aiCorrectionModal')" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-xl transition">
+          Close Report
         </button>
       </div>
     </div>

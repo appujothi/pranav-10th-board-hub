@@ -974,10 +974,37 @@ function renderWrittenTasksFeed() {
     card.className = 'bg-white border border-slate-200 rounded-2xl p-4 space-y-2.5 shadow-card';
 
     let statusBadge = '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">⏳ Writing Pending</span>';
-    if (t.status === 'submitted') {
+    if (t.status === 'ai_reviewed') {
+      const score = t.aiCorrection ? t.aiCorrection.aiScore : '4.5';
+      statusBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-100 text-purple-800 border border-purple-200 flex items-center gap-1">🤖 AI Pre-Corrected: ${score}/${t.maxMarks} • Pending Mama</span>`;
+    } else if (t.status === 'submitted') {
       statusBadge = '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">📸 Submitted • Pending Review</span>';
     } else if (t.status === 'reviewed') {
-      statusBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">✓ Reviewed: ${t.marksAwarded}/${t.maxMarks} Marks</span>`;
+      statusBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 flex items-center gap-1"><i class="fa-solid fa-circle-check"></i> Mama Verified: ${t.marksAwarded}/${t.maxMarks}</span>`;
+    }
+
+    // AI Pre-Correction preview box if evaluated
+    let aiBox = '';
+    if (t.aiCorrection) {
+      const ai = t.aiCorrection;
+      aiBox = `
+        <div class="p-2.5 rounded-2xl bg-gradient-to-r from-purple-50 to-indigo-50/60 border border-purple-200 text-purple-950 text-[11px] space-y-1.5 shadow-sm">
+          <div class="flex items-center justify-between font-bold text-purple-900">
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-robot text-purple-600"></i> AI Textbook Pre-Correction</span>
+            <span class="text-purple-800 bg-purple-200/80 px-2 py-0.5 rounded-full text-[10px] font-extrabold">${ai.aiScore} / ${t.maxMarks} Marks</span>
+          </div>
+          <p class="text-[10px] text-purple-800 font-medium flex items-center gap-1">
+            <i class="fa-solid fa-book-open text-purple-600"></i> ${ai.textbookRef || t.textbookReference || 'NCERT Class 10 Textbook'}
+          </p>
+          <p class="text-[11px] text-purple-900 line-clamp-2 leading-relaxed">${ai.aiFeedbackTamil.replace(/🤖.*\n/, '')}</p>
+          <div class="flex items-center justify-between pt-1 border-t border-purple-200/60 text-[10px]">
+            <button onclick="openAiCorrectionModal('${t.id}')" class="text-purple-700 hover:text-purple-900 font-bold underline flex items-center gap-1">
+              <i class="fa-solid fa-list-check"></i> View Textbook Rubric & AI Steps
+            </button>
+            <span class="text-purple-600 text-[10px] italic">NCERT Aligned</span>
+          </div>
+        </div>
+      `;
     }
 
     card.innerHTML = `
@@ -989,12 +1016,15 @@ function renderWrittenTasksFeed() {
       <div class="space-y-1">
         <h4 class="text-xs font-bold text-slate-900">${t.title}</h4>
         <p class="text-[11px] text-slate-600 leading-snug">${t.instructions}</p>
+        ${t.textbookReference ? `<p class="text-[10px] text-blue-700 font-medium"><i class="fa-solid fa-bookmark text-blue-500 mr-1"></i>Ref: ${t.textbookReference}</p>` : ''}
       </div>
 
+      ${aiBox}
+
       ${t.mamaFeedback ? `
-        <div class="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-[11px] space-y-0.5">
-          <strong class="block font-bold">💬 மாமாவின் மதிப்பாய்வு (Mama's Review):</strong>
-          <p>${t.mamaFeedback}</p>
+        <div class="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-[11px] space-y-0.5 shadow-sm">
+          <strong class="block font-bold flex items-center gap-1"><i class="fa-solid fa-award text-emerald-600"></i> மாமாவின் இறுதி மதிப்பாய்வு (Mama's Confirmed Review):</strong>
+          <p class="leading-relaxed">${t.mamaFeedback}</p>
         </div>
       ` : ''}
 
@@ -1005,16 +1035,20 @@ function renderWrittenTasksFeed() {
             <button onclick="openUploadPhotoModal('${t.id}')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-[10px] px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1 transition">
               <i class="fa-solid fa-camera text-[9px]"></i> Upload Notebook Page
             </button>
-          ` : t.status === 'submitted' && isAdmin ? `
+          ` : (t.status === 'submitted' || t.status === 'ai_reviewed') && isAdmin ? `
             <button onclick="openReviewTaskModal('${t.id}')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[10px] px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1 transition">
-              <i class="fa-solid fa-pen-nib text-[9px]"></i> Grade & Review (Mama)
+              <i class="fa-solid fa-pen-nib text-[9px]"></i> Grade & Confirm (Mama)
+            </button>
+          ` : t.status === 'ai_reviewed' && !isAdmin ? `
+            <button onclick="openAiCorrectionModal('${t.id}')" class="bg-purple-600 hover:bg-purple-700 text-white font-bold text-[10px] px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1 transition">
+              <i class="fa-solid fa-robot text-[9px]"></i> View AI Report
             </button>
           ` : t.status === 'reviewed' ? `
             <span class="text-[10px] text-emerald-600 font-bold flex items-center gap-1">
-              <i class="fa-solid fa-circle-check"></i> Score Verified
+              <i class="fa-solid fa-circle-check"></i> Score Verified by Mama
             </span>
           ` : `
-            <span class="text-[10px] text-blue-600 font-medium">Under Mama Review</span>
+            <span class="text-[10px] text-blue-600 font-medium">Under Review</span>
           `}
         </div>
       </div>
@@ -1128,10 +1162,38 @@ function openReviewTaskModal(taskId) {
   const photoBox = document.getElementById('reviewPhotoBox');
   const photoImg = document.getElementById('reviewPhotoImg');
   const maxInput = document.getElementById('reviewMaxMarksInput');
+  const aiBox = document.getElementById('reviewAiCorrectionBox');
+  const aiScoreBadge = document.getElementById('reviewAiScoreBadge');
+  const aiTextbookRef = document.getElementById('reviewAiTextbookRef');
+  const aiSnippet = document.getElementById('reviewAiFeedbackSnippet');
+  const marksInput = document.getElementById('reviewMarksInput');
+  const feedbackInput = document.getElementById('reviewFeedbackInput');
 
   if (title) title.textContent = task.title;
   if (notes) notes.textContent = `Student Notes: ${task.studentNotes || 'No notes'}`;
   if (maxInput) maxInput.value = `/ ${task.maxMarks || 5}`;
+
+  // Populate AI Pre-Correction Box
+  if (aiBox) {
+    if (task.aiCorrection) {
+      aiBox.classList.remove('hidden');
+      if (aiScoreBadge) aiScoreBadge.textContent = `${task.aiCorrection.aiScore} / ${task.maxMarks || 5} Marks`;
+      if (aiTextbookRef) aiTextbookRef.textContent = `📖 ${task.aiCorrection.textbookRef || task.textbookReference || 'NCERT Class 10 Textbook'}`;
+      if (aiSnippet) aiSnippet.textContent = task.aiCorrection.aiFeedbackTamil ? task.aiCorrection.aiFeedbackTamil.replace(/🤖.*\n/, '') : 'AI pre-correction complete.';
+    } else {
+      aiBox.classList.add('hidden');
+    }
+  }
+
+  // Pre-fill existing marks or AI marks if available
+  if (marksInput) {
+    marksInput.value = (task.marksAwarded !== null && task.marksAwarded !== undefined)
+      ? task.marksAwarded 
+      : (task.aiCorrection ? task.aiCorrection.aiScore : '');
+  }
+  if (feedbackInput) {
+    feedbackInput.value = task.mamaFeedback || '';
+  }
 
   if (photoImg && photoBox) {
     if (task.photoUrl) {
@@ -1144,6 +1206,78 @@ function openReviewTaskModal(taskId) {
   }
 
   openModal('reviewTaskModal');
+}
+
+function applyAiCorrectionToMamaReview() {
+  if (!activeReviewTaskId) return;
+  const task = (appState.writtenTasks || []).find(t => t.id === activeReviewTaskId);
+  if (!task || !task.aiCorrection) return;
+
+  const marksInput = document.getElementById('reviewMarksInput');
+  const feedbackInput = document.getElementById('reviewFeedbackInput');
+
+  if (marksInput) marksInput.value = task.aiCorrection.aiScore;
+  if (feedbackInput) {
+    feedbackInput.value = `மாமாவின் ஏற்பு & வாழ்த்து: அருமை பிரணவ்! NCERT பாடப்புத்தகத்தின் முக்கிய புள்ளிகள் மற்றும் ஸ்டெப்ஸ் சரிபார்க்கப்பட்டன. ஸ்டெப் மார்க்கிங்கில் இதே துல்லியத்தைக் கடைப்பிடி!`;
+  }
+  showToast('✨ AI மதிப்பெண் & ஃபீட்பேக் மாமா படிவத்தில் நிரப்பப்பட்டது!');
+}
+
+function openAiCorrectionModal(taskId) {
+  const task = (appState.writtenTasks || []).find(t => t.id === taskId);
+  if (!task || !task.aiCorrection) {
+    showToast('AI மதிப்பீட்டு விவரங்கள் தயாராகிறது...');
+    return;
+  }
+
+  const ai = task.aiCorrection;
+  const scoreEl = document.getElementById('aiModalScore');
+  const refEl = document.getElementById('aiModalTextbookRef');
+  const criteriaList = document.getElementById('aiModalCriteriaList');
+  const missingList = document.getElementById('aiModalMissingList');
+  const feedbackEl = document.getElementById('aiModalFeedback');
+  const statusBadge = document.getElementById('aiModalStatusBadge');
+
+  if (scoreEl) scoreEl.textContent = `${ai.aiScore} / ${ai.maxMarks || task.maxMarks || 5} Marks`;
+  if (refEl) refEl.textContent = ai.textbookRef || task.textbookReference || 'NCERT Class 10 Textbook';
+  if (feedbackEl) feedbackEl.textContent = ai.aiFeedbackTamil || 'Very good effort!';
+
+  if (statusBadge) {
+    if (task.status === 'reviewed') {
+      statusBadge.className = 'text-[10px] font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 flex items-center gap-1';
+      statusBadge.innerHTML = '<i class="fa-solid fa-circle-check"></i> Mama Verified';
+    } else {
+      statusBadge.className = 'text-[10px] font-bold px-2.5 py-1 rounded-full bg-purple-200 text-purple-800 flex items-center gap-1';
+      statusBadge.innerHTML = '<i class="fa-solid fa-clock"></i> Pending Mama Sign-off';
+    }
+  }
+
+  if (criteriaList) {
+    criteriaList.innerHTML = '';
+    (ai.criteriaChecked || []).forEach(c => {
+      const item = document.createElement('div');
+      item.className = 'p-2 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-2';
+      item.innerHTML = `
+        <i class="fa-solid fa-circle-check text-emerald-600 mt-0.5 text-xs"></i>
+        <div class="space-y-0.5">
+          <p class="font-bold text-slate-800 text-[11px]">${c.label || c.expected}</p>
+          <span class="text-[10px] text-slate-500">${c.textbookNote || 'NCERT Standard Verified'}</span>
+        </div>
+      `;
+      criteriaList.appendChild(item);
+    });
+  }
+
+  if (missingList) {
+    missingList.innerHTML = '';
+    (ai.missingPointsToHit100 || []).forEach(m => {
+      const li = document.createElement('li');
+      li.textContent = m;
+      missingList.appendChild(li);
+    });
+  }
+
+  openModal('aiCorrectionModal');
 }
 
 async function confirmReviewTask() {
