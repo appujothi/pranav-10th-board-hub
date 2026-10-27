@@ -151,7 +151,7 @@
   </div>
 
   <!-- MAIN APP SHELL (Expands to 1380px on desktop) -->
-  <div class="app-shell no-scrollbar flex flex-col justify-between">
+  <div class="app-shell no-scrollbar flex flex-col min-h-screen">
     
     <!-- WIDESCREEN DESKTOP TOP NAV HEADER (Visible on Desktop >= 1024px) -->
     <div class="desktop-nav-header hidden items-center justify-between px-6 py-4 bg-slate-900 text-white border-b border-slate-800 shadow-md">
@@ -253,9 +253,6 @@
           <!-- Notification Bell -->
           <button onclick="switchTab('family')" class="relative w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-50 transition">
             <i class="fa-regular fa-bell text-xs"></i>
-            <span id="header-notif-dot" class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-emerald-500 ring-2 ring-white"></span>
-          </button>
-        </div>
             <span id="header-notif-dot" class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-emerald-500 ring-2 ring-white"></span>
           </button>
         </div>
@@ -443,15 +440,6 @@
                 <p class="text-[10px] text-slate-500">Identify concept gaps where Pranav loses marks</p>
               </div>
             </div>
-            <span class="text-[9px] bg-rose-100 text-rose-800 font-extrabold px-2.5 py-0.5 rounded-full">
-              Live Diagnostic
-            </span>
-          </div>
-
-          <div id="diagnostic-tracker-feed" class="space-y-2 text-xs">
-            <!-- Rendered by app.js -->
-          </div>
-        </div>
             <span class="text-[9px] bg-rose-100 text-rose-800 font-extrabold px-2.5 py-0.5 rounded-full">
               Live Diagnostic
             </span>
