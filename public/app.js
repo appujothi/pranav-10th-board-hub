@@ -1,19 +1,311 @@
-// Global State & User Auth
+// Global State & User Auth (Mandatory PIN Authentication & 5-Min Inactivity Auto-Lock)
 let appState = null;
-let currentUser = JSON.parse(localStorage.getItem('pranav_user_auth')) || {
-  role: 'admin',
-  name: 'Mama (Super Admin)',
-  email: 'jothi1809@gmail.com',
-  badge: 'Owner',
-  permissions: {
-    canEditSyllabus: true,
-    canEditExamDates: true,
-    canAddTestMarks: true,
-    canLogStudy: true,
-    canPostCheer: true,
-    canManageUsers: true
+let currentUser = null; 
+const SESSION_MAX_INACTIVE_MS = 5 * 60 * 1000; // 5 Minutes Auto-Lock Security Policy
+let enteredGatePin = '';
+
+// ================= 5-MINUTE AUTO-LOCK & AUTH SESSION CONTROLLER =================
+function checkActiveSession() {
+  try {
+    const raw = localStorage.getItem('pranav_auth_session');
+    if (!raw) return null;
+    const session = JSON.parse(raw);
+    const now = Date.now();
+    if (!session.lastActive || (now - session.lastActive > SESSION_MAX_INACTIVE_MS)) {
+      // Inactive for more than 5 minutes -> Expired!
+      localStorage.removeItem('pranav_auth_session');
+      localStorage.removeItem('pranav_user_auth');
+      return null;
+    }
+    return session;
+  } catch (e) {
+    return null;
   }
-};
+}
+
+function updateSessionActivity() {
+  if (!currentUser) return;
+  try {
+    const raw = localStorage.getItem('pranav_auth_session');
+    if (raw) {
+      const session = JSON.parse(raw);
+      session.lastActive = Date.now();
+      localStorage.setItem('pranav_auth_session', JSON.stringify(session));
+    }
+  } catch (e) {}
+}
+
+let lastTouchTime = 0;
+function registerUserActivity() {
+  const now = Date.now();
+  if (now - lastTouchTime > 10000) { // Throttle activity updates to once every 10s
+    lastTouchTime = now;
+    updateSessionActivity();
+  }
+}
+['click', 'keydown', 'scroll', 'touchstart'].forEach(evt => {
+  window.addEventListener(evt, registerUserActivity, { passive: true });
+});
+
+// Periodic check every 10 seconds: Auto-lock if idle for > 5 minutes
+setInterval(() => {
+  if (currentUser) {
+    const sess = checkActiveSession();
+    if (!sess) {
+      lockAppSession('Session automatically locked after 5 minutes of inactivity.');
+    }
+  }
+}, 10000);
+
+// ================= MANDATORY PIN SECURITY GATE UI =================
+function showPinSecurityGate(message = 'PIN number is required to unlock your session') {
+  const gate = document.getElementById('pinSecurityGate');
+  const subMsg = document.getElementById('gateSubMessage');
+  const errBox = document.getElementById('gateErrorMessage');
+  if (gate) gate.classList.remove('hidden');
+  if (subMsg) subMsg.textContent = message;
+  if (errBox) errBox.classList.add('hidden');
+  keypadClear();
+}
+
+function hidePinSecurityGate() {
+  const gate = document.getElementById('pinSecurityGate');
+  if (gate) gate.classList.add('hidden');
+}
+
+function lockAppSession(message = 'Portal locked. Enter your PIN to continue.') {
+  localStorage.removeItem('pranav_auth_session');
+  currentUser = null;
+  showPinSecurityGate(message);
+}
+
+function updatePinDotsDisplay() {
+  for (let i = 0; i < 4; i++) {
+    const dot = document.getElementById(`pinDot${i}`);
+    if (dot) {
+      if (i < enteredGatePin.length) {
+        dot.className = 'w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-emerald-400 ring-2 ring-emerald-400/40 transition-all duration-150 scale-110';
+      } else {
+        dot.className = 'w-3.5 h-3.5 rounded-full border-2 border-slate-600 transition-all duration-150';
+      }
+    }
+  }
+}
+
+function setPinDotsState(state) {
+  for (let i = 0; i < 4; i++) {
+    const dot = document.getElementById(`pinDot${i}`);
+    if (dot) {
+      if (state === 'error') {
+        dot.className = 'w-3.5 h-3.5 rounded-full bg-rose-500 border-2 border-rose-500 ring-4 ring-rose-500/30 transition-all duration-150';
+      } else if (state === 'success') {
+        dot.className = 'w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-emerald-400 ring-4 ring-emerald-400/40 transition-all duration-150 scale-125';
+      } else if (state === 'checking') {
+        dot.className = 'w-3.5 h-3.5 rounded-full bg-amber-400 border-2 border-amber-400 ring-2 ring-amber-400/40 transition-all duration-150 animate-pulse';
+      }
+    }
+  }
+}
+
+function keypadPress(digit) {
+  if (enteredGatePin.length >= 4) return;
+  enteredGatePin += digit;
+  updatePinDotsDisplay();
+  if (enteredGatePin.length === 4) {
+    submitGatePin(enteredGatePin);
+  }
+}
+
+function keypadBackspace() {
+  if (enteredGatePin.length > 0) {
+    enteredGatePin = enteredGatePin.slice(0, -1);
+    updatePinDotsDisplay();
+  }
+}
+
+function keypadClear() {
+  enteredGatePin = '';
+  updatePinDotsDisplay();
+}
+
+// Support Physical Keyboard Input
+window.addEventListener('keydown', (e) => {
+  const gate = document.getElementById('pinSecurityGate');
+  if (!gate || gate.classList.contains('hidden')) return;
+
+  if (e.key >= '0' && e.key <= '9') {
+    keypadPress(e.key);
+  } else if (e.key === 'Backspace') {
+    keypadBackspace();
+  } else if (e.key === 'Escape') {
+    keypadClear();
+  }
+});
+
+async function submitGatePin(pin) {
+  const errBox = document.getElementById('gateErrorMessage');
+  if (errBox) errBox.classList.add('hidden');
+  setPinDotsState('checking');
+
+  try {
+    const res = await fetch('/api/auth/pin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ pin })
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.user) {
+        completeLogin(data.user, pin);
+        return;
+      }
+    }
+  } catch (err) {}
+
+  // Offline / Fast Fallback PIN Catalog
+  const pinCatalog = {
+    '9677': {
+      role: 'admin',
+      name: 'Mama (Master Control)',
+      email: 'jothi1809@gmail.com',
+      badge: 'Master Control',
+      permissions: { canEditSyllabus: true, canEditExamDates: true, canAddTestMarks: true, canLogStudy: true, canPostCheer: true, canManageUsers: true }
+    },
+    '2026': {
+      role: 'student',
+      name: 'Pranav',
+      email: 'pranav@student.hub',
+      badge: 'Student',
+      permissions: { canEditSyllabus: false, canEditExamDates: false, canAddTestMarks: false, canLogStudy: true, canPostCheer: false, canManageUsers: false }
+    },
+    '2027': {
+      role: 'student',
+      name: 'Pranav',
+      email: 'pranav@student.hub',
+      badge: 'Student',
+      permissions: { canEditSyllabus: false, canEditExamDates: false, canAddTestMarks: false, canLogStudy: true, canPostCheer: false, canManageUsers: false }
+    },
+    '1010': {
+      role: 'viewer',
+      name: 'Parents',
+      email: 'parents@family.hub',
+      badge: 'Parents',
+      permissions: { canEditSyllabus: false, canEditExamDates: false, canAddTestMarks: false, canLogStudy: false, canPostCheer: true, canManageUsers: false }
+    },
+    '1234': {
+      role: 'viewer',
+      name: 'Parents',
+      email: 'parents@family.hub',
+      badge: 'Parents',
+      permissions: { canEditSyllabus: false, canEditExamDates: false, canAddTestMarks: false, canLogStudy: false, canPostCheer: true, canManageUsers: false }
+    }
+  };
+
+  const matched = pinCatalog[pin];
+  if (matched) {
+    completeLogin(matched, pin);
+    return;
+  }
+
+  // Failed PIN
+  setPinDotsState('error');
+  if (errBox) {
+    errBox.textContent = '❌ Incorrect PIN! Enter Mama (9677), Pranav (2026), or Parents (1010).';
+    errBox.classList.remove('hidden');
+  }
+  setTimeout(() => {
+    keypadClear();
+  }, 850);
+}
+
+function completeLogin(user, pin) {
+  setPinDotsState('success');
+  const now = Date.now();
+  const session = {
+    ...user,
+    pin: pin,
+    loginTime: now,
+    lastActive: now
+  };
+  localStorage.setItem('pranav_auth_session', JSON.stringify(session));
+  localStorage.setItem('pranav_user_auth', JSON.stringify(session));
+  currentUser = session;
+
+  setTimeout(() => {
+    hidePinSecurityGate();
+    applyRoleUiRestrictions();
+    showToast(`🎉 Unlocked as ${user.name}!`);
+    renderAll();
+  }, 350);
+}
+
+function applyRoleUiRestrictions() {
+  if (!currentUser) return;
+  const role = currentUser.role; // 'admin', 'student', or 'viewer'
+  const isMama = role === 'admin';
+  const isPranav = role === 'student';
+  const isParents = role === 'viewer';
+
+  // 1. Mama's Secret Vault (Mama ONLY: Hidden for Pranav & Parents)
+  const vaultDesk = document.getElementById('desk-vault-btn');
+  const vaultMob = document.getElementById('mob-vault-btn');
+  const vaultBox = document.getElementById('card-vault-box');
+  const vaultBanner = document.getElementById('vault-banner-card');
+
+  if (vaultDesk) vaultDesk.classList.toggle('hidden', !isMama);
+  if (vaultMob) vaultMob.classList.toggle('hidden', !isMama);
+  if (vaultBox) vaultBox.classList.toggle('hidden', !isMama);
+  if (vaultBanner) vaultBanner.classList.toggle('hidden', !isMama);
+
+  // 2. Performance "+ Record Marks (Mama)" button (Mama ONLY)
+  const recordMarksBtn = document.getElementById('btn-record-marks');
+  if (recordMarksBtn) recordMarksBtn.classList.toggle('hidden', !isMama);
+
+  // 3. Admin limits and settings (Mama ONLY)
+  const adminSliders = document.querySelectorAll('.admin-only-control');
+  adminSliders.forEach(el => el.classList.toggle('hidden', !isMama));
+
+  // 4. Voice assistant / requests (Hide for Pranav and Parents per user request)
+  const voiceDesk = document.getElementById('desk-voice-btn');
+  const voiceMob = document.getElementById('mob-voice-btn');
+  if (voiceDesk) voiceDesk.classList.toggle('hidden', !isMama);
+  if (voiceMob) voiceMob.classList.toggle('hidden', !isMama);
+
+  // 5. Update Desktop Header
+  const deskUserName = document.getElementById('desk-user-name');
+  const deskUserIcon = document.getElementById('desk-user-icon');
+  if (deskUserName) {
+    if (isMama) {
+      deskUserName.textContent = 'Mama (Master Control)';
+      if (deskUserIcon) deskUserIcon.className = 'fa-solid fa-crown text-emerald-400 text-xs';
+    } else if (isPranav) {
+      deskUserName.textContent = 'Pranav (Student)';
+      if (deskUserIcon) deskUserIcon.className = 'fa-solid fa-graduation-cap text-blue-400 text-xs';
+    } else {
+      deskUserName.textContent = 'Parents (Overview)';
+      if (deskUserIcon) deskUserIcon.className = 'fa-solid fa-users text-amber-400 text-xs';
+    }
+  }
+
+  // 6. Update Mobile Header
+  const headerUserTitle = document.getElementById('header-user-title');
+  const headerUserSub = document.getElementById('header-user-sub');
+  const islandRole = document.getElementById('island-role');
+
+  if (isMama) {
+    if (headerUserTitle) headerUserTitle.textContent = 'Mama (Master Control)';
+    if (headerUserSub) headerUserSub.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span> <span>Full Master Control • PIN: 9677</span>';
+    if (islandRole) islandRole.textContent = 'Master Admin';
+  } else if (isPranav) {
+    if (headerUserTitle) headerUserTitle.textContent = 'Pranav (Student)';
+    if (headerUserSub) headerUserSub.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-blue-500 inline-block"></span> <span>Mission 90–100% Target • PIN: 2026</span>';
+    if (islandRole) islandRole.textContent = 'Student Mode';
+  } else {
+    if (headerUserTitle) headerUserTitle.textContent = 'Parents (Overview)';
+    if (headerUserSub) headerUserSub.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-amber-500 inline-block"></span> <span>Daily Progress Monitor • PIN: 1010</span>';
+    if (islandRole) islandRole.textContent = 'Parental View';
+  }
+}
 
 let currentTab = 'home';
 let currentSyllabusSubject = 'maths';
@@ -251,8 +543,8 @@ function applyUiLanguage(lang) {
 function getAuthHeaders() {
   return {
     'Content-Type': 'application/json',
-    'X-User-Role': currentUser.role || 'viewer',
-    'X-User-Email': currentUser.email || ''
+    'X-User-Role': currentUser ? (currentUser.role || 'viewer') : 'viewer',
+    'X-User-Email': currentUser ? (currentUser.email || '') : ''
   };
 }
 
@@ -317,44 +609,9 @@ async function submitPinLogin() {
     showToast('Please enter a 4-digit PIN', false);
     return;
   }
-  await fastLoginPin(pin);
+  closeModal('authModal');
+  await submitGatePin(pin);
   if (pinInput) pinInput.value = '';
-}
-
-async function fastLoginPin(pin) {
-  const localPins = {
-    '9677': { role: 'admin', name: 'Mama (Super Admin)', email: 'jothi1809@gmail.com', badge: 'Owner', permissions: { canEditSyllabus: true, canEditExamDates: true, canAddTestMarks: true, canLogStudy: true, canPostCheer: true, canManageUsers: true } },
-    '2027': { role: 'student', name: 'Pranav', email: 'pranav@student.hub', badge: 'Student', permissions: { canEditSyllabus: false, canEditExamDates: false, canAddTestMarks: false, canLogStudy: true, canPostCheer: false, canManageUsers: false } },
-    '1010': { role: 'viewer', name: 'Father / Parents', email: 'parents@family.hub', badge: 'Viewer', permissions: { canEditSyllabus: false, canEditExamDates: false, canAddTestMarks: false, canLogStudy: false, canPostCheer: true, canManageUsers: false } }
-  };
-
-  try {
-    const res = await fetch('/api/auth/pin', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ pin })
-    });
-
-    if (res.ok && res.headers.get('content-type')?.includes('application/json')) {
-      const data = await res.json();
-      if (data.user) {
-        applyUserAuth(data.user);
-        closeModal('authModal');
-        showToast(`Unlocked as ${data.user.name}!`);
-        return;
-      }
-    }
-  } catch (err) {
-    console.warn('API pin check warning, falling back to localPins:', err);
-  }
-
-  if (localPins[pin]) {
-    applyUserAuth(localPins[pin]);
-    closeModal('authModal');
-    showToast(`Unlocked as ${localPins[pin].name}!`);
-  } else {
-    showToast('Incorrect 4-digit PIN', false);
-  }
 }
 
 function applyUserAuth(user) {
@@ -677,6 +934,9 @@ function renderAll() {
   renderModelQAView();
   renderPerformanceView();
   renderFocusView();
+
+  // Enforce Role Access Control
+  applyRoleUiRestrictions();
 }
 
 // Daily Target Card (Home View)
@@ -2805,11 +3065,31 @@ window.addEventListener('DOMContentLoaded', () => {
     if (btn) btn.innerHTML = '<i class="fa-solid fa-mobile-screen text-[10px]"></i> 📱 Mobile View';
   }
 
-  applyUserAuth(currentUser);
   applyUiLanguage(currentUiLang);
-  fetchData();
   updateTimerDisplay();
-  setInterval(fetchData, 5000);
+
+  // MANDATORY PIN VERIFICATION & 5-MIN INACTIVITY CHECK
+  const session = checkActiveSession();
+  if (session) {
+    currentUser = session;
+    hidePinSecurityGate();
+    applyRoleUiRestrictions();
+    fetchData();
+  } else {
+    currentUser = null;
+    showPinSecurityGate('Please enter your 4-digit PIN to access the portal.');
+  }
+
+  setInterval(() => {
+    if (currentUser) {
+      const activeSess = checkActiveSession();
+      if (activeSess) {
+        fetchData();
+      } else {
+        lockAppSession('Session automatically locked after 5 minutes of inactivity.');
+      }
+    }
+  }, 8000);
 });
 
 
@@ -2836,26 +3116,18 @@ let currentVaultMode = 'questions_only';
 let mamaSecretVaultUnlocked = false;
 
 function openMamaSecretVaultModal() {
+  if (!currentUser || currentUser.role !== 'admin') {
+    showToast('🔒 Access Restricted: Mama Secret Vault is confidential and accessible only to Mama (PIN: 9677)!', false);
+    return;
+  }
   const modal = document.getElementById('mamaSecretVaultModal');
   const gate = document.getElementById('mamaVaultPinGate');
   const content = document.getElementById('mamaVaultUnlockedContent');
   if (!modal || !gate || !content) return;
 
-  const isMama = (currentUser && currentUser.role === 'admin') || mamaSecretVaultUnlocked;
-  if (isMama) {
-    gate.classList.add('hidden');
-    content.classList.remove('hidden');
-    renderMamaSecretVault();
-  } else {
-    gate.classList.remove('hidden');
-    content.classList.add('hidden');
-    const pinInput = document.getElementById('vaultPinInput');
-    if (pinInput) {
-      pinInput.value = '';
-      setTimeout(() => pinInput.focus(), 100);
-    }
-  }
-
+  gate.classList.add('hidden');
+  content.classList.remove('hidden');
+  renderMamaSecretVault();
   modal.classList.remove('hidden');
 }
 

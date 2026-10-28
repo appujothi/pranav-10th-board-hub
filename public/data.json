@@ -6,9 +6,21 @@
     "pins": {
       "1010": {
         "role": "viewer",
-        "name": "Parents / Father",
+        "name": "Parents",
         "email": "parents@family.hub",
-        "badge": "Viewer"
+        "badge": "Parents"
+      },
+      "1234": {
+        "role": "viewer",
+        "name": "Parents",
+        "email": "parents@family.hub",
+        "badge": "Parents"
+      },
+      "2026": {
+        "role": "student",
+        "name": "Pranav",
+        "email": "pranav@student.hub",
+        "badge": "Student"
       },
       "2027": {
         "role": "student",
@@ -18,9 +30,9 @@
       },
       "9677": {
         "role": "admin",
-        "name": "Mama (Super Admin)",
+        "name": "Mama (Master Control)",
         "email": "jothi1809@gmail.com",
-        "badge": "Owner"
+        "badge": "Master Control"
       }
     },
     "rolePermissions": {

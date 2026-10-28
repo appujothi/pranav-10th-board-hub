@@ -139,6 +139,81 @@
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
 
+  <!-- ================= MANDATORY PIN SECURITY GATE (AUTO-LOCK 5 MINS) ================= -->
+  <div id="pinSecurityGate" class="fixed inset-0 z-[100] bg-slate-950 text-white flex flex-col items-center justify-center p-4 selection:bg-none">
+    <div class="w-full max-w-sm bg-slate-900/95 border border-slate-800 rounded-3xl p-6 sm:p-7 shadow-2xl backdrop-blur-xl flex flex-col items-center text-center space-y-4">
+      
+      <!-- Brand Logo & Badge -->
+      <div class="space-y-1.5 flex flex-col items-center">
+        <div class="w-13 h-13 w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center font-black text-white text-2xl shadow-lg ring-4 ring-emerald-500/20">
+          P
+        </div>
+        <h2 class="text-base font-extrabold text-white tracking-wide">Pranav's 10th Board Hub</h2>
+        <span class="text-[10px] font-bold text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-0.5 rounded-full">
+          SRM Public School • Mission 90–100%
+        </span>
+      </div>
+
+      <!-- Lock Instruction -->
+      <div class="space-y-1">
+        <h3 class="text-sm font-extrabold text-slate-100 flex items-center justify-center gap-1.5">
+          <i class="fa-solid fa-lock text-emerald-400 text-xs"></i> Enter 4-Digit Security PIN
+        </h3>
+        <p id="gateSubMessage" class="text-[11px] text-slate-400">PIN number is required to unlock your session</p>
+      </div>
+
+      <!-- 4 PIN Dots Indicator -->
+      <div class="flex items-center justify-center gap-3.5 py-1" id="pinDotsRow">
+        <div id="pinDot0" class="w-3.5 h-3.5 rounded-full border-2 border-slate-600 transition-all duration-200"></div>
+        <div id="pinDot1" class="w-3.5 h-3.5 rounded-full border-2 border-slate-600 transition-all duration-200"></div>
+        <div id="pinDot2" class="w-3.5 h-3.5 rounded-full border-2 border-slate-600 transition-all duration-200"></div>
+        <div id="pinDot3" class="w-3.5 h-3.5 rounded-full border-2 border-slate-600 transition-all duration-200"></div>
+      </div>
+
+      <!-- Numeric Keypad (Touch & Mobile Friendly) -->
+      <div class="grid grid-cols-3 gap-2 w-full max-w-[250px] pt-1">
+        <button onclick="keypadPress('1')" class="h-11 rounded-2xl bg-slate-800/80 hover:bg-slate-700 active:bg-emerald-600 text-white font-black text-lg transition border border-slate-700/60 shadow-sm flex items-center justify-center">1</button>
+        <button onclick="keypadPress('2')" class="h-11 rounded-2xl bg-slate-800/80 hover:bg-slate-700 active:bg-emerald-600 text-white font-black text-lg transition border border-slate-700/60 shadow-sm flex items-center justify-center">2</button>
+        <button onclick="keypadPress('3')" class="h-11 rounded-2xl bg-slate-800/80 hover:bg-slate-700 active:bg-emerald-600 text-white font-black text-lg transition border border-slate-700/60 shadow-sm flex items-center justify-center">3</button>
+        <button onclick="keypadPress('4')" class="h-11 rounded-2xl bg-slate-800/80 hover:bg-slate-700 active:bg-emerald-600 text-white font-black text-lg transition border border-slate-700/60 shadow-sm flex items-center justify-center">4</button>
+        <button onclick="keypadPress('5')" class="h-11 rounded-2xl bg-slate-800/80 hover:bg-slate-700 active:bg-emerald-600 text-white font-black text-lg transition border border-slate-700/60 shadow-sm flex items-center justify-center">5</button>
+        <button onclick="keypadPress('6')" class="h-11 rounded-2xl bg-slate-800/80 hover:bg-slate-700 active:bg-emerald-600 text-white font-black text-lg transition border border-slate-700/60 shadow-sm flex items-center justify-center">6</button>
+        <button onclick="keypadPress('7')" class="h-11 rounded-2xl bg-slate-800/80 hover:bg-slate-700 active:bg-emerald-600 text-white font-black text-lg transition border border-slate-700/60 shadow-sm flex items-center justify-center">7</button>
+        <button onclick="keypadPress('8')" class="h-11 rounded-2xl bg-slate-800/80 hover:bg-slate-700 active:bg-emerald-600 text-white font-black text-lg transition border border-slate-700/60 shadow-sm flex items-center justify-center">8</button>
+        <button onclick="keypadPress('9')" class="h-11 rounded-2xl bg-slate-800/80 hover:bg-slate-700 active:bg-emerald-600 text-white font-black text-lg transition border border-slate-700/60 shadow-sm flex items-center justify-center">9</button>
+        <button onclick="keypadClear()" class="h-11 rounded-2xl bg-slate-800/50 hover:bg-slate-800 text-rose-400 font-extrabold text-[11px] transition border border-slate-800 flex items-center justify-center">CLEAR</button>
+        <button onclick="keypadPress('0')" class="h-11 rounded-2xl bg-slate-800/80 hover:bg-slate-700 active:bg-emerald-600 text-white font-black text-lg transition border border-slate-700/60 shadow-sm flex items-center justify-center">0</button>
+        <button onclick="keypadBackspace()" class="h-11 rounded-2xl bg-slate-800/50 hover:bg-slate-800 text-slate-300 font-bold text-sm transition border border-slate-800 flex items-center justify-center"><i class="fa-solid fa-delete-left"></i></button>
+      </div>
+
+      <!-- Error / Status Notice -->
+      <div id="gateErrorMessage" class="hidden text-xs font-bold text-rose-400 bg-rose-500/10 border border-rose-500/20 px-3 py-1.5 rounded-xl"></div>
+
+      <!-- Profiles Legend -->
+      <div class="pt-2 border-t border-slate-800/80 w-full text-left space-y-1.5 text-[10px]">
+        <span class="text-slate-400 font-bold uppercase tracking-wider block text-center">Authorized Access Profiles:</span>
+        <div class="grid grid-cols-3 gap-1.5 text-center font-bold">
+          <div class="bg-slate-800/50 p-1.5 rounded-xl border border-slate-700/40">
+            <span class="text-emerald-400 block font-black">👑 Mama</span>
+            <span class="text-slate-400 text-[9px]">Master Control</span>
+          </div>
+          <div class="bg-slate-800/50 p-1.5 rounded-xl border border-slate-700/40">
+            <span class="text-blue-400 block font-black">🧑‍🎓 Pranav</span>
+            <span class="text-slate-400 text-[9px]">Student Tasks</span>
+          </div>
+          <div class="bg-slate-800/50 p-1.5 rounded-xl border border-slate-700/40">
+            <span class="text-amber-400 block font-black">👨‍👩‍👦 Parents</span>
+            <span class="text-slate-400 text-[9px]">Progress View</span>
+          </div>
+        </div>
+        <p class="text-[9px] text-slate-400 text-center pt-0.5">
+          <i class="fa-solid fa-shield-halved text-emerald-400"></i> Auto-locks after 5 minutes of inactivity or on page reload.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Desktop Toggle Pill -->
   <div class="hidden md:flex fixed top-4 right-4 z-50 bg-slate-900/90 text-white backdrop-blur-md px-3 py-1.5 rounded-full text-xs items-center gap-2 shadow-xl border border-slate-700/80">
     <span class="text-slate-400">View:</span>
@@ -188,21 +263,34 @@
       </div>
 
       <!-- Desktop Right Controls -->
-      <div class="flex items-center gap-2.5">
+      <div class="flex items-center gap-2">
         <button onclick="toggleUiLanguage()" id="deskLangToggleBtn" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 transition" title="Toggle UI Language (English / Tamil)">
           <i class="fa-solid fa-language text-emerald-400 text-xs"></i> <span id="deskLangLabel">🌐 English</span>
         </button>
-        <button onclick="openMamaSecretVaultModal()" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-extrabold px-3.5 py-2 rounded-xl text-xs flex items-center gap-1.5 transition shadow-sm" title="Mama's Confidential 16-Day Test Papers">
+
+        <!-- Mama Secret Vault Button (Controlled by role) -->
+        <button onclick="openMamaSecretVaultModal()" id="desk-vault-btn" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-extrabold px-3.5 py-2 rounded-xl text-xs flex items-center gap-1.5 transition shadow-sm" title="Mama's Confidential 16-Day Test Papers">
           <i class="fa-solid fa-lock text-slate-950 text-xs"></i> <span data-i18n="nav_secret_vault">🔐 Secret Vault</span>
         </button>
-        <button onclick="openVoiceModal()" class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold px-3.5 py-2 rounded-xl text-xs flex items-center gap-1.5 transition shadow-btn" title="Tamil Voice Assistant">
-          <i class="fa-solid fa-microphone text-xs"></i> Voice Assistant
+
+        <!-- Voice Assistant Button (Mama only) -->
+        <button onclick="openVoiceModal()" id="desk-voice-btn" class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold px-3.5 py-2 rounded-xl text-xs flex items-center gap-1.5 transition shadow-btn" title="Tamil Voice Assistant">
+          <i class="fa-solid fa-microphone text-xs"></i> Voice
         </button>
-        <button onclick="openAuthModal()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs flex items-center gap-1.5 transition shadow-sm">
-          <i class="fa-solid fa-key text-amber-400 text-xs"></i> <span id="desk-user-name">Mama (PIN: 9677)</span>
+
+        <!-- User Profile Pill -->
+        <div id="deskUserPill" class="bg-slate-800 border border-slate-700 text-slate-200 font-bold px-3 py-1.5 rounded-xl text-xs flex items-center gap-1.5 shadow-sm">
+          <i class="fa-solid fa-shield-halved text-emerald-400 text-xs" id="desk-user-icon"></i>
+          <span id="desk-user-name">Mama (PIN: 9677)</span>
+        </div>
+
+        <!-- Lock Portal Button -->
+        <button onclick="lockAppSession('Session locked. Enter your PIN to continue.')" class="bg-rose-950/40 hover:bg-rose-900/60 border border-rose-500/40 text-rose-300 font-extrabold px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 transition shadow-sm" title="Lock Portal & Require PIN">
+          <i class="fa-solid fa-lock text-rose-400 text-xs"></i> <span>Lock</span>
         </button>
-        <button onclick="toggleDesktopMode()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 font-semibold px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 transition" title="Preview Mobile Frame">
-          <i class="fa-solid fa-mobile-screen text-xs text-emerald-400"></i> Mobile Frame
+
+        <button onclick="toggleDesktopMode()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 font-semibold px-2.5 py-2 rounded-xl text-xs flex items-center gap-1 transition" title="Preview Mobile Frame">
+          <i class="fa-solid fa-mobile-screen text-xs text-emerald-400"></i>
         </button>
       </div>
     </div>
@@ -225,13 +313,13 @@
       <!-- HEADER BAR -->
       <div class="flex items-center justify-between pt-1">
         <div class="flex items-center space-x-2">
-          <div class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm shadow-sm cursor-pointer" onclick="openAuthModal()">
+          <div class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm shadow-sm cursor-pointer" onclick="lockAppSession('Switch user profile')">
             <i class="fa-solid fa-shield-halved" id="auth-shield-icon"></i>
           </div>
           <div>
-            <div class="flex items-center space-x-1 cursor-pointer" onclick="openAuthModal()">
+            <div class="flex items-center space-x-1 cursor-pointer" onclick="lockAppSession('Switch user profile')">
               <h2 id="header-user-title" class="text-sm font-bold text-slate-900 leading-none">Mama (Admin)</h2>
-              <i class="fa-solid fa-chevron-down text-[10px] text-slate-500"></i>
+              <i class="fa-solid fa-lock text-[9px] text-slate-400 ml-1"></i>
             </div>
             <p id="header-user-sub" class="text-[10px] text-emerald-700 font-semibold mt-0.5 flex items-center gap-1">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span>
@@ -241,22 +329,26 @@
         </div>
 
         <div class="flex items-center space-x-1.5">
-          <!-- Secret Vault Button (Mobile) -->
-          <button onclick="openMamaSecretVaultModal()" class="px-2 py-1 rounded-full text-[10px] font-black bg-amber-500/20 text-amber-800 border border-amber-300 flex items-center gap-1" title="Mama's Secret Test Vault">
+          <!-- Secret Vault Button (Mobile - Mama Only) -->
+          <button onclick="openMamaSecretVaultModal()" id="mob-vault-btn" class="px-2 py-1 rounded-full text-[10px] font-black bg-amber-500/20 text-amber-800 border border-amber-300 flex items-center gap-1" title="Mama's Secret Test Vault">
             <i class="fa-solid fa-lock text-[9px] text-amber-700"></i> <span data-i18n="nav_vault_short">Vault</span>
           </button>
+
           <!-- Language Toggle Button (Mobile) -->
           <button onclick="toggleUiLanguage()" id="mobLangToggleBtn" class="px-2 py-1 rounded-full text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200">
             🌐 EN
           </button>
-          <!-- Voice Button Shortcut -->
-          <button onclick="openVoiceModal()" class="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-btn hover:bg-emerald-600 transition" title="Tamil Voice Assistant">
+
+          <!-- Voice Button Shortcut (Mama Only) -->
+          <button onclick="openVoiceModal()" id="mob-voice-btn" class="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-btn hover:bg-emerald-600 transition" title="Tamil Voice Assistant">
             <i class="fa-solid fa-microphone text-xs"></i>
           </button>
-          <!-- Auth Key -->
-          <button onclick="openAuthModal()" class="w-8 h-8 rounded-full border border-slate-200 bg-slate-50 flex items-center justify-center text-slate-700 hover:bg-slate-100 transition" title="Account & PIN Login">
-            <i class="fa-solid fa-key text-xs text-amber-600"></i>
+
+          <!-- Lock Portal Button (Mobile) -->
+          <button onclick="lockAppSession('Session locked.')" class="w-8 h-8 rounded-full border border-rose-200 bg-rose-50 text-rose-600 flex items-center justify-center hover:bg-rose-100 transition" title="Lock Portal">
+            <i class="fa-solid fa-lock text-xs"></i>
           </button>
+
           <!-- Notification Bell -->
           <button onclick="switchTab('family')" class="relative w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-50 transition">
             <i class="fa-regular fa-bell text-xs"></i>
@@ -270,7 +362,7 @@
         <div class="flex items-center bg-slate-50 border border-slate-200/80 rounded-2xl px-3.5 py-2 space-x-2.5 shadow-sm">
           <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i>
           <input type="text" id="globalSearchInput" oninput="handleGlobalSearch(this.value)" placeholder="Search chapters, formulas, concepts..." class="bg-transparent text-xs text-slate-800 placeholder-slate-400 w-full focus:outline-none font-medium">
-          <button onclick="openAdminLimitsModal()" class="text-slate-500 hover:text-slate-800 transition pl-1" title="Manage Member Limits">
+          <button onclick="openAdminLimitsModal()" class="text-slate-500 hover:text-slate-800 transition pl-1 admin-only-control" title="Manage Member Limits">
             <i class="fa-solid fa-sliders text-sm"></i>
           </button>
         </div>
@@ -652,7 +744,7 @@
               </p>
 
               <!-- MAMA EXCLUSIVE VAULT ACCESS BUTTON -->
-              <div class="pt-1.5 border-t border-slate-800">
+              <div id="card-vault-box" class="pt-1.5 border-t border-slate-800">
                 <button onclick="openMamaSecretVaultModal()" class="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-black text-xs flex items-center justify-center gap-2 shadow-md transition">
                   <i class="fa-solid fa-vault text-sm"></i>
                   <span data-i18n="mama_vault_action_btn">🔐 Mama: Open 16-Day Secret Night Test Vault (PIN: 9677)</span>
@@ -1112,7 +1204,7 @@
             </h3>
             <span class="text-[10px] text-slate-500 font-medium">Overall • School Tests • Tuition Tests • Home Daily Assessments</span>
           </div>
-          <button onclick="openAddScoreModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-[11px] font-extrabold px-3 py-1.5 rounded-full shadow-btn flex items-center gap-1 transition">
+          <button onclick="openAddScoreModal()" id="btn-record-marks" class="bg-emerald-600 hover:bg-emerald-700 text-white text-[11px] font-extrabold px-3 py-1.5 rounded-full shadow-btn flex items-center gap-1 transition">
             <i class="fa-solid fa-plus text-[10px]"></i> + Record Marks (Mama)
           </button>
         </div>
@@ -1560,15 +1652,9 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-3 gap-1.5 pt-2 border-t border-slate-100 text-[10px]">
-        <button onclick="fastLoginPin('9677')" class="p-2 rounded-xl bg-emerald-50 text-emerald-800 font-bold border border-emerald-200 text-center">
-          🦸‍♂️ Mama (Admin)<br><span class="text-[9px] text-emerald-600 font-normal">PIN: 9677</span>
-        </button>
-        <button onclick="fastLoginPin('2027')" class="p-2 rounded-xl bg-blue-50 text-blue-800 font-bold border border-blue-200 text-center">
-          🧑‍🎓 Pranav<br><span class="text-[9px] text-blue-600 font-normal">PIN: 2027</span>
-        </button>
-        <button onclick="fastLoginPin('1010')" class="p-2 rounded-xl bg-amber-50 text-amber-800 font-bold border border-amber-200 text-center">
-          👨‍👩‍👦 Father<br><span class="text-[9px] text-amber-600 font-normal">PIN: 1010</span>
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
+        <button onclick="closeModal('authModal'); lockAppSession('Session locked. Enter PIN to switch profile.');" class="w-full bg-rose-50 hover:bg-rose-100 text-rose-700 font-extrabold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 transition">
+          <i class="fa-solid fa-arrow-right-from-bracket text-xs"></i> <span>Lock & Switch Account</span>
         </button>
       </div>
     </div>
