@@ -290,6 +290,16 @@ function applyRoleUiRestrictions() {
   if (vaultBox) vaultBox.classList.toggle('hidden', !isMama);
   if (vaultBanner) vaultBanner.classList.toggle('hidden', !isMama);
 
+  // 1b. 16-Day Night Test Hub (Mama & Parents can see; STRICTLY hidden for Pranav)
+  const hubEl = document.getElementById('mama-parents-test-papers-hub');
+  if (hubEl) {
+    if (isPranav) {
+      hubEl.classList.add('hidden');
+    } else {
+      hubEl.classList.remove('hidden');
+    }
+  }
+
   // 2. Performance "+ Record Marks (Mama)" button (Mama ONLY)
   const recordMarksBtn = document.getElementById('btn-record-marks');
   if (recordMarksBtn) recordMarksBtn.classList.toggle('hidden', !isMama);
@@ -967,6 +977,10 @@ function renderAll() {
   renderModelQAView();
   renderPerformanceView();
   renderFocusView();
+
+  // 16-Day Night Test Hub (Mama & Parents)
+  initHubDaySelector();
+  renderHubTestPaper(currentHubDayIndex);
 
   // Enforce Role Access Control
   applyRoleUiRestrictions();
@@ -3468,6 +3482,319 @@ function printMamaVaultPaper() {
 
   printWindow.document.write(content);
   printWindow.document.close();
+}
+
+// ==========================================================================
+// 16-DAY NIGHT TEST PAPERS & WHATSAPP HUB (FOR MAMA & PARENTS ONLY)
+// ==========================================================================
+let currentHubDayIndex = 1;
+let currentHubShowKey = false;
+
+function formatPaperForWhatsApp(test, includeAnswers = false) {
+  let text = `*SRM PUBLIC SCHOOL • GRADE 10 REVISION-1*\n`;
+  text += `*DAY ${test.day} NIGHT TEST (8:30 PM – 9:15 PM)*\n`;
+  text += `*Date:* ${test.date} | *Total:* ${test.totalMarks} Marks | *Time:* 45 Mins\n`;
+  text += `----------------------------------------\n\n`;
+
+  if (test.scienceSection) {
+    text += `*SECTION A: ${test.sub1Name}* (${test.scienceSection.marks} Marks)\n\n`;
+    (test.scienceSection.questions || []).forEach(q => {
+      text += `*${q.qNum}.* ${q.question} [${q.marks} Mark${q.marks > 1 ? 's' : ''}]\n`;
+      if (includeAnswers && q.answer) {
+        text += `_Answer:_ ${q.answer}\n`;
+      }
+      text += `\n`;
+    });
+  }
+
+  if (test.tamilSection) {
+    text += `----------------------------------------\n`;
+    text += `*SECTION B: ${test.sub2Name}* (${test.tamilSection.marks} Marks)\n\n`;
+    (test.tamilSection.questions || []).forEach(q => {
+      text += `*${q.qNum}.* ${q.question} [${q.marks} Mark${q.marks > 1 ? 's' : ''}]\n`;
+      if (includeAnswers && q.answer) {
+        text += `_Answer:_ ${q.answer}\n`;
+      }
+      text += `\n`;
+    });
+  }
+
+  text += `----------------------------------------\n`;
+  text += `*INSTRUCTIONS:*\n`;
+  text += `1. Write answers in rough notebook with steps.\n`;
+  text += `2. Time limit: 45 minutes.\n`;
+  text += `3. Submit immediately to Mama / send photos on WhatsApp!\n`;
+  text += `All the best Pranav! 🌟\n`;
+
+  return text;
+}
+
+function initHubDaySelector() {
+  const container = document.getElementById('hub-day-selector-strip');
+  if (!container) return;
+  const tests = (appState && appState.mamaSecretNightTests) || [];
+  if (tests.length === 0) return;
+
+  container.innerHTML = '';
+  tests.forEach(t => {
+    const isSel = t.day === currentHubDayIndex;
+    const btn = document.createElement('button');
+    btn.setAttribute('data-day', t.day);
+    btn.className = `hub-day-pill px-3 py-1.5 rounded-xl text-xs font-semibold shrink-0 transition ${
+      isSel 
+        ? 'bg-emerald-600 text-white shadow-xs font-black' 
+        : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'
+    }`;
+    btn.innerHTML = `Day ${t.day} <span class="text-[10px] opacity-75">${t.date.slice(5)}</span>`;
+    btn.onclick = () => {
+      selectHubDay(t.day);
+    };
+    container.appendChild(btn);
+  });
+}
+
+function selectHubDay(dayNum) {
+  currentHubDayIndex = dayNum;
+  renderHubTestPaper(dayNum);
+}
+
+function toggleHubAnswerKey() {
+  currentHubShowKey = !currentHubShowKey;
+  const keyText = document.getElementById('hub-toggle-key-text');
+  const keyBtn = document.getElementById('hub-toggle-key-btn');
+  if (keyText) keyText.textContent = currentHubShowKey ? 'Hide Answer Key' : 'Show Answer Key';
+  if (keyBtn) {
+    if (currentHubShowKey) {
+      keyBtn.className = 'bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs px-3 py-2 rounded-xl border border-amber-600 shadow-xs flex items-center gap-1.5 transition';
+    } else {
+      keyBtn.className = 'bg-white hover:bg-slate-100 text-slate-700 font-bold text-xs px-3 py-2 rounded-xl border border-slate-300 shadow-xs flex items-center gap-1.5 transition';
+    }
+  }
+  renderHubTestPaper(currentHubDayIndex);
+}
+
+function copyCurrentHubPaperWhatsApp() {
+  const tests = (appState && appState.mamaSecretNightTests) || [];
+  const test = tests.find(t => t.day === currentHubDayIndex) || tests[0];
+  if (!test) {
+    showToast('❌ Test paper not found!', false);
+    return;
+  }
+  const waText = formatPaperForWhatsApp(test, currentHubShowKey);
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(waText).then(() => {
+      showToast(`✅ Day ${test.day} Test Paper copied for WhatsApp! Paste in chat.`);
+    }).catch(() => {
+      fallbackCopyTextToClipboard(waText, `Day ${test.day} Paper copied!`);
+    });
+  } else {
+    fallbackCopyTextToClipboard(waText, `Day ${test.day} Paper copied!`);
+  }
+}
+
+function printCurrentHubPaper(forceKey = false) {
+  const tests = (appState && appState.mamaSecretNightTests) || [];
+  const test = tests.find(t => t.day === currentHubDayIndex) || tests[0];
+  if (!test) return;
+
+  const isKey = forceKey || currentHubShowKey;
+  const printWindow = window.open('', '_blank');
+  if (!printWindow) {
+    showToast('Please allow popups to print test paper', false);
+    return;
+  }
+
+  let content = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>Day ${test.day} Test Paper - SRM Revision 1</title>
+        <style>
+          body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; padding: 28px; color: #1e293b; line-height: 1.5; font-size: 13px; }
+          .header { text-align: center; border-bottom: 2px solid #0f172a; padding-bottom: 12px; margin-bottom: 16px; }
+          .school { font-size: 11px; font-weight: bold; letter-spacing: 1.5px; color: #475569; text-transform: uppercase; }
+          .title { font-size: 16px; font-weight: 800; margin: 4px 0; color: #0f172a; }
+          .meta { font-size: 12px; font-weight: 600; color: #334155; }
+          .student-box { border: 1px dashed #94a3b8; border-radius: 6px; padding: 6px 12px; margin: 10px 0; display: flex; justify-content: space-between; font-size: 11px; font-weight: 600; }
+          .section { margin-top: 18px; font-size: 13px; font-weight: 800; text-transform: uppercase; border-bottom: 1.5px solid #cbd5e1; padding-bottom: 4px; color: #0f172a; }
+          .q-box { margin: 12px 0; padding-bottom: 8px; border-bottom: 1px dashed #e2e8f0; }
+          .q-head { font-size: 12px; font-weight: 700; display: flex; justify-content: space-between; gap: 8px; }
+          .ans-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 6px; padding: 8px 10px; margin-top: 6px; font-size: 11px; color: #14532d; }
+          .rubric { font-style: italic; color: #047857; margin-top: 4px; font-size: 10px; }
+          @media print {
+            body { padding: 12px; }
+            .no-print { display: none; }
+          }
+        </style>
+      </head>
+      <body>
+        <div class="header">
+          <div class="school">SRM PUBLIC SCHOOL • GRADE 10 REVISION-1</div>
+          <div class="title">${test.title}</div>
+          <div class="meta">Date: ${test.date} &bull; Time: 8:30 PM &bull; Max Marks: ${test.totalMarks} Marks</div>
+          <div style="font-size: 11px; margin-top: 4px; color: #64748b; font-style: italic;">${test.instructions || 'Rough நோட்டில் எழுதி 45 நிமிடங்களில் சமர்ப்பிக்கவும்.'}</div>
+        </div>
+
+        <div class="student-box">
+          <span>Student Name: Pranav</span>
+          <span>Class: X - A</span>
+          <span>Marks Obtained: _____ / ${test.totalMarks}</span>
+        </div>
+  `;
+
+  if (test.scienceSection) {
+    content += `<div class="section">SECTION A: ${test.sub1Name} (${test.scienceSection.marks} Marks)</div>`;
+    (test.scienceSection.questions || []).forEach(q => {
+      content += `
+        <div class="q-box">
+          <div class="q-head">
+            <span><strong>${q.qNum}.</strong> ${q.question}</span>
+            <span style="white-space: nowrap;">[${q.marks} Mark${q.marks > 1 ? 's' : ''}]</span>
+          </div>
+          ${isKey ? `
+            <div class="ans-box">
+              <strong>Answer / Solution:</strong><br>${q.answer ? q.answer.replace(/\n/g, '<br>') : '—'}
+              ${q.rubric ? `<div class="rubric"><strong>Evaluation Rubric:</strong> ${q.rubric}</div>` : ''}
+            </div>
+          ` : ''}
+        </div>
+      `;
+    });
+  }
+
+  if (test.tamilSection) {
+    content += `<div class="section">SECTION B: ${test.sub2Name} (${test.tamilSection.marks} Marks)</div>`;
+    (test.tamilSection.questions || []).forEach(q => {
+      content += `
+        <div class="q-box">
+          <div class="q-head">
+            <span><strong>${q.qNum}.</strong> ${q.question}</span>
+            <span style="white-space: nowrap;">[${q.marks} Mark${q.marks > 1 ? 's' : ''}]</span>
+          </div>
+          ${isKey ? `
+            <div class="ans-box">
+              <strong>Answer / Solution:</strong><br>${q.answer ? q.answer.replace(/\n/g, '<br>') : '—'}
+              ${q.rubric ? `<div class="rubric"><strong>Evaluation Rubric:</strong> ${q.rubric}</div>` : ''}
+            </div>
+          ` : ''}
+        </div>
+      `;
+    });
+  }
+
+  content += `
+      </body>
+    </html>
+  `;
+
+  printWindow.document.open();
+  printWindow.document.write(content);
+  printWindow.document.close();
+  printWindow.focus();
+  setTimeout(() => {
+    printWindow.print();
+  }, 400);
+}
+
+function renderHubTestPaper(dayNum = currentHubDayIndex) {
+  currentHubDayIndex = dayNum;
+  const tests = (appState && appState.mamaSecretNightTests) || [];
+  if (!tests || tests.length === 0) return;
+  
+  const test = tests.find(t => t.day === currentHubDayIndex) || tests[0];
+  if (!test) return;
+
+  // Update labels
+  const dateBadge = document.getElementById('hub-paper-date-badge');
+  const titleLabel = document.getElementById('hub-paper-title-label');
+  const selDayLabel = document.getElementById('hub-selected-day-label');
+  if (dateBadge) dateBadge.textContent = `${test.date} • ${test.timing || '8:30 PM – 9:15 PM'}`;
+  if (titleLabel) titleLabel.textContent = test.title;
+  if (selDayLabel) selDayLabel.textContent = `Day ${test.day} (${test.date})`;
+
+  // Update pills active styling
+  const pills = document.querySelectorAll('.hub-day-pill');
+  pills.forEach(p => {
+    const d = parseInt(p.getAttribute('data-day'));
+    if (d === currentHubDayIndex) {
+      p.className = 'hub-day-pill px-3 py-1.5 rounded-xl text-xs font-black shrink-0 transition bg-emerald-600 text-white shadow-xs';
+    } else {
+      p.className = 'hub-day-pill px-3 py-1.5 rounded-xl text-xs font-semibold shrink-0 transition bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200';
+    }
+  });
+
+  const preview = document.getElementById('hub-paper-preview-container');
+  if (!preview) return;
+
+  let html = '';
+
+  // Section A
+  if (test.scienceSection) {
+    html += `
+      <div class="space-y-2.5">
+        <div class="flex items-center justify-between border-b border-slate-200 pb-1.5">
+          <h5 class="text-xs font-bold text-emerald-800 uppercase tracking-wide flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            <span>SECTION A: ${test.sub1Name}</span>
+          </h5>
+          <span class="text-[10px] font-bold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full border border-emerald-200">
+            ${test.scienceSection.marks} Marks
+          </span>
+        </div>
+        <div class="space-y-2">
+          ${(test.scienceSection.questions || []).map(q => `
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5 text-xs">
+              <div class="flex items-start justify-between gap-2">
+                <span class="font-bold text-slate-800 leading-snug"><span class="text-emerald-700 font-extrabold">${q.qNum}.</span> ${q.question}</span>
+                <span class="shrink-0 text-[10px] font-bold text-slate-500 bg-white border border-slate-200 px-1.5 py-0.5 rounded">[${q.marks}M]</span>
+              </div>
+              ${currentHubShowKey ? `
+                <div class="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200 text-[11px] space-y-1 text-emerald-950 mt-1">
+                  <div><strong>🔑 Answer / Solution:</strong> ${q.answer ? q.answer.replace(/\n/g, '<br>') : '—'}</div>
+                  ${q.rubric ? `<div class="text-[10px] text-emerald-800/80 italic border-t border-emerald-200/60 pt-1"><strong>Evaluation Rubric:</strong> ${q.rubric}</div>` : ''}
+                </div>
+              ` : ''}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  // Section B
+  if (test.tamilSection) {
+    html += `
+      <div class="space-y-2.5 pt-2">
+        <div class="flex items-center justify-between border-b border-slate-200 pb-1.5">
+          <h5 class="text-xs font-bold text-blue-800 uppercase tracking-wide flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+            <span>SECTION B: ${test.sub2Name}</span>
+          </h5>
+          <span class="text-[10px] font-bold bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full border border-blue-200">
+            ${test.tamilSection.marks} Marks
+          </span>
+        </div>
+        <div class="space-y-2">
+          ${(test.tamilSection.questions || []).map(q => `
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5 text-xs">
+              <div class="flex items-start justify-between gap-2">
+                <span class="font-bold text-slate-800 leading-snug"><span class="text-blue-700 font-extrabold">${q.qNum}.</span> ${q.question}</span>
+                <span class="shrink-0 text-[10px] font-bold text-slate-500 bg-white border border-slate-200 px-1.5 py-0.5 rounded">[${q.marks}M]</span>
+              </div>
+              ${currentHubShowKey ? `
+                <div class="p-2.5 rounded-lg bg-blue-50 border border-blue-200 text-[11px] space-y-1 text-blue-950 mt-1">
+                  <div><strong>🔑 Answer / Solution:</strong> ${q.answer ? q.answer.replace(/\n/g, '<br>') : '—'}</div>
+                  ${q.rubric ? `<div class="text-[10px] text-blue-800/80 italic border-t border-blue-200/60 pt-1"><strong>Evaluation Rubric:</strong> ${q.rubric}</div>` : ''}
+                </div>
+              ` : ''}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  preview.innerHTML = html;
 }
 
 // ==========================================================================
