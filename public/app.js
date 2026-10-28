@@ -63,8 +63,18 @@ function toggleDesktopMode() {
 // ================= BILINGUAL TRANSLATION DICTIONARY =================
 const UI_I18N = {
   en: {
-    // Nav tabs
-    nav_home: 'Home',
+    // 5 Core Pillars Nav
+    nav_home: 'Tasks',
+    nav_tasks: 'Tasks',
+    nav_tasks_short: 'Tasks',
+    nav_textbook: 'Textbook',
+    nav_textbook_short: 'Textbook',
+    nav_modelqa: 'Model Q&A',
+    nav_modelqa_short: 'Model Q&A',
+    nav_performance: 'Performance',
+    nav_performance_short: 'Scores',
+    nav_focus: 'Focus Areas',
+    nav_focus_short: 'Focus',
     nav_schedule: 'Schedule',
     nav_syllabus: 'Syllabus',
     nav_timer: 'Focus Timer',
@@ -78,13 +88,13 @@ const UI_I18N = {
     night_test_pill: 'Night Test: 30 Marks',
 
     // Today status
-    today_tag: 'TODAY: 27 Oct 2026',
-    day_zero_badge: 'Day 0 / 16',
-    today_head: 'Day 0: System Orientation & Module Understanding',
-    today_desc: 'Today is dedicated to mastering the app workflow and the 2-subject daily rotation method. <strong>No night test tonight.</strong> Review tomorrow portions and practice sample questions below to prepare!',
+    today_tag: 'TODAY: 28 Oct 2026',
+    day_zero_badge: 'Day 1 / 16',
+    today_head: 'Day 1: Science (Acids, Bases & Salts) + Tamil (Unit 5)',
+    today_desc: 'Today is Day 1 of your 16-Day Revision Sprint. Focus on understanding the core concepts and practice sample questions. Night test tonight at 8:30 PM (30 Marks)!',
 
     // Tomorrow task
-    tomorrow_task_badge: "TOMORROW'S TASK (28 Oct)",
+    tomorrow_task_badge: "TOMORROW'S TASK: Day 2 (29 Oct)",
     sub1_label: '🔬 Science (Chemistry)',
     sub1_ch: 'Ch 2: Acids, Bases and Salts',
     sub1_topics: 'pH scale, Chlor-alkali process, Plaster of Paris, Bleaching powder & Acid-Metal reactions.',
@@ -101,7 +111,7 @@ const UI_I18N = {
     sample_practice_title: "Tomorrow's Sample Practice Questions (6 Questions & Solutions)",
 
     // Night Test Blueprint
-    night_test_head: 'Day 1 Night Assessment (Tomorrow Night)',
+    night_test_head: 'Day 1 Night Assessment (Tonight 8:30 PM)',
     night_test_time: '<strong>Timing:</strong> 8:30 PM – 9:15 PM • <strong>Portions:</strong> Science 15 Marks + Tamil 15 Marks.',
     night_test_instructions: 'Write on rough notebook with full steps. Submit immediately for AI initial review and Mama\'s confirmed grading!',
     mama_vault_action_btn: "🔐 Mama: Open 16-Day Secret Night Test Vault (PIN: 9677)",
@@ -128,8 +138,18 @@ const UI_I18N = {
     print_paper_btn: '🖨️ Print Test Paper'
   },
   ta: {
-    // Nav tabs
-    nav_home: 'முகப்பு',
+    // 5 Core Pillars Nav
+    nav_home: 'பணிகள்',
+    nav_tasks: 'பணிகள்',
+    nav_tasks_short: 'பணிகள்',
+    nav_textbook: 'பாடப்புத்தகம்',
+    nav_textbook_short: 'புத்தகம்',
+    nav_modelqa: 'மாதிரி வினா-விடை',
+    nav_modelqa_short: 'வினா-விடை',
+    nav_performance: 'செயல்திறன்',
+    nav_performance_short: 'மதிப்பெண்',
+    nav_focus: 'கவனப் பகுதிகள்',
+    nav_focus_short: 'கவனம்',
     nav_schedule: 'அட்டவணை',
     nav_syllabus: 'பாடத்திட்டம்',
     nav_timer: 'கவன டைமர்',
@@ -143,13 +163,13 @@ const UI_I18N = {
     night_test_pill: 'இரவுத் தேர்வு: 30 மதிப்பெண்',
 
     // Today status
-    today_tag: 'இன்று: 27 அக்டோபர் 2026',
-    day_zero_badge: 'நாள் 0 / 16',
-    today_head: 'நாள் 0: ஆப் & படிப்பு முறை அறிமுகம்',
-    today_desc: 'இன்று ஆப் மற்றும் 2-சப்ஜெக்ட் சுழற்சி படிப்பு முறையை முழுமையாகப் புரிந்து கொள்ளும் நாள். <strong>இன்று இரவு தேர்வு இல்லை.</strong> நாளைக்கான பாடங்கள் மற்றும் மாதிரி வினாக்களை கீழே படித்து தயாராகுங்கள்!',
+    today_tag: 'இன்று: 28 அக்டோபர் 2026',
+    day_zero_badge: 'நாள் 1 / 16',
+    today_head: 'நாள் 1: அறிவியல் (அமிலங்கள் & காரங்கள்) + தமிழ் (இயல் 5)',
+    today_desc: 'இன்று உன் 16-நாள் ரிவிஷன் ஸ்பிரிண்டின் முதல் நாள். முக்கிய கருத்துக்களைப் படித்து மாதிரி வினாக்களைப் பயிற்சி செய். இன்று இரவு 8:30 PM மாதிரித் தேர்வு (30 மதிப்பெண்)!',
 
     // Tomorrow task
-    tomorrow_task_badge: 'நாளைக்கான பணி (28 அக்டோபர்)',
+    tomorrow_task_badge: 'நாளைக்கான பணி: நாள் 2 (29 அக்டோபர்)',
     sub1_label: '🔬 அறிவியல் (வேதியியல்)',
     sub1_ch: 'அத்தியாயம் 2: அமிலங்கள், காரங்கள் மற்றும் உப்புகள்',
     sub1_topics: 'pH அளவீடு, குளோரோ-கார முறை, பிளாஸ்டர் ஆஃப் பாரிஸ், சலவைத்தூள் & அமில-உலோக வினைகள்.',
@@ -166,7 +186,7 @@ const UI_I18N = {
     sample_practice_title: 'நாளைக்கான மாதிரி வினாக்கள் (6 மாதிரி வினாக்கள் & விடைகள்)',
 
     // Night Test Blueprint
-    night_test_head: 'நாள் 1 இரவுத் தேர்வு (நாளை இரவு)',
+    night_test_head: 'நாள் 1 இரவுத் தேர்வு (இன்று இரவு 8:30 PM)',
     night_test_time: '<strong>நேரம்:</strong> இரவு 8:30 PM முதல் 9:15 PM வரை • <strong>பிரிவு:</strong> அறிவியல் 15 மதிப்பெண் + தமிழ் 15 மதிப்பெண்.',
     night_test_instructions: 'Rough நோட்டில் சுயமாக எழுத வேண்டும். தேர்வு முடிந்தவுடன் போட்டோ எடுத்து அப்லோட் செய். AI முதல்கட்ட திருத்தமும் மாமாவின் இறுதி சரிபார்ப்பும் வழங்கப்படும்!',
     mama_vault_action_btn: '🔐 மாமா: 16-நாள் ரகசிய தேர்வு பெட்டகம் (PIN: 9677)',
@@ -534,17 +554,28 @@ function speakTamilFeedback(text) {
 function switchTab(tabId) {
   currentTab = tabId;
 
-  const views = ['home', 'schedule', 'syllabus', 'timer', 'family', 'formulas', 'scores', 'written', 'testpapers'];
+  const views = ['home', 'textbook', 'model-qa', 'performance', 'focus', 'schedule', 'syllabus', 'timer', 'family', 'formulas', 'scores', 'written', 'testpapers'];
+  const targetView = tabId === 'modelqa' ? 'model-qa' : tabId;
+
   views.forEach(v => {
     const el = document.getElementById(`view-${v}`);
     if (el) {
-      if (v === tabId) el.classList.remove('hidden');
+      if (v === targetView) el.classList.remove('hidden');
       else el.classList.add('hidden');
     }
   });
 
-  ['home', 'schedule', 'syllabus', 'timer', 'family'].forEach(b => {
-    const isAct = b === tabId || (tabId === 'scores' && b === 'family') || (tabId === 'formulas' && b === 'syllabus') || (tabId === 'written' && b === 'syllabus') || (tabId === 'testpapers' && b === 'schedule');
+  // Primary 5 Pillars Nav Elements
+  const primaryTabs = ['home', 'textbook', 'modelqa', 'performance', 'focus'];
+  primaryTabs.forEach(b => {
+    const isAct = b === tabId ||
+      (tabId === 'scores' && b === 'performance') ||
+      (tabId === 'syllabus' && b === 'textbook') ||
+      (tabId === 'formulas' && b === 'textbook') ||
+      (tabId === 'written' && b === 'home') ||
+      (tabId === 'schedule' && b === 'home') ||
+      (tabId === 'testpapers' && b === 'modelqa');
+
     const btn = document.getElementById(`nav-btn-${b}`);
     if (btn) {
       if (isAct) {
@@ -556,9 +587,21 @@ function switchTab(tabId) {
     const dBtn = document.getElementById(`desk-nav-${b}`);
     if (dBtn) {
       if (isAct) {
-        dBtn.className = 'desk-nav-btn px-4 py-2 rounded-xl text-white bg-emerald-600 transition flex items-center gap-1.5 shadow-sm font-bold';
+        dBtn.className = 'desk-nav-btn px-3.5 py-2 rounded-xl text-white bg-emerald-600 transition flex items-center gap-1.5 shadow-sm font-bold';
       } else {
-        dBtn.className = 'desk-nav-btn px-4 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-700/50 transition flex items-center gap-1.5 font-bold';
+        dBtn.className = 'desk-nav-btn px-3.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-700/50 transition flex items-center gap-1.5 font-bold';
+      }
+    }
+  });
+
+  // Legacy Desktop Nav fallback
+  ['schedule', 'syllabus', 'timer', 'family'].forEach(b => {
+    const dBtn = document.getElementById(`desk-nav-${b}`);
+    if (dBtn) {
+      if (b === tabId) {
+        dBtn.className = 'desk-nav-btn px-3.5 py-2 rounded-xl text-white bg-emerald-600 transition flex items-center gap-1.5 shadow-sm font-bold';
+      } else {
+        dBtn.className = 'desk-nav-btn px-3.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-700/50 transition flex items-center gap-1.5 font-bold';
       }
     }
   });
@@ -566,9 +609,13 @@ function switchTab(tabId) {
   const scroller = document.getElementById('main-scroll-content');
   if (scroller) scroller.scrollTop = 0;
 
+  if (tabId === 'textbook') renderTextbookView();
+  if (tabId === 'modelqa') renderModelQAView();
+  if (tabId === 'performance') renderPerformanceView();
+  if (tabId === 'focus') renderFocusView();
   if (tabId === 'schedule') renderScheduleView();
   if (tabId === 'syllabus') renderSyllabusView();
-  if (tabId === 'scores') renderScoresChart();
+  if (tabId === 'scores') renderPerformanceView();
   if (tabId === 'formulas') renderFormulasView();
   if (tabId === 'written') renderWrittenTasksFeed();
   if (tabId === 'testpapers') renderTestPapersFeed();
@@ -624,6 +671,12 @@ function renderAll() {
   renderTestPapersFeed();
   renderFamilyWall();
   renderScoresList();
+
+  // 5 Core Pillars Initial Rendering
+  renderTextbookView();
+  renderModelQAView();
+  renderPerformanceView();
+  renderFocusView();
 }
 
 // Daily Target Card (Home View)
@@ -3110,4 +3163,639 @@ function printMamaVaultPaper() {
 
   printWindow.document.write(content);
   printWindow.document.close();
+}
+
+// ==========================================================================
+// 5 CORE PILLARS IMPLEMENTATION:
+// 1. Tasks (Home / Day 1 & Day 2 Rotation & Night Tests)
+// 2. Textbook (NCERT / Board Books & Chapter PDFs Reader)
+// 3. Model Questions & Answers (CBSE Standard with Rubrics)
+// 4. Performance (Overall, School, Tuition, Home 4-Quadrant Scorecard)
+// 5. Focus Areas (Target Radar: Red Alert, Amber Alert, Green Strengths)
+// ==========================================================================
+
+let currentTextbookSubject = 'science';
+let currentModelQASubject = 'all';
+let currentModelQASearch = '';
+let currentPerformanceFilter = 'all';
+
+// ----- PILLAR 2: TEXTBOOK HUB -----
+function openTextbookSubject(subKey) {
+  currentTextbookSubject = subKey;
+  switchTab('textbook');
+}
+
+function selectTextbookSubject(subKey) {
+  currentTextbookSubject = subKey;
+  renderTextbookView();
+}
+
+function toggleChapterDetails(id) {
+  const el = document.getElementById(id);
+  const icon = document.getElementById(`icon-${id}`);
+  if (el) {
+    el.classList.toggle('hidden');
+    if (icon) {
+      icon.className = el.classList.contains('hidden') ? 'fa-solid fa-chevron-down text-[10px] text-slate-400' : 'fa-solid fa-chevron-up text-[10px] text-slate-400';
+    }
+  }
+}
+
+function renderTextbookView() {
+  const pillsContainer = document.getElementById('textbook-sub-pills');
+  const bannerContainer = document.getElementById('textbook-subject-banner');
+  const shelfContainer = document.getElementById('textbook-chapters-shelf');
+  if (!appState || !appState.textbooks) return;
+
+  const subjects = [
+    { key: 'science', label: '🔬 Science' },
+    { key: 'maths', label: '📐 Mathematics' },
+    { key: 'social_science', label: '🌍 Social Science' },
+    { key: 'english', label: '📖 English' },
+    { key: 'tamil', label: '🪶 Tamil' },
+    { key: 'ai', label: '🤖 AI (417)' }
+  ];
+
+  if (pillsContainer) {
+    pillsContainer.innerHTML = subjects.map(s => {
+      const isAct = s.key === currentTextbookSubject;
+      return `
+        <button onclick="selectTextbookSubject('${s.key}')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition flex items-center gap-1.5 ${isAct ? 'bg-blue-600 text-white shadow-sm' : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-100'}">
+          <span>${s.label}</span>
+        </button>
+      `;
+    }).join('');
+  }
+
+  const currentBook = appState.textbooks[currentTextbookSubject];
+  if (!currentBook) return;
+
+  if (bannerContainer) {
+    const totalCh = (currentBook.chapters || []).length;
+    const rev1Ch = (currentBook.chapters || []).filter(c => c.rev1Portion).length;
+    bannerContainer.innerHTML = `
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded-md bg-blue-500/20 text-blue-300 text-[10px] font-extrabold border border-blue-400/30">CBSE Code ${currentBook.code || ''}</span>
+            <span class="text-xs text-slate-300 font-semibold">${totalCh} Chapters (${rev1Ch} Rev-1 Portion)</span>
+          </div>
+          <h2 class="text-base font-extrabold text-white mt-1">${currentBook.title}</h2>
+          <p class="text-[11px] text-slate-300 mt-0.5">Official NCERT / Board Digital Textbook & Chapter Downloads</p>
+        </div>
+        <div class="flex items-center gap-2">
+          ${currentBook.pdfOnline ? `
+            <a href="${currentBook.pdfOnline}" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs px-3.5 py-2 rounded-xl flex items-center gap-1.5 shadow-md transition">
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i> NCERT Online Portal
+            </a>
+          ` : ''}
+        </div>
+      </div>
+    `;
+  }
+
+  if (shelfContainer) {
+    if (!currentBook.chapters || currentBook.chapters.length === 0) {
+      shelfContainer.innerHTML = '<div class="p-6 text-center text-xs text-slate-400 bg-white rounded-2xl border border-slate-200">No chapters mapped yet.</div>';
+      return;
+    }
+
+    shelfContainer.innerHTML = currentBook.chapters.map(ch => {
+      const hasPdf = !!ch.pdf;
+      const formulasHtml = (ch.keyFormulas && ch.keyFormulas.length > 0)
+        ? `<div class="mt-2 pt-2 border-t border-slate-100">
+             <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wide">Key Points & Formulas:</span>
+             <ul class="mt-1 space-y-1 text-[11px] text-slate-700">
+               ${ch.keyFormulas.map(f => `<li class="flex items-start gap-1.5"><span class="text-blue-500 font-bold">•</span> <span>${f}</span></li>`).join('')}
+             </ul>
+           </div>`
+        : '';
+
+      return `
+        <div class="bg-white border ${ch.rev1Portion ? 'border-amber-300 ring-1 ring-amber-200/50' : 'border-slate-200'} rounded-2xl p-4 space-y-3 shadow-card hover:shadow-md transition">
+          <div class="flex items-start justify-between gap-2">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="w-6 h-6 rounded-lg bg-blue-50 text-blue-700 font-extrabold text-xs flex items-center justify-center">
+                  ${ch.chNum}
+                </span>
+                <h4 class="text-xs sm:text-sm font-extrabold text-slate-900">${ch.name}</h4>
+                ${ch.rev1Portion ? '<span class="px-2 py-0.5 rounded-full text-[9px] font-extrabold bg-amber-100 text-amber-800 border border-amber-300">⚡ SRM Rev-1 Portion</span>' : ''}
+              </div>
+              <div class="flex items-center gap-3 text-[10px] text-slate-500 font-medium pt-0.5">
+                ${ch.ncertCode ? `<span><i class="fa-solid fa-barcode text-slate-400"></i> NCERT Code: <strong>${ch.ncertCode}</strong></span>` : ''}
+                ${ch.pages ? `<span><i class="fa-regular fa-file-lines text-slate-400"></i> ${ch.pages} Pages</span>` : ''}
+              </div>
+            </div>
+
+            <!-- PDF Download / View Button -->
+            <div class="flex items-center gap-1.5 shrink-0">
+              ${hasPdf ? `
+                <a href="${ch.pdf}" target="_blank" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-extrabold text-xs px-3.5 py-2 rounded-xl flex items-center gap-1.5 shadow-sm transition">
+                  <i class="fa-solid fa-file-pdf text-xs"></i> <span>Open PDF</span>
+                </a>
+              ` : ''}
+              ${ch.ncertOnline ? `
+                <a href="${ch.ncertOnline}" target="_blank" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs px-2.5 py-2 rounded-xl flex items-center gap-1 transition" title="Read online on NCERT website">
+                  <i class="fa-solid fa-globe text-[11px]"></i>
+                </a>
+              ` : ''}
+            </div>
+          </div>
+
+          <!-- Summary & Key Formulas Collapsible -->
+          ${ch.summary ? `
+            <div class="bg-slate-50 border border-slate-200/70 rounded-xl p-3 text-xs text-slate-700 space-y-1">
+              <div class="flex items-center justify-between cursor-pointer" onclick="toggleChapterDetails('details-${ch.id}')">
+                <span class="font-bold text-slate-800 flex items-center gap-1 text-[11px]">
+                  <i class="fa-solid fa-lightbulb text-amber-500"></i> Chapter Summary & Key Concepts
+                </span>
+                <i class="fa-solid fa-chevron-down text-[10px] text-slate-400" id="icon-details-${ch.id}"></i>
+              </div>
+              <div id="details-${ch.id}" class="hidden pt-1.5 space-y-1.5 text-[11px]">
+                <p class="text-slate-600 leading-relaxed">${ch.summary}</p>
+                ${formulasHtml}
+              </div>
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }).join('');
+  }
+}
+
+// ----- PILLAR 3: MODEL QUESTIONS & ANSWERS -----
+function selectModelQASubject(subKey) {
+  currentModelQASubject = subKey;
+  renderModelQAView();
+}
+
+function filterModelQA(query) {
+  currentModelQASearch = (query || '').toLowerCase().trim();
+  renderModelQAView();
+}
+
+function renderModelQAView() {
+  const pillsContainer = document.getElementById('modelqa-sub-pills');
+  const cardsContainer = document.getElementById('modelqa-cards-container');
+  if (!appState || !appState.modelQA) return;
+
+  const subjects = [
+    { key: 'all', label: '🌟 All Questions' },
+    { key: 'science', label: '🔬 Science' },
+    { key: 'maths', label: '📐 Maths' },
+    { key: 'social_science', label: '🌍 Social Sci' },
+    { key: 'english', label: '📖 English' },
+    { key: 'tamil', label: '🪶 Tamil' },
+    { key: 'ai', label: '🤖 AI' }
+  ];
+
+  if (pillsContainer) {
+    pillsContainer.innerHTML = subjects.map(s => {
+      const isAct = s.key === currentModelQASubject;
+      return `
+        <button onclick="selectModelQASubject('${s.key}')" class="px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition ${isAct ? 'bg-purple-600 text-white shadow-sm' : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-100'}">
+          ${s.label}
+        </button>
+      `;
+    }).join('');
+  }
+
+  const allQAs = appState.modelQA || [];
+  const filtered = allQAs.filter(q => {
+    if (currentModelQASubject !== 'all' && q.subject !== currentModelQASubject) return false;
+    if (currentModelQASearch) {
+      const matchQ = q.question.toLowerCase().includes(currentModelQASearch);
+      const matchA = q.answer.toLowerCase().includes(currentModelQASearch);
+      const matchT = (q.topic || '').toLowerCase().includes(currentModelQASearch);
+      const matchC = (q.chapter || '').toLowerCase().includes(currentModelQASearch);
+      return matchQ || matchA || matchT || matchC;
+    }
+    return true;
+  });
+
+  if (cardsContainer) {
+    if (filtered.length === 0) {
+      cardsContainer.innerHTML = '<div class="p-8 text-center text-xs text-slate-400 bg-white rounded-2xl border border-slate-200">No model questions match your filter.</div>';
+      return;
+    }
+
+    cardsContainer.innerHTML = filtered.map(q => {
+      const marksColor = q.marks >= 5 ? 'bg-rose-100 text-rose-800 border-rose-200' : (q.marks >= 3 ? 'bg-amber-100 text-amber-800 border-amber-200' : 'bg-blue-100 text-blue-800 border-blue-200');
+      const safeAnswer = (q.answer || '').replace(/\n/g, '<br>');
+
+      return `
+        <div class="bg-white border border-slate-200 rounded-2xl p-4 space-y-3 shadow-card hover:shadow-md transition">
+          <div class="flex items-center justify-between gap-2 flex-wrap">
+            <div class="flex items-center gap-1.5 flex-wrap">
+              <span class="px-2.5 py-0.5 rounded-lg text-[10px] font-extrabold bg-slate-100 text-slate-800 border border-slate-200">${q.subjectTitle || q.subject}</span>
+              <span class="text-[11px] font-bold text-slate-600">${q.chapter}</span>
+              ${q.topic ? `<span class="text-[10px] text-slate-400">• ${q.topic}</span>` : ''}
+            </div>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold border ${marksColor}">
+              ${q.marks} Marks
+            </span>
+          </div>
+
+          <div class="pt-0.5">
+            <p class="text-xs sm:text-sm font-bold text-slate-900 leading-relaxed">${q.question}</p>
+          </div>
+
+          <!-- Answer & Rubric Toggle -->
+          <div class="pt-1">
+            <button onclick="toggleChapterDetails('ans-${q.id}')" class="w-full bg-slate-50 hover:bg-slate-100 border border-slate-200 text-purple-700 font-extrabold text-xs px-3 py-2 rounded-xl flex items-center justify-between transition">
+              <span class="flex items-center gap-1.5">
+                <i class="fa-solid fa-circle-check text-purple-600"></i> View Model Answer & CBSE Rubric
+              </span>
+              <i class="fa-solid fa-chevron-down text-[10px]" id="icon-ans-${q.id}"></i>
+            </button>
+
+            <div id="ans-${q.id}" class="hidden mt-2 p-3.5 rounded-xl bg-purple-50/50 border border-purple-200/60 space-y-3 text-xs">
+              <div class="space-y-1">
+                <span class="text-[10px] font-extrabold text-purple-900 uppercase tracking-wide block">Step-by-Step Model Answer:</span>
+                <div class="text-slate-800 leading-relaxed font-sans">${safeAnswer}</div>
+              </div>
+
+              ${q.rubric ? `
+                <div class="bg-white/80 border border-purple-200 rounded-lg p-2.5 space-y-1">
+                  <span class="text-[10px] font-extrabold text-purple-900 flex items-center gap-1">
+                    <i class="fa-solid fa-scale-balanced text-purple-600"></i> CBSE Marking Scheme Rubric:
+                  </span>
+                  <p class="text-[11px] text-slate-600">${q.rubric}</p>
+                </div>
+              ` : ''}
+
+              ${q.importantTip ? `
+                <div class="bg-amber-50 border border-amber-200 rounded-lg p-2.5 space-y-0.5">
+                  <span class="text-[10px] font-extrabold text-amber-900 flex items-center gap-1">
+                    <i class="fa-solid fa-lightbulb text-amber-600"></i> Mama's Scoring Tip:
+                  </span>
+                  <p class="text-[11px] text-amber-900">${q.importantTip}</p>
+                </div>
+              ` : ''}
+
+              <div class="flex justify-end pt-1">
+                <button onclick="speakModelAnswer('${q.id}')" class="bg-purple-600 hover:bg-purple-700 text-white font-bold text-[10px] px-3 py-1 rounded-lg flex items-center gap-1 transition">
+                  <i class="fa-solid fa-volume-high text-[10px]"></i> Listen Answer Audio
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+}
+
+function speakModelAnswer(qid) {
+  const q = (appState.modelQA || []).find(item => item.id === qid);
+  if (!q) return;
+  const textToRead = `${q.question}. Answer: ${q.answer}`;
+  if ('speechSynthesis' in window) {
+    try {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(textToRead);
+      utterance.lang = q.subject === 'tamil' ? 'ta-IN' : 'en-IN';
+      utterance.rate = 0.95;
+      window.speechSynthesis.speak(utterance);
+      showToast('🔊 Playing Model Answer Audio...');
+    } catch (e) {
+      showToast('Speech synthesis error');
+    }
+  }
+}
+
+// ----- PILLAR 4: 4-QUADRANT PERFORMANCE SCORECARD -----
+function setPerformanceFilter(filter) {
+  currentPerformanceFilter = filter;
+  renderPerformanceView();
+}
+
+function openAddScoreModal() {
+  openModal('addScoreModal');
+}
+
+function renderPerformanceView() {
+  const gridContainer = document.getElementById('performance-quadrants-grid');
+  const tabsContainer = document.getElementById('performance-filter-tabs');
+  const listContainer = document.getElementById('performance-tests-list');
+  if (!appState) return;
+
+  const perf = appState.performanceScorecard || {
+    overall: { aggregate: '86.4%', testsTaken: 24, syllabusCovered: '88%', status: 'On Track for Distinction' },
+    school: { name: 'SRM Public School', quarterly: '82.5%', midTerm: '86.0%', targetRev1: '92.0%', trend: '+3.5% Improvement' },
+    tution: { name: 'Weekly Coaching', sundayTestAvg: '88.0%', lastSundayTest: '23/25 (92%)', tutorFeedback: 'Good speed and arithmetic accuracy.' },
+    home: { name: "Mama's Daily Assessments", nightTestAvg: '85.2%', streak: '14 Days Active', evaluationRule: '30 Marks nightly written test' }
+  };
+
+  if (gridContainer) {
+    gridContainer.innerHTML = `
+      <!-- Quadrant 1: Overall -->
+      <div class="bg-gradient-to-br from-emerald-950 via-slate-900 to-teal-950 text-white rounded-2xl p-4 space-y-3 border border-emerald-800/40 shadow-card">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
+            <i class="fa-solid fa-trophy"></i> 1. Overall Performance
+          </span>
+          <span class="text-[10px] font-extrabold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-full">
+            ${perf.overall.status}
+          </span>
+        </div>
+        <div class="flex items-baseline justify-between pt-1">
+          <div>
+            <span class="text-3xl font-black text-white">${perf.overall.aggregate}</span>
+            <span class="text-[11px] text-slate-300 block font-medium">Cumulative Aggregate</span>
+          </div>
+          <div class="text-right text-[11px] text-slate-300 space-y-0.5">
+            <div>Tests Taken: <strong class="text-white">${perf.overall.testsTaken} Tests</strong></div>
+            <div>Syllabus Covered: <strong class="text-emerald-400">${perf.overall.syllabusCovered}</strong></div>
+          </div>
+        </div>
+        <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+          <div class="bg-gradient-to-r from-emerald-500 to-teal-400 h-2 rounded-full" style="width: ${perf.overall.aggregate}"></div>
+        </div>
+      </div>
+
+      <!-- Quadrant 2: School -->
+      <div class="bg-white rounded-2xl p-4 space-y-3 border border-blue-200 shadow-card">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-extrabold uppercase tracking-wider text-blue-700 flex items-center gap-1.5">
+            <i class="fa-solid fa-school"></i> 2. School Tests (SRM)
+          </span>
+          <span class="text-[10px] font-extrabold bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">
+            ${perf.school.trend}
+          </span>
+        </div>
+        <div class="grid grid-cols-3 gap-2 pt-1 text-center">
+          <div class="bg-blue-50/70 p-2 rounded-xl">
+            <span class="text-[10px] text-slate-500 font-bold block">Quarterly</span>
+            <span class="text-sm font-black text-blue-900">${perf.school.quarterly}</span>
+          </div>
+          <div class="bg-blue-50/70 p-2 rounded-xl">
+            <span class="text-[10px] text-slate-500 font-bold block">Mid-Term</span>
+            <span class="text-sm font-black text-blue-900">${perf.school.midTerm}</span>
+          </div>
+          <div class="bg-emerald-50 p-2 rounded-xl border border-emerald-200">
+            <span class="text-[10px] text-emerald-700 font-bold block">Rev-1 Target</span>
+            <span class="text-sm font-black text-emerald-800">${perf.school.targetRev1}</span>
+          </div>
+        </div>
+        <p class="text-[10px] text-slate-500 font-medium">SRM Public School Class 10 Board Standards</p>
+      </div>
+
+      <!-- Quadrant 3: Tuition -->
+      <div class="bg-white rounded-2xl p-4 space-y-3 border border-purple-200 shadow-card">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-extrabold uppercase tracking-wider text-purple-700 flex items-center gap-1.5">
+            <i class="fa-solid fa-graduation-cap"></i> 3. Tuition Tests
+          </span>
+          <span class="text-[10px] font-extrabold bg-purple-100 text-purple-800 px-2 py-0.5 rounded-full">
+            Avg: ${perf.tution.sundayTestAvg}
+          </span>
+        </div>
+        <div class="bg-purple-50/70 p-2.5 rounded-xl space-y-1">
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-[11px] font-bold text-slate-700">Latest Sunday Test:</span>
+            <span class="font-extrabold text-purple-900">${perf.tution.lastSundayTest}</span>
+          </div>
+          <p class="text-[10px] text-slate-600 italic">"${perf.tution.tutorFeedback}"</p>
+        </div>
+        <p class="text-[10px] text-slate-500 font-medium">Weekly coaching weekend assessment benchmarks</p>
+      </div>
+
+      <!-- Quadrant 4: Home -->
+      <div class="bg-white rounded-2xl p-4 space-y-3 border border-amber-200 shadow-card">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-extrabold uppercase tracking-wider text-amber-700 flex items-center gap-1.5">
+            <i class="fa-solid fa-house-chimney"></i> 4. Home Night Tests (Mama)
+          </span>
+          <span class="text-[10px] font-extrabold bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full">
+            ${perf.home.streak}
+          </span>
+        </div>
+        <div class="bg-amber-50/70 p-2.5 rounded-xl space-y-1">
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-[11px] font-bold text-slate-700">Night Test Average:</span>
+            <span class="font-black text-amber-900 text-sm">${perf.home.nightTestAvg}</span>
+          </div>
+          <p class="text-[10px] text-slate-600">${perf.home.evaluationRule}</p>
+        </div>
+        <p class="text-[10px] text-slate-500 font-medium">Daily 8:30 PM written assessment verified on rough sheets</p>
+      </div>
+    `;
+  }
+
+  // Filter Tabs
+  if (tabsContainer) {
+    const tabs = [
+      { key: 'all', label: 'All Tests' },
+      { key: 'school', label: '🏫 School' },
+      { key: 'tution', label: '📚 Tuition' },
+      { key: 'home', label: '🏠 Home' }
+    ];
+    tabsContainer.innerHTML = tabs.map(t => {
+      const isAct = t.key === currentPerformanceFilter;
+      return `
+        <button onclick="setPerformanceFilter('${t.key}')" class="px-2.5 py-1 rounded-lg text-[10px] font-bold transition ${isAct ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}">
+          ${t.label}
+        </button>
+      `;
+    }).join('');
+  }
+
+  // Tests List
+  if (listContainer) {
+    const tests = appState.tests || [];
+    const filtered = tests.filter(t => {
+      if (currentPerformanceFilter === 'all') return true;
+      const cat = t.category || (t.title.toLowerCase().includes('school') || t.title.toLowerCase().includes('quarterly') || t.title.toLowerCase().includes('mid') ? 'school' : (t.title.toLowerCase().includes('tuition') || t.title.toLowerCase().includes('sunday') ? 'tution' : 'home'));
+      return cat === currentPerformanceFilter;
+    });
+
+    if (filtered.length === 0) {
+      listContainer.innerHTML = '<div class="p-6 text-center text-xs text-slate-400">No test records under this category. Click "+ Record Marks" to add one!</div>';
+      return;
+    }
+
+    listContainer.innerHTML = filtered.map(t => {
+      const pct = Math.round((t.marksObtained / t.totalMarks) * 100);
+      const cat = t.category || (t.title.toLowerCase().includes('school') || t.title.toLowerCase().includes('quarterly') || t.title.toLowerCase().includes('mid') ? 'school' : (t.title.toLowerCase().includes('tuition') || t.title.toLowerCase().includes('sunday') ? 'tution' : 'home'));
+      const catPill = cat === 'school' ? '<span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-blue-100 text-blue-800">🏫 School</span>' : (cat === 'tution' ? '<span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-purple-100 text-purple-800">📚 Tuition</span>' : '<span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-amber-100 text-amber-800">🏠 Home</span>');
+
+      return `
+        <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-3 flex items-center justify-between gap-3 hover:bg-white transition">
+          <div class="space-y-1">
+            <div class="flex items-center gap-2">
+              ${catPill}
+              <span class="text-xs font-bold text-slate-900">${t.title}</span>
+            </div>
+            <div class="flex items-center gap-2 text-[10px] text-slate-500">
+              <span><i class="fa-regular fa-calendar"></i> ${t.date}</span>
+              <span>•</span>
+              <span class="font-semibold text-slate-700">${t.subject}</span>
+              ${t.remarks ? `<span>• <em>${t.remarks}</em></span>` : ''}
+            </div>
+          </div>
+          <div class="text-right shrink-0">
+            <div class="text-xs font-extrabold text-slate-900">${t.marksObtained} / ${t.totalMarks}</div>
+            <span class="text-[10px] font-extrabold ${pct >= 90 ? 'text-emerald-600' : (pct >= 80 ? 'text-blue-600' : 'text-amber-600')}">
+              ${pct}%
+            </span>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+}
+
+async function submitNewScore() {
+  const cat = document.getElementById('newScoreCategory')?.value || 'home';
+  const sub = document.getElementById('newScoreSubject')?.value || 'Mathematics';
+  const title = document.getElementById('newScoreTitle')?.value?.trim();
+  const obtained = parseFloat(document.getElementById('newScoreObtained')?.value);
+  const total = parseFloat(document.getElementById('newScoreTotal')?.value);
+  const remarks = document.getElementById('newScoreRemarks')?.value?.trim() || '';
+
+  if (!title) {
+    showToast('Please enter a test title or chapter name!', false);
+    return;
+  }
+  if (isNaN(obtained) || isNaN(total) || obtained < 0 || total <= 0 || obtained > total) {
+    showToast('Please enter valid obtained and total marks!', false);
+    return;
+  }
+
+  const payload = {
+    category: cat,
+    subject: sub,
+    title: title,
+    marksObtained: obtained,
+    totalMarks: total,
+    remarks: remarks,
+    date: new Date().toISOString().slice(0, 10)
+  };
+
+  try {
+    const res = await fetch('/api/test', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...getAuthHeaders()
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      if (!appState.tests) appState.tests = [];
+      appState.tests.unshift(data.test || payload);
+      closeModal('addScoreModal');
+      showToast('🎉 Test marks recorded successfully!');
+      renderPerformanceView();
+      return;
+    }
+  } catch (e) {}
+
+  // Fallback if offline
+  if (!appState.tests) appState.tests = [];
+  appState.tests.unshift({ id: 't-' + Date.now(), ...payload });
+  localStorage.setItem('pranav_offline_data', JSON.stringify(appState));
+  closeModal('addScoreModal');
+  showToast('🎉 Test marks saved locally!');
+  renderPerformanceView();
+}
+
+// ----- PILLAR 5: FOCUS AREAS & RED ALERT RADAR -----
+function startFocusPomodoro(mins = 25) {
+  switchTab('timer');
+  if (typeof setTimerDuration === 'function') {
+    setTimerDuration(mins);
+  }
+  if (typeof toggleTimer === 'function' && !timerRunning) {
+    toggleTimer();
+  }
+  showToast(`⏱️ Started ${mins}-minute focused study sprint!`);
+}
+
+function renderFocusView() {
+  const redList = document.getElementById('focus-red-list');
+  const amberList = document.getElementById('focus-amber-list');
+  const greenList = document.getElementById('focus-green-list');
+  if (!appState || !appState.focusAreas) return;
+
+  const fa = appState.focusAreas;
+
+  if (redList && fa.redAlert) {
+    redList.innerHTML = fa.redAlert.map(item => `
+      <div class="bg-rose-50/70 border-2 border-rose-300 rounded-2xl p-4 space-y-3 shadow-card">
+        <div class="flex items-start justify-between gap-2">
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="px-2 py-0.5 rounded-lg text-[10px] font-extrabold bg-rose-600 text-white">
+                CRITICAL
+              </span>
+              <span class="text-xs font-black text-rose-950">${item.subject} • ${item.chapter}</span>
+            </div>
+            <h4 class="text-xs sm:text-sm font-extrabold text-slate-900 mt-1">${item.topic}</h4>
+          </div>
+          <span class="px-2.5 py-1 rounded-full text-xs font-black bg-white text-rose-700 border border-rose-300 shadow-sm shrink-0">
+            ${item.currentScore}
+          </span>
+        </div>
+
+        <div class="bg-white/90 border border-rose-200/80 rounded-xl p-3 space-y-1 text-xs">
+          <div class="text-slate-600">
+            <strong class="text-rose-900">Why He Struggles:</strong> ${item.reason}
+          </div>
+          <div class="text-slate-800 pt-1">
+            <strong class="text-emerald-800">Mama's Action Plan:</strong> ${item.action}
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2 pt-1">
+          <button onclick="openTextbookSubject('${item.actionSubject || 'maths'}')" class="bg-rose-600 hover:bg-rose-700 text-white font-extrabold text-[11px] px-3.5 py-1.5 rounded-xl flex items-center gap-1.5 shadow-sm transition">
+            <i class="fa-solid fa-book-open text-[10px]"></i> Read Chapter in Textbook
+          </button>
+          <button onclick="selectModelQASubject('${item.actionSubject || 'maths'}'); switchTab('modelqa');" class="bg-white hover:bg-slate-100 text-rose-800 border border-rose-300 font-bold text-[11px] px-3.5 py-1.5 rounded-xl flex items-center gap-1.5 transition">
+            <i class="fa-solid fa-clipboard-question text-[10px]"></i> Practice Model Q&A
+          </button>
+          <button onclick="startFocusPomodoro(25)" class="bg-slate-900 hover:bg-slate-800 text-white font-bold text-[11px] px-3 py-1.5 rounded-xl flex items-center gap-1.5 transition">
+            <i class="fa-solid fa-stopwatch text-[10px]"></i> 25m Focus Session
+          </button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  if (amberList && fa.amberAlert) {
+    amberList.innerHTML = fa.amberAlert.map(item => `
+      <div class="bg-amber-50/60 border border-amber-300 rounded-2xl p-3.5 space-y-2 shadow-card">
+        <div class="flex items-start justify-between gap-2">
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="px-2 py-0.5 rounded-md text-[9px] font-extrabold bg-amber-500 text-white">REVISION</span>
+              <span class="text-xs font-bold text-amber-950">${item.subject} • ${item.chapter}</span>
+            </div>
+            <h4 class="text-xs font-extrabold text-slate-900 mt-0.5">${item.topic}</h4>
+          </div>
+          <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-white text-amber-800 border border-amber-300 shrink-0">
+            ${item.currentScore}
+          </span>
+        </div>
+        <p class="text-[11px] text-slate-600 leading-relaxed">${item.action}</p>
+      </div>
+    `).join('');
+  }
+
+  if (greenList && fa.greenStrengths) {
+    greenList.innerHTML = fa.greenStrengths.map(item => `
+      <div class="bg-emerald-50/70 border border-emerald-200 rounded-xl p-3 space-y-1">
+        <div class="flex items-center justify-between">
+          <span class="text-[10px] font-bold text-emerald-800">${item.subject}</span>
+          <i class="fa-solid fa-circle-check text-emerald-600 text-xs"></i>
+        </div>
+        <h5 class="text-xs font-extrabold text-slate-900">${item.topic}</h5>
+        <span class="text-[10px] text-emerald-700 font-semibold block">${item.status}</span>
+      </div>
+    `).join('');
+  }
 }

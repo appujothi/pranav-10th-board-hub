@@ -168,22 +168,22 @@
         </div>
       </div>
 
-      <!-- Desktop Tabs -->
+      <!-- Desktop Tabs (5 Core Pillars) -->
       <div class="flex items-center gap-1.5 bg-slate-800/90 p-1.5 rounded-2xl border border-slate-700/60 text-xs font-bold shadow-inner">
-        <button onclick="switchTab('home')" id="desk-nav-home" class="desk-nav-btn px-4 py-2 rounded-xl text-white bg-emerald-600 transition flex items-center gap-1.5 shadow-sm font-bold">
-          <i class="fa-solid fa-house text-xs"></i> Home
+        <button onclick="switchTab('home')" id="desk-nav-home" class="desk-nav-btn px-3.5 py-2 rounded-xl text-white bg-emerald-600 transition flex items-center gap-1.5 shadow-sm font-bold">
+          <i class="fa-solid fa-list-check text-xs"></i> <span data-i18n="nav_tasks">Tasks</span>
         </button>
-        <button onclick="switchTab('schedule')" id="desk-nav-schedule" class="desk-nav-btn px-4 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-700/50 transition flex items-center gap-1.5 font-bold">
-          <i class="fa-solid fa-calendar-days text-xs"></i> Schedule
+        <button onclick="switchTab('textbook')" id="desk-nav-textbook" class="desk-nav-btn px-3.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-700/50 transition flex items-center gap-1.5 font-bold">
+          <i class="fa-solid fa-book-open text-xs"></i> <span data-i18n="nav_textbook">Textbook</span>
         </button>
-        <button onclick="switchTab('syllabus')" id="desk-nav-syllabus" class="desk-nav-btn px-4 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-700/50 transition flex items-center gap-1.5 font-bold">
-          <i class="fa-regular fa-calendar-check text-xs"></i> Syllabus
+        <button onclick="switchTab('modelqa')" id="desk-nav-modelqa" class="desk-nav-btn px-3.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-700/50 transition flex items-center gap-1.5 font-bold">
+          <i class="fa-solid fa-clipboard-question text-xs"></i> <span data-i18n="nav_modelqa">Model Q&A</span>
         </button>
-        <button onclick="switchTab('timer')" id="desk-nav-timer" class="desk-nav-btn px-4 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-700/50 transition flex items-center gap-1.5 font-bold">
-          <i class="fa-solid fa-stopwatch text-xs"></i> Focus Timer
+        <button onclick="switchTab('performance')" id="desk-nav-performance" class="desk-nav-btn px-3.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-700/50 transition flex items-center gap-1.5 font-bold">
+          <i class="fa-solid fa-chart-line text-xs"></i> <span data-i18n="nav_performance">Performance</span>
         </button>
-        <button onclick="switchTab('family')" id="desk-nav-family" class="desk-nav-btn px-4 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-700/50 transition flex items-center gap-1.5 font-bold">
-          <i class="fa-regular fa-user text-xs"></i> Family Cheer
+        <button onclick="switchTab('focus')" id="desk-nav-focus" class="desk-nav-btn px-3.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-700/50 transition flex items-center gap-1.5 font-bold">
+          <i class="fa-solid fa-crosshairs text-xs"></i> <span data-i18n="nav_focus">Focus Areas</span>
         </button>
       </div>
 
@@ -361,6 +361,41 @@
           </div>
         </div>
 
+        <!-- 5 CORE PILLARS SHOWCASE (Simple & Neat Jump) -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+          <button onclick="switchTab('textbook')" class="p-3 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 hover:from-blue-100 hover:to-indigo-100 border border-blue-200/80 transition flex items-center gap-2.5 shadow-sm text-left group">
+            <span class="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-700 flex items-center justify-center text-lg group-hover:scale-110 transition">📖</span>
+            <div>
+              <span class="block text-xs font-black text-blue-950">Text Book</span>
+              <span class="text-[10px] text-blue-700 font-semibold">NCERT & PDFs</span>
+            </div>
+          </button>
+
+          <button onclick="switchTab('modelqa')" class="p-3 rounded-2xl bg-gradient-to-br from-purple-50 to-pink-50 hover:from-purple-100 hover:to-pink-100 border border-purple-200/80 transition flex items-center gap-2.5 shadow-sm text-left group">
+            <span class="w-9 h-9 rounded-xl bg-purple-500/10 text-purple-700 flex items-center justify-center text-lg group-hover:scale-110 transition">❓</span>
+            <div>
+              <span class="block text-xs font-black text-purple-950">Model Q&A</span>
+              <span class="text-[10px] text-purple-700 font-semibold">CBSE Solutions</span>
+            </div>
+          </button>
+
+          <button onclick="switchTab('performance')" class="p-3 rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 hover:from-emerald-100 hover:to-teal-100 border border-emerald-200/80 transition flex items-center gap-2.5 shadow-sm text-left group">
+            <span class="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-700 flex items-center justify-center text-lg group-hover:scale-110 transition">📊</span>
+            <div>
+              <span class="block text-xs font-black text-emerald-950">Performance</span>
+              <span class="text-[10px] text-emerald-700 font-semibold">School & Tuition</span>
+            </div>
+          </button>
+
+          <button onclick="switchTab('focus')" class="p-3 rounded-2xl bg-gradient-to-br from-rose-50 to-amber-50 hover:from-rose-100 hover:to-amber-100 border border-rose-200/80 transition flex items-center gap-2.5 shadow-sm text-left group">
+            <span class="w-9 h-9 rounded-xl bg-rose-500/10 text-rose-700 flex items-center justify-center text-lg group-hover:scale-110 transition">🎯</span>
+            <div>
+              <span class="block text-xs font-black text-rose-950">Focus Areas</span>
+              <span class="text-[10px] text-rose-700 font-semibold">Where to Concentrate</span>
+            </div>
+          </button>
+        </div>
+
         <!-- SRM PUBLIC SCHOOL REVISION-1 TIMETABLE & PORTION CARD -->
         <div class="rounded-3xl bg-slate-900 border border-slate-800 p-4 text-white shadow-xl space-y-3">
           <div class="flex items-center justify-between">
@@ -442,34 +477,39 @@
             </span>
           </div>
 
-          <!-- TODAY STATUS BANNER: Day 0 (Oct 27) -->
-          <div class="rounded-2xl bg-slate-800/80 border border-slate-700 p-3 space-y-2">
+          <!-- TODAY STATUS BANNER: Day 1 (28 Oct 2026) -->
+          <div class="rounded-2xl bg-gradient-to-r from-emerald-950/80 via-slate-900 to-teal-950/80 border border-emerald-500/40 p-3.5 space-y-2.5">
             <div class="flex items-center justify-between">
-              <span class="text-[10px] font-extrabold text-emerald-400 bg-emerald-500/20 px-2.5 py-0.5 rounded-full border border-emerald-500/30 flex items-center gap-1">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span data-i18n="today_tag">TODAY: 27 Oct 2026</span>
+              <span class="text-[10px] font-extrabold text-emerald-300 bg-emerald-500/20 px-2.5 py-0.5 rounded-full border border-emerald-500/40 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span data-i18n="today_tag">TODAY'S MISSION: 28 Oct 2026</span>
               </span>
-              <span class="text-[9px] text-slate-400 font-bold" data-i18n="day_zero_badge">Day 0 / 16</span>
+              <span class="text-[9px] text-emerald-300 font-extrabold bg-emerald-900/60 px-2 py-0.5 rounded-md border border-emerald-600/40" data-i18n="day_one_badge">Day 1 / 16</span>
             </div>
-            <h5 class="text-xs font-bold text-white" data-i18n="today_head">Day 0: System Orientation & Module Understanding</h5>
+            
+            <div class="flex items-center justify-between">
+              <h5 class="text-xs font-black text-white" data-i18n="today_head">Day 1: Science (Acids, Bases & Salts) + Tamil (இயல் 5)</h5>
+              <span class="text-[10px] text-amber-300 font-bold bg-amber-950/60 px-2 py-0.5 rounded border border-amber-600/40">Tonight 8:30 PM: 30 Marks</span>
+            </div>
+
             <p class="text-[11px] text-slate-300 leading-snug" data-i18n="today_desc">
-              Today is dedicated to mastering the app workflow and the 2-subject daily rotation method. <strong>No night test tonight.</strong> Review tomorrow's portions and practice sample questions below to prepare!
+              Revise Chemistry Ch 2 and Tamil Unit 5 today. Practice chemical equations and Tamil question-answer types. Complete 45-minute written test tonight!
             </p>
           </div>
 
-          <!-- TOMORROW'S MISSION SPOTLIGHT CARD (Day 1: 28 Oct 2026) -->
-          <div id="tomorrow-mission-box" class="rounded-2xl bg-gradient-to-r from-amber-950/40 via-slate-800/90 to-emerald-950/40 border border-amber-500/40 p-3.5 space-y-3">
+          <!-- ACTIVE MISSION SUBJECTS GRID (Day 1: 28 Oct 2026) -->
+          <div id="today-mission-box" class="rounded-2xl bg-slate-900/90 border border-emerald-500/30 p-3.5 space-y-3">
             <div class="flex items-center justify-between">
-              <span class="text-[10px] font-extrabold text-amber-300 bg-amber-500/20 px-2.5 py-0.5 rounded-full border border-amber-500/30 flex items-center gap-1">
-                <i class="fa-solid fa-fire text-amber-400"></i> <span data-i18n="tomorrow_task_badge">TOMORROW'S TASK (28 Oct)</span>
+              <span class="text-[10px] font-extrabold text-emerald-300 bg-emerald-500/20 px-2.5 py-0.5 rounded-full border border-emerald-500/30 flex items-center gap-1">
+                <i class="fa-solid fa-fire text-emerald-400"></i> <span data-i18n="today_task_badge">ACTIVE TASKS FOR TODAY</span>
               </span>
-              <span class="text-[10px] font-bold text-amber-300 bg-amber-900/40 px-2 py-0.5 rounded-md">Day 1</span>
+              <span class="text-[10px] font-bold text-slate-300">Target: 30/30 in Night Test</span>
             </div>
 
             <!-- Subject 1 & Subject 2 Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
               <!-- Sub 1 -->
-              <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-700/80 space-y-1.5">
+              <div class="p-3 rounded-xl bg-slate-950 border border-slate-700/80 space-y-1.5">
                 <div class="flex items-center justify-between">
                   <span class="font-extrabold text-emerald-400 text-xs" data-i18n="sub1_label">🔬 Science (Chemistry)</span>
                   <span class="text-[9px] bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded">Part 1</span>
@@ -482,11 +522,14 @@
                   <button onclick="playTanglishAudio('exp-s2')" class="text-[9px] bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-2.5 py-1 rounded-lg flex items-center gap-1">
                     <i class="fa-solid fa-volume-high text-[8px]"></i> <span data-i18n="listen_audio">🎧 Listen Concept Audio</span>
                   </button>
+                  <a href="/textbooks/science/jesc102.pdf" target="_blank" class="text-[9px] bg-blue-600 hover:bg-blue-700 text-white font-bold px-2.5 py-1 rounded-lg flex items-center gap-1">
+                    <i class="fa-solid fa-book-open text-[8px]"></i> PDF
+                  </a>
                 </div>
               </div>
 
               <!-- Sub 2 -->
-              <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-700/80 space-y-1.5">
+              <div class="p-3 rounded-xl bg-slate-950 border border-slate-700/80 space-y-1.5">
                 <div class="flex items-center justify-between">
                   <span class="font-extrabold text-purple-400 text-xs" data-i18n="sub2_label">📖 Tamil (Language-II)</span>
                   <span class="text-[9px] bg-purple-500/20 text-purple-300 px-1.5 py-0.5 rounded">Part 2</span>
@@ -499,6 +542,9 @@
                   <button onclick="playTanglishAudio('exp-tam5')" class="text-[9px] bg-purple-600 hover:bg-purple-700 text-white font-bold px-2.5 py-1 rounded-lg flex items-center gap-1">
                     <i class="fa-solid fa-volume-high text-[8px]"></i> <span data-i18n="listen_audio_tam">🎧 Listen Tamil Audio</span>
                   </button>
+                  <a href="/textbooks/tamil.pdf" target="_blank" class="text-[9px] bg-blue-600 hover:bg-blue-700 text-white font-bold px-2.5 py-1 rounded-lg flex items-center gap-1">
+                    <i class="fa-solid fa-book-open text-[8px]"></i> PDF
+                  </a>
                 </div>
               </div>
             </div>
@@ -1004,6 +1050,125 @@
         <div id="syllabus-chapters-container" class="space-y-3"></div>
       </div>
 
+      <!-- ================= PILLAR 2: TEXTBOOK HUB ================= -->
+      <div id="view-textbook" class="hidden space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-sm font-extrabold text-slate-900 flex items-center gap-2">
+              <span>📖</span> Official Textbooks & Chapter Reader
+            </h3>
+            <span class="text-[10px] text-slate-500 font-medium">NCERT CBSE Class 10 & State Board Official Textbooks</span>
+          </div>
+          <span class="text-xs font-bold text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-1 rounded-full shadow-sm">
+            6 Subjects
+          </span>
+        </div>
+
+        <!-- Subject Switcher Pills -->
+        <div class="flex space-x-2 overflow-x-auto no-scrollbar -mx-5 px-5 pb-1" id="textbook-sub-pills"></div>
+
+        <!-- Subject Textbook Banner -->
+        <div id="textbook-subject-banner" class="rounded-2xl p-4 bg-gradient-to-r from-blue-950 via-slate-900 to-indigo-950 text-white space-y-2 shadow-md"></div>
+
+        <!-- Chapters Book Shelf Container -->
+        <div id="textbook-chapters-shelf" class="space-y-3"></div>
+      </div>
+
+      <!-- ================= PILLAR 3: MODEL QUESTIONS & ANSWERS ================= -->
+      <div id="view-model-qa" class="hidden space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-sm font-extrabold text-slate-900 flex items-center gap-2">
+              <span>❓</span> CBSE Model Questions & Solutions
+            </h3>
+            <span class="text-[10px] text-slate-500 font-medium">Step-by-step marking rubrics & model answer bank</span>
+          </div>
+          <span class="text-xs font-bold text-purple-700 bg-purple-50 border border-purple-200 px-2.5 py-1 rounded-full shadow-sm">
+            Board Standard
+          </span>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <!-- Subject Pills -->
+          <div class="flex space-x-1.5 overflow-x-auto no-scrollbar py-0.5" id="modelqa-sub-pills"></div>
+          <!-- Search Bar -->
+          <div class="relative w-full sm:w-60">
+            <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-xs"></i>
+            <input type="text" id="modelqaSearchInput" oninput="filterModelQA(this.value)" placeholder="Search questions or keywords..." class="w-full pl-8 pr-3 py-1.5 text-xs bg-slate-100 border border-slate-200 rounded-xl focus:outline-none focus:border-purple-500">
+          </div>
+        </div>
+
+        <!-- Questions List Container -->
+        <div id="modelqa-cards-container" class="space-y-3"></div>
+      </div>
+
+      <!-- ================= PILLAR 4: 4-QUADRANT PERFORMANCE SCORECARD ================= -->
+      <div id="view-performance" class="hidden space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-sm font-extrabold text-slate-900 flex items-center gap-2">
+              <span>📊</span> Performance Scorecard
+            </h3>
+            <span class="text-[10px] text-slate-500 font-medium">Overall • School Tests • Tuition Tests • Home Daily Assessments</span>
+          </div>
+          <button onclick="openAddScoreModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-[11px] font-extrabold px-3 py-1.5 rounded-full shadow-btn flex items-center gap-1 transition">
+            <i class="fa-solid fa-plus text-[10px]"></i> + Record Marks (Mama)
+          </button>
+        </div>
+
+        <!-- 4-Quadrant Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="performance-quadrants-grid"></div>
+
+        <!-- Test Scores History Table / Feed -->
+        <div class="bg-white border border-slate-200 rounded-2xl p-4 space-y-3 shadow-card">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-extrabold text-slate-900">Recent Test Submissions & Breakdown</h4>
+            <div class="flex gap-1 text-[10px]" id="performance-filter-tabs"></div>
+          </div>
+          <div id="performance-tests-list" class="space-y-2 max-h-80 overflow-y-auto custom-scroll"></div>
+        </div>
+      </div>
+
+      <!-- ================= PILLAR 5: FOCUS RADAR (WHERE HE NEEDS TO CONCENTRATE) ================= -->
+      <div id="view-focus" class="hidden space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-sm font-extrabold text-slate-900 flex items-center gap-2">
+              <span>🎯</span> Target Focus & Red Alert Radar
+            </h3>
+            <span class="text-[10px] text-slate-500 font-medium">Where Pranav needs to concentrate his study effort right now</span>
+          </div>
+          <span class="text-xs font-black text-rose-700 bg-rose-50 border border-rose-200 px-2.5 py-1 rounded-full animate-pulse shadow-sm">
+            🚨 Immediate Focus
+          </span>
+        </div>
+
+        <!-- Priority 1: Red Alert Cards (Urgent Weak Areas) -->
+        <div class="space-y-2.5">
+          <span class="text-xs font-extrabold text-rose-600 uppercase tracking-wider flex items-center gap-1.5">
+            <i class="fa-solid fa-circle-exclamation text-rose-500"></i> Priority 1: Critical Focus (Red Alert)
+          </span>
+          <div id="focus-red-list" class="space-y-2.5"></div>
+        </div>
+
+        <!-- Priority 2: Amber Alert Cards (Moderate Revision Needed) -->
+        <div class="space-y-2.5 pt-2">
+          <span class="text-xs font-extrabold text-amber-600 uppercase tracking-wider flex items-center gap-1.5">
+            <i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Priority 2: Revision Polish (Amber Alert)
+          </span>
+          <div id="focus-amber-list" class="space-y-2"></div>
+        </div>
+
+        <!-- Priority 3: Green (Mastered Strengths) -->
+        <div class="space-y-2.5 pt-2">
+          <span class="text-xs font-extrabold text-emerald-600 uppercase tracking-wider flex items-center gap-1.5">
+            <i class="fa-solid fa-circle-check text-emerald-500"></i> Mastered Strengths (High Confidence)
+          </span>
+          <div id="focus-green-list" class="grid grid-cols-1 sm:grid-cols-3 gap-2"></div>
+        </div>
+      </div>
+
       <!-- ================= VIEW 4: FOCUS TIMER & STUDY LOG ================= -->
       <div id="view-timer" class="hidden space-y-5">
         
@@ -1166,33 +1331,33 @@
       </button>
     </div>
 
-    <!-- BOTTOM FLOATING NAVIGATION BAR (5 Tabs - Mobile Only) -->
-    <div class="mobile-bottom-nav sticky bottom-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-100 px-4 py-2 shadow-nav">
+    <!-- BOTTOM FLOATING NAVIGATION BAR (5 Core Pillars - Mobile Only) -->
+    <div class="mobile-bottom-nav sticky bottom-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-100 px-3 py-2 shadow-nav">
       <div class="flex items-center justify-between text-slate-400">
         
         <button onclick="switchTab('home')" id="nav-btn-home" class="nav-item flex flex-col items-center relative text-emerald-600 font-bold active-nav-dot">
-          <i class="fa-solid fa-house text-base"></i>
-          <span class="text-[9px] mt-0.5">Home</span>
+          <i class="fa-solid fa-list-check text-base"></i>
+          <span class="text-[9px] mt-0.5" data-i18n="nav_tasks_short">Tasks</span>
         </button>
 
-        <button onclick="switchTab('schedule')" id="nav-btn-schedule" class="nav-item flex flex-col items-center relative hover:text-slate-700 transition">
-          <i class="fa-solid fa-calendar-days text-base"></i>
-          <span class="text-[9px] mt-0.5">Schedule</span>
+        <button onclick="switchTab('textbook')" id="nav-btn-textbook" class="nav-item flex flex-col items-center relative hover:text-slate-700 transition">
+          <i class="fa-solid fa-book-open text-base"></i>
+          <span class="text-[9px] mt-0.5" data-i18n="nav_textbook_short">Textbook</span>
         </button>
 
-        <button onclick="switchTab('syllabus')" id="nav-btn-syllabus" class="nav-item flex flex-col items-center relative hover:text-slate-700 transition">
-          <i class="fa-regular fa-calendar-check text-base"></i>
-          <span class="text-[9px] mt-0.5">Syllabus</span>
+        <button onclick="switchTab('modelqa')" id="nav-btn-modelqa" class="nav-item flex flex-col items-center relative hover:text-slate-700 transition">
+          <i class="fa-solid fa-clipboard-question text-base"></i>
+          <span class="text-[9px] mt-0.5" data-i18n="nav_modelqa_short">Model Q&A</span>
         </button>
 
-        <button onclick="switchTab('timer')" id="nav-btn-timer" class="nav-item flex flex-col items-center relative hover:text-slate-700 transition">
-          <i class="fa-solid fa-stopwatch text-base"></i>
-          <span class="text-[9px] mt-0.5">Focus</span>
+        <button onclick="switchTab('performance')" id="nav-btn-performance" class="nav-item flex flex-col items-center relative hover:text-slate-700 transition">
+          <i class="fa-solid fa-chart-line text-base"></i>
+          <span class="text-[9px] mt-0.5" data-i18n="nav_performance_short">Scores</span>
         </button>
 
-        <button onclick="switchTab('family')" id="nav-btn-family" class="nav-item flex flex-col items-center relative hover:text-slate-700 transition">
-          <i class="fa-regular fa-user text-base"></i>
-          <span class="text-[9px] mt-0.5">Family</span>
+        <button onclick="switchTab('focus')" id="nav-btn-focus" class="nav-item flex flex-col items-center relative hover:text-slate-700 transition">
+          <i class="fa-solid fa-crosshairs text-base"></i>
+          <span class="text-[9px] mt-0.5" data-i18n="nav_focus_short">Focus</span>
         </button>
 
       </div>
@@ -2004,6 +2169,77 @@
 
       </div>
 
+    </div>
+  </div>
+
+  <!-- ================= ADD TEST SCORE MODAL (MAMA PIN 9677) ================= -->
+  <div id="addScoreModal" class="fixed inset-0 bg-slate-950/75 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl w-full max-w-md p-5 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+        <div class="flex items-center gap-2">
+          <span class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-sm">
+            📊
+          </span>
+          <div>
+            <h3 class="text-sm font-extrabold text-slate-900">Record Test Marks</h3>
+            <p class="text-[10px] text-slate-500 font-medium">Add School, Tuition or Home assessment score</p>
+          </div>
+        </div>
+        <button onclick="closeModal('addScoreModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block text-[10px] font-bold text-slate-600 mb-1">Test Category:</label>
+          <select id="newScoreCategory" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:outline-none focus:border-emerald-500">
+            <option value="school">🏫 School Test (SRM Public School)</option>
+            <option value="tution">📚 Tuition Coaching Test</option>
+            <option value="home">🏠 Home Daily Night Test (Mama)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-[10px] font-bold text-slate-600 mb-1">Subject:</label>
+          <select id="newScoreSubject" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:outline-none focus:border-emerald-500">
+            <option value="Mathematics">Mathematics (041)</option>
+            <option value="Science">Science (086)</option>
+            <option value="Social Science">Social Science (087)</option>
+            <option value="English">English (184)</option>
+            <option value="Tamil">Tamil (006)</option>
+            <option value="Artificial Intelligence">Artificial Intelligence (417)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-[10px] font-bold text-slate-600 mb-1">Test Title / Chapter:</label>
+          <input type="text" id="newScoreTitle" placeholder="e.g. Sunday Weekly Test / Mid-Term Mock" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 font-medium">
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-[10px] font-bold text-slate-600 mb-1">Marks Obtained:</label>
+            <input type="number" id="newScoreObtained" placeholder="e.g. 23" min="0" max="100" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-emerald-700 focus:outline-none focus:border-emerald-500">
+          </div>
+          <div>
+            <label class="block text-[10px] font-bold text-slate-600 mb-1">Total Marks:</label>
+            <input type="number" id="newScoreTotal" placeholder="e.g. 25" min="1" max="100" value="25" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-700 focus:outline-none focus:border-emerald-500">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[10px] font-bold text-slate-600 mb-1">Feedback / Remarks:</label>
+          <textarea id="newScoreRemarks" rows="2" placeholder="e.g. Great speed; check negative sign in quadratic formula." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 font-medium"></textarea>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 pt-2 border-t border-slate-100">
+        <button onclick="submitNewScore()" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-2.5 rounded-xl text-xs transition shadow-md">
+          Save Test Score
+        </button>
+        <button onclick="closeModal('addScoreModal')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-4 py-2.5 rounded-xl text-xs transition">
+          Cancel
+        </button>
+      </div>
     </div>
   </div>
 

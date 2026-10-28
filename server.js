@@ -15,7 +15,8 @@ const MIME_TYPES = {
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
   '.svg': 'image/svg+xml',
-  '.ico': 'image/x-icon'
+  '.ico': 'image/x-icon',
+  '.pdf': 'application/pdf'
 };
 
 function readData() {
@@ -274,7 +275,9 @@ const server = http.createServer((req, res) => {
         date: body.date || new Date().toISOString().slice(0, 10),
         subject: body.subject,
         marksObtained: parseFloat(body.marksObtained),
-        totalMarks: parseFloat(body.totalMarks)
+        totalMarks: parseFloat(body.totalMarks),
+        category: body.category || 'home',
+        remarks: body.remarks || ''
       };
       if (!data.tests) data.tests = [];
       data.tests.unshift(newTest);
@@ -689,6 +692,22 @@ const server = http.createServer((req, res) => {
       return sendJSON(res, 200, { success: true, action: actionTaken, voiceEntry });
     });
     return;
+  }
+
+  // Static Textbook PDFs Route
+  if (pathname.startsWith('/textbooks/')) {
+    const relPath = decodeURIComponent(pathname.replace('/textbooks/', ''));
+    const filePath = path.join(__dirname, '../text books', relPath);
+    if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+      const ext = path.extname(filePath).toLowerCase();
+      const contentType = MIME_TYPES[ext] || 'application/pdf';
+      res.writeHead(200, {
+        'Content-Type': contentType,
+        'Access-Control-Allow-Origin': '*'
+      });
+      fs.createReadStream(filePath).pipe(res);
+      return;
+    }
   }
 
   // Static file serving
