@@ -189,22 +189,38 @@
       <!-- Error / Status Notice -->
       <div id="gateErrorMessage" class="hidden text-xs font-bold text-rose-400 bg-rose-500/10 border border-rose-500/20 px-3 py-1.5 rounded-xl"></div>
 
-      <!-- Profiles Legend -->
-      <div class="pt-2 border-t border-slate-800/80 w-full text-left space-y-1.5 text-[10px]">
-        <span class="text-slate-400 font-bold uppercase tracking-wider block text-center">Authorized Access Profiles:</span>
-        <div class="grid grid-cols-3 gap-1.5 text-center font-bold">
-          <div class="bg-slate-800/50 p-1.5 rounded-xl border border-slate-700/40">
-            <span class="text-emerald-400 block font-black">👑 Mama</span>
-            <span class="text-slate-400 text-[9px]">Master Control</span>
-          </div>
-          <div class="bg-slate-800/50 p-1.5 rounded-xl border border-slate-700/40">
-            <span class="text-blue-400 block font-black">🧑‍🎓 Pranav</span>
-            <span class="text-slate-400 text-[9px]">Student Tasks</span>
-          </div>
-          <div class="bg-slate-800/50 p-1.5 rounded-xl border border-slate-700/40">
-            <span class="text-amber-400 block font-black">👨‍👩‍👦 Parents</span>
-            <span class="text-slate-400 text-[9px]">Progress View</span>
-          </div>
+      <!-- Profiles Legend & 1-Tap Quick Unlock -->
+      <div class="pt-2 border-t border-slate-800/80 w-full text-left space-y-2 text-[10px]">
+        <span class="text-slate-400 font-bold uppercase tracking-wider block text-center">Tap Profile to Quick Unlock or Enter PIN:</span>
+        <div class="grid grid-cols-3 gap-2 text-center font-bold">
+          
+          <!-- 1. Mama Card -->
+          <button onclick="quickSelectProfile('9677')" class="bg-slate-800/80 hover:bg-slate-750 active:scale-95 p-2 rounded-2xl border border-emerald-500/50 hover:border-emerald-400 transition flex flex-col items-center shadow-md cursor-pointer group">
+            <span class="text-emerald-400 font-black text-xs flex items-center gap-1">👑 Mama</span>
+            <span class="text-white font-extrabold text-[10px] my-1 bg-emerald-950 px-2 py-0.5 rounded-lg border border-emerald-500/50 group-hover:bg-emerald-600 transition">
+              PIN: 9677
+            </span>
+            <span class="text-slate-400 text-[8px]">Master Control</span>
+          </button>
+
+          <!-- 2. Pranav Card -->
+          <button onclick="quickSelectProfile('2026')" class="bg-slate-800/80 hover:bg-slate-750 active:scale-95 p-2 rounded-2xl border border-blue-500/50 hover:border-blue-400 transition flex flex-col items-center shadow-md cursor-pointer group">
+            <span class="text-blue-400 font-black text-xs flex items-center gap-1">🧑‍🎓 Pranav</span>
+            <span class="text-white font-extrabold text-[10px] my-1 bg-blue-950 px-2 py-0.5 rounded-lg border border-blue-500/50 group-hover:bg-blue-600 transition">
+              PIN: 2026
+            </span>
+            <span class="text-slate-400 text-[8px]">Student Tasks</span>
+          </button>
+
+          <!-- 3. Parents Card -->
+          <button onclick="quickSelectProfile('1010')" class="bg-slate-800/80 hover:bg-slate-750 active:scale-95 p-2 rounded-2xl border border-amber-500/50 hover:border-amber-400 transition flex flex-col items-center shadow-md cursor-pointer group">
+            <span class="text-amber-400 font-black text-xs flex items-center gap-1">👨‍👩‍👦 Parents</span>
+            <span class="text-white font-extrabold text-[10px] my-1 bg-amber-950 px-2 py-0.5 rounded-lg border border-amber-500/50 group-hover:bg-amber-600 transition">
+              PIN: 1010
+            </span>
+            <span class="text-slate-400 text-[8px]">Progress View</span>
+          </button>
+
         </div>
         <p class="text-[9px] text-slate-400 text-center pt-0.5">
           <i class="fa-solid fa-shield-halved text-emerald-400"></i> Auto-locks after 5 minutes of inactivity or on page reload.

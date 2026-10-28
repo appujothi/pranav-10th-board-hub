@@ -142,28 +142,20 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
+function quickSelectProfile(pin) {
+  enteredGatePin = pin;
+  updatePinDotsDisplay();
+  submitGatePin(pin);
+}
+
 async function submitGatePin(pin) {
   const errBox = document.getElementById('gateErrorMessage');
   if (errBox) errBox.classList.add('hidden');
   setPinDotsState('checking');
 
-  try {
-    const res = await fetch('/api/auth/pin', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ pin })
-    });
-    if (res.ok) {
-      const data = await res.json();
-      if (data && data.user) {
-        completeLogin(data.user, pin);
-        return;
-      }
-    }
-  } catch (err) {}
-
-  // Offline / Fast Fallback PIN Catalog
+  // Fast In-Memory PIN Catalog (Instant Validation)
   const pinCatalog = {
+    // Mama PINs
     '9677': {
       role: 'admin',
       name: 'Mama (Master Control)',
@@ -171,6 +163,14 @@ async function submitGatePin(pin) {
       badge: 'Master Control',
       permissions: { canEditSyllabus: true, canEditExamDates: true, canAddTestMarks: true, canLogStudy: true, canPostCheer: true, canManageUsers: true }
     },
+    '1809': {
+      role: 'admin',
+      name: 'Mama (Master Control)',
+      email: 'jothi1809@gmail.com',
+      badge: 'Master Control',
+      permissions: { canEditSyllabus: true, canEditExamDates: true, canAddTestMarks: true, canLogStudy: true, canPostCheer: true, canManageUsers: true }
+    },
+    // Pranav PINs
     '2026': {
       role: 'student',
       name: 'Pranav',
@@ -185,6 +185,14 @@ async function submitGatePin(pin) {
       badge: 'Student',
       permissions: { canEditSyllabus: false, canEditExamDates: false, canAddTestMarks: false, canLogStudy: true, canPostCheer: false, canManageUsers: false }
     },
+    '2010': {
+      role: 'student',
+      name: 'Pranav',
+      email: 'pranav@student.hub',
+      badge: 'Student',
+      permissions: { canEditSyllabus: false, canEditExamDates: false, canAddTestMarks: false, canLogStudy: true, canPostCheer: false, canManageUsers: false }
+    },
+    // Parents PINs
     '1010': {
       role: 'viewer',
       name: 'Parents',
@@ -193,6 +201,13 @@ async function submitGatePin(pin) {
       permissions: { canEditSyllabus: false, canEditExamDates: false, canAddTestMarks: false, canLogStudy: false, canPostCheer: true, canManageUsers: false }
     },
     '1234': {
+      role: 'viewer',
+      name: 'Parents',
+      email: 'parents@family.hub',
+      badge: 'Parents',
+      permissions: { canEditSyllabus: false, canEditExamDates: false, canAddTestMarks: false, canLogStudy: false, canPostCheer: true, canManageUsers: false }
+    },
+    '0000': {
       role: 'viewer',
       name: 'Parents',
       email: 'parents@family.hub',
@@ -207,15 +222,32 @@ async function submitGatePin(pin) {
     return;
   }
 
+  // Network sync fallback if custom PIN on server
+  try {
+    const res = await fetch('/api/auth/pin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ pin })
+    });
+    const isJson = res.headers.get('content-type')?.includes('application/json');
+    if (res.ok && isJson) {
+      const data = await res.json();
+      if (data && data.user) {
+        completeLogin(data.user, pin);
+        return;
+      }
+    }
+  } catch (err) {}
+
   // Failed PIN
   setPinDotsState('error');
   if (errBox) {
-    errBox.textContent = '❌ Incorrect PIN! Enter Mama (9677), Pranav (2026), or Parents (1010).';
+    errBox.textContent = '❌ Incorrect PIN! Tap 👑 Mama (9677), 🧑‍🎓 Pranav (2026), or 👨‍👩‍👦 Parents (1010) below to unlock.';
     errBox.classList.remove('hidden');
   }
   setTimeout(() => {
     keypadClear();
-  }, 850);
+  }, 900);
 }
 
 function completeLogin(user, pin) {
@@ -231,12 +263,13 @@ function completeLogin(user, pin) {
   localStorage.setItem('pranav_user_auth', JSON.stringify(session));
   currentUser = session;
 
-  setTimeout(() => {
+  setTimeout(async () => {
     hidePinSecurityGate();
     applyRoleUiRestrictions();
     showToast(`🎉 Unlocked as ${user.name}!`);
+    await fetchData();
     renderAll();
-  }, 350);
+  }, 300);
 }
 
 function applyRoleUiRestrictions() {

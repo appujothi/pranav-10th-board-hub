@@ -41,9 +41,14 @@ module.exports = (req, res) => {
   const url = req.url || '';
   const data = getData();
 
+  let body = req.body;
+  if (typeof body === 'string') {
+    try { body = JSON.parse(body); } catch (e) {}
+  }
+
   // 1. PIN Login
   if (url.includes('/auth/pin') && req.method === 'POST') {
-    const pin = (req.body && req.body.pin || '').trim();
+    const pin = (body && body.pin || '').trim();
     const match = data.authConfig && data.authConfig.pins ? data.authConfig.pins[pin] : null;
     if (match) {
       const perms = data.authConfig.rolePermissions[match.role] || {};

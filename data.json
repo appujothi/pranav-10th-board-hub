@@ -16,6 +16,18 @@
         "email": "parents@family.hub",
         "badge": "Parents"
       },
+      "1809": {
+        "role": "admin",
+        "name": "Mama (Master Control)",
+        "email": "jothi1809@gmail.com",
+        "badge": "Master Control"
+      },
+      "2010": {
+        "role": "student",
+        "name": "Pranav",
+        "email": "pranav@student.hub",
+        "badge": "Student"
+      },
       "2026": {
         "role": "student",
         "name": "Pranav",
@@ -33,6 +45,12 @@
         "name": "Mama (Master Control)",
         "email": "jothi1809@gmail.com",
         "badge": "Master Control"
+      },
+      "0000": {
+        "role": "viewer",
+        "name": "Parents",
+        "email": "parents@family.hub",
+        "badge": "Parents"
       }
     },
     "rolePermissions": {
