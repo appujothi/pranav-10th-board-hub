@@ -4865,29 +4865,32 @@ function renderRevisionMissionUI() {
     `;
   } else if (isToday) {
     bannerHtml = `
-      <div class="rounded-2xl bg-emerald-50/90 border border-emerald-200 p-4 space-y-2">
+      <div class="rounded-2xl bg-emerald-50/90 border border-emerald-200 p-4 space-y-3">
         <div class="flex items-center justify-between">
           <span class="text-[10px] font-bold text-emerald-900 bg-emerald-200/80 px-2.5 py-0.5 rounded-full border border-emerald-300 flex items-center gap-1.5">
             <span class="w-2 h-2 rounded-full bg-emerald-600 animate-ping"></span>
-            <span>TODAY'S ACTIVE MISSION: 29 Oct 2026</span>
+            <span>TODAY'S ACTIVE MISSION: 29 Oct 2026 (Day 2 / 16)</span>
           </span>
-          <span class="text-[10px] text-emerald-900 font-extrabold bg-white px-2 py-0.5 rounded-md border border-emerald-200">Day 2 / 16</span>
+          <span class="text-[10px] text-amber-900 font-extrabold bg-amber-100 px-2.5 py-0.5 rounded-full border border-amber-300">
+            ⏳ Tonight's Test: Not Yet Uploaded
+          </span>
         </div>
+
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pt-0.5">
           <h5 class="text-xs font-black text-slate-900">Day 2: Mathematics (Polynomials & Linear Equations) + English (Mijbil & Formal Letters)</h5>
-          <span class="text-[10px] text-emerald-800 font-bold bg-white px-2 py-0.5 rounded border border-emerald-200">Tonight 8:30 PM: 30 Marks</span>
+          <span class="text-[10px] text-emerald-800 font-bold bg-white px-2 py-0.5 rounded border border-emerald-200">Tonight 8:30 PM: 30 Marks Test</span>
         </div>
+
         <p class="text-xs text-slate-700 leading-relaxed">
-          இன்று கணிதத்தில் <strong>Polynomials & Linear Equations</strong> மற்றும் ஆங்கிலத்தில் <strong>Mijbil the Otter & Formal Writing</strong> பாடங்களை படிக்கவும். இரவு 8:30 மணிக்கு 30 மதிப்பெண் மாதிரித் தேர்வு!
+          இன்று கணிதத்தில் <strong>Polynomials & Linear Equations</strong> மற்றும் ஆங்கிலத்தில் <strong>Mijbil the Otter & Formal Writing</strong> பாடங்களை படிக்கவும். இன்று இரவு 8:30 மணிக்கு 30 மதிப்பெண் மாதிரித் தேர்வு நடைபெறும்!
         </p>
+
+        <!-- Primary Action Buttons for Day 2 -->
         <div class="pt-1 flex flex-wrap items-center gap-2">
-          <button onclick="openAnswerPaperUploadModal(2, 'Maths')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs px-3.5 py-2.5 rounded-xl flex items-center gap-1.5 shadow-sm transition">
-            <i class="fa-solid fa-camera text-xs"></i> 📸 Upload Test Paper (Maths)
+          <button onclick="openAnswerPaperUploadModal(2, 'Maths')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs px-4 py-2.5 rounded-xl flex items-center gap-1.5 shadow-sm transition">
+            <i class="fa-solid fa-camera text-xs"></i> 📸 Upload Tonight's Written Test Paper (30 Marks)
           </button>
-          <button onclick="openEvaluationReportModal(2)" class="bg-blue-600 hover:bg-blue-700 text-white font-black text-xs px-3.5 py-2.5 rounded-xl flex items-center gap-1.5 shadow-sm transition">
-            <i class="fa-solid fa-chart-simple text-xs"></i> 📊 View Evaluation Result (6/10)
-          </button>
-          <button onclick="openSrmPortionModal()" class="bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 font-bold text-xs px-3 py-2.5 rounded-xl flex items-center gap-1.5 transition">
+          <button onclick="openSrmPortionModal()" class="bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 font-bold text-xs px-3.5 py-2.5 rounded-xl flex items-center gap-1.5 transition">
             <i class="fa-solid fa-file-invoice text-xs text-emerald-600"></i> 📑 View SRM Portion
           </button>
           <button onclick="openPartialSkipModal(2)" class="bg-white hover:bg-slate-50 text-slate-600 border border-slate-200 font-bold text-xs px-3 py-2.5 rounded-xl flex items-center gap-1.5 transition">
@@ -4895,8 +4898,25 @@ function renderRevisionMissionUI() {
           </button>
         </div>
 
-        <!-- DAY 2 AI TEST EVALUATION, AUDIO BREAKDOWN & MODEL ANSWERS CARD -->
-        <div class="mt-3 rounded-2xl bg-gradient-to-br from-slate-900 via-teal-950 to-slate-900 text-white p-3.5 border border-emerald-500/40 shadow-lg space-y-2.5">
+        <!-- Pre-test Rough Practice Note & Expander -->
+        <div class="rounded-xl bg-amber-50/70 border border-amber-200/90 p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+          <div class="space-y-0.5">
+            <div class="flex items-center gap-1.5">
+              <span class="text-xs">📝</span>
+              <span class="text-xs font-black text-amber-950">இன்று இரவு 8:30 மணி தேர்வு இன்னும் அப்லோட் செய்யப்படவில்லை.</span>
+            </div>
+            <p class="text-[11px] text-amber-900/90 leading-tight">
+              பிரணவ் இரவு தேர்வு எழுதியவுடன் <strong>"Upload Tonight's Test Paper"</strong> பட்டனை அழுத்தி அப்லோட் செய்யலாம்.
+            </p>
+          </div>
+          <button onclick="toggleDay2PracticeCard()" class="text-[11px] font-extrabold bg-white hover:bg-amber-100/50 text-amber-900 border border-amber-300 px-3 py-1.5 rounded-xl shrink-0 transition flex items-center gap-1 shadow-2xs">
+            <span>💡 Rough Practice Notes (6/10)</span>
+            <i id="day2PracticeChevron" class="fa-solid fa-chevron-down text-[9px] text-amber-700"></i>
+          </button>
+        </div>
+
+        <!-- COLLAPSIBLE PRE-TEST PRACTICE WORK SHEET EVALUATION -->
+        <div id="day2PracticeCard" class="hidden mt-2 rounded-2xl bg-gradient-to-br from-slate-900 via-teal-950 to-slate-900 text-white p-3.5 border border-emerald-500/40 shadow-lg space-y-2.5">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div class="flex items-center gap-2.5">
               <span class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-sm border border-emerald-500/30 shrink-0">
@@ -4904,16 +4924,16 @@ function renderRevisionMissionUI() {
               </span>
               <div>
                 <h4 class="text-xs font-black text-white flex flex-wrap items-center gap-1.5">
-                  <span>Day 2 Maths Written Practice: 6 / 10 (60%)</span>
-                  <span class="bg-amber-400/20 text-amber-300 border border-amber-400/30 text-[9px] px-1.5 py-0.2 rounded-full font-bold">40% Marks Lost Breakdown</span>
+                  <span>Pre-Test Diagnostic Practice Notes: 6 / 10 (60%)</span>
+                  <span class="bg-amber-400/20 text-amber-300 border border-amber-400/30 text-[9px] px-1.5 py-0.2 rounded-full font-bold">2 CBSE Traps Identified</span>
                 </h4>
-                <p class="text-[10px] text-emerald-300">Listen to AI audio feedback & view step-by-step model answers</p>
+                <p class="text-[10px] text-emerald-300">Rough practice sheet analysis before tonight's 30 marks test</p>
               </div>
             </div>
             <div class="flex items-center gap-2 shrink-0 flex-wrap sm:flex-nowrap">
               <button onclick="openEvaluationReportModal(2)" class="bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs px-3 py-2 rounded-xl shadow-md transition flex items-center gap-1.5 shrink-0">
                 <i class="fa-solid fa-chart-simple text-xs"></i>
-                <span>Evaluation Result</span>
+                <span>View Analysis</span>
               </button>
               <button onclick="toggleDay2AudioReview()" id="day2AudioBtn" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs px-3 py-2 rounded-xl flex items-center justify-center gap-1.5 shadow-md transition shrink-0">
                 <i id="day2AudioIcon" class="fa-solid fa-play"></i>
@@ -4930,7 +4950,7 @@ function renderRevisionMissionUI() {
             <div class="flex items-center justify-between text-[11px]">
               <span class="text-amber-300 font-bold flex items-center gap-1.5">
                 <i class="fa-solid fa-volume-high animate-pulse text-emerald-400"></i>
-                <span>AI Mentor Voice: explaining why 40% was deducted...</span>
+                <span>AI Mentor Voice: explaining why 40% was deducted on rough practice...</span>
               </span>
               <span class="text-[10px] text-emerald-400 font-mono bg-emerald-950 px-2 py-0.5 rounded border border-emerald-800">Tamil Voice</span>
             </div>
@@ -5722,3 +5742,19 @@ function closeEvaluationReportModal() {
     modal.classList.remove('flex');
   }
 }
+
+
+function toggleDay2PracticeCard() {
+  const card = document.getElementById('day2PracticeCard');
+  const chevron = document.getElementById('day2PracticeChevron');
+  if (!card) return;
+  const isHidden = card.classList.contains('hidden');
+  if (isHidden) {
+    card.classList.remove('hidden');
+    if (chevron) chevron.className = 'fa-solid fa-chevron-up text-[9px] text-amber-700';
+  } else {
+    card.classList.add('hidden');
+    if (chevron) chevron.className = 'fa-solid fa-chevron-down text-[9px] text-amber-700';
+  }
+}
+window.toggleDay2PracticeCard = toggleDay2PracticeCard;
