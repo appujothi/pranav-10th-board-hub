@@ -4813,12 +4813,12 @@ function renderRevisionMissionUI() {
 // ================= STUDENT & MAMA ANSWER PAPER PHOTO UPLOAD MODAL =================
 let activeUploadPaperDay = 1;
 let activeUploadPaperSubject = 'Science';
-let uploadedPaperBase64 = null;
+let uploadedPaperPages = []; // Array of { id, name, base64 }
 
 function openAnswerPaperUploadModal(dayNum, subjectName) {
   activeUploadPaperDay = dayNum || 2;
   activeUploadPaperSubject = subjectName || (activeUploadPaperDay === 1 ? 'Science' : 'Maths');
-  uploadedPaperBase64 = null;
+  uploadedPaperPages = [];
 
   const modal = document.getElementById('answerPaperUploadModal');
   const daySelect = document.getElementById('uploadPaperDaySelect');
@@ -4830,6 +4830,7 @@ function openAnswerPaperUploadModal(dayNum, subjectName) {
   if (subInput) subInput.value = activeUploadPaperSubject;
   if (preview) preview.classList.add('hidden');
   if (fileInput) fileInput.value = '';
+  renderUploadPagesThumbnails();
 
   if (modal) {
     modal.classList.remove('hidden');
@@ -4846,23 +4847,68 @@ function closeAnswerPaperUploadModal() {
 }
 
 function handleAnswerPaperPhotoSelect(event) {
-  const file = event.target.files[0];
-  if (!file) return;
+  const files = Array.from(event.target.files || []);
+  if (files.length === 0) return;
 
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    uploadedPaperBase64 = e.target.result;
-    const previewContainer = document.getElementById('uploadPaperPreview');
-    const previewImg = document.getElementById('uploadPaperPreviewImg');
-    if (previewImg && previewContainer) {
-      previewImg.src = uploadedPaperBase64;
-      previewContainer.classList.remove('hidden');
-    }
-  };
-  reader.readAsDataURL(file);
+  let loaded = 0;
+  files.forEach((file) => {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      uploadedPaperPages.push({
+        id: 'page_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+        name: file.name || ('Page ' + (uploadedPaperPages.length + 1)),
+        base64: e.target.result
+      });
+      loaded++;
+      if (loaded === files.length) {
+        renderUploadPagesThumbnails();
+      }
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+function removeUploadedPage(pageId) {
+  uploadedPaperPages = uploadedPaperPages.filter(p => p.id !== pageId);
+  renderUploadPagesThumbnails();
+}
+
+function renderUploadPagesThumbnails() {
+  const container = document.getElementById('uploadPaperPreview');
+  const grid = document.getElementById('uploadPagesThumbnailsGrid');
+  const badge = document.getElementById('uploadPagesCountBadge');
+
+  if (!container || !grid) return;
+
+  if (uploadedPaperPages.length === 0) {
+    container.classList.add('hidden');
+    return;
+  }
+
+  container.classList.remove('hidden');
+  if (badge) {
+    badge.textContent = '📸 ' + uploadedPaperPages.length + ' Page' + (uploadedPaperPages.length > 1 ? 's' : '') + ' Selected';
+  }
+
+  grid.innerHTML = uploadedPaperPages.map((p, idx) => `
+    <div class="relative group rounded-xl overflow-hidden border border-slate-300 bg-slate-900 aspect-[3/4] flex items-center justify-center shadow-sm">
+      <img src="${p.base64}" alt="Page ${idx + 1}" class="w-full h-full object-cover">
+      <span class="absolute bottom-1 left-1 bg-black/80 text-white font-bold text-[9px] px-1.5 py-0.5 rounded">
+        P. ${idx + 1}
+      </span>
+      <button type="button" onclick="removeUploadedPage('${p.id}')" class="absolute top-1 right-1 w-5 h-5 rounded-full bg-rose-600 hover:bg-rose-700 text-white text-[10px] flex items-center justify-center shadow-md transition" title="Delete page">
+        ✕
+      </button>
+    </div>
+  `).join('');
 }
 
 function submitAnswerPaperUpload() {
+  if (uploadedPaperPages.length === 0) {
+    alert('Please select or capture at least one page photo before submitting!');
+    return;
+  }
+
   const marksInput = document.getElementById('uploadPaperMarks');
   const scoredMarks = marksInput ? parseFloat(marksInput.value) || 14 : 14;
   const notesInput = document.getElementById('uploadPaperNotes');
@@ -4872,7 +4918,7 @@ function submitAnswerPaperUpload() {
   if (!appState.performanceHub) appState.performanceHub = { housePractice: { recentTests: [] } };
   if (!appState.performanceHub.housePractice.recentTests) appState.performanceHub.housePractice.recentTests = [];
 
-  const testTitle = `Day ${activeUploadPaperDay} ${activeUploadPaperSubject}: Night Test`;
+  const testTitle = 'Day ' + activeUploadPaperDay + ' ' + activeUploadPaperSubject + ': Night Test';
   
   appState.performanceHub.housePractice.recentTests.unshift({
     date: activeUploadPaperDay === 1 ? "2026-10-28" : "2026-10-29",
@@ -4880,9 +4926,10 @@ function submitAnswerPaperUpload() {
     maxMarks: 15,
     scoredMarks: scoredMarks,
     percentage: Math.round((scoredMarks / 15) * 100),
-    status: "Uploaded & Evaluated",
-    paperPhoto: uploadedPaperBase64 ? "data:image" : null,
-    feedback: notes || "Written test submitted and verified successfully."
+    status: 'Submitted (' + uploadedPaperPages.length + ' Pages)',
+    paperPhotos: uploadedPaperPages.map(p => p.base64),
+    pagesCount: uploadedPaperPages.length,
+    feedback: notes || ('Submitted ' + uploadedPaperPages.length + ' written page(s) successfully.')
   });
 
   try {
@@ -4891,7 +4938,7 @@ function submitAnswerPaperUpload() {
 
   closeAnswerPaperUploadModal();
   if (window.confetti) confetti();
-  if (typeof showToast === 'function') showToast(`✅ Test paper for ${testTitle} uploaded successfully!`);
+  if (typeof showToast === 'function') showToast('✅ ' + uploadedPaperPages.length + ' page(s) uploaded successfully for ' + testTitle + '!');
   
   renderRevisionMissionUI();
   if (typeof renderPerformanceView === 'function') renderPerformanceView();
