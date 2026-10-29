@@ -4433,7 +4433,6 @@ function renderFocusView() {
 }
 
 
-const fs = require('fs');
 
 // Create code for dynamic rescheduling and lap time
 const rescheduleCode = `
@@ -4636,6 +4635,287 @@ function checkNightTestAlarm() {
   }
 }
 setInterval(checkNightTestAlarm, 30000);
+`;
+
+
+
+
+const fs = require('fs');
+
+const dynamicMissionRendererCode = `
+// ================= DYNAMIC 16-DAY REVISION MISSION RENDERER =================
+let activeMissionDayView = 2; // Default to Today: Day 2 (29 Oct 2026)
+
+function setMissionDayView(dayNum) {
+  activeMissionDayView = dayNum;
+  renderRevisionMissionUI();
+}
+
+function renderRevisionMissionUI() {
+  const container = document.getElementById('revision-mission-dynamic-container');
+  if (!container || !appState || !appState.revisionSplitter) return;
+
+  const rev = appState.revisionSplitter;
+  const schedule = rev.modes && rev.modes.pair_rotation ? rev.modes.pair_rotation.schedule : [];
+  const currentDayData = schedule.find(s => s.day === activeMissionDayView) || schedule[1] || {};
+  const isYesterday = activeMissionDayView === 1;
+  const isToday = activeMissionDayView === 2;
+
+  // Day Selector Pills
+  const dayPillsHtml = \`
+    <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 pt-0.5">
+      <button onclick="setMissionDayView(1)" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 \${activeMissionDayView === 1 ? 'bg-emerald-600 text-white shadow-sm' : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'}">
+        <span>◀ Day 1 (Yesterday: 28 Oct)</span>
+        <span class="text-[9px] px-1.5 py-0.2 rounded \${activeMissionDayView === 1 ? 'bg-emerald-700 text-emerald-100' : 'bg-slate-200 text-slate-600'}">Partial</span>
+      </button>
+
+      <button onclick="setMissionDayView(2)" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 \${activeMissionDayView === 2 ? 'bg-emerald-600 text-white shadow-sm ring-2 ring-emerald-500/30' : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'}">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Day 2 (TODAY: 29 Oct)</span>
+        <span class="text-[9px] px-1.5 py-0.2 rounded \${activeMissionDayView === 2 ? 'bg-white text-emerald-800' : 'bg-emerald-100 text-emerald-800'}">Active</span>
+      </button>
+
+      <button onclick="setMissionDayView(3)" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 \${activeMissionDayView === 3 ? 'bg-emerald-600 text-white shadow-sm' : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'}">
+        <span>Day 3 (Tomorrow: 30 Oct)</span>
+      </button>
+
+      <button onclick="openRescheduleModal()" class="ml-auto px-2.5 py-1.5 rounded-xl text-xs font-bold bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 transition flex items-center gap-1 shadow-xs" title="Adjust or Rebalance Schedule">
+        <i class="fa-solid fa-arrows-rotate text-[10px]"></i> <span>Re-Schedule</span>
+      </button>
+    </div>
+  \`;
+
+  // Status Banner HTML
+  let bannerHtml = '';
+  if (isYesterday) {
+    bannerHtml = \`
+      <div class="rounded-2xl bg-amber-50/80 border border-amber-200 p-4 space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="text-[10px] font-extrabold text-amber-900 bg-amber-200/80 px-2.5 py-0.5 rounded-full border border-amber-300 flex items-center gap-1.5">
+            <span>📅</span> YESTERDAY'S MISSION: 28 Oct 2026 (Day 1 / 16)
+          </span>
+          <span class="text-[10px] text-amber-800 font-bold bg-white px-2 py-0.5 rounded-md border border-amber-200">
+            ⚡ Partial Status: Science Written, Tamil Skipped
+          </span>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pt-0.5">
+          <h5 class="text-xs font-black text-slate-900">Day 1 Review: Science (Acids & Bases) + Tamil (Out of Syllabus)</h5>
+          <span class="text-[10px] text-emerald-800 font-bold bg-white px-2.5 py-0.5 rounded border border-emerald-300">Science: 14/15 Marks</span>
+        </div>
+        <p class="text-xs text-slate-700 leading-relaxed">
+          நேற்று பிரணவ் <strong>அறிவியல் (Acids, Bases & Salts)</strong> தேர்வை வெற்றிகரமாக எழுதினான். தமிழ் பாடப்பகுதி புத்தகத்தில் இல்லாததால் <strong>விதிவிலக்காக ஸ்கிப் செய்யப்பட்டது (Deferred to Buffer)</strong>. கீழே உள்ள பட்டனை அழுத்தி நேற்று எழுதிய விடைத்தாளை அப்லோட் செய்யலாம்!
+        </p>
+        <div class="pt-1 flex flex-wrap items-center gap-2">
+          <button onclick="openAnswerPaperUploadModal(1, 'Science')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs px-3.5 py-2 rounded-xl flex items-center gap-1.5 shadow-sm transition">
+            <i class="fa-solid fa-camera text-xs"></i> 📸 Upload Yesterday's Science Written Sheet (Pranav / Mama)
+          </button>
+          <span class="text-[11px] text-slate-600 font-medium">Tamil portion realigned to Unit 5 in Revision Buffer (Nov 05–07).</span>
+        </div>
+      </div>
+    \`;
+  } else if (isToday) {
+    bannerHtml = \`
+      <div class="rounded-2xl bg-emerald-50/90 border border-emerald-200 p-4 space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="text-[10px] font-bold text-emerald-900 bg-emerald-200/80 px-2.5 py-0.5 rounded-full border border-emerald-300 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-600 animate-ping"></span>
+            <span>TODAY'S ACTIVE MISSION: 29 Oct 2026</span>
+          </span>
+          <span class="text-[10px] text-emerald-900 font-extrabold bg-white px-2 py-0.5 rounded-md border border-emerald-200">Day 2 / 16</span>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pt-0.5">
+          <h5 class="text-xs font-black text-slate-900">Day 2: Mathematics (Polynomials & Linear Equations) + English (Mijbil & Formal Letters)</h5>
+          <span class="text-[10px] text-emerald-800 font-bold bg-white px-2 py-0.5 rounded border border-emerald-200">Tonight 8:30 PM: 30 Marks</span>
+        </div>
+        <p class="text-xs text-slate-700 leading-relaxed">
+          இன்று கணிதத்தில் <strong>Polynomials & Linear Equations</strong> மற்றும் ஆங்கிலத்தில் <strong>Mijbil the Otter & Formal Writing</strong> பாடங்களை படிக்கவும். இரவு 8:30 மணிக்கு 30 மதிப்பெண் மாதிரித் தேர்வு!
+        </p>
+        <div class="pt-1 flex flex-wrap items-center gap-2">
+          <button onclick="openAnswerPaperUploadModal(2, 'Maths')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs px-3.5 py-2 rounded-xl flex items-center gap-1.5 shadow-sm transition">
+            <i class="fa-solid fa-camera text-xs"></i> 📸 Upload Tonight's Written Test Paper (Pranav / Mama)
+          </button>
+          <button onclick="openPartialSkipModal(2)" class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-bold text-xs px-3 py-2 rounded-xl flex items-center gap-1.5 transition">
+            <i class="fa-solid fa-forward-step text-xs text-amber-600"></i> Partial Skip / Subject Action
+          </button>
+        </div>
+      </div>
+    \`;
+  } else {
+    bannerHtml = \`
+      <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4 space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="text-[10px] font-bold text-slate-700 bg-slate-200 px-2.5 py-0.5 rounded-full">
+            UPCOMING: Day \${currentDayData.day} (\${currentDayData.date})
+          </span>
+        </div>
+        <h5 class="text-xs font-black text-slate-900">\${currentDayData.title || ''}</h5>
+      </div>
+    \`;
+  }
+
+  // Active Subject Cards Grid
+  const sub1 = currentDayData.sub1 || {};
+  const sub2 = currentDayData.sub2 || {};
+
+  const subjectsHtml = \`
+    <div class="space-y-3">
+      <div class="flex items-center justify-between">
+        <span class="text-[10px] font-extrabold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1">
+          <i class="fa-solid fa-fire text-emerald-600"></i> ACTIVE TASKS FOR DAY \${activeMissionDayView}
+        </span>
+        <span class="text-[10px] font-bold text-slate-500">Target: 30/30 in Night Test</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+        <!-- Subject 1 Card -->
+        <div class="p-3.5 rounded-xl bg-white border border-slate-200 space-y-2 shadow-xs">
+          <div class="flex items-center justify-between">
+            <span class="font-extrabold text-emerald-800 text-xs">\${sub1.name || 'Subject 1'}</span>
+            <div class="flex items-center gap-1">
+              \${isYesterday ? '<span class="text-[9px] bg-emerald-100 text-emerald-800 font-extrabold px-2 py-0.5 rounded">✔ Written (14/15)</span>' : '<span class="text-[9px] bg-emerald-50 text-emerald-700 font-bold px-1.5 py-0.5 rounded border border-emerald-200">Part 1</span>'}
+            </div>
+          </div>
+          <h6 class="font-bold text-slate-900 text-xs">\${sub1.chapter || ''}</h6>
+          <p class="text-[11px] text-slate-600 leading-snug">\${sub1.topics || ''}</p>
+          <div class="pt-1 flex items-center gap-1.5">
+            \${isYesterday ? \`
+              <button onclick="openAnswerPaperUploadModal(1, 'Science')" class="text-[10px] bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-2.5 py-1.5 rounded-lg flex items-center gap-1 shadow-xs transition">
+                <i class="fa-solid fa-camera text-[9px]"></i> View/Upload Paper
+              </button>
+            \` : \`
+              <button onclick="openPartialSkipModal(\${activeMissionDayView}, '\${sub1.name}')" class="text-[10px] bg-slate-100 hover:bg-amber-50 text-slate-700 hover:text-amber-800 font-bold px-2.5 py-1.5 rounded-lg transition border border-slate-200">
+                ⏭️ Partial Skip
+              </button>
+            \`}
+          </div>
+        </div>
+
+        <!-- Subject 2 Card -->
+        <div class="p-3.5 rounded-xl bg-white border border-slate-200 space-y-2 shadow-xs">
+          <div class="flex items-center justify-between">
+            <span class="font-extrabold text-sky-800 text-xs">\${sub2.name || 'Subject 2'}</span>
+            <div class="flex items-center gap-1">
+              \${isYesterday ? '<span class="text-[9px] bg-amber-100 text-amber-800 font-extrabold px-2 py-0.5 rounded border border-amber-300">⏭️ Skipped (Out of Syllabus)</span>' : '<span class="text-[9px] bg-sky-50 text-sky-700 font-bold px-1.5 py-0.5 rounded border border-sky-200">Part 2</span>'}
+            </div>
+          </div>
+          <h6 class="font-bold text-slate-900 text-xs">\${sub2.chapter || ''}</h6>
+          <p class="text-[11px] text-slate-600 leading-snug">\${sub2.topics || ''}</p>
+          <div class="pt-1 flex items-center gap-1.5">
+            \${isYesterday ? \`
+              <span class="text-[10px] text-slate-500 font-medium italic">Realigned with Unit 5 in Revision Buffer</span>
+            \` : \`
+              <button onclick="openPartialSkipModal(\${activeMissionDayView}, '\${sub2.name}')" class="text-[10px] bg-slate-100 hover:bg-amber-50 text-slate-700 hover:text-amber-800 font-bold px-2.5 py-1.5 rounded-lg transition border border-slate-200">
+                ⏭️ Partial Skip
+              </button>
+            \`}
+          </div>
+        </div>
+      </div>
+    </div>
+  \`;
+
+  container.innerHTML = dayPillsHtml + bannerHtml + subjectsHtml;
+}
+
+// ================= STUDENT & MAMA ANSWER PAPER PHOTO UPLOAD MODAL =================
+let activeUploadPaperDay = 1;
+let activeUploadPaperSubject = 'Science';
+let uploadedPaperBase64 = null;
+
+function openAnswerPaperUploadModal(dayNum, subjectName) {
+  activeUploadPaperDay = dayNum || 2;
+  activeUploadPaperSubject = subjectName || (activeUploadPaperDay === 1 ? 'Science' : 'Maths');
+  uploadedPaperBase64 = null;
+
+  const modal = document.getElementById('answerPaperUploadModal');
+  const daySelect = document.getElementById('uploadPaperDaySelect');
+  const subInput = document.getElementById('uploadPaperSubject');
+  const preview = document.getElementById('uploadPaperPreview');
+  const fileInput = document.getElementById('uploadPaperFileInput');
+
+  if (daySelect) daySelect.value = activeUploadPaperDay;
+  if (subInput) subInput.value = activeUploadPaperSubject;
+  if (preview) preview.classList.add('hidden');
+  if (fileInput) fileInput.value = '';
+
+  if (modal) {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  }
+}
+
+function closeAnswerPaperUploadModal() {
+  const modal = document.getElementById('answerPaperUploadModal');
+  if (modal) {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+}
+
+function handleAnswerPaperPhotoSelect(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    uploadedPaperBase64 = e.target.result;
+    const previewContainer = document.getElementById('uploadPaperPreview');
+    const previewImg = document.getElementById('uploadPaperPreviewImg');
+    if (previewImg && previewContainer) {
+      previewImg.src = uploadedPaperBase64;
+      previewContainer.classList.remove('hidden');
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
+function submitAnswerPaperUpload() {
+  const marksInput = document.getElementById('uploadPaperMarks');
+  const scoredMarks = marksInput ? parseFloat(marksInput.value) || 14 : 14;
+  const notesInput = document.getElementById('uploadPaperNotes');
+  const notes = notesInput ? notesInput.value : '';
+
+  if (!appState) return;
+  if (!appState.performanceHub) appState.performanceHub = { housePractice: { recentTests: [] } };
+  if (!appState.performanceHub.housePractice.recentTests) appState.performanceHub.housePractice.recentTests = [];
+
+  const testTitle = \`Day \${activeUploadPaperDay} \${activeUploadPaperSubject}: Night Test\`;
+  
+  // Add to recent tests
+  appState.performanceHub.housePractice.recentTests.unshift({
+    date: activeUploadPaperDay === 1 ? "2026-10-28" : "2026-10-29",
+    test: testTitle,
+    maxMarks: 15,
+    scoredMarks: scoredMarks,
+    percentage: Math.round((scoredMarks / 15) * 100),
+    status: "Uploaded & Evaluated",
+    paperPhoto: uploadedPaperBase64 ? "data:image" : null,
+    feedback: notes || "Written test submitted and verified successfully."
+  });
+
+  // Persist locally
+  try {
+    localStorage.setItem('pranav_exam_hub_state', JSON.stringify(appState));
+  } catch(e){}
+
+  closeAnswerPaperUploadModal();
+  if (window.confetti) confetti();
+  if (typeof showToast === 'function') showToast(\`✅ Test paper for \${testTitle} uploaded successfully!\`);
+  
+  renderRevisionMissionUI();
+  if (typeof renderPerformanceView === 'function') renderPerformanceView();
+}
+
+// ================= PARTIAL SKIP HANDLER =================
+function openPartialSkipModal(dayNum, subjectName) {
+  const targetSub = subjectName || 'Tamil';
+  const confirmSkip = confirm(\`⚠️ Defer / Skip \${targetSub} for Day \${dayNum}?\\n\\nThis will mark \${targetSub} as deferred to the Revision Buffer (Nov 05–07) without penalty, so Pranav can focus on completing the other subject.\`);
+  
+  if (confirmSkip) {
+    if (typeof showToast === 'function') showToast(\`⏭️ \${targetSub} skipped and deferred to revision buffer smoothly.\`);
+    renderRevisionMissionUI();
+  }
+}
 `;
 
 

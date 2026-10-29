@@ -582,202 +582,9 @@
             </span>
           </div>
 
-          <!-- TODAY STATUS BANNER: Day 1 (28 Oct 2026) -->
-          <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4 space-y-2">
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] font-bold text-emerald-800 bg-emerald-100/80 px-2.5 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-                <span data-i18n="today_tag">TODAY'S MISSION: 28 Oct 2026</span>
-              </span>
-              <span class="text-[10px] text-slate-700 font-bold bg-white px-2 py-0.5 rounded-md border border-slate-200" data-i18n="day_one_badge">Day 1 / 16</span>
-            </div>
-            
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pt-0.5">
-              <h5 class="text-xs font-black text-slate-900" data-i18n="today_head">Day 1: Science (Acids, Bases & Salts) + Tamil (இயல் 5: நிலா முற்றம் - கம்பராமாயணம்)</h5>
-              <span class="text-[10px] text-emerald-800 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 self-start sm:self-auto">Tonight 8:30 PM: 30 Marks</span>
-            </div>
-
-            <p class="text-xs text-slate-600 leading-relaxed" data-i18n="today_desc">
-              Revise Chemistry Ch 2 and Tamil Unit 5 today. Practice chemical equations and Tamil question-answer types. Complete 45-minute written test tonight!
-            </p>
-          </div>
-
-          <!-- ACTIVE MISSION SUBJECTS GRID (Day 1: 28 Oct 2026) -->
-          <div id="today-mission-box" class="rounded-2xl bg-white border border-slate-200 p-4 space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] font-extrabold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1">
-                <i class="fa-solid fa-fire text-emerald-600"></i> <span data-i18n="today_task_badge">ACTIVE TASKS FOR TODAY</span>
-              </span>
-              <span class="text-[10px] font-bold text-slate-500">Target: 30/30 in Night Test</span>
-            </div>
-
-            <!-- Subject 1 & Subject 2 Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
-              <!-- Sub 1 -->
-              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
-                <div class="flex items-center justify-between">
-                  <span class="font-extrabold text-emerald-800 text-xs" data-i18n="sub1_label">🔬 Science (Chemistry)</span>
-                  <span class="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded">Part 1</span>
-                </div>
-                <h6 class="font-bold text-slate-900 text-xs" data-i18n="sub1_ch">Ch 2: Acids, Bases and Salts</h6>
-                <p class="text-[11px] text-slate-600 leading-snug" data-i18n="sub1_topics">
-                  pH scale, Chlor-alkali process, Plaster of Paris, Bleaching powder & Acid-Metal reactions.
-                </p>
-                <div class="pt-1 flex items-center gap-1.5">
-                  <button onclick="playTanglishAudio('exp-s2')" class="text-[10px] bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-3 py-1.5 rounded-lg flex items-center gap-1 shadow-xs transition">
-                    <i class="fa-solid fa-volume-high text-[9px]"></i> <span data-i18n="listen_audio">🎧 Listen Concept Audio</span>
-                  </button>
-                  <a href="/textbooks/science/jesc102.pdf" target="_blank" class="text-[10px] bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold px-3 py-1.5 rounded-lg flex items-center gap-1 transition">
-                    <i class="fa-solid fa-book-open text-[9px]"></i> PDF
-                  </a>
-                </div>
-              </div>
-
-              <!-- Sub 2 -->
-              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
-                <div class="flex items-center justify-between">
-                  <span class="font-extrabold text-blue-800 text-xs" data-i18n="sub2_label">📖 Tamil (Language-II)</span>
-                  <span class="text-[9px] bg-blue-100 text-blue-800 font-bold px-1.5 py-0.5 rounded">Part 2</span>
-                </div>
-                <h6 class="font-bold text-slate-900 text-xs" data-i18n="sub2_ch">Unit 5: Manarkeni (இயல் 5)</h6>
-                <p class="text-[11px] text-slate-600 leading-snug" data-i18n="sub2_topics">
-                  Translation Education, Neethi Venba (Seikuthambi Pavalar), Question-Answer types & Porulkol.
-                </p>
-                <div class="pt-1 flex items-center gap-1.5">
-                  <button onclick="playTanglishAudio('exp-tam5')" class="text-[10px] bg-blue-600 hover:bg-blue-700 text-white font-bold px-3 py-1.5 rounded-lg flex items-center gap-1 shadow-xs transition">
-                    <i class="fa-solid fa-volume-high text-[9px]"></i> <span data-i18n="listen_audio_tam">🎧 Listen Tamil Audio</span>
-                  </button>
-                  <a href="/textbooks/tamil.pdf" target="_blank" class="text-[10px] bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold px-3 py-1.5 rounded-lg flex items-center gap-1 transition">
-                    <i class="fa-solid fa-book-open text-[9px]"></i> PDF
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <!-- MAMA QUALITY RULE WARNING ALERT -->
-            <div class="p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 leading-snug space-y-1">
-              <div class="flex items-center gap-1.5 font-bold text-amber-900">
-                <i class="fa-solid fa-triangle-exclamation text-amber-600"></i>
-                <span data-i18n="mama_rule_title">Mama's Quality Rule (Important Notice):</span>
-              </div>
-              <p data-i18n="mama_rule_desc" class="text-[11px] text-amber-800">
-                The <strong>Sample Practice Questions</strong> below are for your self-study only! Tonight's 8:30 PM written test will <em>NOT have these exact same questions</em> — numbers and question framing will be <strong>twisted and application-oriented to test your true conceptual mastery!</strong>
-              </p>
-            </div>
-
-            <!-- SAMPLE PRACTICE QUESTIONS ACCORDION -->
-            <div class="border border-slate-200 rounded-xl overflow-hidden bg-slate-50">
-              <button onclick="toggleTomorrowSampleQuestions()" class="w-full p-3 flex items-center justify-between text-left text-xs font-bold text-slate-800 hover:bg-slate-100 transition">
-                <span class="flex items-center gap-1.5">
-                  <i class="fa-solid fa-clipboard-question text-emerald-600"></i>
-                  <span data-i18n="sample_practice_title">Tomorrow's Sample Practice Questions (6 Questions & Solutions)</span>
-                </span>
-                <i id="tomorrow-samples-chevron" class="fa-solid fa-chevron-down text-[10px] text-slate-500 transition-transform"></i>
-              </button>
-
-              <div id="tomorrow-samples-content" class="hidden p-3 space-y-3 text-xs border-t border-slate-200 text-slate-700 bg-white">
-                <div class="space-y-2">
-                  <span class="font-extrabold text-emerald-800 block border-b border-slate-100 pb-0.5">🔬 Science Practice Questions (3 Marks each):</span>
-                  
-                  <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
-                    <p class="font-bold text-slate-900">Q1. What gas is released when dilute HCl reacts with Zinc granules? Write the balanced chemical equation and test for this gas.</p>
-                    <button onclick="toggleAns('ans-s1')" class="text-[10px] font-bold text-emerald-700 hover:underline">👁️ View Sample Answer & Key</button>
-                    <p id="ans-s1" class="hidden text-[11px] text-emerald-950 bg-emerald-50 p-2 rounded border border-emerald-200 mt-1">
-                      <strong>Answer:</strong> Hydrogen gas ($H_2$) is released.<br>
-                      <strong>Equation:</strong> $Zn(s) + 2HCl(aq) \rightarrow ZnCl_2(aq) + H_2(g)\uparrow$<br>
-                      <strong>Test:</strong> Bring a burning matchstick/splinter near mouth of tube; burns with 'POP' sound.
-                    </p>
-                  </div>
-
-                  <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
-                    <p class="font-bold text-slate-900">Q2. A solution turns blue litmus red. What is its pH range? Why does tooth decay start when mouth pH is below 5.5?</p>
-                    <button onclick="toggleAns('ans-s2')" class="text-[10px] font-bold text-emerald-700 hover:underline">👁️ View Sample Answer & Key</button>
-                    <p id="ans-s2" class="hidden text-[11px] text-emerald-950 bg-emerald-50 p-2 rounded border border-emerald-200 mt-1">
-                      <strong>Answer:</strong> pH is less than 7 (acidic). Tooth enamel is calcium hydroxyapatite. Below pH 5.5, bacteria produce acids from sugar/food debris which corrodes the enamel.
-                    </p>
-                  </div>
-
-                  <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
-                    <p class="font-bold text-slate-900">Q3. Give chemical name, formula and two uses of Plaster of Paris. Why is it stored in moisture-proof containers?</p>
-                    <button onclick="toggleAns('ans-s3')" class="text-[10px] font-bold text-emerald-700 hover:underline">👁️ View Sample Answer & Key</button>
-                    <p id="ans-s3" class="hidden text-[11px] text-emerald-950 bg-emerald-50 p-2 rounded border border-emerald-200 mt-1">
-                      <strong>Answer:</strong> Calcium sulphate hemihydrate ($CaSO_4 \cdot \frac{1}{2}H_2O$).<br>
-                      <strong>Uses:</strong> 1. Setting fractured bones. 2. Making toys & casts.<br>
-                      <strong>Storage:</strong> Absorbs water to set into hard solid Gypsum ($CaSO_4 \cdot 2H_2O$).
-                    </p>
-                  </div>
-                </div>
-
-                <div class="space-y-2 pt-2 border-t border-slate-100">
-                  <span class="font-extrabold text-blue-800 block border-b border-slate-100 pb-0.5">📖 Tamil Practice Questions (3 Marks each):</span>
-                  
-                  <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
-                    <p class="font-bold text-slate-900">Q1. மொழிபெயர்ப்பு குறித்து பாரதியார் மற்றும் பாரதிதாசன் கூறிய கருத்துக்களை தொகுத்து எழுதுக.</p>
-                    <button onclick="toggleAns('ans-t1')" class="text-[10px] font-bold text-blue-700 hover:underline">👁️ View Sample Answer & Key</button>
-                    <p id="ans-t1" class="hidden text-[11px] text-blue-950 bg-blue-50 p-2 rounded border border-blue-200 mt-1">
-                      <strong>விடை:</strong> பாரதியார்: "சென்றிடுவீர் எட்டுத்திக்கும் - கலைச் செல்வங்கள் யாவும் கொணர்ந்திங்கு சேர்ப்பீர்". பாரதிதாசன்: "பிறநாட்டு நல்லறிஞர் சாத்திரங்கள் தமிழ் மொழியிற் பெயர்த்தல் வேண்டும்".
-                    </p>
-                  </div>
-
-                  <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
-                    <p class="font-bold text-slate-900">Q2. வினா எத்தனை வகைப்படும்? விடை எத்தனை வகைப்படும்? சான்றுகளுடன் விளக்குக.</p>
-                    <button onclick="toggleAns('ans-t2')" class="text-[10px] font-bold text-blue-700 hover:underline">👁️ View Sample Answer & Key</button>
-                    <p id="ans-t2" class="hidden text-[11px] text-blue-950 bg-blue-50 p-2 rounded border border-blue-200 mt-1">
-                      <strong>விடை:</strong> வினா 6 வகைப்படும் (அறிவினா, அறியாவினா, ஐயவினா, கொளல்வினா, கொடைவினா, ஏவல்வினா). விடை 8 வகைப்படும் (சுட்டு, நேர், எதிர், ஏவல், வினாவெதிர் வினாதல், உற்றது உரைத்தல், உறுவது கூறல், இனமொழி).
-                    </p>
-                  </div>
-
-                  <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
-                    <p class="font-bold text-slate-900">Q3. 'அருளைப் பெருக்கி அறிவைத் திருத்தி' - இப்பாடல் அடிகளில் குறிப்பிடப்படும் கல்வியின் சிறப்பினை விளக்குக.</p>
-                    <button onclick="toggleAns('ans-t3')" class="text-[10px] font-bold text-blue-700 hover:underline">👁️ View Sample Answer & Key</button>
-                    <p id="ans-t3" class="hidden text-[11px] text-blue-950 bg-blue-50 p-2 rounded border border-blue-200 mt-1">
-                      <strong>விடை:</strong> செய்குதம்பிப் பாவலர் நீதி வெண்பா: கல்வி மனிதனிடம் உள்ள அறியாமையைப் போக்கி, அருளைப் பெருக்கி, நல்வழியில் செலுத்தி உயிருக்கு உற்ற துணையாய் இன்பம் சேர்க்கிறது.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- NIGHT ASSESSMENT BLUEPRINT -->
-            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2 text-xs">
-              <div class="flex items-center justify-between">
-                <span class="font-extrabold text-slate-900 flex items-center gap-1.5">
-                  <i class="fa-solid fa-moon text-emerald-600"></i>
-                  <span data-i18n="night_test_head">Day 1 Night Assessment (Tonight)</span>
-                </span>
-                <span class="text-[10px] bg-emerald-100 text-emerald-800 font-extrabold px-2.5 py-0.5 rounded-full border border-emerald-200">
-                  30 Marks • 45 Mins
-                </span>
-              </div>
-              <p class="text-xs text-slate-600" data-i18n="night_test_time">
-                <strong>Timing:</strong> 8:30 PM – 9:15 PM • <strong>Portions:</strong> Science 15 Marks + Tamil 15 Marks.
-              </p>
-              <p class="text-[11px] text-slate-500" data-i18n="night_test_instructions">
-                Write on rough notebook with full steps. Submit immediately for grading!
-              </p>
-            </div>
-
-            <!-- STUDY TOOLKIT (Task vs Study Separation) -->
-            <div class="pt-2 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2 text-xs">
-              <span class="text-[11px] font-bold text-slate-500 flex items-center gap-1">
-                <i class="fa-solid fa-graduation-cap text-emerald-600"></i>
-                <span data-i18n="study_toolkit_title">Study Helpers:</span>
-              </span>
-              <div class="flex items-center gap-1.5">
-                <button onclick="openDoubtSolverModal()" class="text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-800 px-3 py-1.5 rounded-lg border border-slate-200 transition">
-                  <i class="fa-solid fa-robot text-blue-600"></i> AI Doubt Solver
-                </button>
-                <button onclick="switchTab('formulas')" class="text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-800 px-3 py-1.5 rounded-lg border border-slate-200 transition">
-                  <i class="fa-solid fa-headphones text-emerald-600"></i> Audio Hub
-                </button>
-                <button onclick="openAssignTaskModal()" class="text-xs font-semibold bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 px-3 py-1.5 rounded-lg transition">
-                  <i class="fa-solid fa-upload text-emerald-600"></i> Upload Solution
-                </button>
-              </div>
-            </div>
-
-          </div>
-
+          <!-- DYNAMIC 16-DAY REVISION MISSION CONTAINER -->
+          <div id="revision-mission-dynamic-container" class="space-y-4"></div>
+          
           <!-- FULL 16-DAY SCHEDULE EXPANDER -->
           <div class="pt-1 border-t border-slate-200">
             <button onclick="toggleFull16DaySchedule()" class="w-full py-2.5 px-3.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-800 text-xs font-bold flex items-center justify-between transition">
@@ -2479,6 +2286,89 @@
 
       <div id="rescheduleModalBody">
         <!-- Dynamically rendered by renderRescheduleModalInfo() -->
+      </div>
+    </div>
+  </div>
+  
+  
+  <!-- ================= STUDENT & MAMA ANSWER PAPER PHOTO UPLOAD MODAL ================= -->
+  <div id="answerPaperUploadModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl w-full max-w-md p-5 space-y-4 shadow-2xl border border-slate-200">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+        <div class="flex items-center gap-2">
+          <span class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-sm">
+            📸
+          </span>
+          <div>
+            <h3 class="text-sm font-extrabold text-slate-900">Upload Written Test Paper</h3>
+            <p class="text-[10px] text-slate-500">Capture notebook photos • Pranav or Mama can submit</p>
+          </div>
+        </div>
+        <button onclick="closeAnswerPaperUploadModal()" class="w-7 h-7 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center text-xs transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <!-- Test Day & Subject Selectors -->
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-[10px] font-bold text-slate-700 mb-1">Select Day:</label>
+            <select id="uploadPaperDaySelect" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs font-bold text-slate-800">
+              <option value="1">Day 1 (28 Oct - Yesterday)</option>
+              <option value="2" selected>Day 2 (29 Oct - Today)</option>
+              <option value="3">Day 3 (30 Oct - Tomorrow)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[10px] font-bold text-slate-700 mb-1">Subject:</label>
+            <select id="uploadPaperSubject" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs font-bold text-slate-800">
+              <option value="Science">Science (Acids & Bases)</option>
+              <option value="Maths">Mathematics (Polynomials)</option>
+              <option value="English">English (Mijbil & Letters)</option>
+              <option value="Tamil">Tamil (Unit 5)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Camera / File Upload Field -->
+        <div class="border-2 border-dashed border-emerald-200 bg-emerald-50/50 rounded-2xl p-4 text-center space-y-2">
+          <div class="w-10 h-10 rounded-full bg-white text-emerald-600 border border-emerald-200 mx-auto flex items-center justify-center text-base shadow-xs">
+            📷
+          </div>
+          <div class="space-y-0.5">
+            <span class="font-bold text-slate-800 block text-xs">Take Photo or Browse Notebook Pages</span>
+            <span class="text-[10px] text-slate-500 block">Take a clear picture of Pranav's handwritten answers</span>
+          </div>
+          <input type="file" id="uploadPaperFileInput" accept="image/*" capture="environment" onchange="handleAnswerPaperPhotoSelect(event)" class="text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-emerald-600 file:text-white hover:file:bg-emerald-700 cursor-pointer">
+        </div>
+
+        <!-- Photo Preview Container -->
+        <div id="uploadPaperPreview" class="hidden rounded-xl overflow-hidden border border-slate-200 max-h-40">
+          <img id="uploadPaperPreviewImg" src="" alt="Answer Sheet Preview" class="w-full h-40 object-contain bg-slate-900">
+        </div>
+
+        <!-- Marks & Notes -->
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-[10px] font-bold text-slate-700 mb-1">Scored Marks (out of 15):</label>
+            <input type="number" id="uploadPaperMarks" value="14" min="0" max="15" step="0.5" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 text-xs font-black text-emerald-800">
+          </div>
+          <div>
+            <label class="block text-[10px] font-bold text-slate-700 mb-1">Student / Mama Notes:</label>
+            <input type="text" id="uploadPaperNotes" placeholder="e.g. Science written, neat equations" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-800">
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="pt-2 flex items-center gap-2">
+          <button onclick="submitAnswerPaperUpload()" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-md transition">
+            <i class="fa-solid fa-circle-check text-xs"></i> Submit & Save to House Practice
+          </button>
+          <button onclick="closeAnswerPaperUploadModal()" class="px-3 py-2.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition">
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   </div>

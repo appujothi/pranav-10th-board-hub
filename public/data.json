@@ -2747,14 +2747,14 @@
     "firstExamDate": "2026-11-13",
     "totalDays": 16,
     "today": {
-      "date": "2026-10-28",
-      "dayIndex": 1,
-      "status": "Active Revision Day 1",
-      "pair": "Science + Tamil",
-      "sub1Name": "Science: Ch 2 Acids, Bases & Salts (15 Marks)",
-      "sub2Name": "Tamil: இயல் 5 நிலா முற்றம் (கம்பராமாயணம் & பன்முகக் கலைஞர்) (15 Marks)",
+      "date": "2026-10-29",
+      "dayIndex": 2,
+      "status": "Active Revision Day 2",
+      "pair": "Mathematics + English",
+      "sub1Name": "Maths: Ch 2 Polynomials & Ch 3 Linear Equations (15 Marks)",
+      "sub2Name": "English: Mijbil the Otter & Formal Letters (15 Marks)",
       "nightTestTiming": "8:30 PM – 9:15 PM (30 Marks)",
-      "message": "இன்று முதல் நாள் ரிவிஷன்! வேதியியலில் Acids & Bases மற்றும் தமிழில் இயல் 5 (கம்பராமாயணம், பன்முகக் கலைஞர்) படித்து இரவு 8:30 மணிக்கு தேர்வு எழுத தயாராகுங்கள்."
+      "message": "இன்று நாள் 2 (Day 2) ரிவிஷன்! கணிதத்தில் Polynomials & Linear Equations, ஆங்கிலத்தில் Mijbil the Otter & Formal Letters படித்து இரவு 8:30 PM தேர்வுக்கு தயாராகுங்கள்."
     },
     "tomorrow": {
       "date": "2026-10-29",
@@ -3812,6 +3812,24 @@
             }
           }
         ]
+      }
+    },
+    "yesterday": {
+      "date": "2026-10-28",
+      "dayIndex": 1,
+      "status": "partial_completed",
+      "label": "Partial Completed (Science Done, Tamil Skipped)",
+      "sub1": {
+        "name": "Science (Chemistry - Acids, Bases & Salts)",
+        "status": "written",
+        "marksScored": 14,
+        "maxMarks": 15,
+        "photoUploaded": false
+      },
+      "sub2": {
+        "name": "Tamil (Language-II - Unit 5)",
+        "status": "skipped_out_of_syllabus",
+        "note": "Tamil portion was out of syllabus; skipped without penalty and realigned with official textbook Unit 5 (நிலா முற்றம்) in Day 10–12 revision buffer."
       }
     }
   },
@@ -5879,6 +5897,16 @@
       "overallAverage": 88.5,
       "targetAverage": 95,
       "recentTests": [
+        {
+          "date": "2026-10-28",
+          "test": "Day 1 Science: Acids, Bases & Salts (Home Night Test)",
+          "maxMarks": 15,
+          "scoredMarks": 14,
+          "percentage": 93.3,
+          "status": "Submitted (Tamil Skipped)",
+          "paperPhoto": null,
+          "feedback": "Strong grip on chemical reactions & pH scale. Tamil deferred to revision buffer."
+        },
         {
           "date": "2026-10-25",
           "test": "Maths: Real Numbers Diagnostic",
