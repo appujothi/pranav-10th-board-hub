@@ -5927,7 +5927,39 @@
             "Question Copying: Keep Roman numeral (ii) separated from the variable to prevent reading kx as 2kx"
           ],
           "audioExplanation": "வணக்கம் பிரணவ்! உன்னோட மேக்ஸ் டெஸ்ட் பேப்பரை AI முழுமையா திருத்தியாச்சு. உன்னோட கையெழுத்து, ஸ்டெப்-பை-ஸ்டெப் விளக்கங்கள் மற்றும் கிராஸ் மல்டிபிளிகேஷன் ரொம்ப நேர்த்தியா இருக்கு! ஆனா இந்த டெஸ்ட்ல 10-க்கு 6 மார்க் வந்து, 40 சதவீதம் மார்க் ஏன் குறைஞ்சது தெரியுமா? மொத்தம் இரண்டு முக்கியமான காரணங்கள்: முதலாவது, கொஸ்டின் 1-ல, நோ சொல்யூஷன் கண்டிஷன் a1 by a2 equals b1 by b2 not equals c1 by c2. நீ ஆல்ஃபா ஈக்வல்ஸ் பிளஸ் ஆர் மைனஸ் 6 கண்டுபிடிச்சது சரிதான். ஆனால் பிளஸ் 6 போட்டால் அது இன்பினிட்லி மெனி சொல்யூஷன்ஸ் ஆகிவிடும்! மைனஸ் 6 போட்டால் மட்டும்தான் நோ சொல்யூஷன் வரும். இந்த கண்டிஷனை சரிபார்க்காததால் 1 மார்க் போச்சு. இது போர்டு எக்ஸாமோட பெரிய ட்ராப்! இரண்டாவது காரணம், கொஸ்டின் 2 சப்டிவிஷன் 2-ல, ரோமன் நம்பர் ii போட்டிருந்ததை கேள்வியுடன் சேர்த்து அவசரத்துல 2kx என்று தப்பாக காப்பி பண்ணிட்ட! அதனால்தான் k ஈக்வல்ஸ் 3 ரூட் 2 வந்துச்சு. கேள்வியை கவனமாகப் பார்த்து kx என்று எழுதியிருந்தால் முழு மார்க் கிடைத்திருக்கும்! இந்த இரண்டு விஷயங்களை மட்டும் கவனிச்சுக்கோ பிரணவ், போர்டு எக்ஸாம்ல உனக்கு சென்டம் நிச்சயம்!",
-          "marksLostReason": "40% Marks Lost due to 2 CBSE Traps: 1) Skipping third ratio check for No Solution (lost 1 mark), 2) Miscopying Roman numeral (ii) as 2k (lost 3 marks)."
+          "marksLostReason": "40% Marks Lost due to 2 CBSE Traps: 1) Skipping third ratio check for No Solution (lost 1 mark), 2) Miscopying Roman numeral (ii) as 2k (lost 3 marks).",
+          "questionBreakdown": [
+            {
+              "qNum": "Q1",
+              "title": "For what values of alpha does the system have no solution?",
+              "equation": "alpha*x + 3y = alpha - 3  and  12x + alpha*y = alpha",
+              "marksAwarded": 2,
+              "maxMarks": 3,
+              "status": "Partially Correct (Lost 1 Mark)",
+              "whyDeducted": "பிரணவ் alpha^2 = 36 => alpha = +-6 வரை சரியாக கண்டுபிடித்தான். ஆனால் CBSE Board தேர்வில் No Solution கேட்கும்போது மூன்றாவதாக உள்ள != c1/c2 கண்டிஷனை சோதித்திருக்க வேண்டும். alpha = +6 போடும்போது அது Infinitely Many Solutions ஆகிவிடும்! எனவே +6-ஐ நிராகரித்து, -6 மட்டுமே சரியான விடை என்று எழுத வேண்டும்.",
+              "modelAnswer": "Step 1: Write Condition for No Solution:\n  a1/a2 = b1/b2 != c1/c2\n\nStep 2: Substitute coefficients:\n  alpha/12 = 3/alpha != (alpha - 3)/alpha\n\nStep 3: Solve a1/a2 = b1/b2:\n  alpha^2 = 36 => alpha = 6 or alpha = -6\n\nStep 4: Verify with != c1/c2:\n  • If alpha = 6:\n    3/6 = (6 - 3)/6 => 1/2 = 1/2 (Equals! Gives Infinitely Many Solutions. Hence Reject alpha = 6).\n  • If alpha = -6:\n    3/(-6) != (-6 - 3)/(-6) => -1/2 != 3/2 (Satisfies != c1/c2).\n\nStep 5: Final Conclusion:\n  alpha = -6 only (Full Centum Marks: 3/3)."
+            },
+            {
+              "qNum": "Q2 (i)",
+              "title": "Find k for Infinitely Many Solutions (Part 1)",
+              "equation": "(k - 3)x + 3y = k  and  kx + ky = 12",
+              "marksAwarded": 2.5,
+              "maxMarks": 3,
+              "status": "Almost Full Marks (Lost 0.5 Mark)",
+              "whyDeducted": "விடை k = 6 என்பது 100% சரி! ஆனால் போர்டு எக்ஸாம் ரூப்ரிக்கின்படி b1/b2 = c1/c2 பகுதியையும் சமன்படுத்தி காட்டியிருக்க வேண்டும்.",
+              "modelAnswer": "Step 1: Condition for Infinitely Many Solutions:\n  a1/a2 = b1/b2 = c1/c2\n\nStep 2: Substitute coefficients:\n  (k - 3)/k = 3/k = k/12\n\nStep 3: Equate first two ratios (since k != 0):\n  (k - 3)/k = 3/k => k - 3 = 3 => k = 6\n\nStep 4: Equate second and third ratios for verification:\n  3/k = k/12 => k^2 = 36 => k = +-6\n\nStep 5: Common Solution:\n  Common value satisfying all three ratios is k = 6.\n  (Checking: 3/6 = 3/6 = 6/12 = 1/2 - Verified!)."
+            },
+            {
+              "qNum": "Q2 (ii)",
+              "title": "Find k for Infinitely Many Solutions (Part 2)",
+              "equation": "kx + 3y = k - 3  and  12x + ky = k",
+              "marksAwarded": 1,
+              "maxMarks": 3,
+              "status": "Wrong / Copy Slip (Lost 2 Marks)",
+              "whyDeducted": "ரோமன் எண் (ii) என்பதை கேள்வியின் kx-உடன் சேர்த்து 2kx என்று அவசரத்தில் தவறாகப் பார்த்துவிட்டான். அதனால் 2k/12 = 3/k => k = 3*sqrt(2) என்று விடை மாறிவிட்டது. கேள்வியை கவனமாகப் பார்த்து k/12 என்று போட்டிருந்தால் முழு மதிப்பெண் கிடைத்திருக்கும்.",
+              "modelAnswer": "Step 1: Condition for Infinitely Many Solutions:\n  a1/a2 = b1/b2 = c1/c2\n\nStep 2: Substitute coefficients:\n  k/12 = 3/k = (k - 3)/k\n\nStep 3: Equate first two ratios:\n  k/12 = 3/k => k^2 = 36 => k = 6 or k = -6\n\nStep 4: Equate second and third ratios:\n  3/k = (k - 3)/k => 3 = k - 3 => k = 6\n\nStep 5: Final Conclusion:\n  The common value of k satisfying all ratios is k = 6."
+            }
+          ]
         },
         {
           "date": "2026-10-28",

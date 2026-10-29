@@ -5384,3 +5384,117 @@ function openPartialSkipModal(dayNum, subjectName) {
 }
 
 window.addEventListener('DOMContentLoaded', () => { setTimeout(() => { if (typeof renderRevisionMissionUI === "function") renderRevisionMissionUI(); }, 200); });
+
+
+function openDay2CorrectionsModal() {
+  const housePractice = appState?.performanceHub?.housePractice;
+  const day2Test = (housePractice?.recentTests || []).find(t => t.date === '2026-10-29' && t.questionBreakdown);
+  if (day2Test && day2Test.questionBreakdown) {
+    renderTestCorrections(day2Test);
+  } else {
+    // Fallback default
+    renderTestCorrections({
+      test: 'Day 2 Maths: Linear Equations (Consistency: No Solution & Infinitely Many)',
+      maxMarks: 10,
+      scoredMarks: 6,
+      questionBreakdown: [
+        {
+          qNum: 'Q1',
+          title: 'For what values of alpha does the system have no solution?',
+          equation: 'alpha*x + 3y = alpha - 3  and  12x + alpha*y = alpha',
+          marksAwarded: 2,
+          maxMarks: 3,
+          status: 'Partially Correct (Lost 1 Mark)',
+          whyDeducted: 'பிரணவ் alpha^2 = 36 => alpha = +-6 வரை சரியாக கண்டுபிடித்தான். ஆனால் CBSE Board தேர்வில் No Solution கேட்கும்போது மூன்றாவதாக உள்ள != c1/c2 கண்டிஷனை சோதித்திருக்க வேண்டும். alpha = +6 போடும்போது அது Infinitely Many Solutions ஆகிவிடும்! எனவே +6-ஐ நிராகரித்து, -6 மட்டுமே சரியான விடை என்று எழுத வேண்டும்.',
+          modelAnswer: 'Step 1: Write Condition for No Solution:\n  a1/a2 = b1/b2 != c1/c2\n\nStep 2: Substitute coefficients:\n  alpha/12 = 3/alpha != (alpha - 3)/alpha\n\nStep 3: Solve a1/a2 = b1/b2:\n  alpha^2 = 36 => alpha = 6 or alpha = -6\n\nStep 4: Verify with != c1/c2:\n  • If alpha = 6:\n    3/6 = (6 - 3)/6 => 1/2 = 1/2 (Equals! Gives Infinitely Many Solutions. Hence Reject alpha = 6).\n  • If alpha = -6:\n    3/(-6) != (-6 - 3)/(-6) => -1/2 != 3/2 (Satisfies != c1/c2).\n\nStep 5: Final Conclusion:\n  alpha = -6 only (Full Centum Marks: 3/3).'
+        },
+        {
+          qNum: 'Q2 (i)',
+          title: 'Find k for Infinitely Many Solutions (Part 1)',
+          equation: '(k - 3)x + 3y = k  and  kx + ky = 12',
+          marksAwarded: 2.5,
+          maxMarks: 3,
+          status: 'Almost Full Marks (Lost 0.5 Mark)',
+          whyDeducted: 'விடை k = 6 என்பது 100% சரி! ஆனால் போர்டு எக்ஸாம் ரூப்ரிக்கின்படி b1/b2 = c1/c2 பகுதியையும் சமன்படுத்தி காட்டியிருக்க வேண்டும்.',
+          modelAnswer: 'Step 1: Condition for Infinitely Many Solutions:\n  a1/a2 = b1/b2 = c1/c2\n\nStep 2: Substitute coefficients:\n  (k - 3)/k = 3/k = k/12\n\nStep 3: Equate first two ratios (since k != 0):\n  (k - 3)/k = 3/k => k - 3 = 3 => k = 6\n\nStep 4: Equate second and third ratios for verification:\n  3/k = k/12 => k^2 = 36 => k = +-6\n\nStep 5: Common Solution:\n  Common value satisfying all three ratios is k = 6.\n  (Checking: 3/6 = 3/6 = 6/12 = 1/2 - Verified!).'
+        },
+        {
+          qNum: 'Q2 (ii)',
+          title: 'Find k for Infinitely Many Solutions (Part 2)',
+          equation: 'kx + 3y = k - 3  and  12x + ky = k',
+          marksAwarded: 1,
+          maxMarks: 3,
+          status: 'Wrong / Copy Slip (Lost 2 Marks)',
+          whyDeducted: 'ரோமன் எண் (ii) என்பதை கேள்வியின் kx-உடன் சேர்த்து 2kx என்று அவசரத்தில் தவறாகப் பார்த்துவிட்டான். அதனால் 2k/12 = 3/k => k = 3*sqrt(2) என்று விடை மாறிவிட்டது. கேள்வியை கவனமாகப் பார்த்து k/12 என்று போட்டிருந்தால் முழு மதிப்பெண் கிடைத்திருக்கும்.',
+          modelAnswer: 'Step 1: Condition for Infinitely Many Solutions:\n  a1/a2 = b1/b2 = c1/c2\n\nStep 2: Substitute coefficients:\n  k/12 = 3/k = (k - 3)/k\n\nStep 3: Equate first two ratios:\n  k/12 = 3/k => k^2 = 36 => k = 6 or k = -6\n\nStep 4: Equate second and third ratios:\n  3/k = (k - 3)/k => 3 = k - 3 => k = 6\n\nStep 5: Final Conclusion:\n  The common value of k satisfying all ratios is k = 6.'
+        }
+      ]
+    });
+  }
+}
+
+function renderTestCorrections(testObj) {
+  const modal = document.getElementById('testCorrectionsModal');
+  const title = document.getElementById('correctionsModalTitle');
+  const subtitle = document.getElementById('correctionsModalSubtitle');
+  const body = document.getElementById('correctionsModalBody');
+
+  if (!modal || !body) return;
+
+  if (title) title.textContent = testObj.test || 'Question Corrections & Model Answers';
+  if (subtitle) subtitle.textContent = 'Scored: ' + testObj.scoredMarks + ' / ' + testObj.maxMarks + ' Marks • Board Marking Scheme Solutions';
+
+  const list = testObj.questionBreakdown || [];
+  if (list.length === 0) {
+    body.innerHTML = '<div class="p-6 text-center text-xs text-slate-400">No question breakdown recorded for this test.</div>';
+  } else {
+    body.innerHTML = list.map((q, i) => `
+      <div class="bg-white rounded-2xl border ${q.marksAwarded === q.maxMarks ? 'border-emerald-200 ring-1 ring-emerald-100' : (q.marksAwarded > 0 ? 'border-amber-300 ring-1 ring-amber-100' : 'border-rose-300 ring-1 ring-rose-100')} p-4 space-y-3 shadow-xs">
+        <div class="flex items-start justify-between gap-2 border-b border-slate-100 pb-2">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="w-6 h-6 rounded-lg ${q.marksAwarded === q.maxMarks ? 'bg-emerald-100 text-emerald-800' : (q.marksAwarded > 0 ? 'bg-amber-100 text-amber-800' : 'bg-rose-100 text-rose-800')} font-black text-xs flex items-center justify-center">
+                ${i + 1}
+              </span>
+              <h4 class="text-xs font-black text-slate-900">${q.qNum}: ${q.title || 'Question ' + (i+1)}</h4>
+            </div>
+            ${q.equation ? `<p class="text-[11px] font-mono text-slate-600 mt-1 bg-slate-50 px-2 py-0.5 rounded border border-slate-100 inline-block">${q.equation}</p>` : ''}
+          </div>
+          <div class="text-right shrink-0">
+            <span class="text-xs font-black ${q.marksAwarded === q.maxMarks ? 'text-emerald-700' : (q.marksAwarded > 0 ? 'text-amber-700' : 'text-rose-700')}">
+              ${q.marksAwarded} / ${q.maxMarks} Marks
+            </span>
+            <span class="block text-[9px] font-bold text-slate-400">${q.status || ''}</span>
+          </div>
+        </div>
+
+        ${q.whyDeducted ? `
+          <div class="bg-amber-50/80 border border-amber-200 rounded-xl p-2.5 space-y-1">
+            <span class="text-[11px] font-extrabold text-amber-900 flex items-center gap-1.5">
+              <i class="fa-solid fa-triangle-exclamation text-amber-600"></i> What Pranav Wrote vs Why Marks Lost:
+            </span>
+            <p class="text-[11px] text-slate-700 leading-relaxed font-medium">${q.whyDeducted}</p>
+          </div>
+        ` : ''}
+
+        <div class="bg-emerald-50/60 border border-emerald-300 rounded-xl p-3 space-y-1.5">
+          <span class="text-[11px] font-black text-emerald-900 flex items-center gap-1.5">
+            <i class="fa-solid fa-check-double text-emerald-600"></i> How to Write Correct Step-by-Step for 100% Full Marks:
+          </span>
+          <pre class="whitespace-pre-wrap font-sans text-[11px] text-slate-800 bg-white p-2.5 rounded-lg border border-emerald-200 leading-relaxed font-medium shadow-2xs">${q.modelAnswer || 'Refer NCERT textbook solution.'}</pre>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+}
+
+function closeTestCorrectionsModal() {
+  const modal = document.getElementById('testCorrectionsModal');
+  if (modal) {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+}

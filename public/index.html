@@ -655,6 +655,9 @@
                     <i id="day2AudioIcon" class="fa-solid fa-play"></i>
                     <span id="day2AudioBtnText">Listen to Audio Explanation</span>
                   </button>
+                  <button onclick="openDay2CorrectionsModal()" class="bg-white/10 hover:bg-white/20 text-white font-bold text-xs px-3 py-2 rounded-xl border border-white/20 flex items-center justify-center gap-1.5 transition self-start sm:self-auto shrink-0">
+                    <i class="fa-solid fa-file-lines"></i> <span>View Model Answers (Text)</span>
+                  </button>
                 </div>
 
                 <div id="day2AudioMeter" class="hidden bg-slate-950/70 rounded-xl p-2.5 border border-emerald-500/30 space-y-2">
@@ -2554,11 +2557,46 @@
     </div>
   </div>
   
+  
+  <!-- DETAILED QUESTION CORRECTIONS & MODEL ANSWERS MODAL -->
+  <div id="testCorrectionsModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl w-full max-w-xl max-h-[90vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden">
+      <div class="p-4 sm:p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/80 shrink-0">
+        <div class="flex items-center gap-2.5">
+          <span class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-sm">
+            📝
+          </span>
+          <div>
+            <h3 id="correctionsModalTitle" class="text-sm font-extrabold text-slate-900">Step-by-Step Question Corrections & Model Answers</h3>
+            <p id="correctionsModalSubtitle" class="text-[10px] text-slate-500">Board exam marking scheme solutions for what went wrong</p>
+          </div>
+        </div>
+        <button onclick="closeTestCorrectionsModal()" class="w-8 h-8 rounded-full bg-slate-200/80 text-slate-600 hover:bg-slate-300 flex items-center justify-center text-xs transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div id="correctionsModalBody" class="p-4 sm:p-5 space-y-3.5 overflow-y-auto custom-scroll text-xs">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <div class="p-3.5 border-t border-slate-100 bg-slate-50 flex items-center justify-between shrink-0">
+        <button onclick="toggleDay2AudioReview()" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:opacity-95 text-white font-extrabold text-xs flex items-center gap-1.5 shadow-sm transition">
+          <i class="fa-solid fa-volume-high"></i>
+          <span>🎧 Listen to Audio Explanation</span>
+        </button>
+        <button onclick="closeTestCorrectionsModal()" class="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-xs transition">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
   <div id="toast" class="fixed bottom-20 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs font-semibold px-4 py-2 rounded-full shadow-2xl flex items-center gap-2 transform translate-y-10 opacity-0 transition duration-300 z-50">
     <i class="fa-solid fa-circle-check text-emerald-400"></i>
     <span id="toast-message">Success</span>
   </div>
 
-  <script src="/app.js?v=1793247323769"></script>
+  <script src="/app.js?v=1793248053278"></script>
 </body>
 </html>
