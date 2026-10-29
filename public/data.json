@@ -94,7 +94,8 @@
         "editPermission": false,
         "status": "active"
       }
-    }
+    },
+    "geminiApiKey": "configured_in_env"
   },
   "examDates": {
     "termRev1": "2026-11-13",
@@ -5894,9 +5895,28 @@
     "housePractice": {
       "title": "🏠 House Practice (Core Hero Metric)",
       "description": "Our main focus of this app. Daily home revision and 8:30 PM Night Tests ensure mastery.",
-      "overallAverage": 88.5,
+      "overallAverage": 82.5,
       "targetAverage": 95,
       "recentTests": [
+        {
+          "date": "2026-10-29",
+          "test": "Day 2 Maths: Linear Equations (Consistency, No Solution & Infinite Solutions)",
+          "maxMarks": 10,
+          "scoredMarks": 6,
+          "percentage": 60,
+          "status": "AI Evaluated",
+          "paperPhoto": "media_1793243385816_809cb16e.jpg",
+          "feedback": "Good cross-multiplication & neat steps. CBSE Board Trap: forgot to verify != c1/c2 for No Solution and miscopied question ii as 2k.",
+          "strengths": [
+            "Neat step-by-step layout and legible handwriting",
+            "Accurate algebraic manipulation and cross-multiplication",
+            "Solid recall of consistency ratio condition (a1/a2 = b1/b2)"
+          ],
+          "weaknesses": [
+            "CBSE Board Trap: Must test the 3rd ratio (c1/c2) for No Solution (alpha = -6 only)",
+            "Question Copying: Keep Roman numeral (ii) separated from the variable to prevent reading kx as 2kx"
+          ]
+        },
         {
           "date": "2026-10-28",
           "test": "Day 1 Science: Acids, Bases & Salts (Home Night Test)",

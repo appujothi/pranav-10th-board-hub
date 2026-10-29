@@ -4903,6 +4903,108 @@ function renderUploadPagesThumbnails() {
   `).join('');
 }
 
+let currentAIEvaluation = null;
+
+async function triggerAIPaperEvaluation() {
+  if (uploadedPaperPages.length === 0) {
+    alert('Please select or capture at least one written notebook page first!');
+    return;
+  }
+
+  const btn = document.getElementById('aiEvaluatePaperBtn');
+  const btnText = document.getElementById('aiEvaluatePaperBtnText');
+  const resultBox = document.getElementById('aiEvaluationResultBox');
+  const daySelect = document.getElementById('uploadPaperDaySelect');
+  const subSelect = document.getElementById('uploadPaperSubject');
+  const marksInput = document.getElementById('uploadPaperMarks');
+
+  const dayNum = daySelect ? parseInt(daySelect.value) || 2 : 2;
+  const subject = subSelect ? subSelect.value : 'Maths';
+
+  if (btn) btn.disabled = true;
+  if (btnText) btnText.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Reading handwriting...';
+  if (resultBox) {
+    resultBox.classList.remove('hidden');
+    resultBox.innerHTML = `
+      <div class="flex items-center gap-2 text-emerald-800 font-bold">
+        <i class="fa-solid fa-circle-notch fa-spin text-emerald-600"></i>
+        <span>Gemini 3.5 Flash is reading Pranav\'s answers line-by-line...</span>
+      </div>
+      <p class="text-[11px] text-slate-600">Checking NCERT formulas, equations, step-by-step logic, and board exam traps.</p>
+    `;
+  }
+
+  try {
+    const payload = {
+      dayNumber: dayNum,
+      subject: subject,
+      images: uploadedPaperPages.map(p => p.base64),
+      studentNotes: document.getElementById('uploadPaperNotes') ? document.getElementById('uploadPaperNotes').value : ''
+    };
+
+    const res = await fetch('/api/ai/evaluate-paper', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await res.json();
+    if (data.success && data.evaluation) {
+      currentAIEvaluation = data.evaluation;
+      if (marksInput && data.evaluation.totalScored != null) {
+        marksInput.value = data.evaluation.totalScored;
+      }
+
+      if (resultBox) {
+        resultBox.innerHTML = `
+          <div class="flex items-center justify-between border-b border-emerald-200 pb-1.5">
+            <span class="font-black text-emerald-900 text-xs">🎯 AI Score: ${data.evaluation.totalScored} / ${data.evaluation.maxMarks || 15} (${data.evaluation.percentage || Math.round((data.evaluation.totalScored / (data.evaluation.maxMarks || 15)) * 100)}%)</span>
+            <span class="bg-emerald-600 text-white font-extrabold px-2 py-0.5 rounded text-[10px]">Verified</span>
+          </div>
+          <div class="text-[11px] text-slate-700 leading-relaxed font-medium">
+            ${data.evaluation.tanglishSummary || 'Evaluated against Class 10 CBSE standards.'}
+          </div>
+          ${data.evaluation.strengths && data.evaluation.strengths.length ? `
+            <div class="text-[11px]">
+              <span class="font-bold text-emerald-800">🌟 Strengths:</span>
+              <ul class="list-disc pl-4 text-slate-700 space-y-0.5 mt-0.5">
+                ${data.evaluation.strengths.map(s => `<li>${s}</li>`).join('')}
+              </ul>
+            </div>
+          ` : ''}
+          ${data.evaluation.weaknesses && data.evaluation.weaknesses.length ? `
+            <div class="text-[11px]">
+              <span class="font-bold text-amber-800">⚠️ Focus to Fix:</span>
+              <ul class="list-disc pl-4 text-slate-700 space-y-0.5 mt-0.5">
+                ${data.evaluation.weaknesses.map(w => `<li>${w}</li>`).join('')}
+              </ul>
+            </div>
+          ` : ''}
+        `;
+      }
+    } else {
+      if (resultBox) {
+        resultBox.innerHTML = `
+          <div class="text-amber-800 text-[11px] font-semibold">
+            ⚠️ ${data.message || 'AI evaluation returned an unexpected format. Please enter marks manually.'}
+          </div>
+        `;
+      }
+    }
+  } catch(err) {
+    if (resultBox) {
+      resultBox.innerHTML = `
+        <div class="text-rose-700 text-[11px] font-semibold">
+          ❌ Connection error: ${err.message}. Please enter marks manually.
+        </div>
+      `;
+    }
+  } finally {
+    if (btn) btn.disabled = false;
+    if (btnText) btnText.innerHTML = '✨ AI Auto-Evaluate Paper (Gemini Vision)';
+  }
+}
+
 function submitAnswerPaperUpload() {
   if (uploadedPaperPages.length === 0) {
     alert('Please select or capture at least one page photo before submitting!');
@@ -4920,17 +5022,30 @@ function submitAnswerPaperUpload() {
 
   const testTitle = 'Day ' + activeUploadPaperDay + ' ' + activeUploadPaperSubject + ': Night Test';
   
-  appState.performanceHub.housePractice.recentTests.unshift({
+  const testEntry = {
     date: activeUploadPaperDay === 1 ? "2026-10-28" : "2026-10-29",
     test: testTitle,
-    maxMarks: 15,
+    maxMarks: currentAIEvaluation?.maxMarks || 15,
     scoredMarks: scoredMarks,
-    percentage: Math.round((scoredMarks / 15) * 100),
-    status: 'Submitted (' + uploadedPaperPages.length + ' Pages)',
+    percentage: Math.round((scoredMarks / (currentAIEvaluation?.maxMarks || 15)) * 100),
+    status: currentAIEvaluation ? 'AI Evaluated (' + uploadedPaperPages.length + ' Pages)' : 'Submitted (' + uploadedPaperPages.length + ' Pages)',
     paperPhotos: uploadedPaperPages.map(p => p.base64),
     pagesCount: uploadedPaperPages.length,
-    feedback: notes || ('Submitted ' + uploadedPaperPages.length + ' written page(s) successfully.')
-  });
+    feedback: currentAIEvaluation?.tanglishSummary || notes || ('Submitted ' + uploadedPaperPages.length + ' written page(s) successfully.'),
+    strengths: currentAIEvaluation?.strengths || [],
+    weaknesses: currentAIEvaluation?.weaknesses || []
+  };
+
+  appState.performanceHub.housePractice.recentTests.unshift(testEntry);
+
+  if (currentAIEvaluation?.strengths?.length) {
+    appState.performanceHub.housePractice.strengths = Array.from(new Set([...(appState.performanceHub.housePractice.strengths || []), ...currentAIEvaluation.strengths])).slice(0, 5);
+  }
+  if (currentAIEvaluation?.weaknesses?.length) {
+    appState.performanceHub.housePractice.weaknesses = Array.from(new Set([...(appState.performanceHub.housePractice.weaknesses || []), ...currentAIEvaluation.weaknesses])).slice(0, 5);
+  }
+
+  currentAIEvaluation = null;
 
   try {
     localStorage.setItem('pranav_exam_hub_state', JSON.stringify(appState));

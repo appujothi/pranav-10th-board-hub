@@ -3,6 +3,21 @@ const fs = require('fs');
 const path = require('path');
 const url = require('url');
 
+// Auto-load .env file if present
+try {
+  const envPath = path.join(__dirname, '.env');
+  if (fs.existsSync(envPath)) {
+    const envLines = fs.readFileSync(envPath, 'utf8').split('\n');
+    envLines.forEach(line => {
+      const trimmed = line.trim();
+      if (trimmed && !trimmed.startsWith('#') && trimmed.includes('=')) {
+        const [k, ...v] = trimmed.split('=');
+        if (!process.env[k.trim()]) process.env[k.trim()] = v.join('=').trim();
+      }
+    });
+  }
+} catch (e) {}
+
 const PORT = process.env.PORT || 5050;
 const DATA_FILE = path.join(__dirname, 'data.json');
 const PUBLIC_DIR = path.join(__dirname, 'public');
@@ -536,51 +551,209 @@ const server = http.createServer((req, res) => {
   }
 
   // API 18: AI Textbook Doubt Solver (with Tanglish & CBSE Keywords)
+    // 12. Live AI Paper Evaluator (Gemini 3.5 Flash Multimodal Vision)
+  if (pathname === '/api/ai/evaluate-paper' && req.method === 'POST') {
+    parseBody(req, (err, body) => {
+      const data = readData();
+      const geminiKey = process.env.GEMINI_API_KEY || req.headers['x-gemini-key'] || (body && body.geminiApiKey) || (data.authConfig && data.authConfig.geminiApiKey);
+
+      if (!geminiKey) {
+        return sendJSON(res, 200, {
+          success: false,
+          requiresKey: true,
+          message: "Gemini API Key needed for live AI Vision evaluation."
+        });
+      }
+
+      const { dayNumber, subject, questions, images, studentNotes } = body || {};
+
+      const promptText = `You are an expert Class 10 CBSE Board & School Examiner evaluating Pranav's handwritten test paper.
+Day: Day ${dayNumber}
+Subject: ${subject}
+Questions and Rubric:
+${JSON.stringify(questions || [], null, 2)}
+Student Notes: ${studentNotes || 'None'}
+
+Please carefully read the student's handwritten answer sheet photos and evaluate each question against the rubric.
+Return your evaluation in clear, encouraging Tanglish (Tamil + English technical terms) as a JSON object:
+{
+  "totalScored": number,
+  "maxMarks": number,
+  "percentage": number,
+  "questionBreakdown": [
+    { "qNum": "Q1", "scored": number, "max": number, "remarks": "..." }
+  ],
+  "strengths": ["...", "..."],
+  "weaknesses": ["...", "..."],
+  "tanglishSummary": "detailed encouraging feedback in Tamil with English terms"
+}`;
+
+      const contents = [{
+        role: 'user',
+        parts: [
+          { text: promptText },
+          ...(images || []).map(b64 => {
+            const cleanB64 = b64.includes('base64,') ? b64.split('base64,')[1] : b64;
+            return {
+              inline_data: {
+                mime_type: 'image/jpeg',
+                data: cleanB64
+              }
+            };
+          })
+        ]
+      }];
+
+      fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${geminiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents,
+          generationConfig: { response_mime_type: 'application/json' }
+        })
+      })
+      .then(r => r.json())
+      .then(gRes => {
+        try {
+          const textOut = gRes.candidates[0].content.parts[0].text;
+          const evalJson = JSON.parse(textOut);
+          return sendJSON(res, 200, { success: true, evaluation: evalJson });
+        } catch(e) {
+          return sendJSON(res, 200, { success: false, raw: gRes });
+        }
+      })
+      .catch(err => {
+        return sendJSON(res, 500, { success: false, error: err.message });
+      });
+    });
+    return;
+  }
+
+  // 13. Smart AI Doubt Solver (Live Gemini 3.5 Flash + NCERT Context)
   if (pathname === '/api/ai/doubt-solver' && req.method === 'POST') {
     parseBody(req, (err, body) => {
       const { subject, chapter, pageNo, doubtText } = body || {};
       if (!doubtText) return sendJSON(res, 400, { error: 'Doubt text required' });
       const data = readData();
+      const geminiKey = process.env.GEMINI_API_KEY || req.headers['x-gemini-key'] || (body && body.geminiApiKey) || (data.authConfig && data.authConfig.geminiApiKey);
 
-      // Intelligent Tanglish Explanation Generator based on NCERT syllabus
-      let explanation = `ரொம்ப சிம்பிளா புரிஞ்சுக்கலாம் பிரணவ்!\n\n📌 கேள்வி: "${doubtText}"\n`;
-      let keywords = [];
-
-      const lower = doubtText.toLowerCase();
-      if (lower.includes('bpt') || lower.includes('thales') || lower.includes('triangle')) {
-        explanation += `Triangles BPT Theorem (Basic Proportionality Theorem): ஒரு முக்கோணத்தின் ஒரு பக்கத்திற்கு இணையாக (Parallel) ஒரு கோடு வரைந்தால், அது மற்ற இரண்டு பக்கங்களையும் ஒரே விகிதத்தில் (Same Ratio) பிரிக்கும்.\n\nரூல்: If DE || BC, then AD/DB = AE/EC.\nபோர்டில் 'Area of triangle ADE / Area of triangle BDE' என நிரூபித்து, கடைசியில் AD/DB = AE/EC என எழுத வேண்டும்.`;
-        keywords = ['Basic Proportionality Theorem (BPT)', 'DE || BC', 'AD/DB = AE/EC', 'Area ratio method', 'Thales Theorem'];
-      } else if (lower.includes('chlor') || lower.includes('alkali') || lower.includes('brine')) {
-        explanation += `Chlor-alkali process: உப்பு நீரை (Brine = NaCl + H₂O) மின்னாற்பகுப்பு (Electrolysis) செய்யும்போது 3 முக்கியமான பொருட்கள் கிடைக்கின்றன:\n1. Chlorine (Cl₂) -> Anode (+ve) வழியே வெளியேறும்.\n2. Hydrogen (H₂) -> Cathode (-ve) வழியே வெளியேறும்.\n3. Sodium Hydroxide (NaOH) -> Solution-ல் தங்கும். சோப்பு தயாரிக்க உதவும்.`;
-        keywords = ['Brine (Aqueous NaCl)', 'Electrolysis', 'Anode (Cl₂ gas)', 'Cathode (H₂ gas)', 'Alkali (NaOH)'];
-      } else if (lower.includes('ohm') || lower.includes('resistance')) {
-        explanation += `Ohm's Law: வெப்பநிலை மாறாமல் இருக்கும்போது (At constant temperature), ஒரு கடத்தியின் வழியே பாயும் மின்னோட்டம் (I), அதன் முனைகளுக்கு இடைப்பட்ட மின்னழுத்த வேறுபாட்டிற்கு (V) நேர்விகிதத்தில் இருக்கும்.\n\nஃபார்முலா: V = IR. R என்பது மின்தடை (Resistance, அலகு: Ohm Ω). V-I கிராப் எப்போதும் ஆரிஜின் வழியே செல்லும் நேர்கோடு (Straight line).`;
-        keywords = ['At constant temperature', 'V ∝ I => V = IR', 'Resistance R (Ohm Ω)', 'Straight line V-I graph'];
-      } else if (lower.includes('print') || lower.includes('gutenberg')) {
-        explanation += `Print Culture: 1448-ல் ஜோஹன்னஸ் கூட்டன்பர்க் (Johannes Gutenberg) முதல் அச்சு இயந்திரத்தை உருவாக்கினார். அவர் அச்சிட்ட முதல் புத்தகம் பைபிள் (Bible - 180 copies). இது 'Print Revolution'-க்கு வழிவகுத்தது; மார்ட்டின் லூதர் (Martin Luther) தன் கருத்துகளை அச்சிட்டு பரப்பினார்.`;
-        keywords = ['Johannes Gutenberg (1448)', 'Movable metal type', 'First printed book Bible', 'Martin Luther Ninety-Five Theses', 'Print Revolution'];
-      } else {
-        explanation += `NCERT Textbook கருத்துப்படி:\nஇந்த டாபிக்கில் நீங்கள் கேட்கும் கேள்வி மிக முக்கியமானது. எக்ஸாமில் எழுதும்போது முதலில் விதியை (Principle) எழுதி, கணித சமன்பாட்டை (Formula) அல்லது ரசாயன சமன்பாட்டை (Chemical Reaction) எழுத வேண்டும். கடைசியாக முக்கிய ஆங்கில டெர்ம்ஸை ஹைலைட் செய்து பாக்ஸ் போடவும்.`;
-        keywords = ['NCERT Definition', 'Formula / Equation', 'CBSE Standard Keywords', 'Final Highlighted Conclusion'];
-      }
-
-      const doubtEntry = {
-        id: 'd-' + Date.now(),
-        timestamp: new Date().toISOString(),
-        subject: subject || 'Science',
-        chapter: chapter || 'NCERT Textbook',
-        pageNo: pageNo || 'NCERT Page',
-        studentQuestion: doubtText,
-        tanglishAnswer: explanation,
-        cbseKeywords: keywords,
-        audioPlayable: true
+      const fallbackExplain = () => {
+        let explanation = `ரொம்ப சிம்பிளா புரிஞ்சுக்கலாம் பிரணவ்!\n\n📌 கேள்வி: "${doubtText}"\n`;
+        let keywords = [];
+        const lower = doubtText.toLowerCase();
+        if (lower.includes('bpt') || lower.includes('thales') || lower.includes('triangle')) {
+          explanation += `Triangles BPT Theorem (Basic Proportionality Theorem): ஒரு முக்கோணத்தின் ஒரு பக்கத்திற்கு இணையாக (Parallel) ஒரு கோடு வரைந்தால், அது மற்ற இரண்டு பக்கங்களையும் ஒரே விகிதத்தில் பிரிக்கும்.\n\nரூல்: If DE || BC, then AD/DB = AE/EC.`;
+          keywords = ['Basic Proportionality Theorem (BPT)', 'DE || BC', 'AD/DB = AE/EC', 'Area ratio method', 'Thales Theorem'];
+        } else if (lower.includes('chlor') || lower.includes('alkali') || lower.includes('brine')) {
+          explanation += `Chlor-alkali process: உப்பு நீரை (Brine = NaCl + H₂O) மின்னாற்பகுப்பு (Electrolysis) செய்யும்போது 3 முக்கியமான பொருட்கள் கிடைக்கின்றன:\n1. Chlorine (Cl₂) -> Anode (+ve) வழியே வெளியேறும்.\n2. Hydrogen (H₂) -> Cathode (-ve) வழியே வெளியேறும்.\n3. Sodium Hydroxide (NaOH) -> Solution-ல் தங்கும். சோப்பு தயாரிக்க உதவும்.`;
+          keywords = ['Brine (Aqueous NaCl)', 'Electrolysis', 'Anode (Cl₂ gas)', 'Cathode (H₂ gas)', 'Alkali (NaOH)'];
+        } else if (lower.includes('ohm') || lower.includes('resistance')) {
+          explanation += `Ohm's Law: வெப்பநிலை மாறாமல் இருக்கும்போது (At constant temperature), ஒரு கடத்தியின் வழியே பாயும் மின்னோட்டம் (I), அதன் முனைகளுக்கு இடைப்பட்ட மின்னழுத்த வேறுபாட்டிற்கு (V) நேர்விகிதத்தில் இருக்கும்.\n\nஃபார்முலா: V = IR. R என்பது மின்தடை (Resistance).`;
+          keywords = ['At constant temperature', 'V ∝ I => V = IR', 'Resistance R (Ohm Ω)', 'Straight line V-I graph'];
+        } else {
+          explanation += `NCERT Textbook கருத்துப்படி:\nஇந்தக் கேள்விக்கான விடையை எழுதும்போது முதலில் முக்கிய விதியை (Principle) எழுதி, கணித சமன்பாடு/ரசாயன சமன்பாட்டை எழுதி, முக்கிய ஆங்கிலக் கலைச்சொற்களை அடிக்கோடிட வேண்டும்.`;
+          keywords = ['NCERT Definition', 'Formula / Equation', 'CBSE Standard Keywords', 'Final Highlighted Conclusion'];
+        }
+        return { explanation, keywords };
       };
 
-      if (!data.pranavDoubts) data.pranavDoubts = [];
-      data.pranavDoubts.unshift(doubtEntry);
-      saveData(data);
+      if (!geminiKey) {
+        const fb = fallbackExplain();
+        const doubtEntry = {
+          id: 'd-' + Date.now(),
+          timestamp: new Date().toISOString(),
+          subject: subject || 'Science',
+          chapter: chapter || 'NCERT Textbook',
+          pageNo: pageNo || 'NCERT Page',
+          studentQuestion: doubtText,
+          tanglishAnswer: fb.explanation,
+          cbseKeywords: fb.keywords,
+          audioPlayable: true
+        };
+        data.pranavDoubts = data.pranavDoubts || [];
+        data.pranavDoubts.unshift(doubtEntry);
+        writeData(data);
+        return sendJSON(res, 200, { success: true, doubt: doubtEntry });
+      }
 
-      return sendJSON(res, 200, { success: true, doubt: doubtEntry });
+      const aiPrompt = `You are Antigravity, an expert and caring mentor for Pranav, a Class 10 CBSE student in Tamil Nadu.
+Explain Pranav's doubt clearly in friendly Tanglish (Tamil explanation with English technical terms):
+Subject: ${subject || 'General'}
+Chapter: ${chapter || 'Textbook'}
+Page / Paragraph: ${pageNo || 'Textbook Reference'}
+Student Doubt: "${doubtText}"
+
+Format your answer as valid JSON:
+{
+  "tanglishExplanation": "Simple, engaging explanation in Tamil with English technical terms, including analogies and step-by-step guidance.",
+  "cbseKeywords": ["Keyword 1", "Keyword 2", "Keyword 3"],
+  "examTip": "One crucial board exam tip to avoid losing marks on this topic."
+}`;
+
+      fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${geminiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: aiPrompt }] }],
+          generationConfig: { response_mime_type: 'application/json' }
+        })
+      })
+      .then(r => r.json())
+      .then(gRes => {
+        try {
+          const out = JSON.parse(gRes.candidates[0].content.parts[0].text);
+          const doubtEntry = {
+            id: 'd-' + Date.now(),
+            timestamp: new Date().toISOString(),
+            subject: subject || 'Science',
+            chapter: chapter || 'NCERT Textbook',
+            pageNo: pageNo || 'NCERT Page',
+            studentQuestion: doubtText,
+            tanglishAnswer: out.tanglishExplanation + (out.examTip ? ('\n\n💡 Board Exam Tip: ' + out.examTip) : ''),
+            cbseKeywords: out.cbseKeywords || [],
+            audioPlayable: true
+          };
+          data.pranavDoubts = data.pranavDoubts || [];
+          data.pranavDoubts.unshift(doubtEntry);
+          writeData(data);
+          return sendJSON(res, 200, { success: true, doubt: doubtEntry, liveAI: true });
+        } catch(e) {
+          const fb = fallbackExplain();
+          const doubtEntry = {
+            id: 'd-' + Date.now(),
+            timestamp: new Date().toISOString(),
+            subject: subject || 'Science',
+            chapter: chapter || 'NCERT Textbook',
+            pageNo: pageNo || 'NCERT Page',
+            studentQuestion: doubtText,
+            tanglishAnswer: fb.explanation,
+            cbseKeywords: fb.keywords,
+            audioPlayable: true
+          };
+          data.pranavDoubts = data.pranavDoubts || [];
+          data.pranavDoubts.unshift(doubtEntry);
+          writeData(data);
+          return sendJSON(res, 200, { success: true, doubt: doubtEntry });
+        }
+      })
+      .catch(() => {
+        const fb = fallbackExplain();
+        const doubtEntry = {
+          id: 'd-' + Date.now(),
+          timestamp: new Date().toISOString(),
+          subject: subject || 'Science',
+          chapter: chapter || 'NCERT Textbook',
+          pageNo: pageNo || 'NCERT Page',
+          studentQuestion: doubtText,
+          tanglishAnswer: fb.explanation,
+          cbseKeywords: fb.keywords,
+          audioPlayable: true
+        };
+        data.pranavDoubts = data.pranavDoubts || [];
+        data.pranavDoubts.unshift(doubtEntry);
+        writeData(data);
+        return sendJSON(res, 200, { success: true, doubt: doubtEntry });
+      });
     });
     return;
   }
