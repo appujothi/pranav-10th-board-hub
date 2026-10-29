@@ -140,39 +140,39 @@
   },
   "dailyGoalMinutes": 270,
   "dailyTarget": {
-    "date": "2026-10-27",
-    "headline": "🎯 Day 0: Understanding the Module & System Setup",
+    "date": "2026-10-29",
+    "headline": "🎯 Day 2: Mathematics (Polynomials & Linear Equations) + English (Mijbil & Writing)",
     "setBy": "Mama (Super Admin)",
     "focusTasks": [
       {
-        "id": "dt-mod-1",
-        "title": "🏫 SRM Revision-1 Exam Timetable (Nov 13-23) மற்றும் பாடத்திட்டத்தைப் பார்க்கவும்",
-        "track": "school",
-        "subject": "Orientation",
-        "completed": true,
-        "priority": "high"
-      },
-      {
-        "id": "dt-mod-2",
-        "title": "🔄 புதிய 2-சப்ஜெக்ட் தினசரி சுழற்சி முறை & இரவு 8:30 PM மினி தேர்வு முறையை அறியவும்",
+        "id": "dt-d2-1",
+        "title": "📐 கணிதம் Ch 2 & 3: Polynomials Zeroes & Linear Equations Substitution முறைகளை பயிற்சி செய்தல்",
         "track": "board",
-        "subject": "Routine",
-        "completed": true,
+        "subject": "Mathematics",
+        "completed": false,
         "priority": "critical"
       },
       {
-        "id": "dt-mod-3",
-        "title": "🎧 தமிழ் ஆடியோ விளக்கம் (Audio Hub) மற்றும் 🤖 AI Doubt Solver-ஐ சோதித்துப் பார்க்கவும்",
-        "track": "board",
-        "subject": "Study Tools",
+        "id": "dt-d2-2",
+        "title": "📖 ஆங்கிலம்: Mijbil the Otter கதை மற்றும் Formal Letter to Editor பார்மட்டை படித்து எழுதுதல்",
+        "track": "school",
+        "subject": "English",
         "completed": false,
         "priority": "high"
       },
       {
-        "id": "dt-mod-4",
-        "title": "🔥 நாளைக்கான (Day 1: Science + Tamil) சிலபஸ் மற்றும் மாதிரி வினாக்களை (Sample Questions) பார்வையிடவும்",
+        "id": "dt-d2-3",
+        "title": "📸 நேற்று எழுதிய அறிவியல் (Day 1 Science) விடைத்தாள் புகைப்படத்தை அப்லோட் செய்தல்",
         "track": "tuition",
-        "subject": "Preview",
+        "subject": "House Practice",
+        "completed": true,
+        "priority": "high"
+      },
+      {
+        "id": "dt-d2-4",
+        "title": "🌙 இன்று இரவு 8:30 PM: 30 மதிப்பெண் மாதிரித் தேர்வை எழுதி அம்மாவிடம் சமர்ப்பித்தல்",
+        "track": "board",
+        "subject": "Night Test",
         "completed": false,
         "priority": "critical"
       }

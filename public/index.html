@@ -583,7 +583,108 @@
           </div>
 
           <!-- DYNAMIC 16-DAY REVISION MISSION CONTAINER -->
-          <div id="revision-mission-dynamic-container" class="space-y-4"></div>
+          <div id="revision-mission-dynamic-container" class="space-y-4">
+            <!-- Day Selector Pills -->
+            <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 pt-0.5">
+              <button onclick="setMissionDayView(1)" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200">
+                <span>◀ Day 1 (Yesterday: 28 Oct)</span>
+                <span class="text-[9px] px-1.5 py-0.2 rounded bg-amber-100 text-amber-800">Partial</span>
+              </button>
+
+              <button onclick="setMissionDayView(2)" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 bg-emerald-600 text-white shadow-sm ring-2 ring-emerald-500/30">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Day 2 (TODAY: 29 Oct)</span>
+                <span class="text-[9px] px-1.5 py-0.2 rounded bg-white text-emerald-800">Active</span>
+              </button>
+
+              <button onclick="setMissionDayView(3)" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200">
+                <span>Day 3 (Tomorrow: 30 Oct)</span>
+              </button>
+
+              <button onclick="openRescheduleModal()" class="ml-auto px-2.5 py-1.5 rounded-xl text-xs font-bold bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 transition flex items-center gap-1 shadow-xs" title="Adjust or Rebalance Schedule">
+                <i class="fa-solid fa-arrows-rotate text-[10px]"></i> <span>Re-Schedule</span>
+              </button>
+            </div>
+
+            <!-- TODAY'S ACTIVE MISSION BANNER (Day 2: 29 Oct 2026) -->
+            <div class="rounded-2xl bg-emerald-50/90 border border-emerald-200 p-4 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-bold text-emerald-900 bg-emerald-200/80 px-2.5 py-0.5 rounded-full border border-emerald-300 flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-600 animate-ping"></span>
+                  <span>TODAY'S ACTIVE MISSION: 29 Oct 2026</span>
+                </span>
+                <span class="text-[10px] text-emerald-900 font-extrabold bg-white px-2 py-0.5 rounded-md border border-emerald-200">Day 2 / 16</span>
+              </div>
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pt-0.5">
+                <h5 class="text-xs font-black text-slate-900">Day 2: Mathematics (Polynomials & Linear Equations) + English (Mijbil & Formal Letters)</h5>
+                <span class="text-[10px] text-emerald-800 font-bold bg-white px-2 py-0.5 rounded border border-emerald-200">Tonight 8:30 PM: 30 Marks</span>
+              </div>
+              <p class="text-xs text-slate-700 leading-relaxed">
+                இன்று கணிதத்தில் <strong>Polynomials & Linear Equations</strong> மற்றும் ஆங்கிலத்தில் <strong>Mijbil the Otter & Formal Writing</strong> பாடங்களை படிக்கவும். இரவு 8:30 மணிக்கு 30 மதிப்பெண் மாதிரித் தேர்வு!
+              </p>
+              
+              <!-- STUDENT & MAMA UPLOAD ACTION BUTTONS -->
+              <div class="pt-1.5 flex flex-wrap items-center gap-2">
+                <button onclick="openAnswerPaperUploadModal(2, 'Maths')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs px-3.5 py-2 rounded-xl flex items-center gap-1.5 shadow-md transition">
+                  <i class="fa-solid fa-camera text-xs"></i> 📸 Upload Written Test Paper (Student & Mama)
+                </button>
+                <button onclick="openPartialSkipModal(2)" class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-bold text-xs px-3 py-2 rounded-xl flex items-center gap-1.5 transition">
+                  <i class="fa-solid fa-forward-step text-xs text-amber-600"></i> Partial Skip / Subject Action
+                </button>
+                <button onclick="openAnswerPaperUploadModal(1, 'Science')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 font-bold text-xs px-3 py-2 rounded-xl flex items-center gap-1.5 transition">
+                  <span>📅 Upload Yesterday's Science Paper</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Subject 1 & Subject 2 Cards for Day 2 -->
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-extrabold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1">
+                  <i class="fa-solid fa-fire text-emerald-600"></i> ACTIVE TASKS FOR DAY 2 (29 Oct)
+                </span>
+                <span class="text-[10px] font-bold text-slate-500">Target: 30/30 in Night Test</span>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+                <!-- Subject 1 Card: Mathematics -->
+                <div class="p-3.5 rounded-xl bg-white border border-slate-200 space-y-2 shadow-xs">
+                  <div class="flex items-center justify-between">
+                    <span class="font-extrabold text-emerald-800 text-xs">📐 Mathematics</span>
+                    <span class="text-[9px] bg-emerald-50 text-emerald-700 font-bold px-1.5 py-0.5 rounded border border-emerald-200">Part 1</span>
+                  </div>
+                  <h6 class="font-bold text-slate-900 text-xs">Ch 2: Polynomials & Ch 3: Linear Equations</h6>
+                  <p class="text-[11px] text-slate-600 leading-snug">Zeroes relationship, Substitution/Elimination methods & graphical consistency.</p>
+                  <div class="pt-1 flex items-center gap-1.5">
+                    <button onclick="openAnswerPaperUploadModal(2, 'Maths')" class="text-[10px] bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-2.5 py-1.5 rounded-lg flex items-center gap-1 shadow-xs transition">
+                      <i class="fa-solid fa-camera text-[9px]"></i> Upload Paper
+                    </button>
+                    <button onclick="openPartialSkipModal(2, 'Maths')" class="text-[10px] bg-slate-100 hover:bg-amber-50 text-slate-700 hover:text-amber-800 font-bold px-2.5 py-1.5 rounded-lg transition border border-slate-200">
+                      ⏭️ Partial Skip
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Subject 2 Card: English -->
+                <div class="p-3.5 rounded-xl bg-white border border-slate-200 space-y-2 shadow-xs">
+                  <div class="flex items-center justify-between">
+                    <span class="font-extrabold text-sky-800 text-xs">📖 English</span>
+                    <span class="text-[9px] bg-sky-50 text-sky-700 font-bold px-1.5 py-0.5 rounded border border-sky-200">Part 2</span>
+                  </div>
+                  <h6 class="font-bold text-slate-900 text-xs">Prose: Mijbil the Otter & Formal Writing</h6>
+                  <p class="text-[11px] text-slate-600 leading-snug">Maxwell otter behaviour, London flight event, and Letter to Editor format.</p>
+                  <div class="pt-1 flex items-center gap-1.5">
+                    <button onclick="openAnswerPaperUploadModal(2, 'English')" class="text-[10px] bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-2.5 py-1.5 rounded-lg flex items-center gap-1 shadow-xs transition">
+                      <i class="fa-solid fa-camera text-[9px]"></i> Upload Paper
+                    </button>
+                    <button onclick="openPartialSkipModal(2, 'English')" class="text-[10px] bg-slate-100 hover:bg-amber-50 text-slate-700 hover:text-amber-800 font-bold px-2.5 py-1.5 rounded-lg transition border border-slate-200">
+                      ⏭️ Partial Skip
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           
           <!-- FULL 16-DAY SCHEDULE EXPANDER -->
           <div class="pt-1 border-t border-slate-200">
@@ -2378,6 +2479,6 @@
     <span id="toast-message">Success</span>
   </div>
 
-  <script src="/app.js"></script>
+  <script src="/app.js?v=1793241607890"></script>
 </body>
 </html>

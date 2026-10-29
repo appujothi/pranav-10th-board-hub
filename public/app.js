@@ -909,6 +909,7 @@ function switchTab(tabId) {
   const scroller = document.getElementById('main-scroll-content');
   if (scroller) scroller.scrollTop = 0;
 
+  if (tabId === 'home') { if (typeof renderRevisionMissionUI === "function") renderRevisionMissionUI(); }
   if (tabId === 'textbook') renderTextbookView();
   if (tabId === 'modelqa') renderModelQAView();
   if (tabId === 'performance') renderPerformanceView();
@@ -929,11 +930,11 @@ function openSubjectDetail(subKey) {
 // ================= FETCH DATA =================
 async function fetchData() {
   try {
-    let res = await fetch('/api/data', { headers: getAuthHeaders() });
+    let res = await fetch('/api/data?t=' + Date.now(), { headers: getAuthHeaders() });
     let isJson = res.headers.get('content-type')?.includes('application/json');
     if (!res.ok || !isJson) {
       // Fallback directly to static public data.json
-      res = await fetch('/data.json');
+      res = await fetch('/data.json?t=' + Date.now());
       isJson = res.headers.get('content-type')?.includes('application/json');
     }
     if (res.ok && isJson) {
@@ -965,6 +966,7 @@ function renderAll() {
   renderDiagnosticTracker();
   renderScheduleView();
   renderRevisionSplitter();
+  if (typeof renderRevisionMissionUI === "function") renderRevisionMissionUI();
   renderSubjectGridStats();
   renderSyllabusView();
   renderWrittenTasksFeed();
@@ -2766,6 +2768,7 @@ function renderFull16DaySchedule() {
 }
 
 function renderRevisionSplitter() {
+  if (typeof renderRevisionMissionUI === "function") renderRevisionMissionUI();
   const container = document.getElementById('revision-splitter-feed');
   const descEl = document.getElementById('split-mode-desc');
   if (!appState || !appState.revisionSplitter) return;
@@ -4434,8 +4437,8 @@ function renderFocusView() {
 
 
 
-// Create code for dynamic rescheduling and lap time
-const rescheduleCode = `
+
+
 // ================= DYNAMIC RESCHEDULER (SKIP DAY / HALF-DONE) =================
 function openRescheduleModal() {
   const modal = document.getElementById('rescheduleModal');
@@ -4459,13 +4462,13 @@ function renderRescheduleModalInfo() {
   if (!container || !appState) return;
 
   const rev = appState.revisionSplitter || {};
-  const today = rev.today || { dayIndex: 1, pair: 'Science + Tamil' };
+  const today = rev.today || { dayIndex: 2, pair: 'Mathematics + English' };
   
-  container.innerHTML = \`
+  container.innerHTML = `
     <div class="space-y-3.5 text-xs text-slate-700">
       <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl space-y-1">
         <div class="flex items-center justify-between">
-          <strong class="text-emerald-950 font-bold">Current Active Day: Day \${today.dayIndex} (\${today.pair})</strong>
+          <strong class="text-emerald-950 font-bold">Current Active Day: Day ${today.dayIndex} (${today.pair})</strong>
           <span class="text-[10px] bg-white text-emerald-800 font-extrabold px-2 py-0.5 rounded border border-emerald-200">16-Day Mission</span>
         </div>
         <p class="text-[11px] text-slate-600">If Pranav faced unexpected school late hours, illness, or tuition tests, choose an action below. The system will re-balance remaining topics smoothly before Nov 13 exam.</p>
@@ -4480,7 +4483,7 @@ function renderRescheduleModalInfo() {
             </span>
             <span class="text-[9px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.5 rounded">Emergency</span>
           </div>
-          <p class="text-[10px] text-slate-500 leading-snug">Day \${today.dayIndex} tasks are safely distributed across the next 3 revision buffers. Day \${today.dayIndex + 1} becomes active.</p>
+          <p class="text-[10px] text-slate-500 leading-snug">Day ${today.dayIndex} tasks are safely distributed across the next 3 revision buffers. Day ${today.dayIndex + 1} becomes active.</p>
         </button>
 
         <!-- Option 2: Half-Done -->
@@ -4506,7 +4509,7 @@ function renderRescheduleModalInfo() {
 
       <div id="rescheduleFeedback" class="hidden p-2.5 rounded-xl text-xs font-bold bg-emerald-100 text-emerald-900 border border-emerald-300"></div>
     </div>
-  \`;
+  `;
 }
 
 function applyRescheduleAction(actionType) {
@@ -4517,10 +4520,10 @@ function applyRescheduleAction(actionType) {
   if (actionType === 'skip') {
     const curDay = rev.today.dayIndex;
     rev.today.dayIndex = Math.min(16, curDay + 1);
-    rev.today.message = \`Day \${curDay} was marked skipped. Rescheduled smoothly! Active revision is now Day \${rev.today.dayIndex}.\`;
+    rev.today.message = `Day ${curDay} was marked skipped. Rescheduled smoothly! Active revision is now Day ${rev.today.dayIndex}.`;
     if (feedback) {
       feedback.classList.remove('hidden');
-      feedback.textContent = \`✅ Day \${curDay} skipped. Schedule rebalanced! Current day set to Day \${rev.today.dayIndex}.\`;
+      feedback.textContent = `✅ Day ${curDay} skipped. Schedule rebalanced! Current day set to Day ${rev.today.dayIndex}.`;
     }
   } else if (actionType === 'half_done') {
     rev.today.message = "⚡ Day 1 marked Half-Done! Completed portion verified. Remaining sub-tasks carried to morning revision slot.";
@@ -4536,14 +4539,13 @@ function applyRescheduleAction(actionType) {
     }
   }
 
-  // Persist locally
   try {
     localStorage.setItem('pranav_exam_hub_state', JSON.stringify(appState));
   } catch(e){}
 
   setTimeout(() => {
     closeRescheduleModal();
-    renderRevisionSplitterUI();
+    if (typeof renderRevisionMissionUI === 'function') renderRevisionMissionUI();
     if (typeof showToast === 'function') showToast('Schedule updated successfully!');
   }, 1200);
 }
@@ -4560,18 +4562,16 @@ function toggleStudyLapTimer() {
   if (!btn || !display) return;
 
   if (studyLapInterval) {
-    // Pause
     clearInterval(studyLapInterval);
     studyLapInterval = null;
     btn.innerHTML = '<i class="fa-solid fa-play text-xs"></i> Start';
     btn.className = "bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold px-3 py-1.5 rounded-xl text-xs flex items-center gap-1.5 transition";
   } else {
-    // Start
     studyLapInterval = setInterval(() => {
       studyLapSeconds++;
       const mins = String(Math.floor(studyLapSeconds / 60)).padStart(2, '0');
       const secs = String(studyLapSeconds % 60).padStart(2, '0');
-      display.textContent = \`\${mins}:\${secs}\`;
+      display.textContent = `${mins}:${secs}`;
     }, 1000);
     btn.innerHTML = '<i class="fa-solid fa-pause text-xs"></i> Pause';
     btn.className = "bg-amber-600 hover:bg-amber-700 text-white font-extrabold px-3 py-1.5 rounded-xl text-xs flex items-center gap-1.5 transition";
@@ -4582,7 +4582,7 @@ function recordStudyLap() {
   if (studyLapSeconds === 0) return;
   const mins = String(Math.floor(studyLapSeconds / 60)).padStart(2, '0');
   const secs = String(studyLapSeconds % 60).padStart(2, '0');
-  const timeStr = \`\${mins}:\${secs}\`;
+  const timeStr = `${mins}:${secs}`;
   const lapNum = studyLapsHistory.length + 1;
   studyLapsHistory.unshift({ num: lapNum, time: timeStr, at: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) });
   renderStudyLaps();
@@ -4610,13 +4610,13 @@ function renderStudyLaps() {
     container.innerHTML = '<span class="text-[10px] text-slate-400 block py-1">No laps recorded yet. Click Lap during problem solving.</span>';
     return;
   }
-  container.innerHTML = studyLapsHistory.slice(0, 5).map(l => \`
+  container.innerHTML = studyLapsHistory.slice(0, 5).map(l => `
     <div class="flex items-center justify-between py-1 border-b border-slate-100 text-xs">
-      <span class="font-bold text-slate-700">Question / Lap #\${l.num}</span>
-      <span class="font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">\${l.time}</span>
-      <span class="text-[10px] text-slate-400">\${l.at}</span>
+      <span class="font-bold text-slate-700">Question / Lap #${l.num}</span>
+      <span class="font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">${l.time}</span>
+      <span class="text-[10px] text-slate-400">${l.at}</span>
     </div>
-  \`).join('');
+  `).join('');
 }
 
 function checkNightTestAlarm() {
@@ -4635,14 +4635,7 @@ function checkNightTestAlarm() {
   }
 }
 setInterval(checkNightTestAlarm, 30000);
-`;
 
-
-
-
-const fs = require('fs');
-
-const dynamicMissionRendererCode = `
 // ================= DYNAMIC 16-DAY REVISION MISSION RENDERER =================
 let activeMissionDayView = 2; // Default to Today: Day 2 (29 Oct 2026)
 
@@ -4662,20 +4655,20 @@ function renderRevisionMissionUI() {
   const isToday = activeMissionDayView === 2;
 
   // Day Selector Pills
-  const dayPillsHtml = \`
+  const dayPillsHtml = `
     <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 pt-0.5">
-      <button onclick="setMissionDayView(1)" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 \${activeMissionDayView === 1 ? 'bg-emerald-600 text-white shadow-sm' : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'}">
+      <button onclick="setMissionDayView(1)" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 ${activeMissionDayView === 1 ? 'bg-emerald-600 text-white shadow-sm' : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'}">
         <span>◀ Day 1 (Yesterday: 28 Oct)</span>
-        <span class="text-[9px] px-1.5 py-0.2 rounded \${activeMissionDayView === 1 ? 'bg-emerald-700 text-emerald-100' : 'bg-slate-200 text-slate-600'}">Partial</span>
+        <span class="text-[9px] px-1.5 py-0.2 rounded ${activeMissionDayView === 1 ? 'bg-emerald-700 text-emerald-100' : 'bg-slate-200 text-slate-600'}">Partial</span>
       </button>
 
-      <button onclick="setMissionDayView(2)" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 \${activeMissionDayView === 2 ? 'bg-emerald-600 text-white shadow-sm ring-2 ring-emerald-500/30' : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'}">
+      <button onclick="setMissionDayView(2)" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 ${activeMissionDayView === 2 ? 'bg-emerald-600 text-white shadow-sm ring-2 ring-emerald-500/30' : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'}">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
         <span>Day 2 (TODAY: 29 Oct)</span>
-        <span class="text-[9px] px-1.5 py-0.2 rounded \${activeMissionDayView === 2 ? 'bg-white text-emerald-800' : 'bg-emerald-100 text-emerald-800'}">Active</span>
+        <span class="text-[9px] px-1.5 py-0.2 rounded ${activeMissionDayView === 2 ? 'bg-white text-emerald-800' : 'bg-emerald-100 text-emerald-800'}">Active</span>
       </button>
 
-      <button onclick="setMissionDayView(3)" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 \${activeMissionDayView === 3 ? 'bg-emerald-600 text-white shadow-sm' : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'}">
+      <button onclick="setMissionDayView(3)" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 ${activeMissionDayView === 3 ? 'bg-emerald-600 text-white shadow-sm' : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'}">
         <span>Day 3 (Tomorrow: 30 Oct)</span>
       </button>
 
@@ -4683,12 +4676,12 @@ function renderRevisionMissionUI() {
         <i class="fa-solid fa-arrows-rotate text-[10px]"></i> <span>Re-Schedule</span>
       </button>
     </div>
-  \`;
+  `;
 
   // Status Banner HTML
   let bannerHtml = '';
   if (isYesterday) {
-    bannerHtml = \`
+    bannerHtml = `
       <div class="rounded-2xl bg-amber-50/80 border border-amber-200 p-4 space-y-2">
         <div class="flex items-center justify-between">
           <span class="text-[10px] font-extrabold text-amber-900 bg-amber-200/80 px-2.5 py-0.5 rounded-full border border-amber-300 flex items-center gap-1.5">
@@ -4712,9 +4705,9 @@ function renderRevisionMissionUI() {
           <span class="text-[11px] text-slate-600 font-medium">Tamil portion realigned to Unit 5 in Revision Buffer (Nov 05–07).</span>
         </div>
       </div>
-    \`;
+    `;
   } else if (isToday) {
-    bannerHtml = \`
+    bannerHtml = `
       <div class="rounded-2xl bg-emerald-50/90 border border-emerald-200 p-4 space-y-2">
         <div class="flex items-center justify-between">
           <span class="text-[10px] font-bold text-emerald-900 bg-emerald-200/80 px-2.5 py-0.5 rounded-full border border-emerald-300 flex items-center gap-1.5">
@@ -4739,29 +4732,29 @@ function renderRevisionMissionUI() {
           </button>
         </div>
       </div>
-    \`;
+    `;
   } else {
-    bannerHtml = \`
+    bannerHtml = `
       <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4 space-y-2">
         <div class="flex items-center justify-between">
           <span class="text-[10px] font-bold text-slate-700 bg-slate-200 px-2.5 py-0.5 rounded-full">
-            UPCOMING: Day \${currentDayData.day} (\${currentDayData.date})
+            UPCOMING: Day ${currentDayData.day} (${currentDayData.date})
           </span>
         </div>
-        <h5 class="text-xs font-black text-slate-900">\${currentDayData.title || ''}</h5>
+        <h5 class="text-xs font-black text-slate-900">${currentDayData.title || ''}</h5>
       </div>
-    \`;
+    `;
   }
 
   // Active Subject Cards Grid
   const sub1 = currentDayData.sub1 || {};
   const sub2 = currentDayData.sub2 || {};
 
-  const subjectsHtml = \`
+  const subjectsHtml = `
     <div class="space-y-3">
       <div class="flex items-center justify-between">
         <span class="text-[10px] font-extrabold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1">
-          <i class="fa-solid fa-fire text-emerald-600"></i> ACTIVE TASKS FOR DAY \${activeMissionDayView}
+          <i class="fa-solid fa-fire text-emerald-600"></i> ACTIVE TASKS FOR DAY ${activeMissionDayView}
         </span>
         <span class="text-[10px] font-bold text-slate-500">Target: 30/30 in Night Test</span>
       </div>
@@ -4770,49 +4763,49 @@ function renderRevisionMissionUI() {
         <!-- Subject 1 Card -->
         <div class="p-3.5 rounded-xl bg-white border border-slate-200 space-y-2 shadow-xs">
           <div class="flex items-center justify-between">
-            <span class="font-extrabold text-emerald-800 text-xs">\${sub1.name || 'Subject 1'}</span>
+            <span class="font-extrabold text-emerald-800 text-xs">${sub1.name || 'Subject 1'}</span>
             <div class="flex items-center gap-1">
-              \${isYesterday ? '<span class="text-[9px] bg-emerald-100 text-emerald-800 font-extrabold px-2 py-0.5 rounded">✔ Written (14/15)</span>' : '<span class="text-[9px] bg-emerald-50 text-emerald-700 font-bold px-1.5 py-0.5 rounded border border-emerald-200">Part 1</span>'}
+              ${isYesterday ? '<span class="text-[9px] bg-emerald-100 text-emerald-800 font-extrabold px-2 py-0.5 rounded">✔ Written (14/15)</span>' : '<span class="text-[9px] bg-emerald-50 text-emerald-700 font-bold px-1.5 py-0.5 rounded border border-emerald-200">Part 1</span>'}
             </div>
           </div>
-          <h6 class="font-bold text-slate-900 text-xs">\${sub1.chapter || ''}</h6>
-          <p class="text-[11px] text-slate-600 leading-snug">\${sub1.topics || ''}</p>
+          <h6 class="font-bold text-slate-900 text-xs">${sub1.chapter || ''}</h6>
+          <p class="text-[11px] text-slate-600 leading-snug">${sub1.topics || ''}</p>
           <div class="pt-1 flex items-center gap-1.5">
-            \${isYesterday ? \`
+            ${isYesterday ? `
               <button onclick="openAnswerPaperUploadModal(1, 'Science')" class="text-[10px] bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-2.5 py-1.5 rounded-lg flex items-center gap-1 shadow-xs transition">
                 <i class="fa-solid fa-camera text-[9px]"></i> View/Upload Paper
               </button>
-            \` : \`
-              <button onclick="openPartialSkipModal(\${activeMissionDayView}, '\${sub1.name}')" class="text-[10px] bg-slate-100 hover:bg-amber-50 text-slate-700 hover:text-amber-800 font-bold px-2.5 py-1.5 rounded-lg transition border border-slate-200">
+            ` : `
+              <button onclick="openPartialSkipModal(${activeMissionDayView}, '${sub1.name}')" class="text-[10px] bg-slate-100 hover:bg-amber-50 text-slate-700 hover:text-amber-800 font-bold px-2.5 py-1.5 rounded-lg transition border border-slate-200">
                 ⏭️ Partial Skip
               </button>
-            \`}
+            `}
           </div>
         </div>
 
         <!-- Subject 2 Card -->
         <div class="p-3.5 rounded-xl bg-white border border-slate-200 space-y-2 shadow-xs">
           <div class="flex items-center justify-between">
-            <span class="font-extrabold text-sky-800 text-xs">\${sub2.name || 'Subject 2'}</span>
+            <span class="font-extrabold text-sky-800 text-xs">${sub2.name || 'Subject 2'}</span>
             <div class="flex items-center gap-1">
-              \${isYesterday ? '<span class="text-[9px] bg-amber-100 text-amber-800 font-extrabold px-2 py-0.5 rounded border border-amber-300">⏭️ Skipped (Out of Syllabus)</span>' : '<span class="text-[9px] bg-sky-50 text-sky-700 font-bold px-1.5 py-0.5 rounded border border-sky-200">Part 2</span>'}
+              ${isYesterday ? '<span class="text-[9px] bg-amber-100 text-amber-800 font-extrabold px-2 py-0.5 rounded border border-amber-300">⏭️ Skipped (Out of Syllabus)</span>' : '<span class="text-[9px] bg-sky-50 text-sky-700 font-bold px-1.5 py-0.5 rounded border border-sky-200">Part 2</span>'}
             </div>
           </div>
-          <h6 class="font-bold text-slate-900 text-xs">\${sub2.chapter || ''}</h6>
-          <p class="text-[11px] text-slate-600 leading-snug">\${sub2.topics || ''}</p>
+          <h6 class="font-bold text-slate-900 text-xs">${sub2.chapter || ''}</h6>
+          <p class="text-[11px] text-slate-600 leading-snug">${sub2.topics || ''}</p>
           <div class="pt-1 flex items-center gap-1.5">
-            \${isYesterday ? \`
+            ${isYesterday ? `
               <span class="text-[10px] text-slate-500 font-medium italic">Realigned with Unit 5 in Revision Buffer</span>
-            \` : \`
-              <button onclick="openPartialSkipModal(\${activeMissionDayView}, '\${sub2.name}')" class="text-[10px] bg-slate-100 hover:bg-amber-50 text-slate-700 hover:text-amber-800 font-bold px-2.5 py-1.5 rounded-lg transition border border-slate-200">
+            ` : `
+              <button onclick="openPartialSkipModal(${activeMissionDayView}, '${sub2.name}')" class="text-[10px] bg-slate-100 hover:bg-amber-50 text-slate-700 hover:text-amber-800 font-bold px-2.5 py-1.5 rounded-lg transition border border-slate-200">
                 ⏭️ Partial Skip
               </button>
-            \`}
+            `}
           </div>
         </div>
       </div>
     </div>
-  \`;
+  `;
 
   container.innerHTML = dayPillsHtml + bannerHtml + subjectsHtml;
 }
@@ -4879,9 +4872,8 @@ function submitAnswerPaperUpload() {
   if (!appState.performanceHub) appState.performanceHub = { housePractice: { recentTests: [] } };
   if (!appState.performanceHub.housePractice.recentTests) appState.performanceHub.housePractice.recentTests = [];
 
-  const testTitle = \`Day \${activeUploadPaperDay} \${activeUploadPaperSubject}: Night Test\`;
+  const testTitle = `Day ${activeUploadPaperDay} ${activeUploadPaperSubject}: Night Test`;
   
-  // Add to recent tests
   appState.performanceHub.housePractice.recentTests.unshift({
     date: activeUploadPaperDay === 1 ? "2026-10-28" : "2026-10-29",
     test: testTitle,
@@ -4893,14 +4885,13 @@ function submitAnswerPaperUpload() {
     feedback: notes || "Written test submitted and verified successfully."
   });
 
-  // Persist locally
   try {
     localStorage.setItem('pranav_exam_hub_state', JSON.stringify(appState));
   } catch(e){}
 
   closeAnswerPaperUploadModal();
   if (window.confetti) confetti();
-  if (typeof showToast === 'function') showToast(\`✅ Test paper for \${testTitle} uploaded successfully!\`);
+  if (typeof showToast === 'function') showToast(`✅ Test paper for ${testTitle} uploaded successfully!`);
   
   renderRevisionMissionUI();
   if (typeof renderPerformanceView === 'function') renderPerformanceView();
@@ -4909,13 +4900,12 @@ function submitAnswerPaperUpload() {
 // ================= PARTIAL SKIP HANDLER =================
 function openPartialSkipModal(dayNum, subjectName) {
   const targetSub = subjectName || 'Tamil';
-  const confirmSkip = confirm(\`⚠️ Defer / Skip \${targetSub} for Day \${dayNum}?\\n\\nThis will mark \${targetSub} as deferred to the Revision Buffer (Nov 05–07) without penalty, so Pranav can focus on completing the other subject.\`);
+  const confirmSkip = confirm(`⚠️ Defer / Skip ${targetSub} for Day ${dayNum}?\\n\\nThis will mark ${targetSub} as deferred to the Revision Buffer (Nov 05–07) without penalty, so Pranav can focus on completing the other subject.`);
   
   if (confirmSkip) {
-    if (typeof showToast === 'function') showToast(\`⏭️ \${targetSub} skipped and deferred to revision buffer smoothly.\`);
+    if (typeof showToast === 'function') showToast(`⏭️ ${targetSub} skipped and deferred to revision buffer smoothly.`);
     renderRevisionMissionUI();
   }
 }
-`;
 
-
+window.addEventListener('DOMContentLoaded', () => { setTimeout(() => { if (typeof renderRevisionMissionUI === "function") renderRevisionMissionUI(); }, 200); });
