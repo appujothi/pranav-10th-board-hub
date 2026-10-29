@@ -4987,10 +4987,12 @@ function renderRevisionMissionUI() {
   const subjectsHtml = `
     <div class="space-y-3">
       <div class="flex items-center justify-between">
-        <span class="text-[10px] font-extrabold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1">
-          <i class="fa-solid fa-fire text-emerald-600"></i> ACTIVE TASKS FOR DAY ${activeMissionDayView}
+        <span class="text-[10px] font-extrabold ${isYesterday ? 'text-emerald-900 bg-emerald-100/80 border border-emerald-300' : 'text-emerald-800 bg-emerald-50 border border-emerald-200'} px-2.5 py-0.5 rounded-full flex items-center gap-1.5 shadow-2xs">
+          <i class="fa-solid ${isYesterday ? 'fa-circle-check text-emerald-600' : 'fa-fire text-emerald-600'}"></i> ${isYesterday ? 'COMPLETED / REVIEW PORTION FOR DAY 1' : `TODAY'S ACTIVE MISSION TASKS (DAY ${activeMissionDayView})`}
         </span>
-        <span class="text-[10px] font-bold text-slate-500">Target: 30/30 in Night Test</span>
+        <span class="text-[10px] font-bold ${isYesterday ? 'text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200' : 'text-slate-500'}">
+          ${isYesterday ? '✔ Completed (Science Written 14/15, Tamil Deferred)' : 'Target: 30/30 in Night Test'}
+        </span>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
@@ -5583,6 +5585,7 @@ function closeTestCorrectionsModal() {
 
 
 function openEvaluationReportModal(dayNum) {
+  dayNum = dayNum || activeMissionDayView || 2;
   const modal = document.getElementById('evaluationReportModal');
   const title = document.getElementById('evalReportTitle');
   const subtitle = document.getElementById('evalReportSubtitle');
@@ -5593,14 +5596,15 @@ function openEvaluationReportModal(dayNum) {
   const housePractice = appState?.performanceHub?.housePractice;
   const recentTests = housePractice?.recentTests || [];
   
-  const testObj = (dayNum === 1)
+  const isDay1 = (dayNum === 1);
+  const testObj = isDay1
     ? (recentTests.find(t => t.date === '2026-10-28' || t.test?.includes('Day 1')) || {
         test: 'Day 1 Science: Acids, Bases & Salts (Home Night Test)',
         date: '2026-10-28 (Yesterday)',
         scoredMarks: 14,
         maxMarks: 15,
         percentage: 93.3,
-        status: 'Evaluated (14/15)',
+        status: 'Evaluated & Completed (14/15)',
         feedback: 'பிரணவ் நேற்றைய அறிவியல் தேர்வை சிறப்பாக எழுதினான். சமன்பாடுகள் (Balanced Equations), Pop-sound சோதனை, pH அளவீடு அனைத்தும் துல்லியமாக எழுதப்பட்டுள்ளது. தமிழ் பாடப்பகுதி (Unit 4) SRM தேர்வில் இல்லாததால் அது Revision Buffer-க்கு மாற்றப்பட்டது.',
         strengths: [
           'Balanced Chemical Equations (Zn + 2HCl -> ZnCl2 + H2)',
@@ -5612,12 +5616,12 @@ function openEvaluationReportModal(dayNum) {
         ]
       })
     : (recentTests.find(t => t.date === '2026-10-29' || t.test?.includes('Day 2')) || {
-        test: 'Day 2 Maths: Linear Equations (Consistency: No Solution & Infinitely Many)',
+        test: 'Day 2 Maths: Linear Equations (Today\'s Written Practice)',
         date: '2026-10-29 (Today)',
         scoredMarks: 6,
         maxMarks: 10,
         percentage: 60.0,
-        status: 'AI Evaluated (6/10)',
+        status: 'AI Evaluated (6/10 - 40% Deducted for 2 CBSE Traps)',
         feedback: 'Good cross-multiplication & neat steps. Caught in 2 CBSE Board Traps: 1) Forgot to test third ratio != c1/c2 for No Solution (alpha = -6 only). 2) Misread question roman numeral (ii) as 2kx.',
         strengths: [
           'Neat step-by-step layout and legible handwriting',
@@ -5631,21 +5635,40 @@ function openEvaluationReportModal(dayNum) {
       });
 
   if (title) title.textContent = testObj.test;
-  if (subtitle) subtitle.textContent = (testObj.date || '') + ' • Evaluation Result Report';
+  if (subtitle) subtitle.textContent = (testObj.date || '') + ' • Class 10 CBSE Marking Scheme Evaluation';
 
   body.innerHTML = `
     <div class="space-y-4 text-xs">
+      <!-- Test Switcher Tabs (Day 1 Science vs Day 2 Maths) -->
+      <div class="flex items-center gap-1.5 p-1 bg-slate-100 rounded-2xl border border-slate-200">
+        <button onclick="openEvaluationReportModal(1)" class="flex-1 py-2 px-2.5 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 ${isDay1 ? 'bg-white text-slate-900 shadow-sm font-black ring-1 ring-slate-200' : 'text-slate-600 hover:text-slate-900'}">
+          <span>Day 1 (Science)</span>
+          <span class="text-[10px] px-2 py-0.5 rounded-full font-extrabold ${isDay1 ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-200 text-slate-600'}">14/15 (93.3%)</span>
+        </button>
+        <button onclick="openEvaluationReportModal(2)" class="flex-1 py-2 px-2.5 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 ${!isDay1 ? 'bg-white text-slate-900 shadow-sm font-black ring-1 ring-slate-200' : 'text-slate-600 hover:text-slate-900'}">
+          <span>Day 2 (Maths)</span>
+          <span class="text-[10px] px-2 py-0.5 rounded-full font-extrabold ${!isDay1 ? 'bg-amber-100 text-amber-800' : 'bg-slate-200 text-slate-600'}">6/10 (60.0%)</span>
+        </button>
+      </div>
+
       <!-- Score Hero Box -->
-      <div class="bg-gradient-to-r from-emerald-900 to-teal-900 text-white rounded-2xl p-4 flex items-center justify-between border border-emerald-500/40 shadow-md">
+      <div class="bg-gradient-to-r ${isDay1 ? 'from-emerald-950 via-teal-900 to-emerald-950 border-emerald-500/40' : 'from-slate-950 via-slate-900 to-amber-950 border-amber-500/40'} text-white rounded-2xl p-4 flex items-center justify-between border shadow-md">
         <div>
-          <span class="text-[10px] text-emerald-300 uppercase tracking-wider font-extrabold block">Evaluated Score</span>
+          <span class="text-[10px] text-emerald-300 uppercase tracking-wider font-extrabold block">
+            ${isDay1 ? 'Day 1 Yesterday: Science Score' : 'Day 2 Today: Maths Written Score'}
+          </span>
           <div class="text-3xl font-black text-white mt-0.5">${testObj.scoredMarks} / ${testObj.maxMarks}</div>
-          <span class="text-[11px] text-emerald-200 font-bold">${testObj.status || 'Verified'}</span>
+          <span class="text-[11px] font-bold ${isDay1 ? 'text-emerald-200' : 'text-amber-300'}">${testObj.status || 'Verified'}</span>
         </div>
         <div class="text-right">
-          <span class="text-3xl font-black text-amber-300">${testObj.percentage}%</span>
+          <span class="text-3xl font-black ${isDay1 ? 'text-emerald-300' : 'text-amber-400'}">${testObj.percentage}%</span>
           <span class="text-[10px] text-slate-300 block font-medium">Class 10 CBSE Benchmark</span>
         </div>
+      </div>
+
+      <!-- Quick Explanation Note -->
+      <div class="bg-blue-50/80 border border-blue-200 rounded-xl p-2.5 text-[11px] text-blue-900 leading-snug">
+        ${isDay1 ? '💡 <strong>Day 1 (Science):</strong> நேற்று பிரணவ் எழுதிய அறிவியல் தேர்வில் 15-க்கு 14 மதிப்பெண் (93.3%) பெற்றான்.' : '💡 <strong>Day 2 (Maths):</strong> இன்று பிரணவ் எழுதிய கணிதத் தேர்வில் 10-க்கு 6 மதிப்பெண் (60.0%) பெற்றுள்ளான். 2 தவறுகளினால் 40% குறைந்தது.'}
       </div>
 
       <!-- Feedback -->
@@ -5675,22 +5698,21 @@ function openEvaluationReportModal(dayNum) {
         </div>
       </div>
 
-      <!-- Action Buttons -->
-      <div class="pt-2 border-t border-slate-100 flex flex-wrap items-center gap-2">
-        ${dayNum === 2 ? `
-          <button onclick="closeEvaluationReportModal(); toggleDay2AudioReview();" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:opacity-95 text-white font-black text-xs flex items-center gap-1.5 shadow-sm transition">
-            <i class="fa-solid fa-volume-high"></i> 🎧 Listen to Audio Explanation
+      <!-- Bottom Audio / Model Answers CTA for Day 2 -->
+      ${!isDay1 ? `
+        <div class="pt-1 flex items-center justify-between gap-2">
+          <button onclick="toggleDay2AudioReview()" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-sm transition">
+            <i class="fa-solid fa-volume-high text-xs"></i> <span>Listen to Audio Mentor</span>
           </button>
-          <button onclick="closeEvaluationReportModal(); openDay2CorrectionsModal();" class="px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs flex items-center gap-1.5 shadow-sm transition">
-            <i class="fa-solid fa-file-lines text-emerald-400"></i> 📄 View Step-by-Step Model Answers
+          <button onclick="openDay2CorrectionsModal()" class="flex-1 bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-sm transition">
+            <i class="fa-solid fa-file-lines text-xs text-emerald-400"></i> <span>View Model Answers</span>
           </button>
-        ` : ''}
-      </div>
+        </div>
+      ` : ''}
     </div>
   `;
 
   modal.classList.remove('hidden');
-  modal.classList.add('flex');
 }
 
 function closeEvaluationReportModal() {
