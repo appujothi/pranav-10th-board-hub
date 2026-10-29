@@ -4980,6 +4980,13 @@ async function triggerAIPaperEvaluation() {
               </ul>
             </div>
           ` : ''}
+          <div class="pt-2 border-t border-emerald-200/80 flex items-center justify-between">
+            <button type="button" onclick="playCurrentEvaluationAudio()" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs flex items-center gap-1.5 shadow-sm transition">
+              <i class="fa-solid fa-volume-high"></i>
+              <span>🎧 Listen to AI Audio Explanation</span>
+            </button>
+            <span class="text-[10px] text-emerald-800 font-bold bg-white px-2 py-0.5 rounded border border-emerald-200">Tamil Voice</span>
+          </div>
         `;
       }
     } else {
@@ -5003,6 +5010,73 @@ async function triggerAIPaperEvaluation() {
     if (btn) btn.disabled = false;
     if (btnText) btnText.innerHTML = '✨ AI Auto-Evaluate Paper (Gemini Vision)';
   }
+}
+
+function playCurrentEvaluationAudio() {
+  if (!currentAIEvaluation) return;
+  const script = currentAIEvaluation.tanglishSummary || "மதிப்பீட்டு முடிவுகள்: பலம் மற்றும் பலவீனங்களை கவனித்து அடுத்த தேர்வில் முழு மதிப்பெண் பெறவும்!";
+  if (typeof playUniversalTTS === 'function') {
+    playUniversalTTS(script);
+  } else if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(script);
+    u.rate = 0.95;
+    window.speechSynthesis.speak(u);
+  }
+}
+
+let isDay2AudioPlaying = false;
+function toggleDay2AudioReview() {
+  const btn = document.getElementById('day2AudioBtn');
+  const btnText = document.getElementById('day2AudioBtnText');
+  const icon = document.getElementById('day2AudioIcon');
+  const meter = document.getElementById('day2AudioMeter');
+
+  const speechText = "வணக்கம் பிரணவ்! உன்னோட மேக்ஸ் டெஸ்ட் பேப்பரை AI முழுமையா திருத்தியாச்சு. உன்னோட கையெழுத்து, ஸ்டெப்-பை-ஸ்டெப் விளக்கங்கள் மற்றும் கிராஸ் மல்டிபிளிகேஷன் ரொம்ப நேர்த்தியா இருக்கு! ஆனா இந்த டெஸ்ட்ல 10-க்கு 6 மார்க் வந்து, 40 சதவீதம் மார்க் ஏன் குறைஞ்சது தெரியுமா? மொத்தம் இரண்டு முக்கியமான காரணங்கள். முதலாவது, கொஸ்டின் 1-ல, நோ சொல்யூஷன் கண்டிஷன் a1 by a2 equals b1 by b2 not equals c1 by c2. நீ ஆல்ஃபா ஈக்வல்ஸ் பிளஸ் ஆர் மைனஸ் 6 கண்டுபிடிச்சது சரிதான். ஆனால் பிளஸ் 6 போட்டால் அது இன்பினிட்லி மெனி சொல்யூஷன்ஸ் ஆகிவிடும்! மைனஸ் 6 போட்டால் மட்டும்தான் நோ சொல்யூஷன் வரும். இந்த கண்டிஷனை சரிபார்க்காததால் 1 மார்க் போச்சு. இது போர்டு எக்ஸாமோட பெரிய ட்ராப்! இரண்டாவது காரணம், கொஸ்டின் 2 சப்டிவிஷன் 2-ல, ரோமன் நம்பர் ii போட்டிருந்ததை கேள்வியுடன் சேர்த்து அவசரத்துல 2kx என்று தப்பாக காப்பி பண்ணிட்ட! அதனால்தான் k ஈக்வல்ஸ் 3 ரூட் 2 வந்துச்சு. கேள்வியை கவனமாகப் பார்த்து kx என்று எழுதியிருந்தால் முழு மார்க் கிடைத்திருக்கும்! இந்த இரண்டு விஷயங்களை மட்டும் கவனிச்சுக்கோ பிரணவ், போர்டு எக்ஸாம்ல உனக்கு சென்டம் நிச்சயம்!";
+
+  if (!('speechSynthesis' in window)) {
+    alert(speechText);
+    return;
+  }
+
+  if (window.speechSynthesis.speaking && isDay2AudioPlaying) {
+    window.speechSynthesis.cancel();
+    isDay2AudioPlaying = false;
+    if (btnText) btnText.textContent = 'Listen to Audio Explanation';
+    if (icon) icon.className = 'fa-solid fa-play';
+    if (meter) meter.classList.add('hidden');
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+  isDay2AudioPlaying = true;
+  if (meter) meter.classList.remove('hidden');
+  if (btnText) btnText.textContent = 'Pause Audio';
+  if (icon) icon.className = 'fa-solid fa-pause';
+
+  const voiceConfig = typeof getBestTTSVoice === 'function' ? getBestTTSVoice() : null;
+  const utterance = new SpeechSynthesisUtterance(speechText);
+  if (voiceConfig) {
+    if (voiceConfig.voice) utterance.voice = voiceConfig.voice;
+    utterance.lang = voiceConfig.lang;
+  }
+  utterance.rate = 0.95;
+
+  utterance.onend = () => {
+    isDay2AudioPlaying = false;
+    if (btnText) btnText.textContent = 'Replay Audio Explanation';
+    if (icon) icon.className = 'fa-solid fa-rotate-right';
+    if (meter) meter.classList.add('hidden');
+  };
+
+  utterance.onerror = () => {
+    isDay2AudioPlaying = false;
+    if (btnText) btnText.textContent = 'Listen to Audio Explanation';
+    if (icon) icon.className = 'fa-solid fa-play';
+    if (meter) meter.classList.add('hidden');
+  };
+
+  window.speechSynthesis.speak(utterance);
 }
 
 function submitAnswerPaperUpload() {
