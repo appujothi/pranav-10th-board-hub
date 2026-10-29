@@ -2559,6 +2559,37 @@
   
   
   <!-- DETAILED QUESTION CORRECTIONS & MODEL ANSWERS MODAL -->
+  
+  <!-- EVALUATION REPORT MODAL -->
+  <div id="evaluationReportModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl w-full max-w-lg max-h-[90vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden">
+      <div class="p-4 sm:p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/80 shrink-0">
+        <div class="flex items-center gap-2.5">
+          <span class="w-9 h-9 rounded-xl bg-blue-100 text-blue-800 flex items-center justify-center font-bold text-sm">
+            📊
+          </span>
+          <div>
+            <h3 id="evalReportTitle" class="text-sm font-extrabold text-slate-900">Evaluation Result & Feedback</h3>
+            <p id="evalReportSubtitle" class="text-[10px] text-slate-500">Marks, Strengths, Weaknesses & Marking Scheme</p>
+          </div>
+        </div>
+        <button onclick="closeEvaluationReportModal()" class="w-8 h-8 rounded-full bg-slate-200/80 text-slate-600 hover:bg-slate-300 flex items-center justify-center text-xs transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div id="evalReportBody" class="p-4 sm:p-5 space-y-4 overflow-y-auto custom-scroll text-xs">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <div class="p-3.5 border-t border-slate-100 bg-slate-50 flex items-center justify-end shrink-0">
+        <button onclick="closeEvaluationReportModal()" class="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-xs transition">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
   <div id="testCorrectionsModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
     <div class="bg-white rounded-3xl w-full max-w-xl max-h-[90vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden">
       <div class="p-4 sm:p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/80 shrink-0">
@@ -2597,6 +2628,6 @@
     <span id="toast-message">Success</span>
   </div>
 
-  <script src="/app.js?v=1793248753058"></script>
+  <script src="/app.js?v=1793249796542"></script>
 </body>
 </html>

@@ -2830,37 +2830,16 @@
               ]
             },
             "sub2": {
-              "name": "Tamil (இரண்டாம் மொழி)",
-              "chapter": "இயல் 5: மணற்கேணி",
-              "topics": "மொழிபெயர்ப்புக் கல்வி, நீதி வெண்பா (செய்குதம்பிப் பாவலர்), திருவிளையாடற் புராணம், வினா-விடை வகைகள் & பொருள்கோள்",
-              "audioLessonId": "tam-u5",
-              "sampleQuestions": [
-                {
-                  "q": "மொழிபெயர்ப்பு குறித்து பாரதியார் மற்றும் பாரதிதாசன் கூறிய கருத்துக்களை தொகுத்து எழுதுக.",
-                  "sampleAns": "பாரதி: \"சென்றிடுவீர் எட்டுத் திக்கும் - கலைச் செல்வங்கள் யாவும் கொணர்ந்திங்கு சேர்ப்பீர்\". பாரதிதாசன்: \"பிறநாட்டு நல்லறிஞர் சாத்திரங்கள் தமிழ் மொழியிற் பெயர்த்தல் வேண்டும்\".",
-                  "marks": 3
-                },
-                {
-                  "q": "வினா எத்தனை வகைப்படும்? விடை எத்தனை வகைப்படும்? சான்றுகளுடன் விளக்குக.",
-                  "sampleAns": "வினா 6 வகைப்படும் (அறிவினா, அறியாவினா, ஐயவினா, கொளல்வினா, கொடைவினா, ஏவல்வினா). விடை 8 வகைப்படும் (சுட்டு, நேர், எதிர்மறை, ஏவல், வினாவெதிர் வினாதல், உற்றது உரைத்தல், உறுவது கூறல், இனமொழி).",
-                  "marks": 3
-                },
-                {
-                  "q": "'அருளைப் பெருக்கி அறிவைத் திருத்தி' - இப்பாடல் அடிகளில் குறிப்பிடப்படும் கல்வியின் சிறப்பினை விளக்குக.",
-                  "sampleAns": "செய்குதம்பிப் பாவலர் இயற்றிய நீதி வெண்பா: கல்வி மனிதனின் அறியாமையைப் போக்கி, உள்ளத்தில் அருளை வளர்த்து, உயிருக்கு நல்வழிகாட்டி துணையாக நிற்கிறது.",
-                  "marks": 3
-                }
-              ]
+              "name": "Tamil (Language-II)",
+              "chapter": "Unit 5: Nila Mutram (நிலா முற்றம்)",
+              "topics": "Skipped on Day 1 (realigned to Unit 5 in Revision Buffer: கம்பராமாயணம், பாய்ச்சல்)",
+              "status": "Skipped (Out of Syllabus)"
             },
             "mamaRule": "⚠️ Note to Pranav: இந்த Sample Questions நீ பயிற்சி செய்வதற்கு மட்டுமே! இரவு 8:30 PM தேர்வில் இதே கேள்விகள் அப்படியே வராது — உன் அண்டர்ஸ்டாண்டிங்கை சோதிக்க எண்களும் வரிகளும் Twist செய்து புதிய கேள்விகள் கேட்கப்படும்!",
             "nightTest": {
               "hasTest": true,
-              "title": "Day 1 Night Assessment: Science + Tamil Mini Test",
-              "timing": "8:30 PM – 9:15 PM (45 Mins)",
-              "totalMarks": 30,
-              "breakup": "15 Marks Science + 15 Marks Tamil",
-              "mode": "Written on Notebook & Photo Upload for Mama Review + AI instant check",
-              "instructions": "Rough நோட்டில் சுயமாக எழுத வேண்டும். தேர்வு முடிந்தவுடன் போட்டோ எடுத்து அப்லோட் செய்."
+              "title": "Science: Acids, Bases & Salts (14/15 Scored - Evaluated)",
+              "timing": "8:30 PM (Evaluated: 14/15)"
             },
             "tasks": [
               "வேதியியல் Ch 2: Strong vs Weak Acids, pH Scale, மற்றும் Salts (Bleaching powder, Baking soda, Plaster of Paris) பார்முலாக்களை படித்து எழுதிப் பார்க்கவும்.",
@@ -5957,9 +5936,17 @@
           "maxMarks": 15,
           "scoredMarks": 14,
           "percentage": 93.3,
-          "status": "Submitted (Tamil Skipped)",
+          "status": "Evaluated (14/15)",
           "paperPhoto": null,
-          "feedback": "Strong grip on chemical reactions & pH scale. Tamil deferred to revision buffer."
+          "feedback": "Strong grip on chemical reactions & pH scale. Tamil deferred to revision buffer.",
+          "strengths": [
+            "Balanced Chemical Equations",
+            "Accurate pH scale explanation",
+            "Pop-sound hydrogen gas identification"
+          ],
+          "weaknesses": [
+            "Write physical state symbols (s, l, g, aq) consistently in all equations"
+          ]
         },
         {
           "date": "2026-10-25",

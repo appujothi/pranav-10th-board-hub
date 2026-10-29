@@ -2732,10 +2732,12 @@ function renderFull16DaySchedule() {
       const nightTestInfo = s.nightTest ? (s.nightTest.hasTest ? `🌙 ${s.nightTest.title || 'Night Test'} • ${s.nightTest.timing || '8:30 PM'}` : '🌙 ' + s.nightTest.title) : '';
       card.innerHTML = `
         <div class="flex items-center justify-between border-b border-slate-700/60 pb-1">
-          <div class="flex items-center gap-1.5">
-            <span class="font-extrabold ${s.day === 1 ? 'text-amber-400' : 'text-emerald-400'} text-[11px]">Day ${s.day} • ${s.date}</span>
-            ${s.day === 0 ? '<span class="text-[9px] bg-slate-700 px-1.5 py-0.2 rounded font-bold">Orientation</span>' : ''}
-            ${s.day === 1 ? '<span class="text-[9px] bg-amber-500/30 text-amber-300 px-1.5 py-0.2 rounded font-bold">Tomorrow</span>' : ''}
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <span class="font-extrabold ${s.day === 2 ? 'text-emerald-400' : (s.day === 1 ? 'text-amber-400' : 'text-slate-300')} text-[11px]">Day ${s.day} • ${s.date}</span>
+            ${s.day === 0 ? '<span class="text-[9px] bg-slate-700 text-slate-300 px-1.5 py-0.2 rounded font-bold">27 Oct (Past)</span>' : ''}
+            ${s.day === 1 ? '<span class="text-[9px] bg-amber-500/30 text-amber-300 px-1.5 py-0.2 rounded font-bold">28 Oct (Yesterday - Partial)</span>' : ''}
+            ${s.day === 2 ? '<span class="text-[9px] bg-emerald-500 text-slate-950 px-2 py-0.2 rounded-full font-black">29 Oct (TODAY - Active)</span>' : ''}
+            ${s.day === 3 ? '<span class="text-[9px] bg-blue-500/30 text-blue-300 px-1.5 py-0.2 rounded font-bold">30 Oct (Tomorrow)</span>' : ''}
           </div>
           <span class="text-[9px] font-bold px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">${nightTestInfo}</span>
         </div>
@@ -4851,8 +4853,11 @@ function renderRevisionMissionUI() {
           நேற்று பிரணவ் <strong>அறிவியல் (Acids, Bases & Salts)</strong> தேர்வை வெற்றிகரமாக எழுதினான். தமிழ் பாடப்பகுதி புத்தகத்தில் இல்லாததால் <strong>விதிவிலக்காக ஸ்கிப் செய்யப்பட்டது (Deferred to Buffer)</strong>. கீழே உள்ள பட்டனை அழுத்தி நேற்று எழுதிய விடைத்தாளை அப்லோட் செய்யலாம்!
         </p>
         <div class="pt-1 flex flex-wrap items-center gap-2">
-          <button onclick="openAnswerPaperUploadModal(1, 'Science')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs px-3.5 py-2 rounded-xl flex items-center gap-1.5 shadow-sm transition">
-            <i class="fa-solid fa-camera text-xs"></i> 📸 Upload Yesterday's Science Written Sheet (Pranav / Mama)
+          <button onclick="openEvaluationReportModal(1)" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:opacity-95 text-white font-black text-xs px-3.5 py-2 rounded-xl flex items-center gap-1.5 shadow-md transition">
+            <i class="fa-solid fa-chart-simple text-xs"></i> 📊 View Evaluation Result & Feedback (14/15 Marks)
+          </button>
+          <button onclick="openAnswerPaperUploadModal(1, 'Science')" class="bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-bold text-xs px-3.5 py-2 rounded-xl flex items-center gap-1.5 shadow-xs transition">
+            <i class="fa-solid fa-camera text-xs text-emerald-600"></i> 📸 Re-Upload / Add Pages
           </button>
           <span class="text-[11px] text-slate-600 font-medium">Tamil portion realigned to Unit 5 in Revision Buffer (Nov 05–07).</span>
         </div>
@@ -5560,6 +5565,126 @@ function renderTestCorrections(testObj) {
 
 function closeTestCorrectionsModal() {
   const modal = document.getElementById('testCorrectionsModal');
+  if (modal) {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+}
+
+
+function openEvaluationReportModal(dayNum) {
+  const modal = document.getElementById('evaluationReportModal');
+  const title = document.getElementById('evalReportTitle');
+  const subtitle = document.getElementById('evalReportSubtitle');
+  const body = document.getElementById('evalReportBody');
+
+  if (!modal || !body) return;
+
+  const housePractice = appState?.performanceHub?.housePractice;
+  const recentTests = housePractice?.recentTests || [];
+  
+  const testObj = (dayNum === 1)
+    ? (recentTests.find(t => t.date === '2026-10-28' || t.test?.includes('Day 1')) || {
+        test: 'Day 1 Science: Acids, Bases & Salts (Home Night Test)',
+        date: '2026-10-28 (Yesterday)',
+        scoredMarks: 14,
+        maxMarks: 15,
+        percentage: 93.3,
+        status: 'Evaluated (14/15)',
+        feedback: 'பிரணவ் நேற்றைய அறிவியல் தேர்வை சிறப்பாக எழுதினான். சமன்பாடுகள் (Balanced Equations), Pop-sound சோதனை, pH அளவீடு அனைத்தும் துல்லியமாக எழுதப்பட்டுள்ளது. தமிழ் பாடப்பகுதி (Unit 4) SRM தேர்வில் இல்லாததால் அது Revision Buffer-க்கு மாற்றப்பட்டது.',
+        strengths: [
+          'Balanced Chemical Equations (Zn + 2HCl -> ZnCl2 + H2)',
+          'Acid-Base pH scale and tooth decay reasoning',
+          'Clean handwritten presentation'
+        ],
+        weaknesses: [
+          'Chemical states (s, l, g, aq) consistently குறிப்பிட வேண்டும்'
+        ]
+      })
+    : (recentTests.find(t => t.date === '2026-10-29' || t.test?.includes('Day 2')) || {
+        test: 'Day 2 Maths: Linear Equations (Consistency: No Solution & Infinitely Many)',
+        date: '2026-10-29 (Today)',
+        scoredMarks: 6,
+        maxMarks: 10,
+        percentage: 60.0,
+        status: 'AI Evaluated (6/10)',
+        feedback: 'Good cross-multiplication & neat steps. Caught in 2 CBSE Board Traps: 1) Forgot to test third ratio != c1/c2 for No Solution (alpha = -6 only). 2) Misread question roman numeral (ii) as 2kx.',
+        strengths: [
+          'Neat step-by-step layout and legible handwriting',
+          'Accurate algebraic manipulation and cross-multiplication',
+          'Solid recall of consistency ratio condition (a1/a2 = b1/b2)'
+        ],
+        weaknesses: [
+          'CBSE Board Trap: Must test the 3rd ratio (c1/c2) for No Solution (alpha = -6 only)',
+          'Question Copying: Keep Roman numeral (ii) separated from the variable to prevent reading kx as 2kx'
+        ]
+      });
+
+  if (title) title.textContent = testObj.test;
+  if (subtitle) subtitle.textContent = (testObj.date || '') + ' • Evaluation Result Report';
+
+  body.innerHTML = `
+    <div class="space-y-4 text-xs">
+      <!-- Score Hero Box -->
+      <div class="bg-gradient-to-r from-emerald-900 to-teal-900 text-white rounded-2xl p-4 flex items-center justify-between border border-emerald-500/40 shadow-md">
+        <div>
+          <span class="text-[10px] text-emerald-300 uppercase tracking-wider font-extrabold block">Evaluated Score</span>
+          <div class="text-3xl font-black text-white mt-0.5">${testObj.scoredMarks} / ${testObj.maxMarks}</div>
+          <span class="text-[11px] text-emerald-200 font-bold">${testObj.status || 'Verified'}</span>
+        </div>
+        <div class="text-right">
+          <span class="text-3xl font-black text-amber-300">${testObj.percentage}%</span>
+          <span class="text-[10px] text-slate-300 block font-medium">Class 10 CBSE Benchmark</span>
+        </div>
+      </div>
+
+      <!-- Feedback -->
+      <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 space-y-1">
+        <span class="font-extrabold text-slate-800 text-xs block">📋 Evaluator Feedback & Notes:</span>
+        <p class="text-[11px] text-slate-700 leading-relaxed font-medium">${testObj.feedback || 'Evaluated against syllabus.'}</p>
+      </div>
+
+      <!-- Strengths & Focus Areas -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+        <div class="bg-emerald-50/80 border border-emerald-200 rounded-xl p-3 space-y-1">
+          <span class="font-extrabold text-emerald-900 text-xs flex items-center gap-1.5">
+            <i class="fa-solid fa-star text-emerald-600"></i> What Went Well (Strengths):
+          </span>
+          <ul class="text-[11px] text-slate-700 space-y-1 list-disc pl-4 pt-0.5 font-medium">
+            ${(testObj.strengths || []).map(s => `<li>${s}</li>`).join('')}
+          </ul>
+        </div>
+
+        <div class="bg-amber-50/80 border border-amber-200 rounded-xl p-3 space-y-1">
+          <span class="font-extrabold text-amber-900 text-xs flex items-center gap-1.5">
+            <i class="fa-solid fa-triangle-exclamation text-amber-600"></i> Traps to Fix for Full Marks:
+          </span>
+          <ul class="text-[11px] text-slate-700 space-y-1 list-disc pl-4 pt-0.5 font-medium">
+            ${(testObj.weaknesses || []).map(w => `<li>${w}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="pt-2 border-t border-slate-100 flex flex-wrap items-center gap-2">
+        ${dayNum === 2 ? `
+          <button onclick="closeEvaluationReportModal(); toggleDay2AudioReview();" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:opacity-95 text-white font-black text-xs flex items-center gap-1.5 shadow-sm transition">
+            <i class="fa-solid fa-volume-high"></i> 🎧 Listen to Audio Explanation
+          </button>
+          <button onclick="closeEvaluationReportModal(); openDay2CorrectionsModal();" class="px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs flex items-center gap-1.5 shadow-sm transition">
+            <i class="fa-solid fa-file-lines text-emerald-400"></i> 📄 View Step-by-Step Model Answers
+          </button>
+        ` : ''}
+      </div>
+    </div>
+  `;
+
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+}
+
+function closeEvaluationReportModal() {
+  const modal = document.getElementById('evaluationReportModal');
   if (modal) {
     modal.classList.add('hidden');
     modal.classList.remove('flex');
