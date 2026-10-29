@@ -4881,11 +4881,17 @@ function renderRevisionMissionUI() {
           இன்று கணிதத்தில் <strong>Polynomials & Linear Equations</strong> மற்றும் ஆங்கிலத்தில் <strong>Mijbil the Otter & Formal Writing</strong> பாடங்களை படிக்கவும். இரவு 8:30 மணிக்கு 30 மதிப்பெண் மாதிரித் தேர்வு!
         </p>
         <div class="pt-1 flex flex-wrap items-center gap-2">
-          <button onclick="openAnswerPaperUploadModal(2, 'Maths')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs px-3.5 py-2 rounded-xl flex items-center gap-1.5 shadow-sm transition">
-            <i class="fa-solid fa-camera text-xs"></i> 📸 Upload Tonight's Written Test Paper (Pranav / Mama)
+          <button onclick="openAnswerPaperUploadModal(2, 'Maths')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs px-3.5 py-2.5 rounded-xl flex items-center gap-1.5 shadow-sm transition">
+            <i class="fa-solid fa-camera text-xs"></i> 📸 Upload Test Paper (Maths)
           </button>
-          <button onclick="openPartialSkipModal(2)" class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-bold text-xs px-3 py-2 rounded-xl flex items-center gap-1.5 transition">
-            <i class="fa-solid fa-forward-step text-xs text-amber-600"></i> Partial Skip / Subject Action
+          <button onclick="openEvaluationReportModal(2)" class="bg-blue-600 hover:bg-blue-700 text-white font-black text-xs px-3.5 py-2.5 rounded-xl flex items-center gap-1.5 shadow-sm transition">
+            <i class="fa-solid fa-chart-simple text-xs"></i> 📊 View Evaluation Result (6/10)
+          </button>
+          <button onclick="openSrmPortionModal()" class="bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 font-bold text-xs px-3 py-2.5 rounded-xl flex items-center gap-1.5 transition">
+            <i class="fa-solid fa-file-invoice text-xs text-emerald-600"></i> 📑 View SRM Portion
+          </button>
+          <button onclick="openPartialSkipModal(2)" class="bg-white hover:bg-slate-50 text-slate-600 border border-slate-200 font-bold text-xs px-3 py-2.5 rounded-xl flex items-center gap-1.5 transition">
+            <i class="fa-solid fa-forward-step text-xs text-amber-600"></i> Partial Skip
           </button>
         </div>
 
@@ -4904,14 +4910,18 @@ function renderRevisionMissionUI() {
                 <p class="text-[10px] text-emerald-300">Listen to AI audio feedback & view step-by-step model answers</p>
               </div>
             </div>
-            <div class="flex items-center gap-2 shrink-0">
-              <button onclick="toggleDay2AudioReview()" id="day2AudioBtn" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs px-3.5 py-2 rounded-xl flex items-center justify-center gap-1.5 shadow-md transition shrink-0">
+            <div class="flex items-center gap-2 shrink-0 flex-wrap sm:flex-nowrap">
+              <button onclick="openEvaluationReportModal(2)" class="bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs px-3 py-2 rounded-xl shadow-md transition flex items-center gap-1.5 shrink-0">
+                <i class="fa-solid fa-chart-simple text-xs"></i>
+                <span>Evaluation Result</span>
+              </button>
+              <button onclick="toggleDay2AudioReview()" id="day2AudioBtn" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs px-3 py-2 rounded-xl flex items-center justify-center gap-1.5 shadow-md transition shrink-0">
                 <i id="day2AudioIcon" class="fa-solid fa-play"></i>
                 <span id="day2AudioBtnText">Listen to Audio</span>
               </button>
               <button onclick="openDay2CorrectionsModal()" class="bg-white/10 hover:bg-white/20 text-white font-extrabold text-xs px-3 py-2 rounded-xl border border-white/20 flex items-center justify-center gap-1.5 transition shrink-0">
                 <i class="fa-solid fa-file-lines text-emerald-400"></i>
-                <span>View Model Answers (Text)</span>
+                <span>Model Answers</span>
               </button>
             </div>
           </div>

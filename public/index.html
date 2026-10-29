@@ -391,183 +391,43 @@
     <div id="main-scroll-content" class="flex-1 overflow-y-auto px-5 pb-24 pt-4 space-y-5 custom-scroll">
       
       <!-- ================= VIEW 1: HOME ================= -->
-      <div id="view-home" class="space-y-5">
+            <!-- ================= VIEW 1: TASKS & 16-DAY REVISION MISSION ================= -->
+      <div id="view-home" class="space-y-4">
 
-        <!-- TARGET OF THE DAY CARD (Aligned School, Tuition & 90-100% Mission) -->
-        <div class="rounded-3xl bg-gradient-to-r from-amber-50 via-emerald-50 to-teal-50 border border-emerald-200/80 p-4 space-y-3 shadow-card">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-1.5">
-              <span class="text-base">🎯</span>
-              <h3 class="text-xs font-extrabold text-slate-900 uppercase tracking-wider">Target of the Day</h3>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="text-[10px] font-bold text-emerald-800 bg-white/90 px-2 py-0.5 rounded-full border border-emerald-200">
-                Target: 90-100%
-              </span>
-              <button onclick="openTargetModal()" class="text-[10px] font-bold text-emerald-700 hover:text-emerald-900 bg-emerald-100/80 px-2 py-0.5 rounded-md flex items-center gap-1" title="Mama can modify target">
-                <i class="fa-solid fa-pencil text-[9px]"></i> Edit
-              </button>
-            </div>
-          </div>
-
-          <!-- Dynamic Tasks List -->
-          <div id="home-daily-tasks-list" class="space-y-1.5">
-            <!-- Rendered by app.js -->
-          </div>
-
-          <div class="flex items-center justify-between pt-1 border-t border-emerald-100 text-[10px] text-slate-500">
-            <span>Set by: <strong id="target-setby-label" class="text-slate-700 font-bold">Mama</strong></span>
-            <button onclick="switchTab('schedule')" class="text-emerald-700 font-bold hover:underline flex items-center gap-1">
-              Open Full Master Schedule &rarr;
-            </button>
-          </div>
-        </div>
-
-        <!-- HERO CAROUSEL BANNER -->
-        <div class="relative overflow-hidden rounded-3xl bg-white border border-slate-200/90 p-5 text-slate-800 shadow-xs space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-50 text-emerald-800 border border-emerald-200 tracking-wide uppercase">
-              🚨 SRM Rev-1: Starts 13 Nov 2026
-            </span>
-            <span id="home-role-tag" class="text-[10px] bg-slate-100 text-slate-700 font-bold px-2 py-0.5 rounded-md border border-slate-200">
-              🔒 Mama Master Control
-            </span>
-          </div>
+        <!-- 16-DAY REVISION-1 MISSION: DAILY TASKS, PORTION & TEST RESULTS -->
+        <div id="home-revision-mission-card" class="rounded-3xl bg-white border border-slate-200 text-slate-800 p-4 sm:p-5 space-y-4 shadow-xs">
           
-          <h3 class="text-xl font-extrabold tracking-tight leading-snug text-slate-900 pt-0.5">
-            SRM Rev 1 in <span id="hero-countdown-days" class="text-emerald-600">16 Days</span>?<br>
-            We'll crack it fast.
-          </h3>
-
-          <div class="space-y-1.5 pt-0.5 text-xs text-slate-600 font-medium">
-            <div class="flex items-center gap-2">
-              <i class="fa-solid fa-bolt text-emerald-600 text-xs"></i>
-              <span>Aligned School + Tuition + Board Prep Routine (2 Subjects / Day)</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <i class="fa-solid fa-shield-halved text-blue-600 text-xs"></i>
-              <span>Managed by Mama • Daily 8:30 PM Night Tests (30 Marks)</span>
-            </div>
-          </div>
-
-          <!-- Action Buttons -->
-          <div class="flex items-center gap-2.5 pt-2">
-            <button onclick="switchTab('timer')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-xs flex items-center gap-1.5 transition">
-              <i class="fa-solid fa-bolt text-emerald-100"></i> Start Study
-            </button>
-            <button onclick="openVoiceModal()" class="bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 font-semibold text-xs px-4 py-2.5 rounded-xl transition flex items-center gap-1.5">
-              <i class="fa-solid fa-microphone text-emerald-600 text-xs"></i> Voice Assistant
-            </button>
-          </div>
-        </div>
-
-        <!-- 5 CORE PILLARS SHOWCASE (Simple & Neat Jump) -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-          <button onclick="switchTab('textbook')" class="p-3.5 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200 transition flex items-center gap-3 shadow-xs text-left group">
-            <span class="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center text-lg border border-blue-100 group-hover:scale-105 transition">📖</span>
-            <div class="min-w-0">
-              <span class="block text-xs font-bold text-slate-900 leading-tight">Text Book</span>
-              <span class="text-[10px] text-slate-500 font-medium leading-tight">NCERT & PDFs</span>
-            </div>
-          </button>
-
-          <button onclick="switchTab('modelqa')" class="p-3.5 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200 transition flex items-center gap-3 shadow-xs text-left group">
-            <span class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-lg border border-emerald-100 group-hover:scale-105 transition">❓</span>
-            <div class="min-w-0">
-              <span class="block text-xs font-bold text-slate-900 leading-tight">Model Q&A</span>
-              <span class="text-[10px] text-slate-500 font-medium leading-tight">CBSE Solutions</span>
-            </div>
-          </button>
-
-          <button onclick="switchTab('performance')" class="p-3.5 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200 transition flex items-center gap-3 shadow-xs text-left group">
-            <span class="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center text-lg border border-blue-100 group-hover:scale-105 transition">📊</span>
-            <div class="min-w-0">
-              <span class="block text-xs font-bold text-slate-900 leading-tight">Performance</span>
-              <span class="text-[10px] text-slate-500 font-medium leading-tight">School & Tuition</span>
-            </div>
-          </button>
-
-          <button onclick="switchTab('focus')" class="p-3.5 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200 transition flex items-center gap-3 shadow-xs text-left group">
-            <span class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-lg border border-emerald-100 group-hover:scale-105 transition">🎯</span>
-            <div class="min-w-0">
-              <span class="block text-xs font-bold text-slate-900 leading-tight">Focus Areas</span>
-              <span class="text-[10px] text-slate-500 font-medium leading-tight">Where to Concentrate</span>
-            </div>
-          </button>
-        </div>
-
-        <!-- SRM PUBLIC SCHOOL REVISION-1 TIMETABLE & PORTION CARD -->
-        <div class="rounded-3xl bg-white border border-slate-200 p-5 shadow-xs space-y-3.5 text-slate-800">
-          <div class="flex items-center justify-between">
+          <!-- Header with SRM Portion Sheet, Re-Schedule & Days to Go -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-3 border-b border-slate-100">
             <div class="flex items-center gap-2.5">
-              <span class="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-sm border border-emerald-200">
-                🏫
-              </span>
-              <div>
-                <h4 class="text-xs font-extrabold text-slate-900 tracking-wide">SRM PUBLIC SCHOOL</h4>
-                <p class="text-[10px] text-slate-500 font-medium">Class X Revision-1 Official Schedule (2026-27)</p>
-              </div>
-            </div>
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-50 text-emerald-800 border border-emerald-200">
-              Starts 13 Nov
-            </span>
-          </div>
-
-          <!-- Schedule Grid -->
-          <div class="grid grid-cols-5 gap-2 text-center text-xs">
-            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/90 space-y-0.5">
-              <span class="block text-[9px] font-semibold text-slate-500">13 Nov (Fri)</span>
-              <strong class="block text-slate-900 font-extrabold text-xs">English</strong>
-            </div>
-            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/90 space-y-0.5">
-              <span class="block text-[9px] font-semibold text-slate-500">16 Nov (Mon)</span>
-              <strong class="block text-emerald-700 font-extrabold text-xs">Science</strong>
-            </div>
-            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/90 space-y-0.5">
-              <span class="block text-[9px] font-semibold text-slate-500">18 Nov (Wed)</span>
-              <strong class="block text-blue-700 font-extrabold text-xs">SST</strong>
-            </div>
-            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/90 space-y-0.5">
-              <span class="block text-[9px] font-semibold text-slate-500">21 Nov (Sat)</span>
-              <strong class="block text-slate-900 font-extrabold text-xs">Maths</strong>
-            </div>
-            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/90 space-y-0.5">
-              <span class="block text-[9px] font-semibold text-slate-500">23 Nov (Mon)</span>
-              <strong class="block text-emerald-700 font-extrabold text-xs">Tamil</strong>
-            </div>
-          </div>
-
-          <!-- Portion Details Button -->
-          <button onclick="openSrmPortionModal()" class="w-full bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 font-bold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 transition">
-            <i class="fa-solid fa-file-invoice text-xs text-emerald-600"></i> 📑 View SRM Revision-1 Portion Sheet
-          </button>
-        </div>
-
-        <!-- 16-DAY REVISION-1 MISSION: DAILY TASKS & NIGHT TESTS (HERO CARD ON HOME) -->
-        <div id="home-revision-mission-card" class="rounded-3xl bg-white border border-slate-200 text-slate-800 p-5 space-y-4 shadow-xs">
-          
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2.5">
-              <span class="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-sm border border-emerald-200">
+              <span class="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-base border border-emerald-200 shrink-0">
                 🎯
               </span>
               <div>
                 <div class="flex items-center gap-2">
-                  <h4 class="text-xs font-extrabold text-slate-900">16-Day Revision-1 Mission Planner</h4>
-                  <button onclick="openRescheduleModal()" class="text-[10px] font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 px-2.5 py-0.5 rounded-full flex items-center gap-1 transition shadow-xs" title="Adjust schedule if day is skipped or half-done">
-                    <i class="fa-solid fa-arrows-rotate text-[9px] text-emerald-600"></i> Re-Schedule
-                  </button>
+                  <h4 class="text-sm font-black text-slate-900 tracking-tight">16-Day Revision-1 Mission Tasks</h4>
                 </div>
-                <p class="text-[10px] text-slate-500">Daily 2-Subject Tasks • Sample Questions • 8:30 PM Night Tests</p>
+                <p class="text-[11px] text-slate-500">Daily 2-Subject Tasks • Official Portions • 8:30 PM Night Tests & AI Evaluation</p>
               </div>
             </div>
-            <span class="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
-              16 Days to Go
-            </span>
+            
+            <div class="flex items-center gap-2 flex-wrap">
+              <button onclick="openSrmPortionModal()" class="text-xs font-bold text-slate-800 hover:text-emerald-800 bg-slate-100 hover:bg-slate-200 border border-slate-300 px-3 py-1.5 rounded-xl flex items-center gap-1.5 transition shadow-xs">
+                <i class="fa-solid fa-file-invoice text-emerald-600"></i>
+                <span>📑 View SRM Portion Sheet</span>
+              </button>
+              <button onclick="openRescheduleModal()" class="text-xs font-bold text-amber-800 bg-amber-50 hover:bg-amber-100 border border-amber-300 px-2.5 py-1.5 rounded-xl flex items-center gap-1 transition shadow-xs" title="Adjust schedule if day is skipped or half-done">
+                <i class="fa-solid fa-arrows-rotate text-[11px] text-amber-600"></i>
+                <span>Re-Schedule</span>
+              </button>
+              <span class="text-xs font-extrabold px-3 py-1.5 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 shadow-xs">
+                16 Days to Go
+              </span>
+            </div>
           </div>
 
           <!-- OFFICIAL REVISION ROUTINE: 2 SUBJECTS PER DAY (PAIR ROTATION) -->
-          <div class="p-3.5 rounded-2xl bg-emerald-50/70 border border-emerald-200 flex items-center justify-between gap-3">
+          <div class="p-3.5 rounded-2xl bg-gradient-to-r from-emerald-50/90 via-teal-50/80 to-emerald-50/90 border border-emerald-200 flex items-center justify-between gap-3">
             <div class="flex items-center gap-2.5">
               <span class="w-8 h-8 rounded-xl bg-white text-emerald-700 font-extrabold flex items-center justify-center text-sm border border-emerald-200 shadow-xs">
                 🔄
@@ -577,514 +437,16 @@
                 <h5 class="text-xs font-extrabold text-emerald-950" data-i18n="routine_title">2 Subjects Per Day (Pair Rotation)</h5>
               </div>
             </div>
-            <span class="text-[10px] font-bold bg-emerald-600 text-white px-3 py-1 rounded-full shadow-xs" data-i18n="night_test_pill">
+            <span class="text-[11px] font-black bg-emerald-600 text-white px-3 py-1 rounded-full shadow-xs" data-i18n="night_test_pill">
               Night Test: 30 Marks
             </span>
           </div>
 
           <!-- DYNAMIC 16-DAY REVISION MISSION CONTAINER -->
           <div id="revision-mission-dynamic-container" class="space-y-4">
-            <!-- Day Selector Pills -->
-            <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 pt-0.5">
-              <button onclick="setMissionDayView(1)" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200">
-                <span>◀ Day 1 (Yesterday: 28 Oct)</span>
-                <span class="text-[9px] px-1.5 py-0.2 rounded bg-amber-100 text-amber-800">Partial</span>
-              </button>
-
-              <button onclick="setMissionDayView(2)" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 bg-emerald-600 text-white shadow-sm ring-2 ring-emerald-500/30">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span>Day 2 (TODAY: 29 Oct)</span>
-                <span class="text-[9px] px-1.5 py-0.2 rounded bg-white text-emerald-800">Active</span>
-              </button>
-
-              <button onclick="setMissionDayView(3)" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200">
-                <span>Day 3 (Tomorrow: 30 Oct)</span>
-              </button>
-
-              <button onclick="openRescheduleModal()" class="ml-auto px-2.5 py-1.5 rounded-xl text-xs font-bold bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 transition flex items-center gap-1 shadow-xs" title="Adjust or Rebalance Schedule">
-                <i class="fa-solid fa-arrows-rotate text-[10px]"></i> <span>Re-Schedule</span>
-              </button>
-            </div>
-
-            <!-- TODAY'S ACTIVE MISSION BANNER (Day 2: 29 Oct 2026) -->
-            <div class="rounded-2xl bg-emerald-50/90 border border-emerald-200 p-4 space-y-2">
-              <div class="flex items-center justify-between">
-                <span class="text-[10px] font-bold text-emerald-900 bg-emerald-200/80 px-2.5 py-0.5 rounded-full border border-emerald-300 flex items-center gap-1.5">
-                  <span class="w-2 h-2 rounded-full bg-emerald-600 animate-ping"></span>
-                  <span>TODAY'S ACTIVE MISSION: 29 Oct 2026</span>
-                </span>
-                <span class="text-[10px] text-emerald-900 font-extrabold bg-white px-2 py-0.5 rounded-md border border-emerald-200">Day 2 / 16</span>
-              </div>
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pt-0.5">
-                <h5 class="text-xs font-black text-slate-900">Day 2: Mathematics (Polynomials & Linear Equations) + English (Mijbil & Formal Letters)</h5>
-                <span class="text-[10px] text-emerald-800 font-bold bg-white px-2 py-0.5 rounded border border-emerald-200">Tonight 8:30 PM: 30 Marks</span>
-              </div>
-              <p class="text-xs text-slate-700 leading-relaxed">
-                இன்று கணிதத்தில் <strong>Polynomials & Linear Equations</strong> மற்றும் ஆங்கிலத்தில் <strong>Mijbil the Otter & Formal Writing</strong> பாடங்களை படிக்கவும். இரவு 8:30 மணிக்கு 30 மதிப்பெண் மாதிரித் தேர்வு!
-              </p>
-              
-              <!-- STUDENT & MAMA UPLOAD ACTION BUTTONS -->
-              <div class="pt-1.5 flex flex-wrap items-center gap-2">
-                <button onclick="openAnswerPaperUploadModal(2, 'Maths')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs px-3.5 py-2 rounded-xl flex items-center gap-1.5 shadow-md transition">
-                  <i class="fa-solid fa-camera text-xs"></i> 📸 Upload Written Test Paper (Student & Mama)
-                </button>
-                <button onclick="openPartialSkipModal(2)" class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-bold text-xs px-3 py-2 rounded-xl flex items-center gap-1.5 transition">
-                  <i class="fa-solid fa-forward-step text-xs text-amber-600"></i> Partial Skip / Subject Action
-                </button>
-                <button onclick="openAnswerPaperUploadModal(1, 'Science')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 font-bold text-xs px-3 py-2 rounded-xl flex items-center gap-1.5 transition">
-                  <span>📅 Upload Yesterday's Science Paper</span>
-                </button>
-              </div>
-
-              <!-- DAY 2 AI TEST EVALUATION & AUDIO BREAKDOWN CARD -->
-              <div class="mt-3 rounded-2xl bg-gradient-to-br from-slate-900 via-teal-950 to-slate-900 text-white p-3.5 border border-emerald-500/40 shadow-lg space-y-2.5">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                  <div class="flex items-center gap-2.5">
-                    <span class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-sm border border-emerald-500/30 shrink-0">
-                      🎧
-                    </span>
-                    <div>
-                      <h4 class="text-xs font-black text-white flex flex-wrap items-center gap-1.5">
-                        <span>Day 2 Maths Written Practice: 6 / 10 (60%)</span>
-                        <span class="bg-amber-400/20 text-amber-300 border border-amber-400/30 text-[9px] px-1.5 py-0.2 rounded-full font-bold">40% Marks Lost Explanation</span>
-                      </h4>
-                      <p class="text-[10px] text-emerald-300">Listen to AI audio feedback explaining why 40% was deducted</p>
-                    </div>
-                  </div>
-                  <button onclick="toggleDay2AudioReview()" id="day2AudioBtn" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs px-3.5 py-2 rounded-xl flex items-center justify-center gap-1.5 shadow-md transition self-start sm:self-auto shrink-0">
-                    <i id="day2AudioIcon" class="fa-solid fa-play"></i>
-                    <span id="day2AudioBtnText">Listen to Audio Explanation</span>
-                  </button>
-                  <button onclick="openDay2CorrectionsModal()" class="bg-white/10 hover:bg-white/20 text-white font-bold text-xs px-3 py-2 rounded-xl border border-white/20 flex items-center justify-center gap-1.5 transition self-start sm:self-auto shrink-0">
-                    <i class="fa-solid fa-file-lines"></i> <span>View Model Answers (Text)</span>
-                  </button>
-                </div>
-
-                <div id="day2AudioMeter" class="hidden bg-slate-950/70 rounded-xl p-2.5 border border-emerald-500/30 space-y-2">
-                  <div class="flex items-center justify-between text-[11px]">
-                    <span class="text-amber-300 font-bold flex items-center gap-1.5">
-                      <i class="fa-solid fa-volume-high animate-pulse text-emerald-400"></i>
-                      <span>AI Mentor Voice: explaining why 40% was deducted...</span>
-                    </span>
-                    <span class="text-[10px] text-emerald-400 font-mono bg-emerald-950 px-2 py-0.5 rounded border border-emerald-800">Tamil Voice</span>
-                  </div>
-                  <!-- Visual Soundwave Bars -->
-                  <div class="flex items-end gap-1 h-5 px-1 bg-black/40 py-1 rounded-lg">
-                    <span class="w-1.5 bg-emerald-400 rounded-full animate-bounce h-2"></span>
-                    <span class="w-1.5 bg-emerald-400 rounded-full animate-bounce h-5" style="animation-delay: 0.1s"></span>
-                    <span class="w-1.5 bg-emerald-400 rounded-full animate-bounce h-2.5" style="animation-delay: 0.2s"></span>
-                    <span class="w-1.5 bg-emerald-400 rounded-full animate-bounce h-4" style="animation-delay: 0.3s"></span>
-                    <span class="w-1.5 bg-emerald-400 rounded-full animate-bounce h-3" style="animation-delay: 0.4s"></span>
-                    <span class="w-1.5 bg-emerald-400 rounded-full animate-bounce h-5" style="animation-delay: 0.15s"></span>
-                    <span class="w-1.5 bg-emerald-400 rounded-full animate-bounce h-3.5" style="animation-delay: 0.25s"></span>
-                  </div>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] pt-0.5">
-                  <div class="bg-white/5 border border-white/10 rounded-xl p-2.5">
-                    <span class="font-bold text-rose-300 block mb-0.5 flex items-center gap-1">
-                      <i class="fa-solid fa-circle-exclamation text-[10px]"></i> Trap 1: No Solution Ratio (-1 Mark)
-                    </span>
-                    <span class="text-slate-300 text-[10px] leading-relaxed block">
-                      $\frac{a_1}{a_2} = \frac{b_1}{b_2} \neq \frac{c_1}{c_2}$ சோதிக்காததால் $\alpha = +6$-ஐ நீக்கவில்லை. $\alpha = -6$ மட்டுமே சரியான விடை!
-                    </span>
-                  </div>
-                  <div class="bg-white/5 border border-white/10 rounded-xl p-2.5">
-                    <span class="font-bold text-amber-300 block mb-0.5 flex items-center gap-1">
-                      <i class="fa-solid fa-triangle-exclamation text-[10px]"></i> Trap 2: Question Copy Slip (-3 Marks)
-                    </span>
-                    <span class="text-slate-300 text-[10px] leading-relaxed block">
-                      ரோமன் எண் <strong>(ii)</strong>-யை சமன்பாட்டின் $kx$-உடன் சேர்த்து <strong>$2kx$</strong> என்று அவசரத்தில் பார்த்து கணக்கு மாறிவிட்டது.
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Subject 1 & Subject 2 Cards for Day 2 -->
-            <div class="space-y-3">
-              <div class="flex items-center justify-between">
-                <span class="text-[10px] font-extrabold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1">
-                  <i class="fa-solid fa-fire text-emerald-600"></i> ACTIVE TASKS FOR DAY 2 (29 Oct)
-                </span>
-                <span class="text-[10px] font-bold text-slate-500">Target: 30/30 in Night Test</span>
-              </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
-                <!-- Subject 1 Card: Mathematics -->
-                <div class="p-3.5 rounded-xl bg-white border border-slate-200 space-y-2 shadow-xs">
-                  <div class="flex items-center justify-between">
-                    <span class="font-extrabold text-emerald-800 text-xs">📐 Mathematics</span>
-                    <span class="text-[9px] bg-emerald-50 text-emerald-700 font-bold px-1.5 py-0.5 rounded border border-emerald-200">Part 1</span>
-                  </div>
-                  <h6 class="font-bold text-slate-900 text-xs">Ch 2: Polynomials & Ch 3: Linear Equations</h6>
-                  <p class="text-[11px] text-slate-600 leading-snug">Zeroes relationship, Substitution/Elimination methods & graphical consistency.</p>
-                  <div class="pt-1 flex items-center gap-1.5">
-                    <button onclick="openAnswerPaperUploadModal(2, 'Maths')" class="text-[10px] bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-2.5 py-1.5 rounded-lg flex items-center gap-1 shadow-xs transition">
-                      <i class="fa-solid fa-camera text-[9px]"></i> Upload Paper
-                    </button>
-                    <button onclick="openPartialSkipModal(2, 'Maths')" class="text-[10px] bg-slate-100 hover:bg-amber-50 text-slate-700 hover:text-amber-800 font-bold px-2.5 py-1.5 rounded-lg transition border border-slate-200">
-                      ⏭️ Partial Skip
-                    </button>
-                  </div>
-                </div>
-
-                <!-- Subject 2 Card: English -->
-                <div class="p-3.5 rounded-xl bg-white border border-slate-200 space-y-2 shadow-xs">
-                  <div class="flex items-center justify-between">
-                    <span class="font-extrabold text-sky-800 text-xs">📖 English</span>
-                    <span class="text-[9px] bg-sky-50 text-sky-700 font-bold px-1.5 py-0.5 rounded border border-sky-200">Part 2</span>
-                  </div>
-                  <h6 class="font-bold text-slate-900 text-xs">Prose: Mijbil the Otter & Formal Writing</h6>
-                  <p class="text-[11px] text-slate-600 leading-snug">Maxwell otter behaviour, London flight event, and Letter to Editor format.</p>
-                  <div class="pt-1 flex items-center gap-1.5">
-                    <button onclick="openAnswerPaperUploadModal(2, 'English')" class="text-[10px] bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-2.5 py-1.5 rounded-lg flex items-center gap-1 shadow-xs transition">
-                      <i class="fa-solid fa-camera text-[9px]"></i> Upload Paper
-                    </button>
-                    <button onclick="openPartialSkipModal(2, 'English')" class="text-[10px] bg-slate-100 hover:bg-amber-50 text-slate-700 hover:text-amber-800 font-bold px-2.5 py-1.5 rounded-lg transition border border-slate-200">
-                      ⏭️ Partial Skip
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- FULL 16-DAY SCHEDULE EXPANDER -->
-          <div class="pt-1 border-t border-slate-200">
-            <button onclick="toggleFull16DaySchedule()" class="w-full py-2.5 px-3.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-800 text-xs font-bold flex items-center justify-between transition">
-              <span class="flex items-center gap-1.5">
-                <i class="fa-solid fa-calendar-week text-emerald-600"></i>
-                <span data-i18n="full_schedule_btn">📅 16-Day Full Revision Schedule (Oct 28 – Nov 12)</span>
-              </span>
-              <span id="full-16day-chevron-text" class="text-[11px] text-slate-500 flex items-center gap-1">
-                <span data-i18n="view_schedule_label">View Details</span> <i class="fa-solid fa-chevron-down text-[10px]"></i>
-              </span>
-            </button>
-
-            <div id="full-16day-schedule-container" class="hidden mt-3 space-y-2 max-h-96 overflow-y-auto custom-scroll pr-1">
-              <!-- Rendered dynamically by app.js -->
-            </div>
-          </div>
-
-        </div>
-
-        <!-- ================= 16-DAY NIGHT TEST QUESTION PAPERS & WHATSAPP HUB ================= -->
-        <!-- VISIBLE ONLY TO MAMA (Admin) AND PARENTS (Viewer) • STRICTLY HIDDEN FOR PRANAV (Student) -->
-        <div id="mama-parents-test-papers-hub" class="rounded-3xl bg-white border-2 border-emerald-300 p-5 shadow-xs space-y-4">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
-            <div class="flex items-center gap-3">
-              <span class="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-xl border border-emerald-200 shadow-xs">
-                📝
-              </span>
-              <div>
-                <div class="flex items-center gap-2">
-                  <h4 class="text-xs sm:text-sm font-extrabold text-slate-900">16-Day Night Test Papers & WhatsApp Export</h4>
-                  <span class="text-[9px] font-extrabold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
-                    8:30 PM • 30 Marks
-                  </span>
-                </div>
-                <p class="text-[11px] text-slate-500">
-                  Daily Question Papers for Mama to send via WhatsApp or Print PDF
-                </p>
-              </div>
-            </div>
-            <div class="flex items-center gap-1.5 self-start sm:self-auto">
-              <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200 flex items-center gap-1">
-                <i class="fa-solid fa-user-shield text-[9px]"></i> Mama & Parents Only
-              </span>
-              <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-rose-50 text-rose-700 border border-rose-200 flex items-center gap-1">
-                <i class="fa-solid fa-eye-slash text-[9px]"></i> Hidden for Pranav
-              </span>
-            </div>
-          </div>
-
-          <!-- Day Selector Bar (Days 1 to 16) -->
-          <div>
-            <div class="flex items-center justify-between text-xs font-bold text-slate-700 mb-2">
-              <span class="flex items-center gap-1.5">
-                <i class="fa-solid fa-calendar-day text-emerald-600"></i>
-                <span>Choose Day to Export / Print (Days 1 to 16):</span>
-              </span>
-              <span id="hub-selected-day-label" class="text-emerald-700 font-extrabold text-[11px]">Day 1 (28 Oct 2026)</span>
-            </div>
-            <div id="hub-day-selector-strip" class="flex gap-1.5 overflow-x-auto no-scrollbar pb-1.5 pt-0.5">
-              <!-- Rendered by JS initHubDaySelector() -->
-            </div>
-          </div>
-
-          <!-- Selected Paper Action Bar -->
-          <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 flex flex-wrap items-center justify-between gap-2.5">
-            <div class="space-y-0.5">
-              <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block" id="hub-paper-date-badge">28 Oct 2026 • 8:30 PM – 9:15 PM</span>
-              <h5 id="hub-paper-title-label" class="text-xs sm:text-sm font-extrabold text-slate-900">Day 1: Science + Tamil (30 Marks)</h5>
-            </div>
-
-            <!-- WhatsApp, Print, and Answer Key Buttons -->
-            <div class="flex items-center gap-2 flex-wrap">
-              <button onclick="copyCurrentHubPaperWhatsApp()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3.5 py-2 rounded-xl shadow-xs flex items-center gap-1.5 transition">
-                <i class="fa-brands fa-whatsapp text-sm text-emerald-200"></i>
-                <span>📋 Copy for WhatsApp</span>
-              </button>
-
-              <button onclick="printCurrentHubPaper(false)" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-3.5 py-2 rounded-xl shadow-xs flex items-center gap-1.5 transition">
-                <i class="fa-solid fa-print text-sm text-blue-200"></i>
-                <span>🖨️ Download / Print (PDF)</span>
-              </button>
-
-              <button id="hub-toggle-key-btn" onclick="toggleHubAnswerKey()" class="bg-white hover:bg-slate-100 text-slate-700 font-bold text-xs px-3 py-2 rounded-xl border border-slate-300 shadow-xs flex items-center gap-1.5 transition">
-                <i class="fa-solid fa-key text-xs text-amber-500"></i>
-                <span id="hub-toggle-key-text">Show Answer Key</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Question Paper Preview Body -->
-          <div id="hub-paper-preview-container" class="rounded-2xl border border-slate-200 bg-white p-4 space-y-4 max-h-[500px] overflow-y-auto custom-scroll">
-            <!-- Rendered by JS renderHubTestPaper() -->
+            <!-- Rendered dynamically by app.js (Day Selector Pills, Active Mission Banner, Test Evaluation Card, Audio Meter, Subject 1 & 2 Cards) -->
           </div>
         </div>
-
-        <!-- AI TEXTBOOK DOUBT SOLVER BANNER -->
-        <div class="rounded-3xl bg-white border border-slate-200 p-5 text-slate-800 shadow-xs space-y-3">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2.5">
-              <span class="w-9 h-9 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center font-bold text-sm border border-blue-200">
-                🤖
-              </span>
-              <div>
-                <h4 class="text-xs font-extrabold text-slate-900">AI Textbook Doubt Solver</h4>
-                <p class="text-[10px] text-slate-500">Ask any page / topic doubt • Instant Tanglish audio explanation</p>
-              </div>
-            </div>
-            <span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-blue-50 text-blue-800 border border-blue-200">
-              NCERT AI
-            </span>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button onclick="openDoubtSolverModal()" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-2 transition shadow-xs">
-              <i class="fa-solid fa-circle-question text-xs"></i> <span>Ask Textbook Doubt (Voice / Text)</span>
-            </button>
-            <button onclick="openDoubtSolverAndVoice()" class="bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 font-bold px-3 py-2.5 rounded-xl text-xs flex items-center gap-1.5 transition">
-              <i class="fa-solid fa-microphone text-xs text-emerald-600"></i> Voice Doubt
-            </button>
-          </div>
-        </div>
-
-        <!-- 3-DAY DIAGNOSTIC WEAKNESS TRACKER -->
-        <div class="rounded-3xl bg-white border border-slate-200 p-4 space-y-3 shadow-card">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <span class="w-8 h-8 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center font-bold text-sm">
-                🎯
-              </span>
-              <div>
-                <h4 class="text-xs font-extrabold text-slate-900">3-Day Diagnostic Weakness Detector</h4>
-                <p class="text-[10px] text-slate-500">Identify concept gaps where Pranav loses marks</p>
-              </div>
-            </div>
-            <span class="text-[9px] bg-rose-100 text-rose-800 font-extrabold px-2.5 py-0.5 rounded-full">
-              Live Diagnostic
-            </span>
-          </div>
-
-          <div id="diagnostic-tracker-feed" class="space-y-2 text-xs">
-            <!-- Rendered by app.js -->
-          </div>
-        </div>
-
-        <!-- EASY LEARN & 50% -> 90% SCORE BOOSTER BANNER -->
-        <div class="rounded-3xl bg-white border border-slate-200 p-5 text-slate-800 shadow-xs space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-50 text-emerald-800 border border-emerald-200 uppercase tracking-wide">
-              🌟 50% to 90% Score Booster
-            </span>
-            <span class="text-[10px] bg-slate-100 text-slate-700 px-2.5 py-0.5 rounded-full font-bold">எளிய கற்றல்</span>
-          </div>
-
-          <div>
-            <h4 class="text-sm font-extrabold leading-tight text-slate-900">Sure-Shot 30 Marks per Subject</h4>
-            <p class="text-xs text-slate-600 mt-0.5 leading-snug">
-              பாடங்களை மிக சுலபமாக கதைகளாகவும் தமிழ் விளக்கத்துடனும் கற்கலாம்!
-            </p>
-          </div>
-
-          <div class="grid grid-cols-2 gap-2 pt-1 text-xs font-bold">
-            <button onclick="openEasyLearnModal('Mathematics')" class="bg-slate-50 hover:bg-slate-100 border border-slate-200 py-2 px-3 rounded-xl text-left flex items-center justify-between transition text-slate-800">
-              <span>📐 Maths Sure-Shots</span>
-              <i class="fa-solid fa-arrow-right text-[10px] text-emerald-600"></i>
-            </button>
-            <button onclick="openEasyLearnModal('Science')" class="bg-slate-50 hover:bg-slate-100 border border-slate-200 py-2 px-3 rounded-xl text-left flex items-center justify-between transition text-slate-800">
-              <span>🔬 Science Easy Stories</span>
-              <i class="fa-solid fa-arrow-right text-[10px] text-emerald-600"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- POPULAR SERVICES -> SUBJECTS GRID (4 cols x 2 rows) -->
-        <div>
-          <div class="flex items-center justify-between mb-3">
-            <h3 class="text-sm font-bold text-slate-900 tracking-tight">Syllabus & Subjects</h3>
-            <button onclick="switchTab('syllabus')" class="text-xs font-semibold text-slate-500 hover:text-emerald-600 flex items-center gap-1">
-              See all <i class="fa-solid fa-chevron-right text-[10px]"></i>
-            </button>
-          </div>
-
-          <div class="grid grid-cols-4 gap-2.5">
-            <div onclick="openSubjectDetail('maths')" class="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-[#f0fbf4] border border-emerald-100/70 hover:border-emerald-300 transition cursor-pointer text-center group">
-              <div class="w-11 h-11 rounded-xl bg-white text-emerald-600 flex items-center justify-center text-lg shadow-sm mb-1.5 group-hover:scale-105 transition">📐</div>
-              <span class="text-[11px] font-bold text-slate-800 leading-tight">Maths</span>
-              <span id="grid-pct-maths" class="text-[9px] text-emerald-600 font-semibold mt-0.5">0%</span>
-            </div>
-
-            <div onclick="openSubjectDetail('science')" class="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-[#f0fbf4] border border-emerald-100/70 hover:border-emerald-300 transition cursor-pointer text-center group">
-              <div class="w-11 h-11 rounded-xl bg-white text-emerald-600 flex items-center justify-center text-lg shadow-sm mb-1.5 group-hover:scale-105 transition">🔬</div>
-              <span class="text-[11px] font-bold text-slate-800 leading-tight">Science</span>
-              <span id="grid-pct-science" class="text-[9px] text-emerald-600 font-semibold mt-0.5">0%</span>
-            </div>
-
-            <div onclick="openSubjectDetail('social_science')" class="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-[#f0fbf4] border border-emerald-100/70 hover:border-emerald-300 transition cursor-pointer text-center group">
-              <div class="w-11 h-11 rounded-xl bg-white text-emerald-600 flex items-center justify-center text-lg shadow-sm mb-1.5 group-hover:scale-105 transition">🌍</div>
-              <span class="text-[11px] font-bold text-slate-800 leading-tight">Social Sc.</span>
-              <span id="grid-pct-social_science" class="text-[9px] text-emerald-600 font-semibold mt-0.5">0%</span>
-            </div>
-
-            <div onclick="openSubjectDetail('english')" class="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-[#f0fbf4] border border-emerald-100/70 hover:border-emerald-300 transition cursor-pointer text-center group">
-              <div class="w-11 h-11 rounded-xl bg-white text-emerald-600 flex items-center justify-center text-lg shadow-sm mb-1.5 group-hover:scale-105 transition">📖</div>
-              <span class="text-[11px] font-bold text-slate-800 leading-tight">English</span>
-              <span id="grid-pct-english" class="text-[9px] text-emerald-600 font-semibold mt-0.5">0%</span>
-            </div>
-
-            <div onclick="openSubjectDetail('tamil')" class="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-[#f0fbf4] border border-emerald-100/70 hover:border-emerald-300 transition cursor-pointer text-center group">
-              <div class="w-11 h-11 rounded-xl bg-white text-emerald-600 flex items-center justify-center text-lg shadow-sm mb-1.5 group-hover:scale-105 transition">✍️</div>
-              <span class="text-[11px] font-bold text-slate-800 leading-tight">Tamil</span>
-              <span id="grid-pct-tamil" class="text-[9px] text-emerald-600 font-semibold mt-0.5">0%</span>
-            </div>
-
-            <div onclick="switchTab('written')" class="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-[#eff6ff] border border-blue-100/70 hover:border-blue-300 transition cursor-pointer text-center group">
-              <div class="w-11 h-11 rounded-xl bg-white text-blue-600 flex items-center justify-center text-lg shadow-sm mb-1.5 group-hover:scale-105 transition">📝</div>
-              <span class="text-[11px] font-bold text-slate-800 leading-tight">Writing</span>
-              <span class="text-[9px] text-blue-600 font-semibold mt-0.5">Upload</span>
-            </div>
-
-            <div onclick="switchTab('testpapers')" class="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-[#fdf4ff] border border-purple-100/70 hover:border-purple-300 transition cursor-pointer text-center group">
-              <div class="w-11 h-11 rounded-xl bg-white text-purple-600 flex items-center justify-center text-lg shadow-sm mb-1.5 group-hover:scale-105 transition">📄</div>
-              <span class="text-[11px] font-bold text-slate-800 leading-tight">Mock Test</span>
-              <span class="text-[9px] text-purple-600 font-semibold mt-0.5">Papers</span>
-            </div>
-
-            <div onclick="switchTab('formulas')" class="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-[#fefce8] border border-amber-100/70 hover:border-amber-300 transition cursor-pointer text-center group">
-              <div class="w-11 h-11 rounded-xl bg-white text-amber-600 flex items-center justify-center text-lg shadow-sm mb-1.5 group-hover:scale-105 transition">🔊</div>
-              <span class="text-[11px] font-bold text-slate-800 leading-tight">Audio Hub</span>
-              <span class="text-[9px] text-amber-600 font-semibold mt-0.5">Tanglish</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- RECOMMENDED FOR YOU (Ref Image 1: Horizontal Cards) -->
-        <div>
-          <div class="flex items-center justify-between mb-3">
-            <h3 class="text-sm font-bold text-slate-900 tracking-tight">Recommended for Term Rev 1</h3>
-            <button onclick="switchTab('syllabus')" class="text-xs font-semibold text-slate-500 hover:text-emerald-600 flex items-center gap-1">
-              View all <i class="fa-solid fa-chevron-right text-[10px]"></i>
-            </button>
-          </div>
-
-          <div class="flex space-x-3.5 overflow-x-auto no-scrollbar pb-1 -mx-5 px-5">
-            <div class="min-w-[220px] max-w-[220px] bg-white border border-slate-200/90 rounded-2xl overflow-hidden shadow-card flex flex-col justify-between shrink-0">
-              <div class="relative h-24 bg-gradient-to-tr from-emerald-800 to-teal-700 p-3 flex flex-col justify-between text-white">
-                <span class="bg-white/90 text-emerald-900 text-[10px] font-bold px-2 py-0.5 rounded-md self-start shadow-sm">★ High Weightage</span>
-                <div class="text-xs font-bold">Mathematics • Algebra</div>
-              </div>
-              <div class="p-3 space-y-2">
-                <h4 class="text-xs font-bold text-slate-900 truncate">Quadratic Equations</h4>
-                <div class="flex items-center text-[10px] text-slate-500 space-x-2">
-                  <span class="flex items-center text-amber-500 font-bold"><i class="fa-solid fa-star text-[9px] mr-0.5"></i> 4.9 (PYQ)</span>
-                  <span>•</span>
-                  <span>⏱️ 2.5 hrs</span>
-                </div>
-                <div class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 text-[9px] font-semibold">
-                  <i class="fa-solid fa-circle-check text-[9px]"></i> NCERT Exemplar
-                </div>
-                <div class="flex items-center justify-between pt-1">
-                  <div><span class="text-xs font-bold text-slate-900">14 Qs</span></div>
-                  <button onclick="handleProtectedAction('chapter', 'maths', 'm4')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] px-3 py-1.5 rounded-full shadow-sm transition">
-                    Study
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="min-w-[220px] max-w-[220px] bg-white border border-slate-200/90 rounded-2xl overflow-hidden shadow-card flex flex-col justify-between shrink-0">
-              <div class="relative h-24 bg-gradient-to-tr from-cyan-800 to-blue-700 p-3 flex flex-col justify-between text-white">
-                <span class="bg-white/90 text-cyan-900 text-[10px] font-bold px-2 py-0.5 rounded-md self-start shadow-sm">Bestseller</span>
-                <div class="text-xs font-bold">Science • Chemistry</div>
-              </div>
-              <div class="p-3 space-y-2">
-                <h4 class="text-xs font-bold text-slate-900 truncate">Chemical Reactions & Eq.</h4>
-                <div class="flex items-center text-[10px] text-slate-500 space-x-2">
-                  <span class="flex items-center text-amber-500 font-bold"><i class="fa-solid fa-star text-[9px] mr-0.5"></i> 5.0 (Sure Shot)</span>
-                  <span>•</span>
-                  <span>⏱️ 60 mins</span>
-                </div>
-                <div class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 text-[9px] font-semibold">
-                  <i class="fa-solid fa-circle-check text-[9px]"></i> Balanced Eqns
-                </div>
-                <div class="flex items-center justify-between pt-1">
-                  <div><span class="text-xs font-bold text-slate-900">Done</span></div>
-                  <button onclick="handleProtectedAction('chapter', 'science', 's1')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] px-3 py-1.5 rounded-full shadow-sm transition">
-                    Revise
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- TRUST BADGES ROW (Ref Image 1: 4 feature pills) -->
-        <div class="grid grid-cols-4 gap-2 pt-1 border-t border-slate-100">
-          <div class="flex flex-col items-center text-center p-2 rounded-xl bg-slate-50">
-            <i class="fa-solid fa-calendar-check text-emerald-600 text-base mb-1"></i>
-            <span class="text-[10px] font-bold text-slate-800 leading-tight">Aligned</span>
-            <span class="text-[9px] text-slate-400">School+Tuition</span>
-          </div>
-
-          <div class="flex flex-col items-center text-center p-2 rounded-xl bg-slate-50">
-            <i class="fa-solid fa-microphone text-emerald-600 text-base mb-1"></i>
-            <span class="text-[10px] font-bold text-slate-800 leading-tight">தமிழ் குரல்</span>
-            <span class="text-[9px] text-slate-400">Tamil Voice</span>
-          </div>
-
-          <div class="flex flex-col items-center text-center p-2 rounded-xl bg-slate-50">
-            <i class="fa-solid fa-trophy text-emerald-600 text-base mb-1"></i>
-            <span class="text-[10px] font-bold text-slate-800 leading-tight">90-100% Path</span>
-            <span class="text-[9px] text-slate-400">Target Focus</span>
-          </div>
-
-          <div class="flex flex-col items-center text-center p-2 rounded-xl bg-slate-50">
-            <i class="fa-solid fa-user-lock text-emerald-600 text-base mb-1"></i>
-            <span class="text-[10px] font-bold text-slate-800 leading-tight">Admin Gate</span>
-            <span class="text-[9px] text-slate-400">Mama Control</span>
-          </div>
-        </div>
-
-        <!-- RECENT FAMILY CHEER NOTE PREVIEW -->
-        <div id="home-cheer-banner" class="bg-gradient-to-r from-rose-50 to-pink-50 border border-rose-100 rounded-2xl p-3.5 flex items-start gap-3">
-          <div class="w-8 h-8 rounded-full bg-rose-500 text-white font-bold flex items-center justify-center shrink-0 text-xs">
-            M
-          </div>
-          <div class="flex-1 space-y-0.5">
-            <div class="flex items-center justify-between text-[11px]">
-              <span class="font-bold text-rose-800">Mama's Note for Pranav</span>
-              <span class="text-[10px] text-rose-400">Term Rev 1</span>
-            </div>
-            <p id="home-cheer-text" class="text-xs text-rose-900 leading-snug">
-              "🎯 Mission SRM Rev 1 starts 13/11/2026 (English)! We have 16 study days. Let's conquer each chapter step by step!"
-            </p>
-          </div>
-        </div>
-
       </div>
 
       <!-- ================= VIEW 2: ALIGNED SCHEDULE & 90-100% PATH ================= -->
@@ -1213,6 +575,34 @@
         <div id="textbook-subject-banner" class="rounded-2xl p-4 bg-gradient-to-r from-blue-950 via-slate-900 to-indigo-950 text-white space-y-2 shadow-md"></div>
 
         <!-- Chapters Book Shelf Container -->
+        
+        <!-- AI TEXTBOOK DOUBT SOLVER (Ask Voice/Text Doubts for NCERT Chapters) -->
+        <div class="rounded-3xl bg-gradient-to-r from-blue-50/90 via-indigo-50/80 to-blue-50/90 border border-blue-200 p-4 sm:p-5 text-slate-800 shadow-xs space-y-3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+              <span class="w-9 h-9 rounded-xl bg-white text-blue-700 flex items-center justify-center font-bold text-sm border border-blue-200 shadow-2xs">
+                🤖
+              </span>
+              <div>
+                <h4 class="text-xs sm:text-sm font-black text-slate-900 flex items-center gap-1.5">
+                  <span>AI Textbook Doubt Solver</span>
+                  <span class="px-2 py-0.2 rounded-full text-[9px] font-bold bg-blue-100 text-blue-800 border border-blue-200">NCERT AI</span>
+                </h4>
+                <p class="text-[10px] text-slate-500">Ask any chapter, page, or concept doubt • Instant Tanglish audio explanation</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 flex-wrap sm:flex-nowrap">
+            <button onclick="openDoubtSolverModal()" class="flex-1 min-w-[200px] bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-2 transition shadow-xs">
+              <i class="fa-solid fa-circle-question text-xs"></i> <span>Ask Textbook Doubt (Voice / Text)</span>
+            </button>
+            <button onclick="openDoubtSolverAndVoice()" class="bg-white hover:bg-blue-50 border border-blue-200 text-blue-800 font-bold px-3 py-2.5 rounded-xl text-xs flex items-center gap-1.5 transition shadow-2xs">
+              <i class="fa-solid fa-microphone text-xs text-emerald-600"></i> Voice Doubt
+            </button>
+          </div>
+        </div>
+
         <div id="textbook-chapters-shelf" class="space-y-3"></div>
       </div>
 
@@ -2628,6 +2018,6 @@
     <span id="toast-message">Success</span>
   </div>
 
-  <script src="/app.js?v=1793249796542"></script>
+  <script src="/app.js?v=1793252355978"></script>
 </body>
 </html>
