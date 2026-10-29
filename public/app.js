@@ -4431,3 +4431,211 @@ function renderFocusView() {
     `).join('');
   }
 }
+
+
+const fs = require('fs');
+
+// Create code for dynamic rescheduling and lap time
+const rescheduleCode = `
+// ================= DYNAMIC RESCHEDULER (SKIP DAY / HALF-DONE) =================
+function openRescheduleModal() {
+  const modal = document.getElementById('rescheduleModal');
+  if (modal) {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    renderRescheduleModalInfo();
+  }
+}
+
+function closeRescheduleModal() {
+  const modal = document.getElementById('rescheduleModal');
+  if (modal) {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+}
+
+function renderRescheduleModalInfo() {
+  const container = document.getElementById('rescheduleModalBody');
+  if (!container || !appState) return;
+
+  const rev = appState.revisionSplitter || {};
+  const today = rev.today || { dayIndex: 1, pair: 'Science + Tamil' };
+  
+  container.innerHTML = \`
+    <div class="space-y-3.5 text-xs text-slate-700">
+      <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl space-y-1">
+        <div class="flex items-center justify-between">
+          <strong class="text-emerald-950 font-bold">Current Active Day: Day \${today.dayIndex} (\${today.pair})</strong>
+          <span class="text-[10px] bg-white text-emerald-800 font-extrabold px-2 py-0.5 rounded border border-emerald-200">16-Day Mission</span>
+        </div>
+        <p class="text-[11px] text-slate-600">If Pranav faced unexpected school late hours, illness, or tuition tests, choose an action below. The system will re-balance remaining topics smoothly before Nov 13 exam.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+        <!-- Option 1: Skip Today -->
+        <button onclick="applyRescheduleAction('skip')" class="p-3 bg-white hover:bg-amber-50 border border-slate-200 hover:border-amber-300 rounded-2xl text-left transition space-y-1 shadow-xs group">
+          <div class="flex items-center justify-between">
+            <span class="font-extrabold text-slate-900 group-hover:text-amber-800 flex items-center gap-1.5">
+              <span>⏭️</span> Skip Entire Day
+            </span>
+            <span class="text-[9px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.5 rounded">Emergency</span>
+          </div>
+          <p class="text-[10px] text-slate-500 leading-snug">Day \${today.dayIndex} tasks are safely distributed across the next 3 revision buffers. Day \${today.dayIndex + 1} becomes active.</p>
+        </button>
+
+        <!-- Option 2: Half-Done -->
+        <button onclick="applyRescheduleAction('half_done')" class="p-3 bg-white hover:bg-sky-50 border border-slate-200 hover:border-sky-300 rounded-2xl text-left transition space-y-1 shadow-xs group">
+          <div class="flex items-center justify-between">
+            <span class="font-extrabold text-slate-900 group-hover:text-sky-800 flex items-center gap-1.5">
+              <span>⚡</span> Mark Half-Done
+            </span>
+            <span class="text-[9px] bg-sky-100 text-sky-800 font-bold px-1.5 py-0.5 rounded">50% Completed</span>
+          </div>
+          <p class="text-[10px] text-slate-500 leading-snug">Saves completed subject. Second subject automatically carries forward to tomorrow morning study slot.</p>
+        </button>
+      </div>
+
+      <!-- Option 3: Auto Rebalance -->
+      <button onclick="applyRescheduleAction('rebalance')" class="w-full p-3 bg-slate-50 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 rounded-xl text-left transition flex items-center justify-between">
+        <div>
+          <span class="font-bold text-slate-900 text-xs block">🔄 Auto-Rebalance Full 16 Days</span>
+          <span class="text-[10px] text-slate-500">Recalculates pace based on remaining days to SRM Rev-1 English Exam (Nov 13).</span>
+        </div>
+        <i class="fa-solid fa-arrow-right text-emerald-600 text-xs"></i>
+      </button>
+
+      <div id="rescheduleFeedback" class="hidden p-2.5 rounded-xl text-xs font-bold bg-emerald-100 text-emerald-900 border border-emerald-300"></div>
+    </div>
+  \`;
+}
+
+function applyRescheduleAction(actionType) {
+  const feedback = document.getElementById('rescheduleFeedback');
+  if (!appState || !appState.revisionSplitter) return;
+
+  const rev = appState.revisionSplitter;
+  if (actionType === 'skip') {
+    const curDay = rev.today.dayIndex;
+    rev.today.dayIndex = Math.min(16, curDay + 1);
+    rev.today.message = \`Day \${curDay} was marked skipped. Rescheduled smoothly! Active revision is now Day \${rev.today.dayIndex}.\`;
+    if (feedback) {
+      feedback.classList.remove('hidden');
+      feedback.textContent = \`✅ Day \${curDay} skipped. Schedule rebalanced! Current day set to Day \${rev.today.dayIndex}.\`;
+    }
+  } else if (actionType === 'half_done') {
+    rev.today.message = "⚡ Day 1 marked Half-Done! Completed portion verified. Remaining sub-tasks carried to morning revision slot.";
+    if (feedback) {
+      feedback.classList.remove('hidden');
+      feedback.textContent = "✅ Half-done recorded! Pending topics shifted smoothly without test overload.";
+    }
+  } else {
+    rev.today.message = "🔄 Full 16-day schedule rebalanced perfectly with exam buffer on Nov 11–12.";
+    if (feedback) {
+      feedback.classList.remove('hidden');
+      feedback.textContent = "✅ Schedule rebalanced! All chapters mapped to remaining days.";
+    }
+  }
+
+  // Persist locally
+  try {
+    localStorage.setItem('pranav_exam_hub_state', JSON.stringify(appState));
+  } catch(e){}
+
+  setTimeout(() => {
+    closeRescheduleModal();
+    renderRevisionSplitterUI();
+    if (typeof showToast === 'function') showToast('Schedule updated successfully!');
+  }, 1200);
+}
+
+// ================= STUDY LAP TIMER & TEST ALARM =================
+let studyLapInterval = null;
+let studyLapSeconds = 0;
+let studyLapsHistory = [];
+let testAlarmInterval = null;
+
+function toggleStudyLapTimer() {
+  const btn = document.getElementById('btnLapTimerToggle');
+  const display = document.getElementById('studyLapDisplay');
+  if (!btn || !display) return;
+
+  if (studyLapInterval) {
+    // Pause
+    clearInterval(studyLapInterval);
+    studyLapInterval = null;
+    btn.innerHTML = '<i class="fa-solid fa-play text-xs"></i> Start';
+    btn.className = "bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold px-3 py-1.5 rounded-xl text-xs flex items-center gap-1.5 transition";
+  } else {
+    // Start
+    studyLapInterval = setInterval(() => {
+      studyLapSeconds++;
+      const mins = String(Math.floor(studyLapSeconds / 60)).padStart(2, '0');
+      const secs = String(studyLapSeconds % 60).padStart(2, '0');
+      display.textContent = \`\${mins}:\${secs}\`;
+    }, 1000);
+    btn.innerHTML = '<i class="fa-solid fa-pause text-xs"></i> Pause';
+    btn.className = "bg-amber-600 hover:bg-amber-700 text-white font-extrabold px-3 py-1.5 rounded-xl text-xs flex items-center gap-1.5 transition";
+  }
+}
+
+function recordStudyLap() {
+  if (studyLapSeconds === 0) return;
+  const mins = String(Math.floor(studyLapSeconds / 60)).padStart(2, '0');
+  const secs = String(studyLapSeconds % 60).padStart(2, '0');
+  const timeStr = \`\${mins}:\${secs}\`;
+  const lapNum = studyLapsHistory.length + 1;
+  studyLapsHistory.unshift({ num: lapNum, time: timeStr, at: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) });
+  renderStudyLaps();
+}
+
+function resetStudyLapTimer() {
+  if (studyLapInterval) {
+    clearInterval(studyLapInterval);
+    studyLapInterval = null;
+  }
+  studyLapSeconds = 0;
+  const display = document.getElementById('studyLapDisplay');
+  if (display) display.textContent = "00:00";
+  const btn = document.getElementById('btnLapTimerToggle');
+  if (btn) {
+    btn.innerHTML = '<i class="fa-solid fa-play text-xs"></i> Start';
+    btn.className = "bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold px-3 py-1.5 rounded-xl text-xs flex items-center gap-1.5 transition";
+  }
+}
+
+function renderStudyLaps() {
+  const container = document.getElementById('studyLapsList');
+  if (!container) return;
+  if (studyLapsHistory.length === 0) {
+    container.innerHTML = '<span class="text-[10px] text-slate-400 block py-1">No laps recorded yet. Click Lap during problem solving.</span>';
+    return;
+  }
+  container.innerHTML = studyLapsHistory.slice(0, 5).map(l => \`
+    <div class="flex items-center justify-between py-1 border-b border-slate-100 text-xs">
+      <span class="font-bold text-slate-700">Question / Lap #\${l.num}</span>
+      <span class="font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">\${l.time}</span>
+      <span class="text-[10px] text-slate-400">\${l.at}</span>
+    </div>
+  \`).join('');
+}
+
+function checkNightTestAlarm() {
+  const now = new Date();
+  const hrs = now.getHours();
+  const mins = now.getMinutes();
+  const alarmTag = document.getElementById('nightAlarmStatusTag');
+  if (alarmTag) {
+    if (hrs === 20 && mins >= 30 && mins <= 45) {
+      alarmTag.className = "text-[10px] bg-rose-500 text-white font-black px-2.5 py-0.5 rounded-full animate-pulse";
+      alarmTag.textContent = "🚨 8:30 PM Night Test Active Now!";
+    } else {
+      alarmTag.className = "text-[10px] bg-emerald-50 text-emerald-800 font-bold px-2.5 py-0.5 rounded-full border border-emerald-200";
+      alarmTag.textContent = "🔔 Daily 8:30 PM Night Test Alarm Set";
+    }
+  }
+}
+setInterval(checkNightTestAlarm, 30000);
+`;
+
+

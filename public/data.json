@@ -1946,193 +1946,62 @@
       "chapters": [
         {
           "id": "tam1",
-          "name": "இயல் 1: அமுதூற்று (அன்னை மொழியே, உரைநடையின் அணிநலன்கள்)",
+          "name": "இயல் 1: அமுதஊற்று (அன்னை மொழியே, தமிழ்ச்சொல் வளம், காலக்கணிதம், புயலிலே ஒரு தோணி, சொல்)",
           "unit": "இயல் 1",
           "status": "mastered",
-          "notes": "பாவலேறூ பெருஞ்சித்திரனார், எழில்முதல்வன் உரைநடை",
-          "examWeightage": "Board Weightage: 4 - 6 Marks",
-          "keyConcepts": [
-            "Detailed NCERT core chapter concepts and summary notes",
-            "Key definitions, standard equations, and terminology",
-            "Board-standard practice questions and solutions"
-          ],
-          "sampleQuestions": [
-            {
-              "q": "Explain the fundamental concept of இயல் 1: அமுதூற்று (அன்னை மொழியே, உரைநடையின் அணிநலன்கள்).",
-              "a": "Refer to NCERT textbook explanations and notes in the Easy Learn tab."
-            }
-          ]
+          "notes": "பாவலரேறு பெருஞ்சித்திரனார், தேவநேயப் பாவாணர், கண்ணதாசன்",
+          "examWeightage": "Board Weightage: 4 - 6 Marks"
         },
         {
           "id": "tam2",
-          "name": "இயல் 2: உயிர்வளி (காற்றே வா, முல்லைப்பாட்டு, புயலிலே ஒரு தோணி)",
+          "name": "இயல் 2: உயிரின் ஓசை (கேட்கிறதா என் குரல்!, பரிபாடல், மேகம், பிரும்மம், தொகாநிலைத் தொடர்கள்)",
           "unit": "இயல் 2",
           "status": "revised",
-          "notes": "பாரதியார் பாடல், நப்பூதனார், ப. சிங்காரம்",
-          "examWeightage": "Board Weightage: 4 - 6 Marks",
-          "keyConcepts": [
-            "Detailed NCERT core chapter concepts and summary notes",
-            "Key definitions, standard equations, and terminology",
-            "Board-standard practice questions and solutions"
-          ],
-          "sampleQuestions": [
-            {
-              "q": "Explain the fundamental concept of இயல் 2: உயிர்வளி (காற்றே வா, முல்லைப்பாட்டு, புயலிலே ஒரு தோணி).",
-              "a": "Refer to NCERT textbook explanations and notes in the Easy Learn tab."
-            }
-          ]
+          "notes": "இயற்கை, சுற்றுச்சூழல், கீரந்தையார் பரிபாடல்",
+          "examWeightage": "Board Weightage: 4 - 6 Marks"
         },
         {
           "id": "tam3",
-          "name": "இயல் 3: கூட்டாஞ்சோறு (விருந்தோம்பல், காசி காண்டம், திருக்குறள்)",
+          "name": "இயல் 3: கூட்டாஞ்சோறு (விருந்து போற்றுதும்!, காசிக்காண்டம், முத்துக்குமாரசாமி பிள்ளைத்தமிழ், கோபல்லபுரத்து மக்கள், தொகைநிலைத் தொடர்கள், திருக்குறள்)",
           "unit": "இயல் 3",
           "status": "revised",
-          "notes": "விருந்தோம்பல் பண்பு, அதிவீரராம பாண்டியர்",
-          "examWeightage": "Board Weightage: 4 - 6 Marks",
-          "keyConcepts": [
-            "Detailed NCERT core chapter concepts and summary notes",
-            "Key definitions, standard equations, and terminology",
-            "Board-standard practice questions and solutions"
-          ],
-          "sampleQuestions": [
-            {
-              "q": "Explain the fundamental concept of இயல் 3: கூட்டாஞ்சோறு (விருந்தோம்பல், காசி காண்டம், திருக்குறள்).",
-              "a": "Refer to NCERT textbook explanations and notes in the Easy Learn tab."
-            }
-          ]
+          "notes": "அதிவீரராம பாண்டியர், குமரகுருபரர், கி. ராஜநாராயணன்",
+          "examWeightage": "Board Weightage: 4 - 6 Marks"
         },
         {
           "id": "tam4",
-          "name": "இயல் 4: நான்காம் தமிழ் (செயற்கை நுண்ணறிவு, பெருமாள் திருமொழி)",
+          "name": "இயல் 4: மணற்கேணி (மொழிபெயர்ப்புக் கல்வி, திருவிளையாடற் புராணம், புதிய நம்பிக்கை, பொது இலக்கணம்)",
           "unit": "இயல் 4",
           "status": "in_progress",
-          "notes": "AI நவீனப் பயன்பாடு, குலசேகர ஆழ்வார்",
-          "examWeightage": "Board Weightage: 4 - 6 Marks",
-          "keyConcepts": [
-            "Detailed NCERT core chapter concepts and summary notes",
-            "Key definitions, standard equations, and terminology",
-            "Board-standard practice questions and solutions"
-          ],
-          "sampleQuestions": [
-            {
-              "q": "Explain the fundamental concept of இயல் 4: நான்காம் தமிழ் (செயற்கை நுண்ணறிவு, பெருமாள் திருமொழி).",
-              "a": "Refer to NCERT textbook explanations and notes in the Easy Learn tab."
-            }
-          ]
+          "notes": "பரஞ்சோதி முனிவர், கமலாலயன்",
+          "examWeightage": "Board Weightage: 4 - 6 Marks"
         },
         {
           "id": "tam5",
-          "name": "இயல் 5: மணற்கேணி (மொழிபெயர்ப்புக் கல்வி, நீதி வெண்பா, திருவிளையாடற் புராணம்)",
+          "name": "இயல் 5: நிலா முற்றம் (பன்முகக் கலைஞர், கம்பராமாயணம், பாய்ச்சல், அகப்பொருள் இலக்கணம், திருக்குறள்)",
           "unit": "இயல் 5",
           "status": "in_progress",
-          "notes": "பரஞ்சோதி முனிவர், செய்குத்தம்பி பாவலர்",
-          "examWeightage": "Board Weightage: 4 - 6 Marks",
-          "keyConcepts": [
-            "Detailed NCERT core chapter concepts and summary notes",
-            "Key definitions, standard equations, and terminology",
-            "Board-standard practice questions and solutions"
-          ],
-          "sampleQuestions": [
-            {
-              "q": "Explain the fundamental concept of இயல் 5: மணற்கேணி (மொழிபெயர்ப்புக் கல்வி, நீதி வெண்பா, திருவிளையாடற் புராணம்).",
-              "a": "Refer to NCERT textbook explanations and notes in the Easy Learn tab."
-            }
-          ]
+          "isRevision1": true,
+          "notes": "கம்பர், சா. கந்தசாமி (பாய்ச்சல்), அகப்பொருள்",
+          "examWeightage": "SRM Rev-1 Critical • 8 - 12 Marks"
         },
         {
           "id": "tam6",
-          "name": "இயல் 6: நிலா முற்றம் (நிகழ்கலை, பூத்தொடுத்தல், முத்துக்குமாரசுவாமி பிள்ளைத்தமிழ்)",
+          "name": "இயல் 6: விதை நெல் (சிற்றகல் ஒளி, சிலப்பதிகாரம், முத்தொள்ளாயிரம், மங்கையராய்ப் பிறப்பதற்கே, புறப்பொருள் இலக்கணம்)",
           "unit": "இயல் 6",
           "status": "not_started",
-          "notes": "குமரகுருபரர், நாட்டுப்புற நிகழ்கலைகள்",
-          "examWeightage": "Board Weightage: 4 - 6 Marks",
-          "keyConcepts": [
-            "Detailed NCERT core chapter concepts and summary notes",
-            "Key definitions, standard equations, and terminology",
-            "Board-standard practice questions and solutions"
-          ],
-          "sampleQuestions": [
-            {
-              "q": "Explain the fundamental concept of இயல் 6: நிலா முற்றம் (நிகழ்கலை, பூத்தொடுத்தல், முத்துக்குமாரசுவாமி பிள்ளைத்தமிழ்).",
-              "a": "Refer to NCERT textbook explanations and notes in the Easy Learn tab."
-            }
-          ]
+          "isRevision1": true,
+          "notes": "ம.பொ. சிவஞானம், இளங்கோவடிகள், புறப்பொருள்",
+          "examWeightage": "SRM Rev-1 Critical • 8 - 12 Marks"
         },
         {
           "id": "tam7",
-          "name": "இயல் 7: விதைநெல் (சிற்றகல் ஒளி, ஏர் புதிதா?, சிலப்பதிகாரம், மங்கையராய்ப் பிறப்பதற்கே)",
+          "name": "இயல் 7: பெருவழி (சங்க இலக்கியத்தில் அறம், தேம்பாவணி, அக்கறை, இராமானுசர் - நாடகம், பா வகை அலகிடுதல், திருக்குறள்)",
           "unit": "இயல் 7",
           "status": "not_started",
-          "notes": "ம.பொ.சி., கூ.ப.ரா., இளங்கோவடிகள்",
-          "examWeightage": "Board Weightage: 4 - 6 Marks",
-          "keyConcepts": [
-            "Detailed NCERT core chapter concepts and summary notes",
-            "Key definitions, standard equations, and terminology",
-            "Board-standard practice questions and solutions"
-          ],
-          "sampleQuestions": [
-            {
-              "q": "Explain the fundamental concept of இயல் 7: விதைநெல் (சிற்றகல் ஒளி, ஏர் புதிதா?, சிலப்பதிகாரம், மங்கையராய்ப் பிறப்பதற்கே).",
-              "a": "Refer to NCERT textbook explanations and notes in the Easy Learn tab."
-            }
-          ]
-        },
-        {
-          "id": "tam8",
-          "name": "இயல் 8: எல்லை விரிவாக்கம் (ஞானம், காலக்கணிதம், இராமானுசர்)",
-          "unit": "இயல் 8",
-          "status": "not_started",
-          "notes": "கண்ணதாசன் காலக்கணிதம், தீசோ வேணுகோபாலன்",
-          "examWeightage": "Board Weightage: 4 - 6 Marks",
-          "keyConcepts": [
-            "Detailed NCERT core chapter concepts and summary notes",
-            "Key definitions, standard equations, and terminology",
-            "Board-standard practice questions and solutions"
-          ],
-          "sampleQuestions": [
-            {
-              "q": "Explain the fundamental concept of இயல் 8: எல்லை விரிவாக்கம் (ஞானம், காலக்கணிதம், இராமானுசர்).",
-              "a": "Refer to NCERT textbook explanations and notes in the Easy Learn tab."
-            }
-          ]
-        },
-        {
-          "id": "tam9",
-          "name": "இயல் 9: அன்பின் மொழி (சித்தாளு, தேம்பாவணி, ஒருவன் இருக்கிறான், திருக்குறள்)",
-          "unit": "இயல் 9",
-          "status": "not_started",
-          "notes": "வீரமாமுனிவர் தேம்பாவணி, கு. அழகிரிசாமி",
-          "examWeightage": "Board Weightage: 4 - 6 Marks",
-          "keyConcepts": [
-            "Detailed NCERT core chapter concepts and summary notes",
-            "Key definitions, standard equations, and terminology",
-            "Board-standard practice questions and solutions"
-          ],
-          "sampleQuestions": [
-            {
-              "q": "Explain the fundamental concept of இயல் 9: அன்பின் மொழி (சித்தாளு, தேம்பாவணி, ஒருவன் இருக்கிறான், திருக்குறள்).",
-              "a": "Refer to NCERT textbook explanations and notes in the Easy Learn tab."
-            }
-          ]
-        },
-        {
-          "id": "tam10",
-          "name": "இலக்கணம் (தொழிற்பெயர், தொகைநிலைத் தொடர்கள், அணி இலக்கணம்)",
-          "unit": "இலக்கணம் & மொழித்திறன்",
-          "status": "revised",
-          "notes": "உவமை, தற்குறிப்பேற்ற, வேற்றுமை, தீவக அணிகள்",
-          "examWeightage": "Board Weightage: 4 - 6 Marks",
-          "keyConcepts": [
-            "Detailed NCERT core chapter concepts and summary notes",
-            "Key definitions, standard equations, and terminology",
-            "Board-standard practice questions and solutions"
-          ],
-          "sampleQuestions": [
-            {
-              "q": "Explain the fundamental concept of இலக்கணம் (தொழிற்பெயர், தொகைநிலைத் தொடர்கள், அணி இலக்கணம்).",
-              "a": "Refer to NCERT textbook explanations and notes in the Easy Learn tab."
-            }
-          ]
+          "isRevision1": true,
+          "notes": "வீரமாமுனிவர், கல்யாண்ஜி, நாடகம், யாப்பிலக்கணம்",
+          "examWeightage": "SRM Rev-1 Critical • 8 - 12 Marks"
         }
       ]
     },
@@ -2865,11 +2734,11 @@
     ]
   },
   "srmTamilPortion": {
-    "units": "இயல் 5, 6, 7 முழுவதும் (Complete Units 5, 6, 7)",
+    "units": "இயல் 5, 6, 7 முழுவதும் (Complete Units 5, 6, 7 from Official Textbook)",
     "chapters": [
-      "இயல் 5: மணற்கேணி (மொழிபெயர்ப்புக் கல்வி, நீதி வெண்பா, திருவிளையாடற் புராணம், வினா-விடை வகைகள், பொருள்கோள்)",
-      "இயல் 6: நிகழ்கலை (பாய்ச்சல், முத்துக்குமாரசுவாமி பிள்ளைத்தமிழ், கம்பராமாயணம், அகப்பொருள் இலக்கணம்)",
-      "இயல் 7: விதைநெல் (சிற்றகல் ஒளி, ஏர் புதிதா, மெய்க்கீர்த்தி, சிலப்பதிகாரம், புறப்பொருள் வெண்பாமாலை)"
+      "இயல் 5: நிலா முற்றம் (பன்முகக் கலைஞர், கம்பராமாயணம், பாய்ச்சல், அகப்பொருள் இலக்கணம், திருக்குறள்)",
+      "இயல் 6: விதை நெல் (சிற்றகல் ஒளி, சிலப்பதிகாரம், முத்தொள்ளாயிரம், மங்கையராய்ப் பிறப்பதற்கே..., புறப்பொருள் இலக்கணம்)",
+      "இயல் 7: பெருவழி (சங்க இலக்கியத்தில் அறம், தேம்பாவணி, அக்கறை, இராமானுசர் - நாடகம், பா வகை அலகிடுதல், திருக்குறள்)"
     ]
   },
   "revisionSplitter": {
@@ -2883,9 +2752,9 @@
       "status": "Active Revision Day 1",
       "pair": "Science + Tamil",
       "sub1Name": "Science: Ch 2 Acids, Bases & Salts (15 Marks)",
-      "sub2Name": "Tamil: இயல் 5 மணற்கேணி (15 Marks)",
+      "sub2Name": "Tamil: இயல் 5 நிலா முற்றம் (கம்பராமாயணம் & பன்முகக் கலைஞர்) (15 Marks)",
       "nightTestTiming": "8:30 PM – 9:15 PM (30 Marks)",
-      "message": "இன்று முதல் நாள் ரிவிஷன்! வேதியியலில் Acids & Bases மற்றும் தமிழில் இயல் 5 படித்து இரவு 8:30 மணிக்கு தேர்வு எழுத தயாராகுங்கள்."
+      "message": "இன்று முதல் நாள் ரிவிஷன்! வேதியியலில் Acids & Bases மற்றும் தமிழில் இயல் 5 (கம்பராமாயணம், பன்முகக் கலைஞர்) படித்து இரவு 8:30 மணிக்கு தேர்வு எழுத தயாராகுங்கள்."
     },
     "tomorrow": {
       "date": "2026-10-29",
@@ -2933,8 +2802,8 @@
             "isTomorrow": true,
             "title": "Day 1: Science (Acids, Bases & Salts) + Tamil (இயல் 5: மணற்கேணி)",
             "subjects": [
-              "Science",
-              "Tamil"
+              "Science: Ch 2 Acids, Bases & Salts",
+              "Tamil: இயல் 5 நிலா முற்றம்"
             ],
             "sub1": {
               "name": "Science (Chemistry)",
@@ -2991,7 +2860,26 @@
               "breakup": "15 Marks Science + 15 Marks Tamil",
               "mode": "Written on Notebook & Photo Upload for Mama Review + AI instant check",
               "instructions": "Rough நோட்டில் சுயமாக எழுத வேண்டும். தேர்வு முடிந்தவுடன் போட்டோ எடுத்து அப்லோட் செய்."
-            }
+            },
+            "tasks": [
+              "வேதியியல் Ch 2: Strong vs Weak Acids, pH Scale, மற்றும் Salts (Bleaching powder, Baking soda, Plaster of Paris) பார்முலாக்களை படித்து எழுதிப் பார்க்கவும்.",
+              "தமிழ் இயல் 5: 'கம்பராமாயணம்' மனப்பாடப் பாடல்கள் மற்றும் 'பன்முகக் கலைஞர்' உரைநடை வினாக்களை படித்து பயிற்சி செய்யவும்.",
+              "இரவு 8:30 PM முதல் 9:15 PM வரை நடைபெறும் 30 மதிப்பெண் மாதிரித் தேர்வை எழுதி விடைத்தாளை அம்மாவிடம் சமர்ப்பிக்கவும்."
+            ],
+            "sampleQuestions": [
+              {
+                "subject": "Science",
+                "chapter": "Acids, Bases and Salts",
+                "q": "A compound X of sodium is used as an antacid in medicine and in bakery. On heating, it gives compound Y and CO2 gas. Identify X and Y. Write the balanced chemical equation.",
+                "ans": "X = Sodium hydrogen carbonate (NaHCO3 / Baking Soda). Y = Sodium carbonate (Na2CO3). Equation: 2NaHCO3 -> Na2CO3 + H2O + CO2."
+              },
+              {
+                "subject": "Tamil",
+                "chapter": "இயல் 5: நிலா முற்றம்",
+                "q": "கம்பராமாயணத்தில் கம்பர் அயோத்தி மாநகரத்தின் பெருமையை எவ்வாறு போற்றுகிறார்? அல்லது 'பன்முகக் கலைஞர்' உரைநடையின் மையக்கருத்தை விவரிக்க.",
+                "ans": "கம்பர் அயோத்தியின் செல்வம், ஒழுக்கம், இயற்கை எழில் மற்றும் மக்களின் கொடைத்தன்மையை ஒப்பற்ற சொல்லாட்சியுடன் சித்தரிக்கிறார். 'வண்மை இல்லை ஓர் வறுமை இன்மையால்' - அங்கு வறுமை இல்லாததால் கொடை கொடுப்பவரும் இல்லை என்ற உயரிய கருத்தை முன்வைக்கிறார்."
+              }
+            ]
           },
           {
             "day": 2,
@@ -5607,48 +5495,59 @@
       ]
     },
     "tamil": {
-      "title": "பத்தாம் வகுப்பு தமிழ் (Tamil Language-II)",
+      "title": "பத்தாம் வகுப்பு தமிழ் (Tamil Language-II - Official School Textbook)",
       "code": "006",
       "coverIcon": "🪶",
       "fullBookPdf": "/textbooks/tamil.pdf",
       "chapters": [
         {
           "id": "tam1",
-          "name": "இயல் 1: அமுதூற்று (அன்னை மொழியே, உரைநடையின் அணிநலன்கள்)",
-          "unit": "இயல் 1"
+          "name": "இயல் 1: அமுதஊற்று (அன்னை மொழியே, பாவாணர் தமிழ்ச்சொல் வளம், காலக்கணிதம், புயலிலே ஒரு தோணி, சொல்)",
+          "unit": "இயல் 1",
+          "pageStart": 2,
+          "isRevision1": false
         },
         {
           "id": "tam2",
-          "name": "இயல் 2: உயிரின் ஓசை (காற்றே வா, முல்லைப்பாட்டு)",
-          "unit": "இயல் 2"
+          "name": "இயல் 2: உயிரின் ஓசை (கேட்கிறதா என் குரல்!, பரிபாடல், மேகம், பிரும்மம், தொகாநிலைத் தொடர்கள்)",
+          "unit": "இயல் 2",
+          "pageStart": 24,
+          "isRevision1": false
         },
         {
           "id": "tam3",
-          "name": "இயல் 3: கூட்டாஞ்சோறு (விருந்து போற்றுதும், காசி காண்டம்)",
-          "unit": "இயல் 3"
+          "name": "இயல் 3: கூட்டாஞ்சோறு (விருந்து போற்றுதும்!, காசிக்காண்டம், முத்துக்குமாரசாமி பிள்ளைத்தமிழ், கோபல்லபுரத்து மக்கள், தொகைநிலைத் தொடர்கள், திருக்குறள்)",
+          "unit": "இயல் 3",
+          "pageStart": 46,
+          "isRevision1": false
         },
         {
           "id": "tam4",
-          "name": "இயல் 4: நான்காம் தமிழ் (செயற்கை நுண்ணறிவு, பெருமாள் திருமொழி)",
-          "unit": "இயல் 4"
+          "name": "இயல் 4: மணற்கேணி (மொழிபெயர்ப்புக் கல்வி, திருவிளையாடற் புராணம், புதிய நம்பிக்கை, பொது இலக்கணம்)",
+          "unit": "இயல் 4",
+          "pageStart": 72,
+          "isRevision1": false
         },
         {
           "id": "tam5",
-          "name": "இயல் 5: மணற்கேணி (மொழிபெயர்ப்புக் கல்வி, நீதி வெண்பா, வினா-விடை வகைகள் & பொருள்கோள்)",
+          "name": "இயல் 5: நிலா முற்றம் (பன்முகக் கலைஞர், கம்பராமாயணம், பாய்ச்சல், அகப்பொருள் இலக்கணம், திருக்குறள்)",
           "unit": "இயல் 5",
-          "isToday": true,
-          "isRevision1": true
+          "pageStart": 94,
+          "isRevision1": true,
+          "isToday": true
         },
         {
           "id": "tam6",
-          "name": "இயல் 6: நிகழ்கலை (முத்துக்குமாரசுவாமி பிள்ளைத்தமிழ், கம்பராமாயணம், பாய்ச்சல்)",
+          "name": "இயல் 6: விதை நெல் (சிற்றகல் ஒளி, சிலப்பதிகாரம், முத்தொள்ளாயிரம், மங்கையராய்ப் பிறப்பதற்கே..., புறப்பொருள் இலக்கணம்)",
           "unit": "இயல் 6",
+          "pageStart": 122,
           "isRevision1": true
         },
         {
           "id": "tam7",
-          "name": "இயல் 7: விதைநெல் (சிற்றகல் ஒளி, ஏர் புதிதா?, மெய்க்கீர்த்தி, சிலப்பதிகாரம்)",
+          "name": "இயல் 7: பெருவழி (சங்க இலக்கியத்தில் அறம், தேம்பாவணி, அக்கறை, இராமானுசர் - நாடகம், பா வகை அலகிடுதல், திருக்குறள்)",
           "unit": "இயல் 7",
+          "pageStart": 144,
           "isRevision1": true
         }
       ]
@@ -5961,5 +5860,101 @@
         "score": "92% Ready"
       }
     ]
+  },
+  "rescheduling": {
+    "isAutoRescheduleActive": true,
+    "lastAdjustedDate": "2026-10-29",
+    "skippedDays": [],
+    "halfDoneDays": [],
+    "recoveryPlan": {
+      "status": "normal",
+      "note": "Daily schedule is on track. In case of unexpected events, 1-click auto-reschedule will redistribute pending topics smoothly."
+    }
+  },
+  "performanceHub": {
+    "primaryPillar": "house_practice",
+    "housePractice": {
+      "title": "🏠 House Practice (Core Hero Metric)",
+      "description": "Our main focus of this app. Daily home revision and 8:30 PM Night Tests ensure mastery.",
+      "overallAverage": 88.5,
+      "targetAverage": 95,
+      "recentTests": [
+        {
+          "date": "2026-10-25",
+          "test": "Maths: Real Numbers Diagnostic",
+          "maxMarks": 30,
+          "scoredMarks": 27,
+          "percentage": 90,
+          "status": "Excellent"
+        },
+        {
+          "date": "2026-10-26",
+          "test": "Science: Chemical Reactions",
+          "maxMarks": 30,
+          "scoredMarks": 26,
+          "percentage": 86.7,
+          "status": "Good"
+        }
+      ],
+      "strengths": [
+        "NCERT Direct Formula Application",
+        "Balanced Chemical Equations",
+        "Calculations speed and neat presentation"
+      ],
+      "weaknesses": [
+        "Geometry Thales theorem proof step-by-step reasoning",
+        "Tamil Grammar அகப்பொருள்/புறப்பொருள் subtle differences",
+        "Word problems in Linear Equations interpretation"
+      ]
+    },
+    "school": {
+      "title": "🏫 School Performance (SRM Public School)",
+      "description": "Outcome data used to evaluate trend and school alignment.",
+      "periodicTest1": 82.4,
+      "periodicTest2": 85,
+      "targetRevision1": 92
+    },
+    "tuition": {
+      "title": "📚 Tuition Assessments",
+      "description": "Supplementary feedback from external coaching tests.",
+      "weeklyAvg": 84,
+      "targetAvg": 90
+    },
+    "thenAndNow": [
+      {
+        "metric": "House Practice Regularity",
+        "then": "Irregular / 1 hr",
+        "now": "Daily 2.5 hrs + 8:30 PM Test",
+        "duration": "Last 14 Days",
+        "trend": "+85%"
+      },
+      {
+        "metric": "Maths Problem Solving Accuracy",
+        "then": "72% (Frequent calculation errors)",
+        "now": "89% (Step-by-step verification)",
+        "duration": "Last 2 Weeks",
+        "trend": "+17%"
+      },
+      {
+        "metric": "Science Concept Retention",
+        "then": "68% (Confused reactivity series)",
+        "now": "86% (Mnemonics & Tanglish recall)",
+        "duration": "Last 2 Weeks",
+        "trend": "+18%"
+      },
+      {
+        "metric": "Tamil Exam Score Average",
+        "then": "74% (Grammar errors)",
+        "now": "84% (Focused Unit practice)",
+        "duration": "Last 10 Days",
+        "trend": "+10%"
+      }
+    ],
+    "studyTimer": {
+      "activeLap": null,
+      "laps": [],
+      "nightAlarmTime": "20:30",
+      "alarmLabel": "🔔 8:30 PM Night Test Alarm"
+    }
   }
 }

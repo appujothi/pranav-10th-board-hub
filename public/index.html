@@ -550,7 +550,12 @@
                 🎯
               </span>
               <div>
-                <h4 class="text-xs font-extrabold text-slate-900">16-Day Revision-1 Mission Planner</h4>
+                <div class="flex items-center gap-2">
+                  <h4 class="text-xs font-extrabold text-slate-900">16-Day Revision-1 Mission Planner</h4>
+                  <button onclick="openRescheduleModal()" class="text-[10px] font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 px-2.5 py-0.5 rounded-full flex items-center gap-1 transition shadow-xs" title="Adjust schedule if day is skipped or half-done">
+                    <i class="fa-solid fa-arrows-rotate text-[9px] text-emerald-600"></i> Re-Schedule
+                  </button>
+                </div>
                 <p class="text-[10px] text-slate-500">Daily 2-Subject Tasks • Sample Questions • 8:30 PM Night Tests</p>
               </div>
             </div>
@@ -586,7 +591,7 @@
             </div>
             
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pt-0.5">
-              <h5 class="text-xs font-black text-slate-900" data-i18n="today_head">Day 1: Science (Acids, Bases & Salts) + Tamil (இயல் 5)</h5>
+              <h5 class="text-xs font-black text-slate-900" data-i18n="today_head">Day 1: Science (Acids, Bases & Salts) + Tamil (இயல் 5: நிலா முற்றம் - கம்பராமாயணம்)</h5>
               <span class="text-[10px] text-emerald-800 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 self-start sm:self-auto">Tonight 8:30 PM: 30 Marks</span>
             </div>
 
@@ -1284,6 +1289,56 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="performance-quadrants-grid"></div>
 
         <!-- Test Scores History Table / Feed -->
+        
+        <!-- THEN VS NOW COMPARISON CONTAINER -->
+        <div id="performance-then-now-container"></div>
+
+        <!-- STUDY LAP TIMER & NIGHT TEST ALARM CARD -->
+        <div class="bg-gradient-to-r from-sky-50 via-emerald-50 to-white rounded-2xl p-4 border border-emerald-200 shadow-xs space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div class="flex items-center gap-2">
+              <span class="w-8 h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-sm shadow-xs">⏱️</span>
+              <div>
+                <h4 class="text-xs font-extrabold text-slate-900">Problem Lap Timer & Night Test Alarm</h4>
+                <p class="text-[10px] text-slate-500 font-medium">Track solving time per question (Maths/Science) • Automatic 8:30 PM Night Test alert</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <span id="nightAlarmStatusTag" class="text-[10px] bg-emerald-50 text-emerald-800 font-bold px-2.5 py-0.5 rounded-full border border-emerald-200">
+                🔔 Daily 8:30 PM Night Test Alarm Set
+              </span>
+            </div>
+          </div>
+
+          <!-- Stopwatch Controls & Laps Feed -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+            <div class="bg-white border border-slate-200 rounded-xl p-3 flex flex-col items-center justify-center space-y-2">
+              <span id="studyLapDisplay" class="font-mono text-3xl font-black text-slate-800 tracking-wider">00:00</span>
+              <div class="flex items-center gap-1.5">
+                <button onclick="toggleStudyLapTimer()" id="btnLapTimerToggle" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold px-3 py-1.5 rounded-xl text-xs flex items-center gap-1.5 transition shadow-xs">
+                  <i class="fa-solid fa-play text-xs"></i> Start
+                </button>
+                <button onclick="recordStudyLap()" class="bg-sky-600 hover:bg-sky-700 text-white font-extrabold px-3 py-1.5 rounded-xl text-xs flex items-center gap-1.5 transition shadow-xs">
+                  <i class="fa-solid fa-stopwatch text-xs"></i> Lap
+                </button>
+                <button onclick="resetStudyLapTimer()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-extrabold px-2.5 py-1.5 rounded-xl text-xs transition">
+                  Reset
+                </button>
+              </div>
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-xl p-3 flex flex-col justify-between">
+              <span class="text-[10px] font-extrabold text-slate-500 uppercase tracking-wider block border-b border-slate-100 pb-1">
+                Recent Question Solving Laps
+              </span>
+              <div id="studyLapsList" class="space-y-1 overflow-y-auto max-h-20 custom-scroll pt-1">
+                <span class="text-[10px] text-slate-400 block py-1">No laps recorded yet. Click Lap during problem solving.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+
         <div class="bg-white border border-slate-200 rounded-2xl p-4 space-y-3 shadow-card">
           <div class="flex items-center justify-between">
             <h4 class="text-xs font-extrabold text-slate-900">Recent Test Submissions & Breakdown</h4>
@@ -2401,6 +2456,31 @@
   </div>
 
   <!-- Toast Notification -->
+  
+  <!-- ================= DYNAMIC RE-SCHEDULER MODAL ================= -->
+  <div id="rescheduleModal" class="fixed inset-0 bg-slate-950/75 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl w-full max-w-lg p-5 space-y-4 shadow-2xl border border-slate-200">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+        <div class="flex items-center gap-2">
+          <span class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-sm">
+            🔄
+          </span>
+          <div>
+            <h3 class="text-sm font-extrabold text-slate-900">Dynamic Revision Re-Scheduler</h3>
+            <p class="text-[10px] text-slate-500">Smoothly adapt to unexpected days without losing syllabus coverage</p>
+          </div>
+        </div>
+        <button onclick="closeRescheduleModal()" class="w-7 h-7 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center text-xs transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div id="rescheduleModalBody">
+        <!-- Dynamically rendered by renderRescheduleModalInfo() -->
+      </div>
+    </div>
+  </div>
+  
   <div id="toast" class="fixed bottom-20 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs font-semibold px-4 py-2 rounded-full shadow-2xl flex items-center gap-2 transform translate-y-10 opacity-0 transition duration-300 z-50">
     <i class="fa-solid fa-circle-check text-emerald-400"></i>
     <span id="toast-message">Success</span>
