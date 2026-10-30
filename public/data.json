@@ -2814,7 +2814,7 @@
               "sampleQuestions": [
                 {
                   "q": "What gas is released when dilute HCl reacts with Zinc granules? Write the balanced chemical equation and describe how to test this gas.",
-                  "sampleAns": "Hydrogen gas ($H_2$) is evolved. $Zn + 2HCl \\rightarrow ZnCl_2 + H_2\\uparrow$. Test: Bring a burning splinter near the mouth of the test tube; it burns with a pop sound.",
+                  "sampleAns": "Hydrogen gas (H₂) is evolved. Zn + 2HCl → ZnCl₂ + H₂\\uparrow. Test: Bring a burning splinter near the mouth of the test tube; it burns with a pop sound.",
                   "marks": 3
                 },
                 {
@@ -2824,7 +2824,7 @@
                 },
                 {
                   "q": "Write the chemical name, formula and two uses of Plaster of Paris. Why is it stored in moisture-proof containers?",
-                  "sampleAns": "Calcium sulphate hemihydrate ($CaSO_4 \\cdot \\frac{1}{2}H_2O$). Uses: 1. Making casts for broken bones. 2. Making toys/statues. It absorbs moisture to become hard Gypsum ($CaSO_4 \\cdot 2H_2O$).",
+                  "sampleAns": "Calcium sulphate hemihydrate (CaSO_4 \\cdot (1/2)H₂O). Uses: 1. Making casts for broken bones. 2. Making toys/statues. It absorbs moisture to become hard Gypsum (CaSO_4 \\cdot 2H₂O).",
                   "marks": 3
                 }
               ]
@@ -2875,11 +2875,11 @@
               "topics": "Relationship between zeroes & coefficients, Graphical representation, Substitution/Elimination methods, Consistent/Inconsistent conditions",
               "sampleQuestions": [
                 {
-                  "q": "Find the zeroes of $p(x) = x^2 + 7x + 10$ and verify the relationship with coefficients.",
+                  "q": "Find the zeroes of p(x) = x² + 7x + 10 and verify the relationship with coefficients.",
                   "marks": 3
                 },
                 {
-                  "q": "Solve for x and y: $2x + 3y = 11$ and $2x - 4y = -24$. Hence find m for which $y = mx + 3$.",
+                  "q": "Solve for x and y: 2x + 3y = 11 and 2x - 4y = -24. Hence find m for which y = mx + 3.",
                   "marks": 3
                 }
               ]
@@ -2973,7 +2973,7 @@
                   "marks": 5
                 },
                 {
-                  "q": "In $\\triangle ABC$, $DE \\parallel BC$ intersecting $AB$ at $D$ and $AC$ at $E$. If $AD=x, DB=x-2, AE=x+2, EC=x-1$, find x.",
+                  "q": "In Δ ABC, DE ∥ BC intersecting AB at D and AC at E. If AD=x, DB=x-2, AE=x+2, EC=x-1, find x.",
                   "marks": 3
                 }
               ]
@@ -3157,7 +3157,7 @@
               "topics": "Area of sector and segment of circle, Combination of plane figures",
               "sampleQuestions": [
                 {
-                  "q": "Find area of sector of circle of radius 6 cm if angle of sector is 60° (use $\\pi = 22/7$).",
+                  "q": "Find area of sector of circle of radius 6 cm if angle of sector is 60° (use π = 22/7).",
                   "marks": 3
                 },
                 {
@@ -3573,7 +3573,7 @@
             "sampleQuestions": [
               {
                 "q": "What gas is released when dilute HCl reacts with Zinc granules? Write the balanced chemical equation and describe how to test this gas.",
-                "sampleAns": "Hydrogen gas ($H_2$) is evolved. $Zn + 2HCl \\rightarrow ZnCl_2 + H_2\\uparrow$. Test: Bring a burning splinter near the mouth of the test tube; it burns with a pop sound.",
+                "sampleAns": "Hydrogen gas (H₂) is evolved. Zn + 2HCl → ZnCl₂ + H₂\\uparrow. Test: Bring a burning splinter near the mouth of the test tube; it burns with a pop sound.",
                 "marks": 3
               },
               {
@@ -3583,7 +3583,7 @@
               },
               {
                 "q": "Write the chemical name, formula and two uses of Plaster of Paris. Why is it stored in moisture-proof containers?",
-                "sampleAns": "Calcium sulphate hemihydrate ($CaSO_4 \\cdot \\frac{1}{2}H_2O$). Uses: 1. Making casts for broken bones. 2. Making toys/statues. It absorbs moisture to become hard Gypsum ($CaSO_4 \\cdot 2H_2O$).",
+                "sampleAns": "Calcium sulphate hemihydrate (CaSO_4 \\cdot (1/2)H₂O). Uses: 1. Making casts for broken bones. 2. Making toys/statues. It absorbs moisture to become hard Gypsum (CaSO_4 \\cdot 2H₂O).",
                 "marks": 3
               }
             ],
@@ -3900,23 +3900,23 @@
             "type": "1 Mark",
             "marks": 1,
             "question": "Fresh milk has a pH of 6. When it turns into curd, will its pH increase or decrease? Give reason.",
-            "answer": "pH decreases (becomes more acidic). Reason: Lactose in milk is converted into lactic acid by Lactobacillus bacteria, increasing $H^+$ ion concentration.",
-            "rubric": "0.5 mark for 'decreases', 0.5 mark for lactic acid / $H^+$ explanation."
+            "answer": "pH decreases (becomes more acidic). Reason: Lactose in milk is converted into lactic acid by Lactobacillus bacteria, increasing H^+ ion concentration.",
+            "rubric": "0.5 mark for 'decreases', 0.5 mark for lactic acid / H^+ explanation."
           },
           {
             "qNum": "Q2",
             "type": "2 Marks",
             "marks": 2,
             "question": "A metal compound 'X' reacts with dilute hydrochloric acid to produce effervescence. The gas evolved extinguishes a burning candle. Write a balanced chemical equation if one of the compounds formed is Calcium chloride.",
-            "answer": "Compound 'X' is Calcium carbonate ($CaCO_3$). The gas is $CO_2$.\nBalanced Equation: $CaCO_3(s) + 2HCl(aq) \\rightarrow CaCl_2(aq) + H_2O(l) + CO_2(g)\\uparrow$.",
-            "rubric": "1 mark for identifying $CaCO_3$ and $CO_2$, 1 mark for balanced chemical equation."
+            "answer": "Compound 'X' is Calcium carbonate (CaCO₃). The gas is CO₂.\nBalanced Equation: CaCO₃(s) + 2HCl(aq) → CaCl₂(aq) + H₂O(l) + CO₂(g)\\uparrow.",
+            "rubric": "1 mark for identifying CaCO₃ and CO₂, 1 mark for balanced chemical equation."
           },
           {
             "qNum": "Q3",
             "type": "3 Marks",
             "marks": 3,
             "question": "Explain the Chlor-alkali process with chemical equation. Name the gases released at the anode and cathode, and state one industrial use of each.",
-            "answer": "When electricity is passed through an aqueous solution of sodium chloride (called brine), it decomposes to form sodium hydroxide: $2NaCl(aq) + 2H_2O(l) \\rightarrow 2NaOH(aq) + Cl_2(g) + H_2(g)$.\n• At Anode: Chlorine gas ($Cl_2$). Use: Water treatment, disinfectant, manufacturing of PVC/bleaching powder.\n• At Cathode: Hydrogen gas ($H_2$). Use: Fuel, margarine, ammonia for fertilisers.\n• Solution: Sodium hydroxide ($NaOH$). Use: De-greasing metals, soaps and detergents, paper making.",
+            "answer": "When electricity is passed through an aqueous solution of sodium chloride (called brine), it decomposes to form sodium hydroxide: 2NaCl(aq) + 2H₂O(l) → 2NaOH(aq) + Cl₂(g) + H₂(g).\n• At Anode: Chlorine gas (Cl₂). Use: Water treatment, disinfectant, manufacturing of PVC/bleaching powder.\n• At Cathode: Hydrogen gas (H₂). Use: Fuel, margarine, ammonia for fertilisers.\n• Solution: Sodium hydroxide (NaOH). Use: De-greasing metals, soaps and detergents, paper making.",
             "rubric": "1 mark for equation & definition, 1 mark for anode gas & use, 1 mark for cathode gas & use."
           },
           {
@@ -3924,15 +3924,15 @@
             "type": "4 Marks",
             "marks": 4,
             "question": "Identify compounds A, B and C in the following reaction sequence:\n(i) A white powder 'A' used by doctors for supporting fractured bones is heated to give 'B'.\n(ii) When 'A' is mixed with water, it turns into a hard solid mass 'C'. Write chemical formulas and equations for both reactions.",
-            "answer": "• Compound A: Plaster of Paris ($CaSO_4 \\cdot \\frac{1}{2}H_2O$)\n• Compound C: Gypsum ($CaSO_4 \\cdot 2H_2O$)\nReaction with water: $CaSO_4 \\cdot \\frac{1}{2}H_2O + 1\\frac{1}{2}H_2O \\rightarrow CaSO_4 \\cdot 2H_2O$\n• Compound B: Dead burnt plaster (Anhydrous calcium sulphate, $CaSO_4$) formed when POP is heated above 373K.\nEquation: $CaSO_4 \\cdot \\frac{1}{2}H_2O \\xrightarrow{>373K} CaSO_4 + \\frac{1}{2}H_2O$",
+            "answer": "• Compound A: Plaster of Paris (CaSO_4 \\cdot (1/2)H₂O)\n• Compound C: Gypsum (CaSO_4 \\cdot 2H₂O)\nReaction with water: CaSO_4 \\cdot (1/2)H₂O + 1(1/2)H₂O → CaSO_4 \\cdot 2H₂O\n• Compound B: Dead burnt plaster (Anhydrous calcium sulphate, CaSO_4) formed when POP is heated above 373K.\nEquation: CaSO_4 \\cdot (1/2)H₂O \\xrightarrow{>373K} CaSO_4 + (1/2)H₂O",
             "rubric": "1 mark for identification of A, B, C; 1.5 marks for POP to Gypsum reaction; 1.5 marks for dehydration equation to dead burnt plaster."
           },
           {
             "qNum": "Q5",
             "type": "5 Marks (Twist Application)",
             "marks": 5,
-            "question": "(a) Why do acids not show acidic behaviour in the absence of water? (2M)\n(b) Equal lengths of magnesium ribbons are taken in test tubes A and B. Hydrochloric acid ($HCl$) is added to tube A, while acetic acid ($CH_3COOH$) is added to tube B of equal concentration. In which test tube will fizzing occur more vigorously and why? (3M)",
-            "answer": "(a) Acids dissociate to produce hydrogen ions ($H^+$ or $H_3O^+$ hydronium ions) only in aqueous medium. In the absence of water, ionization does not take place, hence no acidic properties/litmus color change occurs.\n(b) Fizzing occurs much more vigorously in test tube A ($HCl$). Reason: $HCl$ is a strong acid which completely dissociates in water releasing a high concentration of $H^+$ ions, causing a rapid reaction with Mg to evolve $H_2$ gas violently ($Mg + 2HCl \\rightarrow MgCl_2 + H_2\\uparrow$). Acetic acid ($CH_3COOH$) is a weak acid which ionizes only partially, producing far fewer $H^+$ ions, resulting in a slower rate of $H_2$ evolution.",
+            "question": "(a) Why do acids not show acidic behaviour in the absence of water? (2M)\n(b) Equal lengths of magnesium ribbons are taken in test tubes A and B. Hydrochloric acid (HCl) is added to tube A, while acetic acid (CH₃COOH) is added to tube B of equal concentration. In which test tube will fizzing occur more vigorously and why? (3M)",
+            "answer": "(a) Acids dissociate to produce hydrogen ions (H^+ or H₃O^+ hydronium ions) only in aqueous medium. In the absence of water, ionization does not take place, hence no acidic properties/litmus color change occurs.\n(b) Fizzing occurs much more vigorously in test tube A (HCl). Reason: HCl is a strong acid which completely dissociates in water releasing a high concentration of H^+ ions, causing a rapid reaction with Mg to evolve H₂ gas violently (Mg + 2HCl → MgCl₂ + H₂\\uparrow). Acetic acid (CH₃COOH) is a weak acid which ionizes only partially, producing far fewer H^+ ions, resulting in a slower rate of H₂ evolution.",
             "rubric": "(a) 2 marks for ionization explanation in water. (b) 1 mark for tube A, 2 marks for strong acid complete dissociation vs weak acid partial dissociation explanation."
           }
         ]
@@ -3999,40 +3999,40 @@
             "qNum": "Q1",
             "type": "1 Mark",
             "marks": 1,
-            "question": "If one zero of the quadratic polynomial $x^2 + 3x + k$ is 2, find the value of $k$.",
-            "answer": "Since 2 is a zero, substitute $x=2$:\n$(2)^2 + 3(2) + k = 0 \\implies 4 + 6 + k = 0 \\implies k = -10$.",
-            "rubric": "1 mark for correct calculation and answer $k = -10$."
+            "question": "If one zero of the quadratic polynomial x² + 3x + k is 2, find the value of k.",
+            "answer": "Since 2 is a zero, substitute x=2:\n(2)² + 3(2) + k = 0 ⇒ 4 + 6 + k = 0 ⇒ k = -10.",
+            "rubric": "1 mark for correct calculation and answer k = -10."
           },
           {
             "qNum": "Q2",
             "type": "2 Marks",
             "marks": 2,
-            "question": "Find the condition for the pair of linear equations $kx + 3y = k - 3$ and $12x + ky = k$ to have infinitely many solutions.",
-            "answer": "For infinitely many solutions: $\\frac{a_1}{a_2} = \\frac{b_1}{b_2} = \\frac{c_1}{c_2}$\n$\\frac{k}{12} = \\frac{3}{k} = \\frac{k-3}{k}$\nFrom $\\frac{k}{12} = \\frac{3}{k} \\implies k^2 = 36 \\implies k = \\pm 6$.\nFrom $\\frac{3}{k} = \\frac{k-3}{k} \\implies 3 = k - 3 \\implies k = 6$.\nTherefore, common value is $k = 6$.",
-            "rubric": "1 mark for ratio condition, 1 mark for solving and identifying $k = 6$ (rejecting -6)."
+            "question": "Find the value of k for which the following pair of linear equations has infinitely many solutions: kx + 3y = k - 3 and 12x + ky = k.",
+            "answer": "For infinitely many solutions: (a₁/a₂) = (b₁/b₂) = (c₁/c₂)\n(k/12) = (3/k) = (k-3/k)\nFrom (k/12) = (3/k) ⇒ k² = 36 ⇒ k = ± 6.\nFrom (3/k) = (k-3/k) ⇒ 3 = k - 3 ⇒ k = 6.\nTherefore, common value is k = 6.",
+            "rubric": "1 mark for ratio condition, 1 mark for solving and identifying k = 6 (rejecting -6)."
           },
           {
             "qNum": "Q3",
             "type": "3 Marks",
             "marks": 3,
-            "question": "If $\\alpha$ and $\\beta$ are the zeroes of the quadratic polynomial $p(x) = 2x^2 - 5x + 7$, find the value of: (i) $\\alpha^2 + \\beta^2$ and (ii) $\\frac{1}{\\alpha} + \\frac{1}{\\beta}$.",
-            "answer": "Here $a = 2, b = -5, c = 7$.\nSum of zeroes: $\\alpha + \\beta = -b/a = \\frac{5}{2}$. Product: $\\alpha\\beta = c/a = \\frac{7}{2}$.\n(i) $\\alpha^2 + \\beta^2 = (\\alpha + \\beta)^2 - 2\\alpha\\beta = (\\frac{5}{2})^2 - 2(\\frac{7}{2}) = \\frac{25}{4} - 7 = \\frac{25 - 28}{4} = -\\frac{3}{4}$.\n(ii) $\\frac{1}{\\alpha} + \\frac{1}{\\beta} = \\frac{\\alpha + \\beta}{\\alpha\\beta} = \\frac{5/2}{7/2} = \\frac{5}{7}$.",
-            "rubric": "1 mark for sum & product, 1 mark for $\\alpha^2 + \\beta^2$, 1 mark for reciprocal sum."
+            "question": "If α and β are the zeroes of the quadratic polynomial p(x) = 2x² - 5x + 7, find the value of: (i) α² + β² and (ii) (1/α) + (1/β).",
+            "answer": "Here a = 2, b = -5, c = 7.\nSum of zeroes: α + β = -b/a = (5/2). Product: αβ = c/a = (7/2).\n(i) α² + β² = (α + β)² - 2αβ = ((5/2))² - 2((7/2)) = (25/4) - 7 = (25 - 28/4) = -(3/4).\n(ii) (1/α) + (1/β) = (α + β/αβ) = (5/2/7/2) = (5/7).",
+            "rubric": "1 mark for sum & product, 1 mark for α² + β², 1 mark for reciprocal sum."
           },
           {
             "qNum": "Q4",
             "type": "4 Marks",
             "marks": 4,
-            "question": "Solve the following pair of linear equations graphically or algebraically: $2x + 3y = 11$ and $2x - 4y = -24$. Hence find the value of 'm' for which $y = mx + 3$.",
-            "answer": "Subtracting equations:\n$(2x + 3y) - (2x - 4y) = 11 - (-24) \\implies 7y = 35 \\implies y = 5$.\nSubstitute $y=5$ into $2x + 3(5) = 11 \\implies 2x + 15 = 11 \\implies 2x = -4 \\implies x = -2$.\nNow substitute $x=-2, y=5$ into $y = mx + 3$:\n$5 = m(-2) + 3 \\implies 5 - 3 = -2m \\implies 2 = -2m \\implies m = -1$.",
-            "rubric": "2 marks for finding $x = -2, y = 5$; 2 marks for substituting and finding $m = -1$."
+            "question": "Solve the following pair of linear equations graphically or algebraically: 2x + 3y = 11 and 2x - 4y = -24. Hence find the value of 'm' for which y = mx + 3.",
+            "answer": "Subtracting equations:\n(2x + 3y) - (2x - 4y) = 11 - (-24) ⇒ 7y = 35 ⇒ y = 5.\nSubstitute y=5 into 2x + 3(5) = 11 ⇒ 2x + 15 = 11 ⇒ 2x = -4 ⇒ x = -2.\nNow substitute x=-2, y=5 into y = mx + 3:\n5 = m(-2) + 3 ⇒ 5 - 3 = -2m ⇒ 2 = -2m ⇒ m = -1.",
+            "rubric": "2 marks for finding x = -2, y = 5; 2 marks for substituting and finding m = -1."
           },
           {
             "qNum": "Q5",
             "type": "5 Marks (Word Problem)",
             "marks": 5,
             "question": "The sum of the digits of a two-digit number is 9. Also, nine times this number is twice the number obtained by reversing the order of the digits. Find the number.",
-            "answer": "Let the tens digit be $x$ and the units digit be $y$.\nNumber $= 10x + y$.\nReversed number $= 10y + x$.\nCondition 1: $x + y = 9$ ...(1)\nCondition 2: $9(10x + y) = 2(10y + x)$\n$90x + 9y = 20y + 2x \\implies 88x - 11y = 0 \\implies 8x - y = 0 \\implies y = 8x$ ...(2)\nSubstitute (2) into (1):\n$x + 8x = 9 \\implies 9x = 9 \\implies x = 1$.\nThen $y = 8(1) = 8$.\nRequired Number $= 10(1) + 8 = 18$.\nVerification: Digits sum $1 + 8 = 9$. $9 \\times 18 = 162$. Reversed number $= 81$; $2 \\times 81 = 162$. Verified!",
+            "answer": "Let the tens digit be x and the units digit be y.\nNumber = 10x + y.\nReversed number = 10y + x.\nCondition 1: x + y = 9 ...(1)\nCondition 2: 9(10x + y) = 2(10y + x)\n90x + 9y = 20y + 2x ⇒ 88x - 11y = 0 ⇒ 8x - y = 0 ⇒ y = 8x ...(2)\nSubstitute (2) into (1):\nx + 8x = 9 ⇒ 9x = 9 ⇒ x = 1.\nThen y = 8(1) = 8.\nRequired Number = 10(1) + 8 = 18.\nVerification: Digits sum 1 + 8 = 9. 9 × 18 = 162. Reversed number = 81; 2 × 81 = 162. Verified!",
             "rubric": "1.5 marks for setting up equations, 2 marks for solving, 1 mark for stating final number 18, 0.5 mark for verification."
           }
         ]
@@ -4060,9 +4060,9 @@
             "qNum": "Q8",
             "type": "3 Marks",
             "marks": 3,
-            "question": "Read the line and answer: 'Fog comes on little cat feet.' (Carl Sandburg)\n(a) Name the figure of speech used here. (1M)\n(b) How does the poet compare the movement of fog to a cat? (2M)",
-            "answer": "(a) Metaphor (Fog is directly compared to a cat without using 'as' or 'like').\n(b) Just as a cat approaches silently on its soft padded paws without making any noise, sits on its haunches watching silently, and moves away quietly, the fog rolls over the harbor and city stealthily and departs without warning.",
-            "rubric": "(a) 1 mark for Metaphor. (b) 2 marks for silent arrival, sitting on haunches, and quiet departure comparison."
+            "question": "How did Mijbil spend most of his time in play? Describe the games he invented with ping-pong balls and marbles, and his reaction to water in the bathroom.",
+            "answer": "Mijbil spent most of his time playing with rubber balls and juggling marbles on his belly while lying on his back. He invented a game with Maxwell's damaged suitcase: he placed a ping-pong ball on the high end of the sloping lid and dashed to the other end to ambush its arrival. In the bathroom, he went wild with joy in the water—plunging, rolling, and shooting up and down the bathtub.",
+            "rubric": "1 mark for marbles/balls play, 1 mark for sloping suitcase game, 1 mark for bathroom water reaction."
           },
           {
             "qNum": "Q9",
@@ -4186,7 +4186,7 @@
       "instructions": "Strict 45-minute timed test. Rough notebook submission. Mama reviews with secret rubric.",
       "scienceSection": {
         "marks": 15,
-        "summary": "State and prove Basic Proportionality Theorem (Thales Theorem). (5 Marks) | In $\\triangle ABC$, $DE \\parallel BC$ intersecting $AB$ at $D$ and $AC$ at $E$. If $AD = x, DB = x-2, AE = x+2, EC = x-1$, find the value of $x$. (3 Marks) [Ans: $x = 4$]",
+        "summary": "State and prove Basic Proportionality Theorem (Thales Theorem). (5 Marks) | In Δ ABC, DE ∥ BC intersecting AB at D and AC at E. If AD = x, DB = x-2, AE = x+2, EC = x-1, find the value of x. (3 Marks) [Ans: x = 4]",
         "questions": [
           {
             "qNum": "Q1",
@@ -4200,7 +4200,7 @@
             "qNum": "Q2",
             "type": "Application",
             "marks": 5,
-            "question": "In $\\triangle ABC$, $DE \\parallel BC$ intersecting $AB$ at $D$ and $AC$ at $E$. If $AD = x, DB = x-2, AE = x+2, EC = x-1$, find the value of $x$. (3 Marks) [Ans: $x = 4$]",
+            "question": "In Δ ABC, DE ∥ BC intersecting AB at D and AC at E. If AD = x, DB = x-2, AE = x+2, EC = x-1, find the value of x. (3 Marks) [Ans: x = 4]",
             "answer": "Complete solution with derivation and diagram.",
             "rubric": "Full marks for accurate reasoning."
           },
@@ -4356,13 +4356,13 @@
       },
       "tamilSection": {
         "marks": 15,
-        "summary": "A 1.5 m tall boy is standing at some distance from a 30 m tall building. The angle of elevation from his eyes to the top of the building increases from 30° to 60° as he walks towards the building. Find the distance he walked towards the building. (5M) [Ans: $19\\sqrt{3}$ m] | Two poles of equal heights are standing opposite each other on either side of the road, which is 80 m wide... (5M) | The angle of elevation of an aeroplane from a point on ground is 60°... (5M)",
+        "summary": "A 1.5 m tall boy is standing at some distance from a 30 m tall building. The angle of elevation from his eyes to the top of the building increases from 30° to 60° as he walks towards the building. Find the distance he walked towards the building. (5M) [Ans: 19√(3) m] | Two poles of equal heights are standing opposite each other on either side of the road, which is 80 m wide... (5M) | The angle of elevation of an aeroplane from a point on ground is 60°... (5M)",
         "questions": [
           {
             "qNum": "Q4",
             "type": "Section B",
             "marks": 5,
-            "question": "A 1.5 m tall boy is standing at some distance from a 30 m tall building. The angle of elevation from his eyes to the top of the building increases from 30° to 60° as he walks towards the building. Find the distance he walked towards the building. (5M) [Ans: $19\\sqrt{3}$ m] ",
+            "question": "A 1.5 m tall boy is standing at some distance from a 30 m tall building. The angle of elevation from his eyes to the top of the building increases from 30° to 60° as he walks towards the building. Find the distance he walked towards the building. (5M) [Ans: 19√(3) m] ",
             "answer": "Complete answer key in Tanglish and Tamil.",
             "rubric": "Headings, bullet points, neat presentation."
           },
@@ -4838,7 +4838,7 @@
             "qNum": "Q3",
             "type": "High-Yield",
             "marks": 5,
-            "question": "Section C: Resistance network calculations ($R_{eq}$), Saponification reaction, Reflex arc pathway (10M)",
+            "question": "Section C: Resistance network calculations (R_{eq}), Saponification reaction, Reflex arc pathway (10M)",
             "answer": "Standard CBSE marking scheme answer.",
             "rubric": "Neat diagram and structured points."
           }
@@ -4956,13 +4956,13 @@
       "instructions": "Strict 45-minute timed test. Rough notebook submission. Mama reviews with secret rubric.",
       "scienceSection": {
         "marks": 15,
-        "summary": "Prove $\\sqrt{3}$ is irrational & find HCF using prime factorisation (4M) | Quadratic equations word problem: Speed of train / upstream-downstream boat (5M)",
+        "summary": "Prove √(3) is irrational & find HCF using prime factorisation (4M) | Quadratic equations word problem: Speed of train / upstream-downstream boat (5M)",
         "questions": [
           {
             "qNum": "Q1",
             "type": "Core Concept",
             "marks": 5,
-            "question": "Prove $\\sqrt{3}$ is irrational & find HCF using prime factorisation (4M)",
+            "question": "Prove √(3) is irrational & find HCF using prime factorisation (4M)",
             "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Mama's vault rubric.",
             "rubric": "Full marks for complete formula, step-by-step calculation, and highlighted final unit."
           },
@@ -5878,91 +5878,24 @@
       "targetAverage": 95,
       "recentTests": [
         {
+          "day": 2,
           "date": "2026-10-29",
-          "test": "Day 2 Maths: Linear Equations (Consistency, No Solution & Infinite Solutions)",
-          "maxMarks": 10,
-          "scoredMarks": 6,
-          "percentage": 60,
-          "status": "AI Evaluated",
-          "paperPhoto": "media_1793243385816_809cb16e.jpg",
-          "feedback": "Good cross-multiplication & neat steps. CBSE Board Trap: forgot to verify != c1/c2 for No Solution and miscopied question ii as 2k.",
-          "strengths": [
-            "Neat step-by-step layout and legible handwriting",
-            "Accurate algebraic manipulation and cross-multiplication",
-            "Solid recall of consistency ratio condition (a1/a2 = b1/b2)"
-          ],
-          "weaknesses": [
-            "CBSE Board Trap: Must test the 3rd ratio (c1/c2) for No Solution (alpha = -6 only)",
-            "Question Copying: Keep Roman numeral (ii) separated from the variable to prevent reading kx as 2kx"
-          ],
-          "audioExplanation": "வணக்கம் பிரணவ்! உன்னோட மேக்ஸ் டெஸ்ட் பேப்பரை AI முழுமையா திருத்தியாச்சு. உன்னோட கையெழுத்து, ஸ்டெப்-பை-ஸ்டெப் விளக்கங்கள் மற்றும் கிராஸ் மல்டிபிளிகேஷன் ரொம்ப நேர்த்தியா இருக்கு! ஆனா இந்த டெஸ்ட்ல 10-க்கு 6 மார்க் வந்து, 40 சதவீதம் மார்க் ஏன் குறைஞ்சது தெரியுமா? மொத்தம் இரண்டு முக்கியமான காரணங்கள்: முதலாவது, கொஸ்டின் 1-ல, நோ சொல்யூஷன் கண்டிஷன் a1 by a2 equals b1 by b2 not equals c1 by c2. நீ ஆல்ஃபா ஈக்வல்ஸ் பிளஸ் ஆர் மைனஸ் 6 கண்டுபிடிச்சது சரிதான். ஆனால் பிளஸ் 6 போட்டால் அது இன்பினிட்லி மெனி சொல்யூஷன்ஸ் ஆகிவிடும்! மைனஸ் 6 போட்டால் மட்டும்தான் நோ சொல்யூஷன் வரும். இந்த கண்டிஷனை சரிபார்க்காததால் 1 மார்க் போச்சு. இது போர்டு எக்ஸாமோட பெரிய ட்ராப்! இரண்டாவது காரணம், கொஸ்டின் 2 சப்டிவிஷன் 2-ல, ரோமன் நம்பர் ii போட்டிருந்ததை கேள்வியுடன் சேர்த்து அவசரத்துல 2kx என்று தப்பாக காப்பி பண்ணிட்ட! அதனால்தான் k ஈக்வல்ஸ் 3 ரூட் 2 வந்துச்சு. கேள்வியை கவனமாகப் பார்த்து kx என்று எழுதியிருந்தால் முழு மார்க் கிடைத்திருக்கும்! இந்த இரண்டு விஷயங்களை மட்டும் கவனிச்சுக்கோ பிரணவ், போர்டு எக்ஸாம்ல உனக்கு சென்டம் நிச்சயம்!",
-          "marksLostReason": "40% Marks Lost due to 2 CBSE Traps: 1) Skipping third ratio check for No Solution (lost 1 mark), 2) Miscopying Roman numeral (ii) as 2k (lost 3 marks).",
-          "questionBreakdown": [
-            {
-              "qNum": "Q1",
-              "title": "For what values of alpha does the system have no solution?",
-              "equation": "alpha*x + 3y = alpha - 3  and  12x + alpha*y = alpha",
-              "marksAwarded": 2,
-              "maxMarks": 3,
-              "status": "Partially Correct (Lost 1 Mark)",
-              "whyDeducted": "பிரணவ் alpha^2 = 36 => alpha = +-6 வரை சரியாக கண்டுபிடித்தான். ஆனால் CBSE Board தேர்வில் No Solution கேட்கும்போது மூன்றாவதாக உள்ள != c1/c2 கண்டிஷனை சோதித்திருக்க வேண்டும். alpha = +6 போடும்போது அது Infinitely Many Solutions ஆகிவிடும்! எனவே +6-ஐ நிராகரித்து, -6 மட்டுமே சரியான விடை என்று எழுத வேண்டும்.",
-              "modelAnswer": "Step 1: Write Condition for No Solution:\n  a1/a2 = b1/b2 != c1/c2\n\nStep 2: Substitute coefficients:\n  alpha/12 = 3/alpha != (alpha - 3)/alpha\n\nStep 3: Solve a1/a2 = b1/b2:\n  alpha^2 = 36 => alpha = 6 or alpha = -6\n\nStep 4: Verify with != c1/c2:\n  • If alpha = 6:\n    3/6 = (6 - 3)/6 => 1/2 = 1/2 (Equals! Gives Infinitely Many Solutions. Hence Reject alpha = 6).\n  • If alpha = -6:\n    3/(-6) != (-6 - 3)/(-6) => -1/2 != 3/2 (Satisfies != c1/c2).\n\nStep 5: Final Conclusion:\n  alpha = -6 only (Full Centum Marks: 3/3)."
-            },
-            {
-              "qNum": "Q2 (i)",
-              "title": "Find k for Infinitely Many Solutions (Part 1)",
-              "equation": "(k - 3)x + 3y = k  and  kx + ky = 12",
-              "marksAwarded": 2.5,
-              "maxMarks": 3,
-              "status": "Almost Full Marks (Lost 0.5 Mark)",
-              "whyDeducted": "விடை k = 6 என்பது 100% சரி! ஆனால் போர்டு எக்ஸாம் ரூப்ரிக்கின்படி b1/b2 = c1/c2 பகுதியையும் சமன்படுத்தி காட்டியிருக்க வேண்டும்.",
-              "modelAnswer": "Step 1: Condition for Infinitely Many Solutions:\n  a1/a2 = b1/b2 = c1/c2\n\nStep 2: Substitute coefficients:\n  (k - 3)/k = 3/k = k/12\n\nStep 3: Equate first two ratios (since k != 0):\n  (k - 3)/k = 3/k => k - 3 = 3 => k = 6\n\nStep 4: Equate second and third ratios for verification:\n  3/k = k/12 => k^2 = 36 => k = +-6\n\nStep 5: Common Solution:\n  Common value satisfying all three ratios is k = 6.\n  (Checking: 3/6 = 3/6 = 6/12 = 1/2 - Verified!)."
-            },
-            {
-              "qNum": "Q2 (ii)",
-              "title": "Find k for Infinitely Many Solutions (Part 2)",
-              "equation": "kx + 3y = k - 3  and  12x + ky = k",
-              "marksAwarded": 1,
-              "maxMarks": 3,
-              "status": "Wrong / Copy Slip (Lost 2 Marks)",
-              "whyDeducted": "ரோமன் எண் (ii) என்பதை கேள்வியின் kx-உடன் சேர்த்து 2kx என்று அவசரத்தில் தவறாகப் பார்த்துவிட்டான். அதனால் 2k/12 = 3/k => k = 3*sqrt(2) என்று விடை மாறிவிட்டது. கேள்வியை கவனமாகப் பார்த்து k/12 என்று போட்டிருந்தால் முழு மதிப்பெண் கிடைத்திருக்கும்.",
-              "modelAnswer": "Step 1: Condition for Infinitely Many Solutions:\n  a1/a2 = b1/b2 = c1/c2\n\nStep 2: Substitute coefficients:\n  k/12 = 3/k = (k - 3)/k\n\nStep 3: Equate first two ratios:\n  k/12 = 3/k => k^2 = 36 => k = 6 or k = -6\n\nStep 4: Equate second and third ratios:\n  3/k = (k - 3)/k => 3 = k - 3 => k = 6\n\nStep 5: Final Conclusion:\n  The common value of k satisfying all ratios is k = 6."
-            }
-          ]
+          "test": "Day 2 Night Test: Maths (14/15) + English (11.5/15)",
+          "maxMarks": 30,
+          "scoredMarks": 25.5,
+          "percentage": 85,
+          "status": "Verified & Locked (25.5/30)",
+          "feedback": "Maths: 14.0/15 (93.3%) | English: 11.5/15 (76.7%). Excellent work in Maths! Fix minor spelling & past tense slips in English."
         },
         {
+          "day": 1,
           "date": "2026-10-28",
           "test": "Day 1 Science: Acids, Bases & Salts (Home Night Test)",
           "maxMarks": 15,
           "scoredMarks": 14,
           "percentage": 93.3,
-          "status": "Evaluated (14/15)",
-          "paperPhoto": null,
-          "feedback": "Strong grip on chemical reactions & pH scale. Tamil deferred to revision buffer.",
-          "strengths": [
-            "Balanced Chemical Equations",
-            "Accurate pH scale explanation",
-            "Pop-sound hydrogen gas identification"
-          ],
-          "weaknesses": [
-            "Write physical state symbols (s, l, g, aq) consistently in all equations"
-          ]
-        },
-        {
-          "date": "2026-10-25",
-          "test": "Maths: Real Numbers Diagnostic",
-          "maxMarks": 30,
-          "scoredMarks": 27,
-          "percentage": 90,
-          "status": "Excellent"
-        },
-        {
-          "date": "2026-10-26",
-          "test": "Science: Chemical Reactions",
-          "maxMarks": 30,
-          "scoredMarks": 26,
-          "percentage": 86.7,
-          "status": "Good"
+          "status": "Evaluated & Locked (14/15)",
+          "feedback": "Strong grip on chemical reactions & pH scale. Tamil deferred to revision buffer."
         }
       ],
       "strengths": [
@@ -6024,6 +5957,149 @@
       "laps": [],
       "nightAlarmTime": "20:30",
       "alarmLabel": "🔔 8:30 PM Night Test Alarm"
+    }
+  },
+  "evaluatedSheets": {
+    "1": {
+      "day": 1,
+      "date": "2026-10-28",
+      "title": "Day 1 Night Assessment: Science (Acids, Bases & Salts) + Tamil (Deferred)",
+      "totalMaxMarks": 30,
+      "effectiveMaxMarks": 15,
+      "totalAchievedMarks": 14,
+      "percentage": 93.3,
+      "isLocked": true,
+      "uploadedAt": "2026-10-28T21:30:00+05:30",
+      "uploadedPagesCount": 4,
+      "audioSummary": "Pranav scored 14 out of 15 (93.3%) in Day 1 Science (Acids, Bases & Salts). All chemical equations, pH scale concepts, and pop sound hydrogen test were answered accurately. Only 1 mark lost for missing physical state symbols (s, l, g, aq). Tamil portion was deferred to the Revision Buffer.",
+      "subject1": {
+        "name": "Science (Ch 2: Acids, Bases & Salts)",
+        "subKey": "science",
+        "maxMarks": 15,
+        "achievedMarks": 14,
+        "percentage": 93.3,
+        "status": "Excellent",
+        "correctItems": [
+          "Balanced Chemical Equations: Zn + 2HCl → ZnCl₂ + H₂↑ written with accurate reactants and products.",
+          "Pop-Sound Hydrogen Gas Test & pH Scale: Explained tooth decay (pH < 5.5) and basic nature of toothpaste accurately.",
+          "Plaster of Paris & Bleaching Powder: Chemical formulas (CaSO₄·½H₂O and CaOCl₂) and preparation equations written clearly."
+        ],
+        "wrongItems": [],
+        "partialOrImproveItems": [
+          {
+            "qNum": "Chemical Equations State Symbols [-1.0 Mark]",
+            "question": "Write balanced chemical equations with physical state symbols for Acid-Metal reaction and Chlor-Alkali process.",
+            "whatWrote": "Wrote the balanced chemical formulas and coefficients accurately, but omitted physical state symbols like (s), (aq), (l), (g) in two equations.",
+            "betterAnswer": "Always include physical states in brackets for CBSE Board exams: e.g., 2NaCl(aq) + 2H₂O(l) → 2NaOH(aq) + Cl₂(g) + H₂(g)."
+          }
+        ]
+      },
+      "subject2": {
+        "name": "Tamil (இயல் 5: மணற்கேணி — Deferred to Buffer)",
+        "subKey": "tamil",
+        "maxMarks": 15,
+        "achievedMarks": null,
+        "percentage": null,
+        "status": "Deferred (Out of Syllabus on Day 1)",
+        "correctItems": [],
+        "wrongItems": [],
+        "partialOrImproveItems": [
+          {
+            "qNum": "Note on Tamil Portion",
+            "question": "Tamil Unit 5 realignment",
+            "whatWrote": "Skipped on Day 1 because initial question paper had Unit 4 (out of SRM Revision-1 syllabus).",
+            "betterAnswer": "Realigned to Unit 5, 6, 7 in Revision Buffer Days."
+          }
+        ]
+      }
+    },
+    "2": {
+      "day": 2,
+      "date": "2026-10-29",
+      "title": "Day 2 Night Assessment: Mathematics (Polynomials & Linear Equations) + English (Mijbil & Formal Letter)",
+      "totalMaxMarks": 30,
+      "effectiveMaxMarks": 30,
+      "totalAchievedMarks": 25.5,
+      "percentage": 85,
+      "isLocked": true,
+      "uploadedAt": "2026-10-29T21:45:00+05:30",
+      "uploadedPagesCount": 11,
+      "audioSummary": "வணக்கம் பிரணவ்! Day 2 இரவுத் தேர்வில் 30-க்கு 25.5 மார்க் (85%) வாங்கியிருக்கிறாய்! Maths-ல் 15-க்கு 14 மார்க் (93.3%) — ரொம்பவே சூப்பர்! Q1, Q3, Q4 மூன்றிலும் 100% Full Marks. Q2-ல் Infinitely many solutions ratio எழுதிட்டு, k=6-ஐ algebra-வில் solve பண்ணாமல் நேரடியாக substitute பண்ணியதால் 0.5 மார்க்கும், Q5-ல் x=1, y=8 கண்டுபிடித்துவிட்டு கடைசியில் Required two-digit number = 18 என்று Final conclusion எழுத மறந்ததால் 0.5 மார்க்கும் குறைந்தது. English-ல் 15-க்கு 11.5 மார்க் (76.7%). Letter to Editor format மற்றும் எல்லா கேள்விகளின் key points சூப்பராக எழுதியிருக்கிறாய். ஆனால் calm-க்கு clam, columns-க்கு colums, surveillance, penalty, breaks போன்ற 7 Spelling mistakes மற்றும் Past tense-ல் சின்னத் தவறுகள் இருந்ததால் 3.5 மார்க் குறைந்தது. இதை மட்டும் கவனித்தால் அடுத்த டெஸ்டில் 30-க்கு 30 நிச்சயம்!",
+      "subject1": {
+        "name": "Mathematics (Polynomials & Linear Equations)",
+        "subKey": "maths",
+        "maxMarks": 15,
+        "achievedMarks": 14,
+        "percentage": 93.3,
+        "status": "Excellent",
+        "correctItems": [
+          "Q1 [1 / 1 Mark]: In x² + 3x + k = 0, substituted zero x = 2 directly ⇒ (2)² + 3(2) + k = 0 ⇒ 4 + 6 + k = 0 ⇒ k = -10. (100% Correct)",
+          "Q3 [3 / 3 Marks]: For p(x) = 2x² - 5x + 7, applied Sum of zeroes (α + β = 5/2) and Product of zeroes (αβ = 7/2) to solve both sub-divisions accurately: (i) α² + β² = (α + β)² - 2αβ = -3/4 and (ii) (1/α) + (1/β) = (α + β)/αβ = 5/7. (100% Perfect)",
+          "Q4 [4 / 4 Marks]: Solved 2x + 3y = 11 and 2x - 4y = -24 using Elimination Method to get y = 5 and x = -2. Substituted in y = mx + 3 ⇒ 5 = m(-2) + 3 ⇒ m = -1. Verified in rough column! (100% Spotless)"
+        ],
+        "wrongItems": [],
+        "partialOrImproveItems": [
+          {
+            "qNum": "Q2 [1.5 / 2 Marks — 0.5 Mark Deducted]",
+            "question": "Find the value of k for which kx + 3y = k - 3 and 12x + ky = k has infinitely many solutions.",
+            "whatWrote": "Wrote the Infinitely Many Solutions condition (a₁/a₂ = b₁/b₂ = c₁/c₂) correctly (1 Mark). However, instead of solving the ratios algebraically, guessed k = 6 in the rough margin (trial & error) and wrote 'If we sub 6 in place of k' to verify 1/2 = 1/2 = 1/2.",
+            "betterAnswer": "Step 1: Substitute coefficients in ratio: k/12 = 3/k = (k - 3)/k\nStep 2: Equate first two ratios (k/12 = 3/k) and cross-multiply: k² = 36 ⇒ k = ±6.\nStep 3: Equate last two ratios (3/k = (k - 3)/k): 3 = k - 3 ⇒ k = 6.\nStep 4: Common value satisfying both conditions is k = 6."
+          },
+          {
+            "qNum": "Q5 [4.5 / 5 Marks — 0.5 Mark Deducted]",
+            "question": "Two-digit number word problem: x + y = 9 and 9(10x + y) = 2(10y + x). Find the number.",
+            "whatWrote": "Formed the Linear Equation 9(10x + y) = 2(10y + x) properly, simplified to 88x = 11y ⇒ y = 8x, and solved x = 1 and y = 8 accurately. Stopped at x = 1, y = 8 without writing the final two-digit number 18.",
+            "betterAnswer": "1. Start by defining variables: 'Let tens digit = x and units digit = y, Original Number = 10x + y'.\n2. At the end, substitute x = 1 and y = 8 to write the Final Conclusion Statement: 'Therefore, the required two-digit number = 10x + y = 10(1) + 8 = 18' (Carries 0.5 Mark in CBSE Board marking scheme)."
+          }
+        ]
+      },
+      "subject2": {
+        "name": "English (Mijbil the Otter & Formal Letter)",
+        "subKey": "english",
+        "maxMarks": 15,
+        "achievedMarks": 11.5,
+        "percentage": 76.7,
+        "status": "Good",
+        "correctItems": [
+          "Q9 Formal Letter Format [2 / 2 Marks]: Sender's Address (42, Green Avenue, SRM Nagar), Date (29th October, 2026), Receiver's Address (The Editor), Subject, Salutation (Sir/Madam), CBSE standard opening ('Through the columns of your esteemed daily...'), and Sign-off ('Yours faithfully, Pranav Jothi') — CBSE Format 100% Correct!",
+          "Content & Key Points (Q6, Q7, Q8, Q9): Covered all main NCERT textbook points — Camusfearna water streams, Aeroplane rat scene, Broken suitcase slope game, and Traffic safety measures (speed bumps, zebra crossing, police surveillance, heavy penalties)."
+        ],
+        "wrongItems": [
+          "1. ❌ 'clam' (Q7) ➔ ✅ calm (Spelling mistake)",
+          "2. ❌ 'in his feed' (Q7) ➔ ✅ on his knees / feet (Spelling & phrase mistake)",
+          "3. ❌ 'The Hindhu' (Q9) ➔ ✅ The Hindu (Spelling mistake)",
+          "4. ❌ 'colums' (Q9) ➔ ✅ columns (Spelling mistake)",
+          "5. ❌ 'surveilance' (Q9) ➔ ✅ surveillance (Spelling mistake)",
+          "6. ❌ 'penality' (Q9) ➔ ✅ penalty (Spelling mistake)",
+          "7. ❌ 'breakes' (Q9) ➔ ✅ breaks (Spelling mistake)"
+        ],
+        "partialOrImproveItems": [
+          {
+            "qNum": "Q6 [1.5 / 2 Marks — 0.5 Mark Deducted]",
+            "question": "Why did Gavin Maxwell decide to keep an otter instead of a dog as a pet after visiting Camusfearna?",
+            "whatWrote": "Wrote 'Gavin Maxwell choose otter... otters likes water' — Literature answers must be in Past Tense ('chose an otter') and follow Subject-Verb Agreement ('otters like water'). Also missed mentioning his pet dog Jonnie's death.",
+            "betterAnswer": "After his pet dog Jonnie died, Gavin Maxwell felt too sad to keep another dog. Since Camusfearna was ringed by water at a stone's throw from its door, he chose to keep an otter because otters love water."
+          },
+          {
+            "qNum": "Q7 [2.0 / 3 Marks — 1.0 Mark Deducted]",
+            "question": "Describe the frantic scene inside the aeroplane when the box carrying Mijbil was opened.",
+            "whatWrote": "Wrote 'The air hostess was clam... Max was to be carry Mijil in his feed' — Fix spelling ('calm') and grammar ('advised to keep Mijbil on his knees'), and include the curry incident.",
+            "betterAnswer": "When Mijbil escaped from the box, he ran down the aircraft. Passengers panicked and a woman stood on her seat screaming, 'A rat! A rat!' Maxwell dived to catch him, getting his face covered in curry. The calm and friendly air hostess advised Maxwell to keep Mijbil on his knees."
+          },
+          {
+            "qNum": "Q8 [2.5 / 3 Marks — 0.5 Mark Deducted]",
+            "question": "How did Mijbil spend most of his time in play? Describe the games he invented and his reaction to water.",
+            "whatWrote": "Mixed Present tense and Past tense ('he keeps the ball... and ambush to it... He splash the water' ➔ kept, ambushed, splashed).",
+            "betterAnswer": "Mijbil spent most of his time playing with rubber balls and juggling marbles on his belly. He placed a ping-pong ball on the sloping lid of the damaged suitcase and dashed to the other end to ambush it. In the bathroom, he went wild with joy, plunging, rolling, and splashing water everywhere."
+          },
+          {
+            "qNum": "Q9 [5.5 / 7 Marks — 1.5 Marks Deducted]",
+            "question": "Letter to the Editor on reckless driving and traffic congestion near school zones.",
+            "whatWrote": "1) ❌ 'This will be risk for the students who cross the roads and walks beside the road.'\n2) ❌ 'impose heavy penality who breakes the rules.'\n3) ❌ 'make the place new changes.'",
+            "betterAnswer": "1) ✅ 'This poses a severe risk to students who cross and walk along the roads.'\n2) ✅ 'impose heavy penalties on those who break traffic rules.'\n3) ✅ 'help bring about strict safety measures.'"
+          }
+        ]
+      }
     }
   }
 }

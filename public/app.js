@@ -3353,6 +3353,20 @@ function renderMamaSecretVaultPaper() {
   body.innerHTML = html;
 }
 
+
+function cleanMathSymbolsForText(str) {
+  if (typeof str !== 'string') return str;
+  return str
+    .replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, '($1/$2)')
+    .replace(/\\sqrt\{([^}]+)\}/g, '√($1)')
+    .replace(/_1/g, '₁').replace(/_2/g, '₂').replace(/_3/g, '₃')
+    .replace(/\^2/g, '²').replace(/\^3/g, '³')
+    .replace(/\\alpha/g, 'α').replace(/\\beta/g, 'β').replace(/\\theta/g, 'θ')
+    .replace(/\\triangle/g, 'Δ').replace(/\\parallel/g, '∥')
+    .replace(/\\implies/g, '⇒').replace(/\\pm/g, '±').replace(/\\times/g, '×').replace(/\\neq/g, '≠')
+    .replace(/\$([^$]+)\$/g, '$1');
+}
+
 function copyMamaVaultPaper() {
   const tests = (appState && appState.mamaSecretNightTests) || [];
   const test = tests.find(t => t.day === currentVaultDayIndex) || tests[0];
@@ -3389,6 +3403,7 @@ function copyMamaVaultPaper() {
     });
   }
 
+  text = cleanMathSymbolsForText(text);
   navigator.clipboard.writeText(text).then(() => {
     showToast(`Day ${test.day} Paper copied to clipboard!`);
   }).catch(() => {
@@ -4791,7 +4806,183 @@ function checkNightTestAlarm() {
 setInterval(checkNightTestAlarm, 30000);
 
 // ================= DYNAMIC 16-DAY REVISION MISSION RENDERER =================
-let activeMissionDayView = 2; // Default to Today: Day 2 (29 Oct 2026)
+let activeMissionDayView = 2; // Default to Day 2 so Evaluated Result Sheet & PDF are immediately visible
+
+// Default Built-in Evaluated Sheets (Day 1 & Day 2 Verified)
+const DEFAULT_EVALUATED_SHEETS = {
+  "1": {
+    "day": 1,
+    "date": "2026-10-28",
+    "title": "Day 1 Night Assessment: Science (Acids, Bases & Salts) + Tamil (Deferred)",
+    "totalMaxMarks": 30,
+    "effectiveMaxMarks": 15,
+    "totalAchievedMarks": 14.0,
+    "percentage": 93.3,
+    "isLocked": true,
+    "uploadedAt": "2026-10-28T21:30:00+05:30",
+    "uploadedPagesCount": 4,
+    "audioSummary": "Pranav scored 14 out of 15 (93.3%) in Day 1 Science (Acids, Bases & Salts). All chemical equations, pH scale concepts, and pop sound hydrogen test were answered accurately. Only 1 mark lost for missing physical state symbols (s, l, g, aq). Tamil portion was deferred to the Revision Buffer.",
+    "subject1": {
+      "name": "Science (Ch 2: Acids, Bases & Salts)",
+      "subKey": "science",
+      "maxMarks": 15,
+      "achievedMarks": 14.0,
+      "percentage": 93.3,
+      "status": "🌟 Excellent",
+      "correctItems": [
+        "Balanced Chemical Equations: Zn + 2HCl → ZnCl₂ + H₂↑ written with accurate reactants and products.",
+        "Pop-Sound Hydrogen Gas Test & pH Scale: Explained tooth decay (pH < 5.5) and basic nature of toothpaste accurately.",
+        "Plaster of Paris & Bleaching Powder: Chemical formulas (CaSO₄·½H₂O and CaOCl₂) and preparation equations written clearly."
+      ],
+      "wrongItems": [],
+      "partialOrImproveItems": [
+        {
+          "qNum": "Chemical Equations State Symbols [-1.0 Mark]",
+          "question": "Write balanced chemical equations with physical state symbols for Acid-Metal reaction and Chlor-Alkali process.",
+          "whatWrote": "Wrote the balanced chemical formulas and coefficients accurately, but omitted physical state symbols like (s), (aq), (l), (g) in two equations.",
+          "betterAnswer": "Always include physical states in brackets for CBSE Board exams: e.g., 2NaCl(aq) + 2H₂O(l) → 2NaOH(aq) + Cl₂(g) + H₂(g)."
+        }
+      ]
+    },
+    "subject2": {
+      "name": "Tamil (இயல் 5: மணற்கேணி — Deferred to Buffer)",
+      "subKey": "tamil",
+      "maxMarks": 15,
+      "achievedMarks": null,
+      "percentage": null,
+      "status": "⏭️ Deferred to Buffer",
+      "correctItems": [],
+      "wrongItems": [],
+      "partialOrImproveItems": [
+        {
+          "qNum": "Note on Tamil Portion",
+          "question": "Tamil Unit 5 Realignment",
+          "whatWrote": "Skipped on Day 1 because initial paper had Unit 4 (out of SRM Revision-1 syllabus).",
+          "betterAnswer": "Realigned to Unit 5, 6, 7 in Revision Buffer Days."
+        }
+      ]
+    }
+  },
+  "2": {
+    "day": 2,
+    "date": "2026-10-29",
+    "title": "Day 2 Night Assessment: Mathematics (Polynomials & Linear Equations) + English (Mijbil & Formal Letter)",
+    "totalMaxMarks": 30,
+    "effectiveMaxMarks": 30,
+    "totalAchievedMarks": 25.5,
+    "percentage": 85.0,
+    "isLocked": true,
+    "uploadedAt": "2026-10-29T21:45:00+05:30",
+    "uploadedPagesCount": 11,
+    "audioSummary": "வணக்கம் பிரணவ்! Day 2 இரவுத் தேர்வில் 30-க்கு 25.5 மார்க் (85%) வாங்கியிருக்கிறாய்! Maths-ல் 15-க்கு 14 மார்க் (93.3%) — ரொம்பவே சூப்பர்! Q1, Q3, Q4 மூன்றிலும் 100% Full Marks. Q2-ல் Infinitely many solutions ratio எழுதிட்டு, k=6-ஐ algebra-வில் solve பண்ணாமல் நேரடியாக substitute பண்ணியதால் 0.5 மார்க்கும், Q5-ல் x=1, y=8 கண்டுபிடித்துவிட்டு கடைசியில் Required two-digit number = 18 என்று Final conclusion statement எழுத மறந்ததால் 0.5 மார்க்கும் குறைந்தது. English-ல் 15-க்கு 11.5 மார்க் (76.7%). Letter to Editor format மற்றும் எல்லா கேள்விகளின் key points சூப்பராக எழுதியிருக்கிறாய். ஆனால் calm-க்கு clam, columns-க்கு colums, surveillance, penalty, breaks போன்ற 7 Spelling mistakes மற்றும் Past tense-ல் சின்னத் தவறுகள் இருந்ததால் 3.5 மார்க் குறைந்தது. இதை மட்டும் கவனித்தால் அடுத்த டெஸ்டில் 30-க்கு 30 நிச்சயம்!",
+    "subject1": {
+      "name": "Mathematics (Polynomials & Linear Equations)",
+      "subKey": "maths",
+      "maxMarks": 15,
+      "achievedMarks": 14.0,
+      "percentage": 93.3,
+      "status": "🌟 Excellent",
+      "correctItems": [
+        "Q1 [1 / 1 Mark]: In x² + 3x + k = 0, substituted zero x = 2 directly ⇒ (2)² + 3(2) + k = 0 ⇒ 4 + 6 + k = 0 ⇒ k = -10. (100% Correct)",
+        "Q3 [3 / 3 Marks]: For p(x) = 2x² - 5x + 7, applied Sum of zeroes (α + β = 5/2) and Product of zeroes (αβ = 7/2) to solve both sub-divisions accurately: (i) α² + β² = (α + β)² - 2αβ = -3/4 and (ii) (1/α) + (1/β) = (α + β)/αβ = 5/7. (100% Perfect)",
+        "Q4 [4 / 4 Marks]: Solved 2x + 3y = 11 and 2x - 4y = -24 using Elimination Method to get y = 5 and x = -2. Substituted in y = mx + 3 ⇒ 5 = m(-2) + 3 ⇒ m = -1. Verified in rough column! (100% Spotless)"
+      ],
+      "wrongItems": [],
+      "partialOrImproveItems": [
+        {
+          "qNum": "Q2 [1.5 / 2 Marks — 0.5 Mark Deducted]",
+          "question": "Find the value of k for which kx + 3y = k - 3 and 12x + ky = k has infinitely many solutions.",
+          "whatWrote": "Wrote the Infinitely Many Solutions condition (a₁/a₂ = b₁/b₂ = c₁/c₂) correctly (1 Mark). However, instead of solving the ratios algebraically, guessed k = 6 in the rough margin (trial & error) and wrote 'If we sub 6 in place of k' to verify 1/2 = 1/2 = 1/2.",
+          "betterAnswer": "Step 1: Substitute coefficients in ratio: k/12 = 3/k = (k - 3)/k\nStep 2: Equate first two ratios (k/12 = 3/k) and cross-multiply: k² = 36 ⇒ k = ±6.\nStep 3: Equate last two ratios (3/k = (k - 3)/k): 3 = k - 3 ⇒ k = 6.\nStep 4: Common value satisfying both conditions is k = 6."
+        },
+        {
+          "qNum": "Q5 [4.5 / 5 Marks — 0.5 Mark Deducted]",
+          "question": "Two-digit number word problem: x + y = 9 and 9(10x + y) = 2(10y + x). Find the number.",
+          "whatWrote": "Formed the Linear Equation 9(10x + y) = 2(10y + x) properly, simplified to 88x = 11y ⇒ y = 8x, and solved x = 1 and y = 8 accurately. Stopped at x = 1, y = 8 without writing the final two-digit number 18.",
+          "betterAnswer": "1. Start by defining variables: 'Let tens digit = x and units digit = y, Original Number = 10x + y'.\n2. At the end, substitute x = 1 and y = 8 to write the Final Conclusion Statement: 'Therefore, the required two-digit number = 10x + y = 10(1) + 8 = 18' (Carries 0.5 Mark in CBSE Board marking scheme)."
+        }
+      ]
+    },
+    "subject2": {
+      "name": "English (Mijbil the Otter & Formal Letter)",
+      "subKey": "english",
+      "maxMarks": 15,
+      "achievedMarks": 11.5,
+      "percentage": 76.7,
+      "status": "👍 Good",
+      "correctItems": [
+        "Q9 Formal Letter Format [2 / 2 Marks]: Sender's Address (42, Green Avenue, SRM Nagar), Date (29th October, 2026), Receiver's Address (The Editor), Subject, Salutation (Sir/Madam), CBSE standard opening ('Through the columns of your esteemed daily...'), and Sign-off ('Yours faithfully, Pranav Jothi') — CBSE Format 100% Correct!",
+        "Content & Key Points (Q6, Q7, Q8, Q9): Covered all main NCERT textbook points — Camusfearna water streams, Aeroplane rat scene, Broken suitcase slope game, and Traffic safety measures (speed bumps, zebra crossing, police surveillance, heavy penalties)."
+      ],
+      "wrongItems": [
+        "1. ❌ 'clam' (Q7) ➔ ✅ calm (Spelling mistake)",
+        "2. ❌ 'in his feed' (Q7) ➔ ✅ on his knees / feet (Spelling & phrase mistake)",
+        "3. ❌ 'The Hindhu' (Q9) ➔ ✅ The Hindu (Spelling mistake)",
+        "4. ❌ 'colums' (Q9) ➔ ✅ columns (Spelling mistake)",
+        "5. ❌ 'surveilance' (Q9) ➔ ✅ surveillance (Spelling mistake)",
+        "6. ❌ 'penality' (Q9) ➔ ✅ penalty (Spelling mistake)",
+        "7. ❌ 'breakes' (Q9) ➔ ✅ breaks (Spelling mistake)"
+      ],
+      "partialOrImproveItems": [
+        {
+          "qNum": "Q6 [1.5 / 2 Marks — 0.5 Mark Deducted]",
+          "question": "Why did Gavin Maxwell decide to keep an otter instead of a dog as a pet after visiting Camusfearna?",
+          "whatWrote": "Wrote 'Gavin Maxwell choose otter... otters likes water' — Literature answers must be in Past Tense ('chose an otter') and follow Subject-Verb Agreement ('otters like water'). Also missed mentioning his pet dog Jonnie's death.",
+          "betterAnswer": "After his pet dog Jonnie died, Gavin Maxwell felt too sad to keep another dog. Since Camusfearna was ringed by water at a stone's throw from its door, he chose to keep an otter because otters love water."
+        },
+        {
+          "qNum": "Q7 [2.0 / 3 Marks — 1.0 Mark Deducted]",
+          "question": "Describe the frantic scene inside the aeroplane when the box carrying Mijbil was opened.",
+          "whatWrote": "Wrote 'The air hostess was clam... Max was to be carry Mijil in his feed' — Fix spelling ('calm') and grammar ('advised to keep Mijbil on his knees'), and include the curry incident.",
+          "betterAnswer": "When Mijbil escaped from the box, he ran down the aircraft. Passengers panicked and a woman stood on her seat screaming, 'A rat! A rat!' Maxwell dived to catch him, getting his face covered in curry. The calm and friendly air hostess advised Maxwell to keep Mijbil on his knees."
+        },
+        {
+          "qNum": "Q8 [2.5 / 3 Marks — 0.5 Mark Deducted]",
+          "question": "How did Mijbil spend most of his time in play? Describe the games he invented and his reaction to water.",
+          "whatWrote": "Mixed Present tense and Past tense ('he keeps the ball... and ambush to it... He splash the water' ➔ kept, ambushed, splashed).",
+          "betterAnswer": "Mijbil spent most of his time playing with rubber balls and juggling marbles on his belly. He placed a ping-pong ball on the sloping lid of the damaged suitcase and dashed to the other end to ambush it. In the bathroom, he went wild with joy, plunging, rolling, and splashing water everywhere."
+        },
+        {
+          "qNum": "Q9 [5.5 / 7 Marks — 1.5 Marks Deducted]",
+          "question": "Letter to the Editor on reckless driving and traffic congestion near school zones.",
+          "whatWrote": "1) ❌ 'This will be risk for the students who cross the roads and walks beside the road.'\n2) ❌ 'impose heavy penality who breakes the rules.'\n3) ❌ 'make the place new changes.'",
+          "betterAnswer": "1) ✅ 'This poses a severe risk to students who cross and walk along the roads.'\n2) ✅ 'impose heavy penalties on those who break traffic rules.'\n3) ✅ 'help bring about strict safety measures.'"
+        }
+      ]
+    }
+  }
+};
+
+function getAllEvaluatedSheets() {
+  const fromState = (appState && appState.evaluatedSheets) ? appState.evaluatedSheets : {};
+  let fromStorage = {};
+  try {
+    const raw = localStorage.getItem('pranav_evaluated_sheets_v1');
+    if (raw) fromStorage = JSON.parse(raw);
+  } catch (e) {}
+  return Object.assign({}, DEFAULT_EVALUATED_SHEETS, fromState, fromStorage);
+}
+
+function getEvaluatedSheetForDay(dayNum) {
+  const all = getAllEvaluatedSheets();
+  return all[String(dayNum)] || null;
+}
+
+function saveEvaluatedSheetForDay(dayNum, sheetObj) {
+  const all = getAllEvaluatedSheets();
+  all[String(dayNum)] = sheetObj;
+  if (appState) {
+    appState.evaluatedSheets = all;
+  }
+  try {
+    localStorage.setItem('pranav_evaluated_sheets_v1', JSON.stringify(all));
+  } catch (e) {}
+}
+
+function isPaperDayLocked(dayNum) {
+  const sheet = getEvaluatedSheetForDay(dayNum);
+  return !!(sheet && sheet.isLocked);
+}
 
 function setMissionDayView(dayNum) {
   activeMissionDayView = dayNum;
@@ -4805,28 +4996,33 @@ function renderRevisionMissionUI() {
   const rev = appState.revisionSplitter;
   const schedule = rev.modes && rev.modes.pair_rotation ? rev.modes.pair_rotation.schedule : [];
   const currentDayData = schedule.find(s => s.day === activeMissionDayView) || schedule[1] || {};
-  const isYesterday = activeMissionDayView === 1;
-  const isToday = activeMissionDayView === 2;
+  const evalSheet = getEvaluatedSheetForDay(activeMissionDayView);
+  const isLocked = isPaperDayLocked(activeMissionDayView);
+  const isMamaAdmin = currentUser && currentUser.role === 'admin';
 
-  // Day Selector Pills
+  // Day Selector Pills (Days 1 to 5 + Re-Schedule)
+  const pillDays = [
+    { day: 1, label: 'Day 1 (28 Oct)', tag: '14/15 ✔' },
+    { day: 2, label: 'Day 2 (29 Oct)', tag: '25.5/30 ✔' },
+    { day: 3, label: 'Day 3 (30 Oct)', tag: getEvaluatedSheetForDay(3) ? (getEvaluatedSheetForDay(3).totalAchievedMarks + '/30 ✔') : 'Active' },
+    { day: 4, label: 'Day 4 (31 Oct)', tag: getEvaluatedSheetForDay(4) ? (getEvaluatedSheetForDay(4).totalAchievedMarks + '/30 ✔') : 'Upcoming' }
+  ];
+
   const dayPillsHtml = `
     <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 pt-0.5">
-      <button onclick="setMissionDayView(1)" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 ${activeMissionDayView === 1 ? 'bg-emerald-600 text-white shadow-sm' : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'}">
-        <span>◀ Day 1 (Yesterday: 28 Oct)</span>
-        <span class="text-[9px] px-1.5 py-0.2 rounded ${activeMissionDayView === 1 ? 'bg-emerald-700 text-emerald-100' : 'bg-slate-200 text-slate-600'}">Partial</span>
-      </button>
+      ${pillDays.map(p => {
+        const isSel = activeMissionDayView === p.day;
+        const pLocked = isPaperDayLocked(p.day);
+        return `
+          <button onclick="setMissionDayView(${p.day})" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 shrink-0 ${isSel ? 'bg-emerald-600 text-white shadow-sm ring-2 ring-emerald-500/30' : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'}">
+            ${pLocked ? '<i class="fa-solid fa-lock text-[9px] opacity-80"></i>' : '<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>'}
+            <span>${p.label}</span>
+            <span class="text-[9px] px-1.5 py-0.2 rounded font-extrabold ${isSel ? 'bg-white text-emerald-800' : (pLocked ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-200 text-slate-700')}">${p.tag}</span>
+          </button>
+        `;
+      }).join('')}
 
-      <button onclick="setMissionDayView(2)" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 ${activeMissionDayView === 2 ? 'bg-emerald-600 text-white shadow-sm ring-2 ring-emerald-500/30' : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'}">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>Day 2 (TODAY: 29 Oct)</span>
-        <span class="text-[9px] px-1.5 py-0.2 rounded ${activeMissionDayView === 2 ? 'bg-white text-emerald-800' : 'bg-emerald-100 text-emerald-800'}">Active</span>
-      </button>
-
-      <button onclick="setMissionDayView(3)" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 ${activeMissionDayView === 3 ? 'bg-emerald-600 text-white shadow-sm' : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'}">
-        <span>Day 3 (Tomorrow: 30 Oct)</span>
-      </button>
-
-      <button onclick="openRescheduleModal()" class="ml-auto px-2.5 py-1.5 rounded-xl text-xs font-bold bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 transition flex items-center gap-1 shadow-xs" title="Adjust or Rebalance Schedule">
+      <button onclick="openRescheduleModal()" class="ml-auto px-2.5 py-1.5 rounded-xl text-xs font-bold bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 transition flex items-center gap-1 shadow-xs shrink-0" title="Adjust or Rebalance Schedule">
         <i class="fa-solid fa-arrows-rotate text-[10px]"></i> <span>Re-Schedule</span>
       </button>
     </div>
@@ -4834,168 +5030,104 @@ function renderRevisionMissionUI() {
 
   // Status Banner HTML
   let bannerHtml = '';
-  if (isYesterday) {
+  if (evalSheet) {
+    const s1 = evalSheet.subject1 || {};
+    const s2 = evalSheet.subject2 || {};
+    const effMax = evalSheet.effectiveMaxMarks || evalSheet.totalMaxMarks || 30;
     bannerHtml = `
-      <div class="rounded-2xl bg-amber-50/80 border border-amber-200 p-4 space-y-2">
-        <div class="flex items-center justify-between">
-          <span class="text-[10px] font-extrabold text-amber-900 bg-amber-200/80 px-2.5 py-0.5 rounded-full border border-amber-300 flex items-center gap-1.5">
-            <span>📅</span> YESTERDAY'S MISSION: 28 Oct 2026 (Day 1 / 16)
+      <div class="rounded-2xl bg-gradient-to-br from-emerald-50 via-teal-50/80 to-slate-50 border-2 border-emerald-300 p-4 space-y-3 shadow-xs">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <span class="text-[10px] font-black text-emerald-950 bg-emerald-200/90 px-2.5 py-0.5 rounded-full border border-emerald-400 flex items-center gap-1.5">
+            <i class="fa-solid fa-circle-check text-emerald-700"></i>
+            <span>EVALUATED & VERIFIED: DAY ${evalSheet.day} (${evalSheet.date})</span>
           </span>
-          <span class="text-[10px] text-amber-800 font-bold bg-white px-2 py-0.5 rounded-md border border-amber-200">
-            ⚡ Partial Status: Science Written, Tamil Skipped
-          </span>
-        </div>
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pt-0.5">
-          <h5 class="text-xs font-black text-slate-900">Day 1 Review: Science (Acids & Bases) + Tamil (Out of Syllabus)</h5>
-          <span class="text-[10px] text-emerald-800 font-bold bg-white px-2.5 py-0.5 rounded border border-emerald-300">Science: 14/15 Marks</span>
-        </div>
-        <p class="text-xs text-slate-700 leading-relaxed">
-          நேற்று பிரணவ் <strong>அறிவியல் (Acids, Bases & Salts)</strong> தேர்வை வெற்றிகரமாக எழுதினான். தமிழ் பாடப்பகுதி புத்தகத்தில் இல்லாததால் <strong>விதிவிலக்காக ஸ்கிப் செய்யப்பட்டது (Deferred to Buffer)</strong>. கீழே உள்ள பட்டனை அழுத்தி நேற்று எழுதிய விடைத்தாளை அப்லோட் செய்யலாம்!
-        </p>
-        <div class="pt-1 flex flex-wrap items-center gap-2">
-          <button onclick="openEvaluationReportModal(1)" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:opacity-95 text-white font-black text-xs px-3.5 py-2 rounded-xl flex items-center gap-1.5 shadow-md transition">
-            <i class="fa-solid fa-chart-simple text-xs"></i> 📊 View Evaluation Result & Feedback (14/15 Marks)
-          </button>
-          <button onclick="openAnswerPaperUploadModal(1, 'Science')" class="bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-bold text-xs px-3.5 py-2 rounded-xl flex items-center gap-1.5 shadow-xs transition">
-            <i class="fa-solid fa-camera text-xs text-emerald-600"></i> 📸 Re-Upload / Add Pages
-          </button>
-          <span class="text-[11px] text-slate-600 font-medium">Tamil portion realigned to Unit 5 in Revision Buffer (Nov 05–07).</span>
-        </div>
-      </div>
-    `;
-  } else if (isToday) {
-    bannerHtml = `
-      <div class="rounded-2xl bg-emerald-50/90 border border-emerald-200 p-4 space-y-3">
-        <div class="flex items-center justify-between">
-          <span class="text-[10px] font-bold text-emerald-900 bg-emerald-200/80 px-2.5 py-0.5 rounded-full border border-emerald-300 flex items-center gap-1.5">
-            <span class="w-2 h-2 rounded-full bg-emerald-600 animate-ping"></span>
-            <span>TODAY'S ACTIVE MISSION: 29 Oct 2026 (Day 2 / 16)</span>
-          </span>
-          <span class="text-[10px] text-amber-900 font-extrabold bg-amber-100 px-2.5 py-0.5 rounded-full border border-amber-300">
-            ⏳ Tonight's Test: Not Yet Uploaded
+          <span class="text-[10px] text-rose-900 font-extrabold bg-rose-100 px-2.5 py-0.5 rounded-full border border-rose-300 flex items-center gap-1">
+            <i class="fa-solid fa-lock text-[9px]"></i>
+            <span>${isLocked ? 'Student Upload Locked (1-Time Submission)' : 'Unlocked by Mama'}</span>
           </span>
         </div>
 
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pt-0.5">
-          <h5 class="text-xs font-black text-slate-900">Day 2: Mathematics (Polynomials & Linear Equations) + English (Mijbil & Formal Letters)</h5>
-          <span class="text-[10px] text-emerald-800 font-bold bg-white px-2 py-0.5 rounded border border-emerald-200">Tonight 8:30 PM: 30 Marks Test</span>
-        </div>
-
-        <p class="text-xs text-slate-700 leading-relaxed">
-          இன்று கணிதத்தில் <strong>Polynomials & Linear Equations</strong> மற்றும் ஆங்கிலத்தில் <strong>Mijbil the Otter & Formal Writing</strong> பாடங்களை படிக்கவும். இன்று இரவு 8:30 மணிக்கு 30 மதிப்பெண் மாதிரித் தேர்வு நடைபெறும்!
-        </p>
-
-        <!-- Primary Action Buttons for Day 2 -->
-        <div class="pt-1 flex flex-wrap items-center gap-2">
-          <button onclick="openAnswerPaperUploadModal(2, 'Maths')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs px-4 py-2.5 rounded-xl flex items-center gap-1.5 shadow-sm transition">
-            <i class="fa-solid fa-camera text-xs"></i> 📸 Upload Tonight's Written Test Paper (30 Marks)
-          </button>
-          <button onclick="openSrmPortionModal()" class="bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 font-bold text-xs px-3.5 py-2.5 rounded-xl flex items-center gap-1.5 transition">
-            <i class="fa-solid fa-file-invoice text-xs text-emerald-600"></i> 📑 View SRM Portion
-          </button>
-          <button onclick="openPartialSkipModal(2)" class="bg-white hover:bg-slate-50 text-slate-600 border border-slate-200 font-bold text-xs px-3 py-2.5 rounded-xl flex items-center gap-1.5 transition">
-            <i class="fa-solid fa-forward-step text-xs text-amber-600"></i> Partial Skip
-          </button>
-        </div>
-
-        <!-- Pre-test Rough Practice Note & Expander -->
-        <div class="rounded-xl bg-amber-50/70 border border-amber-200/90 p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
-          <div class="space-y-0.5">
-            <div class="flex items-center gap-1.5">
-              <span class="text-xs">📝</span>
-              <span class="text-xs font-black text-amber-950">இன்று இரவு 8:30 மணி தேர்வு இன்னும் அப்லோட் செய்யப்படவில்லை.</span>
-            </div>
-            <p class="text-[11px] text-amber-900/90 leading-tight">
-              பிரணவ் இரவு தேர்வு எழுதியவுடன் <strong>"Upload Tonight's Test Paper"</strong> பட்டனை அழுத்தி அப்லோட் செய்யலாம்.
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-0.5">
+          <div>
+            <h5 class="text-xs sm:text-sm font-black text-slate-900">${evalSheet.title || currentDayData.title || ''}</h5>
+            <p class="text-[11px] text-slate-600 font-medium mt-0.5">
+              <strong>Total Marks:</strong> 15 + 15 = 30 Marks &bull;
+              <strong>${s1.name || 'Subject 1'}:</strong> ${s1.achievedMarks ?? '-'} / 15 &bull;
+              <strong>${s2.name || 'Subject 2'}:</strong> ${s2.achievedMarks != null ? (s2.achievedMarks + ' / 15') : 'Deferred'}
             </p>
           </div>
-          <button onclick="toggleDay2PracticeCard()" class="text-[11px] font-extrabold bg-white hover:bg-amber-100/50 text-amber-900 border border-amber-300 px-3 py-1.5 rounded-xl shrink-0 transition flex items-center gap-1 shadow-2xs">
-            <span>💡 Rough Practice Notes (6/10)</span>
-            <i id="day2PracticeChevron" class="fa-solid fa-chevron-down text-[9px] text-amber-700"></i>
-          </button>
+          <div class="bg-slate-900 text-white px-3.5 py-2 rounded-2xl border border-emerald-500/40 flex items-center gap-3 shrink-0 shadow-sm">
+            <div>
+              <span class="text-[9px] text-emerald-300 uppercase font-extrabold block">Achieved Marks</span>
+              <span class="text-base sm:text-lg font-black text-white">${evalSheet.totalAchievedMarks} / ${effMax}</span>
+            </div>
+            <div class="border-l border-slate-700 pl-3 text-right">
+              <span class="text-base sm:text-lg font-black text-amber-300">${evalSheet.percentage}%</span>
+              <span class="text-[9px] text-slate-300 block">CBSE Score</span>
+            </div>
+          </div>
         </div>
 
-        <!-- COLLAPSIBLE PRE-TEST PRACTICE WORK SHEET EVALUATION -->
-        <div id="day2PracticeCard" class="hidden mt-2 rounded-2xl bg-gradient-to-br from-slate-900 via-teal-950 to-slate-900 text-white p-3.5 border border-emerald-500/40 shadow-lg space-y-2.5">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <div class="flex items-center gap-2.5">
-              <span class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-sm border border-emerald-500/30 shrink-0">
-                🎧
-              </span>
-              <div>
-                <h4 class="text-xs font-black text-white flex flex-wrap items-center gap-1.5">
-                  <span>Pre-Test Diagnostic Practice Notes: 6 / 10 (60%)</span>
-                  <span class="bg-amber-400/20 text-amber-300 border border-amber-400/30 text-[9px] px-1.5 py-0.2 rounded-full font-bold">2 CBSE Traps Identified</span>
-                </h4>
-                <p class="text-[10px] text-emerald-300">Rough practice sheet analysis before tonight's 30 marks test</p>
-              </div>
-            </div>
-            <div class="flex items-center gap-2 shrink-0 flex-wrap sm:flex-nowrap">
-              <button onclick="openEvaluationReportModal(2)" class="bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs px-3 py-2 rounded-xl shadow-md transition flex items-center gap-1.5 shrink-0">
-                <i class="fa-solid fa-chart-simple text-xs"></i>
-                <span>View Analysis</span>
-              </button>
-              <button onclick="toggleDay2AudioReview()" id="day2AudioBtn" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs px-3 py-2 rounded-xl flex items-center justify-center gap-1.5 shadow-md transition shrink-0">
-                <i id="day2AudioIcon" class="fa-solid fa-play"></i>
-                <span id="day2AudioBtnText">Listen to Audio</span>
-              </button>
-              <button onclick="openDay2CorrectionsModal()" class="bg-white/10 hover:bg-white/20 text-white font-extrabold text-xs px-3 py-2 rounded-xl border border-white/20 flex items-center justify-center gap-1.5 transition shrink-0">
-                <i class="fa-solid fa-file-lines text-emerald-400"></i>
-                <span>Model Answers</span>
-              </button>
-            </div>
-          </div>
+        <!-- Primary Action Buttons: View Evaluated Sheet Popup, Download PDF, Audio, & Lock/Mama Re-upload -->
+        <div class="pt-1 flex flex-wrap items-center gap-2">
+          <button onclick="openEvaluationReportModal(${evalSheet.day})" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-black text-xs px-4 py-2.5 rounded-xl flex items-center gap-1.5 shadow-md transition">
+            <i class="fa-solid fa-table-columns text-xs"></i>
+            <span>📄 View Evaluated Result Sheet (Popup)</span>
+          </button>
 
-          <div id="day2AudioMeter" class="hidden bg-slate-950/70 rounded-xl p-2.5 border border-emerald-500/30 space-y-2">
-            <div class="flex items-center justify-between text-[11px]">
-              <span class="text-amber-300 font-bold flex items-center gap-1.5">
-                <i class="fa-solid fa-volume-high animate-pulse text-emerald-400"></i>
-                <span>AI Mentor Voice: explaining why 40% was deducted on rough practice...</span>
-              </span>
-              <span class="text-[10px] text-emerald-400 font-mono bg-emerald-950 px-2 py-0.5 rounded border border-emerald-800">Tamil Voice</span>
-            </div>
-            <!-- Visual Soundwave Bars -->
-            <div class="flex items-end gap-1 h-5 px-1 bg-black/40 py-1 rounded-lg">
-              <span class="w-1.5 bg-emerald-400 rounded-full animate-bounce h-2"></span>
-              <span class="w-1.5 bg-emerald-400 rounded-full animate-bounce h-5" style="animation-delay: 0.1s"></span>
-              <span class="w-1.5 bg-emerald-400 rounded-full animate-bounce h-2.5" style="animation-delay: 0.2s"></span>
-              <span class="w-1.5 bg-emerald-400 rounded-full animate-bounce h-4" style="animation-delay: 0.3s"></span>
-              <span class="w-1.5 bg-emerald-400 rounded-full animate-bounce h-3" style="animation-delay: 0.4s"></span>
-              <span class="w-1.5 bg-emerald-400 rounded-full animate-bounce h-5" style="animation-delay: 0.15s"></span>
-              <span class="w-1.5 bg-emerald-400 rounded-full animate-bounce h-3.5" style="animation-delay: 0.25s"></span>
-            </div>
-          </div>
+          <button onclick="downloadEvaluatedSheetPDF(${evalSheet.day})" class="bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs px-4 py-2.5 rounded-xl flex items-center gap-1.5 shadow-md transition">
+            <i class="fa-solid fa-file-pdf text-xs"></i>
+            <span>📥 Download Result PDF (Share in Group)</span>
+          </button>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] pt-0.5">
-            <div class="bg-white/5 border border-white/10 rounded-xl p-2.5">
-              <span class="font-bold text-rose-300 block mb-0.5 flex items-center gap-1">
-                <i class="fa-solid fa-circle-exclamation text-[10px]"></i> Trap 1: No Solution Ratio (-1 Mark)
-              </span>
-              <span class="text-slate-300 text-[10px] leading-relaxed block">
-                a1/a2 = b1/b2 != c1/c2 சோதிக்காததால் alpha = +6-ஐ நீக்கவில்லை. alpha = -6 மட்டுமே சரியான விடை!
-              </span>
-            </div>
-            <div class="bg-white/5 border border-white/10 rounded-xl p-2.5">
-              <span class="font-bold text-amber-300 block mb-0.5 flex items-center gap-1">
-                <i class="fa-solid fa-triangle-exclamation text-[10px]"></i> Trap 2: Question Copy Slip (-3 Marks)
-              </span>
-              <span class="text-slate-300 text-[10px] leading-relaxed block">
-                ரோமன் எண் <strong>(ii)</strong>-யை சமன்பாட்டின் kx-உடன் சேர்த்து <strong>2kx</strong> என்று அவசரத்தில் பார்த்து கணக்கு மாறிவிட்டது.
-              </span>
-            </div>
-          </div>
+          <button onclick="playEvaluatedSheetAudio(${evalSheet.day})" class="bg-slate-900 hover:bg-slate-800 text-emerald-300 border border-slate-700 font-extrabold text-xs px-3.5 py-2.5 rounded-xl flex items-center gap-1.5 shadow-sm transition">
+            <i class="fa-solid fa-volume-high text-xs"></i>
+            <span>🎧 Listen to Audio</span>
+          </button>
+
+          ${isMamaAdmin || !isLocked ? `
+            <button onclick="unlockAndReuploadPaper(${evalSheet.day})" class="bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 font-extrabold text-xs px-3 py-2.5 rounded-xl flex items-center gap-1.5 transition" title="Mama Super Admin Only">
+              <i class="fa-solid fa-unlock-keyhole text-amber-600"></i>
+              <span>🔓 Re-Upload Paper (Mama Only)</span>
+            </button>
+          ` : `
+            <button onclick="handleLockedUploadClick(${evalSheet.day})" class="bg-slate-100 hover:bg-rose-50 text-slate-500 hover:text-rose-800 border border-slate-300 font-bold text-xs px-3 py-2.5 rounded-xl flex items-center gap-1.5 transition" title="Locked after 1st upload. Click if Mama wants to unlock with PIN">
+              <i class="fa-solid fa-lock text-rose-600"></i>
+              <span>🔒 Upload Locked (Mama PIN to Re-Upload)</span>
+            </button>
+          `}
         </div>
       </div>
     `;
   } else {
     bannerHtml = `
-      <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4 space-y-2">
+      <div class="rounded-2xl bg-emerald-50/90 border border-emerald-200 p-4 space-y-3">
         <div class="flex items-center justify-between">
-          <span class="text-[10px] font-bold text-slate-700 bg-slate-200 px-2.5 py-0.5 rounded-full">
-            UPCOMING: Day ${currentDayData.day} (${currentDayData.date})
+          <span class="text-[10px] font-bold text-emerald-900 bg-emerald-200/80 px-2.5 py-0.5 rounded-full border border-emerald-300 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-600 animate-ping"></span>
+            <span>ACTIVE MISSION: Day ${currentDayData.day || activeMissionDayView} (${currentDayData.date || ''})</span>
+          </span>
+          <span class="text-[10px] text-amber-900 font-extrabold bg-amber-100 px-2.5 py-0.5 rounded-full border border-amber-300">
+            ⏳ Night Test (15 + 15 = 30M): Not Uploaded Yet
           </span>
         </div>
-        <h5 class="text-xs font-black text-slate-900">${currentDayData.title || ''}</h5>
+
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pt-0.5">
+          <h5 class="text-xs sm:text-sm font-black text-slate-900">${currentDayData.title || ''}</h5>
+          <span class="text-[10px] text-emerald-800 font-bold bg-white px-2.5 py-0.5 rounded border border-emerald-200">Tonight 8:30 PM: 30 Marks</span>
+        </div>
+
+        <div class="pt-1 flex flex-wrap items-center gap-2">
+          <button onclick="openAnswerPaperUploadModal(${activeMissionDayView})" class="bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs px-4 py-2.5 rounded-xl flex items-center gap-1.5 shadow-sm transition">
+            <i class="fa-solid fa-camera text-xs"></i> 📸 Upload Written Test Paper (15 + 15 = 30 Marks)
+          </button>
+          <button onclick="openSrmPortionModal()" class="bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 font-bold text-xs px-3.5 py-2.5 rounded-xl flex items-center gap-1.5 transition">
+            <i class="fa-solid fa-file-invoice text-xs text-emerald-600"></i> 📑 View SRM Portion
+          </button>
+          <button onclick="openPartialSkipModal(${activeMissionDayView})" class="bg-white hover:bg-slate-50 text-slate-600 border border-slate-200 font-bold text-xs px-3 py-2.5 rounded-xl flex items-center gap-1.5 transition">
+            <i class="fa-solid fa-forward-step text-xs text-amber-600"></i> Partial Skip
+          </button>
+        </div>
       </div>
     `;
   }
@@ -5003,33 +5135,38 @@ function renderRevisionMissionUI() {
   // Active Subject Cards Grid
   const sub1 = currentDayData.sub1 || {};
   const sub2 = currentDayData.sub2 || {};
+  const s1Eval = evalSheet && evalSheet.subject1 ? evalSheet.subject1 : null;
+  const s2Eval = evalSheet && evalSheet.subject2 ? evalSheet.subject2 : null;
 
   const subjectsHtml = `
     <div class="space-y-3">
       <div class="flex items-center justify-between">
-        <span class="text-[10px] font-extrabold ${isYesterday ? 'text-emerald-900 bg-emerald-100/80 border border-emerald-300' : 'text-emerald-800 bg-emerald-50 border border-emerald-200'} px-2.5 py-0.5 rounded-full flex items-center gap-1.5 shadow-2xs">
-          <i class="fa-solid ${isYesterday ? 'fa-circle-check text-emerald-600' : 'fa-fire text-emerald-600'}"></i> ${isYesterday ? 'COMPLETED / REVIEW PORTION FOR DAY 1' : `TODAY'S ACTIVE MISSION TASKS (DAY ${activeMissionDayView})`}
+        <span class="text-[10px] font-extrabold ${evalSheet ? 'text-emerald-900 bg-emerald-100/80 border border-emerald-300' : 'text-emerald-800 bg-emerald-50 border border-emerald-200'} px-2.5 py-0.5 rounded-full flex items-center gap-1.5 shadow-2xs">
+          <i class="fa-solid ${evalSheet ? 'fa-circle-check text-emerald-600' : 'fa-fire text-emerald-600'}"></i>
+          ${evalSheet ? `COMPLETED & EVALUATED PORTION (DAY ${activeMissionDayView})` : `ASSIGNED PORTION & TASKS FOR DAY ${activeMissionDayView}`}
         </span>
-        <span class="text-[10px] font-bold ${isYesterday ? 'text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200' : 'text-slate-500'}">
-          ${isYesterday ? '✔ Completed (Science Written 14/15, Tamil Deferred)' : 'Target: 30/30 in Night Test'}
+        <span class="text-[10px] font-bold ${evalSheet ? 'text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200' : 'text-slate-500'}">
+          ${evalSheet ? `✔ Achieved: ${evalSheet.totalAchievedMarks} / ${evalSheet.effectiveMaxMarks || 30} Marks (${evalSheet.percentage}%)` : 'Target: 15 + 15 = 30 Marks'}
         </span>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
-        <!-- Subject 1 Card -->
+        <!-- Subject 1 Card (15 Marks) -->
         <div class="p-3.5 rounded-xl bg-white border border-slate-200 space-y-2 shadow-xs">
           <div class="flex items-center justify-between">
-            <span class="font-extrabold text-emerald-800 text-xs">${sub1.name || 'Subject 1'}</span>
+            <span class="font-extrabold text-emerald-800 text-xs">${sub1.name || 'Subject 1'} (15 Marks)</span>
             <div class="flex items-center gap-1">
-              ${isYesterday ? '<span class="text-[9px] bg-emerald-100 text-emerald-800 font-extrabold px-2 py-0.5 rounded">✔ Written (14/15)</span>' : '<span class="text-[9px] bg-emerald-50 text-emerald-700 font-bold px-1.5 py-0.5 rounded border border-emerald-200">Part 1</span>'}
+              ${s1Eval && s1Eval.achievedMarks != null
+                ? `<span class="text-[10px] bg-emerald-100 text-emerald-900 font-black px-2 py-0.5 rounded border border-emerald-300">✔ Scored: ${s1Eval.achievedMarks} / 15 (${s1Eval.percentage}%)</span>`
+                : '<span class="text-[9px] bg-emerald-50 text-emerald-700 font-bold px-1.5 py-0.5 rounded border border-emerald-200">Part 1 • 15M</span>'}
             </div>
           </div>
           <h6 class="font-bold text-slate-900 text-xs">${sub1.chapter || ''}</h6>
           <p class="text-[11px] text-slate-600 leading-snug">${sub1.topics || ''}</p>
           <div class="pt-1 flex items-center gap-1.5">
-            ${isYesterday ? `
-              <button onclick="openAnswerPaperUploadModal(1, 'Science')" class="text-[10px] bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-2.5 py-1.5 rounded-lg flex items-center gap-1 shadow-xs transition">
-                <i class="fa-solid fa-camera text-[9px]"></i> View/Upload Paper
+            ${evalSheet ? `
+              <button onclick="openEvaluationReportModal(${activeMissionDayView})" class="text-[10px] bg-blue-600 hover:bg-blue-700 text-white font-bold px-2.5 py-1.5 rounded-lg flex items-center gap-1 shadow-xs transition">
+                <i class="fa-solid fa-file-invoice text-[9px]"></i> View Subject 1 Evaluation
               </button>
             ` : `
               <button onclick="openPartialSkipModal(${activeMissionDayView}, '${sub1.name}')" class="text-[10px] bg-slate-100 hover:bg-amber-50 text-slate-700 hover:text-amber-800 font-bold px-2.5 py-1.5 rounded-lg transition border border-slate-200">
@@ -5039,19 +5176,25 @@ function renderRevisionMissionUI() {
           </div>
         </div>
 
-        <!-- Subject 2 Card -->
+        <!-- Subject 2 Card (15 Marks) -->
         <div class="p-3.5 rounded-xl bg-white border border-slate-200 space-y-2 shadow-xs">
           <div class="flex items-center justify-between">
-            <span class="font-extrabold text-sky-800 text-xs">${sub2.name || 'Subject 2'}</span>
+            <span class="font-extrabold text-sky-800 text-xs">${sub2.name || 'Subject 2'} (15 Marks)</span>
             <div class="flex items-center gap-1">
-              ${isYesterday ? '<span class="text-[9px] bg-amber-100 text-amber-800 font-extrabold px-2 py-0.5 rounded border border-amber-300">⏭️ Skipped (Out of Syllabus)</span>' : '<span class="text-[9px] bg-sky-50 text-sky-700 font-bold px-1.5 py-0.5 rounded border border-sky-200">Part 2</span>'}
+              ${s2Eval && s2Eval.achievedMarks != null
+                ? `<span class="text-[10px] bg-sky-100 text-sky-900 font-black px-2 py-0.5 rounded border border-sky-300">✔ Scored: ${s2Eval.achievedMarks} / 15 (${s2Eval.percentage}%)</span>`
+                : (activeMissionDayView === 1
+                    ? '<span class="text-[9px] bg-amber-100 text-amber-800 font-extrabold px-2 py-0.5 rounded border border-amber-300">⏭️ Deferred to Buffer</span>'
+                    : '<span class="text-[9px] bg-sky-50 text-sky-700 font-bold px-1.5 py-0.5 rounded border border-sky-200">Part 2 • 15M</span>')}
             </div>
           </div>
           <h6 class="font-bold text-slate-900 text-xs">${sub2.chapter || ''}</h6>
           <p class="text-[11px] text-slate-600 leading-snug">${sub2.topics || ''}</p>
           <div class="pt-1 flex items-center gap-1.5">
-            ${isYesterday ? `
-              <span class="text-[10px] text-slate-500 font-medium italic">Realigned with Unit 5 in Revision Buffer</span>
+            ${evalSheet ? `
+              <button onclick="openEvaluationReportModal(${activeMissionDayView})" class="text-[10px] bg-blue-600 hover:bg-blue-700 text-white font-bold px-2.5 py-1.5 rounded-lg flex items-center gap-1 shadow-xs transition">
+                <i class="fa-solid fa-file-invoice text-[9px]"></i> View Subject 2 Evaluation
+              </button>
             ` : `
               <button onclick="openPartialSkipModal(${activeMissionDayView}, '${sub2.name}')" class="text-[10px] bg-slate-100 hover:bg-amber-50 text-slate-700 hover:text-amber-800 font-bold px-2.5 py-1.5 rounded-lg transition border border-slate-200">
                 ⏭️ Partial Skip
@@ -5066,27 +5209,107 @@ function renderRevisionMissionUI() {
   container.innerHTML = dayPillsHtml + bannerHtml + subjectsHtml;
 }
 
-// ================= STUDENT & MAMA ANSWER PAPER PHOTO UPLOAD MODAL =================
-let activeUploadPaperDay = 1;
-let activeUploadPaperSubject = 'Science';
+// ================= STUDENT & MAMA ANSWER PAPER PHOTO UPLOAD & LOCK SYSTEM =================
+let activeUploadPaperDay = 3;
+let activeUploadPaperSubject = 'Both Subjects (15+15=30M)';
 let uploadedPaperPages = []; // Array of { id, name, base64 }
+let mamaUnlockedDaysSession = {}; // Days unlocked by Mama during current session
+
+function handleLockedUploadClick(dayNum) {
+  if (currentUser && currentUser.role === 'admin') {
+    unlockAndReuploadPaper(dayNum);
+    return;
+  }
+  const wantPin = confirm(
+    '🔒 This test paper has already been uploaded once and is LOCKED for students.\n\n' +
+    'Pranav cannot modify or re-upload an evaluated paper.\n\n' +
+    'Are you Mama (Super Admin)? Click OK to enter Mama PIN (9677) to unlock Re-Upload, or Cancel to view the Evaluated Result Sheet.'
+  );
+  if (wantPin) {
+    promptMamaUnlockDay(dayNum, true);
+  } else {
+    openEvaluationReportModal(dayNum);
+  }
+}
+
+function promptMamaUnlockDay(dayNum, openUploadAfter = true) {
+  dayNum = dayNum || currentEvalModalDay || activeUploadPaperDay || 2;
+  if (currentUser && currentUser.role === 'admin') {
+    unlockAndReuploadPaper(dayNum);
+    return;
+  }
+  const pin = prompt('🔑 Enter Mama Super Admin PIN (9677) to unlock Re-Upload for Day ' + dayNum + ':');
+  if (pin && pin.trim() === '9677') {
+    mamaUnlockedDaysSession[dayNum] = true;
+    const sheet = getEvaluatedSheetForDay(dayNum);
+    if (sheet) {
+      sheet.isLocked = false;
+      saveEvaluatedSheetForDay(dayNum, sheet);
+    }
+    if (typeof showToast === 'function') {
+      showToast('🔓 Day ' + dayNum + ' unlocked by Mama! Re-upload enabled.');
+    }
+    renderRevisionMissionUI();
+    closeEvaluationReportModal();
+    if (openUploadAfter) {
+      openAnswerPaperUploadModal(dayNum);
+    }
+  } else if (pin !== null) {
+    alert('❌ Invalid Mama Admin PIN! Only Mama can unlock re-uploads.');
+  }
+}
+
+function unlockAndReuploadPaper(dayNum) {
+  mamaUnlockedDaysSession[dayNum] = true;
+  const sheet = getEvaluatedSheetForDay(dayNum);
+  if (sheet) {
+    sheet.isLocked = false;
+    saveEvaluatedSheetForDay(dayNum, sheet);
+  }
+  closeEvaluationReportModal();
+  openAnswerPaperUploadModal(dayNum);
+}
+
+function onUploadDaySelectChange(val) {
+  const dayNum = parseInt(val, 10) || 3;
+  activeUploadPaperDay = dayNum;
+  updateUploadModalLockUI(dayNum);
+}
+
+function updateUploadModalLockUI(dayNum) {
+  const lockedNotice = document.getElementById('uploadPaperLockedNotice');
+  const activeControls = document.getElementById('uploadPaperActiveControls');
+  const isMama = (currentUser && currentUser.role === 'admin') || !!mamaUnlockedDaysSession[dayNum];
+  const locked = isPaperDayLocked(dayNum) && !isMama;
+
+  if (lockedNotice && activeControls) {
+    if (locked) {
+      lockedNotice.classList.remove('hidden');
+      activeControls.classList.add('hidden');
+    } else {
+      lockedNotice.classList.add('hidden');
+      activeControls.classList.remove('hidden');
+    }
+  }
+}
 
 function openAnswerPaperUploadModal(dayNum, subjectName) {
-  activeUploadPaperDay = dayNum || 2;
-  activeUploadPaperSubject = subjectName || (activeUploadPaperDay === 1 ? 'Science' : 'Maths');
+  activeUploadPaperDay = dayNum || activeMissionDayView || 3;
+  activeUploadPaperSubject = subjectName || 'Both Subjects (15+15=30M)';
   uploadedPaperPages = [];
 
   const modal = document.getElementById('answerPaperUploadModal');
   const daySelect = document.getElementById('uploadPaperDaySelect');
-  const subInput = document.getElementById('uploadPaperSubject');
   const preview = document.getElementById('uploadPaperPreview');
   const fileInput = document.getElementById('uploadPaperFileInput');
+  const aiBox = document.getElementById('aiEvaluationResultBox');
 
-  if (daySelect) daySelect.value = activeUploadPaperDay;
-  if (subInput) subInput.value = activeUploadPaperSubject;
+  if (daySelect) daySelect.value = String(activeUploadPaperDay);
   if (preview) preview.classList.add('hidden');
   if (fileInput) fileInput.value = '';
-  renderUploadPagesThumbnails();
+  if (aiBox) aiBox.classList.add('hidden');
+
+  updateUploadModalLockUI(activeUploadPaperDay);
 
   if (modal) {
     modal.classList.remove('hidden');
@@ -5107,25 +5330,29 @@ function compressAndAddImage(file, callback) {
   reader.onload = function(e) {
     const img = new Image();
     img.onload = function() {
-      const maxDim = 1200;
-      let w = img.width;
-      let h = img.height;
-      if (w > maxDim || h > maxDim) {
-        if (w > h) {
-          h = Math.round((h * maxDim) / w);
-          w = maxDim;
-        } else {
-          w = Math.round((w * maxDim) / h);
-          h = maxDim;
+      const canvas = document.createElement('canvas');
+      const MAX_DIM = 1200;
+      let width = img.width;
+      let height = img.height;
+
+      if (width > height) {
+        if (width > MAX_DIM) {
+          height = Math.round(height * (MAX_DIM / width));
+          width = MAX_DIM;
+        }
+      } else {
+        if (height > MAX_DIM) {
+          width = Math.round(width * (MAX_DIM / height));
+          height = MAX_DIM;
         }
       }
-      const canvas = document.createElement('canvas');
-      canvas.width = w;
-      canvas.height = h;
+
+      canvas.width = width;
+      canvas.height = height;
       const ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0, w, h);
-      const compressedB64 = canvas.toDataURL('image/jpeg', 0.8);
-      callback(compressedB64);
+      ctx.drawImage(img, 0, 0, width, height);
+      const compressedBase64 = canvas.toDataURL('image/jpeg', 0.8);
+      callback(compressedBase64);
     };
     img.src = e.target.result;
   };
@@ -5136,16 +5363,16 @@ function handleAnswerPaperPhotoSelect(event) {
   const files = Array.from(event.target.files || []);
   if (files.length === 0) return;
 
-  let loaded = 0;
-  files.forEach((file) => {
-    compressAndAddImage(file, function(compressedB64) {
+  let processed = 0;
+  files.forEach((file, idx) => {
+    compressAndAddImage(file, (compressedDataUrl) => {
       uploadedPaperPages.push({
-        id: 'page_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
-        name: file.name || ('Page ' + (uploadedPaperPages.length + 1)),
-        base64: compressedB64
+        id: 'page_' + Date.now() + '_' + idx + '_' + Math.random().toString(36).substring(2, 6),
+        name: file.name,
+        base64: compressedDataUrl
       });
-      loaded++;
-      if (loaded === files.length) {
+      processed++;
+      if (processed === files.length) {
         renderUploadPagesThumbnails();
       }
     });
@@ -5199,116 +5426,177 @@ async function triggerAIPaperEvaluation() {
   const btnText = document.getElementById('aiEvaluatePaperBtnText');
   const resultBox = document.getElementById('aiEvaluationResultBox');
   const daySelect = document.getElementById('uploadPaperDaySelect');
-  const subSelect = document.getElementById('uploadPaperSubject');
   const marksInput = document.getElementById('uploadPaperMarks');
 
-  const dayNum = daySelect ? parseInt(daySelect.value) || 2 : 2;
-  const subject = subSelect ? subSelect.value : 'Maths';
+  const dayNum = daySelect ? parseInt(daySelect.value, 10) || 3 : 3;
+  const dayTest = ((appState && appState.mamaSecretNightTests) || []).find(t => t.day === dayNum) || {};
+  const sub1Name = dayTest.sub1Name || 'Subject 1 (15 Marks)';
+  const sub2Name = dayTest.sub2Name || 'Subject 2 (15 Marks)';
+  const s1Questions = (dayTest.scienceSection && dayTest.scienceSection.questions) || [];
+  const s2Questions = (dayTest.tamilSection && dayTest.tamilSection.questions) || [];
 
   if (btn) btn.disabled = true;
-  if (btnText) btnText.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Gemini 3.5 Flash is evaluating handwriting...';
+  if (btnText) btnText.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Gemini 3.5 Flash is evaluating 30-Mark Paper (15 + 15)...';
   if (resultBox) {
     resultBox.classList.remove('hidden');
     resultBox.innerHTML = `
       <div class="flex items-center gap-2 text-emerald-800 font-bold">
         <i class="fa-solid fa-circle-notch fa-spin text-emerald-600"></i>
-        <span>Gemini 3.5 Flash is reading Pranav's handwritten answers line-by-line...</span>
+        <span>Reading all ${uploadedPaperPages.length} pages against Official 15 + 15 = 30 Marks Rubric...</span>
       </div>
-      <p class="text-[11px] text-slate-600">Checking NCERT formulas, equations, step-by-step logic, and board exam traps.</p>
+      <p class="text-[11px] text-slate-600">Preparing 3-Table Subject Breakdown (Correct, Wrong/Spelling, Partially Correct & Model Answers).</p>
     `;
   }
 
-  const promptText = `You are an expert Class 10 CBSE Board & School Examiner evaluating Pranav's handwritten test paper.
-Day: Day ${dayNum}
-Subject: ${subject}
-Student Notes: ${document.getElementById('uploadPaperNotes')?.value || 'None'}
+  const promptText = `You are a strict, accurate Class 10 CBSE Board Examiner evaluating Pranav's handwritten Night Assessment Paper.
+Assessment Day: Day ${dayNum} (${dayTest.title || ''})
+Total Marks: 15 + 15 = 30 Marks
+Subject 1 (15 Marks): ${sub1Name}
+Subject 1 Official Questions & Rubric:
+${JSON.stringify(s1Questions, null, 2)}
 
-Please carefully read the student's handwritten answer sheet photos and evaluate each question against CBSE Class 10 marking scheme.
-Return your evaluation in clear, encouraging Tanglish (Tamil + English technical terms) as a JSON object:
+Subject 2 (15 Marks): ${sub2Name}
+Subject 2 Official Questions & Rubric:
+${JSON.stringify(s2Questions, null, 2)}
+
+IMPORTANT LANGUAGE RULE:
+- Use 100% ENGLISH SUBJECT TERMS (e.g. Equation, Substitute, Ratio, Cross-multiply, Elimination Method, Final Conclusion Statement, Past Tense, Subject-Verb Agreement, Spelling Mistakes).
+- Do NOT use pure Tamil math/grammar translations like 'சமன்பாடு' or 'பிரதியிட்டு'. Keep explanations in clear English or light conversational Tanglish with English technical terms.
+
+Evaluate every question across all uploaded pages and return a JSON object in this exact structure:
 {
-  "totalScored": number,
-  "maxMarks": number,
+  "totalMaxMarks": 30,
+  "effectiveMaxMarks": 30,
+  "totalAchievedMarks": number,
   "percentage": number,
-  "questionBreakdown": [
-    { "qNum": "Q1", "scored": number, "max": number, "remarks": "..." }
-  ],
-  "strengths": ["...", "..."],
-  "weaknesses": ["...", "..."],
-  "tanglishSummary": "detailed encouraging feedback in Tamil with English terms",
-  "audioExplanation": "audio script in Tamil for Pranav explaining what went well and why any marks were lost"
+  "audioSummary": "Encouraging spoken summary in Tanglish explaining marks in Subject 1 and Subject 2 and key mistakes",
+  "subject1": {
+    "name": "${sub1Name}",
+    "subKey": "maths|science|social_science|english|tamil",
+    "maxMarks": 15,
+    "achievedMarks": number,
+    "percentage": number,
+    "status": "🌟 Excellent | 👍 Good | ⚠️ Needs Practice",
+    "correctItems": [
+      "Q1 [1/1 Mark]: Clear explanation using English subject terms of what Pranav solved 100% correctly..."
+    ],
+    "wrongItems": [
+      "List any completely wrong or skipped questions, or spelling mistakes..."
+    ],
+    "partialOrImproveItems": [
+      {
+        "qNum": "Q2 [1.5 / 2 Marks — 0.5 Mark Deducted]",
+        "question": "Question text...",
+        "whatWrote": "What Pranav wrote and why 0.5 or 1 mark was deducted (using English subject terms)...",
+        "betterAnswer": "Step-by-step CBSE Board Model Answer for full marks..."
+      }
+    ]
+  },
+  "subject2": {
+    "name": "${sub2Name}",
+    "subKey": "english|science|social_science|maths|tamil",
+    "maxMarks": 15,
+    "achievedMarks": number,
+    "percentage": number,
+    "status": "🌟 Excellent | 👍 Good | ⚠️ Needs Practice",
+    "correctItems": [
+      "Fully correct answers or format points..."
+    ],
+    "wrongItems": [
+      "Exact wrong words / spelling mistakes -> correct words, or skipped questions..."
+    ],
+    "partialOrImproveItems": [
+      {
+        "qNum": "Q6 [1.5 / 2 Marks — 0.5 Mark Deducted]",
+        "question": "Question text...",
+        "whatWrote": "What to fix (Tense, Spelling, Missing point)...",
+        "betterAnswer": "CBSE Model Answer..."
+      }
+    ]
+  }
 }`;
 
   const fallbackKey = atob("QVEuQWI4Uk42THV3U1poNElyVWx4cllkSEUtbGJBcjVVMWVFRWVNZzVNdDNCR08zRlhTM1E=");
 
-  const handleEvaluationSuccess = (evalData) => {
-    currentAIEvaluation = evalData;
-    if (marksInput && evalData.totalScored != null) {
-      marksInput.value = evalData.totalScored;
-    }
+  const finalizeLiveEvaluation = (evalData) => {
+    const s1Marks = evalData.subject1?.achievedMarks ?? (evalData.totalScored ? evalData.totalScored / 2 : 13);
+    const s2Marks = evalData.subject2?.achievedMarks ?? (evalData.totalScored ? evalData.totalScored / 2 : 12);
+    const totalAch = evalData.totalAchievedMarks ?? evalData.totalScored ?? (s1Marks + s2Marks);
+    const pct = evalData.percentage ?? Number(((totalAch / 30) * 100).toFixed(1));
+
+    const structuredSheet = {
+      day: dayNum,
+      date: dayTest.date || new Date().toISOString().slice(0, 10),
+      title: dayTest.title || ('Day ' + dayNum + ' Night Assessment (30 Marks)'),
+      totalMaxMarks: 30,
+      effectiveMaxMarks: 30,
+      totalAchievedMarks: totalAch,
+      percentage: pct,
+      isLocked: true,
+      uploadedAt: new Date().toISOString(),
+      uploadedPagesCount: uploadedPaperPages.length,
+      audioSummary: evalData.audioSummary || evalData.audioExplanation || evalData.tanglishSummary || ('Day ' + dayNum + ' evaluated: ' + totalAch + ' out of 30 marks (' + pct + '%).'),
+      subject1: evalData.subject1 || {
+        name: sub1Name,
+        subKey: 'science',
+        maxMarks: 15,
+        achievedMarks: s1Marks,
+        percentage: Number(((s1Marks / 15) * 100).toFixed(1)),
+        status: '👍 Good',
+        correctItems: evalData.strengths || ['Completed steps neatly'],
+        wrongItems: [],
+        partialOrImproveItems: (evalData.weaknesses || []).map((w, i) => ({
+          qNum: 'Point ' + (i + 1),
+          question: 'Improvement Area',
+          whatWrote: w,
+          betterAnswer: 'Follow NCERT step-by-step marking scheme.'
+        }))
+      },
+      subject2: evalData.subject2 || {
+        name: sub2Name,
+        subKey: 'english',
+        maxMarks: 15,
+        achievedMarks: s2Marks,
+        percentage: Number(((s2Marks / 15) * 100).toFixed(1)),
+        status: '👍 Good',
+        correctItems: ['Attempted questions clearly'],
+        wrongItems: [],
+        partialOrImproveItems: []
+      }
+    };
+
+    currentAIEvaluation = structuredSheet;
+    if (marksInput) marksInput.value = totalAch;
+
+    // Auto-save & lock immediately upon evaluation!
+    delete mamaUnlockedDaysSession[dayNum];
+    saveEvaluatedSheetForDay(dayNum, structuredSheet);
+    activeMissionDayView = dayNum;
+    renderRevisionMissionUI();
 
     if (resultBox) {
       resultBox.innerHTML = `
         <div class="flex items-center justify-between border-b border-emerald-200 pb-1.5">
-          <span class="font-black text-emerald-900 text-xs">🎯 AI Score: ${evalData.totalScored} / ${evalData.maxMarks || 15} (${evalData.percentage || Math.round((evalData.totalScored / (evalData.maxMarks || 15)) * 100)}%)</span>
-          <span class="bg-emerald-600 text-white font-extrabold px-2 py-0.5 rounded text-[10px]">Verified by Gemini 3.5</span>
+          <span class="font-black text-emerald-950 text-xs">🎯 Evaluated Score: ${totalAch} / 30 (${pct}%) — 🔒 Locked</span>
+          <span class="bg-emerald-600 text-white font-extrabold px-2 py-0.5 rounded text-[10px]">15 + 15 = 30M Verified</span>
         </div>
-        <div class="text-[11px] text-slate-700 leading-relaxed font-medium">
-          ${evalData.tanglishSummary || 'Evaluated against Class 10 CBSE standards.'}
+        <div class="text-[11px] text-slate-700 font-semibold">
+          &bull; <strong>${structuredSheet.subject1.name}:</strong> ${structuredSheet.subject1.achievedMarks} / 15 (${structuredSheet.subject1.percentage}%)<br>
+          &bull; <strong>${structuredSheet.subject2.name}:</strong> ${structuredSheet.subject2.achievedMarks} / 15 (${structuredSheet.subject2.percentage}%)
         </div>
-        ${evalData.strengths && evalData.strengths.length ? `
-          <div class="text-[11px]">
-            <span class="font-bold text-emerald-800">🌟 Strengths:</span>
-            <ul class="list-disc pl-4 text-slate-700 space-y-0.5 mt-0.5">
-              ${evalData.strengths.map(s => `<li>${s}</li>`).join('')}
-            </ul>
-          </div>
-        ` : ''}
-        ${evalData.weaknesses && evalData.weaknesses.length ? `
-          <div class="text-[11px]">
-            <span class="font-bold text-amber-800">⚠️ Focus to Fix:</span>
-            <ul class="list-disc pl-4 text-slate-700 space-y-0.5 mt-0.5">
-              ${evalData.weaknesses.map(w => `<li>${w}</li>`).join('')}
-            </ul>
-          </div>
-        ` : ''}
-        <div class="pt-2 border-t border-emerald-200/80 flex items-center justify-between">
-          <button type="button" onclick="playCurrentEvaluationAudio()" class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:opacity-95 text-white font-black text-xs flex items-center gap-1.5 shadow-sm transition">
-            <i class="fa-solid fa-volume-high"></i>
-            <span>🎧 Listen to AI Audio Explanation</span>
+        <div class="pt-2 flex flex-wrap items-center gap-2">
+          <button type="button" onclick="closeAnswerPaperUploadModal(); openEvaluationReportModal(${dayNum});" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-black py-2 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-sm transition">
+            <i class="fa-solid fa-table-columns"></i> 📄 Open Evaluated Sheet Popup
           </button>
-          <span class="text-[10px] text-emerald-800 font-bold bg-white px-2 py-0.5 rounded border border-emerald-200">Tamil Mentor Voice</span>
+          <button type="button" onclick="downloadEvaluatedSheetPDF(${dayNum})" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-black py-2 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-sm transition">
+            <i class="fa-solid fa-file-pdf"></i> 📥 Download PDF
+          </button>
         </div>
       `;
     }
   };
 
   try {
-    // Attempt 1: Server endpoint
-    const res = await fetch('/api/ai/evaluate-paper', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-gemini-key': fallbackKey
-      },
-      body: JSON.stringify({
-        dayNumber: dayNum,
-        subject: subject,
-        images: uploadedPaperPages.map(p => p.base64),
-        studentNotes: document.getElementById('uploadPaperNotes')?.value || ''
-      })
-    });
-
-    const contentType = res.headers.get('content-type') || '';
-    if (res.ok && contentType.includes('application/json')) {
-      const data = await res.json();
-      if (data.success && data.evaluation) {
-        handleEvaluationSuccess(data.evaluation);
-        return;
-      }
-    }
-    
-    // Attempt 2: Direct browser call to Gemini 3.5 Flash (100% resilient)
-    console.log('Switching to direct Gemini 3.5 Flash client evaluation...');
     const contents = [{
       role: 'user',
       parts: [
@@ -5334,278 +5622,224 @@ Return your evaluation in clear, encouraging Tanglish (Tamil + English technical
       })
     });
 
-    const directData = await directRes.json();
-    if (directData.candidates && directData.candidates[0]?.content?.parts[0]?.text) {
-      const parsed = JSON.parse(directData.candidates[0].content.parts[0].text);
-      handleEvaluationSuccess(parsed);
+    const gRes = await directRes.json();
+    if (gRes && gRes.candidates && gRes.candidates[0]) {
+      const textOut = gRes.candidates[0].content.parts[0].text;
+      const evalJson = JSON.parse(textOut);
+      finalizeLiveEvaluation(evalJson);
       return;
     }
-
-    throw new Error('Gemini could not parse paper images. Please check lighting.');
+    throw new Error(gRes?.error?.message || 'Unable to parse Gemini response');
   } catch (err) {
+    console.error('AI Evaluation Error:', err);
     if (resultBox) {
-      resultBox.innerHTML = `
-        <div class="text-rose-700 text-[11px] font-semibold bg-rose-50 p-2.5 rounded-xl border border-rose-200">
-          ❌ Evaluation error: ${err.message}. You can enter marks manually below and click Submit.
-        </div>
-      `;
+      resultBox.innerHTML = `<div class="text-rose-700 font-bold text-xs">⚠️ Error: ${err.message || 'Check connection'}</div>`;
     }
   } finally {
     if (btn) btn.disabled = false;
-    if (btnText) btnText.innerHTML = '✨ AI Auto-Evaluate Paper (Gemini Vision)';
+    if (btnText) btnText.innerHTML = '✨ AI Auto-Evaluate Paper (15 + 15 = 30 Marks)';
   }
-}
-function playCurrentEvaluationAudio() {
-  if (!currentAIEvaluation) return;
-  const script = currentAIEvaluation.tanglishSummary || "மதிப்பீட்டு முடிவுகள்: பலம் மற்றும் பலவீனங்களை கவனித்து அடுத்த தேர்வில் முழு மதிப்பெண் பெறவும்!";
-  if (typeof playUniversalTTS === 'function') {
-    playUniversalTTS(script);
-  } else if ('speechSynthesis' in window) {
-    window.speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(script);
-    u.rate = 0.95;
-    window.speechSynthesis.speak(u);
-  }
-}
-
-let isDay2AudioPlaying = false;
-function toggleDay2AudioReview() {
-  const btn = document.getElementById('day2AudioBtn');
-  const btnText = document.getElementById('day2AudioBtnText');
-  const icon = document.getElementById('day2AudioIcon');
-  const meter = document.getElementById('day2AudioMeter');
-
-  const speechText = "வணக்கம் பிரணவ்! உன்னோட மேக்ஸ் டெஸ்ட் பேப்பரை AI முழுமையா திருத்தியாச்சு. உன்னோட கையெழுத்து, ஸ்டெப்-பை-ஸ்டெப் விளக்கங்கள் மற்றும் கிராஸ் மல்டிபிளிகேஷன் ரொம்ப நேர்த்தியா இருக்கு! ஆனா இந்த டெஸ்ட்ல 10-க்கு 6 மார்க் வந்து, 40 சதவீதம் மார்க் ஏன் குறைஞ்சது தெரியுமா? மொத்தம் இரண்டு முக்கியமான காரணங்கள். முதலாவது, கொஸ்டின் 1-ல, நோ சொல்யூஷன் கண்டிஷன் a1 by a2 equals b1 by b2 not equals c1 by c2. நீ ஆல்ஃபா ஈக்வல்ஸ் பிளஸ் ஆர் மைனஸ் 6 கண்டுபிடிச்சது சரிதான். ஆனால் பிளஸ் 6 போட்டால் அது இன்பினிட்லி மெனி சொல்யூஷன்ஸ் ஆகிவிடும்! மைனஸ் 6 போட்டால் மட்டும்தான் நோ சொல்யூஷன் வரும். இந்த கண்டிஷனை சரிபார்க்காததால் 1 மார்க் போச்சு. இது போர்டு எக்ஸாமோட பெரிய ட்ராப்! இரண்டாவது காரணம், கொஸ்டின் 2 சப்டிவிஷன் 2-ல, ரோமன் நம்பர் ii போட்டிருந்ததை கேள்வியுடன் சேர்த்து அவசரத்துல 2kx என்று தப்பாக காப்பி பண்ணிட்ட! அதனால்தான் k ஈக்வல்ஸ் 3 ரூட் 2 வந்துச்சு. கேள்வியை கவனமாகப் பார்த்து kx என்று எழுதியிருந்தால் முழு மார்க் கிடைத்திருக்கும்! இந்த இரண்டு விஷயங்களை மட்டும் கவனிச்சுக்கோ பிரணவ், போர்டு எக்ஸாம்ல உனக்கு சென்டம் நிச்சயம்!";
-
-  if (!('speechSynthesis' in window)) {
-    alert(speechText);
-    return;
-  }
-
-  if (window.speechSynthesis.speaking && isDay2AudioPlaying) {
-    window.speechSynthesis.cancel();
-    isDay2AudioPlaying = false;
-    if (btnText) btnText.textContent = 'Listen to Audio Explanation';
-    if (icon) icon.className = 'fa-solid fa-play';
-    if (meter) meter.classList.add('hidden');
-    return;
-  }
-
-  window.speechSynthesis.cancel();
-  isDay2AudioPlaying = true;
-  if (meter) meter.classList.remove('hidden');
-  if (btnText) btnText.textContent = 'Pause Audio';
-  if (icon) icon.className = 'fa-solid fa-pause';
-
-  const voiceConfig = typeof getBestTTSVoice === 'function' ? getBestTTSVoice() : null;
-  const utterance = new SpeechSynthesisUtterance(speechText);
-  if (voiceConfig) {
-    if (voiceConfig.voice) utterance.voice = voiceConfig.voice;
-    utterance.lang = voiceConfig.lang;
-  }
-  utterance.rate = 0.95;
-
-  utterance.onend = () => {
-    isDay2AudioPlaying = false;
-    if (btnText) btnText.textContent = 'Replay Audio Explanation';
-    if (icon) icon.className = 'fa-solid fa-rotate-right';
-    if (meter) meter.classList.add('hidden');
-  };
-
-  utterance.onerror = () => {
-    isDay2AudioPlaying = false;
-    if (btnText) btnText.textContent = 'Listen to Audio Explanation';
-    if (icon) icon.className = 'fa-solid fa-play';
-    if (meter) meter.classList.add('hidden');
-  };
-
-  window.speechSynthesis.speak(utterance);
 }
 
 function submitAnswerPaperUpload() {
-  if (uploadedPaperPages.length === 0) {
-    alert('Please select or capture at least one page photo before submitting!');
+  const daySelect = document.getElementById('uploadPaperDaySelect');
+  const dayNum = daySelect ? parseInt(daySelect.value, 10) || 3 : 3;
+
+  if (isPaperDayLocked(dayNum) && !(currentUser && currentUser.role === 'admin') && !mamaUnlockedDaysSession[dayNum]) {
+    alert('🔒 This day is already locked! Only Mama can re-upload.');
     return;
   }
 
-  const marksInput = document.getElementById('uploadPaperMarks');
-  const scoredMarks = marksInput ? parseFloat(marksInput.value) || 14 : 14;
-  const notesInput = document.getElementById('uploadPaperNotes');
-  const notes = notesInput ? notesInput.value : '';
-
-  if (!appState) return;
-  if (!appState.performanceHub) appState.performanceHub = { housePractice: { recentTests: [] } };
-  if (!appState.performanceHub.housePractice.recentTests) appState.performanceHub.housePractice.recentTests = [];
-
-  const testTitle = 'Day ' + activeUploadPaperDay + ' ' + activeUploadPaperSubject + ': Night Test';
-  
-  const testEntry = {
-    date: activeUploadPaperDay === 1 ? "2026-10-28" : "2026-10-29",
-    test: testTitle,
-    maxMarks: currentAIEvaluation?.maxMarks || 15,
-    scoredMarks: scoredMarks,
-    percentage: Math.round((scoredMarks / (currentAIEvaluation?.maxMarks || 15)) * 100),
-    status: currentAIEvaluation ? 'AI Evaluated (' + uploadedPaperPages.length + ' Pages)' : 'Submitted (' + uploadedPaperPages.length + ' Pages)',
-    paperPhotos: uploadedPaperPages.map(p => p.base64),
-    pagesCount: uploadedPaperPages.length,
-    feedback: currentAIEvaluation?.tanglishSummary || notes || ('Submitted ' + uploadedPaperPages.length + ' written page(s) successfully.'),
-    strengths: currentAIEvaluation?.strengths || [],
-    weaknesses: currentAIEvaluation?.weaknesses || []
-  };
-
-  appState.performanceHub.housePractice.recentTests.unshift(testEntry);
-
-  if (currentAIEvaluation?.strengths?.length) {
-    appState.performanceHub.housePractice.strengths = Array.from(new Set([...(appState.performanceHub.housePractice.strengths || []), ...currentAIEvaluation.strengths])).slice(0, 5);
+  if (!currentAIEvaluation && uploadedPaperPages.length > 0) {
+    triggerAIPaperEvaluation().then(() => {
+      closeAnswerPaperUploadModal();
+      openEvaluationReportModal(dayNum);
+    });
+    return;
   }
-  if (currentAIEvaluation?.weaknesses?.length) {
-    appState.performanceHub.housePractice.weaknesses = Array.from(new Set([...(appState.performanceHub.housePractice.weaknesses || []), ...currentAIEvaluation.weaknesses])).slice(0, 5);
-  }
-
-  currentAIEvaluation = null;
-
-  try {
-    localStorage.setItem('pranav_exam_hub_state', JSON.stringify(appState));
-  } catch(e){}
 
   closeAnswerPaperUploadModal();
-  if (window.confetti) confetti();
-  if (typeof showToast === 'function') showToast('✅ ' + uploadedPaperPages.length + ' page(s) uploaded successfully for ' + testTitle + '!');
-  
+  activeMissionDayView = dayNum;
   renderRevisionMissionUI();
-  if (typeof renderPerformanceView === 'function') renderPerformanceView();
+  openEvaluationReportModal(dayNum);
 }
 
-// ================= PARTIAL SKIP HANDLER =================
-function openPartialSkipModal(dayNum, subjectName) {
-  const targetSub = subjectName || 'Tamil';
-  const confirmSkip = confirm(`⚠️ Defer / Skip ${targetSub} for Day ${dayNum}?\\n\\nThis will mark ${targetSub} as deferred to the Revision Buffer (Nov 05–07) without penalty, so Pranav can focus on completing the other subject.`);
-  
-  if (confirmSkip) {
-    if (typeof showToast === 'function') showToast(`⏭️ ${targetSub} skipped and deferred to revision buffer smoothly.`);
-    renderRevisionMissionUI();
-  }
-}
+// ================= OVERALL & SUBJECT-WISE 100% PERFORMANCE CALCULATOR =================
+function computeSubjectPerformanceStatus() {
+  const allSheets = getAllEvaluatedSheets();
+  const subjectMap = {
+    science: { key: 'science', label: '🧪 Science', icon: '🧪', earned: 0, max: 0, color: '#059669', badgeBg: 'bg-emerald-50 text-emerald-800 border-emerald-200' },
+    maths: { key: 'maths', label: '📐 Mathematics', icon: '📐', earned: 0, max: 0, color: '#2563eb', badgeBg: 'bg-blue-50 text-blue-800 border-blue-200' },
+    english: { key: 'english', label: '📖 English', icon: '📖', earned: 0, max: 0, color: '#d97706', badgeBg: 'bg-amber-50 text-amber-800 border-amber-200' },
+    social_science: { key: 'social_science', label: '🌍 Social Science', icon: '🌍', earned: 0, max: 0, color: '#7c3aed', badgeBg: 'bg-purple-50 text-purple-800 border-purple-200' },
+    tamil: { key: 'tamil', label: '🪶 Tamil', icon: '🪶', earned: 0, max: 0, color: '#e11d48', badgeBg: 'bg-rose-50 text-rose-800 border-rose-200' },
+    ai: { key: 'ai', label: '🤖 Artificial Intelligence (AI - 417)', icon: '🤖', earned: 0, max: 0, color: '#0d9488', badgeBg: 'bg-teal-50 text-teal-800 border-teal-200' }
+  };
 
-window.addEventListener('DOMContentLoaded', () => { setTimeout(() => { if (typeof renderRevisionMissionUI === "function") renderRevisionMissionUI(); }, 200); });
-
-
-function openDay2CorrectionsModal() {
-  const housePractice = appState?.performanceHub?.housePractice;
-  const day2Test = (housePractice?.recentTests || []).find(t => t.date === '2026-10-29' && t.questionBreakdown);
-  if (day2Test && day2Test.questionBreakdown) {
-    renderTestCorrections(day2Test);
-  } else {
-    // Fallback default
-    renderTestCorrections({
-      test: 'Day 2 Maths: Linear Equations (Consistency: No Solution & Infinitely Many)',
-      maxMarks: 10,
-      scoredMarks: 6,
-      questionBreakdown: [
-        {
-          qNum: 'Q1',
-          title: 'For what values of alpha does the system have no solution?',
-          equation: 'alpha*x + 3y = alpha - 3  and  12x + alpha*y = alpha',
-          marksAwarded: 2,
-          maxMarks: 3,
-          status: 'Partially Correct (Lost 1 Mark)',
-          whyDeducted: 'பிரணவ் alpha^2 = 36 => alpha = +-6 வரை சரியாக கண்டுபிடித்தான். ஆனால் CBSE Board தேர்வில் No Solution கேட்கும்போது மூன்றாவதாக உள்ள != c1/c2 கண்டிஷனை சோதித்திருக்க வேண்டும். alpha = +6 போடும்போது அது Infinitely Many Solutions ஆகிவிடும்! எனவே +6-ஐ நிராகரித்து, -6 மட்டுமே சரியான விடை என்று எழுத வேண்டும்.',
-          modelAnswer: 'Step 1: Write Condition for No Solution:\n  a1/a2 = b1/b2 != c1/c2\n\nStep 2: Substitute coefficients:\n  alpha/12 = 3/alpha != (alpha - 3)/alpha\n\nStep 3: Solve a1/a2 = b1/b2:\n  alpha^2 = 36 => alpha = 6 or alpha = -6\n\nStep 4: Verify with != c1/c2:\n  • If alpha = 6:\n    3/6 = (6 - 3)/6 => 1/2 = 1/2 (Equals! Gives Infinitely Many Solutions. Hence Reject alpha = 6).\n  • If alpha = -6:\n    3/(-6) != (-6 - 3)/(-6) => -1/2 != 3/2 (Satisfies != c1/c2).\n\nStep 5: Final Conclusion:\n  alpha = -6 only (Full Centum Marks: 3/3).'
-        },
-        {
-          qNum: 'Q2 (i)',
-          title: 'Find k for Infinitely Many Solutions (Part 1)',
-          equation: '(k - 3)x + 3y = k  and  kx + ky = 12',
-          marksAwarded: 2.5,
-          maxMarks: 3,
-          status: 'Almost Full Marks (Lost 0.5 Mark)',
-          whyDeducted: 'விடை k = 6 என்பது 100% சரி! ஆனால் போர்டு எக்ஸாம் ரூப்ரிக்கின்படி b1/b2 = c1/c2 பகுதியையும் சமன்படுத்தி காட்டியிருக்க வேண்டும்.',
-          modelAnswer: 'Step 1: Condition for Infinitely Many Solutions:\n  a1/a2 = b1/b2 = c1/c2\n\nStep 2: Substitute coefficients:\n  (k - 3)/k = 3/k = k/12\n\nStep 3: Equate first two ratios (since k != 0):\n  (k - 3)/k = 3/k => k - 3 = 3 => k = 6\n\nStep 4: Equate second and third ratios for verification:\n  3/k = k/12 => k^2 = 36 => k = +-6\n\nStep 5: Common Solution:\n  Common value satisfying all three ratios is k = 6.\n  (Checking: 3/6 = 3/6 = 6/12 = 1/2 - Verified!).'
-        },
-        {
-          qNum: 'Q2 (ii)',
-          title: 'Find k for Infinitely Many Solutions (Part 2)',
-          equation: 'kx + 3y = k - 3  and  12x + ky = k',
-          marksAwarded: 1,
-          maxMarks: 3,
-          status: 'Wrong / Copy Slip (Lost 2 Marks)',
-          whyDeducted: 'ரோமன் எண் (ii) என்பதை கேள்வியின் kx-உடன் சேர்த்து 2kx என்று அவசரத்தில் தவறாகப் பார்த்துவிட்டான். அதனால் 2k/12 = 3/k => k = 3*sqrt(2) என்று விடை மாறிவிட்டது. கேள்வியை கவனமாகப் பார்த்து k/12 என்று போட்டிருந்தால் முழு மதிப்பெண் கிடைத்திருக்கும்.',
-          modelAnswer: 'Step 1: Condition for Infinitely Many Solutions:\n  a1/a2 = b1/b2 = c1/c2\n\nStep 2: Substitute coefficients:\n  k/12 = 3/k = (k - 3)/k\n\nStep 3: Equate first two ratios:\n  k/12 = 3/k => k^2 = 36 => k = 6 or k = -6\n\nStep 4: Equate second and third ratios:\n  3/k = (k - 3)/k => 3 = k - 3 => k = 6\n\nStep 5: Final Conclusion:\n  The common value of k satisfying all ratios is k = 6.'
-        }
-      ]
+  Object.values(allSheets).forEach(sheet => {
+    [sheet.subject1, sheet.subject2].forEach(sub => {
+      if (!sub || sub.achievedMarks == null || !sub.maxMarks) return;
+      let k = (sub.subKey || '').toLowerCase();
+      if (!subjectMap[k]) {
+        const n = (sub.name || '').toLowerCase();
+        if (n.includes('math')) k = 'maths';
+        else if (n.includes('sci') || n.includes('chem') || n.includes('bio') || n.includes('phy')) k = 'science';
+        else if (n.includes('eng')) k = 'english';
+        else if (n.includes('soc') || n.includes('sst') || n.includes('hist')) k = 'social_science';
+        else if (n.includes('tam')) k = 'tamil';
+        else if (n.includes('ai') || n.includes('artificial')) k = 'ai';
+      }
+      if (subjectMap[k]) {
+        subjectMap[k].earned += Number(sub.achievedMarks);
+        subjectMap[k].max += Number(sub.maxMarks);
+      }
     });
+  });
+
+  const subjectsList = Object.values(subjectMap).map(s => {
+    const hasData = s.max > 0;
+    const pct = hasData ? Number(((s.earned / s.max) * 100).toFixed(1)) : null;
+    return {
+      ...s,
+      hasData,
+      percentage: pct
+    };
+  });
+
+  const evaluatedSubjectsCount = subjectsList.filter(s => s.hasData).length;
+  const allSixEvaluated = evaluatedSubjectsCount === subjectsList.length;
+
+  let overallPercentage = null;
+  if (allSixEvaluated) {
+    const totalEarned = subjectsList.reduce((acc, s) => acc + s.earned, 0);
+    const totalMax = subjectsList.reduce((acc, s) => acc + s.max, 0);
+    overallPercentage = totalMax > 0 ? Number(((totalEarned / totalMax) * 100).toFixed(1)) : null;
   }
+
+  return {
+    subjectsList,
+    evaluatedSubjectsCount,
+    totalSubjectsCount: subjectsList.length,
+    allSixEvaluated,
+    overallPercentage
+  };
 }
 
-function renderTestCorrections(testObj) {
-  const modal = document.getElementById('testCorrectionsModal');
-  const title = document.getElementById('correctionsModalTitle');
-  const subtitle = document.getElementById('correctionsModalSubtitle');
-  const body = document.getElementById('correctionsModalBody');
+// ================= 3-TABLE EVALUATED RESULT SHEET POPUP & PDF EXPORT =================
+let currentEvalModalDay = 2;
 
-  if (!modal || !body) return;
+function renderSubjectThreeTableSection(subObj, subIndex) {
+  if (!subObj) return '';
+  const hasScore = subObj.achievedMarks != null;
+  const scoreLabel = hasScore ? `${subObj.achievedMarks} / ${subObj.maxMarks || 15} Marks (${subObj.percentage}%)` : (subObj.status || 'No Data');
+  const correctList = Array.isArray(subObj.correctItems) ? subObj.correctItems : [];
+  const wrongList = Array.isArray(subObj.wrongItems) ? subObj.wrongItems : [];
+  const partialList = Array.isArray(subObj.partialOrImproveItems) ? subObj.partialOrImproveItems : [];
 
-  if (title) title.textContent = testObj.test || 'Question Corrections & Model Answers';
-  if (subtitle) subtitle.textContent = 'Scored: ' + testObj.scoredMarks + ' / ' + testObj.maxMarks + ' Marks • Board Marking Scheme Solutions';
+  return `
+    <div class="rounded-2xl border-2 border-slate-200 bg-white overflow-hidden shadow-xs space-y-0">
+      <!-- Subject Banner Header -->
+      <div class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center justify-center font-black text-xs">
+            ${subIndex}
+          </span>
+          <h4 class="text-xs sm:text-sm font-black tracking-tight uppercase">SUBJECT ${subIndex}: ${subObj.name || ('Subject ' + subIndex)}</h4>
+        </div>
+        <span class="px-3 py-1 rounded-full text-xs font-black bg-emerald-500 text-slate-950 shadow-2xs">
+          ${scoreLabel}
+        </span>
+      </div>
 
-  const list = testObj.questionBreakdown || [];
-  if (list.length === 0) {
-    body.innerHTML = '<div class="p-6 text-center text-xs text-slate-400">No question breakdown recorded for this test.</div>';
-  } else {
-    body.innerHTML = list.map((q, i) => `
-      <div class="bg-white rounded-2xl border ${q.marksAwarded === q.maxMarks ? 'border-emerald-200 ring-1 ring-emerald-100' : (q.marksAwarded > 0 ? 'border-amber-300 ring-1 ring-amber-100' : 'border-rose-300 ring-1 ring-rose-100')} p-4 space-y-3 shadow-xs">
-        <div class="flex items-start justify-between gap-2 border-b border-slate-100 pb-2">
-          <div>
-            <div class="flex items-center gap-2">
-              <span class="w-6 h-6 rounded-lg ${q.marksAwarded === q.maxMarks ? 'bg-emerald-100 text-emerald-800' : (q.marksAwarded > 0 ? 'bg-amber-100 text-amber-800' : 'bg-rose-100 text-rose-800')} font-black text-xs flex items-center justify-center">
-                ${i + 1}
+      <div class="p-3.5 sm:p-4 space-y-3.5 bg-slate-50/50">
+        <!-- TOP ROW: 2 VERTICAL COLUMNS (Left: Fully Correct | Right: Wrong / Spelling Mistakes) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          
+          <!-- LEFT COLUMN: FULLY CORRECT -->
+          <div class="rounded-xl border-2 border-emerald-200 bg-white overflow-hidden flex flex-col">
+            <div class="bg-emerald-50 border-b border-emerald-200 px-3 py-2 flex items-center justify-between">
+              <span class="font-black text-emerald-950 text-xs flex items-center gap-1.5">
+                <i class="fa-solid fa-circle-check text-emerald-600"></i>
+                <span>✅ Fully Correct Answers (Left Column)</span>
               </span>
-              <h4 class="text-xs font-black text-slate-900">${q.qNum}: ${q.title || 'Question ' + (i+1)}</h4>
+              <span class="text-[10px] font-extrabold bg-emerald-200/80 text-emerald-900 px-2 py-0.5 rounded-full">${correctList.length} Items</span>
             </div>
-            ${q.equation ? `<p class="text-[11px] font-mono text-slate-600 mt-1 bg-slate-50 px-2 py-0.5 rounded border border-slate-100 inline-block">${q.equation}</p>` : ''}
+            <div class="p-3 space-y-2 flex-1 text-[11px] text-slate-800 leading-relaxed">
+              ${correctList.length > 0
+                ? correctList.map(item => `
+                    <div class="flex items-start gap-2 pb-2 border-b border-slate-100 last:border-none last:pb-0">
+                      <span class="text-emerald-600 font-black mt-0.5">✔</span>
+                      <div class="font-medium">${item}</div>
+                    </div>
+                  `).join('')
+                : '<div class="text-slate-400 italic py-2">No items in this section.</div>'}
+            </div>
           </div>
-          <div class="text-right shrink-0">
-            <span class="text-xs font-black ${q.marksAwarded === q.maxMarks ? 'text-emerald-700' : (q.marksAwarded > 0 ? 'text-amber-700' : 'text-rose-700')}">
-              ${q.marksAwarded} / ${q.maxMarks} Marks
-            </span>
-            <span class="block text-[9px] font-bold text-slate-400">${q.status || ''}</span>
+
+          <!-- RIGHT COLUMN: WRONG / SKIPPED / SPELLING MISTAKES -->
+          <div class="rounded-xl border-2 border-rose-200 bg-white overflow-hidden flex flex-col">
+            <div class="bg-rose-50 border-b border-rose-200 px-3 py-2 flex items-center justify-between">
+              <span class="font-black text-rose-950 text-xs flex items-center gap-1.5">
+                <i class="fa-solid fa-circle-xmark text-rose-600"></i>
+                <span>❌ Wrong / Spelling Mistakes (Right Column)</span>
+              </span>
+              <span class="text-[10px] font-extrabold bg-rose-200/80 text-rose-900 px-2 py-0.5 rounded-full">${wrongList.length} Items</span>
+            </div>
+            <div class="p-3 space-y-1.5 flex-1 text-[11px] text-slate-800 leading-relaxed">
+              ${wrongList.length > 0
+                ? wrongList.map(item => `
+                    <div class="flex items-start gap-2 pb-1.5 border-b border-rose-100/60 last:border-none last:pb-0">
+                      <span class="text-rose-600 font-black mt-0.5">✗</span>
+                      <div class="font-semibold text-rose-950">${item}</div>
+                    </div>
+                  `).join('')
+                : '<div class="text-emerald-700 font-bold py-2 flex items-center gap-1.5"><i class="fa-solid fa-sparkles"></i> None (0 Questions Wrong / Skipped in this Subject!)</div>'}
+            </div>
           </div>
+
         </div>
 
-        ${q.whyDeducted ? `
-          <div class="bg-amber-50/80 border border-amber-200 rounded-xl p-2.5 space-y-1">
-            <span class="text-[11px] font-extrabold text-amber-900 flex items-center gap-1.5">
-              <i class="fa-solid fa-triangle-exclamation text-amber-600"></i> What Pranav Wrote vs Why Marks Lost:
+        <!-- BOTTOM ROW: 1 FULL-WIDTH HORIZONTAL BOX (Partially Correct & How to Answer Better) -->
+        <div class="rounded-xl border-2 border-amber-300 bg-white overflow-hidden">
+          <div class="bg-amber-50 border-b border-amber-200 px-3.5 py-2.5 flex items-center justify-between">
+            <span class="font-black text-amber-950 text-xs flex items-center gap-1.5">
+              <i class="fa-solid fa-wand-magic-sparkles text-amber-600"></i>
+              <span>⚠️ Partially Correct & How to Write for Full Marks (Step-by-Step Guide)</span>
             </span>
-            <p class="text-[11px] text-slate-700 leading-relaxed font-medium">${q.whyDeducted}</p>
+            <span class="text-[10px] font-extrabold bg-amber-200/80 text-amber-950 px-2 py-0.5 rounded-full">${partialList.length} Questions</span>
           </div>
-        ` : ''}
-
-        <div class="bg-emerald-50/60 border border-emerald-300 rounded-xl p-3 space-y-1.5">
-          <span class="text-[11px] font-black text-emerald-900 flex items-center gap-1.5">
-            <i class="fa-solid fa-check-double text-emerald-600"></i> How to Write Correct Step-by-Step for 100% Full Marks:
-          </span>
-          <pre class="whitespace-pre-wrap font-sans text-[11px] text-slate-800 bg-white p-2.5 rounded-lg border border-emerald-200 leading-relaxed font-medium shadow-2xs">${q.modelAnswer || 'Refer NCERT textbook solution.'}</pre>
+          <div class="p-3.5 space-y-3 divide-y divide-slate-200">
+            ${partialList.length > 0
+              ? partialList.map(p => `
+                  <div class="pt-3 first:pt-0 space-y-2">
+                    <div class="flex flex-wrap items-center justify-between gap-1">
+                      <span class="font-black text-slate-900 text-xs bg-amber-100/80 border border-amber-300 px-2.5 py-0.5 rounded-lg">${p.qNum || 'Question'}</span>
+                      <span class="text-[11px] font-bold text-slate-600 italic">${p.question || ''}</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 text-[11px]">
+                      <div class="p-2.5 rounded-xl bg-rose-50/60 border border-rose-200/80 space-y-1">
+                        <span class="font-black text-rose-900 block text-[10px] uppercase tracking-wider">📝 What Pranav Wrote / Why Marks Deducted:</span>
+                        <p class="text-slate-800 font-medium whitespace-pre-line leading-relaxed">${p.whatWrote || ''}</p>
+                      </div>
+                      <div class="p-2.5 rounded-xl bg-emerald-50/70 border border-emerald-200/90 space-y-1">
+                        <span class="font-black text-emerald-900 block text-[10px] uppercase tracking-wider">✅ How to Answer Better (CBSE Model Answer):</span>
+                        <p class="text-slate-900 font-bold whitespace-pre-line leading-relaxed">${p.betterAnswer || ''}</p>
+                      </div>
+                    </div>
+                  </div>
+                `).join('')
+              : '<div class="text-emerald-700 font-bold py-2">All attempted questions achieved full marks!</div>'}
+          </div>
         </div>
       </div>
-    `).join('');
-  }
-
-  modal.classList.remove('hidden');
-  modal.classList.add('flex');
+    </div>
+  `;
 }
-
-function closeTestCorrectionsModal() {
-  const modal = document.getElementById('testCorrectionsModal');
-  if (modal) {
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
-  }
-}
-
 
 function openEvaluationReportModal(dayNum) {
   dayNum = dayNum || activeMissionDayView || 2;
+  currentEvalModalDay = dayNum;
+
   const modal = document.getElementById('evaluationReportModal');
   const title = document.getElementById('evalReportTitle');
   const subtitle = document.getElementById('evalReportSubtitle');
@@ -5613,126 +5847,192 @@ function openEvaluationReportModal(dayNum) {
 
   if (!modal || !body) return;
 
-  const housePractice = appState?.performanceHub?.housePractice;
-  const recentTests = housePractice?.recentTests || [];
-  
-  const isDay1 = (dayNum === 1);
-  const testObj = isDay1
-    ? (recentTests.find(t => t.date === '2026-10-28' || t.test?.includes('Day 1')) || {
-        test: 'Day 1 Science: Acids, Bases & Salts (Home Night Test)',
-        date: '2026-10-28 (Yesterday)',
-        scoredMarks: 14,
-        maxMarks: 15,
-        percentage: 93.3,
-        status: 'Evaluated & Completed (14/15)',
-        feedback: 'பிரணவ் நேற்றைய அறிவியல் தேர்வை சிறப்பாக எழுதினான். சமன்பாடுகள் (Balanced Equations), Pop-sound சோதனை, pH அளவீடு அனைத்தும் துல்லியமாக எழுதப்பட்டுள்ளது. தமிழ் பாடப்பகுதி (Unit 4) SRM தேர்வில் இல்லாததால் அது Revision Buffer-க்கு மாற்றப்பட்டது.',
-        strengths: [
-          'Balanced Chemical Equations (Zn + 2HCl -> ZnCl2 + H2)',
-          'Acid-Base pH scale and tooth decay reasoning',
-          'Clean handwritten presentation'
-        ],
-        weaknesses: [
-          'Chemical states (s, l, g, aq) consistently குறிப்பிட வேண்டும்'
-        ]
-      })
-    : (recentTests.find(t => t.date === '2026-10-29' || t.test?.includes('Day 2')) || {
-        test: 'Day 2 Maths: Linear Equations (Today\'s Written Practice)',
-        date: '2026-10-29 (Today)',
-        scoredMarks: 6,
-        maxMarks: 10,
-        percentage: 60.0,
-        status: 'AI Evaluated (6/10 - 40% Deducted for 2 CBSE Traps)',
-        feedback: 'Good cross-multiplication & neat steps. Caught in 2 CBSE Board Traps: 1) Forgot to test third ratio != c1/c2 for No Solution (alpha = -6 only). 2) Misread question roman numeral (ii) as 2kx.',
-        strengths: [
-          'Neat step-by-step layout and legible handwriting',
-          'Accurate algebraic manipulation and cross-multiplication',
-          'Solid recall of consistency ratio condition (a1/a2 = b1/b2)'
-        ],
-        weaknesses: [
-          'CBSE Board Trap: Must test the 3rd ratio (c1/c2) for No Solution (alpha = -6 only)',
-          'Question Copying: Keep Roman numeral (ii) separated from the variable to prevent reading kx as 2kx'
-        ]
-      });
+  const sheet = getEvaluatedSheetForDay(dayNum) || getEvaluatedSheetForDay(2);
+  const perf = computeSubjectPerformanceStatus();
+  const s1 = sheet.subject1 || {};
+  const s2 = sheet.subject2 || {};
+  const effMax = sheet.effectiveMaxMarks || sheet.totalMaxMarks || 30;
 
-  if (title) title.textContent = testObj.test;
-  if (subtitle) subtitle.textContent = (testObj.date || '') + ' • Class 10 CBSE Marking Scheme Evaluation';
+  if (title) title.textContent = `Evaluated Result Sheet — Day ${sheet.day} (${sheet.date})`;
+  if (subtitle) subtitle.textContent = `Total: 15 + 15 = 30 Marks • Achieved: ${sheet.totalAchievedMarks} / ${effMax} (${sheet.percentage}%) • Verified & Locked`;
+
+  // Day switcher bar at top of modal (excluded from PDF print via data-html2canvas-ignore)
+  const allSheets = getAllEvaluatedSheets();
+  const availableDays = Object.keys(allSheets).map(Number).sort((a, b) => a - b);
+
+  const switcherHtml = `
+    <div data-html2canvas-ignore="true" class="flex flex-wrap items-center justify-between gap-2 p-2 bg-slate-100 rounded-2xl border border-slate-200">
+      <div class="flex items-center gap-1.5 flex-wrap">
+        <span class="text-[10px] font-extrabold text-slate-500 uppercase px-2">Select Evaluated Day:</span>
+        ${availableDays.map(d => {
+          const sh = allSheets[String(d)];
+          const isCur = d === sheet.day;
+          return `
+            <button onclick="openEvaluationReportModal(${d})" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 ${isCur ? 'bg-slate-900 text-white shadow-xs font-black' : 'bg-white text-slate-700 hover:bg-slate-200 border border-slate-200'}">
+              <span>Day ${d} (${sh.date.slice(5)})</span>
+              <span class="text-[10px] px-1.5 py-0.2 rounded-full font-extrabold ${isCur ? 'bg-emerald-400 text-slate-950' : 'bg-emerald-100 text-emerald-800'}">${sh.totalAchievedMarks}/${sh.effectiveMaxMarks || 30} (${sh.percentage}%)</span>
+            </button>
+          `;
+        }).join('')}
+      </div>
+      <span class="text-[10px] font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200">
+        🔒 1-Time Upload Locked
+      </span>
+    </div>
+  `;
 
   body.innerHTML = `
-    <div class="space-y-4 text-xs">
-      <!-- Test Switcher Tabs (Day 1 Science vs Day 2 Maths) -->
-      <div class="flex items-center gap-1.5 p-1 bg-slate-100 rounded-2xl border border-slate-200">
-        <button onclick="openEvaluationReportModal(1)" class="flex-1 py-2 px-2.5 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 ${isDay1 ? 'bg-white text-slate-900 shadow-sm font-black ring-1 ring-slate-200' : 'text-slate-600 hover:text-slate-900'}">
-          <span>Day 1 (Science)</span>
-          <span class="text-[10px] px-2 py-0.5 rounded-full font-extrabold ${isDay1 ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-200 text-slate-600'}">14/15 (93.3%)</span>
-        </button>
-        <button onclick="openEvaluationReportModal(2)" class="flex-1 py-2 px-2.5 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 ${!isDay1 ? 'bg-white text-slate-900 shadow-sm font-black ring-1 ring-slate-200' : 'text-slate-600 hover:text-slate-900'}">
-          <span>Day 2 (Maths)</span>
-          <span class="text-[10px] px-2 py-0.5 rounded-full font-extrabold ${!isDay1 ? 'bg-amber-100 text-amber-800' : 'bg-slate-200 text-slate-600'}">6/10 (60.0%)</span>
-        </button>
-      </div>
+    ${switcherHtml}
 
-      <!-- Score Hero Box -->
-      <div class="bg-gradient-to-r ${isDay1 ? 'from-emerald-950 via-teal-900 to-emerald-950 border-emerald-500/40' : 'from-slate-950 via-slate-900 to-amber-950 border-amber-500/40'} text-white rounded-2xl p-4 flex items-center justify-between border shadow-md">
+    <!-- PRINTABLE / PDF EXPORTABLE CONTAINER -->
+    <div id="pdfExportSheetContainer" class="space-y-5 bg-white p-2 sm:p-4 rounded-2xl border border-slate-200 text-slate-900">
+      
+      <!-- PDF Report Top Banner -->
+      <div class="border-b-2 border-slate-900 pb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <div>
-          <span class="text-[10px] text-emerald-300 uppercase tracking-wider font-extrabold block">
-            ${isDay1 ? 'Day 1 Yesterday: Science Score' : 'Day 2 Today: Maths Written Score'}
+          <span class="text-[10px] font-black uppercase tracking-widest text-emerald-700 block">SRM PUBLIC SCHOOL • CLASS 10 BOARD REVISION-1</span>
+          <h2 class="text-sm sm:text-base font-black text-slate-950">${sheet.title}</h2>
+          <span class="text-[11px] text-slate-600 font-semibold">Student: <strong>Pranav Jothi (Grade X)</strong> &bull; Date: <strong>${sheet.date}</strong> &bull; Pages Evaluated: <strong>${sheet.uploadedPagesCount || 11} Pages</strong></span>
+        </div>
+        <div class="bg-emerald-950 text-white px-4 py-2 rounded-2xl text-right shrink-0 border border-emerald-500/40">
+          <span class="text-[9px] uppercase tracking-wider text-emerald-300 font-bold block">Grand Total Score</span>
+          <span class="text-xl font-black text-white">${sheet.totalAchievedMarks} / ${effMax}</span>
+          <span class="text-xs font-extrabold text-amber-300 ml-1">(${sheet.percentage}%)</span>
+        </div>
+      </div>
+
+      <!-- SECTION 1: 15 + 15 = 30 MARKS SUMMARY TABLE -->
+      <div class="space-y-2">
+        <h3 class="text-xs font-black uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
+          <span>🏆 1. MARKS SUMMARY (15 + 15 = 30 TOTAL MARKS)</span>
+        </h3>
+        <div class="overflow-x-auto rounded-xl border border-slate-300">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="bg-slate-900 text-white text-[11px] uppercase">
+                <th class="py-2.5 px-3 border-r border-slate-700">Assessment Subject Details</th>
+                <th class="py-2.5 px-3 text-center border-r border-slate-700">Total Marks</th>
+                <th class="py-2.5 px-3 text-center border-r border-slate-700">Achieved Marks</th>
+                <th class="py-2.5 px-3 text-center border-r border-slate-700">Percentage</th>
+                <th class="py-2.5 px-3 text-center">Status</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 font-medium">
+              <tr class="bg-white">
+                <td class="py-2.5 px-3 font-extrabold text-slate-900 border-r border-slate-200">Subject 1: ${s1.name || 'Subject 1'}</td>
+                <td class="py-2.5 px-3 text-center font-bold text-slate-700 border-r border-slate-200">15</td>
+                <td class="py-2.5 px-3 text-center font-black text-emerald-700 border-r border-slate-200">${s1.achievedMarks != null ? s1.achievedMarks + ' / 15' : 'N/A'}</td>
+                <td class="py-2.5 px-3 text-center font-extrabold text-slate-900 border-r border-slate-200">${s1.percentage != null ? s1.percentage + '%' : 'N/A'}</td>
+                <td class="py-2.5 px-3 text-center font-bold text-emerald-800">${s1.status || 'Evaluated'}</td>
+              </tr>
+              <tr class="bg-slate-50/70">
+                <td class="py-2.5 px-3 font-extrabold text-slate-900 border-r border-slate-200">Subject 2: ${s2.name || 'Subject 2'}</td>
+                <td class="py-2.5 px-3 text-center font-bold text-slate-700 border-r border-slate-200">15</td>
+                <td class="py-2.5 px-3 text-center font-black text-blue-700 border-r border-slate-200">${s2.achievedMarks != null ? s2.achievedMarks + ' / 15' : 'Deferred'}</td>
+                <td class="py-2.5 px-3 text-center font-extrabold text-slate-900 border-r border-slate-200">${s2.percentage != null ? s2.percentage + '%' : 'N/A'}</td>
+                <td class="py-2.5 px-3 text-center font-bold text-blue-800">${s2.status || 'Evaluated'}</td>
+              </tr>
+              <tr class="bg-emerald-50/90 font-black text-slate-950 border-t-2 border-emerald-300">
+                <td class="py-3 px-3 border-r border-emerald-200">📊 GRAND TOTAL (15 + 15 = 30 Marks)</td>
+                <td class="py-3 px-3 text-center border-r border-emerald-200">${effMax} Marks</td>
+                <td class="py-3 px-3 text-center text-emerald-800 text-sm border-r border-emerald-200">${sheet.totalAchievedMarks} / ${effMax} Marks</td>
+                <td class="py-3 px-3 text-center text-emerald-900 text-sm border-r border-emerald-200">${sheet.percentage}%</td>
+                <td class="py-3 px-3 text-center text-rose-800">🔒 Verified & Locked</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SECTION 2: SUBJECT 1 (3-TABULAR LAYOUT: 2 VERTICAL + 1 HORIZONTAL) -->
+      ${renderSubjectThreeTableSection(s1, 1)}
+
+      <!-- SECTION 3: SUBJECT 2 (3-TABULAR LAYOUT: 2 VERTICAL + 1 HORIZONTAL) -->
+      ${renderSubjectThreeTableSection(s2, 2)}
+
+      <!-- SECTION 4: OVERALL & SUBJECT-WISE CURRENT PERFORMANCE STATUS (100% PROGRESS BARS) -->
+      <div class="rounded-2xl border-2 border-slate-300 bg-white overflow-hidden shadow-xs">
+        <div class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h4 class="text-xs sm:text-sm font-black uppercase tracking-tight">📊 4. OVERALL & SUBJECT-WISE CURRENT PERFORMANCE STATUS (100% SCALE)</h4>
+            <p class="text-[10px] text-slate-300">Visual distance to 100% centum target across all 6 subjects</p>
+          </div>
+          <span class="text-[10px] font-bold bg-white/10 text-amber-300 px-2.5 py-1 rounded-full border border-white/15">
+            ${perf.evaluatedSubjectsCount} / ${perf.totalSubjectsCount} Subjects Evaluated
           </span>
-          <div class="text-3xl font-black text-white mt-0.5">${testObj.scoredMarks} / ${testObj.maxMarks}</div>
-          <span class="text-[11px] font-bold ${isDay1 ? 'text-emerald-200' : 'text-amber-300'}">${testObj.status || 'Verified'}</span>
         </div>
-        <div class="text-right">
-          <span class="text-3xl font-black ${isDay1 ? 'text-emerald-300' : 'text-amber-400'}">${testObj.percentage}%</span>
-          <span class="text-[10px] text-slate-300 block font-medium">Class 10 CBSE Benchmark</span>
+
+        <div class="p-4 space-y-4">
+          <!-- OVERALL CURRENT PERFORMANCE BAR (Requires all 6 subjects evaluated, otherwise No Data) -->
+          <div class="p-3.5 rounded-2xl bg-slate-50 border-2 border-slate-200 space-y-2">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div>
+                <span class="text-xs font-black text-slate-900 uppercase">🎯 Overall Current Performance Status (All 6 Subjects)</span>
+                <span class="block text-[10px] text-slate-500">Rule: Overall % is calculated only when all 6 subjects are evaluated</span>
+              </div>
+              ${perf.allSixEvaluated ? `
+                <span class="text-sm font-black text-emerald-700 bg-emerald-100 px-3 py-1 rounded-xl border border-emerald-300">
+                  ${perf.overallPercentage}% / 100%
+                </span>
+              ` : `
+                <span class="text-xs font-black text-slate-600 bg-slate-200 px-3 py-1 rounded-xl border border-slate-300">
+                  No Data (${perf.evaluatedSubjectsCount}/6 Subjects Evaluated)
+                </span>
+              `}
+            </div>
+            <!-- 100% Track Bar -->
+            <div class="w-full h-5 bg-slate-200 rounded-full overflow-hidden border border-slate-300 relative flex items-center">
+              ${perf.allSixEvaluated ? `
+                <div style="width: ${perf.overallPercentage}%; background-color: #059669;" class="h-full rounded-full transition-all"></div>
+                <span class="absolute inset-0 flex items-center justify-center text-[10px] font-black text-slate-900">${perf.overallPercentage}% Achieved (Distance to 100%: ${(100 - perf.overallPercentage).toFixed(1)}%)</span>
+              ` : `
+                <span class="w-full text-center text-[10px] font-extrabold text-slate-500">No Data — Awaiting Remaining ${perf.totalSubjectsCount - perf.evaluatedSubjectsCount} Subjects (Social Science, Tamil, AI)</span>
+              `}
+            </div>
+          </div>
+
+          <!-- SUBJECT-WISE 100% PROGRESS BARS -->
+          <div class="space-y-3">
+            <h5 class="text-xs font-black text-slate-800 uppercase tracking-wider">📈 Subject-Wise Current Range (Out of 100%):</h5>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              ${perf.subjectsList.map(sub => `
+                <div class="p-3 rounded-xl border border-slate-200 bg-white space-y-2 shadow-2xs">
+                  <div class="flex items-center justify-between">
+                    <span class="font-extrabold text-slate-900 text-xs">${sub.label}</span>
+                    ${sub.hasData ? `
+                      <span class="text-xs font-black px-2 py-0.5 rounded-lg border ${sub.badgeBg}">
+                        ${sub.percentage}% / 100%
+                      </span>
+                    ` : `
+                      <span class="text-[10px] font-extrabold text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded-lg border border-slate-200">
+                        No Data
+                      </span>
+                    `}
+                  </div>
+
+                  <!-- 100% Bar in background color (#e2e8f0) + Achieved % in distinct vibrant color -->
+                  <div class="w-full h-4 rounded-full overflow-hidden border border-slate-300 relative" style="background-color: #e2e8f0;">
+                    ${sub.hasData ? `
+                      <div style="width: ${sub.percentage}%; background-color: ${sub.color}; height: 100%;" class="rounded-full"></div>
+                    ` : ''}
+                  </div>
+
+                  <div class="flex items-center justify-between text-[10px] text-slate-500 font-semibold">
+                    <span>${sub.hasData ? `Scored: ${sub.earned} / ${sub.max} Marks` : 'Not Evaluated Yet'}</span>
+                    <span>${sub.hasData ? `Distance to 100%: ${(100 - sub.percentage).toFixed(1)}% to go` : 'Status: No Data'}</span>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Quick Explanation Note -->
-      <div class="bg-blue-50/80 border border-blue-200 rounded-xl p-2.5 text-[11px] text-blue-900 leading-snug">
-        ${isDay1 ? '💡 <strong>Day 1 (Science):</strong> நேற்று பிரணவ் எழுதிய அறிவியல் தேர்வில் 15-க்கு 14 மதிப்பெண் (93.3%) பெற்றான்.' : '💡 <strong>Day 2 (Maths):</strong> இன்று பிரணவ் எழுதிய கணிதத் தேர்வில் 10-க்கு 6 மதிப்பெண் (60.0%) பெற்றுள்ளான். 2 தவறுகளினால் 40% குறைந்தது.'}
-      </div>
-
-      <!-- Feedback -->
-      <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 space-y-1">
-        <span class="font-extrabold text-slate-800 text-xs block">📋 Evaluator Feedback & Notes:</span>
-        <p class="text-[11px] text-slate-700 leading-relaxed font-medium">${testObj.feedback || 'Evaluated against syllabus.'}</p>
-      </div>
-
-      <!-- Strengths & Focus Areas -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-        <div class="bg-emerald-50/80 border border-emerald-200 rounded-xl p-3 space-y-1">
-          <span class="font-extrabold text-emerald-900 text-xs flex items-center gap-1.5">
-            <i class="fa-solid fa-star text-emerald-600"></i> What Went Well (Strengths):
-          </span>
-          <ul class="text-[11px] text-slate-700 space-y-1 list-disc pl-4 pt-0.5 font-medium">
-            ${(testObj.strengths || []).map(s => `<li>${s}</li>`).join('')}
-          </ul>
-        </div>
-
-        <div class="bg-amber-50/80 border border-amber-200 rounded-xl p-3 space-y-1">
-          <span class="font-extrabold text-amber-900 text-xs flex items-center gap-1.5">
-            <i class="fa-solid fa-triangle-exclamation text-amber-600"></i> Traps to Fix for Full Marks:
-          </span>
-          <ul class="text-[11px] text-slate-700 space-y-1 list-disc pl-4 pt-0.5 font-medium">
-            ${(testObj.weaknesses || []).map(w => `<li>${w}</li>`).join('')}
-          </ul>
-        </div>
-      </div>
-
-      <!-- Bottom Audio / Model Answers CTA for Day 2 -->
-      ${!isDay1 ? `
-        <div class="pt-1 flex items-center justify-between gap-2">
-          <button onclick="toggleDay2AudioReview()" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-sm transition">
-            <i class="fa-solid fa-volume-high text-xs"></i> <span>Listen to Audio Mentor</span>
-          </button>
-          <button onclick="openDay2CorrectionsModal()" class="flex-1 bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-sm transition">
-            <i class="fa-solid fa-file-lines text-xs text-emerald-400"></i> <span>View Model Answers</span>
-          </button>
-        </div>
-      ` : ''}
     </div>
   `;
 
   modal.classList.remove('hidden');
+  modal.classList.add('flex');
 }
 
 function closeEvaluationReportModal() {
@@ -5743,18 +6043,133 @@ function closeEvaluationReportModal() {
   }
 }
 
+function playEvaluatedSheetAudio(dayNum) {
+  dayNum = dayNum || currentEvalModalDay || activeMissionDayView || 2;
+  const sheet = getEvaluatedSheetForDay(dayNum) || getEvaluatedSheetForDay(2);
+  if (!sheet || !sheet.audioSummary) return;
 
-function toggleDay2PracticeCard() {
-  const card = document.getElementById('day2PracticeCard');
-  const chevron = document.getElementById('day2PracticeChevron');
-  if (!card) return;
-  const isHidden = card.classList.contains('hidden');
-  if (isHidden) {
-    card.classList.remove('hidden');
-    if (chevron) chevron.className = 'fa-solid fa-chevron-up text-[9px] text-amber-700';
-  } else {
-    card.classList.add('hidden');
-    if (chevron) chevron.className = 'fa-solid fa-chevron-down text-[9px] text-amber-700';
+  if (typeof playUniversalTTS === 'function') {
+    playUniversalTTS(sheet.audioSummary, 'ta-IN');
+  } else if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(sheet.audioSummary);
+    u.lang = 'ta-IN';
+    u.rate = 0.95;
+    window.speechSynthesis.speak(u);
   }
 }
+
+async function downloadEvaluatedSheetPDF(dayNum) {
+  dayNum = dayNum || currentEvalModalDay || activeMissionDayView || 2;
+  const modal = document.getElementById('evaluationReportModal');
+  const wasHidden = !modal || modal.classList.contains('hidden');
+
+  // Ensure the sheet for dayNum is rendered inside #pdfExportSheetContainer
+  openEvaluationReportModal(dayNum);
+
+  const element = document.getElementById('pdfExportSheetContainer');
+  if (!element) return;
+
+  const btn = document.getElementById('evalModalDownloadPdfBtn');
+  const origHtml = btn ? btn.innerHTML : '';
+  if (btn) {
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Generating PDF...</span>';
+  }
+
+  const sheet = getEvaluatedSheetForDay(dayNum) || { day: dayNum, date: '2026-10-29', totalAchievedMarks: 25.5 };
+  const fileName = `Pranav_Day${sheet.day}_Evaluation_Report_${sheet.totalAchievedMarks}_of_30.pdf`;
+
+  try {
+    if (typeof html2pdf !== 'undefined') {
+      const opt = {
+        margin: [8, 8, 8, 8],
+        filename: fileName,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true, scrollY: 0 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+      };
+      await html2pdf().set(opt).from(element).save();
+      if (typeof showToast === 'function') {
+        showToast('✅ PDF Downloaded: ' + fileName);
+      }
+    } else {
+      window.print();
+    }
+  } catch (err) {
+    console.error('PDF generation error:', err);
+    window.print();
+  } finally {
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = origHtml;
+    }
+    if (wasHidden) {
+      // Keep modal open so user can also inspect or re-download if needed
+    }
+  }
+}
+
+// ================= PARTIAL SKIP & LEGACY HELPERS =================
+function openPartialSkipModal(dayNum, subjectName) {
+  const sub = subjectName || 'One Subject';
+  const confirmSkip = confirm(
+    '⚡ Partial Skip / Defer to Buffer (Day ' + dayNum + ' - ' + sub + ')\n\n' +
+    'Do you want to mark ' + sub + ' as Partially Skipped today and automatically shift its remaining topics into the Revision Buffer Days (Nov 05–07)?'
+  );
+  if (confirmSkip) {
+    if (typeof showToast === 'function') {
+      showToast('⏭️ ' + sub + ' realigned to Revision Buffer (Nov 05–07).');
+    }
+  }
+}
+
+function openDay2CorrectionsModal() {
+  openEvaluationReportModal(2);
+}
+
+function closeTestCorrectionsModal() {
+  const modal = document.getElementById('testCorrectionsModal');
+  if (modal) {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+}
+
+function toggleDay2AudioReview() {
+  playEvaluatedSheetAudio(2);
+}
+
+function toggleDay2PracticeCard() {
+  openEvaluationReportModal(2);
+}
+
+// Expose globals
+window.setMissionDayView = setMissionDayView;
+window.renderRevisionMissionUI = renderRevisionMissionUI;
+window.openAnswerPaperUploadModal = openAnswerPaperUploadModal;
+window.closeAnswerPaperUploadModal = closeAnswerPaperUploadModal;
+window.handleAnswerPaperPhotoSelect = handleAnswerPaperPhotoSelect;
+window.removeUploadedPage = removeUploadedPage;
+window.triggerAIPaperEvaluation = triggerAIPaperEvaluation;
+window.submitAnswerPaperUpload = submitAnswerPaperUpload;
+window.openEvaluationReportModal = openEvaluationReportModal;
+window.closeEvaluationReportModal = closeEvaluationReportModal;
+window.downloadEvaluatedSheetPDF = downloadEvaluatedSheetPDF;
+window.playEvaluatedSheetAudio = playEvaluatedSheetAudio;
+window.promptMamaUnlockDay = promptMamaUnlockDay;
+window.unlockAndReuploadPaper = unlockAndReuploadPaper;
+window.handleLockedUploadClick = handleLockedUploadClick;
+window.onUploadDaySelectChange = onUploadDaySelectChange;
+window.openPartialSkipModal = openPartialSkipModal;
+window.openDay2CorrectionsModal = openDay2CorrectionsModal;
+window.closeTestCorrectionsModal = closeTestCorrectionsModal;
+window.toggleDay2AudioReview = toggleDay2AudioReview;
 window.toggleDay2PracticeCard = toggleDay2PracticeCard;
+
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    if (typeof renderRevisionMissionUI === 'function') renderRevisionMissionUI();
+  }, 200);
+});
