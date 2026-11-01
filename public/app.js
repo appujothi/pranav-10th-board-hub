@@ -4806,7 +4806,7 @@ function checkNightTestAlarm() {
 setInterval(checkNightTestAlarm, 30000);
 
 // ================= DYNAMIC 16-DAY REVISION MISSION RENDERER =================
-let activeMissionDayView = 2; // Default to Day 2 so Evaluated Result Sheet & PDF are immediately visible
+let activeMissionDayView = 5; // Default to Day 5 (Today: 1 Nov 2026)
 
 // Default Built-in Evaluated Sheets (Day 1 & Day 2 Verified)
 const DEFAULT_EVALUATED_SHEETS = {
@@ -4859,6 +4859,78 @@ const DEFAULT_EVALUATED_SHEETS = {
           "question": "Tamil Unit 5 Realignment",
           "whatWrote": "Skipped on Day 1 because initial paper had Unit 4 (out of SRM Revision-1 syllabus).",
           "betterAnswer": "Realigned to Unit 5, 6, 7 in Revision Buffer Days."
+        }
+      ]
+    }
+  },
+    "3": {
+    "day": 3,
+    "date": "2026-10-30",
+    "title": "Day 3 Night Assessment: Social Science (Global World & Money) + Science (Control & Coordination)",
+    "totalMaxMarks": 30,
+    "effectiveMaxMarks": 30,
+    "totalAchievedMarks": 27.0,
+    "percentage": 90.0,
+    "isLocked": true,
+    "uploadedAt": "2026-10-30T21:30:00+05:30",
+    "uploadedPagesCount": 5,
+    "audioSummary": "Superb performance by Pranav! Scored 27 out of 30 (90.0% Distinction). Science is exceptional at 14 out of 15 (93.3%) with full answers on reflex arc, plant hormones, brain functions and pancreas insulin regulation. Social science is strong at 13 out of 15 (86.7%) with great answers on collateral and Self Help Groups, plus full 5 marks allotted for out-of-portion Great Depression question. Note: ChatGPT mistakenly gave 16.5/30 because it missed Q10 and cerebellum/medulla, but verified score is 27/30 (90%)!",
+    "subject1": {
+      "name": "Social Science (Global World & Money)",
+      "subKey": "social_science",
+      "maxMarks": 15,
+      "achievedMarks": 13.0,
+      "percentage": 86.7,
+      "status": "🌟 Excellent",
+      "correctItems": [
+        "Q1 [1/1 Mark]: Collateral Definition & Bank Demand — Accurately defined as borrower-owned asset pledged as guarantee against loan default.",
+        "Q4 [4/4 Marks]: Self Help Groups (SHGs) — Comprehensive answer covering 15-20 members (mostly women), pooled savings, collateral-free bank loans after 2-3 years, and women empowerment.",
+        "Q5 [5/5 Marks — Out-of-Portion Grace Marks]: Great Depression of 1929 — CBSE Board rationalized syllabus excludes Sub-topics 3.4 & 3.5 from the Board examination and Revision-1. Pranav correctly identified this as out of portion. Full 5 marks awarded."
+      ],
+      "wrongItems": [
+        "Q2 Interest Rate Inversion: Stated formal loans have high interest and informal loans have low interest. In reality, formal sector (banks) charges regulated lower interest, while informal moneylenders charge exorbitant high interest."
+      ],
+      "partialOrImproveItems": [
+        {
+          "qNum": "Q2 [1.0 / 2 Marks — 1 Mark Deducted]",
+          "question": "Mention any two differences between formal and informal sources of credit in India.",
+          "whatWrote": "Correctly identified RBI supervision ('Governed by RBI vs Not governed by RBI'), but inverted interest rates by writing 'Informal = Low interest, Formal = High interest'.",
+          "betterAnswer": "1. Supervision: Formal sector (Banks, Cooperatives) is supervised by RBI; Informal sector (moneylenders, traders) has no governing organization.\n2. Interest Rate: Formal sector charges lower, regulated interest rates; Informal sector charges significantly higher interest leading to debt traps."
+        },
+        {
+          "qNum": "Q3 [2.0 / 3 Marks — 1 Mark Deducted]",
+          "question": "Explain the importance of the Silk Routes in pre-modern trade and cultural exchange.",
+          "whatWrote": "Correctly linked Asia, Europe, and North Africa; mentioned textile trade, gold/silver flow, and spread of Buddhism, Christianity, and Islam. Included American crops (potatoes, maize, chilli) which belonged to Columbian Exchange.",
+          "betterAnswer": "1. Geography: Vibrant network connecting Asia, Europe, and North Africa.\n2. Goods: Chinese silk, Indian textiles and spices flowed west; precious metals (gold, silver) flowed east from Europe.\n3. Cultural Exchange: Buddhist monks, Christian missionaries, and Muslim preachers traveled these routes spreading ideas and faiths."
+        }
+      ]
+    },
+    "subject2": {
+      "name": "Science (Ch 6: Control and Coordination)",
+      "subKey": "science",
+      "maxMarks": 15,
+      "achievedMarks": 14.0,
+      "percentage": 93.3,
+      "status": "🌟 Excellent",
+      "correctItems": [
+        "Q6 [2/2 Marks]: Neuron Diagram — Neat diagram with accurate labeling of Dendrite (A), Axon (B), and Nerve Ending (C).",
+        "Q8 [3/3 Marks]: Plant Hormones — 100% correct identification of (a) Auxin, (b) Cytokinin, and (c) Abscisic Acid.",
+        "Q9 [3/3 Marks]: Brain Functions — Accurately explained Cerebrum (thinking, reasoning, memory), Cerebellum (body posture, straight line walking), and Medulla (involuntary actions, BP, breathing). (Note: ChatGPT erroneously marked Cerebellum/Medulla absent because it appeared on the adjacent page).",
+        "Q10 [3.5/4 Marks]: Pancreas & Insulin Feedback Mechanism — Explained blood sugar elevation after meals, detection by pancreas cells, insulin secretion, feedback regulation shut-off, diabetes diagnosis, and insulin injections. (Note: ChatGPT erroneously gave 0/4 claiming no answer was submitted)."
+      ],
+      "wrongItems": [],
+      "partialOrImproveItems": [
+        {
+          "qNum": "Q7 [2.5 / 3 Marks — 0.5 Mark Deducted]",
+          "question": "What is a reflex arc? Trace the sequence of events when your hand accidentally touches a hot object.",
+          "whatWrote": "Defined reflex arc correctly as shortest pathway without involving brain. Flow: Stimulus (Heat) → Receptor → Sensory Neuron → Spinal Cord / Relay Neuron → Motor Neuron → Effector. Omitted explicit final step: muscle contraction / hand withdrawal.",
+          "betterAnswer": "Complete Reflex Arc Flow: Heat Stimulus → Skin Thermoreceptor → Sensory Neuron → Spinal Cord (Relay Neuron) → Motor Neuron → Arm Muscle (Effector) → Muscle contracts and Hand withdraws rapidly."
+        },
+        {
+          "qNum": "Q10 [3.5 / 4 Marks — 0.5 Mark Deducted]",
+          "question": "Explain the endocrine regulation of blood sugar levels by Insulin. What condition occurs when Insulin is deficient, and how is it managed?",
+          "whatWrote": "Wrote comprehensive feedback mechanism, detection by pancreas, diabetes, and insulin injections. Lost 0.5 mark for conversational phrasing ('put insulin injections') instead of medical terms (subcutaneous administration, dietary regulation, and regular exercise).",
+          "betterAnswer": "1. Regulation: Pancreas beta cells detect elevated blood glucose and secrete insulin, promoting glucose uptake by cells.\n2. Feedback: As glucose returns to normal, insulin secretion decreases.\n3. Deficiency & Care: Deficiency causes Diabetes mellitus; managed via dietary control, exercise, and subcutaneous insulin therapy."
         }
       ]
     }
@@ -5000,13 +5072,30 @@ function renderRevisionMissionUI() {
   const isLocked = isPaperDayLocked(activeMissionDayView);
   const isMamaAdmin = currentUser && currentUser.role === 'admin';
 
-  // Day Selector Pills (Days 1 to 5 + Re-Schedule)
-  const pillDays = [
-    { day: 1, label: 'Day 1 (28 Oct)', tag: '14/15 ✔' },
-    { day: 2, label: 'Day 2 (29 Oct)', tag: '25.5/30 ✔' },
-    { day: 3, label: 'Day 3 (30 Oct)', tag: getEvaluatedSheetForDay(3) ? (getEvaluatedSheetForDay(3).totalAchievedMarks + '/30 ✔') : 'Active' },
-    { day: 4, label: 'Day 4 (31 Oct)', tag: getEvaluatedSheetForDay(4) ? (getEvaluatedSheetForDay(4).totalAchievedMarks + '/30 ✔') : 'Upcoming' }
-  ];
+  // Dynamic Day Selector Pills (Days 1 to 16 Full Revision Schedule)
+  const allDaysList = (schedule && schedule.length > 0) ? schedule.filter(s => s.day >= 1 && s.day <= 16) : Array.from({length: 16}, (_, i) => ({ day: i + 1 }));
+
+  const pillDays = allDaysList.map(s => {
+    const dNum = s.day;
+    const sheet = getEvaluatedSheetForDay(dNum);
+    const dateStr = s.date ? (s.date.split('-')[2] + ' ' + (['', 'Oct', 'Nov', 'Dec'][s.date.split('-')[1] === '10' ? 1 : 2] || '')) : '';
+    let tag = '';
+    if (sheet) {
+      tag = `${sheet.totalAchievedMarks}/${sheet.effectiveMaxMarks || sheet.totalMaxMarks || 30} ✔`;
+    } else if (dNum === 4) {
+      tag = '⏭️ Skipped';
+    } else if (dNum === 5) {
+      tag = '🌟 Today';
+    } else {
+      tag = dateStr || `Day ${dNum}`;
+    }
+    return {
+      day: dNum,
+      label: `Day ${dNum} (${dateStr || ('Day ' + dNum)})`,
+      tag: tag,
+      isSkipped: dNum === 4
+    };
+  });
 
   const dayPillsHtml = `
     <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 pt-0.5">
@@ -5099,16 +5188,49 @@ function renderRevisionMissionUI() {
         </div>
       </div>
     `;
-  } else {
+  } else if (activeMissionDayView === 4 || currentDayData.isSkipped || currentDayData.status === 'skipped') {
     bannerHtml = `
-      <div class="rounded-2xl bg-emerald-50/90 border border-emerald-200 p-4 space-y-3">
+      <div class="rounded-2xl bg-amber-50/90 border-2 border-amber-300 p-4 space-y-3">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <span class="text-[10px] font-extrabold text-amber-950 bg-amber-200/90 px-2.5 py-0.5 rounded-full border border-amber-400 flex items-center gap-1.5">
+            <i class="fa-solid fa-forward-step text-amber-700"></i>
+            <span>DAY 4 (31 OCT): SKIPPED & DEFERRED TO REVISION BUFFER</span>
+          </span>
+          <span class="text-[10px] text-slate-800 font-extrabold bg-white px-2.5 py-0.5 rounded-full border border-amber-300">
+            Portions Rescheduled to Day 6 Review & Day 15 Marathon
+          </span>
+        </div>
+
+        <div class="pt-0.5">
+          <h5 class="text-xs sm:text-sm font-black text-slate-900">Day 4: Mathematics (Ch 6: Triangles - BPT Proofs) + Tamil (Rescheduled)</h5>
+          <p class="text-[11px] text-amber-900 font-medium mt-1 leading-relaxed">
+            நேற்று (31 Oct) தேர்வு விடுபட்டதால், கணிதம் <strong>Triangles BPT Theorem</strong> நிரூபணம் நாள் 6 திருப்புதல் பகுதியிலும் நாள் 15 மேரத்தானிலும் இணைக்கப்பட்டுள்ளது. தமிழ்ப் பாடங்கள் அதிகாரப்பூர்வ SRM சிலபஸ் <strong>இயல் 5, 6, 7</strong>-க்கு ஏற்ப நாள் 7, 10, 12-ல் சீரமைக்கப்பட்டுள்ளன.
+          </p>
+        </div>
+
+        <div class="pt-1 flex flex-wrap items-center gap-2">
+          <button onclick="openAnswerPaperUploadModal(4)" class="bg-amber-600 hover:bg-amber-700 text-white font-black text-xs px-4 py-2 rounded-xl flex items-center gap-1.5 shadow-sm transition">
+            <i class="fa-solid fa-camera"></i>
+            <span>📸 Write & Upload Day 4 Test Anyway (Optional)</span>
+          </button>
+          <button onclick="setMissionDayView(5)" class="bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs px-4 py-2 rounded-xl flex items-center gap-1.5 shadow-sm transition">
+            <i class="fa-solid fa-arrow-right"></i>
+            <span>Go to Active Mission Day 5 (Today: 1 Nov) 🌟</span>
+          </button>
+        </div>
+      </div>
+    `;
+  } else {
+    const isTodayMission = (activeMissionDayView === 5);
+    bannerHtml = `
+      <div class="rounded-2xl ${isTodayMission ? 'bg-gradient-to-br from-emerald-50 via-teal-50 to-slate-50 border-2 border-emerald-400' : 'bg-slate-50 border border-slate-200'} p-4 space-y-3">
         <div class="flex items-center justify-between">
-          <span class="text-[10px] font-bold text-emerald-900 bg-emerald-200/80 px-2.5 py-0.5 rounded-full border border-emerald-300 flex items-center gap-1.5">
-            <span class="w-2 h-2 rounded-full bg-emerald-600 animate-ping"></span>
-            <span>ACTIVE MISSION: Day ${currentDayData.day || activeMissionDayView} (${currentDayData.date || ''})</span>
+          <span class="text-[10px] font-bold ${isTodayMission ? 'text-emerald-900 bg-emerald-200/80 border-emerald-300' : 'text-slate-800 bg-slate-200 border-slate-300'} px-2.5 py-0.5 rounded-full border flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full ${isTodayMission ? 'bg-emerald-600 animate-ping' : 'bg-slate-500'}"></span>
+            <span>${isTodayMission ? '🌟 ACTIVE MISSION (TODAY)' : 'UPCOMING MISSION'}: Day ${currentDayData.day || activeMissionDayView} (${currentDayData.date || ''})</span>
           </span>
           <span class="text-[10px] text-amber-900 font-extrabold bg-amber-100 px-2.5 py-0.5 rounded-full border border-amber-300">
-            ⏳ Night Test (15 + 15 = 30M): Not Uploaded Yet
+            ⏳ Night Test (15 + 15 = 30M): 8:30 PM
           </span>
         </div>
 

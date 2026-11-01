@@ -141,41 +141,33 @@
   },
   "dailyGoalMinutes": 270,
   "dailyTarget": {
-    "date": "2026-10-29",
-    "headline": "🎯 Day 2: Mathematics (Polynomials & Linear Equations) + English (Mijbil & Writing)",
+    "date": "2026-11-01",
+    "headline": "Day 5: Science (Carbon and its Compounds) + English (Madam Rides the Bus)",
     "setBy": "Mama (Super Admin)",
     "focusTasks": [
       {
-        "id": "dt-d2-1",
-        "title": "📐 கணிதம் Ch 2 & 3: Polynomials Zeroes & Linear Equations Substitution முறைகளை பயிற்சி செய்தல்",
-        "track": "board",
-        "subject": "Mathematics",
-        "completed": false,
-        "priority": "critical"
+        "id": "dt-1",
+        "text": "வேதியியல்: Ch 4 Carbon Covalent Bonding, Tetravalency & Soap Micelle வரைபடம் பயிற்சி செய்தல்",
+        "category": "90-100% Path",
+        "completed": false
       },
       {
-        "id": "dt-d2-2",
-        "title": "📖 ஆங்கிலம்: Mijbil the Otter கதை மற்றும் Formal Letter to Editor பார்மட்டை படித்து எழுதுதல்",
-        "track": "school",
-        "subject": "English",
-        "completed": false,
-        "priority": "high"
+        "id": "dt-2",
+        "text": "ஆங்கிலம்: Madam Rides the Bus கதை வினாக்கள் மற்றும் Subject-Verb Concord இலக்கணம்",
+        "category": "School",
+        "completed": false
       },
       {
-        "id": "dt-d2-3",
-        "title": "📸 நேற்று எழுதிய அறிவியல் (Day 1 Science) விடைத்தாள் புகைப்படத்தை அப்லோட் செய்தல்",
-        "track": "tuition",
-        "subject": "House Practice",
-        "completed": true,
-        "priority": "high"
+        "id": "dt-3",
+        "text": "நேற்று விடுபட்ட முக்கோணவியல் (Triangles BPT) தேற்றத்தை ஒருமுறை படித்து வைத்தல்",
+        "category": "Tuition",
+        "completed": false
       },
       {
-        "id": "dt-d2-4",
-        "title": "🌙 இன்று இரவு 8:30 PM: 30 மதிப்பெண் மாதிரித் தேர்வை எழுதி அம்மாவிடம் சமர்ப்பித்தல்",
-        "track": "board",
-        "subject": "Night Test",
-        "completed": false,
-        "priority": "critical"
+        "id": "dt-4",
+        "text": "இன்று இரவு 8:30 PM: 30 மதிப்பெண் மாதிரித் தேர்வை எழுதி அம்மாவிடம் சமர்ப்பித்தல்",
+        "category": "90-100% Path",
+        "completed": false
       }
     ]
   },
@@ -2748,14 +2740,14 @@
     "firstExamDate": "2026-11-13",
     "totalDays": 16,
     "today": {
-      "date": "2026-10-29",
-      "dayIndex": 2,
-      "status": "Active Revision Day 2",
-      "pair": "Mathematics + English",
-      "sub1Name": "Maths: Ch 2 Polynomials & Ch 3 Linear Equations (15 Marks)",
-      "sub2Name": "English: Mijbil the Otter & Formal Letters (15 Marks)",
+      "date": "2026-11-01",
+      "dayIndex": 5,
+      "status": "Active Revision Day 5 (TODAY: 1 Nov)",
+      "pair": "Science (Carbon and its Compounds) + English (Madam Rides the Bus & Grammar)",
+      "sub1Name": "Science: Ch 4 Carbon and its Compounds (15 Marks)",
+      "sub2Name": "English: Madam Rides the Bus & Grammar (15 Marks)",
       "nightTestTiming": "8:30 PM – 9:15 PM (30 Marks)",
-      "message": "இன்று நாள் 2 (Day 2) ரிவிஷன்! கணிதத்தில் Polynomials & Linear Equations, ஆங்கிலத்தில் Mijbil the Otter & Formal Letters படித்து இரவு 8:30 PM தேர்வுக்கு தயாராகுங்கள்."
+      "message": "இன்று நாள் 5 (Day 5) ரிவிஷன்! அறிவியலில் Carbon and its Compounds, ஆங்கிலத்தில் Madam Rides the Bus & Grammar படித்து இரவு 8:30 PM தேர்வுக்கு தயாராகுங்கள்."
     },
     "tomorrow": {
       "date": "2026-10-29",
@@ -2958,7 +2950,7 @@
           {
             "day": 4,
             "date": "2026-10-31",
-            "title": "Day 4: Mathematics (Triangles - BPT Theorem) + Tamil (இயல் 6: நிகழ்கலை)",
+            "title": "Day 4: Mathematics (Triangles) + Tamil [Skipped on 31 Oct - Rescheduled to Buffer]",
             "subjects": [
               "Mathematics",
               "Tamil"
@@ -3000,7 +2992,10 @@
               "timing": "8:30 PM – 9:15 PM (45 Mins)",
               "totalMarks": 30,
               "breakup": "15 Marks Maths + 15 Marks Tamil"
-            }
+            },
+            "status": "skipped",
+            "isSkipped": true,
+            "note": "Day 4 was skipped by student. Maths Triangles (BPT Proofs) rescheduled to Day 6 review and Day 15 Marathon. Tamil rescheduled to Units 5, 6, 7."
           },
           {
             "day": 5,
@@ -3052,7 +3047,7 @@
           {
             "day": 6,
             "date": "2026-11-02",
-            "title": "Day 6: Social Science (Print Culture & Political Parties) + Maths (Heights & Distances)",
+            "title": "Day 6: Social Science (Print Culture & Political Parties) + Maths (Heights & Distances + Triangles BPT Review)",
             "subjects": [
               "Social Science",
               "Mathematics"
@@ -3074,8 +3069,8 @@
             },
             "sub2": {
               "name": "Mathematics",
-              "chapter": "Ch 9: Some Applications of Trigonometry",
-              "topics": "Angle of elevation, Angle of depression, Height of tower/lighthouse word problems (30°, 45°, 60°)",
+              "chapter": "Ch 9: Some Applications of Trig + Ch 6: Triangles BPT Review",
+              "topics": "Heights & Distances word problems, angles of elevation/depression + BPT (Thales Theorem Proof catch-up)",
               "sampleQuestions": [
                 {
                   "q": "From a point on ground, the angle of elevation of bottom and top of a transmission tower fixed on 20m building are 45° and 60°. Find height of tower.",
@@ -3099,7 +3094,7 @@
           {
             "day": 7,
             "date": "2026-11-03",
-            "title": "Day 7: Science (Human Eye & Colourful World) + Tamil (இயல் 7: விதைநெல்)",
+            "title": "Day 7: Science (Human Eye & Colourful World) + Tamil (இயல் 5: நிலா முற்றம்)",
             "subjects": [
               "Science",
               "Tamil"
@@ -3120,9 +3115,9 @@
               ]
             },
             "sub2": {
-              "name": "Tamil",
-              "chapter": "இயல் 7: விதைநெல்",
-              "topics": "சிற்றகல் ஒளி (ம.பொ.சி), ஏர் புதிதா, மெய்க்கீர்த்தி, சிலப்பதிகாரம் (வழக்குரை காதை), புறப்பொருள் வெண்பாமாலை",
+              "name": "Tamil (இயல் 5: நிலா முற்றம்)",
+              "chapter": "இயல் 5: நிலா முற்றம்",
+              "topics": "கம்பராமாயணம் (கம்பர்), பாய்ச்சல் சிறுகதை (சா. கந்தசாமி), அகப்பொருள் இலக்கணம் (அன்பின் ஐந்திணைகள்), திருக்குறள்",
               "sampleQuestions": [
                 {
                   "q": "ம.பொ.சியின் எல்லைப் போராட்டக் கருத்துக்களை சுருக்கித் தருக.",
@@ -3240,7 +3235,7 @@
           {
             "day": 10,
             "date": "2026-11-06",
-            "title": "Day 10: Social Science (Manufacturing & Globalisation) + Tamil (இயல் 5, 6, 7 இலக்கணம்)",
+            "title": "Day 10: Social Science (Manufacturing & Globalisation) + Tamil (இயல் 6: விதை நெல்)",
             "subjects": [
               "Social Science",
               "Tamil"
@@ -3261,9 +3256,9 @@
               ]
             },
             "sub2": {
-              "name": "Tamil",
-              "chapter": "இயல் 5, 6, 7 இலக்கணம் & வினாவிடை",
-              "topics": "வினா விடை வகைகள், பொருள்கோள், அகப்பொருள் & புறப்பொருள் திணைகள், அணி இலக்கணம் (தற்குறிப்பேற்றம், வேற்றுமை)",
+              "name": "Tamil (இயல் 6: விதை நெல்)",
+              "chapter": "இயல் 6: விதை நெல்",
+              "topics": "சிலப்பதிகாரம் - மருவூர்ப்பாக்கம் (இளங்கோவடிகள்), சிற்றகல் ஒளி (ம.பொ. சிவஞானம் எல்லைப் போராட்டம்), புறப்பொருள் இலக்கணம் (பன்னிரு திணைகள்)",
               "sampleQuestions": [
                 {
                   "q": "பொருள்கோள் என்றால் என்ன? அதன் வகைகளை சான்றுடன் பட்டியலிடுக.",
@@ -3334,10 +3329,10 @@
           {
             "day": 12,
             "date": "2026-11-08",
-            "title": "Day 12: English (The Proposal, Stories & Writing) + SST (Democracy & Map Work)",
+            "title": "Day 12: English (The Proposal & Footprints) + Tamil (இயல் 7: பெருவழி)",
             "subjects": [
               "English",
-              "Social Science"
+              "Tamil"
             ],
             "sub1": {
               "name": "English",
@@ -3355,17 +3350,17 @@
               ]
             },
             "sub2": {
-              "name": "Social Science",
-              "chapter": "Civics: Outcomes of Democracy & Map Work",
-              "topics": "Accountable, responsive & legitimate government, Economic growth vs inequality, Revision-1 India Map marking",
+              "name": "Tamil (இயல் 7: பெருவழி)",
+              "chapter": "இயல் 7: பெருவழி",
+              "topics": "சங்க இலக்கியத்தில் அறம், தேம்பாவணி (வீரமாமுனிவர் கருணையன் கண்ணீர்), யாப்பிலக்கணம் (பா வகைகள் - வெண்பா, ஆசிரியப்பா, அலகிடுதல் முறை)",
               "sampleQuestions": [
                 {
-                  "q": "How does democracy produce an accountable, responsive and legitimate government?",
-                  "marks": 3
+                  "q": "தேம்பாவணியில் கருணையன் தன் தாயின் பிரிவால் காட்டில் கதறி அழுத துயரக் காட்சியை விளக்குக.",
+                  "marks": 4
                 },
                 {
-                  "q": "Identify & label on India Outline Map: (a) Bhakra Nangal Dam (b) Salem Iron & Steel Plant (c) Tuticorin Port.",
-                  "marks": 3
+                  "q": "வெண்பாவின் பொது இலக்கணங்களை எழுதி அலகிட்டு வாய்பாடு காண்க.",
+                  "marks": 4
                 }
               ]
             },
@@ -3795,22 +3790,11 @@
       }
     },
     "yesterday": {
-      "date": "2026-10-28",
-      "dayIndex": 1,
-      "status": "partial_completed",
-      "label": "Partial Completed (Science Done, Tamil Skipped)",
-      "sub1": {
-        "name": "Science (Chemistry - Acids, Bases & Salts)",
-        "status": "written",
-        "marksScored": 14,
-        "maxMarks": 15,
-        "photoUploaded": false
-      },
-      "sub2": {
-        "name": "Tamil (Language-II - Unit 5)",
-        "status": "skipped_out_of_syllabus",
-        "note": "Tamil portion was out of syllabus; skipped without penalty and realigned with official textbook Unit 5 (நிலா முற்றம்) in Day 10–12 revision buffer."
-      }
+      "date": "2026-10-31",
+      "dayIndex": 4,
+      "status": "Skipped (Deferred to Revision Buffer / Rescheduled)",
+      "pair": "Mathematics (Triangles) + Tamil (Rescheduled)",
+      "message": "நாள் 4 தேர்வு விடுபட்டது (Skipped). கணிதம் Triangles BPT தேற்றம் நாள் 6 மற்றும் நாள் 15 மேரத்தானில் ஈடுசெய்யப்படும்."
     }
   },
   "pranavDoubts": [
@@ -4388,11 +4372,11 @@
     {
       "day": 7,
       "date": "2026-11-03",
-      "title": "Day 7 Night Assessment: Science (Human Eye & Colourful World) + Tamil (இயல் 7: விதைநெல்)",
+      "title": "Day 7 Night Assessment: Science (Human Eye & Colourful World) + Tamil (இயல் 5: நிலா முற்றம்)",
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
       "sub1Name": "Science (Physics) - 15 Marks",
-      "sub2Name": "Tamil (இயல் 7) - 15 Marks",
+      "sub2Name": "Tamil (இயல் 5: நிலா முற்றம்) - 15 Marks",
       "instructions": "Strict 45-minute timed test. Rough notebook submission. Mama reviews with secret rubric.",
       "scienceSection": {
         "marks": 15,
@@ -4426,31 +4410,39 @@
       },
       "tamilSection": {
         "marks": 15,
-        "summary": "சிலப்பதிகாரத்தில் மருவூர்ப்பாக்கத்தின் வணிக வீதிகள் எவ்வாறு விவரிக்கப்பட்டுள்ளன? (5M) | மெய்க்கீர்த்தி பாடலின் வரலாற்றுச் சிறப்பினை விளக்குக. (5M) | தொழிற்பெயர் மற்றும் வினையாலணையும் பெயர் வேறுபாடுகளைச் சான்றுடன் விளக்குக. (5M)",
+        "summary": "கம்பராமாயணத்தில் கம்பர் சரயு ஆற்றையும் அயோத்தியையும் வர்ணிக்கும் விதம் (4M) | சா. கந்தசாமியின் 'பாய்ச்சல்' கதையில் அழகனின் கலைத்திறன் (4M) | அகப்பொருள் இலக்கணம் - அன்பின் ஐந்திணை அட்டவணை (4M) | திருக்குறள் அணி இலக்கணம் (3M)",
         "questions": [
           {
             "qNum": "Q4",
-            "type": "Section B",
-            "marks": 5,
-            "question": "சிலப்பதிகாரத்தில் மருவூர்ப்பாக்கத்தின் வணிக வீதிகள் எவ்வாறு விவரிக்கப்பட்டுள்ளன? (5M) ",
-            "answer": "Complete answer key in Tanglish and Tamil.",
-            "rubric": "Headings, bullet points, neat presentation."
+            "type": "3 Marks",
+            "marks": 3,
+            "question": "சா. கந்தசாமியின் 'பாய்ச்சல்' சிறுகதையில் அனுமான் வேடமிட்ட அழகனின் நடனம் மற்றும் கலை உணர்வினை விவரிக்க.",
+            "answer": "அழகன் மேளச்சத்தத்திற்கு ஏற்ப கால்களைத் தூக்கி ஆடி, அனுமானின் பாவனைகளைத் தத்ரூபமாக வெளிப்படுத்தினான். கலை அவனுக்குள் ஒரு பெரும் ஆற்றலாகப் பாய்ந்தது.",
+            "rubric": "கலைத்திறன், உடலசைவு, பாத்திரப் பொருத்தம் விளக்கியதற்கு 3 மதிப்பெண்கள்."
           },
           {
             "qNum": "Q5",
-            "type": "Section C",
-            "marks": 5,
-            "question": " மெய்க்கீர்த்தி பாடலின் வரலாற்றுச் சிறப்பினை விளக்குக. (5M) ",
-            "answer": "Accurate grammar rules and examples.",
-            "rubric": "Zero spelling errors, clear definitions."
+            "type": "4 Marks",
+            "marks": 4,
+            "question": "கம்பராமாயணத்தில் கம்பர் சரயு ஆற்றின் இயற்கை எழிலையும், அயோத்தி மாநகரின் மாடமாளிகைகளின் சிறப்புகளையும் எவ்வாறு காட்சிப்படுத்துகிறார்?",
+            "answer": "சரயு ஆறு தாயின் பால்போல் பரந்து பாய்ந்து நாட்டை வளப்படுத்துகிறது. அயோத்தி நகரில் வறுமை இல்லை, அறியாமை இல்லை, உண்மை மட்டுமே நிலவியது.",
+            "rubric": "ஆற்றின் சிறப்பு (2M), அயோத்தி நகரின் சிறப்பு (2M)."
           },
           {
             "qNum": "Q6",
-            "type": "Section D",
-            "marks": 5,
-            "question": " தொழிற்பெயர் மற்றும் வினையாலணையும் பெயர் வேறுபாடுகளைச் சான்றுடன் விளக்குக. (5M)",
-            "answer": "Model response following CBSE rubric.",
-            "rubric": "Proper format and rich vocabulary."
+            "type": "4 Marks",
+            "marks": 4,
+            "question": "அகப்பொருள் இலக்கணம்: அன்பின் ஐந்திணைகள் யாவை? குறிஞ்சி மற்றும் முல்லைத் திணைகளுக்கான நிலம், பொழுது, உரிப்பொருள்களை அட்டவணைப்படுத்துக.",
+            "answer": "அன்பின் ஐந்திணைகள்: குறிஞ்சி, முல்லை, மருதம், நெய்தல், பாலை. குறிஞ்சி: மலையும் மலை சார்ந்த இடமும், யாமம், குளிர்காலம்/முன்பனி, புணர்தல். முல்லை: காடும் காடு சார்ந்த இடமும், மாலை, கார்காலம், இருத்தல்.",
+            "rubric": "ஐந்திணை பெயர் (1M), குறிஞ்சி அட்டவணை (1.5M), முல்லை அட்டவணை (1.5M)."
+          },
+          {
+            "qNum": "Q7",
+            "type": "4 Marks",
+            "marks": 4,
+            "question": "திருக்குறள்: 'பொருளல் லவரைப் பொருளாகச் செய்யும் பொருள்அல்லது இல்லை பொருள்' - இக்குறட்பாவின் பொருளை விளக்கி, பயின்று வந்துள்ள அணியை எழுதுக.",
+            "answer": "பொருள்: ஒரு பொருட்டாக மதிக்கப்படாதவரையும் மதிக்கக்கூடிய ஒருவராக மாற்றுவது செல்வத்தைத் தவிர வேறு எதுவும் இல்லை. பயின்று வந்துள்ள அணி: சொல் பொருள் பின்வரு நிலையணி.",
+            "rubric": "குறளின் பொருள் (2.5M), அணி விளக்கம் (1.5M)."
           }
         ]
       }
@@ -4598,11 +4590,11 @@
     {
       "day": 10,
       "date": "2026-11-06",
-      "title": "Day 10 Night Assessment: Social Science (Manufacturing & Globalisation) + Tamil (இயல் 5, 6, 7 இலக்கணம்)",
+      "title": "Day 10 Night Assessment: Social Science (Manufacturing & Globalisation) + Tamil (இயல் 6: விதை நெல்)",
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
       "sub1Name": "Social Science - 15 Marks",
-      "sub2Name": "Tamil (இலக்கணம்) - 15 Marks",
+      "sub2Name": "Tamil (இயல் 6: விதை நெல்) - 15 Marks",
       "instructions": "Strict 45-minute timed test. Rough notebook submission. Mama reviews with secret rubric.",
       "scienceSection": {
         "marks": 15,
@@ -4636,31 +4628,39 @@
       },
       "tamilSection": {
         "marks": 15,
-        "summary": "வழு, வழாநிலை, வழுவமைதி - சான்றுகளுடன் விரிவாக விளக்குக. (5M) | தீவக அணி அல்லது தற்குறிப்பேற்ற அணி - இலக்கணம் கூறி சான்றுடன் விளக்குக. (5M) | உன் பகுதியில் நூலகம் அமைக்கக் கோரி மாவட்ட நூலக அலுவலருக்கு விண்ணப்பம் வரைக. (5M)",
+        "summary": "சிலப்பதிகாரத்தில் மருவூர்ப்பாக்கத்தின் வணிக அங்காடிச் சிறப்பு (4M) | ம.பொ.சி-யின் எல்லைப் போராட்டம் (4M) | புறப்பொருள் இலக்கணம் - பன்னிரு திணைகள் விளக்கம் (4M) | சிலப்பதிகாரக் காப்பிய நயம் (3M)",
         "questions": [
           {
             "qNum": "Q4",
-            "type": "Section B",
-            "marks": 5,
-            "question": "வழு, வழாநிலை, வழுவமைதி - சான்றுகளுடன் விரிவாக விளக்குக. (5M) ",
-            "answer": "Complete answer key in Tanglish and Tamil.",
-            "rubric": "Headings, bullet points, neat presentation."
+            "type": "3 Marks",
+            "marks": 3,
+            "question": "சிலப்பதிகாரத்தில் மருவூர்ப்பாக்கத்தின் வணிக வீதிகளில் எவ்வகையான பண்டங்கள் மற்றும் ஆடைகள் விற்கப்பட்டன?",
+            "answer": "பட்டு, பருத்தி, கம்பளி ஆடைகள், சந்தனம், அகில், முத்து, மணி, பொன், நவரத்தினங்கள் மற்றும் பலநாட்டு வணிகப் பொருட்கள் விற்கப்பட்டன.",
+            "rubric": "பண்டங்களின் பெயர்கள் மற்றும் அங்காடி அமைப்பு விளக்கியதற்கு 3 மதிப்பெண்கள்."
           },
           {
             "qNum": "Q5",
-            "type": "Section C",
-            "marks": 5,
-            "question": " தீவக அணி அல்லது தற்குறிப்பேற்ற அணி - இலக்கணம் கூறி சான்றுடன் விளக்குக. (5M) ",
-            "answer": "Accurate grammar rules and examples.",
-            "rubric": "Zero spelling errors, clear definitions."
+            "type": "4 Marks",
+            "marks": 4,
+            "question": "மங்கையராய்ப் பிறப்பதற்கே... - இசைப் பேரரசி எம்.எஸ். சுப்புலட்சுமி அவர்கள் இசைத் துறையிலும் இந்தியாவிற்குப் பெருமை சேர்த்த விதத்திலும் ஆற்றிய சாதனைகளைத் தொகுத்தெழுதுக.",
+            "answer": "ஐக்கிய நாடுகள் சபையில் பாடிய முதல் இந்தியப் பெண்மணி, பாரத ரத்னா விருது பெற்ற முதல் இசைக்கலைஞர், வெங்கடேச சுப்ரபாதம் மற்றும் மீரா பஜனைகள் பாடி உலகப் புகழ் பெற்றவர்.",
+            "rubric": "முக்கிய சாதனைகள், விருதுகள், பன்னாட்டுப் புகழ் (4M)."
           },
           {
             "qNum": "Q6",
-            "type": "Section D",
-            "marks": 5,
-            "question": " உன் பகுதியில் நூலகம் அமைக்கக் கோரி மாவட்ட நூலக அலுவலருக்கு விண்ணப்பம் வரைக. (5M)",
-            "answer": "Model response following CBSE rubric.",
-            "rubric": "Proper format and rich vocabulary."
+            "type": "4 Marks",
+            "marks": 4,
+            "question": "சிற்றகல் ஒளி: ம.பொ.சிவஞானம் அவர்கள் 'தலையைக் கொடுத்தேனும் தலைநகரைக் காப்போம்' என்று முழங்கி வட எல்லை மற்றும் தென் எல்லைகளைத் தமிழகத்தோடு இணைக்கப் போராடியதை விவரிக்க.",
+            "answer": "ஆந்திரப் பிரிவினையின் போது சென்னையை ஆந்திராவின் தலைநகராக்க முயன்றபோது போராடி மீட்டதும், திருத்தணி, கன்னியாகுமரி பகுதிகளைத் தமிழகத்துடன் இணைக்கப் பாடுபட்டதும் விவரிக்கப்படுகிறது.",
+            "rubric": "சென்னை மீட்பு (2M), எல்லைப் போராட்டங்கள் (2M)."
+          },
+          {
+            "qNum": "Q7",
+            "type": "4 Marks",
+            "marks": 4,
+            "question": "புறப்பொருள் இலக்கணம்: 'புறப்பொருள் திணைகள் பன்னிரண்டு' - அவற்றுள் வெட்சி, கரந்தை, வஞ்சி, காஞ்சி, உழிஞை, நொச்சி ஆகிய 6 திணைகளின் செயல்களை சான்றுகளுடன் விளக்குக.",
+            "answer": "வெட்சி: ஆநிரை கவர்தல். கரந்தை: கவர்ந்த ஆநிரையை மீட்டல். வஞ்சி: மண்ணாசை கொண்டு போருக்குச் செல்லுதல். காஞ்சி: எதிர்த்துப் போரிட்டு நாட்டைத் தற்காத்தல். உழிஞை: கோட்டையை முற்றுகையிடல். நொச்சி: கோட்டையை உள்ளிருந்து காத்தல்.",
+            "rubric": "ஒவ்வொரு திணையின் செயல் மற்றும் பூ விளக்கத்திற்கு தலா 0.7M (மொத்தம் 4M)."
           }
         ]
       }
@@ -4738,11 +4738,11 @@
     {
       "day": 12,
       "date": "2026-11-08",
-      "title": "Day 12 Night Assessment: English (The Proposal & Footprints) + SST (Democracy & Map Work)",
+      "title": "Day 12 Night Assessment: English (The Proposal & Footprints) + Tamil (இயல் 7: பெருவழி)",
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
       "sub1Name": "English - 15 Marks",
-      "sub2Name": "Social Science - 15 Marks",
+      "sub2Name": "Tamil (இயல் 7: பெருவழி) - 15 Marks",
       "instructions": "Strict 45-minute timed test. Rough notebook submission. Mama reviews with secret rubric.",
       "scienceSection": {
         "marks": 15,
@@ -4776,31 +4776,39 @@
       },
       "tamilSection": {
         "marks": 15,
-        "summary": "How does democracy produce an accountable, responsive, and legitimate government? (5M) | Explain how democracy accommodates social diversity and resolves internal conflicts. (5M) | Map Pointing: Locate Major Ports (Kandla, Marmagao, Kochi, Tuticorin, Paradip) and Iron & Steel Plants (Bhilai, Bokaro, Jamshedpur). (5M)",
+        "summary": "சங்க இலக்கியத்தில் அறம் - கொடை மற்றும் போரறம் (4M) | தேம்பாவணியில் கருணையன் கண்ணீர் புலம்பல் (4M) | இராமானுசர் நாடகத்தின் சமத்துவப் புரட்சி (3M) | யாப்பிலக்கணம் - வெண்பா அலகிடுதல் (4M)",
         "questions": [
           {
             "qNum": "Q4",
-            "type": "Section B",
-            "marks": 5,
-            "question": "How does democracy produce an accountable, responsive, and legitimate government? (5M) ",
-            "answer": "Complete answer key in Tanglish and Tamil.",
-            "rubric": "Headings, bullet points, neat presentation."
+            "type": "3 Marks",
+            "marks": 3,
+            "question": "சங்க இலக்கியங்கள் காட்டும் அறக் கருத்துக்களில் 'கொடைத்திறம்' மற்றும் 'போரறம்' பற்றி விவரிக்க.",
+            "answer": "கொடை: நன்மையை எதிர்பாராமல் கொடுத்தல் (எழுவர் கொடை). போரறம்: பசு, பார்ப்பார், பெண்கள், பிணியுடையோர் ஆகியோருக்கு துன்பம் தராமல் போரிடுதல்.",
+            "rubric": "கொடைத்திறம் விளக்கம் (1.5M), போரற நெறி விளக்கம் (1.5M)."
           },
           {
             "qNum": "Q5",
-            "type": "Section C",
-            "marks": 5,
-            "question": " Explain how democracy accommodates social diversity and resolves internal conflicts. (5M) ",
-            "answer": "Accurate grammar rules and examples.",
-            "rubric": "Zero spelling errors, clear definitions."
+            "type": "4 Marks",
+            "marks": 4,
+            "question": "தேம்பாவணியில் தன் தாய் எலிசபெத்தை (மேரியை) இழந்து காட்டில் தனித்து நின்ற கருணையன் எவ்வாறு அழுது புலம்புகிறான்? வீரமாமுனிவரின் உவமைகளை விளக்குக.",
+            "answer": "பிரிந்த தாயைக் கண்டு துடித்த கருணையன், 'பூமியில் வேர் அறுந்த மலர் போலவும், தாய் பறவை இழந்த குஞ்சு போலவும்' கதறி அழுகிறான்.",
+            "rubric": "துயரக் காட்சி (2M), உவமை நயம் (2M)."
           },
           {
             "qNum": "Q6",
-            "type": "Section D",
-            "marks": 5,
-            "question": " Map Pointing: Locate Major Ports (Kandla, Marmagao, Kochi, Tuticorin, Paradip) and Iron & Steel Plants (Bhilai, Bokaro, Jamshedpur). (5M)",
-            "answer": "Model response following CBSE rubric.",
-            "rubric": "Proper format and rich vocabulary."
+            "type": "4 Marks",
+            "marks": 4,
+            "question": "இராமானுசர் நாடகத்தில் குருவின் எச்சரிக்கையையும் மீறி, கோவில் கோபுரத்தின் மீதேறி திருக்குலத்தாருக்கு 'ஓம் நமோ நாராயணாய' என்ற திருமந்திரத்தை உபதேசித்த நிகழ்வின் ஆன்மீக மற்றும் சமூகச் சமத்துவ முக்கியத்துவத்தை விளக்குக.",
+            "answer": "தான் நரகத்திற்குச் சென்றாலும் அனைவரும் முக்தி அடைய வேண்டும் என்ற பரந்த உள்ளமும், சாதி பேதமற்ற சமத்துவப் புரட்சியும் இந்நிகழ்வில் வெளிப்படுகிறது.",
+            "rubric": "நிகழ்வு விளக்கம் (2M), சமூகச் சமத்துவப் பார்வை (2M)."
+          },
+          {
+            "qNum": "Q7",
+            "type": "4 Marks",
+            "marks": 4,
+            "question": "யாப்பிலக்கணம்: வெண்பாவின் பொது இலக்கணங்களை எழுதி, 'பிறப்பொக்கும் எல்லா உயிர்க்கும் சிறப்பொவ்வா செய்தொழில் வேற்றுமை யான்' என்ற திருக்குறளை அலகிட்டு வாய்பாடு காண்க.",
+            "answer": "வெண்பா: ஈற்றடி முச்சீராகவும் ஏனைய அடிகள் நாற்சீராகவும் வரும். இயற்சீர், வெண்சீர் மட்டுமே வரும். ஈற்றுச்சீர் நாள், மலர், காசு, பிறப்பு வாய்பாட்டில் முடியும். அலகிடுதல்: பிறப்/பொக்/கும் (நிரை நேர் நேர் = புளிமாங்காய்)...",
+            "rubric": "வெண்பா இலக்கணம் (2M), அலகிட்டு வாய்பாடு காணுதல் (2M)."
           }
         ]
       }
@@ -5861,22 +5869,31 @@
   },
   "rescheduling": {
     "isAutoRescheduleActive": true,
-    "lastAdjustedDate": "2026-10-29",
-    "skippedDays": [],
+    "lastAdjustedDate": "2026-11-01",
+    "skippedDays": [
+      4
+    ],
     "halfDoneDays": [],
-    "recoveryPlan": {
-      "status": "normal",
-      "note": "Daily schedule is on track. In case of unexpected events, 1-click auto-reschedule will redistribute pending topics smoothly."
-    }
+    "recoveryPlan": "Day 4 Maths (Triangles BPT) rescheduled to Day 6 review and Day 15 Marathon. Tamil portions strictly mapped to Units 5, 6, 7 across Days 7, 10, 12."
   },
   "performanceHub": {
     "primaryPillar": "house_practice",
     "housePractice": {
       "title": "🏠 House Practice (Core Hero Metric)",
       "description": "Our main focus of this app. Daily home revision and 8:30 PM Night Tests ensure mastery.",
-      "overallAverage": 82.5,
+      "overallAverage": 89.4,
       "targetAverage": 95,
       "recentTests": [
+        {
+          "day": 3,
+          "date": "2026-10-30",
+          "test": "Day 3 Night Test: Social Science (13/15) + Science (14/15)",
+          "maxMarks": 30,
+          "scoredMarks": 27,
+          "percentage": 90,
+          "status": "Verified & Locked (27/30)",
+          "feedback": "Science: 14.0/15 (93.3%) | Social Science: 13.0/15 (86.7%). Outstanding performance! Full feedback mechanism, brain & plant hormones in Science; excellent Collateral & SHGs in SST. Q5 Great Depression awarded 5/5 Out-of-Portion grace marks."
+        },
         {
           "day": 2,
           "date": "2026-10-29",
@@ -6097,6 +6114,78 @@
             "question": "Letter to the Editor on reckless driving and traffic congestion near school zones.",
             "whatWrote": "1) ❌ 'This will be risk for the students who cross the roads and walks beside the road.'\n2) ❌ 'impose heavy penality who breakes the rules.'\n3) ❌ 'make the place new changes.'",
             "betterAnswer": "1) ✅ 'This poses a severe risk to students who cross and walk along the roads.'\n2) ✅ 'impose heavy penalties on those who break traffic rules.'\n3) ✅ 'help bring about strict safety measures.'"
+          }
+        ]
+      }
+    },
+    "3": {
+      "day": 3,
+      "date": "2026-10-30",
+      "title": "Day 3 Night Assessment: Social Science (Global World & Money) + Science (Control & Coordination)",
+      "totalMaxMarks": 30,
+      "effectiveMaxMarks": 30,
+      "totalAchievedMarks": 27,
+      "percentage": 90,
+      "isLocked": true,
+      "uploadedAt": "2026-10-30T21:30:00+05:30",
+      "uploadedPagesCount": 5,
+      "audioSummary": "Superb performance by Pranav! Scored 27 out of 30 (90.0% Distinction). Science is exceptional at 14 out of 15 (93.3%) with full answers on reflex arc, plant hormones, brain functions and pancreas insulin regulation. Social science is strong at 13 out of 15 (86.7%) with great answers on collateral and Self Help Groups, plus full 5 marks allotted for out-of-portion Great Depression question. Note: ChatGPT mistakenly gave 16.5/30 because it missed Q10 and cerebellum/medulla, but verified score is 27/30 (90%)!",
+      "subject1": {
+        "name": "Social Science (Global World & Money)",
+        "subKey": "social_science",
+        "maxMarks": 15,
+        "achievedMarks": 13,
+        "percentage": 86.7,
+        "status": "🌟 Excellent",
+        "correctItems": [
+          "Q1 [1/1 Mark]: Collateral Definition & Bank Demand — Accurately defined as borrower-owned asset pledged as guarantee against loan default.",
+          "Q4 [4/4 Marks]: Self Help Groups (SHGs) — Comprehensive answer covering 15-20 members (mostly women), pooled savings, collateral-free bank loans after 2-3 years, and women empowerment.",
+          "Q5 [5/5 Marks — Out-of-Portion Grace Marks]: Great Depression of 1929 — CBSE Board rationalized syllabus excludes Sub-topics 3.4 & 3.5 from the Board examination and Revision-1. Pranav correctly identified this as out of portion. Full 5 marks awarded."
+        ],
+        "wrongItems": [
+          "Q2 Interest Rate Inversion: Stated formal loans have high interest and informal loans have low interest. In reality, formal sector (banks) charges regulated lower interest, while informal moneylenders charge exorbitant high interest."
+        ],
+        "partialOrImproveItems": [
+          {
+            "qNum": "Q2 [1.0 / 2 Marks — 1 Mark Deducted]",
+            "question": "Mention any two differences between formal and informal sources of credit in India.",
+            "whatWrote": "Correctly identified RBI supervision ('Governed by RBI vs Not governed by RBI'), but inverted interest rates by writing 'Informal = Low interest, Formal = High interest'.",
+            "betterAnswer": "1. Supervision: Formal sector (Banks, Cooperatives) is supervised by RBI; Informal sector (moneylenders, traders) has no governing organization.\n2. Interest Rate: Formal sector charges lower, regulated interest rates; Informal sector charges significantly higher interest leading to debt traps."
+          },
+          {
+            "qNum": "Q3 [2.0 / 3 Marks — 1 Mark Deducted]",
+            "question": "Explain the importance of the Silk Routes in pre-modern trade and cultural exchange.",
+            "whatWrote": "Correctly linked Asia, Europe, and North Africa; mentioned textile trade, gold/silver flow, and spread of Buddhism, Christianity, and Islam. Included American crops (potatoes, maize, chilli) which belonged to Columbian Exchange.",
+            "betterAnswer": "1. Geography: Vibrant network connecting Asia, Europe, and North Africa.\n2. Goods: Chinese silk, Indian textiles and spices flowed west; precious metals (gold, silver) flowed east from Europe.\n3. Cultural Exchange: Buddhist monks, Christian missionaries, and Muslim preachers traveled these routes spreading ideas and faiths."
+          }
+        ]
+      },
+      "subject2": {
+        "name": "Science (Ch 6: Control and Coordination)",
+        "subKey": "science",
+        "maxMarks": 15,
+        "achievedMarks": 14,
+        "percentage": 93.3,
+        "status": "🌟 Excellent",
+        "correctItems": [
+          "Q6 [2/2 Marks]: Neuron Diagram — Neat diagram with accurate labeling of Dendrite (A), Axon (B), and Nerve Ending (C).",
+          "Q8 [3/3 Marks]: Plant Hormones — 100% correct identification of (a) Auxin, (b) Cytokinin, and (c) Abscisic Acid.",
+          "Q9 [3/3 Marks]: Brain Functions — Accurately explained Cerebrum (thinking, reasoning, memory), Cerebellum (body posture, straight line walking), and Medulla (involuntary actions, BP, breathing). (Note: ChatGPT erroneously marked Cerebellum/Medulla absent because it appeared on the adjacent page).",
+          "Q10 [3.5/4 Marks]: Pancreas & Insulin Feedback Mechanism — Explained blood sugar elevation after meals, detection by pancreas cells, insulin secretion, feedback regulation shut-off, diabetes diagnosis, and insulin injections. (Note: ChatGPT erroneously gave 0/4 claiming no answer was submitted)."
+        ],
+        "wrongItems": [],
+        "partialOrImproveItems": [
+          {
+            "qNum": "Q7 [2.5 / 3 Marks — 0.5 Mark Deducted]",
+            "question": "What is a reflex arc? Trace the sequence of events when your hand accidentally touches a hot object.",
+            "whatWrote": "Defined reflex arc correctly as shortest pathway without involving brain. Flow: Stimulus (Heat) → Receptor → Sensory Neuron → Spinal Cord / Relay Neuron → Motor Neuron → Effector. Omitted explicit final step: muscle contraction / hand withdrawal.",
+            "betterAnswer": "Complete Reflex Arc Flow: Heat Stimulus → Skin Thermoreceptor → Sensory Neuron → Spinal Cord (Relay Neuron) → Motor Neuron → Arm Muscle (Effector) → Muscle contracts and Hand withdraws rapidly."
+          },
+          {
+            "qNum": "Q10 [3.5 / 4 Marks — 0.5 Mark Deducted]",
+            "question": "Explain the endocrine regulation of blood sugar levels by Insulin. What condition occurs when Insulin is deficient, and how is it managed?",
+            "whatWrote": "Wrote comprehensive feedback mechanism, detection by pancreas, diabetes, and insulin injections. Lost 0.5 mark for conversational phrasing ('put insulin injections') instead of medical terms (subcutaneous administration, dietary regulation, and regular exercise).",
+            "betterAnswer": "1. Regulation: Pancreas beta cells detect elevated blood glucose and secrete insulin, promoting glucose uptake by cells.\n2. Feedback: As glucose returns to normal, insulin secretion decreases.\n3. Deficiency & Care: Deficiency causes Diabetes mellitus; managed via dietary control, exercise, and subcutaneous insulin therapy."
           }
         ]
       }
