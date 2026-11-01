@@ -4236,7 +4236,7 @@
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
       "sub1Name": "Science (Carbon) - 15 Marks",
-      "sub2Name": "English - 15 Marks",
+      "sub2Name": "English (Madam Rides & Grammar) - 15 Marks",
       "instructions": "Strict 45-minute timed test. Rough notebook submission. Mama reviews with secret rubric.",
       "scienceSection": {
         "marks": 15,
@@ -4270,31 +4270,31 @@
       },
       "tamilSection": {
         "marks": 15,
-        "summary": "How did Valli plan her bus journey to the town? What was her deepest desire? (4M) | Compare the characters of the elderly woman and Valli on the bus. (4M) | Analytical Paragraph writing on Student Study Habits (7M)",
+        "summary": "How did Valli plan her bus journey to the town? What was her deepest desire? (4M) | Compare the characters of the elderly woman and Valli on the bus. (4M) | CBSE Class 10 Grammar (Concord, Tenses, Error Correction, Reported Speech) (7M)",
         "questions": [
           {
             "qNum": "Q4",
-            "type": "Section B",
-            "marks": 5,
-            "question": "How did Valli plan her bus journey to the town? What was her deepest desire? (4M) ",
-            "answer": "Complete answer key in Tanglish and Tamil.",
-            "rubric": "Headings, bullet points, neat presentation."
+            "type": "Literature",
+            "marks": 4,
+            "question": "How did Valli plan her bus journey to the town? What was her deepest desire? (4 Marks)",
+            "answer": "Valli's deepest desire was to ride on the bus. She planned carefully: 30 paise fare each way (total 60 paise), 45 minutes travel time each way, and timed it during her mother's 1-4 PM afternoon nap.",
+            "rubric": "Full marks for mentioning fare (30p), travel duration (45 mins), destination, and timing plan."
           },
           {
             "qNum": "Q5",
-            "type": "Section C",
-            "marks": 5,
-            "question": " Compare the characters of the elderly woman and Valli on the bus. (4M) ",
-            "answer": "Accurate grammar rules and examples.",
-            "rubric": "Zero spelling errors, clear definitions."
+            "type": "Literature",
+            "marks": 4,
+            "question": "Compare the characters of the elderly woman and Valli on the bus. (4 Marks)",
+            "answer": "The elderly woman was unpleasant, chewing betel nut with juice threatening to spill, with big earlobe holes and repulsive earrings, treating Valli like a helpless child. In contrast, Valli was proud, dignified, self-respecting, and assertive.",
+            "rubric": "Full marks for describing elderly woman's sensory details and Valli's proud, independent character."
           },
           {
             "qNum": "Q6",
-            "type": "Section D",
-            "marks": 5,
-            "question": " Analytical Paragraph writing on Student Study Habits (7M)",
-            "answer": "Model response following CBSE rubric.",
-            "rubric": "Proper format and rich vocabulary."
+            "type": "Grammar",
+            "marks": 7,
+            "question": "Attempt the following CBSE Class 10 Grammar questions (7 Marks):\n(i) Neither of the two boys ________ (was / were) present in the class yesterday. (1M)\n(ii) Bread and butter ________ (is / are) his favourite breakfast. (1M)\n(iii) If it rains heavily tomorrow, we ________ (cancel / will cancel) the match. (1M)\n(iv) Error Correction: Find error and correction in: 'Every students in our school participates in sports.' (2M)\n(v) Reported Speech: Change to Indirect Speech: Teacher said to Pranav, 'Did you complete the homework today?' (2M)",
+            "answer": "(i) was\n(ii) is\n(iii) will cancel\n(iv) Error: students | Correction: student\n(v) Teacher asked Pranav if/whether he had completed his homework that day.",
+            "rubric": "Strict CBSE grammar marking: 1M each for (i), (ii), (iii); 2M for error correction (1M error + 1M correction); 2M for reported speech."
           }
         ]
       }
@@ -5034,7 +5034,7 @@
       "instructions": "Strict 45-minute timed test. Rough notebook submission. Mama reviews with secret rubric.",
       "scienceSection": {
         "marks": 15,
-        "summary": "Reading Comprehension / Unseen Passage with inference-based questions (10M) | Writing Skills: Formal Complaint / Enquiry Letter + Analytical Paragraph (10M)",
+        "summary": "Reading Comprehension / Discursive Unseen Passage (10 Marks) | Formal Letter to Editor / Inquiry / Order Letter (10 Marks) | Literature High-Yield First Flight 3-Mark Questions (10 Marks)",
         "questions": [
           {
             "qNum": "Q1",
@@ -5046,11 +5046,11 @@
           },
           {
             "qNum": "Q2",
-            "type": "Application",
-            "marks": 5,
-            "question": "Writing Skills: Formal Complaint / Enquiry Letter + Analytical Paragraph (10M)",
-            "answer": "Complete solution with derivation and diagram.",
-            "rubric": "Full marks for accurate reasoning."
+            "type": "Writing Skills",
+            "marks": 10,
+            "question": "Writing Skills: You are Pranav Jothi, residing at 42, Green Avenue, Chennai. Write a Formal Letter to the Editor of a National Daily drawing attention to the rising issues of reckless driving and urging strict road safety regulations near school zones. (100–120 words) (10 Marks)",
+            "answer": "Follows strict CBSE Letter format: Sender address, Date, Receiver designation & address, Subject, Salutation, 3-paragraph body (Introduction, Details, Suggestions/Conclusion), Complimentary close, Signature.",
+            "rubric": "Format: 2M, Content: 4M, Expression & Grammar: 4M."
           },
           {
             "qNum": "Q3",
@@ -5064,31 +5064,31 @@
       },
       "tamilSection": {
         "marks": 15,
-        "summary": "Full evaluation guidelines and presentation score tips (underlining keywords, margins, neat handwriting).",
+        "summary": "CBSE Integrated Grammar: Reported Speech & Concord Editing (5 Marks) | Supplementary Footprints Character Analysis (10 Marks)",
         "questions": [
           {
             "qNum": "Q4",
-            "type": "Section B",
+            "type": "Grammar",
             "marks": 5,
-            "question": "Full evaluation guidelines and presentation score tips (underlining keywords, margins, neat handwriting).",
-            "answer": "Complete answer key in Tanglish and Tamil.",
-            "rubric": "Headings, bullet points, neat presentation."
+            "question": "Integrated Grammar: (i) Subject-verb concord gap fill (2M), (ii) Error identification and correction (2M), (iii) Reported speech conversion (1M).",
+            "answer": "Standard CBSE marking scheme answer.",
+            "rubric": "1M per correct item, zero grammar ambiguity."
           },
           {
             "qNum": "Q5",
-            "type": "Section C",
+            "type": "Literature",
             "marks": 5,
-            "question": "Grammar / Writing",
-            "answer": "Accurate grammar rules and examples.",
-            "rubric": "Zero spelling errors, clear definitions."
+            "question": "Literature Footprints: How did Bholi's teacher play an essential role in transforming an insecure, stammering child into a confident young girl? (5 Marks)",
+            "answer": "Comprehensive answer highlighting teacher's encouragement, affectionate tone, and Bholi's final courageous defiance of dowry.",
+            "rubric": "Key points from NCERT chapter."
           },
           {
             "qNum": "Q6",
-            "type": "Section D",
+            "type": "Literature",
             "marks": 5,
-            "question": "Creative Writing / Paragraph",
-            "answer": "Model response following CBSE rubric.",
-            "rubric": "Proper format and rich vocabulary."
+            "question": "Literature First Flight: Compare Lencho's unwavering faith in God with Valli's independent, courageous spirit in their respective journeys. (5 Marks)",
+            "answer": "Analytical comparison contrasting Lencho's simple faith vs Valli's calculated planning and maturity.",
+            "rubric": "Thematic comparison and textual evidence."
           }
         ]
       }
@@ -6186,6 +6186,79 @@
             "question": "Explain the endocrine regulation of blood sugar levels by Insulin. What condition occurs when Insulin is deficient, and how is it managed?",
             "whatWrote": "Wrote comprehensive feedback mechanism, detection by pancreas, diabetes, and insulin injections. Lost 0.5 mark for conversational phrasing ('put insulin injections') instead of medical terms (subcutaneous administration, dietary regulation, and regular exercise).",
             "betterAnswer": "1. Regulation: Pancreas beta cells detect elevated blood glucose and secrete insulin, promoting glucose uptake by cells.\n2. Feedback: As glucose returns to normal, insulin secretion decreases.\n3. Deficiency & Care: Deficiency causes Diabetes mellitus; managed via dietary control, exercise, and subcutaneous insulin therapy."
+          }
+        ]
+      }
+    },
+    "5": {
+      "day": 5,
+      "date": "2026-11-01",
+      "title": "Day 5 Night Assessment: Science (Carbon & Compounds) + English (Madam Rides & Grammar)",
+      "totalMaxMarks": 30,
+      "effectiveMaxMarks": 30,
+      "totalAchievedMarks": 22,
+      "percentage": 73.3,
+      "isLocked": true,
+      "uploadedAt": "2026-11-01T22:15:00+05:30",
+      "uploadedPagesCount": 5,
+      "audioSummary": "Solid performance by Pranav! Scored 22.0 out of 30 (73.3% First Class). Science is exceptional at 14.5 out of 15 (96.7%) with flawless chemical equations, micelle diagram, and catenation concepts. English literature is strong at 6.0 out of 8 (75%), remembering key details like 30 paise fare and the betel-nut chewer. Grammar scored 1.5 out of 7; with 15 minutes of practicing Subject-Verb Concord and Reported Speech rules, this will easily jump to 95%+!",
+      "subject1": {
+        "name": "Science (Ch 4: Carbon and its Compounds)",
+        "subKey": "science",
+        "maxMarks": 15,
+        "achievedMarks": 14.5,
+        "percentage": 96.7,
+        "status": "🌟 Outstanding",
+        "correctItems": [
+          "Q1 [4.5/5.0 Marks]: Covalent Bonding, Catenation & Tetravalency — Accurately explained carbon's valency 4, impossibility of gaining/losing 4 e⁻ due to high energy and small atomic size, sharing electrons, self-linking into chains/rings (catenation), and bonding with H, N, O, Cl (tetravalency).",
+          "Q2 [5.0/5.0 Marks]: Soap Cleansing Action & Micelle Diagram — Clean distinction of hydrophobic hydrocarbon tail (in grease) and hydrophilic ionic head (in water). Very neat, labeled circular micelle diagram with suspended dirt.",
+          "Q3 [5.0/5.0 Marks]: Three Chemical Reactions — 100% correct Esterification with conc. H₂SO₄, Saponification with NaOH producing soap and ethanol, and Alkaline KMnO₄ / Acidified K₂Cr₂O₇ oxidation producing ethanoic acid."
+        ],
+        "wrongItems": [],
+        "partialOrImproveItems": [
+          {
+            "qNum": "Q1 [4.5 / 5.0 Marks — 0.5 Mark Deducted]",
+            "question": "Why does carbon form compounds mainly by covalent bonding? Explain Catenation and Tetravalency.",
+            "whatWrote": "Explained 4 valency, small size, high energy for losing/gaining. Missed mentioning that C⁴⁻ nucleus with 6 protons cannot hold 10 electrons, and C⁴⁺ requires huge energy to remove 4 electrons leaving 6 protons holding 2 electrons.",
+            "betterAnswer": "1. If it gains 4 e⁻ (C⁴⁻): Nucleus with 6 protons cannot hold 10 electrons.\n2. If it loses 4 e⁻ (C⁴⁺): Requires large energy to remove 4 electrons leaving 6 protons holding only 2 electrons.\n3. Therefore, it shares electrons to form covalent bonds."
+          }
+        ]
+      },
+      "subject2": {
+        "name": "English (Madam Rides the Bus & Grammar)",
+        "subKey": "english",
+        "maxMarks": 15,
+        "achievedMarks": 7.5,
+        "percentage": 50,
+        "status": "⚠️ Grammar Drill Needed",
+        "correctItems": [
+          "Q4 [3.0/4.0 Marks]: Valli's Bus Journey Plan — Accurately identified 30 paise one-way fare, 45-minute travel time, and neighboring town destination.",
+          "Q5 [3.0/4.0 Marks]: Elderly Woman Comparison — Captured vivid NCERT details: chewing betel nut, ugly large earlobe holes, and offensive intrusive questioning.",
+          "Q6 (iii) [1.0/1.0 Mark]: Tenses / Conditionals — Accurately completed conditional clause: 'we will cancel'."
+        ],
+        "wrongItems": [
+          "Q6 (i) Neither of the two boys... Wrote 'were' instead of singular 'was'.",
+          "Q6 (ii) Bread and butter... Wrote 'are' instead of singular unit 'is'.",
+          "Q6 (iv) Error Correction... Inverted rule by changing verb instead of noun ('students' → 'student')."
+        ],
+        "partialOrImproveItems": [
+          {
+            "qNum": "Q6 (i) & (ii) [0 / 2 Marks]",
+            "question": "Subject-Verb Concord Rules: 'Neither of the two boys...' and 'Bread and butter...'",
+            "whatWrote": "Wrote plural verbs 'were' and 'are'.",
+            "betterAnswer": "1. 'Neither of' always takes a singular verb → 'was'.\n2. 'Bread and butter' as a combined dish takes a singular verb → 'is'."
+          },
+          {
+            "qNum": "Q6 (iv) [0 / 2 Marks]",
+            "question": "Error Correction: 'Every students in our school participates in sports.'",
+            "whatWrote": "Error: participates | Correction: participate",
+            "betterAnswer": "Error: students | Correction: student ('Every' is always followed by a singular countable noun)."
+          },
+          {
+            "qNum": "Q6 (v) [0.5 / 2.0 Marks — 1.5 Marks Deducted]",
+            "question": "Reported Speech: Teacher said to Pranav, 'Did you complete the homework today?'",
+            "whatWrote": "Teacher asks pranav that did he has completed his homework today",
+            "betterAnswer": "Teacher asked Pranav if he had completed his homework that day."
           }
         ]
       }

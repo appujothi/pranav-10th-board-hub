@@ -4810,6 +4810,80 @@ let activeMissionDayView = 5; // Default to Day 5 (Today: 1 Nov 2026)
 
 // Default Built-in Evaluated Sheets (Day 1 & Day 2 Verified)
 const DEFAULT_EVALUATED_SHEETS = {
+  "5": {
+  "day": 5,
+  "date": "2026-11-01",
+  "title": "Day 5 Night Assessment: Science (Carbon & Compounds) + English (Madam Rides & Grammar)",
+  "totalMaxMarks": 30,
+  "effectiveMaxMarks": 30,
+  "totalAchievedMarks": 22,
+  "percentage": 73.3,
+  "isLocked": true,
+  "uploadedAt": "2026-11-01T22:15:00+05:30",
+  "uploadedPagesCount": 5,
+  "audioSummary": "Solid performance by Pranav! Scored 22.0 out of 30 (73.3% First Class). Science is exceptional at 14.5 out of 15 (96.7%) with flawless chemical equations, micelle diagram, and catenation concepts. English literature is strong at 6.0 out of 8 (75%), remembering key details like 30 paise fare and the betel-nut chewer. Grammar scored 1.5 out of 7; with 15 minutes of practicing Subject-Verb Concord and Reported Speech rules, this will easily jump to 95%+!",
+  "subject1": {
+    "name": "Science (Ch 4: Carbon and its Compounds)",
+    "subKey": "science",
+    "maxMarks": 15,
+    "achievedMarks": 14.5,
+    "percentage": 96.7,
+    "status": "🌟 Outstanding",
+    "correctItems": [
+      "Q1 [4.5/5.0 Marks]: Covalent Bonding, Catenation & Tetravalency — Accurately explained carbon's valency 4, impossibility of gaining/losing 4 e⁻ due to high energy and small atomic size, sharing electrons, self-linking into chains/rings (catenation), and bonding with H, N, O, Cl (tetravalency).",
+      "Q2 [5.0/5.0 Marks]: Soap Cleansing Action & Micelle Diagram — Clean distinction of hydrophobic hydrocarbon tail (in grease) and hydrophilic ionic head (in water). Very neat, labeled circular micelle diagram with suspended dirt.",
+      "Q3 [5.0/5.0 Marks]: Three Chemical Reactions — 100% correct Esterification with conc. H₂SO₄, Saponification with NaOH producing soap and ethanol, and Alkaline KMnO₄ / Acidified K₂Cr₂O₇ oxidation producing ethanoic acid."
+    ],
+    "wrongItems": [],
+    "partialOrImproveItems": [
+      {
+        "qNum": "Q1 [4.5 / 5.0 Marks — 0.5 Mark Deducted]",
+        "question": "Why does carbon form compounds mainly by covalent bonding? Explain Catenation and Tetravalency.",
+        "whatWrote": "Explained 4 valency, small size, high energy for losing/gaining. Missed mentioning that C⁴⁻ nucleus with 6 protons cannot hold 10 electrons, and C⁴⁺ requires huge energy to remove 4 electrons leaving 6 protons holding 2 electrons.",
+        "betterAnswer": "1. If it gains 4 e⁻ (C⁴⁻): Nucleus with 6 protons cannot hold 10 electrons.\n2. If it loses 4 e⁻ (C⁴⁺): Requires large energy to remove 4 electrons leaving 6 protons holding only 2 electrons.\n3. Therefore, it shares electrons to form covalent bonds."
+      }
+    ]
+  },
+  "subject2": {
+    "name": "English (Madam Rides the Bus & Grammar)",
+    "subKey": "english",
+    "maxMarks": 15,
+    "achievedMarks": 7.5,
+    "percentage": 50,
+    "status": "⚠️ Grammar Drill Needed",
+    "correctItems": [
+      "Q4 [3.0/4.0 Marks]: Valli's Bus Journey Plan — Accurately identified 30 paise one-way fare, 45-minute travel time, and neighboring town destination.",
+      "Q5 [3.0/4.0 Marks]: Elderly Woman Comparison — Captured vivid NCERT details: chewing betel nut, ugly large earlobe holes, and offensive intrusive questioning.",
+      "Q6 (iii) [1.0/1.0 Mark]: Tenses / Conditionals — Accurately completed conditional clause: 'we will cancel'."
+    ],
+    "wrongItems": [
+      "Q6 (i) Neither of the two boys... Wrote 'were' instead of singular 'was'.",
+      "Q6 (ii) Bread and butter... Wrote 'are' instead of singular unit 'is'.",
+      "Q6 (iv) Error Correction... Inverted rule by changing verb instead of noun ('students' → 'student')."
+    ],
+    "partialOrImproveItems": [
+      {
+        "qNum": "Q6 (i) & (ii) [0 / 2 Marks]",
+        "question": "Subject-Verb Concord Rules: 'Neither of the two boys...' and 'Bread and butter...'",
+        "whatWrote": "Wrote plural verbs 'were' and 'are'.",
+        "betterAnswer": "1. 'Neither of' always takes a singular verb → 'was'.\n2. 'Bread and butter' as a combined dish takes a singular verb → 'is'."
+      },
+      {
+        "qNum": "Q6 (iv) [0 / 2 Marks]",
+        "question": "Error Correction: 'Every students in our school participates in sports.'",
+        "whatWrote": "Error: participates | Correction: participate",
+        "betterAnswer": "Error: students | Correction: student ('Every' is always followed by a singular countable noun)."
+      },
+      {
+        "qNum": "Q6 (v) [0.5 / 2.0 Marks — 1.5 Marks Deducted]",
+        "question": "Reported Speech: Teacher said to Pranav, 'Did you complete the homework today?'",
+        "whatWrote": "Teacher asks pranav that did he has completed his homework today",
+        "betterAnswer": "Teacher asked Pranav if he had completed his homework that day."
+      }
+    ]
+  }
+},
+
   "1": {
     "day": 1,
     "date": "2026-10-28",
