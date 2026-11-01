@@ -143,7 +143,7 @@
   "dailyTarget": {
     "date": "2026-11-01",
     "headline": "Day 5: Science (Carbon and its Compounds) + English (Madam Rides the Bus)",
-    "setBy": "Mama (Super Admin)",
+    "setBy": "Academic Mentor (Admin)",
     "focusTasks": [
       {
         "id": "dt-1",
@@ -4177,7 +4177,7 @@
       "totalMarks": 30,
       "sub1Name": "Mathematics (Triangles) - 15 Marks",
       "sub2Name": "Tamil (இயல் 6) - 15 Marks",
-      "instructions": "Strict 45-minute timed test. Rough notebook submission. Mama reviews with secret rubric.",
+      "instructions": "Strict 45-minute timed test. Rough notebook submission. Evaluation following official CBSE rubric.",
       "scienceSection": {
         "marks": 15,
         "summary": "State and prove Basic Proportionality Theorem (Thales Theorem). (5 Marks) | In Δ ABC, DE ∥ BC intersecting AB at D and AC at E. If AD = x, DB = x-2, AE = x+2, EC = x-1, find the value of x. (3 Marks) [Ans: x = 4]",
@@ -4187,7 +4187,7 @@
             "type": "Core Concept",
             "marks": 5,
             "question": "State and prove Basic Proportionality Theorem (Thales Theorem). (5 Marks)",
-            "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Mama's vault rubric.",
+            "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Official marking scheme rubric.",
             "rubric": "Full marks for complete formula, step-by-step calculation, and highlighted final unit."
           },
           {
@@ -4247,7 +4247,7 @@
       "totalMarks": 30,
       "sub1Name": "Science (Carbon) - 15 Marks",
       "sub2Name": "English (Madam Rides & Grammar) - 15 Marks",
-      "instructions": "Strict 45-minute timed test. Rough notebook submission. Mama reviews with secret rubric.",
+      "instructions": "Strict 45-minute timed test. Rough notebook submission. Evaluation following official CBSE rubric.",
       "scienceSection": {
         "marks": 15,
         "summary": "Why does carbon form compounds mainly by covalent bonding? Explain Catenation and Tetravalency. (4 Marks) | Explain the mechanism of cleansing action of soaps with a neat diagram of Micelle formation. (5 Marks)",
@@ -4257,7 +4257,7 @@
             "type": "Core Concept",
             "marks": 5,
             "question": "Why does carbon form compounds mainly by covalent bonding? Explain Catenation and Tetravalency. (4 Marks)",
-            "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Mama's vault rubric.",
+            "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Official marking scheme rubric.",
             "rubric": "Full marks for complete formula, step-by-step calculation, and highlighted final unit."
           },
           {
@@ -4317,7 +4317,7 @@
       "totalMarks": 30,
       "sub1Name": "Social Science - 15 Marks",
       "sub2Name": "Mathematics (Trigonometry) - 15 Marks",
-      "instructions": "Strict 45-minute timed test. Rough notebook submission. Mama reviews with secret rubric.",
+      "instructions": "Strict 45-minute timed test. Rough notebook submission. Evaluation following official CBSE rubric.",
       "scienceSection": {
         "marks": 15,
         "summary": "'Print created the possibility of wide circulation of ideas, and introduced a new world of debate.' Discuss with Martin Luther's 95 Theses. (5 Marks) | Why are political parties a necessary condition for a democracy? State three challenges faced by political parties in India. (5 Marks)",
@@ -4327,7 +4327,7 @@
             "type": "Core Concept",
             "marks": 5,
             "question": "'Print created the possibility of wide circulation of ideas, and introduced a new world of debate.' Discuss with Martin Luther's 95 Theses. (5 Marks)",
-            "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Mama's vault rubric.",
+            "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Official marking scheme rubric.",
             "rubric": "Full marks for complete formula, step-by-step calculation, and highlighted final unit."
           },
           {
@@ -4387,7 +4387,7 @@
       "totalMarks": 30,
       "sub1Name": "Science (Physics) - 15 Marks",
       "sub2Name": "Tamil (இயல் 5: நிலா முற்றம்) - 15 Marks",
-      "instructions": "Strict 45-minute timed test. Rough notebook submission. Mama reviews with secret rubric.",
+      "instructions": "Strict 45-minute timed test. Rough notebook submission. Evaluation following official CBSE rubric.",
       "scienceSection": {
         "marks": 15,
         "summary": "What is Myopia (near-sightedness)? State two causes. Draw ray diagrams showing (i) a myopic eye, and (ii) its correction using a concave lens. (5 Marks) | Explain why: (i) The sky appears blue to an observer on Earth, (ii) Clouds appear white, (iii) Stars twinkle but planets do not. (5 Marks)",
@@ -4397,7 +4397,7 @@
             "type": "Core Concept",
             "marks": 5,
             "question": "What is Myopia (near-sightedness)? State two causes. Draw ray diagrams showing (i) a myopic eye, and (ii) its correction using a concave lens. (5 Marks)",
-            "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Mama's vault rubric.",
+            "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Official marking scheme rubric.",
             "rubric": "Full marks for complete formula, step-by-step calculation, and highlighted final unit."
           },
           {
@@ -4465,7 +4465,7 @@
       "totalMarks": 30,
       "sub1Name": "Mathematics - 15 Marks",
       "sub2Name": "Social Science - 15 Marks",
-      "instructions": "Strict 45-minute timed test. Rough notebook submission. Mama reviews with secret rubric.",
+      "instructions": "Strict 45-minute timed test. Rough notebook submission. Evaluation following official CBSE rubric.",
       "scienceSection": {
         "marks": 15,
         "summary": "Find the area of the shaded region in a square of side 14 cm with four inscribed quadrant arcs. (4 Marks) | A horse is tied to a peg at one corner of a 15m square grass field by a 5m long rope. Find increase in grazing area if rope is 10m long. (4 Marks)",
@@ -4475,7 +4475,7 @@
             "type": "Core Concept",
             "marks": 5,
             "question": "Find the area of the shaded region in a square of side 14 cm with four inscribed quadrant arcs. (4 Marks)",
-            "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Mama's vault rubric.",
+            "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Official marking scheme rubric.",
             "rubric": "Full marks for complete formula, step-by-step calculation, and highlighted final unit."
           },
           {
@@ -4535,7 +4535,7 @@
       "totalMarks": 30,
       "sub1Name": "Science - 15 Marks",
       "sub2Name": "English - 15 Marks",
-      "instructions": "Strict 45-minute timed test. Rough notebook submission. Mama reviews with secret rubric.",
+      "instructions": "Strict 45-minute timed test. Rough notebook submission. Evaluation following official CBSE rubric.",
       "scienceSection": {
         "marks": 15,
         "summary": "State Fleming's Left Hand Rule. Explain with diagram the magnetic field lines around a current-carrying solenoid. (5 Marks) | What is an electromagnet? How can its magnetic field strength be increased? Distinguish from permanent magnet. (4 Marks)",
@@ -4545,7 +4545,7 @@
             "type": "Core Concept",
             "marks": 5,
             "question": "State Fleming's Left Hand Rule. Explain with diagram the magnetic field lines around a current-carrying solenoid. (5 Marks)",
-            "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Mama's vault rubric.",
+            "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Official marking scheme rubric.",
             "rubric": "Full marks for complete formula, step-by-step calculation, and highlighted final unit."
           },
           {
@@ -4605,7 +4605,7 @@
       "totalMarks": 30,
       "sub1Name": "Social Science - 15 Marks",
       "sub2Name": "Tamil (இயல் 6: விதை நெல்) - 15 Marks",
-      "instructions": "Strict 45-minute timed test. Rough notebook submission. Mama reviews with secret rubric.",
+      "instructions": "Strict 45-minute timed test. Rough notebook submission. Evaluation following official CBSE rubric.",
       "scienceSection": {
         "marks": 15,
         "summary": "'Manufacturing sector is considered the backbone of economic development.' Justify the statement with five arguments. (5 Marks) | How have Multinational Corporations (MNCs) facilitated globalisation? State three ways they set up production across countries. (5 Marks)",
@@ -4615,7 +4615,7 @@
             "type": "Core Concept",
             "marks": 5,
             "question": "'Manufacturing sector is considered the backbone of economic development.' Justify the statement with five arguments. (5 Marks)",
-            "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Mama's vault rubric.",
+            "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Official marking scheme rubric.",
             "rubric": "Full marks for complete formula, step-by-step calculation, and highlighted final unit."
           },
           {
@@ -4683,7 +4683,7 @@
       "totalMarks": 30,
       "sub1Name": "Mathematics - 15 Marks",
       "sub2Name": "Science (Biology) - 15 Marks",
-      "instructions": "Strict 45-minute timed test. Rough notebook submission. Mama reviews with secret rubric.",
+      "instructions": "Strict 45-minute timed test. Rough notebook submission. Evaluation following official CBSE rubric.",
       "scienceSection": {
         "marks": 15,
         "summary": "Find the mean, median and mode relationship (Empirical formula) and calculate median for a given grouped frequency distribution table. (5 Marks) | A box contains 90 discs numbered 1 to 90. One disc is drawn. Find probability that it bears: (i) 2-digit number, (ii) perfect square, (iii) number divisible by 5. (5 Marks)",
@@ -4693,7 +4693,7 @@
             "type": "Core Concept",
             "marks": 5,
             "question": "Find the mean, median and mode relationship (Empirical formula) and calculate median for a given grouped frequency distribution table. (5 Marks)",
-            "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Mama's vault rubric.",
+            "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Official marking scheme rubric.",
             "rubric": "Full marks for complete formula, step-by-step calculation, and highlighted final unit."
           },
           {
@@ -4753,7 +4753,7 @@
       "totalMarks": 30,
       "sub1Name": "English - 15 Marks",
       "sub2Name": "Tamil (இயல் 7: பெருவழி) - 15 Marks",
-      "instructions": "Strict 45-minute timed test. Rough notebook submission. Mama reviews with secret rubric.",
+      "instructions": "Strict 45-minute timed test. Rough notebook submission. Evaluation following official CBSE rubric.",
       "scienceSection": {
         "marks": 15,
         "summary": "Anton Chekhov's play 'The Proposal' ridicules the materialistic nature of upper-class marriages. Discuss with instances from Lomov and Natalya's quarrels. (5 Marks) | How did Ebright's mother encourage his scientific curiosity? What qualities make a good scientist? (4M)",
@@ -4763,7 +4763,7 @@
             "type": "Core Concept",
             "marks": 5,
             "question": "Anton Chekhov's play 'The Proposal' ridicules the materialistic nature of upper-class marriages. Discuss with instances from Lomov and Natalya's quarrels. (5 Marks)",
-            "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Mama's vault rubric.",
+            "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Official marking scheme rubric.",
             "rubric": "Full marks for complete formula, step-by-step calculation, and highlighted final unit."
           },
           {
@@ -4831,7 +4831,7 @@
       "totalMarks": 30,
       "sub1Name": "Full Science Revision - 30 Marks",
       "sub2Name": "Complete NCERT Revision-1 Blueprint",
-      "instructions": "Strict 45-minute timed test. Rough notebook submission. Mama reviews with secret rubric.",
+      "instructions": "Strict 45-minute timed test. Rough notebook submission. Evaluation following official CBSE rubric.",
       "scienceSection": {
         "marks": 15,
         "summary": "Section A: 5 Conceptual MCQs / Assertion-Reason (5M) | Section B: Balancing equations, Ray diagrams for concave mirror/convex lens, Nephron filtration mechanism (10M)",
@@ -4841,7 +4841,7 @@
             "type": "Core Concept",
             "marks": 5,
             "question": "Section A: 5 Conceptual MCQs / Assertion-Reason (5M)",
-            "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Mama's vault rubric.",
+            "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Official marking scheme rubric.",
             "rubric": "Full marks for complete formula, step-by-step calculation, and highlighted final unit."
           },
           {
@@ -4901,7 +4901,7 @@
       "totalMarks": 30,
       "sub1Name": "Full Social Science Revision - 30 Marks",
       "sub2Name": "Complete CBSE Term-1 Standard",
-      "instructions": "Strict 45-minute timed test. Rough notebook submission. Mama reviews with secret rubric.",
+      "instructions": "Strict 45-minute timed test. Rough notebook submission. Evaluation following official CBSE rubric.",
       "scienceSection": {
         "marks": 15,
         "summary": "History: Nationalism in Europe & Silk Route Impact (8 Marks) | Geography: Agriculture cash crops & Mineral belt distribution (8 Marks)",
@@ -4911,7 +4911,7 @@
             "type": "Core Concept",
             "marks": 5,
             "question": "History: Nationalism in Europe & Silk Route Impact (8 Marks)",
-            "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Mama's vault rubric.",
+            "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Official marking scheme rubric.",
             "rubric": "Full marks for complete formula, step-by-step calculation, and highlighted final unit."
           },
           {
@@ -4971,7 +4971,7 @@
       "totalMarks": 30,
       "sub1Name": "Mathematics Board Marathon - 30 Marks",
       "sub2Name": "All 7 Revision Chapters",
-      "instructions": "Strict 45-minute timed test. Rough notebook submission. Mama reviews with secret rubric.",
+      "instructions": "Strict 45-minute timed test. Rough notebook submission. Evaluation following official CBSE rubric.",
       "scienceSection": {
         "marks": 15,
         "summary": "Prove √(3) is irrational & find HCF using prime factorisation (4M) | Quadratic equations word problem: Speed of train / upstream-downstream boat (5M)",
@@ -4981,7 +4981,7 @@
             "type": "Core Concept",
             "marks": 5,
             "question": "Prove √(3) is irrational & find HCF using prime factorisation (4M)",
-            "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Mama's vault rubric.",
+            "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Official marking scheme rubric.",
             "rubric": "Full marks for complete formula, step-by-step calculation, and highlighted final unit."
           },
           {
@@ -5041,7 +5041,7 @@
       "totalMarks": 30,
       "sub1Name": "English Full Syllabus Pre-Board Eve - 30 Marks",
       "sub2Name": "High-Confidence Exam Simulation",
-      "instructions": "Strict 45-minute timed test. Rough notebook submission. Mama reviews with secret rubric.",
+      "instructions": "Strict 45-minute timed test. Rough notebook submission. Evaluation following official CBSE rubric.",
       "scienceSection": {
         "marks": 15,
         "summary": "Reading Comprehension / Discursive Unseen Passage (10 Marks) | Formal Letter to Editor / Inquiry / Order Letter (10 Marks) | Literature High-Yield First Flight 3-Mark Questions (10 Marks)",
@@ -5051,7 +5051,7 @@
             "type": "Core Concept",
             "marks": 5,
             "question": "Reading Comprehension / Unseen Passage with inference-based questions (10M)",
-            "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Mama's vault rubric.",
+            "answer": "Refer to NCERT textbook key points & CBSE standard steps provided in Official marking scheme rubric.",
             "rubric": "Full marks for complete formula, step-by-step calculation, and highlighted final unit."
           },
           {
@@ -5797,7 +5797,7 @@
           "pct": 100,
           "date": "2026-10-28",
           "isTonight": true,
-          "mamaRemark": "Tonight's Test Paper locked in Mama's Secret Vault (8:30 PM)."
+          "mamaRemark": "Tonight's Test Paper locked in Confidential Vault (8:30 PM)."
         }
       ],
       "averagePct": 95
