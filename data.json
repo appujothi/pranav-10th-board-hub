@@ -4350,7 +4350,7 @@
       },
       "tamilSection": {
         "marks": 15,
-        "summary": "A 1.5 m tall boy is standing at some distance from a 30 m tall building. The angle of elevation from his eyes to the top of the building increases from 30° to 60° as he walks towards the building. Find the distance he walked towards the building. (5M) [Ans: 19√(3) m] | Two poles of equal heights are standing opposite each other on either side of the road, which is 80 m wide... (5M) | The angle of elevation of an aeroplane from a point on ground is 60°... (5M)",
+        "summary": "Q4: Boy 1.5m tall and 30m building angle 30° to 60° [Ans: 19√3 m] (5M) | Q5: Two equal poles across 80m road with angles 60° and 30° [Ans: h=20√3 m, distances 20m & 60m] (5M) | Q6: Aeroplane angle of elevation changing from 60° to 30° after 30 sec at height 3000√3 m [Ans: 720 km/h] (5M)",
         "questions": [
           {
             "qNum": "Q4",
@@ -4364,17 +4364,17 @@
             "qNum": "Q5",
             "type": "Section C",
             "marks": 5,
-            "question": " Two poles of equal heights are standing opposite each other on either side of the road, which is 80 m wide... (5M) ",
-            "answer": "Accurate grammar rules and examples.",
-            "rubric": "Zero spelling errors, clear definitions."
+            "question": "Two poles of equal heights are standing opposite each other on either side of the road, which is 80 m wide. From a point between them on the road, the angles of elevation of the top of the poles are 60° and 30°, respectively. Find the height of the poles and the distances of the point from the poles. (5 Marks)",
+            "answer": "Let road width BD = 80 m. Let point on road be P where BP = x, PD = 80 - x. Pole height = h. In triangle ABP: tan 60° = h/x => h = x√3. In triangle CDP: tan 30° = h/(80-x) => h = (80-x)/√3. Equating: x√3 = (80-x)/√3 => 3x = 80 - x => 4x = 80 => x = 20 m. Therefore BP = 20 m, PD = 60 m. Height of poles h = 20√3 m.",
+            "rubric": "Diagram: 1M, Trigonometric relations: 2M, Distances from point (20m, 60m): 1M, Height of poles (20√3 m): 1M."
           },
           {
             "qNum": "Q6",
             "type": "Section D",
             "marks": 5,
-            "question": " The angle of elevation of an aeroplane from a point on ground is 60°... (5M)",
-            "answer": "Model response following CBSE rubric.",
-            "rubric": "Proper format and rich vocabulary."
+            "question": "The angle of elevation of an aeroplane from a point on the ground is 60°. After a flight of 30 seconds, the angle of elevation becomes 30°. If the aeroplane is flying at a constant height of 3000√3 m, find the speed of the aeroplane in km/h. (5 Marks)",
+            "answer": "Let initial position be A, final position be B at height h = 3000√3 m. From ground point P: tan 60° = 3000√3 / PA => PA = 3000 m. tan 30° = 3000√3 / PB => PB = 3000√3 * √3 = 9000 m. Distance covered AB = PB - PA = 9000 - 3000 = 6000 m. Time taken = 30 seconds. Speed = Distance / Time = 6000 / 30 = 200 m/s. In km/h = 200 * (18/5) = 720 km/h.",
+            "rubric": "Diagram: 1M, Ground distances calculation (PA=3000m, PB=9000m): 2M, Distance covered (6000m): 1M, Final speed in km/h (720 km/h): 1M."
           }
         ]
       }
