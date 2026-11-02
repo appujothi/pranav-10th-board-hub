@@ -141,33 +141,33 @@
   },
   "dailyGoalMinutes": 270,
   "dailyTarget": {
-    "date": "2026-11-01",
-    "headline": "Day 5: Science (Carbon and its Compounds) + English (Madam Rides the Bus)",
-    "setBy": "Academic Mentor (Admin)",
+    "date": "2026-11-02",
+    "headline": "Day 6: Social Science (Print & Politics) + Mathematics (Heights & Distances) • Evaluated: 25.5/30 (85%)",
+    "setBy": "Academic Evaluator",
     "focusTasks": [
       {
         "id": "dt-1",
-        "text": "வேதியியல்: Ch 4 Carbon Covalent Bonding, Tetravalency & Soap Micelle வரைபடம் பயிற்சி செய்தல்",
+        "text": "சமூக அறிவியல்: Print Culture & Political Parties பாடங்கள் திருப்புதல் (13.0/15 Marks)",
         "category": "90-100% Path",
-        "completed": false
+        "completed": true
       },
       {
         "id": "dt-2",
-        "text": "ஆங்கிலம்: Madam Rides the Bus கதை வினாக்கள் மற்றும் Subject-Verb Concord இலக்கணம்",
+        "text": "கணிதம்: Heights & Distances 5-Mark கணக்குகள் பயிற்சி (12.5/15 Marks)",
         "category": "School",
-        "completed": false
+        "completed": true
       },
       {
         "id": "dt-3",
-        "text": "நேற்று விடுபட்ட முக்கோணவியல் (Triangles BPT) தேற்றத்தை ஒருமுறை படித்து வைத்தல்",
+        "text": "இரவு 8:30 PM: Day 6 மாதிரித் தேர்வு எழுதி சமர்ப்பித்தல் (7 பக்கங்கள்)",
         "category": "Tuition",
-        "completed": false
+        "completed": true
       },
       {
         "id": "dt-4",
-        "text": "இன்று இரவு 8:30 PM: 30 மதிப்பெண் மாதிரித் தேர்வை எழுதி அம்மாவிடம் சமர்ப்பித்தல்",
+        "text": "தேர்வு மதிப்பீடு முடிந்தது — 25.5/30 (85.0% Distinction Grade A1) பதிவு செய்யப்பட்டது",
         "category": "90-100% Path",
-        "completed": false
+        "completed": true
       }
     ]
   },
@@ -427,6 +427,56 @@
     }
   ],
   "tests": [
+    {
+      "id": "t-day6",
+      "name": "Day 6 Night Assessment: Social Science + Mathematics",
+      "score": 25.5,
+      "totalMarks": 30,
+      "percentage": 85,
+      "date": "2026-11-02",
+      "status": "evaluated",
+      "subject": "Social Science & Maths"
+    },
+    {
+      "id": "t-day5",
+      "name": "Day 5 Night Assessment: Science + English",
+      "score": 22,
+      "totalMarks": 30,
+      "percentage": 73.3,
+      "date": "2026-11-01",
+      "status": "evaluated",
+      "subject": "Science & English"
+    },
+    {
+      "id": "t-day3",
+      "name": "Day 3 Night Assessment: Social Science + Science",
+      "score": 27,
+      "totalMarks": 30,
+      "percentage": 90,
+      "date": "2026-10-30",
+      "status": "evaluated",
+      "subject": "Social Science & Science"
+    },
+    {
+      "id": "t-day2",
+      "name": "Day 2 Night Assessment: Maths + English",
+      "score": 25.5,
+      "totalMarks": 30,
+      "percentage": 85,
+      "date": "2026-10-29",
+      "status": "evaluated",
+      "subject": "Maths & English"
+    },
+    {
+      "id": "t-day1",
+      "name": "Day 1 Night Assessment: Science (Acids, Bases & Salts)",
+      "score": 14,
+      "totalMarks": 15,
+      "percentage": 93.3,
+      "date": "2026-10-28",
+      "status": "evaluated",
+      "subject": "Science"
+    },
     {
       "id": "t-1",
       "title": "Quarterly Examination",
@@ -2740,14 +2790,14 @@
     "firstExamDate": "2026-11-13",
     "totalDays": 16,
     "today": {
-      "date": "2026-11-01",
-      "dayIndex": 5,
-      "status": "Active Revision Day 5 (TODAY: 1 Nov)",
-      "pair": "Science (Carbon and its Compounds) + English (Madam Rides the Bus & Grammar)",
-      "sub1Name": "Science: Ch 4 Carbon and its Compounds (15 Marks)",
-      "sub2Name": "English: Madam Rides the Bus & Grammar (15 Marks)",
+      "date": "2026-11-02",
+      "dayIndex": 6,
+      "status": "Active Revision Day 6 (TODAY: 2 Nov) — Evaluated (25.5 / 30 • 85%)",
+      "pair": "Social Science (Print Culture & Political Parties) + Mathematics (Heights & Distances)",
+      "sub1Name": "Social Science: Print Culture & Political Parties (15 Marks)",
+      "sub2Name": "Mathematics: Some Applications of Trigonometry (15 Marks)",
       "nightTestTiming": "8:30 PM – 9:15 PM (30 Marks)",
-      "message": "இன்று நாள் 5 (Day 5) ரிவிஷன்! அறிவியலில் Carbon and its Compounds, ஆங்கிலத்தில் Madam Rides the Bus & Grammar படித்து இரவு 8:30 PM தேர்வுக்கு தயாராகுங்கள்."
+      "message": "இன்று நாள் 6 (Day 6) தேர்வு முடிவடைந்தது! பிரணவ் 25.5 / 30 (85.0% Distinction) எடுத்து தேர்ச்சி பெற்றுள்ளான். கீழே உள்ள Evaluated Result Sheet-ஐப் பார்க்கவும்."
     },
     "tomorrow": {
       "date": "2026-10-29",
@@ -3790,11 +3840,11 @@
       }
     },
     "yesterday": {
-      "date": "2026-10-31",
-      "dayIndex": 4,
-      "status": "Skipped (Deferred to Revision Buffer / Rescheduled)",
-      "pair": "Mathematics (Triangles) + Tamil (Rescheduled)",
-      "message": "நாள் 4 தேர்வு விடுபட்டது (Skipped). கணிதம் Triangles BPT தேற்றம் நாள் 6 மற்றும் நாள் 15 மேரத்தானில் ஈடுசெய்யப்படும்."
+      "date": "2026-11-01",
+      "dayIndex": 5,
+      "status": "Completed (22.0 / 30 • 73.3%)",
+      "pair": "Science (Carbon) + English (Madam Rides the Bus)",
+      "message": "நாள் 5 தேர்வு மதிப்பீடு முடிவடைந்து ஆப்பில் பதிவு செய்யப்பட்டுள்ளது."
     }
   },
   "pranavDoubts": [
