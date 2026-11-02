@@ -6272,6 +6272,70 @@
           }
         ]
       }
+    },
+    "6": {
+      "day": 6,
+      "date": "2026-11-02",
+      "title": "Day 6 Night Assessment: Social Science (Print & Politics) + Maths (Heights & Distances)",
+      "totalMaxMarks": 30,
+      "effectiveMaxMarks": 30,
+      "totalAchievedMarks": 25.5,
+      "percentage": 85,
+      "isLocked": true,
+      "uploadedAt": "2026-11-02T21:55:00+05:30",
+      "uploadedPagesCount": 7,
+      "audioSummary": "Outstanding performance by Pranav! Scored 25.5 out of 30 (85.0% Distinction Grade A1). Social Science is exceptional at 13 out of 15 (86.7%) with Martin Luther's quotes and all four political party challenges answered with authentic NCERT points. Mathematics is very strong at 12.5 out of 15 (83.3%) with full marks on the boy walking problem (19√3 m) and a near-perfect solution on the aeroplane speed problem (200 m/s / 720 km/h).",
+      "subject1": {
+        "name": "Social Science (Print Culture & Political Parties)",
+        "subKey": "social_science",
+        "maxMarks": 15,
+        "achievedMarks": 13,
+        "percentage": 86.7,
+        "status": "🌟 Excellent",
+        "correctItems": [
+          "Q1 [4.5/5.0 Marks]: Martin Luther's 95 Theses & Print Revolution — Outlined manuscript limitations (costly, fragile), Luther's 1517 Wittenberg door posting, printing of thousands of German Bibles, Protestant Reformation, and quoted: 'Print is the ultimate gift of God.'",
+          "Q2 [4.5/5.0 Marks]: Why Parties Necessary & Challenges in India — Detailed necessity for law-making and government stability; covered all 4 challenges: Dynastic succession (with Tamil Nadu regional example), lack of internal democracy, money/muscle power, and lack of ideological alternative.",
+          "Q3 [4.0/5.0 Marks]: Vernacular Press in India — Described growth of regional newspapers post-1870s (Tilak's Kesari), exposing British misrule, enactment of the Vernacular Press Act 1878, and imprisonment of nationalist leaders."
+        ],
+        "wrongItems": [],
+        "partialOrImproveItems": [
+          {
+            "qNum": "Q3 [4.0 / 5.0 Marks — 1 Mark Deducted]",
+            "question": "Describe the role of vernacular press in fostering national consciousness in India.",
+            "whatWrote": "Accurately noted growth of regional newspapers, Kesari, Vernacular Press Act 1878, censorship and arrests.",
+            "betterAnswer": "Mention that the 1878 Act was modeled on Irish Press Laws, allowing the government to seize printing presses if reports were judged seditious. Highlight how Bal Gangadhar Tilak's imprisonment in 1908 sparked widespread strikes across India."
+          }
+        ]
+      },
+      "subject2": {
+        "name": "Mathematics (Heights & Distances)",
+        "subKey": "maths",
+        "maxMarks": 15,
+        "achievedMarks": 12.5,
+        "percentage": 83.3,
+        "status": "🌟 Very Good",
+        "correctItems": [
+          "Q4 [5.0/5.0 Marks]: 1.5m Boy & 30m Building — Eye-level height AC = 28.5 m; tan 30° = 28.5/BE => BE = 28.5√3 m; tan 60° = 28.5/BD => BD = 9.5√3 m; Distance walked ED = 28.5√3 - 9.5√3 = 19√3 m. 100% full marks!",
+          "Q6 [4.5/5.0 Marks]: Aeroplane Speed Problem — At height 3000√3 m: tan 60° gives x = 3000 m; tan 30° gives y = 9000 m; distance D = 6000 m; speed = 6000 / 30 = 200 m/s."
+        ],
+        "wrongItems": [
+          "Q5 Algebraic Substitution Error: Reached h = 20 m instead of h = 20√3 m due to omitting radical multiplication on the right."
+        ],
+        "partialOrImproveItems": [
+          {
+            "qNum": "Q5 [3.0 / 5.0 Marks — 2 Marks Deducted]",
+            "question": "Two poles of equal heights are standing opposite each other on either side of 80 m road...",
+            "whatWrote": "Drew accurate diagram and set up correct equations: tan 30° = h/x => x = h√3 and tan 60° = h/(80-x). In algebraic expansion, omitted multiplying by √3 resulting in h = 20 m.",
+            "betterAnswer": "h = (80 - x)√3 => h = (80 - h√3)√3 = 80√3 - 3h => 4h = 80√3 => h = 20√3 m (Height of poles). Distances from point are x = (20√3)√3 = 60 m and 80 - 60 = 20 m."
+          },
+          {
+            "qNum": "Q6 [4.5 / 5.0 Marks — 0.5 Mark Deducted]",
+            "question": "Aeroplane speed calculation from angles 60° to 30° in 30 seconds...",
+            "whatWrote": "Calculated speed = 200 m/s accurately, but did not convert to km/h as requested in the question.",
+            "betterAnswer": "Convert 200 m/s to km/h: 200 * (18 / 5) = 720 km/h."
+          }
+        ]
+      }
     }
   }
 }
