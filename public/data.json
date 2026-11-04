@@ -141,33 +141,33 @@
   },
   "dailyGoalMinutes": 270,
   "dailyTarget": {
-    "date": "2026-11-02",
-    "headline": "Day 6: Social Science (Print & Politics) + Mathematics (Heights & Distances) • Evaluated: 25.5/30 (85%)",
+    "date": "2026-11-04",
+    "headline": "Wednesday, 4 Nov: 2 Tests Today — 2:00 PM: Day 7 (Science + Tamil) | 8:30 PM: Day 8 (Maths + SST)",
     "setBy": "Academic Evaluator",
     "focusTasks": [
       {
         "id": "dt-1",
-        "text": "சமூக அறிவியல்: Print Culture & Political Parties பாடங்கள் திருப்புதல் (13.0/15 Marks)",
+        "text": "பிற்பகல் 2:00 PM – 2:45 PM: Day 7 மாதிரித் தேர்வு (Science: Human Eye + Tamil: இயல் 5 நிலா முற்றம்)",
         "category": "90-100% Path",
-        "completed": true
+        "completed": false
       },
       {
         "id": "dt-2",
-        "text": "கணிதம்: Heights & Distances 5-Mark கணக்குகள் பயிற்சி (12.5/15 Marks)",
+        "text": "தமிழ் திருக்குறள்: பிரணவ் கூறிய போர்டு முறைப்படி Fill in the blanks with 4 options (MCQ) முறையில் வினாத்தாள் திருத்தப்பட்டது",
         "category": "School",
         "completed": true
       },
       {
         "id": "dt-3",
-        "text": "இரவு 8:30 PM: Day 6 மாதிரித் தேர்வு எழுதி சமர்ப்பித்தல் (7 பக்கங்கள்)",
+        "text": "மாலை திருப்புதல்: Maths (Areas Related to Circles) & SST (Agriculture & Minerals) சூத்திரங்கள் படித்தல்",
         "category": "Tuition",
-        "completed": true
+        "completed": false
       },
       {
         "id": "dt-4",
-        "text": "தேர்வு மதிப்பீடு முடிந்தது — 25.5/30 (85.0% Distinction Grade A1) பதிவு செய்யப்பட்டது",
+        "text": "இரவு 8:30 PM – 9:15 PM: Day 8 மாதிரித் தேர்வு (கணிதம் 15M + சமூக அறிவியல் 15M = 30M)",
         "category": "90-100% Path",
-        "completed": true
+        "completed": false
       }
     ]
   },
@@ -2790,14 +2790,14 @@
     "firstExamDate": "2026-11-13",
     "totalDays": 16,
     "today": {
-      "date": "2026-11-02",
-      "dayIndex": 6,
-      "status": "Active Revision Day 6 (TODAY: 2 Nov) — Evaluated (25.5 / 30 • 85%)",
-      "pair": "Social Science (Print Culture & Political Parties) + Mathematics (Heights & Distances)",
-      "sub1Name": "Social Science: Print Culture & Political Parties (15 Marks)",
-      "sub2Name": "Mathematics: Some Applications of Trigonometry (15 Marks)",
-      "nightTestTiming": "8:30 PM – 9:15 PM (30 Marks)",
-      "message": "இன்று நாள் 6 (Day 6) தேர்வு முடிவடைந்தது! பிரணவ் 25.5 / 30 (85.0% Distinction) எடுத்து தேர்ச்சி பெற்றுள்ளான். கீழே உள்ள Evaluated Result Sheet-ஐப் பார்க்கவும்."
+      "date": "2026-11-04",
+      "dayIndex": 8,
+      "status": "⚡ Super Active: 2 Tests Today (2:00 PM: Day 7 & 8:30 PM: Day 8)",
+      "pair": "2:00 PM: Science + Tamil (Day 7) | 8:30 PM: Maths + SST (Day 8)",
+      "sub1Name": "Afternoon 2:00 PM: Day 7 Science & Tamil (30 Marks)",
+      "sub2Name": "Tonight 8:30 PM: Day 8 Maths & Social Science (30 Marks)",
+      "nightTestTiming": "2:00 PM (Day 7) & 8:30 PM (Day 8)",
+      "message": "இன்று 2 தேர்வுகள்! பிற்பகல் 2:00 PM-க்கு Day 7 தேர்வு (அறிவியல் + திருக்குறள் MCQ திருத்தப்பட்ட தமிழ்). இரவு 8:30 PM-க்கு Day 8 தேர்வு (கணிதம் + சமூக அறிவியல்)."
     },
     "tomorrow": {
       "date": "2026-10-29",
@@ -4422,8 +4422,8 @@
     {
       "day": 7,
       "date": "2026-11-03",
-      "title": "Day 7 Night Assessment: Science (Human Eye & Colourful World) + Tamil (இயல் 5: நிலா முற்றம்)",
-      "timing": "8:30 PM – 9:15 PM (45 Mins)",
+      "title": "Day 7 Assessment (Conducted Today 2:00 PM): Science (Human Eye) + Tamil (இயல் 5: நிலா முற்றம்)",
+      "timing": "Special Schedule: Today (4 Nov) 2:00 PM – 2:45 PM (45 Mins)",
       "totalMarks": 30,
       "sub1Name": "Science (Physics) - 15 Marks",
       "sub2Name": "Tamil (இயல் 5: நிலா முற்றம்) - 15 Marks",
@@ -4460,7 +4460,7 @@
       },
       "tamilSection": {
         "marks": 15,
-        "summary": "கம்பராமாயணத்தில் கம்பர் சரயு ஆற்றையும் அயோத்தியையும் வர்ணிக்கும் விதம் (4M) | சா. கந்தசாமியின் 'பாய்ச்சல்' கதையில் அழகனின் கலைத்திறன் (4M) | அகப்பொருள் இலக்கணம் - அன்பின் ஐந்திணை அட்டவணை (4M) | திருக்குறள் அணி இலக்கணம் (3M)",
+        "summary": "சா. கந்தசாமியின் 'பாய்ச்சல்' கதையில் அழகனின் கலைத்திறன் (3M) | கம்பராமாயணம் சரயு ஆறு & அயோத்தி நகர் சிறப்பு (4M) | அகப்பொருள் இலக்கணம் - அன்பின் ஐந்திணை அட்டவணை (4M) | திருக்குறள் விடுபட்ட சீர் தேர்ந்தெடுத்தல் MCQ (4M)",
         "questions": [
           {
             "qNum": "Q4",
@@ -4488,11 +4488,11 @@
           },
           {
             "qNum": "Q7",
-            "type": "4 Marks",
+            "type": "திருக்குறள் விடுபட்ட சீர் (MCQ)",
             "marks": 4,
-            "question": "திருக்குறள்: 'பொருளல் லவரைப் பொருளாகச் செய்யும் பொருள்அல்லது இல்லை பொருள்' - இக்குறட்பாவின் பொருளை விளக்கி, பயின்று வந்துள்ள அணியை எழுதுக.",
-            "answer": "பொருள்: ஒரு பொருட்டாக மதிக்கப்படாதவரையும் மதிக்கக்கூடிய ஒருவராக மாற்றுவது செல்வத்தைத் தவிர வேறு எதுவும் இல்லை. பயின்று வந்துள்ள அணி: சொல் பொருள் பின்வரு நிலையணி.",
-            "rubric": "குறளின் பொருள் (2.5M), அணி விளக்கம் (1.5M)."
+            "question": "திருக்குறள்: விடுபட்ட சரியான சீரைத் தேர்ந்தெடுத்து எழுதுக (2 × 2 = 4 மதிப்பெண்கள்):\n\n(i) 'செயற்கை அறிந்தக் கடைத்தும் உலகத்து ________ அறிந்து செயல்.'\n    அ) இயற்கை\n    ஆ) செயற்கை\n    இ) நெறி\n    ஈ) இயல்பு\n\n(ii) 'தேவர் அனையர் கயவர் அவரும்தாம் ________ செய்தொழுக லான்.'\n    அ) நல்லன\n    ஆ) மேவன\n    இ) தீயன\n    ஈ) வேண்டிய",
+            "answer": "(i) அ) இயற்கை (குறள் 4: செயற்கை அறிந்தக் கடைத்தும் உலகத் தியற்கை அறிந்து செயல்.)\n(ii) ஆ) மேவன (குறள் 19: தேவர் அனையர் கயவர் அவரும்தாம் மேவன செய்தொழுக லான்.)",
+            "rubric": "ஒவ்வொரு சரியான விடைக்கும் தலா 2 மதிப்பெண்கள் (2 × 2 = 4 மதிப்பெண்கள்)."
           }
         ]
       }
@@ -4500,8 +4500,8 @@
     {
       "day": 8,
       "date": "2026-11-04",
-      "title": "Day 8 Night Assessment: Mathematics (Areas Related to Circles) + SST (Agriculture & Minerals)",
-      "timing": "8:30 PM – 9:15 PM (45 Mins)",
+      "title": "Day 8 Night Assessment (Tonight 8:30 PM): Mathematics (Areas Related to Circles) + SST (Agriculture & Minerals)",
+      "timing": "Tonight 8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
       "sub1Name": "Mathematics - 15 Marks",
       "sub2Name": "Social Science - 15 Marks",
