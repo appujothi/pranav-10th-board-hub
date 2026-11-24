@@ -141,31 +141,31 @@
   },
   "dailyGoalMinutes": 270,
   "dailyTarget": {
-    "date": "2026-11-24",
-    "headline": "Full-Portion Day 1 (24 Nov): Science (Ch 1 Reactions & Ch 9 Mirrors) + Maths (Ch 1 Real Numbers & Ch 4 Quadratic Equations)",
+    "date": "2026-11-25",
+    "headline": "Day 1 Test Starts Tomorrow (Wed, 25 Nov • 8:30 PM): Science (Ch 1 & Ch 9 Mirrors) + Maths (Ch 1 & Ch 4)",
     "setBy": "Academic Evaluator",
     "focusTasks": [
       {
         "id": "dt-1",
+        "text": "இன்று இரவு தேர்வு இல்லை — நாளை (25 Nov) இரவு 8:30 PM முதல் தேர்வுக்கான (Day 1) முன்பயிற்சி",
+        "category": "90-100% Path",
+        "completed": true
+      },
+      {
+        "id": "dt-2",
         "text": "வேதியியல் & இயற்பியல்: Ch 1 Decomposition/Redox சமன்பாடுகள் மற்றும் Ch 9 குழி/குவி ஆடி (Mirrors) கதிர் வரைபடங்கள் & கணக்குகள்",
         "category": "90-100% Path",
         "completed": false
       },
       {
-        "id": "dt-2",
+        "id": "dt-3",
         "text": "கணிதம்: Ch 1 √3, √5 விகிதமுறா எண் நிரூபணம் (Irrationality Proof) மற்றும் Ch 4 இருபடிச் சமன்பாடுகள் (Quadratic Formula & D = b²-4ac)",
         "category": "School",
         "completed": false
       },
       {
-        "id": "dt-3",
-        "text": "சூத்திர நோட்டு: ஆடிச் சூத்திரம் (1/v + 1/u = 1/f), உருப்பெருக்கம் (m = -v/u) மற்றும் இருபடிச் சூத்திரங்களை எழுதிப் பார்த்தல்",
-        "category": "Tuition",
-        "completed": false
-      },
-      {
         "id": "dt-4",
-        "text": "இன்று இரவு 8:30 PM – 9:15 PM: Full-Portion Day 1 மாதிரித் தேர்வு (30 மதிப்பெண்கள்) எழுதி சமர்ப்பித்தல்",
+        "text": "நாளை (25 Nov) இரவு 8:30 PM – 9:15 PM: Full-Portion Day 1 மாதிரித் தேர்வு (30 மதிப்பெண்கள்) எழுதுதல்",
         "category": "90-100% Path",
         "completed": false
       }
@@ -2881,37 +2881,37 @@
   },
   "revisionSplitter": {
     "activeMode": "pair_rotation",
-    "startDate": "2026-11-24",
-    "firstExamDate": "2026-12-10",
+    "startDate": "2026-11-25",
+    "firstExamDate": "2026-12-11",
     "totalDays": 16,
     "today": {
       "date": "2026-11-24",
-      "dayIndex": 1,
-      "status": "🔥 Full-Portion Sprint Day 1 (TODAY: 24 Nov)",
-      "pair": "Science (Ch 1 Chemical Reactions & Ch 9 Mirrors) + Mathematics (Ch 1 Real Numbers & Ch 4 Quadratic Equations)",
+      "dayIndex": 0,
+      "status": "📚 Prep Eve (24 Nov): No Test Tonight — Day 1 Test Tomorrow (25 Nov, 8:30 PM)",
+      "pair": "Prep for Day 1: Science (Ch 1 Reactions & Ch 9 Mirrors) + Maths (Ch 1 Real Numbers & Ch 4 Quadratic Eq)",
       "sub1Name": "Science: Ch 1 Chemical Reactions & Ch 9 Spherical Mirrors (15 Marks)",
       "sub2Name": "Mathematics: Ch 1 Real Numbers & Ch 4 Quadratic Equations (15 Marks)",
-      "nightTestTiming": "8:30 PM – 9:15 PM (30 Marks)",
-      "message": "இன்று முதல் 16-நாள் முழுப் பாடத்திட்டப் பயிற்சி (Full Portion Sprint: Nov 24 – Dec 9) தொடக்கம்! முதல் 8 நாட்களில் Revision-1-ல் விடுபட்ட Term-1 பாடங்களை முடித்துவிட்டு, அடுத்த 8 நாட்களில் முழுப் பாடத்திட்டத்தையும் ஒருங்கிணைத்துத் தேர்வு எழுதுவோம்."
+      "nightTestTiming": "Starts Tomorrow (25 Nov) at 8:30 PM (30 Marks)",
+      "message": "இன்று இரவு தேர்வு இல்லை! நாளை (புதன், 25 Nov) முதல் இரவு 8:30 PM தேர்வுகள் தொடங்குகின்றன. இன்றும் நாளையும் Day 1 பாடங்களை (Science Ch 1 & 9 + Maths Ch 1 & 4) நிதானமாகப் படித்து நாளை இரவு 8:30 PM முதல் தேர்வுக்குத் தயாராகவும்."
     },
     "tomorrow": {
       "date": "2026-11-25",
-      "dayIndex": 2,
-      "pair": "Social Science (Nationalism in Europe & Power Sharing) + English (Letter to God, Mandela & Analytical Paragraph)",
-      "sub1Name": "Social Science: History Ch 1 & Civics Ch 1 (15 Marks)",
-      "sub2Name": "English: Prose 1–2, Poems 1–2 & Analytical Paragraph (15 Marks)",
-      "nightTestTiming": "8:30 PM – 9:15 PM (30 Marks)",
-      "warning": "⚠️ Note: ஒவ்வொரு நாளும் இரவு 8:30 PM-க்கு 30 மதிப்பெண் எழுத்துத் தேர்வு நடைபெறும்!"
+      "dayIndex": 1,
+      "pair": "Day 1 Test Tomorrow: Science (Ch 1 & Ch 9 Mirrors) + Mathematics (Ch 1 & Ch 4 Quadratic)",
+      "sub1Name": "Science: Ch 1 Chemical Reactions & Ch 9 Mirrors (15 Marks)",
+      "sub2Name": "Mathematics: Ch 1 Real Numbers & Ch 4 Quadratic Equations (15 Marks)",
+      "nightTestTiming": "Tomorrow 8:30 PM – 9:15 PM (30 Marks)",
+      "warning": "🔥 நாளை (25 Nov) இரவு 8:30 PM-க்கு Full-Portion Sprint-ன் முதல் தேர்வு (Day 1 - 30 Marks) நடைபெறும்!"
     },
     "modes": {
       "pair_rotation": {
-        "name": "🔄 16-Day Full-Portion Sprint: 2 Subjects / Day (Nov 24 – Dec 9)",
+        "name": "🔄 16-Day Full-Portion Sprint: 2 Subjects / Day (Nov 25 – Dec 10)",
         "shortName": "Full-Portion Pair Rotation (5 Subjects)",
-        "description": "முதல் 8 நாட்கள் (Nov 24 – Dec 1) Term-1 பாடங்கள்; அடுத்த 8 நாட்கள் (Dec 2 – Dec 9) 100% முழுப் பாடத்திட்ட ஒருங்கிணைப்பு மற்றும் Pre-Board மாதிரித் தேர்வுகள்.",
+        "description": "முதல் 8 நாட்கள் (Nov 25 – Dec 2) Term-1 பாடங்கள்; அடுத்த 8 நாட்கள் (Dec 3 – Dec 10) 100% முழுப் பாடத்திட்ட ஒருங்கிணைப்பு மற்றும் Pre-Board மாதிரித் தேர்வுகள்.",
         "schedule": [
           {
             "day": 1,
-            "date": "2026-11-24",
+            "date": "2026-11-25",
             "isToday": true,
             "phase": "Phase A: Term-1 Uncovered Chapters Mastery",
             "title": "Day 1: Science (Ch 1 Chemical Reactions & Ch 9 Light Mirrors) + Maths (Ch 1 Real Numbers & Ch 4 Quadratic Equations)",
@@ -2959,7 +2959,7 @@
           },
           {
             "day": 2,
-            "date": "2026-11-25",
+            "date": "2026-11-26",
             "isTomorrow": true,
             "phase": "Phase A: Term-1 Uncovered Chapters Mastery",
             "title": "Day 2: Social Science (Nationalism in Europe & Power Sharing) + English (Letter to God, Mandela & Analytical Paragraph)",
@@ -3002,7 +3002,7 @@
           },
           {
             "day": 3,
-            "date": "2026-11-26",
+            "date": "2026-11-27",
             "phase": "Phase A: Term-1 Uncovered Chapters Mastery",
             "title": "Day 3: Science (Ch 5 Life Processes) + Tamil (இயல் 1: அமுதஊற்று & திருக்குறள் MCQ)",
             "focus": "Human Physiology Diagrams & Tamil Unit 1",
@@ -3038,7 +3038,7 @@
           },
           {
             "day": 4,
-            "date": "2026-11-27",
+            "date": "2026-11-28",
             "phase": "Phase A: Term-1 Uncovered Chapters Mastery",
             "title": "Day 4: Mathematics (Ch 5 Arithmetic Progressions & Ch 7 Coordinate Geometry) + SST (Nationalism in India & Development)",
             "focus": "AP Series, Distance/Section Formulas & Indian Freedom Struggle",
@@ -3074,7 +3074,7 @@
           },
           {
             "day": 5,
-            "date": "2026-11-28",
+            "date": "2026-11-29",
             "phase": "Phase A: Term-1 Uncovered Chapters Mastery",
             "title": "Day 5: Science (Ch 11 Electricity & Ch 9 Lenses) + English (Flying, Anne Frank, Triumph of Surgery, Thief's Story & Grammar)",
             "focus": "Physics Numericals (Ohm's Law, Power, Lenses) & English Literature/Grammar",
@@ -3110,7 +3110,7 @@
           },
           {
             "day": 6,
-            "date": "2026-11-29",
+            "date": "2026-11-30",
             "phase": "Phase A: Term-1 Uncovered Chapters Mastery",
             "title": "Day 6: Mathematics (Ch 8 Introduction to Trigonometry & Ch 10 Circles) + Tamil (இயல் 2 & இயல் 3 முழுவதும்)",
             "focus": "Trigonometric Identities, Circle Tangent Proofs & Tamil Units 2–3",
@@ -3146,7 +3146,7 @@
           },
           {
             "day": 7,
-            "date": "2026-11-30",
+            "date": "2026-12-01",
             "phase": "Phase A: Term-1 Uncovered Chapters Mastery",
             "title": "Day 7: Science (Ch 3 Metals & Non-metals + Ch 7 Reproduction) + SST (Resources, Water, Federalism & Sectors of Economy)",
             "focus": "Metallurgy, Ionic Bonds, Plant/Human Reproduction & Civics/Geography",
@@ -3182,7 +3182,7 @@
           },
           {
             "day": 8,
-            "date": "2026-12-01",
+            "date": "2026-12-02",
             "phase": "Phase A: Term-1 Uncovered Chapters Mastery",
             "title": "Day 8: Mathematics (Ch 12 Surface Areas & Volumes) + English & Tamil (Glimpses of India, Footprints & தமிழ் இயல் 4)",
             "focus": "3D Mensuration Solids & Completion of All Term-1 Literature",
@@ -3217,7 +3217,7 @@
           },
           {
             "day": 9,
-            "date": "2026-12-02",
+            "date": "2026-12-03",
             "phase": "Phase B: Full-Portion Integration (Term-1 + Term-2 Combined)",
             "title": "Day 9: 🧪 Science Full Chemistry Marathon (Ch 1–4) + 🌍 SST Full Economics Marathon (Ch 1–4)",
             "focus": "100% Chemistry (25 Marks Board Weightage) & 100% Economics (20 Marks Board Weightage)",
@@ -3251,7 +3251,7 @@
           },
           {
             "day": 10,
-            "date": "2026-12-03",
+            "date": "2026-12-04",
             "phase": "Phase B: Full-Portion Integration (Term-1 + Term-2 Combined)",
             "title": "Day 10: 📐 Maths Full Algebra & Number Systems (Ch 1–5) + 🪶 Tamil Half-Portion 1 (இயல் 1 முதல் 4 வரை)",
             "focus": "100% Algebra (26 Marks Board Weightage) & Tamil Units 1–4 Consolidation",
@@ -3285,7 +3285,7 @@
           },
           {
             "day": 11,
-            "date": "2026-12-04",
+            "date": "2026-12-05",
             "phase": "Phase B: Full-Portion Integration (Term-1 + Term-2 Combined)",
             "title": "Day 11: 🧬 Science Full Biology Marathon (Ch 5, 6, 7, 8, 13) + 📖 English Full First Flight & Grammar",
             "focus": "100% Biology (30 Marks Board Weightage) & English First Flight + Grammar",
@@ -3319,7 +3319,7 @@
           },
           {
             "day": 12,
-            "date": "2026-12-05",
+            "date": "2026-12-06",
             "phase": "Phase B: Full-Portion Integration (Term-1 + Term-2 Combined)",
             "title": "Day 12: 📐 Maths Full Geometry & Trigonometry (Ch 6–10) + 🌍 SST Full History & Map Marathon",
             "focus": "100% Geometry & Trigonometry (33 Marks Board Weightage) + Complete History",
@@ -3353,7 +3353,7 @@
           },
           {
             "day": 13,
-            "date": "2026-12-06",
+            "date": "2026-12-07",
             "phase": "Phase B: Full-Portion Integration (Term-1 + Term-2 Combined)",
             "title": "Day 13: ⚡ Science Full Physics Marathon (Ch 9–12) + 🪶 Tamil Half-Portion 2 (இயல் 5, 6, 7 முழுவதும்)",
             "focus": "100% Physics (25 Marks Board Weightage) & Tamil Units 5–7 Consolidation",
@@ -3387,7 +3387,7 @@
           },
           {
             "day": 14,
-            "date": "2026-12-07",
+            "date": "2026-12-08",
             "phase": "Phase B: Full-Portion Integration (Term-1 + Term-2 Combined)",
             "title": "Day 14: 📐 Maths Mensuration, Stats & Prob (Ch 11–14) + 🌍 SST Full Geography & Civics Marathon",
             "focus": "100% Mensuration & Statistics (21 Marks Board Weightage) + Full Geo & Civics",
@@ -3421,7 +3421,7 @@
           },
           {
             "day": 15,
-            "date": "2026-12-08",
+            "date": "2026-12-09",
             "phase": "Phase C: Grand Full-Portion Pre-Board Simulation",
             "title": "Day 15: 🏆 Grand Full-Portion Pre-Board Simulation 1 — Science (All 13 Ch) + Mathematics (All 14 Ch)",
             "focus": "Full Syllabus High-Yield Board Mock (Science + Maths)",
@@ -3455,7 +3455,7 @@
           },
           {
             "day": 16,
-            "date": "2026-12-09",
+            "date": "2026-12-10",
             "phase": "Phase C: Grand Full-Portion Pre-Board Simulation",
             "title": "Day 16: 🏆 Grand Full-Portion Pre-Board Simulation 2 — English + Social Science + Tamil (Pre-Board Eve!)",
             "focus": "Full Syllabus Final Readiness Booster (Languages & Social Science)",
@@ -3814,7 +3814,7 @@
   "mamaSecretNightTests": [
     {
       "day": 1,
-      "date": "2026-11-24",
+      "date": "2026-11-25",
       "title": "Day 1 Full-Portion Sprint: Science (Ch 1 Chemical Reactions & Ch 9 Mirrors) + Maths (Ch 1 Real Numbers & Ch 4 Quadratic Equations)",
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
@@ -3884,7 +3884,7 @@
     },
     {
       "day": 2,
-      "date": "2026-11-25",
+      "date": "2026-11-26",
       "title": "Day 2 Full-Portion Sprint: Social Science (Nationalism in Europe & Power Sharing) + English (Prose 1–2 & Analytical Paragraph)",
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
@@ -3954,7 +3954,7 @@
     },
     {
       "day": 3,
-      "date": "2026-11-26",
+      "date": "2026-11-27",
       "title": "Day 3 Full-Portion Sprint: Science (Ch 5 Life Processes) + Tamil (இயல் 1: அமுதஊற்று & திருக்குறள் MCQ)",
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
@@ -4032,7 +4032,7 @@
     },
     {
       "day": 4,
-      "date": "2026-11-27",
+      "date": "2026-11-28",
       "title": "Day 4 Full-Portion Sprint: Maths (Ch 5 AP & Ch 7 Coordinate Geometry) + SST (Nationalism in India & Development)",
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
@@ -4102,7 +4102,7 @@
     },
     {
       "day": 5,
-      "date": "2026-11-28",
+      "date": "2026-11-29",
       "title": "Day 5 Full-Portion Sprint: Science (Ch 11 Electricity & Ch 9 Lenses) + English (Term-1 Stories & Integrated Grammar)",
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
@@ -4172,7 +4172,7 @@
     },
     {
       "day": 6,
-      "date": "2026-11-29",
+      "date": "2026-11-30",
       "title": "Day 6 Full-Portion Sprint: Mathematics (Ch 8 Trigonometry & Ch 10 Circles) + Tamil (இயல் 2 & இயல் 3)",
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
@@ -4250,7 +4250,7 @@
     },
     {
       "day": 7,
-      "date": "2026-11-30",
+      "date": "2026-12-01",
       "title": "Day 7 Full-Portion Sprint: Science (Ch 3 Metals & Ch 7 Reproduction) + SST (Resources, Water, Federalism & Sectors)",
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
@@ -4320,7 +4320,7 @@
     },
     {
       "day": 8,
-      "date": "2026-12-01",
+      "date": "2026-12-02",
       "title": "Day 8 Full-Portion Sprint: Maths (Ch 12 Surface Areas & Volumes) + English & Tamil (Term-1 Completion)",
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
@@ -4398,7 +4398,7 @@
     },
     {
       "day": 9,
-      "date": "2026-12-02",
+      "date": "2026-12-03",
       "title": "Day 9 Full-Portion Integration: Science Full Chemistry (Ch 1–4) + SST Full Economics (Ch 1–4)",
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
@@ -4468,7 +4468,7 @@
     },
     {
       "day": 10,
-      "date": "2026-12-03",
+      "date": "2026-12-04",
       "title": "Day 10 Full-Portion Integration: Maths Full Algebra (Ch 1–5) + Tamil Half-Portion 1 (இயல் 1–4)",
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
@@ -4546,7 +4546,7 @@
     },
     {
       "day": 11,
-      "date": "2026-12-04",
+      "date": "2026-12-05",
       "title": "Day 11 Full-Portion Integration: Science Full Biology (Ch 5, 6, 7, 8, 13) + English Full First Flight & Grammar",
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
@@ -4616,7 +4616,7 @@
     },
     {
       "day": 12,
-      "date": "2026-12-05",
+      "date": "2026-12-06",
       "title": "Day 12 Full-Portion Integration: Maths Geometry & Trigonometry (Ch 6–10) + SST Full History & Map",
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
@@ -4686,7 +4686,7 @@
     },
     {
       "day": 13,
-      "date": "2026-12-06",
+      "date": "2026-12-07",
       "title": "Day 13 Full-Portion Integration: Science Full Physics (Ch 9–12) + Tamil Half-Portion 2 (இயல் 5–7)",
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
@@ -4764,7 +4764,7 @@
     },
     {
       "day": 14,
-      "date": "2026-12-07",
+      "date": "2026-12-08",
       "title": "Day 14 Full-Portion Integration: Maths Mensuration, Stats & Prob (Ch 11–14) + SST Full Geography & Civics",
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
@@ -4834,7 +4834,7 @@
     },
     {
       "day": 15,
-      "date": "2026-12-08",
+      "date": "2026-12-09",
       "title": "Day 15 Grand Full-Portion Pre-Board Simulation 1: Science (All 13 Ch) + Mathematics (All 14 Ch)",
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
@@ -4904,7 +4904,7 @@
     },
     {
       "day": 16,
-      "date": "2026-12-09",
+      "date": "2026-12-10",
       "title": "Day 16 Pre-Board Eve Full-Portion Simulation 2: English + Social Science + Tamil",
       "timing": "8:00 PM – 8:45 PM (45 Mins)",
       "totalMarks": 30,

@@ -454,7 +454,7 @@ const UI_I18N = {
 
     // Study Toolkit
     study_toolkit_title: 'Study Helpers & Doubts:',
-    full_schedule_btn: '📅 16-Day Full-Portion Master Schedule (Nov 24 – Dec 9)',
+    full_schedule_btn: '📅 16-Day Full-Portion Master Schedule (Nov 25 – Dec 10)',
     view_schedule_label: 'View Details',
 
     // Syllabus
@@ -463,7 +463,7 @@ const UI_I18N = {
 
     // Vault Modal
     vault_modal_title: "Mama's Secret Night Test Vault",
-    vault_modal_subtitle: '16-Day Full-Portion Night Assessment Papers (Nov 24 – Dec 9) • 30 Marks Each',
+    vault_modal_subtitle: '16-Day Full-Portion Night Assessment Papers (Nov 25 – Dec 10) • 30 Marks Each',
     vault_gate_title: 'Confidential Test Papers Protected',
     vault_gate_desc: 'Pranav must not see the test questions in advance. Enter Mama\'s Super Admin PIN to unlock.',
     unlock_btn: 'Unlock',
@@ -529,7 +529,7 @@ const UI_I18N = {
 
     // Study Toolkit
     study_toolkit_title: 'படிக்கும் உதவிகள் & சந்தேகங்கள்:',
-    full_schedule_btn: '📅 16-நாள் முழுப் பாடத்திட்ட அட்டவணை (Nov 24 – Dec 9)',
+    full_schedule_btn: '📅 16-நாள் முழுப் பாடத்திட்ட அட்டவணை (Nov 25 – Dec 10)',
     view_schedule_label: 'விரிவாகப் பார்க்க',
 
     // Syllabus
@@ -538,7 +538,7 @@ const UI_I18N = {
 
     // Vault Modal
     vault_modal_title: 'மாமாவின் ரகசிய இரவு தேர்வு பெட்டகம்',
-    vault_modal_subtitle: '16-நாள் முழுப் பாடத்திட்ட இரவுத் தேர்வுத்தாள்கள் (Nov 24 – Dec 9) • தலா 30 மதிப்பெண்',
+    vault_modal_subtitle: '16-நாள் முழுப் பாடத்திட்ட இரவுத் தேர்வுத்தாள்கள் (Nov 25 – Dec 10) • தலா 30 மதிப்பெண்',
     vault_gate_title: 'ரகசிய தேர்வுத்தாள்கள் பூட்டப்பட்டுள்ளன',
     vault_gate_desc: 'பிரணவ் முன்கூட்டியே கேள்விகளைப் பார்க்க முடியாது. திறக்க மாமாவின் Super Admin PIN-ஐ உள்ளிடவும்.',
     unlock_btn: 'திறக்கவும்',
@@ -4808,7 +4808,7 @@ setInterval(checkNightTestAlarm, 30000);
 // ================= DYNAMIC 16-DAY REVISION MISSION RENDERER =================
 let activeMissionDayView = 1; // Default to Day 1 of Full-Portion Sprint (Today: 24 Nov 2026)
 
-// Default Built-in Evaluated Sheets for 16-Day Full-Portion Sprint (Nov 24 – Dec 9)
+// Default Built-in Evaluated Sheets for 16-Day Full-Portion Sprint (Nov 25 – Dec 10)
 const DEFAULT_EVALUATED_SHEETS = {};
 
 function getAllEvaluatedSheets() {
