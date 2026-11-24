@@ -454,7 +454,7 @@ const UI_I18N = {
 
     // Study Toolkit
     study_toolkit_title: 'Study Helpers & Doubts:',
-    full_schedule_btn: '📅 16-Day Full Revision Schedule (Oct 28 – Nov 12)',
+    full_schedule_btn: '📅 16-Day Full-Portion Master Schedule (Nov 24 – Dec 9)',
     view_schedule_label: 'View Details',
 
     // Syllabus
@@ -463,7 +463,7 @@ const UI_I18N = {
 
     // Vault Modal
     vault_modal_title: "Mama's Secret Night Test Vault",
-    vault_modal_subtitle: '16-Day Night Assessment Papers (Oct 28 – Nov 12) • 30 Marks Each',
+    vault_modal_subtitle: '16-Day Full-Portion Night Assessment Papers (Nov 24 – Dec 9) • 30 Marks Each',
     vault_gate_title: 'Confidential Test Papers Protected',
     vault_gate_desc: 'Pranav must not see the test questions in advance. Enter Mama\'s Super Admin PIN to unlock.',
     unlock_btn: 'Unlock',
@@ -529,7 +529,7 @@ const UI_I18N = {
 
     // Study Toolkit
     study_toolkit_title: 'படிக்கும் உதவிகள் & சந்தேகங்கள்:',
-    full_schedule_btn: '📅 16 நாட்கள் முழு ரிவிஷன் அட்டவணை (Oct 28 – Nov 12)',
+    full_schedule_btn: '📅 16-நாள் முழுப் பாடத்திட்ட அட்டவணை (Nov 24 – Dec 9)',
     view_schedule_label: 'விரிவாகப் பார்க்க',
 
     // Syllabus
@@ -538,7 +538,7 @@ const UI_I18N = {
 
     // Vault Modal
     vault_modal_title: 'மாமாவின் ரகசிய இரவு தேர்வு பெட்டகம்',
-    vault_modal_subtitle: '16-நாள் இரவு மாதிரி தேர்வுத்தாள்கள் (Oct 28 – Nov 12) • தலா 30 மதிப்பெண்',
+    vault_modal_subtitle: '16-நாள் முழுப் பாடத்திட்ட இரவுத் தேர்வுத்தாள்கள் (Nov 24 – Dec 9) • தலா 30 மதிப்பெண்',
     vault_gate_title: 'ரகசிய தேர்வுத்தாள்கள் பூட்டப்பட்டுள்ளன',
     vault_gate_desc: 'பிரணவ் முன்கூட்டியே கேள்விகளைப் பார்க்க முடியாது. திறக்க மாமாவின் Super Admin PIN-ஐ உள்ளிடவும்.',
     unlock_btn: 'திறக்கவும்',
@@ -4806,369 +4806,16 @@ function checkNightTestAlarm() {
 setInterval(checkNightTestAlarm, 30000);
 
 // ================= DYNAMIC 16-DAY REVISION MISSION RENDERER =================
-let activeMissionDayView = 6; // Default to Day 5 (Today: 1 Nov 2026)
+let activeMissionDayView = 1; // Default to Day 1 of Full-Portion Sprint (Today: 24 Nov 2026)
 
-// Default Built-in Evaluated Sheets (Day 1 & Day 2 Verified)
-const DEFAULT_EVALUATED_SHEETS = {
-  "6": {
-  "day": 6,
-  "date": "2026-11-02",
-  "title": "Day 6 Night Assessment: Social Science (Print & Politics) + Maths (Heights & Distances)",
-  "totalMaxMarks": 30,
-  "effectiveMaxMarks": 30,
-  "totalAchievedMarks": 25.5,
-  "percentage": 85,
-  "isLocked": true,
-  "uploadedAt": "2026-11-02T21:55:00+05:30",
-  "uploadedPagesCount": 7,
-  "audioSummary": "Outstanding performance by Pranav! Scored 25.5 out of 30 (85.0% Distinction Grade A1). Social Science is exceptional at 13 out of 15 (86.7%) with Martin Luther's quotes and all four political party challenges answered with authentic NCERT points. Mathematics is very strong at 12.5 out of 15 (83.3%) with full marks on the boy walking problem (19√3 m) and a near-perfect solution on the aeroplane speed problem (200 m/s / 720 km/h).",
-  "subject1": {
-    "name": "Social Science (Print Culture & Political Parties)",
-    "subKey": "social_science",
-    "maxMarks": 15,
-    "achievedMarks": 13,
-    "percentage": 86.7,
-    "status": "🌟 Excellent",
-    "correctItems": [
-      "Q1 [4.5/5.0 Marks]: Martin Luther's 95 Theses & Print Revolution — Outlined manuscript limitations (costly, fragile), Luther's 1517 Wittenberg door posting, printing of thousands of German Bibles, Protestant Reformation, and quoted: 'Print is the ultimate gift of God.'",
-      "Q2 [4.5/5.0 Marks]: Why Parties Necessary & Challenges in India — Detailed necessity for law-making and government stability; covered all 4 challenges: Dynastic succession (with Tamil Nadu regional example), lack of internal democracy, money/muscle power, and lack of ideological alternative.",
-      "Q3 [4.0/5.0 Marks]: Vernacular Press in India — Described growth of regional newspapers post-1870s (Tilak's Kesari), exposing British misrule, enactment of the Vernacular Press Act 1878, and imprisonment of nationalist leaders."
-    ],
-    "wrongItems": [],
-    "partialOrImproveItems": [
-      {
-        "qNum": "Q3 [4.0 / 5.0 Marks — 1 Mark Deducted]",
-        "question": "Describe the role of vernacular press in fostering national consciousness in India.",
-        "whatWrote": "Accurately noted growth of regional newspapers, Kesari, Vernacular Press Act 1878, censorship and arrests.",
-        "betterAnswer": "Mention that the 1878 Act was modeled on Irish Press Laws, allowing the government to seize printing presses if reports were judged seditious. Highlight how Bal Gangadhar Tilak's imprisonment in 1908 sparked widespread strikes across India."
-      }
-    ]
-  },
-  "subject2": {
-    "name": "Mathematics (Heights & Distances)",
-    "subKey": "maths",
-    "maxMarks": 15,
-    "achievedMarks": 12.5,
-    "percentage": 83.3,
-    "status": "🌟 Very Good",
-    "correctItems": [
-      "Q4 [5.0/5.0 Marks]: 1.5m Boy & 30m Building — Eye-level height AC = 28.5 m; tan 30° = 28.5/BE => BE = 28.5√3 m; tan 60° = 28.5/BD => BD = 9.5√3 m; Distance walked ED = 28.5√3 - 9.5√3 = 19√3 m. 100% full marks!",
-      "Q6 [4.5/5.0 Marks]: Aeroplane Speed Problem — At height 3000√3 m: tan 60° gives x = 3000 m; tan 30° gives y = 9000 m; distance D = 6000 m; speed = 6000 / 30 = 200 m/s."
-    ],
-    "wrongItems": [
-      "Q5 Algebraic Substitution Error: Reached h = 20 m instead of h = 20√3 m due to omitting radical multiplication on the right."
-    ],
-    "partialOrImproveItems": [
-      {
-        "qNum": "Q5 [3.0 / 5.0 Marks — 2 Marks Deducted]",
-        "question": "Two poles of equal heights are standing opposite each other on either side of 80 m road...",
-        "whatWrote": "Drew accurate diagram and set up correct equations: tan 30° = h/x => x = h√3 and tan 60° = h/(80-x). In algebraic expansion, omitted multiplying by √3 resulting in h = 20 m.",
-        "betterAnswer": "h = (80 - x)√3 => h = (80 - h√3)√3 = 80√3 - 3h => 4h = 80√3 => h = 20√3 m (Height of poles). Distances from point are x = (20√3)√3 = 60 m and 80 - 60 = 20 m."
-      },
-      {
-        "qNum": "Q6 [4.5 / 5.0 Marks — 0.5 Mark Deducted]",
-        "question": "Aeroplane speed calculation from angles 60° to 30° in 30 seconds...",
-        "whatWrote": "Calculated speed = 200 m/s accurately, but did not convert to km/h as requested in the question.",
-        "betterAnswer": "Convert 200 m/s to km/h: 200 * (18 / 5) = 720 km/h."
-      }
-    ]
-  }
-},
-
-  "5": {
-  "day": 5,
-  "date": "2026-11-01",
-  "title": "Day 5 Night Assessment: Science (Carbon & Compounds) + English (Madam Rides & Grammar)",
-  "totalMaxMarks": 30,
-  "effectiveMaxMarks": 30,
-  "totalAchievedMarks": 22,
-  "percentage": 73.3,
-  "isLocked": true,
-  "uploadedAt": "2026-11-01T22:15:00+05:30",
-  "uploadedPagesCount": 5,
-  "audioSummary": "Solid performance by Pranav! Scored 22.0 out of 30 (73.3% First Class). Science is exceptional at 14.5 out of 15 (96.7%) with flawless chemical equations, micelle diagram, and catenation concepts. English literature is strong at 6.0 out of 8 (75%), remembering key details like 30 paise fare and the betel-nut chewer. Grammar scored 1.5 out of 7; with 15 minutes of practicing Subject-Verb Concord and Reported Speech rules, this will easily jump to 95%+!",
-  "subject1": {
-    "name": "Science (Ch 4: Carbon and its Compounds)",
-    "subKey": "science",
-    "maxMarks": 15,
-    "achievedMarks": 14.5,
-    "percentage": 96.7,
-    "status": "🌟 Outstanding",
-    "correctItems": [
-      "Q1 [4.5/5.0 Marks]: Covalent Bonding, Catenation & Tetravalency — Accurately explained carbon's valency 4, impossibility of gaining/losing 4 e⁻ due to high energy and small atomic size, sharing electrons, self-linking into chains/rings (catenation), and bonding with H, N, O, Cl (tetravalency).",
-      "Q2 [5.0/5.0 Marks]: Soap Cleansing Action & Micelle Diagram — Clean distinction of hydrophobic hydrocarbon tail (in grease) and hydrophilic ionic head (in water). Very neat, labeled circular micelle diagram with suspended dirt.",
-      "Q3 [5.0/5.0 Marks]: Three Chemical Reactions — 100% correct Esterification with conc. H₂SO₄, Saponification with NaOH producing soap and ethanol, and Alkaline KMnO₄ / Acidified K₂Cr₂O₇ oxidation producing ethanoic acid."
-    ],
-    "wrongItems": [],
-    "partialOrImproveItems": [
-      {
-        "qNum": "Q1 [4.5 / 5.0 Marks — 0.5 Mark Deducted]",
-        "question": "Why does carbon form compounds mainly by covalent bonding? Explain Catenation and Tetravalency.",
-        "whatWrote": "Explained 4 valency, small size, high energy for losing/gaining. Missed mentioning that C⁴⁻ nucleus with 6 protons cannot hold 10 electrons, and C⁴⁺ requires huge energy to remove 4 electrons leaving 6 protons holding 2 electrons.",
-        "betterAnswer": "1. If it gains 4 e⁻ (C⁴⁻): Nucleus with 6 protons cannot hold 10 electrons.\n2. If it loses 4 e⁻ (C⁴⁺): Requires large energy to remove 4 electrons leaving 6 protons holding only 2 electrons.\n3. Therefore, it shares electrons to form covalent bonds."
-      }
-    ]
-  },
-  "subject2": {
-    "name": "English (Madam Rides the Bus & Grammar)",
-    "subKey": "english",
-    "maxMarks": 15,
-    "achievedMarks": 7.5,
-    "percentage": 50,
-    "status": "⚠️ Grammar Drill Needed",
-    "correctItems": [
-      "Q4 [3.0/4.0 Marks]: Valli's Bus Journey Plan — Accurately identified 30 paise one-way fare, 45-minute travel time, and neighboring town destination.",
-      "Q5 [3.0/4.0 Marks]: Elderly Woman Comparison — Captured vivid NCERT details: chewing betel nut, ugly large earlobe holes, and offensive intrusive questioning.",
-      "Q6 (iii) [1.0/1.0 Mark]: Tenses / Conditionals — Accurately completed conditional clause: 'we will cancel'."
-    ],
-    "wrongItems": [
-      "Q6 (i) Neither of the two boys... Wrote 'were' instead of singular 'was'.",
-      "Q6 (ii) Bread and butter... Wrote 'are' instead of singular unit 'is'.",
-      "Q6 (iv) Error Correction... Inverted rule by changing verb instead of noun ('students' → 'student')."
-    ],
-    "partialOrImproveItems": [
-      {
-        "qNum": "Q6 (i) & (ii) [0 / 2 Marks]",
-        "question": "Subject-Verb Concord Rules: 'Neither of the two boys...' and 'Bread and butter...'",
-        "whatWrote": "Wrote plural verbs 'were' and 'are'.",
-        "betterAnswer": "1. 'Neither of' always takes a singular verb → 'was'.\n2. 'Bread and butter' as a combined dish takes a singular verb → 'is'."
-      },
-      {
-        "qNum": "Q6 (iv) [0 / 2 Marks]",
-        "question": "Error Correction: 'Every students in our school participates in sports.'",
-        "whatWrote": "Error: participates | Correction: participate",
-        "betterAnswer": "Error: students | Correction: student ('Every' is always followed by a singular countable noun)."
-      },
-      {
-        "qNum": "Q6 (v) [0.5 / 2.0 Marks — 1.5 Marks Deducted]",
-        "question": "Reported Speech: Teacher said to Pranav, 'Did you complete the homework today?'",
-        "whatWrote": "Teacher asks pranav that did he has completed his homework today",
-        "betterAnswer": "Teacher asked Pranav if he had completed his homework that day."
-      }
-    ]
-  }
-},
-
-  "1": {
-    "day": 1,
-    "date": "2026-10-28",
-    "title": "Day 1 Night Assessment: Science (Acids, Bases & Salts) + Tamil (Deferred)",
-    "totalMaxMarks": 30,
-    "effectiveMaxMarks": 15,
-    "totalAchievedMarks": 14.0,
-    "percentage": 93.3,
-    "isLocked": true,
-    "uploadedAt": "2026-10-28T21:30:00+05:30",
-    "uploadedPagesCount": 4,
-    "audioSummary": "Pranav scored 14 out of 15 (93.3%) in Day 1 Science (Acids, Bases & Salts). All chemical equations, pH scale concepts, and pop sound hydrogen test were answered accurately. Only 1 mark lost for missing physical state symbols (s, l, g, aq). Tamil portion was deferred to the Revision Buffer.",
-    "subject1": {
-      "name": "Science (Ch 2: Acids, Bases & Salts)",
-      "subKey": "science",
-      "maxMarks": 15,
-      "achievedMarks": 14.0,
-      "percentage": 93.3,
-      "status": "🌟 Excellent",
-      "correctItems": [
-        "Balanced Chemical Equations: Zn + 2HCl → ZnCl₂ + H₂↑ written with accurate reactants and products.",
-        "Pop-Sound Hydrogen Gas Test & pH Scale: Explained tooth decay (pH < 5.5) and basic nature of toothpaste accurately.",
-        "Plaster of Paris & Bleaching Powder: Chemical formulas (CaSO₄·½H₂O and CaOCl₂) and preparation equations written clearly."
-      ],
-      "wrongItems": [],
-      "partialOrImproveItems": [
-        {
-          "qNum": "Chemical Equations State Symbols [-1.0 Mark]",
-          "question": "Write balanced chemical equations with physical state symbols for Acid-Metal reaction and Chlor-Alkali process.",
-          "whatWrote": "Wrote the balanced chemical formulas and coefficients accurately, but omitted physical state symbols like (s), (aq), (l), (g) in two equations.",
-          "betterAnswer": "Always include physical states in brackets for CBSE Board exams: e.g., 2NaCl(aq) + 2H₂O(l) → 2NaOH(aq) + Cl₂(g) + H₂(g)."
-        }
-      ]
-    },
-    "subject2": {
-      "name": "Tamil (இயல் 5: மணற்கேணி — Deferred to Buffer)",
-      "subKey": "tamil",
-      "maxMarks": 15,
-      "achievedMarks": null,
-      "percentage": null,
-      "status": "⏭️ Deferred to Buffer",
-      "correctItems": [],
-      "wrongItems": [],
-      "partialOrImproveItems": [
-        {
-          "qNum": "Note on Tamil Portion",
-          "question": "Tamil Unit 5 Realignment",
-          "whatWrote": "Skipped on Day 1 because initial paper had Unit 4 (out of SRM Revision-1 syllabus).",
-          "betterAnswer": "Realigned to Unit 5, 6, 7 in Revision Buffer Days."
-        }
-      ]
-    }
-  },
-    "3": {
-    "day": 3,
-    "date": "2026-10-30",
-    "title": "Day 3 Night Assessment: Social Science (Global World & Money) + Science (Control & Coordination)",
-    "totalMaxMarks": 30,
-    "effectiveMaxMarks": 30,
-    "totalAchievedMarks": 27.0,
-    "percentage": 90.0,
-    "isLocked": true,
-    "uploadedAt": "2026-10-30T21:30:00+05:30",
-    "uploadedPagesCount": 5,
-    "audioSummary": "Superb performance by Pranav! Scored 27 out of 30 (90.0% Distinction). Science is exceptional at 14 out of 15 (93.3%) with full answers on reflex arc, plant hormones, brain functions and pancreas insulin regulation. Social science is strong at 13 out of 15 (86.7%) with great answers on collateral and Self Help Groups, plus full 5 marks allotted for out-of-portion Great Depression question. Note: ChatGPT mistakenly gave 16.5/30 because it missed Q10 and cerebellum/medulla, but verified score is 27/30 (90%)!",
-    "subject1": {
-      "name": "Social Science (Global World & Money)",
-      "subKey": "social_science",
-      "maxMarks": 15,
-      "achievedMarks": 13.0,
-      "percentage": 86.7,
-      "status": "🌟 Excellent",
-      "correctItems": [
-        "Q1 [1/1 Mark]: Collateral Definition & Bank Demand — Accurately defined as borrower-owned asset pledged as guarantee against loan default.",
-        "Q4 [4/4 Marks]: Self Help Groups (SHGs) — Comprehensive answer covering 15-20 members (mostly women), pooled savings, collateral-free bank loans after 2-3 years, and women empowerment.",
-        "Q5 [5/5 Marks — Out-of-Portion Grace Marks]: Great Depression of 1929 — CBSE Board rationalized syllabus excludes Sub-topics 3.4 & 3.5 from the Board examination and Revision-1. Pranav correctly identified this as out of portion. Full 5 marks awarded."
-      ],
-      "wrongItems": [
-        "Q2 Interest Rate Inversion: Stated formal loans have high interest and informal loans have low interest. In reality, formal sector (banks) charges regulated lower interest, while informal moneylenders charge exorbitant high interest."
-      ],
-      "partialOrImproveItems": [
-        {
-          "qNum": "Q2 [1.0 / 2 Marks — 1 Mark Deducted]",
-          "question": "Mention any two differences between formal and informal sources of credit in India.",
-          "whatWrote": "Correctly identified RBI supervision ('Governed by RBI vs Not governed by RBI'), but inverted interest rates by writing 'Informal = Low interest, Formal = High interest'.",
-          "betterAnswer": "1. Supervision: Formal sector (Banks, Cooperatives) is supervised by RBI; Informal sector (moneylenders, traders) has no governing organization.\n2. Interest Rate: Formal sector charges lower, regulated interest rates; Informal sector charges significantly higher interest leading to debt traps."
-        },
-        {
-          "qNum": "Q3 [2.0 / 3 Marks — 1 Mark Deducted]",
-          "question": "Explain the importance of the Silk Routes in pre-modern trade and cultural exchange.",
-          "whatWrote": "Correctly linked Asia, Europe, and North Africa; mentioned textile trade, gold/silver flow, and spread of Buddhism, Christianity, and Islam. Included American crops (potatoes, maize, chilli) which belonged to Columbian Exchange.",
-          "betterAnswer": "1. Geography: Vibrant network connecting Asia, Europe, and North Africa.\n2. Goods: Chinese silk, Indian textiles and spices flowed west; precious metals (gold, silver) flowed east from Europe.\n3. Cultural Exchange: Buddhist monks, Christian missionaries, and Muslim preachers traveled these routes spreading ideas and faiths."
-        }
-      ]
-    },
-    "subject2": {
-      "name": "Science (Ch 6: Control and Coordination)",
-      "subKey": "science",
-      "maxMarks": 15,
-      "achievedMarks": 14.0,
-      "percentage": 93.3,
-      "status": "🌟 Excellent",
-      "correctItems": [
-        "Q6 [2/2 Marks]: Neuron Diagram — Neat diagram with accurate labeling of Dendrite (A), Axon (B), and Nerve Ending (C).",
-        "Q8 [3/3 Marks]: Plant Hormones — 100% correct identification of (a) Auxin, (b) Cytokinin, and (c) Abscisic Acid.",
-        "Q9 [3/3 Marks]: Brain Functions — Accurately explained Cerebrum (thinking, reasoning, memory), Cerebellum (body posture, straight line walking), and Medulla (involuntary actions, BP, breathing). (Note: ChatGPT erroneously marked Cerebellum/Medulla absent because it appeared on the adjacent page).",
-        "Q10 [3.5/4 Marks]: Pancreas & Insulin Feedback Mechanism — Explained blood sugar elevation after meals, detection by pancreas cells, insulin secretion, feedback regulation shut-off, diabetes diagnosis, and insulin injections. (Note: ChatGPT erroneously gave 0/4 claiming no answer was submitted)."
-      ],
-      "wrongItems": [],
-      "partialOrImproveItems": [
-        {
-          "qNum": "Q7 [2.5 / 3 Marks — 0.5 Mark Deducted]",
-          "question": "What is a reflex arc? Trace the sequence of events when your hand accidentally touches a hot object.",
-          "whatWrote": "Defined reflex arc correctly as shortest pathway without involving brain. Flow: Stimulus (Heat) → Receptor → Sensory Neuron → Spinal Cord / Relay Neuron → Motor Neuron → Effector. Omitted explicit final step: muscle contraction / hand withdrawal.",
-          "betterAnswer": "Complete Reflex Arc Flow: Heat Stimulus → Skin Thermoreceptor → Sensory Neuron → Spinal Cord (Relay Neuron) → Motor Neuron → Arm Muscle (Effector) → Muscle contracts and Hand withdraws rapidly."
-        },
-        {
-          "qNum": "Q10 [3.5 / 4 Marks — 0.5 Mark Deducted]",
-          "question": "Explain the endocrine regulation of blood sugar levels by Insulin. What condition occurs when Insulin is deficient, and how is it managed?",
-          "whatWrote": "Wrote comprehensive feedback mechanism, detection by pancreas, diabetes, and insulin injections. Lost 0.5 mark for conversational phrasing ('put insulin injections') instead of medical terms (subcutaneous administration, dietary regulation, and regular exercise).",
-          "betterAnswer": "1. Regulation: Pancreas beta cells detect elevated blood glucose and secrete insulin, promoting glucose uptake by cells.\n2. Feedback: As glucose returns to normal, insulin secretion decreases.\n3. Deficiency & Care: Deficiency causes Diabetes mellitus; managed via dietary control, exercise, and subcutaneous insulin therapy."
-        }
-      ]
-    }
-  },
-  "2": {
-    "day": 2,
-    "date": "2026-10-29",
-    "title": "Day 2 Night Assessment: Mathematics (Polynomials & Linear Equations) + English (Mijbil & Formal Letter)",
-    "totalMaxMarks": 30,
-    "effectiveMaxMarks": 30,
-    "totalAchievedMarks": 25.5,
-    "percentage": 85.0,
-    "isLocked": true,
-    "uploadedAt": "2026-10-29T21:45:00+05:30",
-    "uploadedPagesCount": 11,
-    "audioSummary": "வணக்கம் பிரணவ்! Day 2 இரவுத் தேர்வில் 30-க்கு 25.5 மார்க் (85%) வாங்கியிருக்கிறாய்! Maths-ல் 15-க்கு 14 மார்க் (93.3%) — ரொம்பவே சூப்பர்! Q1, Q3, Q4 மூன்றிலும் 100% Full Marks. Q2-ல் Infinitely many solutions ratio எழுதிட்டு, k=6-ஐ algebra-வில் solve பண்ணாமல் நேரடியாக substitute பண்ணியதால் 0.5 மார்க்கும், Q5-ல் x=1, y=8 கண்டுபிடித்துவிட்டு கடைசியில் Required two-digit number = 18 என்று Final conclusion statement எழுத மறந்ததால் 0.5 மார்க்கும் குறைந்தது. English-ல் 15-க்கு 11.5 மார்க் (76.7%). Letter to Editor format மற்றும் எல்லா கேள்விகளின் key points சூப்பராக எழுதியிருக்கிறாய். ஆனால் calm-க்கு clam, columns-க்கு colums, surveillance, penalty, breaks போன்ற 7 Spelling mistakes மற்றும் Past tense-ல் சின்னத் தவறுகள் இருந்ததால் 3.5 மார்க் குறைந்தது. இதை மட்டும் கவனித்தால் அடுத்த டெஸ்டில் 30-க்கு 30 நிச்சயம்!",
-    "subject1": {
-      "name": "Mathematics (Polynomials & Linear Equations)",
-      "subKey": "maths",
-      "maxMarks": 15,
-      "achievedMarks": 14.0,
-      "percentage": 93.3,
-      "status": "🌟 Excellent",
-      "correctItems": [
-        "Q1 [1 / 1 Mark]: In x² + 3x + k = 0, substituted zero x = 2 directly ⇒ (2)² + 3(2) + k = 0 ⇒ 4 + 6 + k = 0 ⇒ k = -10. (100% Correct)",
-        "Q3 [3 / 3 Marks]: For p(x) = 2x² - 5x + 7, applied Sum of zeroes (α + β = 5/2) and Product of zeroes (αβ = 7/2) to solve both sub-divisions accurately: (i) α² + β² = (α + β)² - 2αβ = -3/4 and (ii) (1/α) + (1/β) = (α + β)/αβ = 5/7. (100% Perfect)",
-        "Q4 [4 / 4 Marks]: Solved 2x + 3y = 11 and 2x - 4y = -24 using Elimination Method to get y = 5 and x = -2. Substituted in y = mx + 3 ⇒ 5 = m(-2) + 3 ⇒ m = -1. Verified in rough column! (100% Spotless)"
-      ],
-      "wrongItems": [],
-      "partialOrImproveItems": [
-        {
-          "qNum": "Q2 [1.5 / 2 Marks — 0.5 Mark Deducted]",
-          "question": "Find the value of k for which kx + 3y = k - 3 and 12x + ky = k has infinitely many solutions.",
-          "whatWrote": "Wrote the Infinitely Many Solutions condition (a₁/a₂ = b₁/b₂ = c₁/c₂) correctly (1 Mark). However, instead of solving the ratios algebraically, guessed k = 6 in the rough margin (trial & error) and wrote 'If we sub 6 in place of k' to verify 1/2 = 1/2 = 1/2.",
-          "betterAnswer": "Step 1: Substitute coefficients in ratio: k/12 = 3/k = (k - 3)/k\nStep 2: Equate first two ratios (k/12 = 3/k) and cross-multiply: k² = 36 ⇒ k = ±6.\nStep 3: Equate last two ratios (3/k = (k - 3)/k): 3 = k - 3 ⇒ k = 6.\nStep 4: Common value satisfying both conditions is k = 6."
-        },
-        {
-          "qNum": "Q5 [4.5 / 5 Marks — 0.5 Mark Deducted]",
-          "question": "Two-digit number word problem: x + y = 9 and 9(10x + y) = 2(10y + x). Find the number.",
-          "whatWrote": "Formed the Linear Equation 9(10x + y) = 2(10y + x) properly, simplified to 88x = 11y ⇒ y = 8x, and solved x = 1 and y = 8 accurately. Stopped at x = 1, y = 8 without writing the final two-digit number 18.",
-          "betterAnswer": "1. Start by defining variables: 'Let tens digit = x and units digit = y, Original Number = 10x + y'.\n2. At the end, substitute x = 1 and y = 8 to write the Final Conclusion Statement: 'Therefore, the required two-digit number = 10x + y = 10(1) + 8 = 18' (Carries 0.5 Mark in CBSE Board marking scheme)."
-        }
-      ]
-    },
-    "subject2": {
-      "name": "English (Mijbil the Otter & Formal Letter)",
-      "subKey": "english",
-      "maxMarks": 15,
-      "achievedMarks": 11.5,
-      "percentage": 76.7,
-      "status": "👍 Good",
-      "correctItems": [
-        "Q9 Formal Letter Format [2 / 2 Marks]: Sender's Address (42, Green Avenue, SRM Nagar), Date (29th October, 2026), Receiver's Address (The Editor), Subject, Salutation (Sir/Madam), CBSE standard opening ('Through the columns of your esteemed daily...'), and Sign-off ('Yours faithfully, Pranav Jothi') — CBSE Format 100% Correct!",
-        "Content & Key Points (Q6, Q7, Q8, Q9): Covered all main NCERT textbook points — Camusfearna water streams, Aeroplane rat scene, Broken suitcase slope game, and Traffic safety measures (speed bumps, zebra crossing, police surveillance, heavy penalties)."
-      ],
-      "wrongItems": [
-        "1. ❌ 'clam' (Q7) ➔ ✅ calm (Spelling mistake)",
-        "2. ❌ 'in his feed' (Q7) ➔ ✅ on his knees / feet (Spelling & phrase mistake)",
-        "3. ❌ 'The Hindhu' (Q9) ➔ ✅ The Hindu (Spelling mistake)",
-        "4. ❌ 'colums' (Q9) ➔ ✅ columns (Spelling mistake)",
-        "5. ❌ 'surveilance' (Q9) ➔ ✅ surveillance (Spelling mistake)",
-        "6. ❌ 'penality' (Q9) ➔ ✅ penalty (Spelling mistake)",
-        "7. ❌ 'breakes' (Q9) ➔ ✅ breaks (Spelling mistake)"
-      ],
-      "partialOrImproveItems": [
-        {
-          "qNum": "Q6 [1.5 / 2 Marks — 0.5 Mark Deducted]",
-          "question": "Why did Gavin Maxwell decide to keep an otter instead of a dog as a pet after visiting Camusfearna?",
-          "whatWrote": "Wrote 'Gavin Maxwell choose otter... otters likes water' — Literature answers must be in Past Tense ('chose an otter') and follow Subject-Verb Agreement ('otters like water'). Also missed mentioning his pet dog Jonnie's death.",
-          "betterAnswer": "After his pet dog Jonnie died, Gavin Maxwell felt too sad to keep another dog. Since Camusfearna was ringed by water at a stone's throw from its door, he chose to keep an otter because otters love water."
-        },
-        {
-          "qNum": "Q7 [2.0 / 3 Marks — 1.0 Mark Deducted]",
-          "question": "Describe the frantic scene inside the aeroplane when the box carrying Mijbil was opened.",
-          "whatWrote": "Wrote 'The air hostess was clam... Max was to be carry Mijil in his feed' — Fix spelling ('calm') and grammar ('advised to keep Mijbil on his knees'), and include the curry incident.",
-          "betterAnswer": "When Mijbil escaped from the box, he ran down the aircraft. Passengers panicked and a woman stood on her seat screaming, 'A rat! A rat!' Maxwell dived to catch him, getting his face covered in curry. The calm and friendly air hostess advised Maxwell to keep Mijbil on his knees."
-        },
-        {
-          "qNum": "Q8 [2.5 / 3 Marks — 0.5 Mark Deducted]",
-          "question": "How did Mijbil spend most of his time in play? Describe the games he invented and his reaction to water.",
-          "whatWrote": "Mixed Present tense and Past tense ('he keeps the ball... and ambush to it... He splash the water' ➔ kept, ambushed, splashed).",
-          "betterAnswer": "Mijbil spent most of his time playing with rubber balls and juggling marbles on his belly. He placed a ping-pong ball on the sloping lid of the damaged suitcase and dashed to the other end to ambush it. In the bathroom, he went wild with joy, plunging, rolling, and splashing water everywhere."
-        },
-        {
-          "qNum": "Q9 [5.5 / 7 Marks — 1.5 Marks Deducted]",
-          "question": "Letter to the Editor on reckless driving and traffic congestion near school zones.",
-          "whatWrote": "1) ❌ 'This will be risk for the students who cross the roads and walks beside the road.'\n2) ❌ 'impose heavy penality who breakes the rules.'\n3) ❌ 'make the place new changes.'",
-          "betterAnswer": "1) ✅ 'This poses a severe risk to students who cross and walk along the roads.'\n2) ✅ 'impose heavy penalties on those who break traffic rules.'\n3) ✅ 'help bring about strict safety measures.'"
-        }
-      ]
-    }
-  }
-};
+// Default Built-in Evaluated Sheets for 16-Day Full-Portion Sprint (Nov 24 – Dec 9)
+const DEFAULT_EVALUATED_SHEETS = {};
 
 function getAllEvaluatedSheets() {
   const fromState = (appState && appState.evaluatedSheets) ? appState.evaluatedSheets : {};
   let fromStorage = {};
   try {
-    const raw = localStorage.getItem('pranav_evaluated_sheets_v1');
+    const raw = localStorage.getItem('pranav_fullportion_evaluated_sheets_v1');
     if (raw) fromStorage = JSON.parse(raw);
   } catch (e) {}
   return Object.assign({}, DEFAULT_EVALUATED_SHEETS, fromState, fromStorage);
@@ -5186,7 +4833,7 @@ function saveEvaluatedSheetForDay(dayNum, sheetObj) {
     appState.evaluatedSheets = all;
   }
   try {
-    localStorage.setItem('pranav_evaluated_sheets_v1', JSON.stringify(all));
+    localStorage.setItem('pranav_fullportion_evaluated_sheets_v1', JSON.stringify(all));
   } catch (e) {}
 }
 
@@ -5217,13 +4864,13 @@ function renderRevisionMissionUI() {
   const pillDays = allDaysList.map(s => {
     const dNum = s.day;
     const sheet = getEvaluatedSheetForDay(dNum);
-    const dateStr = s.date ? (s.date.split('-')[2] + ' ' + (['', 'Oct', 'Nov', 'Dec'][s.date.split('-')[1] === '10' ? 1 : 2] || '')) : '';
+    const dateStr = s.date ? (s.date.split('-')[2] + ' ' + ({ '10': 'Oct', '11': 'Nov', '12': 'Dec' }[s.date.split('-')[1]] || '')) : '';
     let tag = '';
     if (sheet) {
       tag = `${sheet.totalAchievedMarks}/${sheet.effectiveMaxMarks || sheet.totalMaxMarks || 30} ✔`;
-    } else if (dNum === 4) {
+    } else if (s.isSkipped || s.status === 'skipped') {
       tag = '⏭️ Skipped';
-    } else if (dNum === 5) {
+    } else if (dNum === 1) {
       tag = '🌟 Today';
     } else {
       tag = dateStr || `Day ${dNum}`;
@@ -5232,7 +4879,7 @@ function renderRevisionMissionUI() {
       day: dNum,
       label: `Day ${dNum} (${dateStr || ('Day ' + dNum)})`,
       tag: tag,
-      isSkipped: dNum === 4
+      isSkipped: !!(s.isSkipped || s.status === 'skipped')
     };
   });
 
@@ -5327,7 +4974,7 @@ function renderRevisionMissionUI() {
         </div>
       </div>
     `;
-  } else if (activeMissionDayView === 4 || currentDayData.isSkipped || currentDayData.status === 'skipped') {
+  } else if (currentDayData.isSkipped || currentDayData.status === 'skipped') {
     bannerHtml = `
       <div class="rounded-2xl bg-amber-50/90 border-2 border-amber-300 p-4 space-y-3">
         <div class="flex flex-wrap items-center justify-between gap-2">
@@ -5360,7 +5007,7 @@ function renderRevisionMissionUI() {
       </div>
     `;
   } else {
-    const isTodayMission = (activeMissionDayView === 5);
+    const isTodayMission = (activeMissionDayView === 1);
     bannerHtml = `
       <div class="rounded-2xl ${isTodayMission ? 'bg-gradient-to-br from-emerald-50 via-teal-50 to-slate-50 border-2 border-emerald-400' : 'bg-slate-50 border border-slate-200'} p-4 space-y-3">
         <div class="flex items-center justify-between">
@@ -5444,9 +5091,7 @@ function renderRevisionMissionUI() {
             <div class="flex items-center gap-1">
               ${s2Eval && s2Eval.achievedMarks != null
                 ? `<span class="text-[10px] bg-sky-100 text-sky-900 font-black px-2 py-0.5 rounded border border-sky-300">✔ Scored: ${s2Eval.achievedMarks} / 15 (${s2Eval.percentage}%)</span>`
-                : (activeMissionDayView === 1
-                    ? '<span class="text-[9px] bg-amber-100 text-amber-800 font-extrabold px-2 py-0.5 rounded border border-amber-300">⏭️ Deferred to Buffer</span>'
-                    : '<span class="text-[9px] bg-sky-50 text-sky-700 font-bold px-1.5 py-0.5 rounded border border-sky-200">Part 2 • 15M</span>')}
+                : '<span class="text-[9px] bg-sky-50 text-sky-700 font-bold px-1.5 py-0.5 rounded border border-sky-200">Part 2 • 15M</span>'}
             </div>
           </div>
           <h6 class="font-bold text-slate-900 text-xs">${sub2.chapter || ''}</h6>
@@ -5471,7 +5116,7 @@ function renderRevisionMissionUI() {
 }
 
 // ================= STUDENT & MAMA ANSWER PAPER PHOTO UPLOAD & LOCK SYSTEM =================
-let activeUploadPaperDay = 3;
+let activeUploadPaperDay = 1;
 let activeUploadPaperSubject = 'Both Subjects (15+15=30M)';
 let uploadedPaperPages = []; // Array of { id, name, base64 }
 let mamaUnlockedDaysSession = {}; // Days unlocked by Mama during current session
@@ -5555,7 +5200,7 @@ function updateUploadModalLockUI(dayNum) {
 }
 
 function openAnswerPaperUploadModal(dayNum, subjectName) {
-  activeUploadPaperDay = dayNum || activeMissionDayView || 3;
+  activeUploadPaperDay = dayNum || activeMissionDayView || 1;
   activeUploadPaperSubject = subjectName || 'Both Subjects (15+15=30M)';
   uploadedPaperPages = [];
 
