@@ -1233,7 +1233,7 @@
           "name": "The Making of a Global World",
           "branch": "History",
           "status": "not_started",
-          "notes": "Pre-modern world, Silk routes, Rinderpest plague (Sub-topics 1 to 1.3)",
+          "notes": "CBSE Board Portion: Subtopics 1 to 1.3 Only (Silk Routes, Food Travels, Conquest/Disease/Trade)",
           "isRevision1": true,
           "revisionPriority": "100% Full Portion Board Focus",
           "examWeightage": "Board Weightage: 4 - 6 Marks",
@@ -1254,8 +1254,8 @@
           "name": "The Age of Industrialisation",
           "branch": "History",
           "status": "not_started",
-          "notes": "Proto-industrialisation, factories emergence, life of workers",
-          "isRevision1": true,
+          "notes": "Periodic Assessment Only — Excluded from CBSE Board Theory Exam 2026-27",
+          "isRevision1": false,
           "examWeightage": "Board Weightage: 4 - 6 Marks",
           "keyConcepts": [
             "Detailed NCERT core chapter concepts and summary notes",
@@ -1422,7 +1422,7 @@
           "name": "Lifelines of National Economy",
           "branch": "Geography",
           "status": "not_started",
-          "notes": "Roadways golden quadrilateral, Major sea ports and international airports map",
+          "notes": "CBSE Board Map Work Only: Major Sea Ports & International Airports",
           "isRevision1": true,
           "examWeightage": "Board Weightage: 4 - 6 Marks",
           "keyConcepts": [
@@ -1611,7 +1611,7 @@
           "name": "Globalisation and the Indian Economy",
           "branch": "Economics",
           "status": "not_started",
-          "notes": "MNCs, Foreign trade, Liberalisation, WTO, SEZs, Fair globalisation",
+          "notes": "CBSE Board Portion: What is Globalisation? & Factors that have enabled Globalisation",
           "isRevision1": true,
           "revisionPriority": "100% Full Portion Board Focus",
           "examWeightage": "Board Weightage: 4 - 6 Marks",
@@ -2952,7 +2952,7 @@
             "date": "2026-11-26",
             "isTomorrow": true,
             "phase": "100% Full-Portion Sequential Mastery",
-            "title": "Day 2: Social Science (History Ch 1 Europe & Civics Ch 1 Power Sharing) + English (Prose Ch 1–2, Poems 1–2 & Footprints Ch 1)",
+            "title": "Day 2: Social Science (History Ch 1 Europe & Civics Ch 1 Power Sharing) + English (First Flight Units 1–2 & Footprints Ch 1)",
             "focus": "History Ch 1, Civics Ch 1 & English Unit 1–2",
             "subjects": [
               "Social Science: History Ch 1 Rise of Nationalism in Europe + Civics Ch 1 Power Sharing",
@@ -2964,9 +2964,9 @@
               "topics": "French Revolution collective identity, Napoleonic Code (1804), Unification of Germany & Italy, Balkans; Belgium Accommodation Model vs Sri Lanka Majoritarianism, Forms of Power Sharing."
             },
             "sub2": {
-              "name": "English (Prose 1–2, Poems 1–2, Supp 1)",
-              "chapter": "A Letter to God, Nelson Mandela + Dust of Snow, Fire and Ice + A Triumph of Surgery",
-              "topics": "Lencho's unshakeable faith & irony, Mandela's twin obligations & courage, Robert Frost's symbolism in Dust of Snow & Fire and Ice, Mrs Pumphrey's pampering & Tricki's recovery at Dr Herriot's surgery."
+              "name": "English (First Flight Units 1–2 & Footprints Ch 1)",
+              "chapter": "1. A Letter to God (Dust of Snow, Fire & Ice) + 2. Nelson Mandela (A Tiger in the Zoo) + Supp 1: Triumph of Surgery",
+              "topics": "Exact NCERT Unit 1 & 2 Pairing: Lencho's faith & irony, Frost's Dust of Snow & Fire and Ice; Mandela's courage & twin obligations, Leslie Norris's A Tiger in the Zoo; Dr Herriot & Tricki's recovery."
             },
             "description": "இரண்டாம் நாள்: வரலாறு பாடம் 1, குடிமையியல் பாடம் 1 மற்றும் ஆங்கிலத்தில் முதல் தொகுதி பாடங்கள்.",
             "tasks": [
@@ -3054,7 +3054,7 @@
             "day": 5,
             "date": "2026-11-29",
             "phase": "100% Full-Portion Sequential Mastery",
-            "title": "Day 5: Science (Ch 5 Life Processes & Ch 6 Control and Coordination) + English (Prose Ch 3–4, Poems 3–4 & Footprints Ch 2)",
+            "title": "Day 5: Science (Ch 5 Life Processes & Ch 6 Control and Coordination) + English (First Flight Units 3–4 & Footprints Ch 2)",
             "focus": "Biology Ch 5–6 & English Unit 3–4",
             "subjects": [
               "Science: Ch 5 Life Processes + Ch 6 Control and Coordination",
@@ -3066,9 +3066,9 @@
               "topics": "Photosynthesis, Glucose breakdown pathways, Double circulation in Human Heart, Nephron structure & urine formation; Neuron & Reflex Arc diagram, Human Brain (Cerebrum, Cerebellum, Medulla), Plant Hormones (Auxin, Cytokinin, ABA) & Endocrine glands (Insulin)."
             },
             "sub2": {
-              "name": "English (Prose 3–4, Poems 3–4, Supp 2)",
-              "chapter": "Two Stories about Flying, Diary of Anne Frank + Tiger in the Zoo, Wild Animals + The Thief's Story",
-              "topics": "Young Seagull's first flight & Black Aeroplane pilot, Anne Frank's chatterbox essays & Mr Keesing, Tiger's rage in concrete cell vs wild, Humorous identification of wild animals, Hari Singh's transformation through Anil's trust and education."
+              "name": "English (First Flight Units 3–4 & Footprints Ch 2)",
+              "chapter": "3. Two Stories about Flying (Wild Animals, The Ball Poem) + 4. Anne Frank (Amanda!) + Supp 2: The Thief's Story",
+              "topics": "Exact NCERT Unit 3 & 4 Pairing: Young Seagull & Black Aeroplane, How to Tell Wild Animals, The Ball Poem (epistemology of loss); Diary of Anne Frank, Amanda! (yearning for freedom); Hari Singh's transformation."
             },
             "description": "ஐந்தாம் நாள்: உயிரியலில் Life Processes & Control and Coordination மற்றும் ஆங்கிலத்தில் Ch 3–4 பாடங்கள்.",
             "tasks": [
@@ -3122,21 +3122,21 @@
             "day": 7,
             "date": "2026-12-01",
             "phase": "100% Full-Portion Sequential Mastery",
-            "title": "Day 7: Social Science (History Ch 3 Global World, Ch 5 Print Culture & Civics Ch 3 Gender/Religion/Caste) + English (Prose Ch 5, Poems 5–6 & Footprints Ch 3–4)",
+            "title": "Day 7: SST (History Ch 3 [1–1.3], Ch 5 Print Culture & Civics Ch 3) + English (First Flight Unit 5 & Footprints Ch 3–4)",
             "focus": "History Complete (Ch 3 & 5), Civics Ch 3 & English Unit 5–6",
             "subjects": [
               "Social Science: History Ch 3 Making of a Global World + History Ch 5 Print Culture + Civics Ch 3 Gender, Religion and Caste",
               "English: First Flight Ch 5 (Glimpses of India) + Poems 5–6 (Ball Poem, Amanda!) + Footprints Ch 3–4 (Midnight Visitor, Question of Trust)"
             ],
             "sub1": {
-              "name": "Social Science (Hist Ch 3, 5 & Civics Ch 3)",
-              "chapter": "History Ch 3: Global World + Ch 5: Print Culture + Civics Ch 3: Gender, Religion & Caste",
-              "topics": "Silk Routes, Food Travels (Spaghetti & Potato), Disease & Conquest (Smallpox); Gutenberg, Martin Luther's 95 Theses, Reading Mania & Vernacular Press Act 1878; Feminist movements, Secularism, Caste in Politics vs Politics in Caste."
+              "name": "Social Science (Hist Ch 3 [1–1.3], Ch 5 & Civics Ch 3)",
+              "chapter": "History Ch 3: Global World (Subtopics 1 to 1.3 Only) + Ch 5: Print Culture + Civics Ch 3: Gender, Religion & Caste",
+              "topics": "CBSE Board Portion Only for Ch 3: Pre-modern Silk Routes, Food Travels (Spaghetti/Potato) & Conquest/Disease/Trade (Subtopics 2–4 Excluded); Ch 5 Gutenberg, Luther's 95 Theses & Vernacular Press Act 1878; Civics Ch 3 Feminism, Secularism & Caste in Politics."
             },
             "sub2": {
-              "name": "English (Prose 5, Poems 5–6, Supp 3–4)",
-              "chapter": "Glimpses of India (Baker, Coorg, Tea) + The Ball Poem, Amanda! + Midnight Visitor, Question of Trust",
-              "topics": "Goan baker (Pader), Coorg's valour & Kaveri, Assam tea legends; Epistemology of loss in The Ball Poem, Amanda's yearning for freedom (Rapunzel/Mermaid); Ausable's clever imaginary balcony trick & Horace Danby outsmarted by lady in red."
+              "name": "English (First Flight Unit 5 & Footprints Ch 3–4)",
+              "chapter": "5. Glimpses of India: Baker, Coorg, Tea (Poem: The Trees) + Supp 3: Midnight Visitor + Supp 4: Question of Trust",
+              "topics": "Exact NCERT Unit 5 Pairing: Goan Pader baker, Coorg's valour & Kaveri, Assam tea legends + Adrienne Rich's poem 'The Trees'; Ausable outwitting Max & Horace Danby tricked by the lady in red."
             },
             "description": "ஏழாம் நாள்: வரலாற்றின் மீதமுள்ள பாடங்கள் (Global World & Print Culture — இதோடு வரலாறு 100% நிறைவு!), குடிமையியல் Ch 3 மற்றும் ஆங்கிலம்.",
             "tasks": [
@@ -3224,16 +3224,16 @@
             "day": 10,
             "date": "2026-12-04",
             "phase": "100% Full-Portion Sequential Mastery",
-            "title": "Day 10: English (Prose Ch 6–7 Mijbil & Madam Rides, Poems 7–8 Trees & Fog, Footprints Ch 5–6) + Tamil (இயல் 4: மணற்கேணி முழுவதும்)",
+            "title": "Day 10: English (First Flight Units 6–7 & Footprints Ch 5–6) + Tamil (இயல் 4: மணற்கேணி முழுவதும்)",
             "focus": "English Unit 7–8 & Tamil Unit 4 (Exact Textbook Syllabus)",
             "subjects": [
               "English: First Flight Ch 6–7 (Mijbil the Otter, Madam Rides the Bus) + Poems 7–8 (The Trees, Fog) + Footprints Ch 5–6 (Footprints without Feet, Making of a Scientist)",
               "Tamil: இயல் 4 மணற்கேணி (மொழிபெயர்ப்புக் கல்வி, திருவிளையாடற் புராணம்*, புதிய நம்பிக்கை, இலக்கணம் - பொது)"
             ],
             "sub1": {
-              "name": "English (Prose 6–7, Poems 7–8, Supp 5–6)",
-              "chapter": "Mijbil the Otter, Madam Rides the Bus + The Trees, Fog + Footprints without Feet, Making of a Scientist",
-              "topics": "Mijbil's playful habits & flight to London, Valli's meticulous 30-paise bus journey & dead cow lesson, Trees breaking out to forest, Fog as a silent cat, Griffin's lawless invisibility, Richard Ebright's butterfly research & qualities of a scientist."
+              "name": "English (First Flight Units 6–7 & Footprints Ch 5–6)",
+              "chapter": "6. Mijbil the Otter (Fog) + 7. Madam Rides the Bus (The Tale of Custard the Dragon) + Supp 5–6: Footprints & Making of a Scientist",
+              "topics": "Exact NCERT Unit 6 & 7 Pairing: Mijbil's playfulness & London flight, Carl Sandburg's 'Fog'; Valli's 30-paise bus journey, Ogden Nash's 'The Tale of Custard the Dragon'; Griffin's invisibility & Richard Ebright's butterfly research."
             },
             "sub2": {
               "name": "Tamil (இயல் 4: மணற்கேணி)",
@@ -3267,11 +3267,11 @@
             "sub1": {
               "name": "Science (Ch 9 & Ch 10 — Optics Complete)",
               "chapter": "Ch 9: Light – Reflection and Refraction + Ch 10: The Human Eye and the Colourful World",
-              "topics": "Concave/Convex Mirrors & Lenses ray diagrams, Mirror formula (1/v + 1/u = 1/f), Lens formula (1/v - 1/u = 1/f), Refractive Index & Power of lens (Dioptres); Myopia & Hypermetropia ray diagrams, Prism Dispersion, Recombination, Twinkling of stars & Tyndall effect."
+              "topics": "Concave/Convex Mirrors & Lenses ray diagrams, Mirror formula (1/v + 1/u = 1/f), Lens formula (1/v - 1/u = 1/f), Refractive Index & Power (Dioptres); Myopia & Hypermetropia ray diagrams, Prism Dispersion, Twinkling of stars, Tyndall effect & Clear blue sky (Sunrise/Sunset deleted in 2026-27)."
             },
             "sub2": {
               "name": "Social Science (Eco Ch 2, 3 & 4 — Economics Complete)",
-              "chapter": "Economics Ch 2: Sectors + Ch 3: Money and Credit + Ch 4: Globalisation",
+              "chapter": "Eco Ch 2: Sectors + Ch 3: Money & Credit + Ch 4: Globalisation (What is Globalisation & Enabling Factors Only)",
               "topics": "Primary/Secondary/Tertiary sectors, Organised vs Unorganised, Public vs Private & MGNREGA 2005; Double coincidence of wants, Formal vs Informal credit, RBI supervision & Self Help Groups (SHGs); MNCs, Technology & Trade Liberalisation in Globalisation."
             },
             "description": "பதினொன்றாம் நாள்: இயற்பியலில் ஒளியியல் 2 பாடங்களும் (Ch 9 & Ch 10) மற்றும் பொருளியலின் மீதமுள்ள 3 பாடங்களும் (இதோடு Economics 100% நிறைவு!).",
@@ -3292,7 +3292,7 @@
             "day": 12,
             "date": "2026-12-06",
             "phase": "100% Full-Portion Sequential Mastery",
-            "title": "Day 12: Mathematics (Ch 10 Circles & Ch 11 Areas Related to Circles) + English (Prose Ch 8–9 Sermon & Proposal, Poems 9–10, Footprints Ch 7–9 Necklace, Bholi, Book That Saved the Earth)",
+            "title": "Day 12: Mathematics (Ch 10 Circles & Ch 11 Areas Related to Circles) + English (First Flight Units 8–9 & Footprints Ch 7–9)",
             "focus": "Circles Complete (Ch 10–11) & 100% English Literature Completed",
             "subjects": [
               "Mathematics: Ch 10 Circles + Ch 11 Areas Related to Circles",
@@ -3304,9 +3304,9 @@
               "topics": "Theorem 10.1 (Radius ⊥ Tangent), Theorem 10.2 (Equal tangents from external point) proof, Circumscribed quadrilateral (AB + CD = AD + BC) & Parallel tangents (∠AOB = 90°); Area of Sector (θ/360° × πr²), Length of Arc & Area of Minor/Major Segment."
             },
             "sub2": {
-              "name": "English (Prose 8–9, Poems 9–10, Supp 7–9 — Literature Complete)",
-              "chapter": "Sermon at Benares, The Proposal + Custard, Anne Gregory + The Necklace, Bholi, Book That Saved the Earth",
-              "topics": "Buddha's mustard-seed lesson to Kisa Gotami, Lomov & Natalya's petty quarrels (Oxen Meadows & Guess/Squeezer), Custard's true bravery, Inner vs external beauty in Anne Gregory, Matilda Loisel's lost necklace, Bholi's transformation through education, Think-Tank & Mother Goose."
+              "name": "English (First Flight Units 8–9 & Footprints Ch 7–9 — Literature Complete)",
+              "chapter": "8. The Sermon at Benares (For Anne Gregory) + 9. The Proposal + Supp 7–9: The Necklace, Bholi, Book That Saved the Earth",
+              "topics": "Exact NCERT Unit 8 & 9 Pairing: Buddha's lesson to Kisa Gotami, W.B. Yeats's 'For Anne Gregory' (inner vs outer beauty), Lomov & Natalya in 'The Proposal'; Matilda's necklace, Bholi's empowerment & Mother Goose saving Earth."
             },
             "description": "பன்னிரண்டாம் நாள்: கணிதத்தில் வட்டங்கள் 2 பாடங்களும் (Ch 10 & Ch 11) மற்றும் ஆங்கில இலக்கியத்தின் இறுதிப் பாடங்கள் (இதோடு English Literature 100% நிறைவு!).",
             "tasks": [
@@ -3394,16 +3394,16 @@
             "day": 15,
             "date": "2026-12-09",
             "phase": "100% Full-Portion Sequential Mastery",
-            "title": "Day 15: Social Science (Geography Ch 4 Agriculture, Ch 5 Minerals & Energy, Ch 6 Manufacturing Industries + Map) + English (Complete Writing Skills: Formal Letters & Analytical Paragraph)",
+            "title": "Day 15: SST (Geo Ch 4 Agriculture, Ch 5 Minerals, Ch 6 Manufacturing + Ch 7 Lifelines Sea Ports/Airports & Full 5M Map) + English (Writing & Unseen Passage)",
             "focus": "100% Social Science Syllabus Completed (Geo Ch 4–6) & English Writing Skills",
             "subjects": [
               "Social Science: Geography Ch 4 Agriculture + Ch 5 Minerals and Energy Resources + Ch 6 Manufacturing Industries + Complete India Map Work (100% SST Completed!)",
               "English: Complete Writing Skills (Formal Letters: Editor, Complaint, Placing Order, Enquiry + Analytical Paragraph Writing)"
             ],
             "sub1": {
-              "name": "Social Science (Geo Ch 4, 5 & 6 — 100% SST Complete)",
-              "chapter": "Geo Ch 4: Agriculture + Ch 5: Minerals & Energy + Ch 6: Manufacturing Industries + Map",
-              "topics": "Primitive/Intensive/Commercial farming, Rabi/Kharif/Zaid seasons, Rice/Wheat/Millets/Tea/Coffee, Technological & Institutional reforms; Ferrous/Non-ferrous minerals, Conventional (Coal, Petroleum) vs Non-conventional (Solar, Wind, Biogas) energy; Agro-based & Mineral-based industries, Industrial pollution control + Board Map Locations."
+              "name": "Social Science (Geo Ch 4–6 + Ch 7 Lifelines Map — 100% SST Complete)",
+              "chapter": "Geo Ch 4: Agriculture + Ch 5: Minerals & Energy + Ch 6: Manufacturing + Ch 7: Lifelines (Sea Ports & Airports Map)",
+              "topics": "Rabi/Kharif/Zaid crops & Agri reforms; Ferrous/Non-ferrous minerals & Solar/Wind/Nuclear energy; Agro/Mineral industries & Pollution control; Complete 5-Mark Board Map Work: History (Congress Sessions & Satyagraha) + Geography (Dams, Crops, Mines, Power Plants, Software Parks, Ch 7 Major Sea Ports & International Airports)."
             },
             "sub2": {
               "name": "English (100% Writing Skills & Reading Comprehension)",
@@ -3435,9 +3435,9 @@
               "English: Complete Integrated Grammar (Determiners, Tenses, Modals, Subject-Verb Concord, Reported Speech, Error Correction) — 100% English Completed!"
             ],
             "sub1": {
-              "name": "Tamil (இயல் 7: பெருவழி — 100% Tamil Complete)",
-              "chapter": "இயல் 7: சங்க இலக்கியத்தில் அறம், தேம்பாவணி*, அக்கறை, இராமானுசர், பா வகை அலகிடுதல், திருக்குறள் MCQ",
-              "topics": "சங்க இலக்கியத்தில் அறம் (கொடைத்திறம், போரறம், உதவி), வீரமாமுனிவரின் 'தேம்பாவணி' (கருணையன் புலம்பல் - மனப்பாடம்), கல்யாண்ஜியின் 'அக்கறை', 'இராமானுசர்' நாடகம், யாப்பிலக்கணம்: வெண்பா/ஆசிரியப்பா பொது இலக்கணம் & திருக்குறள் அலகிடுதல் வாய்பாடு, இயல் 7 திருக்குறள் MCQ, கடிதம் & பொதுக்கட்டுரை."
+              "name": "Tamil (இயல் 7: பெருவழி + படைப்பாற்றல் கடிதம்/கட்டுரை — 100% Tamil Complete)",
+              "chapter": "இயல் 7: சங்க இலக்கியத்தில் அறம், தேம்பாவணி*, அக்கறை, இராமானுசர், பா வகை அலகிடுதல், இயல் 7 திருக்குறள் MCQ + கடிதம்/கட்டுரை",
+              "topics": "சங்க இலக்கியத்தில் அறம், தேம்பாவணி (மனப்பாடம்), அக்கறை, இராமானுசர் நாடகம், பா வகை அலகிடுதல், இயல் 7 திருக்குறள் (பெரியாரைத் துணைக்கோடல் - பக். 167) MCQ, CBSE படைப்பாற்றல்: அலுவலகக் கடிதம் / உறவுமுறைக் கடிதம், பொதுக்கட்டுரை & படம் பார்த்துக் கருத்து எழுதுதல்."
             },
             "sub2": {
               "name": "English (Complete Grammar — 100% English Complete)",
@@ -3860,7 +3860,7 @@
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
       "sub1Name": "Social Science (Hist Ch 1 & Civics Ch 1) - 15 Marks",
-      "sub2Name": "English (Prose 1–2, Poems 1–2, Supp 1) - 15 Marks",
+      "sub2Name": "English (First Flight Units 1–2 & Footprints Ch 1) - 15 Marks",
       "instructions": "Write point-wise answers with clear headings.",
       "scienceSection": {
         "marks": 15,
@@ -3894,7 +3894,7 @@
       },
       "tamilSection": {
         "marks": 15,
-        "summary": "Q4: Irony in 'A Letter to God' (4M) | Q5: Nelson Mandela's twin obligations & concept of courage (4M) | Q6: Symbolism in 'Dust of Snow' & 'Fire and Ice' (3M) | Q7: Mrs Pumphrey & Tricki's recovery in 'A Triumph of Surgery' (4M)",
+        "summary": "Q4: Irony in 'A Letter to God' (4M) | Q5: Mandela's twin obligations & courage (4M) | Q6: Poems — 'Dust of Snow', 'Fire and Ice' & 'A Tiger in the Zoo' (3M) | Q7: Tricki's cure in 'A Triumph of Surgery' (4M)",
         "questions": [
           {
             "qNum": "Q4",
@@ -3914,11 +3914,11 @@
           },
           {
             "qNum": "Q6",
-            "type": "First Flight Poems 1–2",
+            "type": "First Flight Units 1–2 Poems",
             "marks": 3,
-            "question": "How does Robert Frost use nature symbols in 'Dust of Snow' (crow and hemlock tree) and 'Fire and Ice' (desire and hatred) to convey deep philosophical ideas? (3 Marks)",
-            "answer": "Crow and poisonous hemlock tree (usually symbols of gloom) bring a sudden positive change of mood saving the poet's day. In 'Fire and Ice', Fire stands for unbridled desire/greed and Ice stands for cold hatred/indifference, either of which can destroy the world.",
-            "rubric": "Dust of Snow: 1.5M; Fire and Ice: 1.5M."
+            "question": "(a) How did the crow and hemlock tree change the poet's mood in 'Dust of Snow'? (1.5 Marks)\n(b) How does Leslie Norris contrast the tiger's 'quiet rage' in the concrete cell with its natural habitat in 'A Tiger in the Zoo'? (1.5 Marks)",
+            "answer": "(a) Shook dust of snow onto the poet, lifting his depressive mood and saving the rest of his rueful day.\n(b) Locked in a concrete cell, the tiger stalks silently ignoring visitors, whereas in the wild it would lurk in shadows near water holes hunting plump deer.",
+            "rubric": "1.5M + 1.5M = 3 Marks."
           },
           {
             "qNum": "Q7",
@@ -4086,7 +4086,7 @@
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
       "sub1Name": "Science (Ch 5 & Ch 6) - 15 Marks",
-      "sub2Name": "English (Prose 3–4, Poems 3–4, Supp 2) - 15 Marks",
+      "sub2Name": "English (First Flight Units 3–4 & Footprints Ch 2) - 15 Marks",
       "instructions": "Draw neat labeled biological diagrams.",
       "scienceSection": {
         "marks": 15,
@@ -4120,7 +4120,7 @@
       },
       "tamilSection": {
         "marks": 15,
-        "summary": "Q4: Young Seagull's fear & first flight (4M) | Q5: Anne Frank's diary & essay on chatterbox (4M) | Q6: 'A Tiger in the Zoo' confinement vs freedom (3M) | Q7: Hari Singh's transformation in 'The Thief's Story' (4M)",
+        "summary": "Q4: Young Seagull's first flight (4M) | Q5: Anne Frank's diary & Mr Keesing's essays (4M) | Q6: Poems — 'The Ball Poem' & 'Amanda!' (3M) | Q7: Hari Singh in 'The Thief's Story' (4M)",
         "questions": [
           {
             "qNum": "Q4",
@@ -4140,11 +4140,11 @@
           },
           {
             "qNum": "Q6",
-            "type": "First Flight Poem 3",
+            "type": "First Flight Units 3–4 Poems",
             "marks": 3,
-            "question": "How does Leslie Norris contrast the tiger's behaviour inside the zoo cage with its natural habitat in the jungle? (3 Marks)",
-            "answer": "In the zoo, he walks in 'quiet rage' on pads of velvet inside a locked concrete cell ignoring visitors; in the wild, he lurks in shadow near water holes to hunt plump deer.",
-            "rubric": "Contrast points: 3M."
+            "question": "Why does the poet not intrude on the boy or offer him money for a new ball in 'The Ball Poem'? Why does Amanda imagine herself as Rapunzel or a mermaid? (3 Marks)",
+            "answer": "In 'The Ball Poem', the boy learns the epistemology of loss and responsibility from losing his cherished ball. In 'Amanda!', she imagines being a mermaid or Rapunzel to escape her mother's constant nagging into peaceful solitude.",
+            "rubric": "Ball Poem: 1.5M; Amanda: 1.5M."
           },
           {
             "qNum": "Q7",
@@ -4242,7 +4242,7 @@
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
       "sub1Name": "Social Science (Hist Ch 3, 5 & Civics Ch 3) - 15 Marks",
-      "sub2Name": "English (Prose 5, Poems 5–6, Supp 3–4) - 15 Marks",
+      "sub2Name": "English (First Flight Unit 5 & Footprints Ch 3–4) - 15 Marks",
       "instructions": "Write structured CBSE answers.",
       "scienceSection": {
         "marks": 15,
@@ -4276,7 +4276,7 @@
       },
       "tamilSection": {
         "marks": 15,
-        "summary": "Q4: Glimpses of India — Goan Baker, Coorg & Assam Tea (4M) | Q5: 'The Ball Poem' epistemology of loss & 'Amanda!' (4M) | Q6: Ausable's balcony trick in 'The Midnight Visitor' (4M) | Q7: Horace Danby outsmarted in 'A Question of Trust' (3M)",
+        "summary": "Q4: Glimpses of India — Baker, Coorg & Assam Tea (4M) | Q5: Adrienne Rich's poem 'The Trees' symbolism (4M) | Q6: Ausable in 'The Midnight Visitor' (4M) | Q7: Horace Danby in 'A Question of Trust' (3M)",
         "questions": [
           {
             "qNum": "Q4",
@@ -4288,11 +4288,11 @@
           },
           {
             "qNum": "Q5",
-            "type": "First Flight Poems 5–6",
+            "type": "First Flight Unit 5 Poem",
             "marks": 4,
-            "question": "Why does the poet not offer the boy money to buy another ball in 'The Ball Poem'? Why does Amanda wish to be an orphan or Rapunzel? (4 Marks)",
-            "answer": "The boy is learning the 'epistemology of loss' and personal responsibility in a world of possessions. Amanda feels suffocated by her mother's constant nagging and yearns for quiet freedom.",
-            "rubric": "Ball Poem: 2M; Amanda: 2M."
+            "question": "Discuss the central metaphor and symbolism in Adrienne Rich's poem 'The Trees'. What happens when the trees move out into the forest at night? (4 Marks)",
+            "answer": "Trees confined indoors struggle all night—roots disengage from cracks, leaves strain toward glass, boughs shuffle like newly discharged patients—symbolizing nature and women breaking free from domestic restriction into their rightful space.",
+            "rubric": "Struggle & imagery: 2M; Deeper symbolism: 2M."
           },
           {
             "qNum": "Q6",
@@ -4467,12 +4467,12 @@
       "title": "Day 10 Full-Portion Assessment: English (Prose 6–7, Poems 7–8, Supp 5–6) + Tamil (இயல் 4: மணற்கேணி முழுவதும்)",
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
-      "sub1Name": "English (Prose 6–7, Poems 7–8, Supp 5–6) - 15 Marks",
+      "sub1Name": "English (First Flight Units 6–7 & Footprints Ch 5–6) - 15 Marks",
       "sub2Name": "Tamil (இயல் 4: மணற்கேணி) - 15 Marks",
       "instructions": "Answer all questions matching the official textbook.",
       "scienceSection": {
         "marks": 15,
-        "summary": "Q1: Mijbil's transport to London & playful water habits (4M) | Q2: Valli's bus journey planning & character (4M) | Q3: Symbolism in 'The Trees' & 'Fog' (3M) | Q4: Richard Ebright's journey in 'The Making of a Scientist' (4M)",
+        "summary": "Q1: Mijbil's transport & habits (4M) | Q2: Valli's bus ride plan & dead cow sight (4M) | Q3: Poems — 'Fog' & 'The Tale of Custard the Dragon' (3M) | Q4: Griffin & Richard Ebright (4M)",
         "questions": [
           {
             "qNum": "Q1",
@@ -4492,11 +4492,11 @@
           },
           {
             "qNum": "Q3",
-            "type": "First Flight Poems 7–8",
+            "type": "First Flight Units 6–7 Poems",
             "marks": 3,
-            "question": "Explain the central metaphor of trees breaking out of the house in Adrienne Rich's 'The Trees' and the cat metaphor in Carl Sandburg's 'Fog'. (3 Marks)",
-            "answer": "Trees symbolize nature/women breaking free from domestic confinement into the forest. Fog arrives silently on 'little cat feet', sits looking over harbour and city on silent haunches, and moves on.",
-            "rubric": "Trees: 1.5M; Fog: 1.5M."
+            "question": "(a) How does Carl Sandburg compare the arrival and departure of 'Fog' to a cat? (1.5 Marks)\n(b) How did Custard the Dragon prove true courage when the pirate attacked Belinda's house? (1.5 Marks)",
+            "answer": "(a) Fog comes silently on little cat feet, sits looking over harbour and city on silent haunches, and moves on.\n(b) While Ink, Blink, and Mustard fled in terror, 'cowardly' Custard snorted like an engine, clashed his tail, and gobbled up the pirate.",
+            "rubric": "1.5M + 1.5M = 3 Marks."
           },
           {
             "qNum": "Q4",
@@ -4624,7 +4624,7 @@
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
       "sub1Name": "Mathematics (Ch 10 & Ch 11) - 15 Marks",
-      "sub2Name": "English (Prose 8–9, Poems 9–10, Supp 7–9) - 15 Marks",
+      "sub2Name": "English (First Flight Units 8–9 & Footprints Ch 7–9) - 15 Marks",
       "instructions": "Show complete steps for geometric theorems and mensuration.",
       "scienceSection": {
         "marks": 15,
@@ -4658,7 +4658,7 @@
       },
       "tamilSection": {
         "marks": 15,
-        "summary": "Q4: Buddha's lesson to Kisa Gotami & Lomov-Natalya quarrels in 'The Proposal' (4M) | Q5: Bravery in 'Custard the Dragon' & Inner beauty in 'For Anne Gregory' (3M) | Q6: Matilda's ruin in 'The Necklace' (4M) | Q7: Bholi's transformation & Think-Tank in 'The Book That Saved the Earth' (4M)",
+        "summary": "Q4: Buddha's sermon & 'The Proposal' quarrels (4M) | Q5: W.B. Yeats's 'For Anne Gregory' inner vs outer love (3M) | Q6: Matilda Loisel in 'The Necklace' (4M) | Q7: Bholi & 'The Book That Saved the Earth' (4M)",
         "questions": [
           {
             "qNum": "Q4",
@@ -4670,11 +4670,11 @@
           },
           {
             "qNum": "Q5",
-            "type": "First Flight Poems 9–10",
+            "type": "First Flight Unit 8 Poem",
             "marks": 3,
-            "question": "How did Custard the Dragon prove that true bravery is shown in crisis, not in boasting? What is the old religious man's message in 'For Anne Gregory'? (3 Marks)",
-            "answer": "While Ink, Blink, and Mustard fled from the pirate, Custard jumped up and gobbled the pirate. Only God loves a person for their inner soul rather than outward yellow hair.",
-            "rubric": "Custard: 1.5M; Anne Gregory: 1.5M."
+            "question": "What is the central argument between the young speaker and Anne Gregory regarding 'yellow hair' in W.B. Yeats's poem 'For Anne Gregory'? What does the old religious man conclude? (3 Marks)",
+            "answer": "Young men often fall in love with Anne for her outward physical beauty (honey-coloured ramparts/yellow hair) rather than her inner self. Even if she dyes her hair brown, black, or carrot, only God loves a person purely for themselves alone.",
+            "rubric": "Outer beauty vs inner self & religious man's quote: 3M."
           },
           {
             "qNum": "Q6",
@@ -4849,12 +4849,12 @@
       "title": "Day 15 Full-Portion Assessment: SST (Geography Ch 4 Agriculture, Ch 5 Minerals & Ch 6 Manufacturing) + English (Complete Writing Skills: Formal Letters & Analytical Paragraph)",
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
-      "sub1Name": "Social Science (Geography Ch 4, 5 & 6) - 15 Marks",
+      "sub1Name": "Social Science (Geo Ch 4–6 & Ch 7 Lifelines Map) - 15 Marks",
       "sub2Name": "English (Complete Writing Skills) - 15 Marks",
       "instructions": "Follow strict CBSE formats for Formal Letters and Analytical Paragraphs.",
       "scienceSection": {
         "marks": 15,
-        "summary": "Q1: Institutional & technical reforms in Indian Agriculture & Rabi/Kharif crops (5M) | Q2: Conventional vs Non-conventional energy & Conservation of minerals (5M) | Q3: Industrial environmental degradation & control measures (5M)",
+        "summary": "Q1: Agriculture reforms & Rabi/Kharif crops (5M) | Q2: Conventional vs Non-conventional energy & Industrial pollution control (5M) | Q3: Complete CBSE 5-Mark Map Identification & Location (History + Geo Ch 3–7 Sea Ports & Airports) (5M)",
         "questions": [
           {
             "qNum": "Q1",
@@ -4874,11 +4874,11 @@
           },
           {
             "qNum": "Q3",
-            "type": "Geography Ch 6",
+            "type": "CBSE 5-Mark Board Map Work (Hist + Geo Ch 7)",
             "marks": 5,
-            "question": "How do manufacturing industries cause water and air pollution? Suggest five measures to minimize environmental degradation by industries. (5 Marks)",
-            "answer": "Chemical/paper effluents into rivers, smoke stacks releasing SO₂/CO. Control: Recycling water in stages, rainwater harvesting, 3-phase effluent treatment (primary, secondary, tertiary), electrostatic precipitators.",
-            "rubric": "Pollution causes: 2M; 5 control measures: 3M."
+            "question": "CBSE Map Skill-Based Question (5 × 1 = 5 Marks):\nIdentify / State the exact State & Significance of the following 5 Board Map items:\n(i) Place where the Indian National Congress Session of December 1920 was held.\n(ii) Place in Gujarat where Mahatma Gandhi broke the Salt Law.\n(iii) Hirakud Dam (State & River).\n(iv) Kalpakkam Nuclear Power Plant (State).\n(v) Ch 7 Lifelines: Southernmost Major Sea Port of India & Meenambakkam International Airport.",
+            "answer": "(i) Nagpur (Maharashtra)\n(ii) Dandi (Gujarat)\n(iii) Odisha (Mahanadi River)\n(iv) Tamil Nadu\n(v) Tuticorin / V.O. Chidambaranar Port (Tamil Nadu) & Chennai International Airport.",
+            "rubric": "5 × 1M = 5 Marks."
           }
         ]
       },
@@ -4924,39 +4924,39 @@
       "instructions": "Final Day of 100% Full-Portion Sequential Mastery!",
       "scienceSection": {
         "marks": 15,
-        "summary": "Q1: சங்க இலக்கியத்தில் அறம் - கொடைத்திறம் & போரறம் (4M) | Q2: தேம்பாவணியில் கருணையன் புலம்பல் & இராமானுசர் நாடகம் (4M) | Q3: யாப்பிலக்கணம் - வெண்பா அலகிடுதல் வாய்பாடு (3M) | Q4: இயல் 7 திருக்குறள் விடுபட்ட சீர் MCQ (4M)",
+        "summary": "Q1: சங்க இலக்கியத்தில் அறம் & தேம்பாவணி (4M) | Q2: பா வகை அலகிடுதல் & இலக்கண MCQ (3M) | Q3: இயல் 7 திருக்குறள் விடுபட்ட சீர் MCQ (பக். 167) (4M) | Q4: CBSE படைப்பாற்றல் - அலுவலகக் கடிதம் எழுதுதல் (4M)",
         "questions": [
           {
             "qNum": "Q1",
-            "type": "இயல் 7 உரைநடை (4 Marks)",
+            "type": "இயல் 7 உரைநடை & செய்யுள் (4 Marks)",
             "marks": 4,
-            "question": "சங்க இலக்கியங்கள் காட்டும் அறக் கருத்துக்களில் 'கொடைத்திறம்', 'போரறம்' மற்றும் 'வாய்மை' ஆகியவற்றைச் சான்றுகளுடன் விவரிக்க. (4 மதிப்பெண்கள்)",
-            "answer": "நன்மையை எதிர்பாராமல் ஈதல் கொடை; பசு, பார்ப்பார், பெண்கள், நோயாளிகளுக்குத் தீங்கு செய்யாமல் போரிடுதல் போரறம்; பொய்யாமை.",
-            "rubric": "சங்க இலக்கிய அறக் கருத்துக்கள்: 4M."
-          },
-          {
-            "qNum": "Q2",
-            "type": "இயல் 7 செய்யுள் & துணைப்பாடம் (4 Marks)",
-            "marks": 4,
-            "question": "(அ) தேம்பாவணியில் தன் தாய் எலிசபெத்தை இழந்து காட்டில் தனித்து நின்ற கருணையன் எவ்வாறு அழுது புலம்புகிறான்? (2M)\n(ஆ) இராமானுசர் நாடகத்தில் கோவில் கோபுரத்தின் மீதேறி திருமந்திரத்தை அனைவருக்கும் உபதேசித்த நிகழ்வின் சமத்துவச் சிறப்பை எழுதுக. (2M)",
-            "answer": "(அ) வேர் அறுந்த மரம் போலவும், தாய்ப்பறவை இழந்த குஞ்சு போலவும் கதறுதல்.\n(ஆ) தான் நரகத்திற்குச் சென்றாலும் மக்கள் அனைவரும் உய்ய வேண்டும் என்ற பரந்த சமத்துவ உள்ளம்.",
+            "question": "(அ) சங்க இலக்கியங்கள் காட்டும் அறக் கருத்துக்களில் 'கொடைத்திறம்' மற்றும் 'போரறம்' பற்றி எழுதுக. (2M)\n(ஆ) தேம்பாவணியில் தன் தாய் எலிசபெத்தை இழந்து காட்டில் தனித்து நின்ற கருணையன் எவ்வாறு புலம்புகிறான்? (2M)",
+            "answer": "(அ) நன்மையை எதிர்பாராமல் ஈதல் கொடை; பசு, பார்ப்பார், பெண்கள், பிணியுடையோருக்குத் தீங்கு செய்யாமல் போரிடுதல் போரறம்.\n(ஆ) வேர் அறுந்த மரம் போலவும், தாய்ப்பறவை இழந்த குஞ்சு போலவும் வழியறியாது கதறுதல்.",
             "rubric": "2M + 2M = 4M."
           },
           {
-            "qNum": "Q3",
+            "qNum": "Q2",
             "type": "இயல் 7 யாப்பிலக்கணம் - அலகிடுதல் (3 Marks)",
             "marks": 3,
-            "question": "'பிறப்பொக்கும் எல்லா உயிர்க்கும் சிறப்பொவ்வா செய்தொழில் வேற்றுமை யான்' — இக்குறட்பாவை அலகிட்டு வாய்பாடு காண்க. (3 மதிப்பெண்கள்)",
-            "answer": "7 சீர்களையும் நேரசை/நிரையசையாகப் பிரித்து வாய்பாடு எழுதி, ஈற்றுச்சீர் 'நாள்' என்னும் வாய்பாட்டில் முடிந்துள்ளது எனக் குறிப்பிடுதல்.",
+            "question": "'உலகத்தோ டொட்ட ஒழுகல் பலகற்றும் கல்லார் அறிவிலா தார்' — இக்குறட்பாவை அலகிட்டு வாய்பாடு காண்க. (3 மதிப்பெண்கள்)",
+            "answer": "7 சீர்களையும் நேர்/நிரை அசைகளாகப் பிரித்து வாய்பாடு எழுதி, ஈற்றுச்சீர் 'தார்' (நேர் = நாள்) என்னும் வாய்பாட்டில் முடிந்துள்ளது எனக் குறிப்பிடுதல்.",
             "rubric": "7 சீர் அலகிடுதல்: 3M."
           },
           {
-            "qNum": "Q4",
-            "type": "இயல் 7 திருக்குறள் MCQ (4 Marks)",
+            "qNum": "Q3",
+            "type": "இயல் 7 திருக்குறள் விடுபட்ட சீர் MCQ (4 Marks)",
             "marks": 4,
-            "question": "திருக்குறள்: விடுபட்ட சரியான சீரைத் தேர்ந்தெடுத்து எழுதுக (2 × 2 = 4 மதிப்பெண்கள்):\n\n(i) 'சொல்லப் பயன்படுவர் சான்றோர் கரும்புபோல் ________ பயன்படும் கீழ்.'\n    அ) கொல்லப்\n    ஆ) மெல்லப்\n    இ) வெல்லப்\n    ஈ) தள்ளப்\n\n(ii) 'இகழ்ந்தெள்ளா தீவாரைக் காணின் மகிழ்ந்துள்ளம் ________ உவப்ப துடைத்து.'\n    அ) உள்ளுள்\n    ஆ) கண்ணுள்\n    இ) நெஞ்சுள்\n    ஈ) மண்ணுள்",
-            "answer": "(i) அ) கொல்லப்\n(ii) அ) உள்ளுள்",
+            "question": "திருக்குறள் (இயல் 7 - பெரியாரைத் துணைக்கோடல்): விடுபட்ட சரியான சீரைத் தேர்ந்தெடுத்து எழுதுக (2 × 2 = 4 மதிப்பெண்கள்):\n\n(i) 'இடிப்பாரை இல்லாத ஏமரா மன்னன் ________ இலானும் கெடும்.'\n    அ) கெடுப்பார்\n    ஆ) கொடுப்பார்\n    இ) தடுப்பார்\n    ஈ) முடிப்பார்\n\n(ii) 'பல்லார் பகைகொளலின் பத்தடுத்த தீமைத்தே ________ தொடர்கை விடல்.'\n    அ) நல்லார்\n    ஆ) பெரியார்\n    இ) சான்றோர்\n    ஈ) அறிஞர்",
+            "answer": "(i) அ) கெடுப்பார்\n(ii) அ) நல்லார்",
             "rubric": "2 × 2 = 4 மதிப்பெண்கள்."
+          },
+          {
+            "qNum": "Q4",
+            "type": "CBSE படைப்பாற்றல் - கடிதம் (4 Marks)",
+            "marks": 4,
+            "question": "கடிதம் எழுதுக: உங்கள் பகுதியில் பழுதடைந்துள்ள தெருவிளக்குகளைச் சரிசெய்யவும், கொசு ஒழிப்புப் பணிகளை மேற்கொள்ளவும் வேண்டி மாநகராட்சி ஆணையருக்கு விண்ணப்பக் கடிதம் ஒன்று எழுதுக. (அனுப்புநர்/பெறுநர் முகவரியில் பெயருக்குப் பதில் 'அ அ அ' எனக் குறிப்பிடுக). (4 மதிப்பெண்கள்)",
+            "answer": "அனுப்புநர், பெறுநர், விளி, பொருள், கடிதச் செய்தி (தெருவிளக்கு பழுது மற்றும் சுகாதாரச் சீர்கேடு தீர்க்க வேண்டுகோள்), நன்றி, இப்படிக்கு, உறைமேல் முகவரி.",
+            "rubric": "படிவ அமைப்பு (Format): 1.5M; உள்ளடக்கம் (Content): 2.5M."
           }
         ]
       },
