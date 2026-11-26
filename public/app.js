@@ -4806,7 +4806,7 @@ function checkNightTestAlarm() {
 setInterval(checkNightTestAlarm, 30000);
 
 // ================= DYNAMIC 16-DAY REVISION MISSION RENDERER =================
-let activeMissionDayView = 1; // Default to Day 1 of Full-Portion Sprint (Today: 24 Nov 2026)
+let activeMissionDayView = 2; // Default to Day 1 of Full-Portion Sprint (Today: 24 Nov 2026)
 
 // Default Built-in Evaluated Sheets for 16-Day Full-Portion Sprint (Nov 25 – Dec 10)
 const DEFAULT_EVALUATED_SHEETS = {};
@@ -4870,7 +4870,7 @@ function renderRevisionMissionUI() {
       tag = `${sheet.totalAchievedMarks}/${sheet.effectiveMaxMarks || sheet.totalMaxMarks || 30} ✔`;
     } else if (s.isSkipped || s.status === 'skipped') {
       tag = '⏭️ Skipped';
-    } else if (dNum === 1) {
+    } else if (dNum === 2) {
       tag = '🌟 Today';
     } else {
       tag = dateStr || `Day ${dNum}`;
@@ -5007,7 +5007,7 @@ function renderRevisionMissionUI() {
       </div>
     `;
   } else {
-    const isTodayMission = (activeMissionDayView === 1);
+    const isTodayMission = (activeMissionDayView === 2);
     bannerHtml = `
       <div class="rounded-2xl ${isTodayMission ? 'bg-gradient-to-br from-emerald-50 via-teal-50 to-slate-50 border-2 border-emerald-400' : 'bg-slate-50 border border-slate-200'} p-4 space-y-3">
         <div class="flex items-center justify-between">
@@ -5116,7 +5116,7 @@ function renderRevisionMissionUI() {
 }
 
 // ================= STUDENT & MAMA ANSWER PAPER PHOTO UPLOAD & LOCK SYSTEM =================
-let activeUploadPaperDay = 1;
+let activeUploadPaperDay = 2;
 let activeUploadPaperSubject = 'Both Subjects (15+15=30M)';
 let uploadedPaperPages = []; // Array of { id, name, base64 }
 let mamaUnlockedDaysSession = {}; // Days unlocked by Mama during current session

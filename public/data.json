@@ -141,31 +141,31 @@
   },
   "dailyGoalMinutes": 270,
   "dailyTarget": {
-    "date": "2026-11-25",
-    "headline": "Full-Portion Day 1 (Today: 25 Nov): Science (Ch 1 & Ch 2) + Mathematics (Ch 1, Ch 2 & Ch 3)",
+    "date": "2026-11-26",
+    "headline": "Day 2 (Today: Thu, 26 Nov • 8:30 PM): SST (Hist Ch 1 & Civics Ch 1) + English (Untouched)",
     "setBy": "Academic Evaluator",
     "focusTasks": [
       {
         "id": "dt-1",
-        "text": "அறிவியல் Ch 1 & Ch 2: Decomposition/Redox சமன்பாடுகள் மற்றும் Chlor-Alkali, Bleaching Powder, Baking Soda, Plaster of Paris சமன்பாடுகள்",
+        "text": "சமூக அறிவியல்: History Ch 1 (Napoleonic Code 1804, Germany Unification) & Civics Ch 1 (Belgium vs Sri Lanka Power Sharing)",
         "category": "90-100% Path",
         "completed": false
       },
       {
         "id": "dt-2",
-        "text": "கணிதம் Ch 1, Ch 2 & Ch 3: √3 விகிதமுறா எண் நிரூபணம், பல்லுறுப்புக்கோவை பூச்சியங்கள் (α+β, αβ) மற்றும் நேரிய சமன்பாடுகள்",
+        "text": "ஆங்கிலம்: A Letter to God, Nelson Mandela, Poems 1–2 (Dust of Snow & Fire and Ice) + Analytical Paragraph / Triumph of Surgery",
         "category": "School",
         "completed": false
       },
       {
         "id": "dt-3",
-        "text": "100% முழுப் பாடத்திட்ட சரிபார்ப்பு: Maths (14 Ch), Science (13 Ch), SST (19 Ch), English (All Ch), Tamil (இயல் 1–7) வரிசையாகப் பிரிக்கப்பட்டுள்ளது",
+        "text": "நேற்றைய Maths Ch 1–3 அட்ஜஸ்ட்மென்ட்: Day 2 மாற்றப்படாமல், Day 4 முதல் Days 4, 6, 9, 12, 14-ல் சமமாகச் சேர்க்கப்பட்டுவிட்டது",
         "category": "Tuition",
         "completed": true
       },
       {
         "id": "dt-4",
-        "text": "இன்று இரவு 8:30 PM – 9:15 PM: Day 1 மாதிரித் தேர்வு (Science Ch 1–2 + Maths Ch 1–3 = 30 Marks) எழுதி சமர்ப்பித்தல்",
+        "text": "இன்று இரவு 8:30 PM – 9:15 PM: Day 2 மாதிரித் தேர்வு (SST 15M + English 15M = 30 Marks) எழுதுதல்",
         "category": "90-100% Path",
         "completed": false
       }
@@ -2888,23 +2888,23 @@
     "firstExamDate": "2026-12-11",
     "totalDays": 16,
     "today": {
-      "date": "2026-11-25",
-      "dayIndex": 1,
-      "status": "🔥 Full-Portion Day 1 (TODAY: Wed, 25 Nov • 8:30 PM Test)",
-      "pair": "Science (Ch 1 Chemical Reactions & Ch 2 Acids, Bases, Salts) + Maths (Ch 1 Real Numbers, Ch 2 Polynomials & Ch 3 Linear Equations)",
-      "sub1Name": "Science: Ch 1 Reactions & Ch 2 Acids, Bases and Salts (15 Marks)",
-      "sub2Name": "Mathematics: Ch 1 Real Numbers, Ch 2 Polynomials & Ch 3 Linear Equations (15 Marks)",
-      "nightTestTiming": "Tonight 8:30 PM – 9:15 PM (30 Marks)",
-      "message": "100% முழுப் பாடத்திட்ட அட்டவணை (Chapter 1 முதல் கடைசி பாடம் வரை வரிசையாக 16 நாட்களில் ஒரு பாடம் கூட விடுபடாமல் இணைக்கப்பட்டுள்ளது)! இன்று (Day 1) Science Ch 1 & 2 மற்றும் Maths Ch 1, 2 & 3 படித்து இரவு 8:30 PM தேர்வு எழுதவும்."
-    },
-    "tomorrow": {
       "date": "2026-11-26",
       "dayIndex": 2,
-      "pair": "Day 2 (Thu, 26 Nov): SST (History Ch 1 Europe & Civics Ch 1 Power Sharing) + English (Prose 1–2, Poems 1–2, Supp 1)",
+      "status": "🔥 Full-Portion Day 2 (TODAY: Thu, 26 Nov • 8:30 PM Test)",
+      "pair": "Social Science (History Ch 1 Europe & Civics Ch 1 Power Sharing) + English (Letter to God, Mandela, Poems 1–2 & Choice Q7)",
       "sub1Name": "Social Science: History Ch 1 & Civics Ch 1 (15 Marks)",
-      "sub2Name": "English: Prose 1–2, Poems 1–2 & Footprints Ch 1 (15 Marks)",
-      "nightTestTiming": "8:30 PM – 9:15 PM (30 Marks)",
-      "warning": "✅ அனைத்து 5 பாடங்களின் 100% அத்தியாயங்களும் (Maths 14 Ch, Science 13 Ch, SST 19 Ch, English 28 Ch + Writing/Grammar, Tamil இயல் 1–7) நாள் வாரியாகப் பிரிக்கப்பட்டுள்ளன!"
+      "sub2Name": "English: A Letter to God, Mandela, Poems 1–2 & Choice Q7 (15 Marks)",
+      "nightTestTiming": "Tonight 8:30 PM – 9:15 PM (30 Marks)",
+      "message": "இன்று நாள் 2 (Day 2 — 26 Nov) தேர்வு மாற்றப்படவில்லை! பிரணவ் ஏற்கனவே படித்துவரும் SST (History Ch 1 & Civics Ch 1) + English தேர்வு இன்று இரவு 8:30 PM நடைபெறும். நேற்று விடுபட்ட Maths (Ch 1, 2, 3) Day 4 முதல் மீதி நாட்களில் (Days 4, 6, 9, 12, 14) சமமாக அட்ஜஸ்ட் செய்யப்பட்டுவிட்டது!"
+    },
+    "tomorrow": {
+      "date": "2026-11-27",
+      "dayIndex": 3,
+      "pair": "Day 3 (Fri, 27 Nov): Science (Ch 3 Metals & Ch 4 Carbon) + Tamil (இயல் 1: அமுதஊற்று முழுவதும்)",
+      "sub1Name": "Science: Ch 3 Metals & Non-metals + Ch 4 Carbon & Compounds (15 Marks)",
+      "sub2Name": "Tamil: இயல் 1 அமுதஊற்று முழுவதும் (15 Marks)",
+      "nightTestTiming": "Tomorrow 8:30 PM – 9:15 PM (30 Marks)",
+      "warning": "📌 Day 4 (Nov 28) முதல் Maths (Ch 1, 2 & 3) அட்ஜஸ்ட்மென்ட் தொடங்குகிறது!"
     },
     "modes": {
       "pair_rotation": {
@@ -2915,9 +2915,9 @@
           {
             "day": 1,
             "date": "2026-11-25",
-            "isToday": true,
+            "isToday": false,
             "phase": "100% Full-Portion Sequential Mastery",
-            "title": "Day 1: Science (Ch 1 Chemical Reactions & Ch 2 Acids, Bases and Salts) + Maths (Ch 1 Real Numbers, Ch 2 Polynomials & Ch 3 Linear Equations)",
+            "title": "Day 1 (25 Nov): Science (Ch 1 Chemical Reactions & Ch 2 Acids, Bases & Salts — Written ✓) | Maths Shifted to Day 4",
             "focus": "Chemistry Ch 1–2 & Mathematics Ch 1–3",
             "subjects": [
               "Science: Ch 1 Chemical Reactions & Equations + Ch 2 Acids, Bases and Salts",
@@ -2929,9 +2929,9 @@
               "topics": "Balancing equations, Combination, Decomposition (Thermal, Electrolytic, Photolytic), Displacement, Redox, Rancidity; pH scale, Chlor-Alkali process, Bleaching Powder, Baking Soda, Washing Soda & Plaster of Paris."
             },
             "sub2": {
-              "name": "Mathematics (Ch 1, Ch 2 & Ch 3)",
-              "chapter": "Ch 1: Real Numbers + Ch 2: Polynomials + Ch 3: Pair of Linear Equations",
-              "topics": "Irrationality proofs (√2, √3, √5), HCF × LCM; Zeroes of polynomial (α+β = -b/a, αβ = c/a); Graphical & Algebraic solution (Substitution & Elimination), Consistency conditions (a₁/a₂, b₁/b₂, c₁/c₂)."
+              "name": "Mathematics (Shifted to Day 4)",
+              "chapter": "Ch 1, Ch 2 & Ch 3 Moved to Day 4 (Nov 28) Due to Time Issue",
+              "topics": "Yesterday (25 Nov) Pranav wrote Chemistry Only (15 Marks). Missed Maths Ch 1, 2 & 3 are cleanly rescheduled to Day 4 (28 Nov)."
             },
             "description": "முதல் நாள்: அறிவியலில் முதல் 2 பாடங்கள் (Ch 1 & Ch 2) மற்றும் கணிதத்தில் முதல் 3 பாடங்கள் (Ch 1, Ch 2 & Ch 3) வரிசையாகத் திருப்புதல்.",
             "tasks": [
@@ -2941,18 +2941,19 @@
             "sampleQuestions": [],
             "nightTest": {
               "hasTest": true,
-              "title": "Day 1 Night Test: Science (Ch 1 & 2) + Maths (Ch 1, 2 & 3) (30M)",
+              "title": "Day 1 Test (Chemistry Only Written — 15M)",
               "timing": "8:30 PM – 9:15 PM",
               "totalMarks": 30,
               "marks": 30
-            }
+            },
+            "status": "Completed (Chemistry Only — 15M)"
           },
           {
             "day": 2,
             "date": "2026-11-26",
-            "isTomorrow": true,
+            "isTomorrow": false,
             "phase": "100% Full-Portion Sequential Mastery",
-            "title": "Day 2: Social Science (History Ch 1 Europe & Civics Ch 1 Power Sharing) + English (First Flight Units 1–2 & Footprints Ch 1)",
+            "title": "Day 2 (TODAY: 26 Nov): Social Science (Hist Ch 1 Europe & Civics Ch 1 Power Sharing) + English (Letter to God, Mandela, Poems 1–2 & Analytical Para / Triumph of Surgery)",
             "focus": "History Ch 1, Civics Ch 1 & English Unit 1–2",
             "subjects": [
               "Social Science: History Ch 1 Rise of Nationalism in Europe + Civics Ch 1 Power Sharing",
@@ -2964,9 +2965,9 @@
               "topics": "French Revolution collective identity, Napoleonic Code (1804), Unification of Germany & Italy, Balkans; Belgium Accommodation Model vs Sri Lanka Majoritarianism, Forms of Power Sharing."
             },
             "sub2": {
-              "name": "English (First Flight Units 1–2 & Footprints Ch 1)",
-              "chapter": "1. A Letter to God (Dust of Snow, Fire & Ice) + 2. Nelson Mandela (A Tiger in the Zoo) + Supp 1: Triumph of Surgery",
-              "topics": "Exact NCERT Unit 1 & 2 Pairing: Lencho's faith & irony, Frost's Dust of Snow & Fire and Ice; Mandela's courage & twin obligations, Leslie Norris's A Tiger in the Zoo; Dr Herriot & Tricki's recovery."
+              "name": "English (Day 2 Untouched)",
+              "chapter": "A Letter to God, Nelson Mandela, Dust of Snow, Fire & Ice + Analytical Paragraph (OR A Tiger in the Zoo / Triumph of Surgery)",
+              "topics": "Untouched as Pranav is already preparing it: Lencho's faith & irony, Mandela's twin obligations & courage, Frost's Dust of Snow & Fire and Ice, plus Q7 Choice: Analytical Paragraph OR A Triumph of Surgery."
             },
             "description": "இரண்டாம் நாள்: வரலாறு பாடம் 1, குடிமையியல் பாடம் 1 மற்றும் ஆங்கிலத்தில் முதல் தொகுதி பாடங்கள்.",
             "tasks": [
@@ -2980,7 +2981,8 @@
               "timing": "8:30 PM – 9:15 PM",
               "totalMarks": 30,
               "marks": 30
-            }
+            },
+            "isToday": true
           },
           {
             "day": 3,
@@ -3014,22 +3016,23 @@
               "timing": "8:30 PM – 9:15 PM",
               "totalMarks": 30,
               "marks": 30
-            }
+            },
+            "isTomorrow": true
           },
           {
             "day": 4,
             "date": "2026-11-28",
             "phase": "100% Full-Portion Sequential Mastery",
-            "title": "Day 4: Mathematics (Ch 4 Quadratic Equations & Ch 5 Arithmetic Progressions) + SST (History Ch 2 Nationalism in India & Civics Ch 2 Federalism)",
-            "focus": "Algebra Ch 4–5 (100% Algebra Done) & History Ch 2 / Civics Ch 2",
+            "title": "Day 4: Mathematics (Ch 1 Real Numbers, Ch 2 Polynomials & Ch 3 Linear Equations) + SST (Hist Ch 2 Nationalism in India & Civics Ch 2 Federalism)",
+            "focus": "Catch-up Maths Ch 1–3 + History Ch 2 & Civics Ch 2",
             "subjects": [
-              "Mathematics: Ch 4 Quadratic Equations + Ch 5 Arithmetic Progressions (AP)",
+              "Mathematics: Ch 1 Real Numbers + Ch 2 Polynomials + Ch 3 Pair of Linear Equations",
               "Social Science: History Ch 2 Nationalism in India + Civics Ch 2 Federalism"
             ],
             "sub1": {
-              "name": "Mathematics (Ch 4 & Ch 5 — Algebra Complete)",
-              "chapter": "Ch 4: Quadratic Equations + Ch 5: Arithmetic Progressions (AP)",
-              "topics": "Factorisation & Quadratic Formula, Discriminant (D = b² - 4ac) nature of roots, Speed/Train/Stream word problems; nth term a_n = a + (n-1)d, Sum of first n terms S_n = n/2[2a + (n-1)d] & AP application problems."
+              "name": "Mathematics (Ch 1, Ch 2 & Ch 3)",
+              "chapter": "Ch 1: Real Numbers + Ch 2: Polynomials + Ch 3: Pair of Linear Equations",
+              "topics": "Rescheduled from Day 1: Irrationality proofs (√2, √3, √5), HCF × LCM; Zeroes of polynomial (α+β, αβ); Substitution & Elimination methods, Consistency conditions & Two-digit/Fraction word problems."
             },
             "sub2": {
               "name": "Social Science (Hist Ch 2 & Civics Ch 2)",
@@ -3038,13 +3041,13 @@
             },
             "description": "நான்காம் நாள்: கணிதத்தில் Ch 4 & Ch 5 (இதோடு Algebra 100% நிறைவு!) மற்றும் சமூக அறிவியலில் இந்திய தேசிய இயக்கம் & கூட்டாட்சி.",
             "tasks": [
-              "📐 Maths Ch 4 & 5: D = b² - 4ac சம மூலங்கள் கணக்குகள், இரயில் வேகக் கணக்குகள் மற்றும் AP n-வது உறுப்பு & கூடுதல் கணக்குகள்.",
+              "📐 Maths Ch 1, 2 & 3: √3 விகிதமுறா எண் நிரூபணம், α+β & αβ கணக்குகள் மற்றும் நேரிய சமன்பாடுகள் தீர்த்தல்.",
               "🇮🇳 SST: ஒத்துழையாமை இயக்கம், தண்டி யாத்திரை (உப்பு சத்தியாகிரகம்) மற்றும் 1992 பஞ்சாயத்து ராஜ் சட்டத்திருத்தம்."
             ],
             "sampleQuestions": [],
             "nightTest": {
               "hasTest": true,
-              "title": "Day 4 Night Test: Maths (Ch 4 & 5) + SST (Hist Ch 2 & Civics Ch 2) (30M)",
+              "title": "Day 4 Night Test: Maths (Ch 1, 2 & 3) + SST (Hist Ch 2 & Civics Ch 2) (30M)",
               "timing": "8:30 PM – 9:15 PM",
               "totalMarks": 30,
               "marks": 30
@@ -3088,16 +3091,16 @@
             "day": 6,
             "date": "2026-11-30",
             "phase": "100% Full-Portion Sequential Mastery",
-            "title": "Day 6: Mathematics (Ch 6 Triangles & Ch 7 Coordinate Geometry) + Tamil (இயல் 2: உயிரின் ஓசை முழுவதும்)",
-            "focus": "Geometry Ch 6–7 & Tamil Unit 2",
+            "title": "Day 6: Mathematics (Ch 4 Quadratic Equations & Ch 5 Arithmetic Progressions) + Tamil (இயல் 2: உயிரின் ஓசை முழுவதும்)",
+            "focus": "Algebra Complete (Ch 4–5) & Tamil Unit 2",
             "subjects": [
-              "Mathematics: Ch 6 Triangles (BPT & Similarity) + Ch 7 Coordinate Geometry",
+              "Mathematics: Ch 4 Quadratic Equations + Ch 5 Arithmetic Progressions (AP)",
               "Tamil: இயல் 2 உயிரின் ஓசை (கேட்கிறதா என் குரல்!, பரிபாடல், மேகம்*, பிரும்மம், இலக்கணம்: தொகாநிலைத் தொடர்கள்)"
             ],
             "sub1": {
-              "name": "Mathematics (Ch 6 & Ch 7)",
-              "chapter": "Ch 6: Triangles (BPT & Similarity) + Ch 7: Coordinate Geometry",
-              "topics": "Basic Proportionality Theorem (Thales Theorem) statement & full proof, AAA/SAS/SSS similarity criteria & trapezium diagonals; Distance Formula, Equidistant points, Section Formula (m₁:m₂), Mid-point formula & Parallelogram vertices."
+              "name": "Mathematics (Ch 4 & Ch 5 — Algebra Complete)",
+              "chapter": "Ch 4: Quadratic Equations + Ch 5: Arithmetic Progressions (AP)",
+              "topics": "Factorisation & Quadratic Formula, Discriminant (D = b² - 4ac) nature of roots, Train speed word problems; nth term a_n = a + (n-1)d, Sum S_n = n/2[2a + (n-1)d] & AP applications."
             },
             "sub2": {
               "name": "Tamil (இயல் 2: உயிரின் ஓசை)",
@@ -3106,13 +3109,13 @@
             },
             "description": "ஆறாம் நாள்: கணிதத்தில் முக்கோணங்கள் (BPT தேற்றம்) & ஆயத்தொலை வடிவியல்; தமிழில் புதிய பாடப்புத்தகத்தின் இயல் 2 முழுவதும்.",
             "tasks": [
-              "📐 Maths Ch 6 & 7: அடிப்படை விகிதச்சமத் தேற்றம் (BPT Proof), தொலைவுச் சூத்திரம் மற்றும் பிரிவுச் சூத்திரம் (Section Formula).",
+              "📐 Maths Ch 4 & 5: D = b² - 4ac சம மூலங்கள் கணக்குகள், இரயில் வேகக் கணக்குகள் மற்றும் AP n-வது உறுப்பு & கூடுதல்.",
               "🪶 Tamil இயல் 2: கேட்கிறதா என் குரல், பரிபாடல், மேகம் (மனப்பாடம்), பிரும்மம் மற்றும் 9 வகைத் தொகாநிலைத் தொடர்கள்."
             ],
             "sampleQuestions": [],
             "nightTest": {
               "hasTest": true,
-              "title": "Day 6 Night Test: Maths (Ch 6 & 7) + Tamil (இயல் 2 முழுவதும்) (30M)",
+              "title": "Day 6 Night Test: Maths (Ch 4 & 5) + Tamil (இயல் 2 முழுவதும்) (30M)",
               "timing": "8:30 PM – 9:15 PM",
               "totalMarks": 30,
               "marks": 30
@@ -3190,16 +3193,16 @@
             "day": 9,
             "date": "2026-12-03",
             "phase": "100% Full-Portion Sequential Mastery",
-            "title": "Day 9: Mathematics (Ch 8 Introduction to Trigonometry & Ch 9 Some Applications of Trigonometry) + SST (Civics Ch 4 Political Parties, Ch 5 Outcomes of Democracy & Economics Ch 1 Development)",
-            "focus": "Trigonometry Complete (Ch 8–9), Civics Complete (Ch 4–5) & Economics Ch 1",
+            "title": "Day 9: Mathematics (Ch 6 Triangles, Ch 7 Coordinate Geometry & Ch 10 Circles) + SST (Civics Ch 4, 5 & Eco Ch 1)",
+            "focus": "Geometry Complete (Ch 6, 7 & 10) + Civics Ch 4–5 & Eco Ch 1",
             "subjects": [
-              "Mathematics: Ch 8 Introduction to Trigonometry + Ch 9 Some Applications of Trigonometry (Heights & Distances)",
+              "Mathematics: Ch 6 Triangles (BPT) + Ch 7 Coordinate Geometry + Ch 10 Circles",
               "Social Science: Civics Ch 4 Political Parties + Civics Ch 5 Outcomes of Democracy + Economics Ch 1 Development"
             ],
             "sub1": {
-              "name": "Mathematics (Ch 8 & Ch 9 — Trigonometry Complete)",
-              "chapter": "Ch 8: Introduction to Trigonometry + Ch 9: Some Applications of Trigonometry",
-              "topics": "Trigonometric ratios, Standard angles (0°, 30°, 45°, 60°, 90°), Proving Trigonometric Identities (sin²θ + cos²θ = 1, sec²θ - tan²θ = 1); Angle of Elevation & Angle of Depression 5-mark word problems (Buildings, Poles, Aeroplanes, Bridges)."
+              "name": "Mathematics (Ch 6, Ch 7 & Ch 10 — Geometry Complete)",
+              "chapter": "Ch 6: Triangles (BPT) + Ch 7: Coordinate Geometry + Ch 10: Circles",
+              "topics": "Basic Proportionality Theorem (Thales Theorem) proof & similarity; Distance Formula & Section Formula (m₁:m₂); Theorem 10.2 (Equal tangents from external point) proof & ∠PTQ = 2∠OPQ."
             },
             "sub2": {
               "name": "Social Science (Civics Ch 4, 5 & Eco Ch 1)",
@@ -3208,13 +3211,13 @@
             },
             "description": "ஒன்பதாம் நாள்: கணிதத்தில் முக்கோணவியல் 2 பாடங்களும் (Ch 8 & Ch 9 — இதோடு Trigonometry 100% நிறைவு!) மற்றும் குடிமையியல் நிறைவு + பொருளியல் Ch 1.",
             "tasks": [
-              "📐 Maths Ch 8 & 9: முக்கோணவியல் முற்றொருமைகள் (Identities) நிரூபணம் மற்றும் ஏற்றக்கோணம்/இறக்கக்கோணம் (Heights & Distances) கணக்குகள்.",
+              "📐 Maths Ch 6, 7 & 10: BPT தேற்றம், Section Formula (m₁:m₂) மற்றும் வட்டத் தொடுகோடு தேற்றம் 10.2 நிரூபணம்.",
               "⚖️ SST: அரசியல் கட்சிகளின் சவால்கள் & சீர்திருத்தங்கள், ஜனநாயகத்தின் விளைவுகள் மற்றும் UNDP மனிதவள மேம்பாட்டுக் குறியீடு."
             ],
             "sampleQuestions": [],
             "nightTest": {
               "hasTest": true,
-              "title": "Day 9 Night Test: Maths (Ch 8 & 9) + SST (Civics Ch 4, 5 & Eco Ch 1) (30M)",
+              "title": "Day 9 Night Test: Maths (Ch 6, 7 & 10) + SST (Civics Ch 4, 5 & Eco Ch 1) (30M)",
               "timing": "8:30 PM – 9:15 PM",
               "totalMarks": 30,
               "marks": 30
@@ -3292,16 +3295,16 @@
             "day": 12,
             "date": "2026-12-06",
             "phase": "100% Full-Portion Sequential Mastery",
-            "title": "Day 12: Mathematics (Ch 10 Circles & Ch 11 Areas Related to Circles) + English (First Flight Units 8–9 & Footprints Ch 7–9)",
-            "focus": "Circles Complete (Ch 10–11) & 100% English Literature Completed",
+            "title": "Day 12: Mathematics (Ch 8 Intro to Trigonometry, Ch 9 Heights & Distances & Ch 11 Areas Related to Circles) + English (Units 8–9 & Footprints Ch 7–9)",
+            "focus": "Trigonometry & Circles Sector/Segment Complete + English Literature Complete",
             "subjects": [
-              "Mathematics: Ch 10 Circles + Ch 11 Areas Related to Circles",
-              "English: First Flight Ch 8–9 (Sermon at Benares, The Proposal) + Poems 9–10 (Custard the Dragon, Anne Gregory) + Footprints Ch 7–9 (The Necklace, Bholi, Book That Saved the Earth)"
+              "Mathematics: Ch 8 Intro to Trigonometry + Ch 9 Heights & Distances + Ch 11 Areas Related to Circles",
+              "English: First Flight Units 8–9 (Sermon at Benares, The Proposal, For Anne Gregory) + Footprints Ch 7–9 (The Necklace, Bholi, Book That Saved the Earth)"
             ],
             "sub1": {
-              "name": "Mathematics (Ch 10 & Ch 11 — Circles Complete)",
-              "chapter": "Ch 10: Circles + Ch 11: Areas Related to Circles",
-              "topics": "Theorem 10.1 (Radius ⊥ Tangent), Theorem 10.2 (Equal tangents from external point) proof, Circumscribed quadrilateral (AB + CD = AD + BC) & Parallel tangents (∠AOB = 90°); Area of Sector (θ/360° × πr²), Length of Arc & Area of Minor/Major Segment."
+              "name": "Mathematics (Ch 8, Ch 9 & Ch 11 — Trig & Sectors Complete)",
+              "chapter": "Ch 8: Intro to Trigonometry + Ch 9: Heights & Distances + Ch 11: Areas Related to Circles",
+              "topics": "Trigonometric identities (sin²θ + cos²θ = 1), Standard angles; Two poles across 80m road & Elevation/Depression word problems; Area of Sector (θ/360° × πr²) & Minor Segment (120° chord)."
             },
             "sub2": {
               "name": "English (First Flight Units 8–9 & Footprints Ch 7–9 — Literature Complete)",
@@ -3310,13 +3313,13 @@
             },
             "description": "பன்னிரண்டாம் நாள்: கணிதத்தில் வட்டங்கள் 2 பாடங்களும் (Ch 10 & Ch 11) மற்றும் ஆங்கில இலக்கியத்தின் இறுதிப் பாடங்கள் (இதோடு English Literature 100% நிறைவு!).",
             "tasks": [
-              "⭕ Maths Ch 10 & 11: வட்டத்தின் தொடுகோடு தேற்றம் 10.2 நிரூபணம், வட்டக்கோணப் பகுதி (Sector) மற்றும் வட்டத்துண்டு (Segment) பரப்பளவு கணக்குகள்.",
+              "📐 Maths Ch 8, 9 & 11: முக்கோணவியல் முற்றொருமைகள், 80m சாலைக் கம்பங்கள் கணக்கு மற்றும் 120° வட்டத்துண்டு (Segment) பரப்பளவு.",
               "📖 English: The Sermon at Benares, The Proposal, Custard the Dragon, For Anne Gregory, The Necklace, Bholi & The Book That Saved the Earth."
             ],
             "sampleQuestions": [],
             "nightTest": {
               "hasTest": true,
-              "title": "Day 12 Night Test: Maths (Ch 10 & 11) + English (Prose 8–9, Poems 9–10, Supp 7–9) (30M)",
+              "title": "Day 12 Night Test: Maths (Ch 8, 9 & 11) + English (Units 8–9 & Footprints Ch 7–9) (30M)",
               "timing": "8:30 PM – 9:15 PM",
               "totalMarks": 30,
               "marks": 30
@@ -3706,11 +3709,11 @@
       }
     },
     "yesterday": {
-      "date": "2026-11-23",
-      "dayIndex": 0,
-      "status": "Revision-1 School Exams Completed!",
-      "pair": "Transition to 100% Full Portion Pre-Board Training",
-      "message": "Revision-1 தேர்வுகள் நிறைவடைந்தன. இன்று முதல் 5 முக்கியப் பாடங்களின் 100% முழுப் பாடத்திட்டப் பயிற்சி தொடங்குகிறது."
+      "date": "2026-11-25",
+      "dayIndex": 1,
+      "status": "Chemistry Only Written (15M) — Maths Ch 1–3 Shifted to Day 4",
+      "pair": "Science (Ch 1 & Ch 2) Completed | Maths (Ch 1, 2, 3) Rescheduled",
+      "message": "நேற்று (Day 1) Chemistry மட்டும் எழுதப்பட்டது. விடுபட்ட Maths Ch 1, 2, 3 Day 4-க்கு மாற்றப்பட்டு, மற்ற Maths பாடங்கள் Day 6, 9, 12, 14-ல் சமமாகப் பிரிக்கப்பட்டுள்ளன."
     }
   },
   "pranavDoubts": [
@@ -3860,7 +3863,7 @@
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
       "sub1Name": "Social Science (Hist Ch 1 & Civics Ch 1) - 15 Marks",
-      "sub2Name": "English (First Flight Units 1–2 & Footprints Ch 1) - 15 Marks",
+      "sub2Name": "English (Day 2 Portion) - 15 Marks",
       "instructions": "Write point-wise answers with clear headings.",
       "scienceSection": {
         "marks": 15,
@@ -3894,7 +3897,7 @@
       },
       "tamilSection": {
         "marks": 15,
-        "summary": "Q4: Irony in 'A Letter to God' (4M) | Q5: Mandela's twin obligations & courage (4M) | Q6: Poems — 'Dust of Snow', 'Fire and Ice' & 'A Tiger in the Zoo' (3M) | Q7: Tricki's cure in 'A Triumph of Surgery' (4M)",
+        "summary": "Q4: Irony in 'A Letter to God' (4M) | Q5: Nelson Mandela's courage & twin obligations (4M) | Q6: 'Dust of Snow' & 'Fire and Ice' (3M) | Q7: Choice — Analytical Paragraph OR A Triumph of Surgery (4M)",
         "questions": [
           {
             "qNum": "Q4",
@@ -3914,19 +3917,19 @@
           },
           {
             "qNum": "Q6",
-            "type": "First Flight Units 1–2 Poems",
+            "type": "First Flight Poems 1–2",
             "marks": 3,
-            "question": "(a) How did the crow and hemlock tree change the poet's mood in 'Dust of Snow'? (1.5 Marks)\n(b) How does Leslie Norris contrast the tiger's 'quiet rage' in the concrete cell with its natural habitat in 'A Tiger in the Zoo'? (1.5 Marks)",
-            "answer": "(a) Shook dust of snow onto the poet, lifting his depressive mood and saving the rest of his rueful day.\n(b) Locked in a concrete cell, the tiger stalks silently ignoring visitors, whereas in the wild it would lurk in shadows near water holes hunting plump deer.",
+            "question": "(a) How did the crow and the hemlock tree bring a positive change in the poet's mood in 'Dust of Snow'? (1.5 Marks)\n(b) What do 'fire' and 'ice' symbolize in Robert Frost's poem 'Fire and Ice', and how can either destroy the world? (1.5 Marks)",
+            "answer": "(a) Shook dust of snow onto the poet, lifting his gloomy mood and saving the rest of a day he had regretted.\n(b) Fire symbolizes unbridled desire/greed; Ice symbolizes cold hatred/indifference. Both human emotions are destructive enough to end the world.",
             "rubric": "1.5M + 1.5M = 3 Marks."
           },
           {
             "qNum": "Q7",
-            "type": "Footprints Ch 1",
+            "type": "Choice: Writing / Supp",
             "marks": 4,
-            "question": "Why was Dr Herriot tempted to keep Tricki on as a permanent guest? How did he actually cure Tricki without any medicinal treatment? (4 Marks)",
-            "answer": "Mrs Pumphrey sent fresh eggs, wine, and brandy for Tricki's strength, which Herriot and his partners enjoyed. He cured Tricki simply by giving him no food but plenty of water for two days, coupled with physical exercise and competing for food with other dogs.",
-            "rubric": "Temptation reason: 2M; Non-medicinal cure: 2M."
+            "question": "Attempt ANY ONE of the following (4 Marks):\n(A) Analytical Paragraph (100–120 words): A survey of 500 Class 10 students showed preferred revision methods: NCERT Self-Study (45%), Video Lectures (25%), Written Practice Tests (20%), Group Study (10%). Analyse the data.\n[OR]\n(B) 'A Triumph of Surgery': Why was Dr Herriot tempted to keep Tricki as a permanent guest, and how did he actually cure Tricki without any medicines?",
+            "answer": "(A) Single cohesive paragraph highlighting highest share of NCERT self-study (45%), followed by video lectures (25%), written tests (20%), and lowest group study (10%).\n[OR]\n(B) Mrs Pumphrey sent eggs, wine, and brandy meant for Tricki; Herriot cured Tricki by giving no food and plenty of water for 2 days plus exercise with other dogs.",
+            "rubric": "Any one option: 4 Marks."
           }
         ]
       }
@@ -4012,39 +4015,39 @@
     {
       "day": 4,
       "date": "2026-11-28",
-      "title": "Day 4 Full-Portion Assessment: Maths (Ch 4 Quadratic Equations & Ch 5 AP) + SST (History Ch 2 Nationalism in India & Civics Ch 2 Federalism)",
+      "title": "Day 4 Full-Portion Assessment: Maths (Ch 1 Real Numbers, Ch 2 Polynomials & Ch 3 Linear Equations) + SST (History Ch 2 & Civics Ch 2)",
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
-      "sub1Name": "Mathematics (Ch 4 & Ch 5) - 15 Marks",
+      "sub1Name": "Mathematics (Ch 1, Ch 2 & Ch 3) - 15 Marks",
       "sub2Name": "Social Science (Hist Ch 2 & Civics Ch 2) - 15 Marks",
       "instructions": "Show step-by-step calculations.",
       "scienceSection": {
         "marks": 15,
-        "summary": "Q1: Nature of roots k value in Quadratic Equation (5M) | Q2: Train uniform speed word problem (5M) | Q3: Arithmetic Progressions 4th/8th terms & sum of 20 terms (5M)",
+        "summary": "Q1: Prove √3 & 5 - 2√3 irrational (5M) | Q2: Polynomial zeroes α²/β + β²/α & forming polynomial (5M) | Q3: Linear equations two-digit number reversal problem (5M)",
         "questions": [
           {
             "qNum": "Q1",
-            "type": "Maths Ch 4",
+            "type": "Maths Ch 1",
             "marks": 5,
-            "question": "Find the values of k for which the quadratic equation (k + 4)x² + (k + 1)x + 1 = 0 has real and equal roots. Also find the roots for each value of k. (5 Marks)",
-            "answer": "D = (k+1)² - 4(k+4)(1) = k² - 2k - 15 = 0 ⇒ k = 5 or k = -3. For k = 5, root = -1/3; for k = -3, root = 1.",
-            "rubric": "D = 0 setup & k = 5, -3: 3M; Roots: 2M."
+            "question": "(a) Prove that √3 is an irrational number. (3 Marks)\n(b) Hence prove that 5 - 2√3 is an irrational number. (2 Marks)",
+            "answer": "Contradiction proof: Assume √3 = a/b (coprime) ⇒ a² = 3b² ⇒ 3 divides both a and b. Rearrange 5 - 2√3 = p/q ⇒ √3 = (5q-p)/(2q) rational, contradiction.",
+            "rubric": "Part (a) 3M; Part (b) 2M."
           },
           {
             "qNum": "Q2",
-            "type": "Maths Ch 4",
+            "type": "Maths Ch 2",
             "marks": 5,
-            "question": "A train travels 360 km at a uniform speed. If the speed had been 5 km/h more, it would have taken 1 hour less for the same journey. Find the speed of the train. (5 Marks)",
-            "answer": "360/x - 360/(x+5) = 1 ⇒ x² + 5x - 1800 = 0 ⇒ (x+45)(x-40) = 0 ⇒ x = 40 km/h.",
-            "rubric": "Equation: 2M; Simplification: 1.5M; Speed 40 km/h: 1.5M."
+            "question": "If α and β are the zeroes of the quadratic polynomial p(x) = 3x² - 4x + 1, find a quadratic polynomial whose zeroes are α²/β and β²/α. (5 Marks)",
+            "answer": "α+β = 4/3, αβ = 1/3. Sum S = (α³+β³)/(αβ) = 28/9. Product P = αβ = 1/3. Polynomial: 9x² - 28x + 3.",
+            "rubric": "S = 28/9: 3M; P = 1/3 & polynomial: 2M."
           },
           {
             "qNum": "Q3",
-            "type": "Maths Ch 5",
+            "type": "Maths Ch 3",
             "marks": 5,
-            "question": "The sum of the 4th and 8th terms of an AP is 24 and the sum of the 6th and 10th terms is 44. Find the first three terms of the AP and the sum of its first 20 terms. (5 Marks)",
-            "answer": "2a + 10d = 24 and 2a + 14d = 44 ⇒ d = 5, a = -13. Terms: -13, -8, -3. S₂₀ = 10[-26 + 95] = 690.",
-            "rubric": "a = -13, d = 5: 3M; S₂₀ = 690: 2M."
+            "question": "The sum of a two-digit number and the number obtained by reversing the digits is 66. If the digits of the number differ by 2, find the number. How many such numbers are there? (5 Marks)",
+            "answer": "x + y = 6 and |x - y| = 2 ⇒ Two numbers: 42 and 24.",
+            "rubric": "Equation: 2M; Both numbers 42 & 24: 3M."
           }
         ]
       },
@@ -4160,39 +4163,39 @@
     {
       "day": 6,
       "date": "2026-11-30",
-      "title": "Day 6 Full-Portion Assessment: Maths (Ch 6 Triangles & Ch 7 Coordinate Geometry) + Tamil (இயல் 2: உயிரின் ஓசை முழுவதும்)",
+      "title": "Day 6 Full-Portion Assessment: Maths (Ch 4 Quadratic Equations & Ch 5 AP) + Tamil (இயல் 2: உயிரின் ஓசை முழுவதும்)",
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
-      "sub1Name": "Mathematics (Ch 6 & Ch 7) - 15 Marks",
+      "sub1Name": "Mathematics (Ch 4 & Ch 5) - 15 Marks",
       "sub2Name": "Tamil (இயல் 2: உயிரின் ஓசை) - 15 Marks",
       "instructions": "Write complete geometric proofs with Given, To Prove, Construction.",
       "scienceSection": {
         "marks": 15,
-        "summary": "Q1: State and prove Basic Proportionality Theorem (Thales Theorem) (5M) | Q2: Coordinate Geometry y-axis ratio & intersection point (5M) | Q3: Parallelogram vertices & diagonal length (5M)",
+        "summary": "Q1: Equal roots k value in Quadratic Equation (5M) | Q2: Train uniform speed quadratic word problem (5M) | Q3: Arithmetic Progressions 4th/8th terms & Sum of 20 terms (5M)",
         "questions": [
           {
             "qNum": "Q1",
-            "type": "Maths Ch 6",
+            "type": "Maths Ch 4",
             "marks": 5,
-            "question": "State and prove the Basic Proportionality Theorem (Thales Theorem). (5 Marks)",
-            "answer": "Full statement, diagram of ΔABC with DE ∥ BC, altitudes DM and EN, area ratios ar(ADE)/ar(BDE) = AD/DB and ar(ADE)/ar(CDE) = AE/EC, equal base/parallels ⇒ AD/DB = AE/EC.",
-            "rubric": "Statement 1M + Diagram/Given 1.5M + Proof 2.5M = 5M."
+            "question": "Find the values of k for which the quadratic equation (k + 4)x² + (k + 1)x + 1 = 0 has real and equal roots. Also find the roots for each value of k. (5 Marks)",
+            "answer": "k² - 2k - 15 = 0 ⇒ k = 5 or -3. Roots: -1/3 (for k=5), 1 (for k=-3).",
+            "rubric": "D = 0 & k values: 3M; Roots: 2M."
           },
           {
             "qNum": "Q2",
-            "type": "Maths Ch 7",
+            "type": "Maths Ch 4",
             "marks": 5,
-            "question": "Find the ratio in which the y-axis divides the line segment joining (5, -6) and (-1, -4). Also find the point of intersection. (5 Marks)",
-            "answer": "Ratio k:1 ⇒ (-k + 5)/(k + 1) = 0 ⇒ k = 5 (Ratio 5:1). Point = (0, -13/3).",
-            "rubric": "Ratio 5:1: 3M; Point (0, -13/3): 2M."
+            "question": "A train travels 360 km at a uniform speed. If the speed had been 5 km/h more, it would have taken 1 hour less for the same journey. Find the original speed of the train. (5 Marks)",
+            "answer": "360/x - 360/(x+5) = 1 ⇒ x² + 5x - 1800 = 0 ⇒ x = 40 km/h.",
+            "rubric": "Equation: 2M; Solution 40 km/h: 3M."
           },
           {
             "qNum": "Q3",
-            "type": "Maths Ch 7",
+            "type": "Maths Ch 5",
             "marks": 5,
-            "question": "If A(6, 1), B(8, 2), C(9, 4) and D(p, 3) are the vertices of a parallelogram taken in order, find p and the length of diagonal AC. (5 Marks)",
-            "answer": "Midpoint of AC = Midpoint of BD ⇒ (6+9)/2 = (8+p)/2 ⇒ p = 7. Length AC = √[(9-6)² + (4-1)²] = 3√2 units.",
-            "rubric": "p = 7: 3M; AC = 3√2: 2M."
+            "question": "The sum of the 4th and 8th terms of an AP is 24 and the sum of the 6th and 10th terms is 44. Find the first three terms of the AP and the sum of its first 20 terms. (5 Marks)",
+            "answer": "a = -13, d = 5. Terms: -13, -8, -3. S₂₀ = 690.",
+            "rubric": "a, d & terms: 3M; S₂₀ = 690: 2M."
           }
         ]
       },
@@ -4394,39 +4397,39 @@
     {
       "day": 9,
       "date": "2026-12-03",
-      "title": "Day 9 Full-Portion Assessment: Maths (Ch 8 Intro to Trigonometry & Ch 9 Heights and Distances) + SST (Civics Ch 4, 5 & Economics Ch 1)",
+      "title": "Day 9 Full-Portion Assessment: Maths (Ch 6 Triangles, Ch 7 Coordinate Geo & Ch 10 Circles) + SST (Civics Ch 4, 5 & Eco Ch 1)",
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
-      "sub1Name": "Mathematics (Ch 8 & Ch 9) - 15 Marks",
+      "sub1Name": "Mathematics (Ch 6, Ch 7 & Ch 10) - 15 Marks",
       "sub2Name": "Social Science (Civics Ch 4, 5 & Eco Ch 1) - 15 Marks",
       "instructions": "Show neat right-triangle diagrams for Heights & Distances.",
       "scienceSection": {
         "marks": 15,
-        "summary": "Q1: Prove trigonometric identities (5M) | Q2: Two equal poles across 80m road elevation problem (5M) | Q3: Angle of depression from bridge / tower problem (5M)",
+        "summary": "Q1: Basic Proportionality Theorem (Thales Theorem) Proof (5M) | Q2: Coordinate Geometry y-axis division ratio & point (5M) | Q3: Circle Tangent Theorem 10.2 Proof (5M)",
         "questions": [
           {
             "qNum": "Q1",
-            "type": "Maths Ch 8",
+            "type": "Maths Ch 6",
             "marks": 5,
-            "question": "Prove that:\n(a) √[(1 + sin A)/(1 - sin A)] = sec A + tan A (2.5 Marks)\n(b) (sin A + cosec A)² + (cos A + sec A)² = 7 + tan² A + cot² A (2.5 Marks)",
-            "answer": "Standard NCERT Ex 8.3 identity proofs.",
-            "rubric": "2.5M + 2.5M = 5M."
+            "question": "State and prove the Basic Proportionality Theorem (Thales Theorem). (5 Marks)",
+            "answer": "Statement (1M), Diagram/Given/Construction (1.5M), Area ratio proof showing AD/DB = AE/EC (2.5M).",
+            "rubric": "5 Marks complete proof."
           },
           {
             "qNum": "Q2",
-            "type": "Maths Ch 9",
+            "type": "Maths Ch 7",
             "marks": 5,
-            "question": "Two poles of equal heights are standing opposite each other on either side of the road, which is 80 m wide. From a point between them on the road, the angles of elevation of the top of the poles are 60° and 30°, respectively. Find the height of the poles and the distances of the point from the poles. (5 Marks)",
-            "answer": "h = x√3 and h = (80-x)/√3 ⇒ 3x = 80 - x ⇒ x = 20 m, 80 - x = 60 m. Height h = 20√3 m.",
-            "rubric": "Diagram: 1M; Distances 20m, 60m: 2M; Height 20√3 m: 2M."
+            "question": "Find the ratio in which the y-axis divides the line segment joining (5, -6) and (-1, -4). Also find the coordinates of the point of intersection. (5 Marks)",
+            "answer": "Ratio k:1 ⇒ k = 5 (5:1). Point = (0, -13/3).",
+            "rubric": "Ratio 5:1 (3M) + Point (2M)."
           },
           {
             "qNum": "Q3",
-            "type": "Maths Ch 9",
+            "type": "Maths Ch 10",
             "marks": 5,
-            "question": "From a point on a bridge across a river, the angles of depression of the banks on opposite sides of the river are 30° and 45°, respectively. If the bridge is at a height of 3 m from the banks, find the width of the river. (5 Marks)",
-            "answer": "x = 3√3 m, y = 3 m ⇒ Total width = 3(√3 + 1) m.",
-            "rubric": "Diagram: 1.5M; x & y: 2M; Width 3(√3 + 1) m: 1.5M."
+            "question": "Prove that the lengths of tangents drawn from an external point to a circle are equal. (5 Marks)",
+            "answer": "RHS Congruence of ΔOQP and ΔORP ⇒ PQ = PR (CPCT).",
+            "rubric": "Diagram/Given (2M) + RHS proof (3M)."
           }
         ]
       },
@@ -4620,39 +4623,39 @@
     {
       "day": 12,
       "date": "2026-12-06",
-      "title": "Day 12 Full-Portion Assessment: Maths (Ch 10 Circles & Ch 11 Areas Related to Circles) + English (Prose 8–9, Poems 9–10, Supp 7–9)",
+      "title": "Day 12 Full-Portion Assessment: Maths (Ch 8, Ch 9 & Ch 11) + English (First Flight Units 8–9 & Footprints Ch 7–9)",
       "timing": "8:30 PM – 9:15 PM (45 Mins)",
       "totalMarks": 30,
-      "sub1Name": "Mathematics (Ch 10 & Ch 11) - 15 Marks",
+      "sub1Name": "Mathematics (Ch 8, Ch 9 & Ch 11) - 15 Marks",
       "sub2Name": "English (First Flight Units 8–9 & Footprints Ch 7–9) - 15 Marks",
       "instructions": "Show complete steps for geometric theorems and mensuration.",
       "scienceSection": {
         "marks": 15,
-        "summary": "Q1: State and prove Theorem 10.2 (Equal tangents from external point) (5M) | Q2: Prove ∠PTQ = 2∠OPQ & Circumscribed quadrilateral AB + CD = AD + BC (5M) | Q3: Area of minor & major segment with 120° chord (5M)",
+        "summary": "Q1: Trigonometric Identity Proof √[(1+sinA)/(1-sinA)] = secA + tanA (5M) | Q2: Two equal poles across 80m road height & distances (5M) | Q3: Minor segment area with 120° chord (5M)",
         "questions": [
           {
             "qNum": "Q1",
-            "type": "Maths Ch 10",
+            "type": "Maths Ch 8",
             "marks": 5,
-            "question": "Prove that the lengths of tangents drawn from an external point to a circle are equal. (5 Marks)",
-            "answer": "In right triangles ΔOQP and ΔORP: ∠OQP = ∠ORP = 90°, OQ = OR (radii), OP = OP (common) ⇒ ΔOQP ≅ ΔORP (RHS) ⇒ PQ = PR (CPCT).",
-            "rubric": "Diagram/Given: 2M; RHS proof: 3M."
+            "question": "Prove that:\n(a) √[(1 + sin A)/(1 - sin A)] = sec A + tan A (2.5 Marks)\n(b) (sin A + cosec A)² + (cos A + sec A)² = 7 + tan² A + cot² A (2.5 Marks)",
+            "answer": "Standard NCERT Ch 8 Exercise 8.3 identity proofs.",
+            "rubric": "2.5M + 2.5M = 5M."
           },
           {
             "qNum": "Q2",
-            "type": "Maths Ch 10",
+            "type": "Maths Ch 9",
             "marks": 5,
-            "question": "Two tangents TP and TQ are drawn to a circle with centre O from an external point T. Prove that ∠PTQ = 2∠OPQ. (5 Marks)",
-            "answer": "Let ∠PTQ = θ. Isosceles ΔTPQ ⇒ ∠TPQ = 90° - θ/2. Since ∠OPT = 90°, ∠OPQ = 90° - (90° - θ/2) = θ/2 = ½∠PTQ.",
-            "rubric": "Diagram: 1M; Proof steps: 4M."
+            "question": "Two poles of equal heights are standing opposite each other on either side of the road, which is 80 m wide. From a point between them on the road, the angles of elevation of the top of the poles are 60° and 30°, respectively. Find the height of the poles and the distances of the point from the poles. (5 Marks)",
+            "answer": "x = 20 m, 80-x = 60 m; Height h = 20√3 m.",
+            "rubric": "Diagram (1M) + Distances (2M) + Height 20√3 m (2M)."
           },
           {
             "qNum": "Q3",
             "type": "Maths Ch 11",
             "marks": 5,
             "question": "A chord of a circle of radius 12 cm subtends an angle of 120° at the centre. Find the area of the corresponding minor segment of the circle. (Use π = 3.14 and √3 = 1.73). (5 Marks)",
-            "answer": "Sector area = (120/360) × 3.14 × 144 = 150.72 cm². Triangle area = ½ × 144 × sin 120° = 36 × 1.73 = 62.28 cm². Minor segment = 150.72 - 62.28 = 88.44 cm².",
-            "rubric": "Sector: 2M; Triangle: 2M; Segment 88.44 cm²: 1M."
+            "answer": "Sector = 150.72 cm², Triangle = 62.28 cm², Minor segment = 88.44 cm².",
+            "rubric": "Sector (2M) + Triangle (2M) + Segment 88.44 cm² (1M)."
           }
         ]
       },
